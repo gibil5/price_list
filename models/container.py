@@ -74,15 +74,14 @@ class Container(models.Model):
 		print(products)
 
 		for pro in products:
-			print(pro.name)
+			#print(pro.name)
 
 			if pro.pl_price_list in [False]:
 				pro.pl_price_list = '2018'
 
-			print(pro.pl_price_list)
+			#print(pro.pl_price_list)
 
-
-		print(count)
+		#print(count)
 		
 
 
