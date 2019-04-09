@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function
+import csv
+import pandas
 
 from openerp import models, fields, api
-
-import csv
-import product
-import pandas
+#import product
+from . import pl_vars
 
 
 class Container(models.Model):
@@ -27,6 +27,20 @@ class Container(models.Model):
 	name = fields.Char(
 			required=True,
 		)
+
+
+	path = fields.Char(
+			required=True,
+		)
+
+	file_name = fields.Selection(
+
+			selection=pl_vars._file_name_list,
+		
+			required=True,
+		)
+
+
 
 
 # ----------------------------------------------------------- Relational --------------------------
@@ -79,37 +93,16 @@ class Container(models.Model):
 
 # ----------------------------------------------------------- Load ------------------------
 
-	def open_with_pandas_read_csv(self, filename):
-		csv_delimiter = ","
-		df = pandas.read_csv(filename, sep=csv_delimiter)
-		#data = df.values
-		#data = df
-		#return data    
-		return df    
-
-
-
-	#def create_product(self, name):
-		# Create
-	#	product = self.product_ids.create({
-	#											'name': name,								
-	#											'container_id': self.id,
-	#			})
-	#	print(product)
-
-
-
 	# Load
-	#@api.model
 	@api.multi
 	def load(self):
 		print('Load')
 
-
 		self.product_ids.unlink()
 
 
-		fname = '/Users/gibil/Virtualenvs/loader/loader/services.csv'
+		#fname = '/Users/gibil/Virtualenvs/loader/loader/services.csv'
+		fname = self.path + self.file_name
 
 		df = self.open_with_pandas_read_csv(fname)
 
@@ -190,3 +183,22 @@ class Container(models.Model):
 
 
 
+
+
+	def open_with_pandas_read_csv(self, filename):
+		csv_delimiter = ","
+		df = pandas.read_csv(filename, sep=csv_delimiter)
+		#data = df.values
+		#data = df
+		#return data    
+		return df    
+
+
+
+	#def create_product(self, name):
+		# Create
+	#	product = self.product_ids.create({
+	#											'name': name,								
+	#											'container_id': self.id,
+	#			})
+	#	print(product)

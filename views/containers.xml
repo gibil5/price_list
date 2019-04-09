@@ -54,6 +54,8 @@
 								<field name="name"/>
                             </group>
                             <group>
+                                <field name="path"/>
+                                <field name="file_name"/>
                             </group>
                         </group>
 

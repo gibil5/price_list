@@ -2,6 +2,15 @@
 
 
 
+_file_name_list = [
+	
+	('services.csv', 'services.csv'),
+
+]
+
+
+
+
 _price_list_list = [
 	
 	('2019', '2019'),
