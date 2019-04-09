@@ -1,0 +1,195 @@
+<openerp>
+	<data>
+
+
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="product_form_view">
+			<field name="name">product.form</field>
+
+			<field name="model">price_list.product</field>
+			
+			<field name="arch" type="xml">
+				<form string="product Form">
+
+					<!-- Header -->
+					<header>
+					</header>
+
+
+					<!-- Sheet -->  
+					<sheet>
+<!--								
+								<field name="name"/>
+-->
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+								<field name="name"/>
+								<field name="x_type"/>
+								<field name="family"/>
+								<field name="subfamily"/>
+                            </group>
+                            <group>
+								<field name="treatment"/>
+								<field name="zone"/>
+								<field name="pathology"/>
+
+								<field name="level"/>
+								<field name="sessions"/>
+								<field name="time"/>
+<!--
+-->                        
+                            </group>
+                        </group>
+
+
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+								<field name="price"/>
+								<field name="price_vip"/>
+								<field name="price_company"/>
+								<field name="price_session"/>
+								<field name="price_session_next"/>
+								<field name="price_max"/>
+                            </group>
+                            <group>
+								<field name="name_short"/>
+								<field name="prefix"/>
+								<field name="idx"/>
+								<field name="code"/>
+                            </group>
+                        </group>
+
+
+
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+
+
+                        <!-- Notebook --> 
+                        <notebook>  
+                            <page string="">
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+		<!-- explicit list view definition -->
+		<record model="ir.ui.view" id="price_list.product_list">
+
+			<field name="name">price_list product list</field>
+			
+			<field name="model">price_list.product</field>
+			
+			<field name="arch" type="xml">
+				<tree>
+			
+					<field name="price_list"/>
+
+					<field name="x_type"/>
+
+					<field name="name"/>
+					<field name="name_short"/>
+
+					<field name="prefix"/>
+					<field name="idx"/>
+					<field name="code"/>
+
+					
+					<field name="family"/>
+					<field name="subfamily"/>
+					<field name="treatment"/>
+					<field name="zone"/>
+					<field name="pathology"/>
+
+
+					<field name="level"/>
+					<field name="sessions"/>
+					<field name="time"/>
+
+
+					<field name="price"/>
+					<field name="price_vip"/>
+					<field name="price_company"/>
+					<field name="price_session"/>
+					<field name="price_session_next"/>
+					<field name="price_max"/>
+
+
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="price_list.product_list_action">
+			
+			<field name="name">price_list window</field>
+			
+			<field name="res_model">price_list.product</field>
+			
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+		<!-- server action to the one above -->
+		<!--
+		<record model="ir.actions.server" id="price_list.action_server">
+			<field name="name">price_list server</field>
+			<field name="model_id" ref="model_price_list_price_list"/>
+			<field name="code">
+				action = {
+					"type": "ir.actions.act_window",
+					"view_mode": "tree,form",
+					"res_model": self._name,
+				}
+			</field>
+		</record>
+		-->
+
+
+
+
+		<!-- Top menu item -->
+		<!--
+		<menuitem name="price_list" id="price_list.menu_root"/>
+		-->
+		<!-- menu categories -->
+		<!--
+		<menuitem name="Menu 1" id="price_list.menu_1" parent="price_list.menu_root"/>
+		<menuitem name="Menu 2" id="price_list.menu_2" parent="price_list.menu_root"/>
+		-->
+
+		<!-- actions -->
+		<!--
+
+		<menuitem name="Server to list" id="price_list" parent="price_list.menu_2"
+							action="price_list.action_server"/>
+		<menuitem 	name="List" 
+					id="price_list.product_list_action" 
+					parent="price_list.menu_1"
+					action="price_list.action_window"
+				/>
+		-->
+
+	</data>
+</openerp>

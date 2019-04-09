@@ -1,0 +1,107 @@
+<openerp>
+	<data>
+
+
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="container_form_view">
+			<field name="name">container.form</field>
+
+			<field name="model">price_list.container</field>
+			
+			<field name="arch" type="xml">
+				<form string="container Form">
+
+					<!-- Header -->
+					<header>
+
+
+                        <!-- Load -->
+                        <button 
+                                type="object"
+
+                                class="oe_highlight"
+                                
+                                name="load"
+                                
+                                string="Load"
+                        />
+
+
+                        <!-- Update -->
+                        <button 
+                                type="object"
+
+                                class="oe_highlight"
+                                
+                                name="update_price_list"
+                                
+                                string="Update Price list"
+                        />
+
+
+					</header>
+
+
+					<!-- Sheet -->  
+					<sheet>
+
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+								<field name="name"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+
+
+
+
+
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+
+
+                        <!-- Notebook --> 
+                        <notebook>  
+                            <page string="Products">
+
+                                <field name="product_ids"/>
+                            
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+	
+
+
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="price_list.container_list_action">
+			
+			<field name="name">price_list window</field>
+			
+			<field name="res_model">price_list.container</field>
+			
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+
+	</data>
+</openerp>

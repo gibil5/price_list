@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<openerp>
+<!--    
+	<data noupdate='0'>
+-->
+	<data>
+
+
+<!-- Main - Price List -->
+<menuitem   id="main_pricelist_menu"
+
+			sequence="0"
+	
+			name="Lista de Precios"    
+		/>
+
+
+
+
+
+<!-- Pricelists --> 
+<menuitem   id="pricelist_menu" 
+
+					name="Lista de Precios - 2019"
+			
+					parent="main_pricelist_menu"
+
+					sequence="1"
+				/>
+
+
+		<!-- Products --> 
+		<menuitem   id="pricelist_products_menu"
+
+					name="Productos" 
+			
+					parent="pricelist_menu"
+			
+					sequence="1"
+
+					action="product_list_action"
+				/>
+
+
+		<!-- Containers --> 
+		<menuitem   id="pricelist_containers_menu"
+
+					name="Containers" 
+			
+					parent="pricelist_menu"
+			
+					sequence="2"
+
+					action="container_list_action"
+				/>
+
+
+
+
+<!-- Pricelists --> 
+<menuitem   id="parent_pricelist_product_template_menu" 
+
+					name="Productos y Servicios"
+			
+					parent="main_pricelist_menu"
+
+					sequence="2"
+				/>
+
+
+		<!-- Product Templates --> 
+		<menuitem   id="pricelist_product_template_menu"
+
+					name="Product Templates" 
+			
+					parent="parent_pricelist_product_template_menu"
+			
+					sequence="1"
+
+					action="product_template_list_action"
+				/>
+
+
+
+		<!-- Product Templates --> 
+		<menuitem   id="pricelist_product_template_2018_menu"
+
+					name="2018" 
+			
+					parent="parent_pricelist_product_template_menu"
+			
+					sequence="3"
+
+					action="product_template_2018_list_action"
+				/>
+
+
+		<!-- Product Templates --> 
+		<menuitem   id="pricelist_product_template_2019_menu"
+
+					name="2019" 
+			
+					parent="parent_pricelist_product_template_menu"
+			
+					sequence="2"
+
+					action="product_template_2019_list_action"
+				/>
+
+
+	</data>
+</openerp>
