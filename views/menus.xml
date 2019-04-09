@@ -9,7 +9,7 @@
 <!-- Main - Price List -->
 <menuitem   id="main_pricelist_menu"
 
-			sequence="0"
+            sequence="-7"
 	
 			name="Lista de Precios"    
 		/>
