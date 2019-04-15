@@ -200,24 +200,18 @@
 
 
 
-		<!-- Action - 2019 -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_list_action">
-			
-			<field name="name">product template 2019</field>
-			
-			<field name="res_model">product.template</field>
-			
-			<field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="price_list.product_template_list"/> 
 
-			<field name="domain">[
-									('pl_price_list', '=', '2019'),
-								]
-			</field>
 
-			<field name="limit">700</field>
-		</record>
+
+
+
+
+
+
+
+
+
 
 
 	</data>

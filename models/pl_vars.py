@@ -99,7 +99,9 @@ _family_list = [
 	('cosmetology', 'Cosmeatria'),
 	('gynecology', 	'Ginecologia'),
 	('promotion', 	'Promos'),
-	('ecography', 	'Ecografia'),
+
+	#('ecography', 	'Ecografia'),
+	('echography', 	'Ecografia'),
 ]
 
 
@@ -130,7 +132,9 @@ _subfamily_list = [
 #('medical', 	'medical'),
 #('cosmetology', 'cosmetology'),
 
-('ecography', 	'Ecografia'),
+#('ecography', 	'Ecografia'),
+('echography', 	'Ecografia'),
+
 ('gynecology', 	'Ginecologia'),
 ('promotion', 	'Promos'),
 ('medical', 	'T. Medicos'),

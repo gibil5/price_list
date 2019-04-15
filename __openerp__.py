@@ -36,10 +36,14 @@
         'views/views.xml',
         'views/templates.xml',
 
+
         'views/products.xml',
         'views/containers.xml',
         'views/product_template.xml',
+
         'views/product_template_search.xml',
+        'views/product_template_actions.xml',
+
         'views/menus.xml',
 
 

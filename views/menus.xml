@@ -1,16 +1,12 @@
 <?xml version="1.0"?>
 <openerp>
-<!--    
-	<data noupdate='0'>
--->
 	<data>
+
 
 
 <!-- Main - Price List -->
 <menuitem   id="main_pricelist_menu"
-
             sequence="-7"
-	
 			name="Lista de Precios"    
 		/>
 
@@ -18,40 +14,170 @@
 
 
 
-<!-- Config --> 
-<menuitem   id="parent_pricelist_config_menu" 
 
-					name="Configuration"
+
+<!-- Pricelists --> 
+<menuitem   id="parent_pricelist_product_template_2019_menu" 
+
+					name="Lista de Precios - 2019"
 			
 					parent="main_pricelist_menu"
 
-					sequence="2"
+					sequence="1"
 				/>
 
 
-		<!-- Containers --> 
-		<menuitem   id="pricelist_containers_menu"
 
-					name="Containers" 
+		<!-- Product Templates - 2019 - All --> 
+		<menuitem   id="pricelist_product_template_2019_menu"
+
 			
-					parent="parent_pricelist_config_menu"
+					parent="parent_pricelist_product_template_2019_menu"
 			
 					sequence="1"
 
-					action="container_list_action"
+					action="product_template_2019_list_action"
 				/>
 
-		<!-- Pricelist Products --> 
-		<menuitem   id="pricelist_products_menu"
 
-					name="Pricelist Products" 
-			
-					parent="parent_pricelist_config_menu"
-			
-					sequence="2"
+<!--
+					name="2019" 
+					name="Laser Co2" 
+					name="Laser exc" 
+					name="Laser ndyag" 
+					name="Quick Laser" 
+					name="Laser ipl" 
+-->
 
-					action="product_list_action"
+		<!-- Product Templates - 2019 - Co2 --> 
+		<menuitem   id="pricelist_product_template_2019_co2_menu"
+
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="3"
+
+					action="product_template_2019_co2_list_action"
 				/>
+
+
+		<!-- Product Templates - 2019 - exc --> 
+		<menuitem   id="pricelist_product_template_2019_exc_menu"
+			
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="5"
+
+					action="product_template_2019_exc_list_action"
+				/>
+
+
+		<!-- Product Templates - 2019 - ipl --> 
+		<menuitem   id="pricelist_product_template_2019_ipl_menu"
+			
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="7"
+
+					action="product_template_2019_ipl_list_action"
+				/>
+
+
+		<!-- Product Templates - 2019 - ndyag --> 
+		<menuitem   id="pricelist_product_template_2019_ndyag_menu"
+			
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="9"
+
+					action="product_template_2019_ndyag_list_action"
+				/>
+
+
+		<!-- Product Templates - 2019 - qui --> 
+		<menuitem   id="pricelist_product_template_2019_quick_menu"
+			
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="11"
+
+					action="product_template_2019_quick_list_action"
+				/>
+
+
+
+
+
+
+
+
+		<!-- Product Templates - 2019 - cos --> 
+		<menuitem   id="pricelist_product_template_2019_cos_menu"
+
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="13"
+
+					action="product_template_2019_cos_list_action"
+				/>
+
+		<!-- Product Templates - 2019 - med --> 
+		<menuitem   id="pricelist_product_template_2019_med_menu"
+
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="15"
+
+					action="product_template_2019_med_list_action"
+				/>
+
+
+		<!-- Product Templates - 2019 - gyn --> 
+		<menuitem   id="pricelist_product_template_2019_gyn_menu"
+
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="17"
+
+					action="product_template_2019_gyn_list_action"
+				/>
+
+
+
+
+
+		<!-- Product Templates - 2019 - echo --> 
+		<menuitem   id="pricelist_product_template_2019_echo_menu"
+
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="19"
+
+					action="product_template_2019_echo_list_action"
+				/>
+
+		<!-- Product Templates - 2019 - promo --> 
+		<menuitem   id="pricelist_product_template_2019_promo_menu"
+
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="21"
+
+					action="product_template_2019_promo_list_action"
+				/>
+
+
+
+
+		<!-- Product Templates - 2019 - prod --> 
+		<menuitem   id="pricelist_product_template_2019_prod_menu"
+
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="23"
+
+					action="product_template_2019_prod_list_action"
+				/>
+
 
 
 
@@ -61,38 +187,21 @@
 
 
 <!-- Pricelists --> 
-<menuitem   id="parent_pricelist_product_template_menu" 
+<menuitem   id="parent_pricelist_product_template_2018_menu" 
 
-					name="Lista de Precios"
+					name="Lista de Precios - 2018"
 			
 					parent="main_pricelist_menu"
 
-					sequence="1"
-				/>
-
-
-
-
-
-		<!-- Product Templates - 2019 --> 
-		<menuitem   id="pricelist_product_template_2019_menu"
-
-					name="2019" 
-			
-					parent="parent_pricelist_product_template_menu"
-			
 					sequence="2"
-
-					action="product_template_2019_list_action"
 				/>
-
 
 		<!-- Product Templates - 2018 --> 
 		<menuitem   id="pricelist_product_template_2018_menu"
 
 					name="2018" 
 			
-					parent="parent_pricelist_product_template_menu"
+					parent="parent_pricelist_product_template_2018_menu"
 			
 					sequence="3"
 
@@ -100,17 +209,63 @@
 				/>
 
 
+
+
+<!-- Pricelists --> 
+<menuitem   id="parent_pricelist_product_template_all_menu" 
+
+					name="Lista de Precios - Todos"
+			
+					parent="main_pricelist_menu"
+
+					sequence="3"
+				/>
+
 		<!-- Product Templates - All --> 
 		<menuitem   id="pricelist_product_template_menu"
 
-					name="All" 
+					name="Todos" 
 			
-					parent="parent_pricelist_product_template_menu"
+					parent="parent_pricelist_product_template_all_menu"
 			
 					sequence="10"
 
 					action="product_template_list_action"
 				/>
+
+
+
+
+
+
+
+<!-- Configuration --> 
+<menuitem   id="parent_pricelist_config_menu" 
+					name="Configuration"
+					parent="main_pricelist_menu"
+					sequence="10"
+				/>
+
+
+		<!-- Containers --> 
+		<menuitem   id="pricelist_containers_menu"
+					name="Containers"
+					parent="parent_pricelist_config_menu"
+					sequence="1"
+
+					action="container_list_action"
+				/>
+
+		<!-- Pricelist Products --> 
+		<menuitem   id="pricelist_products_menu"
+					name="Pricelist Products" 
+					parent="parent_pricelist_config_menu"
+					sequence="2"
+
+					action="product_list_action"
+				/>
+
+
 
 
 	</data>
