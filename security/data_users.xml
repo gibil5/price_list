@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<!--    
+    <data noupdate='0'>
+-->
+    <data>
+
+
+<!-- Ginecologia -->
+        <record id="ginecologia" model="res.partner">
+            <field name="name">Ginecologia</field>
+            <field name="email">ginecologia@clinicachavarri.com</field>
+            <field eval="[(6, 0, [ref('openhealth.doctor')])]" name="category_id"/>
+        </record>
+
+
+        <record id="ginecologia_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            
+            <field name="name">Ginecologia</field>
+
+            <field name="login">ginecologia@clinicachavarri.com</field>
+
+            <field name="password">6amgp9</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="ginecologia"/>
+            <field name="lang">es_ES</field>
+            <field name="active">True</field>
+        </record>
+
+
+
+<!-- Adriana Pereira -->
+<!--
+        <record id="apereira" model="res.partner">
+            <field name="name">Adriana Pereira</field>
+            <field name="email">apereira@clinicachavarri.com</field>
+            <field eval="[(6, 0, [ref('openhealth.doctor')])]" name="category_id"/>
+        </record>
+
+
+        <record id="apereira_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Adriana Pereira</field>
+
+            <field name="login">apereira@clinicachavarri.com</field>            
+            <field name="password">6amgp9</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="apereira"/>
+            <field name="lang">es_ES</field>
+            <field name="active">True</field>
+        </record>
+-->
+
+
+
+    </data>
+</openerp> 

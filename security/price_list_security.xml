@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate='0'>
+
+
+
+
+<!-- Medicos --> 
+<!--
+        <record id="physicians" model="res.groups">
+
+            <field name="name">Medicos</field>
+            
+            <field name="category_id" ref="module_openhealth_category"/>
+
+            <field name="comment">cc</field>
+
+            <field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+
+            <field name="users" eval="[ 
+
+                                        (4, ref('openhealth.pcanales_clinicachavarri')),
+
+
+                                    ]"/>
+        </record>
+-->
+
+
+    </data>
+</openerp>

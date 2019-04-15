@@ -104,8 +104,13 @@
 
 					<field name="x_type"/>
 
+
 					<field name="name"/>
 					<field name="name_short"/>
+
+					<field name="manufacturer"/>
+					<field name="brand"/>
+
 
 					<field name="prefix"/>
 					<field name="idx"/>
@@ -146,6 +151,8 @@
 			<field name="res_model">price_list.product</field>
 			
 			<field name="view_mode">tree,form</field>
+
+            <field name="limit">700</field>
 		</record>
 
 

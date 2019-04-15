@@ -1,0 +1,11 @@
+prefix,idx,code,x_type,family,subfamily,name_short,treatment_short,sepa,name,treatment,zone,pathology,level,sessions,time,price,price_vip,price_company,price_session,price_session_next,price_max
+107,1,,service,gynecology,gynecology,Consulta Ginecologica,Consulta Ginecologica, - ,CONSULTA GINECOLOGICA,CONSULTA GINECOLOGICA,Indeterminada,Indeterminada,-1,1 sesion,-1,200,150,120,-1,-1,-1
+107,2,,service,gynecology,gynecology,Laser Co2 - Monalisa,Laser Co2 - Monalisa, - ,LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion,LASER CO2 FRACCIONAL,Vagina,Monalisa Touch / Revitalizacion,-1,1 sesion,-1,3000,1500,1200,-1,-1,-1
+107,3,,service,gynecology,gynecology,Laser Co2 - Monalisa,Laser Co2 - Monalisa, - ,LASER CO2 FRACCIONAL - Monalisa Touch / Resequedad ,LASER CO2 FRACCIONAL,Vagina,Monalisa Touch / Resequedad,-1,1 sesion,-1,3000,1500,1200,-1,-1,-1
+107,4,,service,gynecology,gynecology,Laser Co2 - Monalisa,Laser Co2 - Monalisa, - ,LASER CO2 FRACCIONAL - Monalisa Touch / Incontinencia Urinaria,LASER CO2 FRACCIONAL,Vagina,Monalisa Touch / Incontinencia Urinaria,-1,1 sesion,-1,3000,1500,1200,-1,-1,-1
+107,5,,service,gynecology,gynecology,Criocirugia Vaginal,Criocirugia Vaginal, - ,CRIOCIRUGIA - Crioterapia vaginal - 1 sesion,CRIOCIRUGIA,Vagina,Crioterapia vaginal,-1,1 sesion,-1,300,250,200,-1,-1,-1
+107,6,,service,gynecology,gynecology,Criocirugia Vaginal,Criocirugia Vaginal, - ,CRIOCIRUGIA - Crioterapia vaginal - 10 sesiones,CRIOCIRUGIA,Vagina,Crioterapia vaginal,-1,10 sesiones,-1,3000,2500,2000,-1,-1,-1
+107,7,,service,gynecology,gynecology,Plasma Rejuvenecimiento,Plasma Rejuvenecimiento, - ,PLASMA - Vagina - Rejuvenecimiento ,PLASMA,Vagina,Rejuvenecimiento,-1,1 sesion,-1,1600,800,640,-1,-1,-1
+107,8,,service,gynecology,gynecology,Análisis Papanicolau,Análisis Papanicolau, - ,ANALISIS - Vagina - Papanicolau,ANALISIS,Vagina,Papanicolau,-1,1 sesion,-1,-1,-1,-1,-1,-1,-1
+107,9,,service,gynecology,gynecology,Análisis Biopsias,Análisis Biopsias, - ,ANALISIS - Vagina - Biopsias,ANALISIS,Vagina,Biopsias (cervix + endometrio),-1,1 sesion,-1,-1,-1,-1,-1,-1,-1
+107,10,,service,gynecology,gynecology,Tratamiento Dispositivo Intrauterino,Tratamiento Dispositivo Intrauterino, - ,TRATAMIENTO - Vagina,TRATAMIENTO,Vagina,Colocacion y/o Retiro de dispositivo intrauterinos,-1,1 sesion,-1,-1,-1,-1,-1,-1,-1

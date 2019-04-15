@@ -1,66 +1,39 @@
 # -*- coding: utf-8 -*-
 """
-		*** Product Template
+		Service - 2019
 
-		Created: 			  8 Apr 2019
-		Last up: 	 		  8 Apr 2019
+		Created: 				20 Sep 2016
+		Last updated: 	 		15 Apr 2019
 """
 from __future__ import print_function
-
 from openerp import models, fields, api
+#from . import prodvars
+#from . import ipl
 
 from . import pl_vars
 
-from . import chk_product
-
-
-class ProductTemplate(models.Model):
+class Service(models.Model):
 	"""
-	high level support for doing this and that.
+	Price list aware
 	"""
-	_inherit = 'product.template'
-
-	_order = 'name'
-
-	_description = 'Product Template'
+	_inherit = 'openhealth.service'
 
 
 
 
-# ---------------------------------------- Constraints Python - Important -----
-
-	# Check Name
-	@api.constrains('name')
-	def check_name(self):
-		"""
-		Check Name
-		"""
-		chk_product.check_name(self)
-
-
-
-
-# ---------------------------------------------- Fields - Chars ---------------
-
-	pl_name_short = fields.Char(
-			'Name short',
+# ----------------------------------------------------------- Natives ------------------------------
+	# Service - Pricelist 2019
+	service = fields.Many2one(
+			'product.template',
+			domain = [
+						('type', '=', 'service'),
+						('pl_price_list', '=', '2019'),
+					],
+			string="Producto",
 			required=True,
 		)
 
-	pl_prefix = fields.Char(
-			'Prefix',
-			required=True,
-		)
 
-	pl_idx = fields.Char(
-			'Idx',
-			required=True,
-		)
-
-	pl_code = fields.Char(
-			'Code',
-			#required=True,
-		)
 
 
 
@@ -76,15 +49,16 @@ class ProductTemplate(models.Model):
 
 
 
-	pl_manufacturer = fields.Selection(
-			selection=pl_vars._manufacturer_list,
-			string='Manufacturer',
-		)
 
-	pl_brand = fields.Selection(
-			selection=pl_vars._brand_list,
-			string='brand',
-		)
+	#pl_manufacturer = fields.Selection(
+	#		selection=pl_vars._manufacturer_list,
+	#		string='Manufacturer',
+	#	)
+
+	#pl_brand = fields.Selection(
+	#		selection=pl_vars._brand_list,
+	#		string='brand',
+	#	)
 
 
 
@@ -164,5 +138,4 @@ class ProductTemplate(models.Model):
 	pl_price_max = fields.Float(
 			'Price max',
 		)
-
 

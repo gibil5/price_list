@@ -25,7 +25,7 @@
                                 
                                 name="load"
                                 
-                                string="Load"
+                                string="Load CSV"
                         />
 
 
@@ -37,11 +37,24 @@
                                 
                                 name="update_price_list"
                                 
-                                string="Update Price list"
+                                string="Update Price list - 2018"
                         />
 
 
+
+                        <!-- Create -->
+                        <button 
+                                type="object"
+
+                                class="oe_highlight"
+                                
+                                name="create_products_2019"
+                                
+                                string="Create Products 2019"
+                        />
+
 					</header>
+
 
 
 					<!-- Sheet -->  

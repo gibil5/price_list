@@ -9,23 +9,15 @@ from __future__ import print_function
 from openerp import models, fields, api
 from . import pl_vars
 
-#class Product(models.Model):
 class PriceListProduct(models.Model):
 
 	"""
 	high level support for doing this and that.
 	"""
-
 	_name = 'price_list.product'
-
 	_description = 'Product'
-
 	#_inherit = 'sale.order'
-
 	#_order = 'date_begin asc'
-
-
-
 
 
 
@@ -54,25 +46,31 @@ class PriceListProduct(models.Model):
 
 
 
-# ---------------------------------------------- Fields - Floats -----------------------
-
-	price = fields.Float()
-
-	price_vip = fields.Float()
-
-	price_company = fields.Float()
-
-	price_session = fields.Float()
-
-	price_session_next = fields.Float()
-
-	price_max = fields.Float()
-
 
 
 
 # ---------------------------------------------- Fields - Categorized ---------
 	
+	manufacturer = fields.Selection(
+
+			selection=pl_vars._manufacturer_list,
+		
+			string='Manufacturer',
+		)
+
+	brand = fields.Selection(
+
+			selection=pl_vars._brand_list,
+		
+			string='brand',
+		)
+
+
+
+
+
+
+
 	x_type = fields.Selection(
 			selection=pl_vars._type_list,
 			required=True,
@@ -80,9 +78,7 @@ class PriceListProduct(models.Model):
 
 
 	price_list = fields.Selection(
-
 			selection=pl_vars._price_list_list,
-		
 			string='Price list',
 			default='2019',
 			required=True,
@@ -116,7 +112,8 @@ class PriceListProduct(models.Model):
 
 	level = fields.Selection(
 			selection=pl_vars._level_list,
-			required=True,
+
+			required=False,
 		)
 
 	sessions = fields.Selection(
@@ -126,8 +123,25 @@ class PriceListProduct(models.Model):
 
 	time = fields.Selection(
 			selection=pl_vars._time_list,
-			required=True,
+			required=False,
 		)
+
+
+
+# ---------------------------------------------- Fields - Floats -----------------------
+	price = fields.Float()
+
+	price_vip = fields.Float()
+
+	price_company = fields.Float()
+
+	price_session = fields.Float()
+
+	price_session_next = fields.Float()
+
+	price_max = fields.Float()
+
+
 
 
 # ----------------------------------------------------------- Handle ------------------------------

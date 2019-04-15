@@ -51,6 +51,73 @@ class Container(models.Model):
 		)
 
 
+
+# ----------------------------------------------------------- Create Products 2019 ------------------------
+
+	@api.multi
+	def create_products_2019(self):
+		print('Create Products 2019')
+
+
+		# Search
+		products = self.env['price_list.product'].search([
+															#('x_name_short', 'in', [name]),
+														],
+															#order='date_begin asc',
+															#limit=1,
+													)
+		# Count
+		count = self.env['price_list.product'].search_count([
+														],
+															#order='x_serial_nr asc',
+															#limit=1,
+													)
+
+		for pro in products:
+			
+			print(pro.name)
+
+			product_template = self.env['product.template'].create({
+																		'type': 		pro.x_type,
+
+																		'name': 			pro.name,
+																		'pl_name_short': 	pro.name_short,
+
+																		'pl_prefix': 		pro.prefix,
+																		'pl_idx': 			pro.idx,
+
+																		'pl_family': 		pro.family,
+																		'pl_subfamily':		pro.subfamily,
+
+																		'pl_treatment': 	pro.treatment,
+																		'pl_zone': 			pro.zone,
+																		'pl_pathology': 	pro.pathology,
+																		'pl_level': 		pro.level,
+																		'pl_sessions': 		pro.sessions,
+																		'pl_time': 			pro.time,
+
+																		'list_price': 				pro.price,
+																		'pl_price_vip': 			pro.price_vip,
+																		'pl_price_company': 		pro.price_company,
+																		'pl_price_session': 		pro.price_session,
+																		'pl_price_session_next': 	pro.price_session_next,
+																		'pl_price_max': 			pro.price_max,
+
+
+																		# Only Prods
+																		'pl_manufacturer': 			pro.manufacturer,
+																		'pl_brand': 				pro.brand,
+															})
+
+			print(product_template)
+
+
+		print(products)
+		print(count)
+
+
+
+
 # ----------------------------------------------------------- Update Price list ------------------------
 
 	@api.multi
@@ -88,6 +155,18 @@ class Container(models.Model):
 
 
 
+	def check(self, value):
+		print('Check')
+
+		print(value)
+
+		if value in ['-1', -1]:
+			print('Gotcha !')
+
+			return False
+
+		else:
+			return value
 
 
 # ----------------------------------------------------------- Load ------------------------
@@ -111,6 +190,31 @@ class Container(models.Model):
 
 			#print(row['idx'], row['name'])
 
+
+
+			# Check Values
+
+			level = self.check(row['level'])
+			time = self.check(row['time'])
+
+
+			price = self.check(row['price'])
+			price_vip = self.check(row['price_vip'])
+			price_company = self.check(row['price_company'])
+			price_session = self.check(row['price_session'])
+			price_session_next = self.check(row['price_session_next'])
+			price_max = self.check(row['price_max'])
+
+
+
+			if row['x_type'] in ['product']:
+				manufacturer = row['manufacturer']
+				brand = row['brand']
+			else:
+				manufacturer = False
+				brand = False
+
+
 			product = self.product_ids.create({
 												'name': 			row['name'],
 
@@ -129,18 +233,38 @@ class Container(models.Model):
 												'zone': 			row['zone'],
 												'pathology': 		row['pathology'],
 
-
-												'level': 			row['level'],
 												'sessions': 		row['sessions'],
-												'time': 			row['time'],
 
-												'price': 			row['price'],
-												'price_vip': 		row['price_vip'],
-												'price_company': 	row['price_company'],
-												
-												'price_session': 		row['price_session'],
-												'price_session_next': 	row['price_session_next'],
-												'price_max': 			row['price_max'],
+
+
+												#'level': 			row['level'],
+												#'time': 			row['time'],
+												'level': 			level,
+												'time': 			time,
+
+
+
+												#'price': 				row['price'],
+												#'price_vip': 			row['price_vip'],
+												#'price_company': 		row['price_company'],
+												#'price_session': 		row['price_session'],
+												#'price_session_next': 	row['price_session_next'],
+												#'price_max': 			row['price_max'],
+
+												'price': 				price,
+												'price_vip': 			price_vip,
+												'price_company': 		price_company,												
+												'price_session': 		price_session,
+												'price_session_next': 	price_session_next,
+												'price_max': 			price_max,
+
+
+
+												# Only Prods
+												#'manufacturer': 	row['manufacturer'],
+												#'brand': 			row['brand'],
+												'manufacturer': 	manufacturer,
+												'brand': 			brand,
 
 
 												'container_id': 	self.id,

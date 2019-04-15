@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+<!-- FORM 2 --> 
+<!--
+        <record model="ir.ui.view" id="treatment_2_form_view">
+-->
+        <record model="ir.ui.view" id="openhealth.treatment_2_form_view">
+
+            <field name="name">treatment.form</field>
+            
+            <field name="model">openhealth.treatment</field>
+            
+            <field name="priority" eval="5"/>
+            
+            <field name="arch" type="xml">
+            
+                <form string="Treatment 2 Form">
+            
+                    <header>
+
+                            <!-- Product --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_product"
+                                string="PRODUCTOS"
+                            />
+
+                            <!-- CO2 --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_co2"
+                                string="LASER CO2"
+                            />
+
+                            <!-- Quick --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_quick"
+                                string="QUICK LASER"
+                            />
+
+                            <!-- Excilite -->
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_excilite"
+                                string=" EXCILITE"
+                            />
+
+                            <!-- M22-IPL --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_ipl"
+                                string=" M22-IPL"
+                            />
+
+                            <!-- M22-NDYAG -->
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_ndyag"
+                                string=" M22-NDYAG"
+                            />
+
+                            <!-- T. MEDICO -->
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_medical"
+
+                                string="T. MEDICO"
+                            />
+
+                            <!-- Cosmeto -->
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_cosmetology"
+                                
+                                string="COSMEATRIA"
+                            />
+
+
+
+                            <!-- gyn --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="create_service_gyn"
+                                
+                                string="GINECOLOGIA"
+                            />
+
+
+                            <!-- eco --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="create_service_echo"
+
+                                string="ECOGRAFIA"
+                            />
+
+
+
+                            <!-- promo --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"
+                                
+                                name="create_service_promo"
+                                
+                                string="PROMOS"
+                            />
+
+
+                    </header>
+                    <sheet>
+                        <notebook></notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+    </data>
+</openerp>

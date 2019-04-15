@@ -18,27 +18,14 @@
 
 
 
-<!-- Pricelists --> 
-<menuitem   id="pricelist_menu" 
+<!-- Config --> 
+<menuitem   id="parent_pricelist_config_menu" 
 
-					name="Lista de Precios - 2019"
+					name="Configuration"
 			
 					parent="main_pricelist_menu"
 
-					sequence="1"
-				/>
-
-
-		<!-- Products --> 
-		<menuitem   id="pricelist_products_menu"
-
-					name="Productos" 
-			
-					parent="pricelist_menu"
-			
-					sequence="1"
-
-					action="product_list_action"
+					sequence="2"
 				/>
 
 
@@ -47,12 +34,28 @@
 
 					name="Containers" 
 			
-					parent="pricelist_menu"
+					parent="parent_pricelist_config_menu"
 			
-					sequence="2"
+					sequence="1"
 
 					action="container_list_action"
 				/>
+
+		<!-- Pricelist Products --> 
+		<menuitem   id="pricelist_products_menu"
+
+					name="Pricelist Products" 
+			
+					parent="parent_pricelist_config_menu"
+			
+					sequence="2"
+
+					action="product_list_action"
+				/>
+
+
+
+
 
 
 
@@ -60,29 +63,31 @@
 <!-- Pricelists --> 
 <menuitem   id="parent_pricelist_product_template_menu" 
 
-					name="Productos y Servicios"
+					name="Lista de Precios"
 			
 					parent="main_pricelist_menu"
 
-					sequence="2"
+					sequence="1"
 				/>
 
 
-		<!-- Product Templates --> 
-		<menuitem   id="pricelist_product_template_menu"
 
-					name="Product Templates" 
+
+
+		<!-- Product Templates - 2019 --> 
+		<menuitem   id="pricelist_product_template_2019_menu"
+
+					name="2019" 
 			
 					parent="parent_pricelist_product_template_menu"
 			
-					sequence="1"
+					sequence="2"
 
-					action="product_template_list_action"
+					action="product_template_2019_list_action"
 				/>
 
 
-
-		<!-- Product Templates --> 
+		<!-- Product Templates - 2018 --> 
 		<menuitem   id="pricelist_product_template_2018_menu"
 
 					name="2018" 
@@ -95,16 +100,16 @@
 				/>
 
 
-		<!-- Product Templates --> 
-		<menuitem   id="pricelist_product_template_2019_menu"
+		<!-- Product Templates - All --> 
+		<menuitem   id="pricelist_product_template_menu"
 
-					name="2019" 
+					name="All" 
 			
 					parent="parent_pricelist_product_template_menu"
 			
-					sequence="2"
+					sequence="10"
 
-					action="product_template_2019_list_action"
+					action="product_template_list_action"
 				/>
 
 

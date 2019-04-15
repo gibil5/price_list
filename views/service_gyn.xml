@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+<!-- FORM --> 
+        <record model="ir.ui.view" id="service_gynecology_form_view">
+
+            <field name="name">service_gynecology.form</field>
+            
+            <field name="model">price_list.service_gynecology</field>
+            
+            <field name="priority" eval="1"/>
+            
+            <field name="arch" type="xml">
+            
+                <form string="Service Gyn Form">
+            
+                    <header>
+                    </header>
+                    <sheet>
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+
+                                <field name="name"/>
+
+                                <field name="service"/>
+
+                                <field name="zone"/>
+
+                                <field name="pathology"/>
+
+                                <field name="price"/>
+                                
+                                <field name="price_vip"/>
+                                
+                                <field name="price_manual"/>
+                                
+                                <field name="price_applied"/>
+
+                                <field name="state"/>                   
+
+                                <field name="create_date"       string="Fecha Creación"     widget="date"   />                  
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+
+
+
+
+
+                        <!-- Padding -->
+
+                        <group>
+                            <group>
+
+                                <field name="pl_family"/>
+                                <field name="pl_subfamily"/>
+                                <field name="pl_treatment"/>             
+                                <field name="pl_zone"/>              
+                                <field name="pl_pathology"/>             
+                                <field name="pl_level"/>             
+                                <field name="pl_sessions"/>  
+                                <field name="pl_time"/>      
+                            </group>
+
+                            <group>
+
+                                <field name="pl_price"/>
+
+                                <field name="pl_price_vip"/>
+                                <field name="pl_price_company"/>
+                                <field name="pl_price_session"/>
+                                <field name="pl_price_session_next"/>
+                                <field name="pl_price_max"/>
+
+                            </group>
+
+                        </group>
+
+
+                        <notebook></notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+    </data>
+</openerp>
