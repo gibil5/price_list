@@ -159,17 +159,20 @@ class Container(models.Model):
 
 
 	def check(self, value):
-		print('Check')
-
-		print(value)
+		#print('Check')
+		#print(value)
 
 		if value in ['-1', -1]:
-			print('Gotcha !')
-
+			#print('Gotcha !')
 			return False
-
 		else:
 			return value
+
+
+
+	caps_name = fields.Boolean(
+			default=False,
+		)
 
 
 # ----------------------------------------------------------- Load ------------------------
@@ -187,11 +190,13 @@ class Container(models.Model):
 
 		df = self.open_with_pandas_read_csv(fname)
 
-		print(df)
+		#print(df)
 
 		for index, row in df.iterrows():
 
 			#print(row['idx'], row['name'])
+			print(row['name'])
+			print(row['name_short'])
 
 
 
@@ -218,8 +223,25 @@ class Container(models.Model):
 				brand = False
 
 
+
+			# Here !
+			if self.caps_name:
+				name = 			row['name'].upper()
+				name_short = 	row['name_short'].upper()
+
+			else:
+				name = 			row['name']
+				name_short = 	row['name_short']
+
+
+
+
 			product = self.product_ids.create({
-												'name': 			row['name'],
+												#'name': 			row['name'],
+												#'name_short': 		row['name_short'],
+												'name': 			name,
+												'name_short': 		name_short,
+
 
 												'prefix': 			row['prefix'],
 												'idx': 				row['idx'],
@@ -231,7 +253,6 @@ class Container(models.Model):
 												'family': 			row['family'],
 												'subfamily': 		row['subfamily'],
 
-												'name_short': 		row['name_short'],
 												'treatment': 		row['treatment'],
 												'zone': 			row['zone'],
 												'pathology': 		row['pathology'],
@@ -272,7 +293,7 @@ class Container(models.Model):
 
 												'container_id': 	self.id,
 											})
-			print(product)
+			#print(product)
 
 
 
