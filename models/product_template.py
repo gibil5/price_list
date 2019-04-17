@@ -70,7 +70,7 @@ class ProductTemplate(models.Model):
 	pl_price_list = fields.Selection(
 			selection=px_vars._price_list_list,
 			string='Price list',
-			default='2019',
+			#default='2019',
 			#required=True,
 		)
 
