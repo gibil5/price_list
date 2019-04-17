@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="service_product_form_view">
+			<field name="name">service.form</field>
+			
+            <field name="model">price_list.service_product</field>
+			
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+
+				<form string="Service Form">
+			
+					<header></header>
+
+					<sheet>
+
+						<group>
+							<group>
+
+			                    <field name="service"		string="Producto"	/>
+
+							</group>
+						</group>
+
+
+
+
+						<group>
+							<group>
+
+								<field name="family"			string="Familia"		readonly="0"	/>
+								<field name="subfamily"		string="Sub familia"	readonly="0"/>
+
+								<field name="manufacturer"	string="Fabricante"		readonly="0"/>							
+								<field name="brand"			string="Marca"			readonly="0"/>
+							</group>
+
+							<group>
+								<field name="price"				string="Precio"/>
+								<field name="price_company"		string="Precio Empresa"/>
+							</group>
+
+						</group>
+
+
+
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+								<field name="price_policy"/>
+                            </group>
+                            <group>
+								<field name="price_applied"				string="Precio Aplicado"/>
+                            </group>
+                        </group>
+
+
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+
+<!-- TREE -->
+
+        <record model="ir.ui.view" id="service_product_tree_view">
+            <field name="name">service.tree</field>
+
+            <field name="model">price_list.service_product</field>
+
+
+            <field name="arch" type="xml">
+
+
+                <tree   string="Service Tree">
+
+
+                    <button 
+                        type="object" 
+                        class="oe_highlight"    
+                        string="E"
+                        name="open_line_current" 
+                    />
+
+<!--
+                    <field name="name"/>
+-->
+                    <field name="service"		string="Producto"	/>
+
+
+					<field name="family"		string="Familia"/>
+					<field name="subfamily"	string="Sub familia"/>
+
+					<field name="manufacturer"		string="Fabricante"		readonly="1"/>							
+					<field name="brand"				string="Marca"			readonly="1"/>
+
+					<field name="price"				string="Precio"/>
+					<field name="price_company"		string="Precio Empresa"/>
+					
+
+                </tree>
+            </field>
+        </record>
+
+
+
+
+	</data>
+</openerp>
+
+

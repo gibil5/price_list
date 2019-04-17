@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+<!-- FORM --> 
+        <record model="ir.ui.view" id="service_cosmetology_form_view">
+            <field name="name">service_cosmetology.form</field>
+
+            <field name="model">price_list.service_cosmetology</field>
+
+            <field name="inherit_id" ref="service_form_view"/>
+            <field name="mode">primary</field>
+            <field name="priority" eval="1"/>
+
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='service']" position="replace">
+                    <field name="service"/>
+                </xpath>
+
+
+                <!-- Remove -->
+                <xpath expr="//field[@name='level']" position="replace">
+                </xpath>
+
+
+            </field>
+        </record>
+
+
+
+<!-- TREE -->
+        <record model="ir.ui.view" id="service_cosmetology_tree_view">
+            <field name="name">service_cosmetology.tree</field>
+
+            <field name="model">price_list.service_cosmetology</field>
+
+            <field name="inherit_id" ref="service_tree_view"/>
+            <field name="mode">primary</field>
+            <field name="priority" eval="100"/>
+            
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='service']" position="replace">
+                    <field name="service" />
+                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</openerp>

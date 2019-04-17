@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="service_form_view">
+			<field name="name">service.form</field>
+<!--			
+			<field name="model">openhealth.service</field>
+-->
+            <field name="model">price_list.service</field>
+			
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+			
+				<form string="Service Form">
+			
+					<header>
+					</header>
+					<sheet>
+
+						<!-- Padding -->
+						<group>
+							<group>
+
+								<field name="physician"/>
+
+
+								<field name="service"/>
+
+								<field name="sel_zone"/>
+
+
+
+
+<!--
+								<field name="name"/>
+								<field name="zone"/>
+
+								<field name="pathology"/>
+
+								<field name="price"/>
+								
+								<field name="price_vip"/>
+								
+								<field name="price_manual"/>
+								
+								<field name="price_applied"/>
+
+								<field name="state"/>                   
+
+								<field name="create_date"       string="Fecha Creación"     widget="date"   />                  
+							<group>
+							</group>
+-->
+							</group>
+						</group>
+
+
+
+
+						<!-- Padding -->
+
+						<group>
+							<group>
+<!--
+								<field name="family"/>
+								<field name="subfamily"/>
+								<field name="treatment"/>
+								<field name="zone"/>
+								<field name="pathology"/>
+								<field name="level"/>         
+								<field name="sessions"/>
+								<field name="time"/>  
+-->
+								<field name="pl_treatment"	string="Tratamiento"/>
+
+								<field name="family"		string="Familia"		readonly="0"	/>
+								<field name="subfamily"	string="Sub familia"	readonly="0"/>
+								
+								<field name="zone"		string="Zona"			readonly="0"/>       
+								<field name="pathology"	string="Patologia"		readonly="0"/>
+								<field name="sessions"	string="Sesiones"		readonly="0"/>
+
+								<field name="level"		string="Nivel"			readonly="0"/>							
+								<field name="time"		string="Tiempo"			readonly="0"/>
+							</group>
+
+							<group>
+<!--
+								<field name="price"/>
+
+								<field name="price_vip"/>
+								<field name="price_company"/>
+								<field name="price_session"/>
+								<field name="price_session_next"/>
+								<field name="price_max"/>
+-->
+								<field name="price"				string="Precio"/>
+								<field name="price_vip"			string="Precio Vip"/>
+								<field name="price_company"		string="Precio Empresa"/>
+<!--								
+								<field name="price_session"		string="Precio Sesion"/>
+								<field name="price_session_next"	string="Precio Sesion siguiente"/>
+								<field name="price_max"			string="Precio Max"/>
+-->
+
+								<field name="price_manual"			string="Precio Manual"/>
+
+							</group>
+
+						</group>
+
+
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+			
+								<field name="price_policy"/>
+            
+                            </group>
+                            <group>
+								<field name="price_applied"				string="Precio Aplicado"/>
+                            </group>
+                        </group>
+
+
+
+
+
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+
+<!-- TREE -->
+<!--
+            <field name="model">price_list.service</field>
+-->        
+
+        <record model="ir.ui.view" id="service_tree_view">
+            <field name="name">service.tree</field>
+
+
+            <field name="model">price_list.service</field>
+
+
+            <field name="arch" type="xml">
+
+
+                <tree   string="Service Tree">
+
+
+                    <button 
+                        type="object" 
+                        class="oe_highlight"    
+                        string="E"
+                        name="open_line_current" 
+                    />
+
+
+
+                    <field name="service"/>
+
+<!--
+					<field name="family"		string="Familia"/>
+-->
+					<field name="subfamily"	string="Sub familia"/>
+					<field name="treatment"	string="Tratamiento"/>
+					
+					<field name="zone"		string="Zona"/>       
+					<field name="pathology"	string="Patologia"/>
+					<field name="sessions"	string="Sesiones"/>
+
+					<field name="level"		string="Nivel"/>							
+					<field name="time"		string="Tiempo"/>
+
+					<field name="price"				string="Precio"/>
+					<field name="price_vip"			string="Precio Vip"/>
+					<field name="price_company"		string="Precio Empresa"/>
+<!--					
+					<field name="price_session"		string="Precio Sesion"/>
+					<field name="price_session_next"	string="Precio Sesion siguiente"/>
+					<field name="price_max"			string="Precio Max"/>
+-->
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+
+	</data>
+</openerp>

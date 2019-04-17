@@ -7,17 +7,24 @@
 """
 from openerp import models, fields, api
 
+from . import pl_vars
+
+from . import pl_vars_prod
+
 class ServiceProduct(models.Model):
 
-	_inherit = 'openhealth.service.product'
+	_name = 'price_list.service_product'
+
+	_inherit = 'price_list.service'
 
 	
-
-
 # ----------------------------------------------------------- Natives ------------------------------
 	# Service - Pricelist 2019
 	service = fields.Many2one(
+			
 			'product.template',
+			#'product.product',
+
 			domain = [
 						('type', '=', 'product'),
 
@@ -26,5 +33,6 @@ class ServiceProduct(models.Model):
 			string="Servicio",
 			required=True, 
 		)
+
 
 

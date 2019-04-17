@@ -4,10 +4,44 @@
 
 
 
-<!-- FORM 2 --> 
+            <!-- Create Reco --> 
+            <!-- Create Order --> 
+            <!-- Create Procedure --> 
 <!--
-        <record model="ir.ui.view" id="treatment_2_form_view">
+            <button 
+                type="object" 
+                class="oe_highlight"
+                name="create_service"
+                string="Crear RECOMENDACION" 
+                groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+
+                states="consultation,service"
+            />
+
+            <button 
+                type="object" 
+                class="oe_highlight"
+                name="create_order_pro" 
+                string="Crear PRESUPUESTO - Pro" 
+        groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+        
+                states="service"
+            />
+
+            <button 
+                type="object" 
+                class="oe_highlight"
+                name="create_procedure_man" 
+                string="Crear PROCEDIMIENTO" 
+                groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+
+                states="invoice_procedure"
+            />
 -->
+
+
+
+<!-- FORM 2 --> 
         <record model="ir.ui.view" id="openhealth.treatment_2_form_view">
 
             <field name="name">treatment.form</field>
@@ -22,13 +56,6 @@
             
                     <header>
 
-                            <!-- Product --> 
-                            <button 
-                                type="object" 
-                                class="oe_highlight"    
-                                name="create_service_product"
-                                string="PRODUCTOS"
-                            />
 
                             <!-- CO2 --> 
                             <button 
@@ -95,7 +122,7 @@
                                 type="object" 
                                 class="oe_highlight"
 
-                                name="create_service_gyn"
+                                name="create_service_gynecology"
                                 
                                 string="GINECOLOGIA"
                             />
@@ -106,7 +133,7 @@
                                 type="object" 
                                 class="oe_highlight"
 
-                                name="create_service_echo"
+                                name="create_service_echography"
 
                                 string="ECOGRAFIA"
                             />
@@ -118,9 +145,18 @@
                                 type="object" 
                                 class="oe_highlight"
                                 
-                                name="create_service_promo"
+                                name="create_service_promotion"
                                 
                                 string="PROMOS"
+                            />
+
+
+                            <!-- Product --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_product"
+                                string="PRODUCTOS"
                             />
 
 
@@ -131,6 +167,8 @@
                 </form>
             </field>
         </record>
+
+
 
 
 

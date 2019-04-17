@@ -7,7 +7,8 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-from . import pl_vars
+
+from . import px_vars
 
 class PriceListProduct(models.Model):
 
@@ -53,14 +54,14 @@ class PriceListProduct(models.Model):
 	
 	manufacturer = fields.Selection(
 
-			selection=pl_vars._manufacturer_list,
+			selection=px_vars._manufacturer_list,
 		
 			string='Manufacturer',
 		)
 
 	brand = fields.Selection(
 
-			selection=pl_vars._brand_list,
+			selection=px_vars._brand_list,
 		
 			string='brand',
 		)
@@ -72,13 +73,13 @@ class PriceListProduct(models.Model):
 
 
 	x_type = fields.Selection(
-			selection=pl_vars._type_list,
+			selection=px_vars._type_list,
 			required=True,
 		)
 
 
 	price_list = fields.Selection(
-			selection=pl_vars._price_list_list,
+			selection=px_vars._price_list_list,
 			string='Price list',
 			default='2019',
 			required=True,
@@ -86,43 +87,43 @@ class PriceListProduct(models.Model):
 
 
 	family = fields.Selection(
-			selection=pl_vars._family_list,
+			selection=px_vars._family_list,
 			required=True,
 		)
 
 	subfamily = fields.Selection(
-			selection=pl_vars._subfamily_list,
+			selection=px_vars._subfamily_list,
 			required=True,
 		)
 
 	treatment = fields.Selection(
-			selection=pl_vars._treatment_list,
+			selection=px_vars._treatment_list,
 			required=True,
 		)
 
 	zone = fields.Selection(
-			selection=pl_vars._zone_list,
+			selection=px_vars._zone_list,
 			required=True,
 		)
 
 	pathology = fields.Selection(
-			selection=pl_vars._pathology_list,
+			selection=px_vars._pathology_list,
 			required=True,
 		)
 
 	level = fields.Selection(
-			selection=pl_vars._level_list,
+			selection=px_vars._level_list,
 
 			required=False,
 		)
 
 	sessions = fields.Selection(
-			selection=pl_vars._sessions_list,
+			selection=px_vars._sessions_list,
 			required=True,
 		)
 
 	time = fields.Selection(
-			selection=pl_vars._time_list,
+			selection=px_vars._time_list,
 			required=False,
 		)
 

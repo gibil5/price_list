@@ -9,7 +9,7 @@ from __future__ import print_function
 
 from openerp import models, fields, api
 
-from . import pl_vars
+from . import px_vars
 
 from . import chk_product
 
@@ -68,7 +68,7 @@ class ProductTemplate(models.Model):
 # ---------------------------------------------- Fields - Categorized ---------
 	
 	pl_price_list = fields.Selection(
-			selection=pl_vars._price_list_list,
+			selection=px_vars._price_list_list,
 			string='Price list',
 			default='2019',
 			#required=True,
@@ -77,12 +77,12 @@ class ProductTemplate(models.Model):
 
 
 	pl_manufacturer = fields.Selection(
-			selection=pl_vars._manufacturer_list,
+			selection=px_vars._manufacturer_list,
 			string='Manufacturer',
 		)
 
 	pl_brand = fields.Selection(
-			selection=pl_vars._brand_list,
+			selection=px_vars._brand_list,
 			string='brand',
 		)
 
@@ -90,49 +90,49 @@ class ProductTemplate(models.Model):
 
 
 	pl_family = fields.Selection(
-			selection=pl_vars._family_list,
+			selection=px_vars._family_list,
 			string='Family',
 			required=True,
 		)
 
 	pl_subfamily = fields.Selection(
-			selection=pl_vars._subfamily_list,
+			selection=px_vars._subfamily_list,
 			string='Subfamily',
 			required=True,
 		)
 
 	pl_treatment = fields.Selection(
-			selection=pl_vars._treatment_list,
+			selection=px_vars._treatment_list,
 			string='Treatment',
 			required=True,
 		)
 
 	pl_zone = fields.Selection(
-			selection=pl_vars._zone_list,
+			selection=px_vars._zone_list,
 			string='Zone',
 			required=True,
 		)
 
 	pl_pathology = fields.Selection(
-			selection=pl_vars._pathology_list,
+			selection=px_vars._pathology_list,
 			string='Pathology',
 			required=True,
 		)
 
 	pl_level = fields.Selection(
-			selection=pl_vars._level_list,
+			selection=px_vars._level_list,
 			string='Level',
 			required=True,
 		)
 
 	pl_sessions = fields.Selection(
-			selection=pl_vars._sessions_list,
+			selection=px_vars._sessions_list,
 			string='Sessions',
 			required=True,
 		)
 
 	pl_time = fields.Selection(
-			selection=pl_vars._time_list,
+			selection=px_vars._time_list,
 			string='Time',
 			required=True,
 		)

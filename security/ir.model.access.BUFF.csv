@@ -1,0 +1,12 @@
+
+
+access_openhealth_container,openhealth.container,model_openhealth_container,,1,1,1,1
+
+access_price_list_price_list,price_list.price_list,model_price_list_price_list,,1,0,0,0
+
+
+
+access_price_list_container,price_list.container,model_price_list_container,,1,1,1,1
+
+
+access_price_list_service_co2,price_list.service_co2,model_price_list_service_co2,,1,1,1,1

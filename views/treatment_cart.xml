@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- Form -->
+		<record model="ir.ui.view" id="treatment_cart_form_view">
+
+			<field name="name">treatment.cart.form</field>
+			
+			<field name="model">openhealth.treatment</field>
+			
+            <field name="priority" eval="-9"/>
+
+			<field name="inherit_id" ref="openhealth.treatment_form_view"/>
+
+			<field name="arch" type="xml">
+
+				<notebook position="inside">
+					<page string="CART">
+
+						<field name="shopping_cart_ids"/> 
+
+					</page>
+				</notebook>
+			</field>
+
+		</record>
+	</data>
+</openerp>

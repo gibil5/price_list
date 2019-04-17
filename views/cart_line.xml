@@ -1,0 +1,97 @@
+<openerp>
+	<data>
+
+
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="cart_line_form_view">
+
+			<field name="name">cart_line.form</field>
+
+			<field name="model">price_list.cart_line</field>
+			
+			<field name="arch" type="xml">
+			
+				<form string="cart_line Form">
+
+					<!-- Header -->
+					<header>
+					</header>
+
+
+					<!-- Sheet -->  
+					<sheet>
+<!--								
+								<field name="name"/>
+-->
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+								<field name="product"/>
+								<field name="qty"/>
+								<field name="price"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+
+
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+
+
+
+
+                        <!-- Padding -->
+                        <group>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+
+
+                        <!-- Notebook --> 
+                        <notebook>  
+                            <page string="">
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+		<!-- explicit list view definition -->
+		<record model="ir.ui.view" id="price_list.cart_line_list">
+
+			<field name="name">price_list cart_line list</field>
+			
+			<field name="model">price_list.cart_line</field>
+			
+			<field name="arch" type="xml">
+				<tree>
+
+								<field name="product"/>
+								<field name="qty"/>
+								<field name="price"/>
+
+
+				</tree>
+			</field>
+		</record>
+
+
+
+	</data>
+</openerp>

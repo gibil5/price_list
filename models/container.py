@@ -6,7 +6,7 @@ import pandas
 
 from openerp import models, fields, api
 #import product
-from . import pl_vars
+from . import px_vars
 
 
 class Container(models.Model):
@@ -35,7 +35,7 @@ class Container(models.Model):
 
 	file_name = fields.Selection(
 
-			selection=pl_vars._file_name_list,
+			selection=px_vars._file_name_list,
 		
 			required=True,
 		)

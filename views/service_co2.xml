@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="service_co2_form_view">
+			<field name="name">service_co2.form</field>
+<!--
+			<field name="model">openhealth.service.co2</field>
+-->
+            <field name="model">price_list.service_co2</field>
+
+			<field name="inherit_id" ref="service_form_view"/>
+
+			
+			<field name="mode">primary</field>
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='service']" position="replace">
+					<field name="service"/>
+				</xpath>
+
+
+				<!-- Remove -->
+				<xpath expr="//field[@name='time']" position="replace">
+				</xpath>
+
+
+			</field>
+		</record>
+
+
+
+<!-- TREE -->
+		<record model="ir.ui.view" id="service_co2_tree_view">
+			<field name="name">service_co2.tree</field>
+
+            <field name="model">price_list.service_co2</field>
+
+			<field name="inherit_id" ref="service_tree_view"/>
+			<field name="mode">primary</field>
+			<field name="priority" eval="100"/>
+			
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='service']" position="replace">
+					<field name="service" />
+				</xpath>
+			</field>
+		</record>
+
+
+	</data>
+</openerp>
