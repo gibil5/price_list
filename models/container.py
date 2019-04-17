@@ -78,7 +78,10 @@ class Container(models.Model):
 			print(pro.name)
 
 			product_template = self.env['product.template'].create({
-																		'type': 		pro.x_type,
+																		'pl_price_list': 	'2019',
+
+
+																		'type': 			pro.x_type,
 
 																		'name': 			pro.name,
 																		'pl_name_short': 	pro.name_short,
