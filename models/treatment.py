@@ -229,7 +229,7 @@ class Treatment(models.Model):
 		if self.patient.x_test:
 
 			# Reset
-			pl_test_treatment.reset_treatment(self)
+			#pl_test_treatment.reset_treatment(self)
 
 			# Test Integration
 			pl_test_treatment.test_integration_treatment(self)
