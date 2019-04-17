@@ -75,7 +75,7 @@ class Container(models.Model):
 
 		for pro in products:
 			
-			print(pro.name)
+			#print(pro.name)
 
 			product_template = self.env['product.template'].create({
 																		'pl_price_list': 	'2019',
@@ -112,11 +112,11 @@ class Container(models.Model):
 																		'pl_brand': 				pro.brand,
 															})
 
-			print(product_template)
+			#print(product_template)
 
 
-		print(products)
-		print(count)
+		#print(products)
+		#print(count)
 
 
 
@@ -195,8 +195,8 @@ class Container(models.Model):
 		for index, row in df.iterrows():
 
 			#print(row['idx'], row['name'])
-			print(row['name'])
-			print(row['name_short'])
+			#print(row['name'])
+			#print(row['name_short'])
 
 
 
