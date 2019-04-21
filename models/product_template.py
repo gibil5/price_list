@@ -6,13 +6,9 @@
 		Last up: 	 		  8 Apr 2019
 """
 from __future__ import print_function
-
 from openerp import models, fields, api
-
 from . import px_vars
-
 from . import chk_product
-
 
 class ProductTemplate(models.Model):
 	"""
@@ -25,9 +21,7 @@ class ProductTemplate(models.Model):
 	_description = 'Product Template'
 
 
-
-
-# ---------------------------------------- Constraints Python - Important -----
+# ---------------------------------------- Constraints Python - Important -------------------------
 
 	# Check Name
 	@api.constrains('name')
@@ -38,23 +32,21 @@ class ProductTemplate(models.Model):
 		chk_product.check_name(self)
 
 
-
-
-# ---------------------------------------------- Fields - Chars ---------------
+# ---------------------------------------------- Fields - Chars -----------------------------------
 
 	pl_name_short = fields.Char(
 			'Name short',
-			required=True,
+			#required=True,
 		)
 
 	pl_prefix = fields.Char(
 			'Prefix',
-			required=True,
+			#required=True,
 		)
 
 	pl_idx = fields.Char(
 			'Idx',
-			required=True,
+			#required=True,
 		)
 
 	pl_code = fields.Char(
@@ -65,92 +57,88 @@ class ProductTemplate(models.Model):
 
 
 
-# ---------------------------------------------- Fields - Categorized ---------
+# ---------------------------------------------- Fields - Categorized -----------------------------
 	
 	pl_price_list = fields.Selection(
 			selection=px_vars._price_list_list,
-			string='Price list',
-			#default='2019',
-			#required=True,
+			string='Lista de Precios',
 		)
 
 
 
 	pl_manufacturer = fields.Selection(
 			selection=px_vars._manufacturer_list,
-			string='Manufacturer',
+			string='Fabricante',
 		)
 
 	pl_brand = fields.Selection(
 			selection=px_vars._brand_list,
-			string='brand',
+			string='Marca',
 		)
-
-
 
 
 	pl_family = fields.Selection(
 			selection=px_vars._family_list,
 			string='Family',
-			required=True,
+			#required=True,
 		)
 
 	pl_subfamily = fields.Selection(
 			selection=px_vars._subfamily_list,
 			string='Subfamily',
-			required=True,
+			#required=True,
 		)
 
 	pl_treatment = fields.Selection(
 			selection=px_vars._treatment_list,
 			string='Treatment',
-			required=True,
+			#required=True,
 		)
 
 	pl_zone = fields.Selection(
 			selection=px_vars._zone_list,
 			string='Zone',
-			required=True,
+			#required=True,
 		)
 
 	pl_pathology = fields.Selection(
 			selection=px_vars._pathology_list,
 			string='Pathology',
-			required=True,
+			#required=True,
 		)
 
 	pl_level = fields.Selection(
 			selection=px_vars._level_list,
 			string='Level',
-			required=True,
+			#required=True,
 		)
 
 	pl_sessions = fields.Selection(
 			selection=px_vars._sessions_list,
 			string='Sessions',
-			required=True,
+			#required=True,
 		)
 
 	pl_time = fields.Selection(
 			selection=px_vars._time_list,
 			string='Time',
-			required=True,
+			#required=True,
 		)
 
 
 
-# ---------------------------------------------- Fields - Floats -----------------------
+# ---------------------------------------------- Fields - Floats ----------------------------------
 
 	pl_price = fields.Float(
 			'Price',
 		)
 
 	pl_price_vip = fields.Float(
-			'Price vip',
+			'Precio Vip',
 		)
 
 	pl_price_company = fields.Float(
-			'Price company',
+			'Precio Empresa',
 		)
 
 	pl_price_session = fields.Float(
@@ -164,5 +152,3 @@ class ProductTemplate(models.Model):
 	pl_price_max = fields.Float(
 			'Price max',
 		)
-
-

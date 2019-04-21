@@ -279,18 +279,10 @@ _zone_list = [
 ('1 Jeringa',	'1 Jeringa'),
 ('Vagina',	'Vagina'),
 ('Cuerpo',	'Cuerpo'),
-
-
 ('Rostro + Papada + Cuello',	'Rostro + Papada + Cuello'),
-
-
-#('Todo Rostro + Cuello ',	'Todo Rostro + Cuello '),
 ('Todo Rostro + Cuello',	'Todo Rostro + Cuello'),
-
-
 ('Todo Rostro + Manos',	'Todo Rostro + Manos'),
 ('Todo Rostro + Manos + Cuello',	'Todo Rostro + Manos + Cuello'),
-
 ]
 
 

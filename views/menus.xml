@@ -7,11 +7,8 @@
 <!-- Main - Price List -->
 <menuitem   id="main_pricelist_menu"
             sequence="-7"
-			name="Lista de Precios"    
+			name="Lista de Precios - 2019"    
 		/>
-
-
-
 
 
 
@@ -30,14 +27,11 @@
 
 		<!-- Product Templates - 2019 - All --> 
 		<menuitem   id="pricelist_product_template_2019_menu"
-
-			
 					parent="parent_pricelist_product_template_2019_menu"
-			
 					sequence="1"
-
 					action="product_template_2019_list_action"
 				/>
+
 
 
 <!--

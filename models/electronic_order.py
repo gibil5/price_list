@@ -33,6 +33,8 @@ class electronic_order(models.Model):
 		Used by Txt Generation
 		From containers.lib_exp
 		"""
+		print()
+		print('Pl - Get Coeff')
 		coeff = lib_coeffs.get_coeff(self.state)
 		return coeff
 

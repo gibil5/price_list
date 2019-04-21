@@ -16,6 +16,16 @@ class SaleOrderLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Print Ticket -------------------------------
+
+	def get_quantity(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return int(self.product_uom_qty)
+
+
+
 # ----------------------------------------------------------- Product ----------
 	product_id = fields.Many2one(
 		'product.product',

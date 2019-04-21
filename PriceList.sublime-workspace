@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"pro",
+				"promotion"
+			],
+			[
+				"echo",
+				"echography"
+			],
+			[
+				"pric",
+				"price_policy"
+			],
+			[
 				"p",
 				"physician"
 			],
@@ -22,10 +34,6 @@
 			[
 				"ts",
 				"tst_list"
-			],
-			[
-				"pro",
-				"product"
 			],
 			[
 				"service_ech",
@@ -506,14 +514,6 @@
 			[
 				"Cr",
 				"Create"
-			],
-			[
-				"P",
-				"Pricelist"
-			],
-			[
-				"ope",
-				"openhealth"
 			]
 		]
 	},
@@ -523,25 +523,16 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 1416,
+				"buffer_size": 1457,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/gibil/cellar/github/price_list/models/container.py",
+			"file": "/Users/gibil/cellar/github/price_list/readme.txt",
 			"settings":
 			{
-				"buffer_size": 7216,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/gibil/cellar/github/price_list/models/product_template.py",
-			"settings":
-			{
-				"buffer_size": 2698,
+				"buffer_size": 58,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -550,15 +541,7 @@
 			"file": "/Users/gibil/cellar/github/price_list/models/order_line.py",
 			"settings":
 			{
-				"buffer_size": 643,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/gibil/cellar/github/price_list/models/treatment.py",
-			"settings":
-			{
-				"buffer_size": 11577,
+				"buffer_size": 850,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -567,15 +550,96 @@
 			"file": "/Users/gibil/cellar/github/price_list/models/__init__.py",
 			"settings":
 			{
-				"buffer_size": 651,
+				"buffer_size": 668,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/gibil/cellar/github/price_list/models/pl_test_treatment.py",
+			"file": "/Users/gibil/cellar/github/price_list/models/product.py",
 			"settings":
 			{
-				"buffer_size": 5868,
+				"buffer_size": 2439,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/gibil/cellar/github/price_list/models/product_template.py",
+			"settings":
+			{
+				"buffer_size": 2735,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/gibil/cellar/github/price_list/models/service.py",
+			"settings":
+			{
+				"buffer_size": 5927,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/gibil/cellar/github/price_list/models/service_co2.py",
+			"settings":
+			{
+				"buffer_size": 1632,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/gibil/cellar/github/price_list/models/service_exc.py",
+			"settings":
+			{
+				"buffer_size": 1642,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/gibil/cellar/github/price_list/models/service_ipl.py",
+			"settings":
+			{
+				"buffer_size": 1613,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/gibil/cellar/github/price_list/models/service_ndyag.py",
+			"settings":
+			{
+				"buffer_size": 1617,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/gibil/cellar/github/price_list/models/service_quick.py",
+			"settings":
+			{
+				"buffer_size": 1709,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/gibil/cellar/github/price_list/models/service_med.py",
+			"settings":
+			{
+				"buffer_size": 1679,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/gibil/cellar/github/price_list/models/service_cos.py",
+			"settings":
+			{
+				"buffer_size": 1609,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -653,43 +717,64 @@
 	},
 	"file_history":
 	[
-		"/Users/gibil/cellar/github/price_list/models/service.py",
-		"/Users/gibil/cellar/github/price_list/models/service_co2.py",
-		"/Users/gibil/cellar/github/price_list/models/service_quick.py",
-		"/Users/gibil/cellar/github/price_list/models/px_vars_ext.py",
-		"/Users/gibil/cellar/github/price_list/models/product_selector.py",
-		"/Users/gibil/cellar/github/price_list/models/service_echo.py",
+		"/Users/gibil/cellar/github/price_list/models/models.py",
+		"/Users/gibil/cellar/github/price_list/views/service.xml",
+		"/Users/gibil/cellar/github/price_list/views/containers.xml",
+		"/Users/gibil/cellar/github/price_list/views/order_line.xml",
+		"/Users/gibil/cellar/github/price_list/views/product_template.xml",
+		"/Users/gibil/cellar/github/price_list/views/product_template_actions.xml",
+		"/Users/gibil/cellar/github/price_list/views/menus_dev.xml",
+		"/Users/gibil/cellar/github/price_list/views/menus.xml",
+		"/Users/gibil/cellar/github/price_list/views/order_line",
+		"/Users/gibil/cellar/github/price_list/views/order.xml",
 		"/Users/gibil/cellar/github/price_list/models/service_promo.py",
+		"/Users/gibil/cellar/github/price_list/models/service_echo.py",
 		"/Users/gibil/cellar/github/price_list/models/service_gyn.py",
+		"/Users/gibil/cellar/github/price_list/models/product_template.py",
+		"/Users/gibil/cellar/github/price_list/models/px_vars_ext.py",
+		"/Users/gibil/cellar/github/price_list/security/ir.model.access.csv",
+		"/Users/gibil/cellar/github/price_list/models/test_treatment.py",
+		"/Users/gibil/cellar/github/price_list/models/treatment.py",
+		"/Users/gibil/cellar/github/price_list/models/__init__.py",
+		"/Users/gibil/cellar/github/price_list/models/service_co2.TRASH.py",
+		"/Users/gibil/cellar/github/price_list/models/warning.py",
+		"/Users/gibil/cellar/github/price_list/models/test_treatment.TRASH.py",
+		"/Users/gibil/cellar/github/price_list/models/pl_test_treatment.py",
+		"/Users/gibil/cellar/github/price_list/models/service.py",
 		"/Users/gibil/cellar/github/price_list/models/service_cos.py",
-		"/Users/gibil/cellar/github/price_list/models/px_vars_gyn.py",
+		"/Users/gibil/cellar/github/price_list/models/container.py",
 		"/Users/gibil/cellar/github/price_list/models/service_ndyag.py",
+		"/Users/gibil/cellar/github/price_list/models/service_med.py",
+		"/Users/gibil/cellar/github/price_list/models/px_vars.py",
+		"/Users/gibil/cellar/github/price_list/views/service_co2.xml",
+		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/models/service_ipl.py",
 		"/Users/gibil/cellar/github/price_list/models/service_exc.py",
+		"/Users/gibil/cellar/github/price_list/models/service_quick.py",
+		"/Users/gibil/cellar/github/price_list/models/service_co2.py",
+		"/Users/gibil/cellar/github/price_list/models/order.py",
+		"/Users/gibil/cellar/github/price_list/models/lib_coeffs.py",
+		"/Users/gibil/cellar/github/price_list/models/electronic_order.py",
+		"/Users/gibil/cellar/github/price_list/models/order_line.py",
+		"/Users/gibil/cellar/github/price_list/views/treatment_services.xml",
+		"/Users/gibil/cellar/github/price_list/views/treatment_services.TRASH.xml",
+		"/Users/gibil/cellar/github/price_list/views/treatment_cart.xml",
+		"/Users/gibil/cellar/github/price_list/models/lib_coeff.py",
+		"/Users/gibil/cellar/github/price_list/models/product_selector.py",
+		"/Users/gibil/cellar/github/price_list/models/px_vars_gyn.py",
 		"/Users/gibil/cellar/github/price_list/views/service_quick.xml",
-		"/Users/gibil/cellar/github/price_list/views/service.xml",
-		"/Users/gibil/cellar/github/price_list/models/px_vars.py",
-		"/Users/gibil/cellar/github/price_list/readme.txt",
-		"/Users/gibil/cellar/github/price_list/models/treatment.py",
 		"/Users/gibil/cellar/github/price_list/models/px_vars_co2.py",
 		"/Users/gibil/cellar/github/price_list/models/reco_funcs.py",
-		"/Users/gibil/cellar/github/price_list/models/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/pl_creates.py",
 		"/Users/gibil/cellar/github/price_list/models/product_product.py",
 		"/Users/gibil/cellar/github/price_list/models/report_sale_product.py",
-		"/Users/gibil/cellar/github/price_list/models/order_line.py",
 		"/Users/gibil/cellar/github/price_list/models/cart_line.py",
-		"/Users/gibil/cellar/github/price_list/models/order.py",
-		"/Users/gibil/cellar/github/price_list/models/product_template.py",
 		"/Users/gibil/cellar/github/price_list/models/product.py",
-		"/Users/gibil/cellar/github/price_list/models/container.py",
-		"/Users/gibil/cellar/github/price_list/models/service_med.py",
 		"/Users/gibil/cellar/github/price_list/models/pl_vars.py",
 		"/Users/gibil/cellar/github/price_list/views/treatment.xml",
 		"/Users/gibil/cellar/github/price_list/views/service_ndyag.xml",
 		"/Users/gibil/cellar/github/price_list/views/service_ipl.xml",
 		"/Users/gibil/cellar/github/price_list/views/service_exc.xml",
-		"/Users/gibil/cellar/github/price_list/views/service_co2.xml",
 		"/Users/gibil/cellar/github/price_list/views/service_product.xml",
 		"/Users/gibil/cellar/github/price_list/views/service_promo.xml",
 		"/Users/gibil/cellar/github/price_list/views/service_gyn.xml",
@@ -697,18 +782,12 @@
 		"/Users/gibil/cellar/github/price_list/views/service_cosmetology.xml",
 		"/Users/gibil/cellar/github/price_list/views/service_medical.xml",
 		"/Users/gibil/cellar/github/price_list/models/reco_funcs.TRASH.py",
-		"/Users/gibil/cellar/github/price_list/models/pl_test_treatment.py",
-		"/Users/gibil/cellar/github/price_list/security/ir.model.access.csv",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.BUFF.csv",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.BUFF>csv",
 		"/Users/gibil/cellar/github/price_list/models/buffer.py",
 		"/Users/gibil/cellar/github/price_list/models/service_product.TRASH.py",
 		"/Users/gibil/cellar/github/price_list/models/service_product.py",
 		"/Users/gibil/cellar/github/price_list/models/pl_creates.TRASH.py",
-		"/Users/gibil/cellar/github/price_list/views/treatment_services.xml",
-		"/Users/gibil/cellar/github/price_list/views/product_template.xml",
-		"/Users/gibil/cellar/github/price_list/models/service_co2.TRASH.py",
-		"/Users/gibil/cellar/github/price_list/views/treatment_cart.xml",
 		"/Users/gibil/cellar/github/price_list/models/treatment.TRASH.py",
 		"/Users/gibil/cellar/github/price_list/models/service_m22.py",
 		"/Users/gibil/cellar/github/price_list/views/cart_line.xml",
@@ -725,13 +804,9 @@
 		"/Users/gibil/cellar/github/price_list/views/service_eco.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/price_list/models/pl_vars.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/price_list/models/product_template.py",
-		"/Users/gibil/cellar/github/price_list/views/menus.xml",
-		"/Users/gibil/cellar/github/price_list/views/product_template_actions.xml",
 		"/Users/gibil/cellar/github/price_list/security/data_users.xml",
 		"/Users/gibil/cellar/github/price_list/models/chk_product.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/price_list/views/products.xml",
-		"/Users/gibil/cellar/github/price_list/models/lib_coeff.py",
-		"/Users/gibil/cellar/github/price_list/models/electronic_order.py",
 		"/Users/gibil/cellar/github/price_list/views/product_template_search.xml",
 		"/Users/gibil/cellar/github/price_list/security/price_list_security.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/price_list/models/product.py",
@@ -769,22 +844,11 @@
 		"/Users/gibil/cellar/github/openhealth/models/order/order.py",
 		"/Users/gibil/cellar/github/openhealth/views/products/product_min.xml",
 		"/Users/gibil/cellar/github/openhealth/models/order/ord_vars.py",
-		"/Users/gibil/cellar/github/openhealth/models/emr/product_min.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/data_model.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/management.py",
-		"/Users/gibil/cellar/github/openhealth/__openerp__.py",
-		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_staff.xml",
-		"/Users/gibil/cellar/github/openhealth/readme.txt",
-		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_platform_new.xml",
-		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_doctors_new.xml",
-		"/Users/gibil/cellar/github/openhealth/models/emr/service.py",
-		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_managers.xml",
-		"/Users/gibil/cellar/github/openhealth/models/patient/partner.py",
-		"/Users/gibil/cellar/github/openhealth/views/management/management_doctor_line.xml"
+		"/Users/gibil/cellar/github/openhealth/models/emr/product_min.py"
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -798,6 +862,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"qty",
+			"if",
+			"order_line",
+			"service",
+			"card",
+			"pl_test_treatment",
+			"1,0,0,0",
+			"E.g.",
+			"#",
+			"pl_zone",
+			"zone",
+			"price_man",
+			"price_policy",
+			"pl_price_policy",
 			"pl_price_list",
 			"load",
 			"service.pl_",
@@ -881,6 +959,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"product_template",
+			"order_line",
+			"1,1,1,1",
+			"",
 			"service.",
 			"px_vars",
 			"",
@@ -1023,15 +1105,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1416,
+						"buffer_size": 1457,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								157,
-								157
+								153,
+								169
 							]
 						],
 						"settings":
@@ -1041,36 +1123,35 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 872.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/Users/gibil/cellar/github/price_list/models/container.py",
+					"file": "/Users/gibil/cellar/github/price_list/readme.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7216,
+						"buffer_size": 58,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6109,
-								6109
+								57,
+								57
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 4359.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1078,48 +1159,19 @@
 				},
 				{
 					"buffer": 2,
-					"file": "/Users/gibil/cellar/github/price_list/models/product_template.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2698,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1040,
-								1053
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 823.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "/Users/gibil/cellar/github/price_list/models/order_line.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 643,
+						"buffer_size": 850,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								194,
-								194
+								234,
+								234
 							]
 						],
 						"settings":
@@ -1135,49 +1187,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "/Users/gibil/cellar/github/price_list/models/treatment.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11577,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4180,
-								4180
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3412.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 3,
 					"file": "/Users/gibil/cellar/github/price_list/models/__init__.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 651,
+						"buffer_size": 668,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								97,
-								97
+								126,
+								126
 							]
 						],
 						"settings":
@@ -1188,24 +1211,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "/Users/gibil/cellar/github/price_list/models/pl_test_treatment.py",
+					"buffer": 4,
+					"file": "/Users/gibil/cellar/github/price_list/models/product.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5868,
+						"buffer_size": 2439,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								206,
+								206
 							]
 						],
 						"settings":
@@ -1214,10 +1237,271 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 238.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/gibil/cellar/github/price_list/models/product_template.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2735,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								818,
+								819
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 367.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/gibil/cellar/github/price_list/models/service.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5927,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1684,
+								1684
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1336.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/gibil/cellar/github/price_list/models/service_co2.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1632,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1531,
+								1531
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/Users/gibil/cellar/github/price_list/models/service_exc.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1642,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1537,
+								1537
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/Users/gibil/cellar/github/price_list/models/service_ipl.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17,
+								17
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/Users/gibil/cellar/github/price_list/models/service_ndyag.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1511,
+								1511
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 597.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "/Users/gibil/cellar/github/price_list/models/service_quick.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1709,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1500,
+								1500
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 777.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/Users/gibil/cellar/github/price_list/models/service_med.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								532,
+								532
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 80.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "/Users/gibil/cellar/github/price_list/models/service_cos.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1609,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1308,
+								1308
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 676.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
 					"type": "text"
 				}
 			]

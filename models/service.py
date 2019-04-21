@@ -1,36 +1,30 @@
 # -*- coding: utf-8 -*-
 """
 		Service - 2019
-
 		Created: 				20 Sep 2016
 		Last updated: 	 		15 Apr 2019
 """
 from __future__ import print_function
-
 from openerp import models, fields, api
-
 from . import px_vars
 
 class Service(models.Model):
-
 	"""
 	Price list aware
 	"""
 	_name = 'price_list.service'
 
-	#_inherit = 'openhealth.service'
-
-
 
 
 # ----------------------------------------------------------- Select ------------------------------
-
+	
+	# Zone
 	sel_zone = fields.Selection(
 
 			selection=px_vars._zone_list,
 
 			string='Seleccionar Zona',
-			required=True,
+			#required=True,
 		)
 
 
@@ -38,11 +32,6 @@ class Service(models.Model):
 
 
 # ----------------------------------------------------------- Natives ------------------------------
-	pl_treatment = fields.Selection(
-			selection=px_vars._treatment_list,
-			string='Treatment',
-			required=True,
-		)
 
 
 
@@ -64,15 +53,17 @@ class Service(models.Model):
 	# Price Manual
 	price_manual = fields.Float(
 			string="Precio Manual",
-			default=-1,
-			required=True,
+			
+			#default=-1,
+
+			#required=True,
 		)
 
 
 	# Price Applied
 	price_applied = fields.Float(
 			#string='Precio Aplicado',
-			default=-1,
+			#default=-1,
 			required=True,
 		)
 
@@ -98,9 +89,15 @@ class Service(models.Model):
 # ----------------------------------------------------------- On changes --------------------------
 
 	# Price policy
-	@api.onchange('pl_price_policy')
-	def _onchange_pl_price_policy(self):		
+	@api.onchange('price_policy')
+	def _onchange_price_policy(self):		
 		
+		print()
+		print('On change price policy')
+		print(self.price_policy)
+
+		#if self.price_policy not in [False]:
+
 		if self.price_policy in ['normal']:
 			self.price_applied = self.service.list_price
 
@@ -214,65 +211,23 @@ class Service(models.Model):
 			#required=True,
 		)
 
-
 	qty = fields.Integer(
 			default=1,
 		)
-
 
 	price_policy = fields.Selection(
 			selection=px_vars._price_policy_list,
 			string='Tipo de Precio',
 		)
 
-
-
-
-	
-	family = fields.Selection(
-			selection=px_vars._family_list,
-			string='Family',
-			required=True,
+	manufacturer = fields.Selection(
+			selection=px_vars._manufacturer_list,
+			string='Manufacturer',
 		)
 
-	subfamily = fields.Selection(
-			selection=px_vars._subfamily_list,
-			string='Subfamily',
-			required=True,
-		)
-
-
-
-	zone = fields.Selection(
-			selection=px_vars._zone_list,
-			string='Zone',
-			required=True,
-		)
-
-	pathology = fields.Selection(
-			selection=px_vars._pathology_list,
-			string='Pathology',
-			required=True,
-		)
-
-
-
-	level = fields.Selection(
-			selection=px_vars._level_list,
-			string='Level',
-			required=True,
-		)
-
-	sessions = fields.Selection(
-			selection=px_vars._sessions_list,
-			string='Sessions',
-			required=True,
-		)
-
-	time = fields.Selection(
-			selection=px_vars._time_list,
-			string='Time',
-			required=True,
+	brand = fields.Selection(
+			selection=px_vars._brand_list,
+			string='brand',
 		)
 
 
@@ -291,8 +246,6 @@ class Service(models.Model):
 			'Price company',
 		)
 
-
-
 	price_session = fields.Float(
 			'Price session',
 		)
@@ -306,24 +259,54 @@ class Service(models.Model):
 		)
 
 
-	manufacturer = fields.Selection(
-			selection=px_vars._manufacturer_list,
-			string='Manufacturer',
+	
+# ----------------------------------------------------------- Fields ------------------------------
+	family = fields.Selection(
+			selection=px_vars._family_list,
+			string='Family',
+			required=True,
 		)
 
-	brand = fields.Selection(
-			selection=px_vars._brand_list,
-			string='brand',
+	subfamily = fields.Selection(
+			selection=px_vars._subfamily_list,
+			string='Subfamily',
+			required=True,
 		)
 
+	pl_treatment = fields.Selection(
+			selection=px_vars._treatment_list,
+			string='Treatment',
+			required=True,
+		)
 
+	zone = fields.Selection(
+			selection=px_vars._zone_list,
+			string='Zone',
+			required=True,
+		)
 
+	pathology = fields.Selection(
+			selection=px_vars._pathology_list,
+			string='Pathology',
+			required=True,
+		)
 
+	level = fields.Selection(
+			selection=px_vars._level_list,
+			string='Level',
+			required=True,
+		)
 
+	sessions = fields.Selection(
+			selection=px_vars._sessions_list,
+			string='Sessions',
+			required=True,
+		)
 
-
-
-
-
+	time = fields.Selection(
+			selection=px_vars._time_list,
+			string='Time',
+			required=True,
+		)
 
 

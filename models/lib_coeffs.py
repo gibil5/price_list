@@ -14,14 +14,15 @@ def get_coeff(state):
 	Used by Electronic Order (electronic.electronic_order)
 	Coeff is a function of the state (Credit note or not)
 	"""
-	#print()
-	#print('Get Coeff')
+	print()
+	print('Pl - Get Coeff')
 
-	if state in ['credit_note']:
-		coeff = -1
+	#if state in ['credit_note']:
+	#	coeff = -1
+	#else:
+	#	coeff = 1
 
-	else:
-		coeff = 1
+	coeff = 1
 
 	#print(coeff)
 	return coeff

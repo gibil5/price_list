@@ -1,4 +1,266 @@
 
+# Ipl
+	family = fields.Selection(
+			selection=px_vars._family_list,
+			string='Family',
+			required=True,
+		)
+
+	subfamily = fields.Selection(
+			selection=px_vars._subfamily_list,
+			string='Subfamily',
+			required=True,
+		)
+
+	zone = fields.Selection(
+			selection=px_vars._zone_list,
+			string='Zone',
+			required=True,
+		)
+
+	pathology = fields.Selection(
+			selection=px_vars._pathology_list,
+			string='Pathology',
+			required=True,
+		)
+
+	sessions = fields.Selection(
+			selection=px_vars._sessions_list,
+			string='Sessions',
+			required=True,
+		)
+
+	time = fields.Selection(
+			selection=px_vars._time_list,
+			string='Time',
+			required=True,
+		)
+
+
+# Exc
+	family = fields.Selection(
+			selection=px_vars._family_list,
+			string='Family',
+			required=True,
+		)
+
+	subfamily = fields.Selection(
+			selection=px_vars._subfamily_list,
+			string='Subfamily',
+			required=True,
+		)
+
+	zone = fields.Selection(
+			selection=px_vars._zone_list,
+			string='Zone',
+			required=True,
+		)
+
+	pathology = fields.Selection(
+			selection=px_vars._pathology_list,
+			string='Pathology',
+			required=True,
+		)
+
+	sessions = fields.Selection(
+			selection=px_vars._sessions_list,
+			string='Sessions',
+			required=True,
+		)
+
+	time = fields.Selection(
+			selection=px_vars._time_list,
+			string='Time',
+			required=True,
+		)
+
+
+# Co2	
+	family = fields.Selection(
+			selection=px_vars._family_list,
+			string='Family',
+			required=True,
+		)
+
+	subfamily = fields.Selection(
+			selection=px_vars._subfamily_list,
+			string='Subfamily',
+			required=True,
+		)
+
+
+	zone = fields.Selection(
+			selection=px_vars._zone_list,
+			string='Zone',
+			required=True,
+		)
+
+	pathology = fields.Selection(
+			selection=px_vars._pathology_list,
+			string='Pathology',
+			required=True,
+		)
+
+	level = fields.Selection(
+			selection=px_vars._level_list,
+			string='Level',
+			required=True,
+		)
+
+	sessions = fields.Selection(
+			selection=px_vars._sessions_list,
+			string='Sessions',
+			required=True,
+		)
+
+
+
+
+# ---------------------------------------------- Fields - Floats -----------------------
+
+	price = fields.Float(
+			'Price',
+		)
+
+	price_vip = fields.Float(
+			'Price vip',
+		)
+
+	price_company = fields.Float(
+			'Price company',
+		)
+
+
+
+	price_session = fields.Float(
+			'Price session',
+		)
+
+	price_session_next = fields.Float(
+			'Price session next',
+		)
+
+	price_max = fields.Float(
+			'Price max',
+		)
+
+
+
+# ---------------------------------------------- Fields - Floats -----------------------
+
+	price = fields.Float(
+			'Price',
+		)
+
+	price_vip = fields.Float(
+			'Price vip',
+		)
+
+	price_company = fields.Float(
+			'Price company',
+		)
+
+	price_session = fields.Float(
+			'Price session',
+		)
+
+	price_session_next = fields.Float(
+			'Price session next',
+		)
+
+	price_max = fields.Float(
+			'Price max',
+		)
+
+
+# ---------------------------------------------- Fields - Floats -----------------------
+
+	price = fields.Float(
+			'Price',
+		)
+
+	price_vip = fields.Float(
+			'Price vip',
+		)
+
+	price_company = fields.Float(
+			'Price company',
+		)
+
+
+
+	price_session = fields.Float(
+			'Price session',
+		)
+
+	price_session_next = fields.Float(
+			'Price session next',
+		)
+
+	price_max = fields.Float(
+			'Price max',
+		)
+
+
+
+
+# ---------------------------------------------- Fields - Floats -----------------------
+
+	price = fields.Float(
+			'Price',
+		)
+
+	price_vip = fields.Float(
+			'Price vip',
+		)
+
+	price_company = fields.Float(
+			'Price company',
+		)
+
+
+
+	price_session = fields.Float(
+			'Price session',
+		)
+
+	price_session_next = fields.Float(
+			'Price session next',
+		)
+
+	price_max = fields.Float(
+			'Price max',
+		)
+
+
+
+
+# ---------------------------------------------- Fields - Floats -----------------------
+
+	price = fields.Float(
+			'Price',
+		)
+
+	price_vip = fields.Float(
+			'Price vip',
+		)
+
+	price_company = fields.Float(
+			'Price company',
+		)
+
+	price_session = fields.Float(
+			'Price session',
+		)
+
+	price_session_next = fields.Float(
+			'Price session next',
+		)
+
+	price_max = fields.Float(
+			'Price max',
+		)
+
 
 
 

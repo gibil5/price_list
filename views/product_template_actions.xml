@@ -5,6 +5,32 @@
 
 
 		<!-- Action - 2019 -->
+		<record model="ir.actions.act_window" id="product_template_list_action">
+			
+			<field name="name">Product Template</field>
+
+			<field name="res_model">product.template</field>
+
+			<field name="view_mode">tree,form</field>
+
+			<field name="view_id" ref="product_template_list_2"/> 
+
+			<field name="domain">[]</field>
+
+			<field name="limit">700</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Action - 2019 -->
 		<record model="ir.actions.act_window" id="price_list.product_template_2019_list_action">
 			
 			<field name="name">2019 - Todo</field>

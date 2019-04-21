@@ -27,7 +27,67 @@ _zone_list_qui = [
 
 
 
+_zone_list_exc_ipl = [
+('Abdomen',	'Abdomen'),
+('Ariolas',	'Ariolas'),
+('Axilas',	'Axilas'),
+('Cuello',	'Cuello'),
+('Brazos',	'Brazos'),
+('Espalda',	'Espalda'),
 
+('Gluteos',	'Gluteos'),
+('Hombros',	'Hombros'),
+('Manos',	'Manos'),
+('Pecho',	'Pecho'),
+('Piernas',	'Piernas'),
+('Pies',	'Pies'),
+('Piernas',	'Piernas'),
+('Rostro',	'Rostro'),
+]
+
+
+_zone_list_ndy = [
+('Localizado Rostro',	'Localizado Rostro'),
+('Localizado Cuerpo',	'Localizado Cuerpo'),
+]
+
+_zone_list_med = [
+('1 Jeringa',	'1 Jeringa'),
+('1 Zona',	'1 Zona'),
+('3 Zonas',	'3 Zonas'),
+('Cabeza',	'Cabeza'),
+('Indeterminada',	'Indeterminada'),
+('Piernas',	'Piernas'),
+('Todo Rostro',	'Todo Rostro'),
+]
+
+
+_zone_list_cos = [
+('Cuerpo',	'Cuerpo'),
+('Rostro',	'Rostro'),
+('Rostro + Papada + Cuello',	'Rostro + Papada + Cuello'),
+]
+
+
+_zone_list_gyn = [
+('Vagina',	'Vagina'),
+('Indeterminada',	'Indeterminada'),
+]
+
+
+_zone_list_echo = [
+('Indeterminada',	'Indeterminada'),
+]
+
+_zone_list_promo = [
+('Localizado Cuerpo',	'Localizado Cuerpo'),
+('Localizado Rostro',	'Localizado Rostro'),
+('Rostro + Papada + Cuello',	'Rostro + Papada + Cuello'),
+('Todo Rostro',	'Todo Rostro'),
+('Todo Rostro + Cuello',	'Todo Rostro + Cuello'),
+('Todo Rostro + Manos',	'Todo Rostro + Manos'),
+('Todo Rostro + Manos + Cuello',	'Todo Rostro + Manos + Cuello'),
+]
 
 
 
@@ -66,8 +126,8 @@ _treatment_list_ndy = [
 #('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
 #('QUICKLASER',	'QUICKLASER'),
 #('LASER EXCILITE',	'LASER EXCILITE'),
-('LASER M22 IPL',	'LASER M22 IPL'),
-#('LASER M22 ND YAG',	'LASER M22 ND YAG'),
+#('LASER M22 IPL',	'LASER M22 IPL'),
+('LASER M22 ND YAG',	'LASER M22 ND YAG'),
 ]
 
 
@@ -83,3 +143,40 @@ _treatment_list_qui = [
 
 
 
+
+
+_zone_list = [
+('test_zone',	'test_zone'),
+('na',	'na'),
+
+('Indeterminada',	'Indeterminada'),
+('Todo Rostro',	'Todo Rostro'),
+('Pomulos',	'Pomulos'),
+('Cuello',	'Cuello'),
+('Manos',	'Manos'),
+('Localizado Rostro',	'Localizado Rostro'),
+('Localizado Cuerpo',	'Localizado Cuerpo'),
+('Rostro',	'Rostro'),
+('Ariolas',	'Ariolas'),
+('Axilas',	'Axilas'),
+('Pecho',	'Pecho'),
+('Abdomen',	'Abdomen'),
+('Brazos',	'Brazos'),
+('Espalda',	'Espalda'),
+('Gluteos',	'Gluteos'),
+('Hombros',	'Hombros'),
+('Manos',	'Manos'),
+('Piernas',	'Piernas'),
+('Pies',	'Pies'),
+('Piernas',	'Piernas'),
+('Cabeza',	'Cabeza'),
+('1 Zona',	'1 Zona'),
+('3 Zonas',	'3 Zonas'),
+('1 Jeringa',	'1 Jeringa'),
+('Vagina',	'Vagina'),
+('Cuerpo',	'Cuerpo'),
+('Rostro + Papada + Cuello',	'Rostro + Papada + Cuello'),
+('Todo Rostro + Cuello',	'Todo Rostro + Cuello'),
+('Todo Rostro + Manos',	'Todo Rostro + Manos'),
+('Todo Rostro + Manos + Cuello',	'Todo Rostro + Manos + Cuello'),
+]

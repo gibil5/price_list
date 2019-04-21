@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 	Order
-
 	Created: 			26 Aug 2016
 	Last mod: 			12 Apr 2019
 """
@@ -16,6 +15,18 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 	_description = 'Order'
+
+
+
+
+# ---------------------------------------------- Fields ------------------------------------------
+
+	#transfer_free = fields.Boolean(
+	#		'Transferencia Gratuita',
+	#		default=False,
+	#	)
+
+
 
 
 

@@ -18,11 +18,13 @@
 			<field name="arch" type="xml">
 
 				<notebook position="inside">
-					<page string="CART">
+
+					<page string="Cart"	 groups='openhealth.roots'>
 
 						<field name="shopping_cart_ids"/> 
 
 					</page>
+
 				</notebook>
 			</field>
 

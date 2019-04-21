@@ -1,0 +1,44 @@
+<openerp>
+	<data>
+
+
+
+        <!-- TREE -->
+        <record model="ir.ui.view" id="order_line_tree_view">
+
+            <field name="name">order_line.tree</field>
+
+            <field name="model">sale.order.line</field>
+
+            <field name="arch" type="xml">
+
+                <tree string="order_line Tree">
+
+                    <field name="order_id"/>
+<!--
+                    <field name="name"/>
+-->
+                    <field name="product_id"/>
+
+                    <field name="create_date"/>
+
+                    <field name="__last_update"/>
+                </tree>
+            </field>
+        </record>
+	
+
+
+		<!-- Actions -->
+		<record model="ir.actions.act_window" id="order_line_list_action">
+			
+			<field name="name">Order Line</field>
+			
+			<field name="res_model">sale.order.line</field>
+			
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+	</data>
+</openerp>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- Main - Price List -->
+<menuitem   id="main_dev_menu"
+            sequence="-7"
+			name="Dev"    
+		/>
+
+
+
+
+<!-- Pricelists --> 
+<menuitem   id="parent_dev_menu" 
+
+					name="Dev"
+			
+					parent="main_dev_menu"
+
+					sequence="1"
+				/>
+
+
+
+		<!-- Order Lines --> 
+		<menuitem   id="dev_order_line_menu"
+					parent="parent_dev_menu"
+					sequence="1"
+
+					action="order_line_list_action"
+				/>
+
+		<!-- Product Templates --> 
+		<menuitem   id="dev_product_template_menu"
+					parent="parent_dev_menu"
+					sequence="2"
+
+					action="product_template_list_action"
+				/>
+
+
+	</data>
+</openerp>
