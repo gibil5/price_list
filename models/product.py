@@ -22,6 +22,12 @@ class PriceListProduct(models.Model):
 
 
 
+
+	time_stamp = fields.Char(
+			required=True,
+		)
+
+
 # ---------------------------------------------- Fields - Chars -----------------------
 
 	name = fields.Char(

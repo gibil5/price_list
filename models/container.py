@@ -24,21 +24,22 @@ class Container(models.Model):
 
 # ---------------------------------------------- Fields -----------------------
 
-	name = fields.Char(
-			required=True,
-		)
-
-
-	path = fields.Char(
-			required=True,
-		)
-
 	file_name = fields.Selection(
 
 			selection=px_vars._file_name_list,
 		
 			required=True,
 		)
+
+
+	name = fields.Char(
+			required=True,
+		)
+
+	path = fields.Char(
+			required=True,
+		)
+
 
 
 
@@ -236,7 +237,14 @@ class Container(models.Model):
 
 
 
+			time_stamp = row['time_stamp']
+
+
+
 			product = self.product_ids.create({
+												'time_stamp': 			time_stamp,
+
+
 												#'name': 			row['name'],
 												#'name_short': 		row['name_short'],
 												'name': 			name,

@@ -3,33 +3,18 @@
 	<data>
 		
 
-<!-- Not loaded -->
-
 
 <!-- FORM -->
 		<record model="ir.ui.view" id="view_order_form">
 			<field name="name">sale.order.form</field>
-			<field name="model">sale.order</field>
-
-
-			<field name="inherit_id" ref="openhealth.view_order_form"/>
-<!--
-view_order_form
-			<field name="inherit_id" ref="sale.view_order_form"/>
--->
+			<field name="model">sale.order</field>          
+			<field name="inherit_id" ref="sale.view_order_form"/>   
 			<field name="mode">primary</field>
 			<field name="priority">1</field>
 			<field name="arch" type="xml">
 
 
-
-
-				<!-- REDEFINE -->
-<!--
-				<xpath expr="//field[@name='x_admin_mode']" position="replace">
-					<field name="transfer_free"/>
-				</xpath>
--->
+				<!-- Add -->
 
 				<!-- Price List --> 
 <!--				
@@ -37,12 +22,6 @@ view_order_form
 				<xpath expr="//tree/field[@name='name']" position="after">
 					<field name="pl_price_list"/>
 				</xpath>
-
-
-
-			</field>
-		</record>
-		<!-- Form - END -->
 
 
 	</data>

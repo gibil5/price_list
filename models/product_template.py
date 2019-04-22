@@ -21,6 +21,13 @@ class ProductTemplate(models.Model):
 	_description = 'Product Template'
 
 
+
+	pl_time_stamp = fields.Char(
+			required=True,
+		)
+
+
+
 # ---------------------------------------- Constraints Python - Important -------------------------
 
 	# Check Name

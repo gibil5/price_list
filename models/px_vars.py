@@ -2,6 +2,35 @@
 
 
 
+# File name
+_file_name_list = [
+	
+	#('services.csv', 'services.csv'),
+	#('products.csv', 'products.csv'),
+
+	('TEST.csv', 		'TEST.csv'),
+
+	('CO2.csv', 		'CO2.csv'),
+	('QUICK.csv', 		'QUICK.csv'),
+	('EXCILITE.csv', 	'EXCILITE.csv'),
+	('M22.csv', 		'M22.csv'),
+
+	('MEDICAL.csv', 	'MEDICAL.csv'),
+	('COSMETO.csv', 	'COSMETO.csv'),
+
+	('GINECO.csv', 		'GINECO.csv'),
+	('PROMOS.csv', 		'PROMOS.csv'),
+	('ECO.csv', 		'ECO.csv'),
+
+	#('PRODUCTS.csv', 	'PRODUCTS.csv'),
+	('PRODS.csv', 		'PRODS.csv'),
+]
+
+
+
+
+
+
 # Treatment
 _price_policy_list = [
 
@@ -106,27 +135,6 @@ _brand_list = [
 
 
 
-_file_name_list = [
-	
-	('services.csv', 'services.csv'),
-	('products.csv', 'products.csv'),
-
-
-	('CO2.csv', 		'CO2.csv'),
-	('QUICK.csv', 		'QUICK.csv'),
-	('EXCILITE.csv', 	'EXCILITE.csv'),
-	('M22.csv', 		'M22.csv'),
-
-	('MEDICAL.csv', 	'MEDICAL.csv'),
-	('COSMETO.csv', 	'COSMETO.csv'),
-
-	('GINECO.csv', 		'GINECO.csv'),
-	('PROMOS.csv', 		'PROMOS.csv'),
-	('ECO.csv', 		'ECO.csv'),
-
-	#('PRODUCTS.csv', 	'PRODUCTS.csv'),
-	('PRODS.csv', 		'PRODS.csv'),
-]
 
 
 

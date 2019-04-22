@@ -5,7 +5,8 @@
 
 
 <!-- FORM --> 
-		<record model="ir.ui.view" id="product_form_view">
+		<record model="ir.ui.view" id="product_pricelist_form_view">
+			
 			<field name="name">product.form</field>
 
 			<field name="model">price_list.product</field>
@@ -100,6 +101,9 @@
 			<field name="arch" type="xml">
 				<tree>
 			
+					<field name="time_stamp"/>
+
+
 					<field name="price_list"/>
 
 					<field name="x_type"/>

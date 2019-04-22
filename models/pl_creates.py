@@ -1,14 +1,141 @@
 # -*- coding: utf-8 -*-
 """
 	Encapsulates actual Creation on Database.
-
 	Created: 			16 Apr 2019
  	Last up: 	 		16 Apr 2019
 """
-
 from __future__ import print_function
-
 from . import pl_user
+
+
+# ----------------------------------------------------------- Create Order Target -----------------
+# Create Order - By Line
+def pl_create_order_con(self):
+	"""
+	high level support for doing this and that.
+	"""
+	print()
+	print('Pl - Create Order Con')
+
+
+	# Create Order
+	order = self.env['sale.order'].create({
+													'state':'draft',
+													'x_family': 'procedure',
+													'x_doctor': self.physician.id,
+													'partner_id': self.partner_id.id,
+													'patient': self.patient.id,
+													'x_ruc': self.partner_id.x_ruc,
+													'x_dni': self.partner_id.x_dni,
+													'x_id_doc': self.patient.x_id_doc,
+													'x_id_doc_type': self.patient.x_id_doc_type,
+
+													'treatment': self.id,
+
+													#'pricelist_id': pl.id,
+												})
+	print(order)
+
+
+	name_list = [
+					'CONSULTA MEDICA',
+					#'CONSULTA GINECOLOGICA',
+					#'CONSULTA MEDICA DR. CHAVARRI',
+		]
+
+
+	# Create Order Lines
+	for name in name_list:
+
+
+		# Search
+		product = self.env['product.product'].search([
+															('name', 'in', [name]),
+															('pl_price_list', 'in', ['2019']),
+														],
+															#order='date_begin asc',
+															#limit=1,
+													)
+		print(product)
+		print(product.name)
+
+
+		# Create Order Line
+		ol = order.order_line.create({
+										'name': 			product.name,
+										'product_id': 		product.id,
+
+										'order_id': 		order.id,
+									})
+	return order
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Order Target -----------------
+# Create Order - By Line
+def pl_create_order(self):
+	"""
+	high level support for doing this and that.
+	"""
+	print()
+	print('Pl - Create Order')
+
+
+	# Create Order
+	order = self.env['sale.order'].create({
+													'state':'draft',
+													'x_family': 'procedure',
+													'x_doctor': self.physician.id,
+													'partner_id': self.partner_id.id,
+													'patient': self.patient.id,
+													'x_ruc': self.partner_id.x_ruc,
+													'x_dni': self.partner_id.x_dni,
+													'x_id_doc': self.patient.x_id_doc,
+													'x_id_doc_type': self.patient.x_id_doc_type,
+
+													'treatment': self.id,
+
+													#'pricelist_id': pl.id,
+												})
+	print(order)
+
+
+
+	# Create Order Lines
+	for cart_line in self.shopping_cart_ids:
+
+		product = cart_line.product
+
+
+		print(product)
+		print(product.name)
+
+
+		# Create Order Line
+		ol = order.order_line.create({
+										'name': 		product.name,										
+										'product_id': 	product.id,
+										'price_unit': 	cart_line.price,
+										'product_uom_qty': cart_line.qty,
+
+										#'price_unit': 	price_manual,
+										#'price_unit': 	product.list_price,
+
+										'order_id': 	order.id,
+									})
+
+
+	return order
+
+
+
+
+
+
 
 
 
@@ -181,73 +308,5 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 # create_procedure_go
 
 
-
-
-
-# ----------------------------------------------------------- Create Order Target -----------------
-# Create Order - By Line
-def pl_create_order(self):
-	"""
-	high level support for doing this and that.
-	"""
-	print()
-	print('Pl - Pl Create Order')
-
-
-
-	# Create Order
-	order = self.env['sale.order'].create({
-													'state':'draft',
-													#'pricelist_id': pl.id,
-													
-													'x_family': 'procedure',
-
-
-													'x_doctor': self.physician.id,
-
-													'partner_id': self.partner_id.id,
-													'patient': self.patient.id,
-													'x_ruc': self.partner_id.x_ruc,
-													'x_dni': self.partner_id.x_dni,
-													'x_id_doc': self.patient.x_id_doc,
-													'x_id_doc_type': self.patient.x_id_doc_type,
-
-													'treatment': self.id,
-												})
-	print(order)
-
-
-
-	# Shopping cart
-	for cart_line in self.shopping_cart_ids:
-
-
-		product = cart_line.product
-
-
-		print(product)
-		print(product.name)
-
-
-		# Create Order Line
-		ol = order.order_line.create({
-										'name': 		product.name,
-										
-										'product_id': 	product.id,
-										
-										'order_id': 	order.id,
-										
-
-										#'price_unit': 	price_manual,
-
-										#'price_unit': 	product.list_price,
-										'price_unit': 	cart_line.price,
-
-
-										'product_uom_qty': cart_line.qty,
-									})
-
-
-	return order
 
 

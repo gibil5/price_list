@@ -19,6 +19,144 @@ class Treatment(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Create Order Consultation  ----------
+	@api.multi
+	def create_order_con(self):
+
+		# Init
+		target = 'consultation'
+
+
+		#order = cre.create_order(self, target)
+		#order = pl_creates.pl_create_order_con(self)
+
+
+		# Create Cart
+
+
+		# Create Order
+		order = pl_creates.pl_create_order_con(self)
+
+		print(order)
+
+
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+	# create_order_con
+
+
+
+
+
+# -----------------------------------------------------------  Create Order Pro  ------------------
+	@api.multi
+	def create_order_pro(self):
+		print('Create Order Pro')
+
+		# Clear
+		self.shopping_cart_ids.unlink()
+
+		service_list = [
+							self.service_co2_ids,
+							self.service_excilite_ids,
+							self.service_ipl_ids,
+							self.service_ndyag_ids,
+							self.service_quick_ids,
+							self.service_medical_ids,
+							self.service_cosmetology_ids,
+							self.service_product_ids,
+							self.service_gynecology_ids,
+							self.service_echography_ids,
+							self.service_promotion_ids,
+		]
+
+
+		# Create Cart
+		for service in service_list:
+			print(service.service)
+			print(service.service.name)
+			print(service.service.id)
+			print(service.price_applied)
+			print(service.qty)
+
+
+			# Product
+			product = self.env['product.product'].search([
+															('name', '=', service.service.name),
+															('sale_ok', '=', True),
+															('pl_price_list', '=', '2019'),
+											])
+			print(product)
+			print(product.name)
+
+
+			# Create Cart
+			if product.name not in [False]:
+
+				cart_line = self.shopping_cart_ids.create({
+																	'product': 		product.id,
+																	'price': 		service.price_applied,
+																	'qty': 			service.qty,
+																	'treatment': 	self.id,
+														})
+
+		# Create Order
+		order = pl_creates.pl_create_order(self)
+
+		print(order)
+
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+	# create_order_pro
+
+
+
+
+
+
 # ----------------------------------------------------------- Fields --------------------------
 
 	# co2
@@ -300,90 +438,6 @@ class Treatment(models.Model):
 					ret = pl_creates.create_procedure_go(self, date_app, subtype, product_id.id)
 	# create_procedure_man
 
-
-
-# -----------------------------------------------------------  Create Order Pro  ------------------
-	@api.multi
-	def create_order_pro(self):
-
-		print('Create Order Pro')
-
-		# Clear
-		self.shopping_cart_ids.unlink()
-
-		service_list = [
-							self.service_co2_ids,
-							self.service_excilite_ids,
-							self.service_ipl_ids,
-							self.service_ndyag_ids,
-							self.service_quick_ids,
-
-							self.service_medical_ids,
-							self.service_cosmetology_ids,
-
-							self.service_product_ids,
-
-							self.service_gynecology_ids,
-							self.service_echography_ids,
-							self.service_promotion_ids,
-		]
-
-
-		# Create Cart
-		for service in service_list:
-			print(service.service)
-			print(service.service.name)
-			print(service.service.id)
-			print(service.price_applied)
-			print(service.qty)
-
-
-			# Product
-			product = self.env['product.product'].search([
-															('name', '=', service.service.name),
-															('sale_ok', '=', True),
-															('pl_price_list', '=', '2019'),
-											])
-			print(product)
-			print(product.name)
-
-
-			# Create Cart
-			if product.name not in [False]:
-
-				cart_line = self.shopping_cart_ids.create({
-																	'product': 		product.id,
-																	'price': 		service.price_applied,
-																	'qty': 			service.qty,
-																	'treatment': 	self.id,
-														})
-		order = pl_creates.pl_create_order(self)
-		print(order)
-
-
-		# Open Order
-		return {
-				# Created
-				'res_id': order.id,
-				# Mandatory
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action
-				'res_model': 'sale.order',
-				# Views
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False,
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},
-				'context': {}
-			}
-	# create_order_pro
 
 
 

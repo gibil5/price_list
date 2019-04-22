@@ -24,7 +24,6 @@
 				/>
 
 
-
 		<!-- Order Lines --> 
 		<menuitem   id="dev_order_line_menu"
 					parent="parent_dev_menu"
@@ -39,6 +38,15 @@
 					sequence="2"
 
 					action="product_template_list_action"
+				/>
+
+
+		<!-- Product products --> 
+		<menuitem   id="dev_product_product_menu"
+					parent="parent_dev_menu"
+					sequence="3"
+
+					action="product_product_list_action"
 				/>
 
 
