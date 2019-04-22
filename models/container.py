@@ -57,7 +57,9 @@ class Container(models.Model):
 
 	@api.multi
 	def create_products_2019(self):
+		print()
 		print('Create Products 2019')
+
 
 
 		# Search
@@ -74,46 +76,60 @@ class Container(models.Model):
 															#limit=1,
 													)
 
+
 		for pro in products:
 			
 			#print(pro.name)
 
-			product_template = self.env['product.template'].create({
-																		'pl_price_list': 	'2019',
+
+			count = self.env['product.template'].search_count([
+																('name', '=', pro.name),
+																('pl_price_list', '=', '2019'),
+														])
+			#print(count)
 
 
-																		'type': 			pro.x_type,
+			if count == 0:
 
-																		'name': 			pro.name,
-																		'pl_name_short': 	pro.name_short,
+				product_template = self.env['product.template'].create({
+																			'pl_price_list': 	'2019',
 
-																		'pl_prefix': 		pro.prefix,
-																		'pl_idx': 			pro.idx,
-
-																		'pl_family': 		pro.family,
-																		'pl_subfamily':		pro.subfamily,
-
-																		'pl_treatment': 	pro.treatment,
-																		'pl_zone': 			pro.zone,
-																		'pl_pathology': 	pro.pathology,
-																		'pl_level': 		pro.level,
-																		'pl_sessions': 		pro.sessions,
-																		'pl_time': 			pro.time,
-
-																		'list_price': 				pro.price,
-																		'pl_price_vip': 			pro.price_vip,
-																		'pl_price_company': 		pro.price_company,
-																		'pl_price_session': 		pro.price_session,
-																		'pl_price_session_next': 	pro.price_session_next,
-																		'pl_price_max': 			pro.price_max,
+																			'pl_time_stamp': 	pro.time_stamp,
 
 
-																		# Only Prods
-																		'pl_manufacturer': 			pro.manufacturer,
-																		'pl_brand': 				pro.brand,
-															})
 
-			#print(product_template)
+																			'type': 			pro.x_type,
+
+																			'name': 			pro.name,
+																			'pl_name_short': 	pro.name_short,
+
+																			'pl_prefix': 		pro.prefix,
+																			'pl_idx': 			pro.idx,
+
+																			'pl_family': 		pro.family,
+																			'pl_subfamily':		pro.subfamily,
+
+																			'pl_treatment': 	pro.treatment,
+																			'pl_zone': 			pro.zone,
+																			'pl_pathology': 	pro.pathology,
+																			'pl_level': 		pro.level,
+																			'pl_sessions': 		pro.sessions,
+																			'pl_time': 			pro.time,
+
+																			'list_price': 				pro.price,
+																			'pl_price_vip': 			pro.price_vip,
+																			'pl_price_company': 		pro.price_company,
+																			'pl_price_session': 		pro.price_session,
+																			'pl_price_session_next': 	pro.price_session_next,
+																			'pl_price_max': 			pro.price_max,
+
+
+																			# Only Prods
+																			'pl_manufacturer': 			pro.manufacturer,
+																			'pl_brand': 				pro.brand,
+																})
+
+				#print(product_template)
 
 
 		#print(products)

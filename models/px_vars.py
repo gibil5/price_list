@@ -47,6 +47,10 @@ _price_policy_list = [
 
 # Treatment
 _treatment_list = [
+
+('INFILTRACIONES',	'INFILTRACIONES'),
+
+
 ('test_treatment',	'test_treatment'),
 ('na',	'na'),
 
@@ -101,6 +105,7 @@ _treatment_list = [
 
 
 _manufacturer_list = [
+	('na', 				'na'),
 	
 	('HILDA', 				'HILDA'),
 	('LA COOPER', 			'LA COOPER'),
@@ -120,6 +125,7 @@ _manufacturer_list = [
 ]
 
 _brand_list = [
+	('na', 				'na'),
 	
 	('CLINICA CHAVARRI', 	'CLINICA CHAVARRI'),
 	('BOTICA SANTA TERESA', 'BOTICA SANTA TERESA'),

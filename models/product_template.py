@@ -22,8 +22,9 @@ class ProductTemplate(models.Model):
 
 
 
+# ---------------------------------------------- Fields - Chars -----------------------------------
 	pl_time_stamp = fields.Char(
-			required=True,
+			required=False,
 		)
 
 

@@ -1,2 +1,2 @@
 time_stamp,prefix,idx,code,x_type,family,subfamily,name_short,treatment_short,sepa,name,treatment,zone,pathology,level,sessions,time,price,price_vip,price_company,price_session,price_session_next,price_max
-2019-04-21,199,1,,service,test,test,test_treatment,test_treatment, - ,Test Product,test_treatment,test_zone,test_pathology,test_level,test_session,test_time,1.00,2.00,3,-1,-1,-1
+2019-04-22,199,1,,service,test,test,test_treatment,test_treatment, - ,Test Product,test_treatment,test_zone,test_pathology,test_level,test_session,test_time,1.00,2.00,3,-1,-1,-1

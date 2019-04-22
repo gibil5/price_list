@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"pl_",
+				"pl_price_list"
+			],
+			[
+				"produc",
+				"product"
+			],
+			[
+				"line",
+				"line_list"
+			],
+			[
 				"re",
 				"record"
 			],
@@ -502,18 +514,6 @@
 			[
 				"name",
 				"name_short"
-			],
-			[
-				"fla",
-				"co2_flag"
-			],
-			[
-				"pl",
-				"pl_item_ids"
-			],
-			[
-				"co",
-				"corrector"
 			]
 		]
 	},
@@ -529,10 +529,19 @@
 			}
 		},
 		{
+			"file": "models/container.py",
+			"settings":
+			{
+				"buffer_size": 7617,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "models/treatment.py",
 			"settings":
 			{
-				"buffer_size": 10856,
+				"buffer_size": 11463,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -541,7 +550,7 @@
 			"file": "models/pl_creates.py",
 			"settings":
 			{
-				"buffer_size": 5713,
+				"buffer_size": 6860,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -833,6 +842,8 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/models/px_vars.py",
+		"/Users/gibil/cellar/github/price_list/models/pl_vars.py",
 		"/Users/gibil/cellar/github/price_list/views/products.xml",
 		"/Users/gibil/cellar/github/price_list/models/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/models.py",
@@ -862,7 +873,6 @@
 		"/Users/gibil/cellar/github/price_list/models/container.py",
 		"/Users/gibil/cellar/github/price_list/models/service_ndyag.py",
 		"/Users/gibil/cellar/github/price_list/models/service_med.py",
-		"/Users/gibil/cellar/github/price_list/models/px_vars.py",
 		"/Users/gibil/cellar/github/price_list/views/service_co2.xml",
 		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/models/service_ipl.py",
@@ -887,7 +897,6 @@
 		"/Users/gibil/cellar/github/price_list/models/report_sale_product.py",
 		"/Users/gibil/cellar/github/price_list/models/cart_line.py",
 		"/Users/gibil/cellar/github/price_list/models/product.py",
-		"/Users/gibil/cellar/github/price_list/models/pl_vars.py",
 		"/Users/gibil/cellar/github/price_list/views/treatment.xml",
 		"/Users/gibil/cellar/github/price_list/views/service_ndyag.xml",
 		"/Users/gibil/cellar/github/price_list/views/service_ipl.xml",
@@ -978,6 +987,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"create_product",
+			"treatment",
+			"search",
+			"create_order",
 			"order",
 			"order.",
 			"template",
@@ -1232,8 +1245,8 @@
 						"selection":
 						[
 							[
-								858,
-								863
+								485,
+								485
 							]
 						],
 						"settings":
@@ -1251,19 +1264,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "models/treatment.py",
+					"file": "models/container.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10856,
+						"buffer_size": 7617,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								531,
-								531
+								1386,
+								1386
 							]
 						],
 						"settings":
@@ -1272,7 +1285,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 376.0,
+						"translation.y": 1097.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1280,48 +1293,19 @@
 				},
 				{
 					"buffer": 2,
-					"file": "models/pl_creates.py",
+					"file": "models/treatment.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5713,
+						"buffer_size": 11463,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								417,
-								417
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 90.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "models/order.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4379,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								128,
-								128
+								175,
+								175
 							]
 						],
 						"settings":
@@ -1337,7 +1321,65 @@
 					"type": "text"
 				},
 				{
+					"buffer": 3,
+					"file": "models/pl_creates.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6860,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1578,
+								1578
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 219.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
 					"buffer": 4,
+					"file": "models/order.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4379,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								242,
+								242
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1216.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "views/order.xml",
 					"semi_transient": false,
 					"settings":
@@ -1362,11 +1404,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "models/order_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1395,7 +1437,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "models/__init__.py",
 					"semi_transient": false,
 					"settings":
@@ -1419,11 +1461,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "models/chk_order_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1448,11 +1490,11 @@
 						"translation.y": 159.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "models/product_template.py",
 					"semi_transient": false,
 					"settings":
@@ -1477,11 +1519,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "models/chk_product.py",
 					"semi_transient": false,
 					"settings":
@@ -1506,11 +1548,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "views/order_line.xml",
 					"semi_transient": false,
 					"settings":
@@ -1536,11 +1578,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "views/buffer.xml",
 					"semi_transient": false,
 					"settings":
@@ -1565,11 +1607,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "views/menus_dev.xml",
 					"semi_transient": false,
 					"settings":
@@ -1594,11 +1636,11 @@
 						"translation.y": 170.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "views/product_product.xml",
 					"semi_transient": false,
 					"settings":
@@ -1623,11 +1665,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "views/product_template.xml",
 					"semi_transient": false,
 					"settings":
@@ -1652,11 +1694,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "views/product_pricelist.xml",
 					"semi_transient": false,
 					"settings":
@@ -1680,11 +1722,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 17,
 					"file": "views/product_product_actions.xml",
 					"semi_transient": false,
 					"settings":
@@ -1709,11 +1751,11 @@
 						"translation.y": 423.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 18,
 					"file": "readme.txt",
 					"semi_transient": false,
 					"settings":
@@ -1737,11 +1779,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 19,
 					"file": "models/product.py",
 					"semi_transient": false,
 					"settings":
@@ -1766,11 +1808,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 20,
 					"file": "models/service.py",
 					"semi_transient": false,
 					"settings":
@@ -1795,11 +1837,11 @@
 						"translation.y": 1336.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 21,
 					"file": "models/service_co2.py",
 					"semi_transient": false,
 					"settings":
@@ -1824,11 +1866,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 22,
 					"file": "models/service_exc.py",
 					"semi_transient": false,
 					"settings":
@@ -1853,11 +1895,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 23,
 					"file": "models/service_ipl.py",
 					"semi_transient": false,
 					"settings":
@@ -1882,11 +1924,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 24,
 					"file": "models/service_ndyag.py",
 					"semi_transient": false,
 					"settings":
@@ -1911,11 +1953,11 @@
 						"translation.y": 597.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 26,
+					"stack_index": 27,
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 25,
 					"file": "models/service_quick.py",
 					"semi_transient": false,
 					"settings":
@@ -1940,11 +1982,11 @@
 						"translation.y": 777.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 25,
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 26,
 					"file": "models/service_med.py",
 					"semi_transient": false,
 					"settings":
@@ -1969,11 +2011,11 @@
 						"translation.y": 80.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 24,
+					"stack_index": 25,
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 27,
 					"file": "models/service_cos.py",
 					"semi_transient": false,
 					"settings":
@@ -1998,7 +2040,7 @@
 						"translation.y": 676.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 24,
 					"type": "text"
 				}
 			]
@@ -2055,7 +2097,7 @@
 	"project": "PriceList.sublime-project",
 	"replace":
 	{
-		"height": 66.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
