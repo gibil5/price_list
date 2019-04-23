@@ -6,7 +6,9 @@ _doc_type = {
 				'other':			'0',
 				'foreign_card':		'4',
 				'passport':			'7',
-				'ptp':				'1', 		# Verify
+
+				#'ptp':				'1', 		# Verify
+				'ptp':				'0', 		# Verified
 
 				#'dni':				'2', 		# Verify
 				'dni':				'1', 		# Verified

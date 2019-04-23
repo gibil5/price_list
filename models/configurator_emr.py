@@ -20,6 +20,15 @@ class ConfiguratorEmr(models.Model):
 
 
 
+	# Doctor Line
+	#doctor_line = fields.One2many(
+	#		'openhealth.doctor',
+	#		'configurator_emr_id',
+	#	)
+
+
+
+
 # ----------------------------------------------------------- Account -------------------------------
 
 	cuentab_products = fields.Char(
@@ -48,13 +57,6 @@ class ConfiguratorEmr(models.Model):
 		)
 
 
-
-	# Doctor Line
-	doctor_line = fields.One2many(
-			'openhealth.doctor',
-
-			'configurator_emr_id',
-		)
 
 
 

@@ -1,5 +1,10 @@
 
 
+access_openhealth_doctor,access_openhealth_doctor,model_openhealth_doctor,,1,1,1,1
+
+
+
+
 access_openhealth_container,openhealth.container,model_openhealth_container,,1,1,1,1
 
 access_price_list_price_list,price_list.price_list,model_price_list_price_list,,1,0,0,0
