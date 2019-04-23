@@ -93,7 +93,7 @@ class Container(models.Model):
 															#limit=1,
 													)
 		for product in products:
-			print(product.name)
+			#print(product.name)
 			product.update()
 
 
