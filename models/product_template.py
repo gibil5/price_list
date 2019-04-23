@@ -16,9 +16,34 @@ class ProductTemplate(models.Model):
 	"""
 	_inherit = 'product.template'
 
-	_order = 'name'
+	#_order = 'name'
+	#_order = 'pl_idx'
+	_order = 'pl_idx_int'
 
 	_description = 'Product Template'
+
+
+
+
+
+# ----------------------------------------------------------- Update ----------------------------------------------------
+	@api.multi
+	def update(self):
+		"""
+		Update
+		"""
+		print('Product Template - Update')
+
+		self.pl_idx_int = int(self.pl_idx)
+
+		print(self.name)
+		print(self.pl_idx)
+		print(self.pl_idx_int)
+
+
+
+
+
 
 
 
@@ -62,6 +87,12 @@ class ProductTemplate(models.Model):
 			#required=True,
 		)
 
+
+
+	pl_idx_int = fields.Integer(
+			'Idx I',
+			#required=True,
+		)
 
 
 

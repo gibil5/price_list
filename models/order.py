@@ -20,6 +20,29 @@ class sale_order(models.Model):
 	_description = 'Order'
 
 
+
+
+# ----------------------------------------------------------- Validate ----------------------------
+	# States
+	READONLY_STATES = {
+		'draft': 		[('readonly', False)],
+		'sent': 		[('readonly', False)],
+		'sale': 		[('readonly', True)],
+		'cancel': 		[('readonly', True)],
+	}
+
+
+	# Doctor
+	x_doctor = fields.Many2one(
+
+			'oeh.medical.physician',
+		
+			string="Médico",
+			states=READONLY_STATES,
+		)
+
+
+
 # ----------------------------------------------------------- Validate ----------------------------
 
 	# Action confirm
@@ -141,26 +164,32 @@ class sale_order(models.Model):
 # ----------------------------------------------------- Product Selector --------------------------
 
 	@api.multi
-	def open_product_selector_product(self):
+	#def open_product_selector_product(self):
+	def pl_open_product_selector_product(self):
 		"""
 		high level support for doing this and that.
 		"""
 		print('o ps p')
-		return self.open_product_selector('product')
+		#return self.open_product_selector('product')
+		return self.pl_open_product_selector('product')
 
 
 	@api.multi
-	def open_product_selector_service(self):
+	#def open_product_selector_service(self):
+	def pl_open_product_selector_service(self):
 		"""
 		high level support for doing this and that.
 		"""
 		print('o ps s')
-		return self.open_product_selector('service')
+		#return self.open_product_selector('service')
+		return self.pl_open_product_selector('service')
+
 
 
 	# Buttons  - Agregar Producto Servicio
 	@api.multi
-	def open_product_selector(self, x_type):
+	#def open_product_selector(self, x_type):
+	def pl_open_product_selector(self, x_type):
 		"""
 		high level support for doing this and that.
 		"""
@@ -195,7 +224,8 @@ class sale_order(models.Model):
 								'default_order_id': order_id,
 								'default_x_type': x_type,
 					}}
-	# open_product_selector
+					
+	# pl_open_product_selector
 
 
 

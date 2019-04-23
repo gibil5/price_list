@@ -12,6 +12,7 @@ class ProductProduct(models.Model):
 	_inherit = 'product.product'
 
 	#_order = 'name'
+	_order = 'pl_idx'
 
 
 

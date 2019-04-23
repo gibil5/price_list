@@ -50,5 +50,64 @@
 				/>
 
 
+
+		<!-- Report Order Line --> 
+		<menuitem   id="dev_report_order_line_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="4"
+
+					action="report_order_line_list_action"
+				/>
+<!--
+openhealth.report.order_line
+-->
+
+
+
+
+		<!-- Procurement Orders --> 
+		<menuitem   id="dev_procurement_order_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="5"
+
+					action="procurement_order_list_action"
+				/>
+<!--
+procurement.order
+-->
+
+		<!-- Stock Moves --> 
+		<menuitem   id="dev_stock_move_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="6"
+
+					action="stock_move_list_action"
+				/>
+<!--
+procurement.order
+-->
+
+
+
+		<!-- Management Order Line --> 
+		<menuitem   id="dev_mgt_order_line_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="7"
+
+					action="mgt_order_line_list_action"
+				/>
+<!--
+openhealth.management.order.line
+-->
+
+
 	</data>
 </openerp>

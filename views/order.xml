@@ -10,16 +10,67 @@
 		<record model="ir.ui.view" id="view_order_form">
 			<field name="name">sale.order.form</field>
 			<field name="model">sale.order</field>
-
-
 			<field name="inherit_id" ref="openhealth.view_order_form"/>
 <!--
-view_order_form
 			<field name="inherit_id" ref="sale.view_order_form"/>
 -->
 			<field name="mode">primary</field>
 			<field name="priority">1</field>
 			<field name="arch" type="xml">
+
+
+
+
+
+
+
+
+
+<!-- NEW BUTTONS --> 
+				<xpath expr="//button[@name='action_confirm_nex']" position="before">
+				
+
+					<!-- Add Prod -->
+					<!-- Add Serv -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							
+							name="pl_open_product_selector_product"
+
+							string="Agregar PRODUCTO - 2019"
+
+							states="draft"                      
+						/>
+
+					<button 
+							type="object" 
+
+							class="oe_highlight"
+							
+							name="pl_open_product_selector_service"
+
+							string="Agregar SERVICIO - 2019"
+
+							states="draft"
+						/>
+
+				</xpath>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

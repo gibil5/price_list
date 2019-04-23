@@ -118,6 +118,7 @@
 
 					<field name="prefix"/>
 					<field name="idx"/>
+					<field name="idx_int"/>
 					<field name="code"/>
 
 					

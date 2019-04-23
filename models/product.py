@@ -16,16 +16,40 @@ class PriceListProduct(models.Model):
 	high level support for doing this and that.
 	"""
 	_name = 'price_list.product'
+	
 	_description = 'Product'
+	
 	#_inherit = 'sale.order'
+	
 	#_order = 'date_begin asc'
+	_order = 'idx_int'
 
 
 
 
+# ----------------------------------------------------------- Update ----------------------------------------------------
+	@api.multi
+	def update(self):
+		"""
+		Update
+		"""
+		print('Product Pricelist - Update')
+
+		self.idx_int = int(self.idx)
+
+		print(self.name)
+		print(self.idx)
+		print(self.idx_int)
+
+
+
+
+
+# ---------------------------------------------- Fields - Chars -----------------------------------
 	time_stamp = fields.Char(
-			required=True,
+			required=False,
 		)
+
 
 
 # ---------------------------------------------- Fields - Chars -----------------------
@@ -52,6 +76,10 @@ class PriceListProduct(models.Model):
 		)
 
 
+	idx_int = fields.Integer(
+			'Idx I',
+			#required=True,
+		)
 
 
 

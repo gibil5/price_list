@@ -21,16 +21,102 @@ class Container(models.Model):
 
 
 
+# ----------------------------------------------------------- Remove Procurement ----------------------------------------------------
+	@api.multi
+	def remove_procurements(self):
+		"""
+		Remove Procurement
+		"""
+		print('Container Remove Procurements')
+
+		# Search
+		procs = self.env['procurement.order'].search([
+															#('x_name_short', 'in', [name]),
+															#('product_id', '=', 'PROTECTOR SOLAR - H'),
+															#('product_id', '=', 'PROTECTOR SOLAR'),
+														],
+															#order='date_begin asc',
+															#limit=10,
+													)
+		for procurement in procs:
+			print(procurement)
+			print(procurement.name)
+			procurement.state = 'cancel'
+			print(procurement.state)
+
+			procurement.unlink()
+
+			print()
+
+
+
+
+	@api.multi
+	def remove_stock_moves(self):
+		"""
+		Remove stock_move
+		"""
+		print('Container Remove stock_moves')
+
+		# Search
+		moves = self.env['stock.move'].search([
+															#('x_name_short', 'in', [name]),
+															#('product_id', '=', 'PROTECTOR SOLAR - H'),
+															#('product_id', '=', 'PROTECTOR SOLAR'),
+														],
+															#order='date_begin asc',
+															#limit=10,
+													)
+		for stock_move in moves:
+			#print(stock_move)
+			#print(stock_move.name)
+			stock_move.state = 'cancel'
+			#print(stock_move.state)
+			stock_move.unlink()
+			#print()
+
+
+
+
+
+# ----------------------------------------------------------- Update ----------------------------------------------------
+	@api.multi
+	def update(self):
+		"""
+		Update
+		"""
+		print('Container Update')
+
+		# Search
+		products = self.env['price_list.product'].search([
+															#('x_name_short', 'in', [name]),
+														],
+															#order='date_begin asc',
+															#limit=1,
+													)
+		for product_pricelist in products:
+
+			product_pricelist.update()
+
+			# Search
+			product_template = self.env['product.template'].search([
+																		#('name', 'in', [prod.name]),
+																		('name', '=', product_pricelist.name),
+																		('pl_price_list', '=', '2019'),
+															],
+																#order='date_begin asc',
+																#limit=1,
+														)
+			product_template.update()
+
+
 
 # ---------------------------------------------- Fields -----------------------
 
 	file_name = fields.Selection(
-
 			selection=px_vars._file_name_list,
-		
 			required=True,
 		)
-
 
 	name = fields.Char(
 			required=True,
@@ -105,6 +191,7 @@ class Container(models.Model):
 
 																			'pl_prefix': 		pro.prefix,
 																			'pl_idx': 			pro.idx,
+																			'pl_idx_int': 		pro.idx_int,
 
 																			'pl_family': 		pro.family,
 																			'pl_subfamily':		pro.subfamily,
@@ -192,11 +279,13 @@ class Container(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Load ------------------------
 
-	# Load
+# ----------------------------------------------------------- Load ----------------------------------------------------
 	@api.multi
 	def load(self):
+		"""
+		Load CSV data
+		"""
 		print('Load')
 
 		self.product_ids.unlink()
@@ -232,23 +321,27 @@ class Container(models.Model):
 
 
 
+
 			if row['x_type'] in ['product']:
 				manufacturer = row['manufacturer']
 				brand = row['brand']
+				name = 			row['name'].upper()
+				name_short = 	row['name_short'].upper()
 			else:
 				manufacturer = False
 				brand = False
+				name = 			row['name']
+				name_short = 	row['name_short']
 
 
 
 			# Here !
-			if self.caps_name:
-				name = 			row['name'].upper()
-				name_short = 	row['name_short'].upper()
-
-			else:
-				name = 			row['name']
-				name_short = 	row['name_short']
+			#if self.caps_name:
+			#	name = 			row['name'].upper()
+			#	name_short = 	row['name_short'].upper()
+			#else:
+			#	name = 			row['name']
+			#	name_short = 	row['name_short']
 
 
 

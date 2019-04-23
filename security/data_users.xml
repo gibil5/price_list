@@ -33,10 +33,13 @@
 
 <!-- Adriana Pereira -->
 <!--
+-->
         <record id="apereira" model="res.partner">
             <field name="name">Adriana Pereira</field>
             <field name="email">apereira@clinicachavarri.com</field>
+<!--
             <field eval="[(6, 0, [ref('openhealth.doctor')])]" name="category_id"/>
+-->
         </record>
 
 
@@ -52,7 +55,6 @@
             <field name="lang">es_ES</field>
             <field name="active">True</field>
         </record>
--->
 
 
 

@@ -1,0 +1,96 @@
+<openerp>
+	<data>
+
+
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="price_list.report_order_line_list_action">
+			
+			<field name="name">Report Order Line</field>
+			
+			<field name="res_model">openhealth.report.order_line</field>
+			
+			<field name="view_mode">tree,form</field>
+<!--
+			<field name="view_id" ref="price_list.product_template_list"/> 
+-->
+		</record>
+
+
+
+		<!-- explicit list view definition -->
+		<record model="ir.ui.view" id="report_order_line_list">
+
+			<field name="name">report order line list</field>
+			
+			<field name="model">openhealth.report.order_line</field>
+			
+			<field name="arch" type="xml">
+				<tree>
+
+					<field name="product_id"/>
+
+					<field name="order_report_nex_id"/>
+
+
+
+                    <field name="create_date"/>
+
+                    <field name="__last_update"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="price_list.procurement_order_list_action">
+			
+			<field name="name">Procurement Order</field>
+			
+			<field name="res_model">procurement.order</field>
+			
+			<field name="view_mode">tree,form</field>
+<!--
+			<field name="view_id" ref="price_list.product_template_list"/> 
+-->
+		</record>
+
+
+
+
+
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="price_list.stock_move_list_action">
+			
+			<field name="name">Stock Move</field>
+			
+			<field name="res_model">stock.move</field>
+			
+			<field name="view_mode">tree,form</field>
+<!--
+			<field name="view_id" ref="price_list.product_template_list"/> 
+-->
+		</record>
+
+
+
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="price_list.mgt_order_line_list_action">
+			
+			<field name="name">Mgt Order Line</field>
+			
+			<field name="res_model">openhealth.management.order.line</field>
+			
+			<field name="view_mode">tree,form</field>
+<!--
+			<field name="view_id" ref="price_list.product_template_list"/> 
+-->
+		</record>
+
+
+	</data>
+</openerp>

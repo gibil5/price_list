@@ -39,6 +39,11 @@
 
 							<field name="pl_name_short"/>
 
+							<field name="pl_prefix"/>
+							<field name="pl_idx"/>
+							<field name="pl_code"/>
+
+
 							<field name="pl_family"/>
 							<field name="pl_subfamily"/>
 							<field name="pl_treatment"/>             

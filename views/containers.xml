@@ -30,16 +30,14 @@
 
 
                         <!-- Update -->
+<!--
                         <button 
                                 type="object"
-
                                 class="oe_highlight"
-                                
                                 name="update_price_list"
-                                
                                 string="Update Price list - 2018"
                         />
-
+-->
 
 
                         <!-- Create -->
@@ -53,6 +51,45 @@
                                 string="Create Products 2019"
                         />
 
+
+
+
+                        <!-- Update -->
+                        <button 
+                                type="object"
+
+                                class="oe_highlight oe_right"
+                                
+                                name="update"
+                                
+                                string="Update"
+                        />
+
+
+                        <!-- Remove -->
+<!--
+                        <button 
+                                type="object"
+
+                                class="oe_highlight oe_right"
+                                
+                                name="remove_procurements"
+                                
+                                string="Remove Procurements"
+                        />
+-->
+                        <!-- Remove -->
+<!--
+                        <button 
+                                type="object"
+
+                                class="oe_highlight oe_right"
+                                
+                                name="remove_stock_moves"
+                                
+                                string="Remove Stock Moves"
+                        />
+-->
 					</header>
 
 
