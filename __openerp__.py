@@ -97,6 +97,15 @@
 		'views/product_selector.xml',
 
 
+		'views/payment_method_line.xml',
+		'views/account_line.xml',
+		'views/account_contasis_actions.xml',
+		'views/account_contasis.xml',
+
+
+		'views/configurator_emr.xml',
+
+
 
 		# Security
 		'security/data_users.xml',

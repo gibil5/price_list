@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="openhealth.configurator_emr_form_view">
+
+			<field name="name">configurator.emr.form</field>
+			
+			<field name="model">openhealth.configurator.emr</field>
+			
+			<field name="arch" type="xml">
+				<form string="configurator EMR Form">
+
+
+					<!-- Header -->
+					<header></header>
+
+
+
+					<!-- Sheet -->  
+					<sheet>
+
+						<group>
+							<group>
+								<field name="name"/>
+							</group>
+
+							<group>
+								<field name="x_type"/>
+							</group>
+						</group>
+
+
+						<group>
+							<group  string="Nr Sesiones">
+								<field name="nr_sessions_co2"/>
+								<field name="nr_sessions_quick"/>
+								<field name="nr_sessions_exc"/>
+								<field name="nr_sessions_ipl"/>
+								<field name="nr_sessions_ndyag"/>
+							</group>
+
+							<group  string="Nr Controles">
+								<field name="nr_controls_co2"/>
+								<field name="nr_controls_quick"/>
+								<field name="nr_controls_exc"/>
+								<field name="nr_controls_ipl"/>
+								<field name="nr_controls_ndyag"/>
+							</group>
+						</group>
+
+<!--
+						<group  string="Nr Controles">
+							<group></group>
+						</group>
+-->
+
+
+						<group  >
+							<group	string="Apertura">
+								<field name="date_open"     widget="time"/>
+								<field name="date_close"    widget="time"/>
+							</group>
+
+							<group	string="Contabilidad">
+								<field name="cuentab_products"/>
+								<field name="cuentab_services"/>
+							</group>
+						</group>
+
+
+<!--
+                        <group  string="Feriados"  col="2" >
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+-->
+
+						<!-- Notebook --> 
+						<notebook>
+
+
+                            <!-- Holidays --> 
+                            <page   string="Feriados">
+
+                                <field name="day_line">
+                                
+                                    <tree string="Holidays">
+<!--
+                                        <field name="name"/>
+-->
+                                        <field name="date"/>
+
+                                        <field name="holiday"/>
+                                    </tree>
+                                </field>
+                            </page>
+
+
+                            <!-- Doctors --> 
+                            <page   string="Medicos Activos">
+
+                                <field name="doctor_line">
+                                
+                                    <tree string="Drs.">
+<!--
+-->
+                                        <field name="name"/>
+
+                                        <field name="active"/>
+
+                                    </tree>
+                                </field>
+                            </page>
+
+
+						</notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+<!-- TREE -->
+		<record model="ir.ui.view" id="configurator_emr_view_tree">
+			
+			<field name="name">openhealth.configurator.emr.tree</field>
+
+			<field name="model">openhealth.configurator.emr</field>
+
+			<field name="arch" type="xml">
+
+				<tree string="Configurator EMR Tree">
+					
+					<field name="name"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+		<!-- ACTION - EMR -->
+		<record model="ir.actions.act_window" id="configurator_emr_list_action">
+
+			<field name="name">Configurators - EMR</field>
+			
+			<field name="res_model">openhealth.configurator.emr</field>
+
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>            
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+	</data>
+</openerp>
