@@ -36,6 +36,8 @@ class ProductTemplate(models.Model):
 
 		self.pl_idx_int = int(self.pl_idx)
 
+		self.purchase_ok = False
+
 		#print(self.name)
 		#print(self.pl_idx)
 		#print(self.pl_idx_int)
