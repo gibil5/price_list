@@ -4,58 +4,81 @@
 
 
 
-            <!-- Create Reco --> 
-            <!-- Create Order --> 
-            <!-- Create Procedure --> 
-<!--
-            <button 
-                type="object" 
-                class="oe_highlight"
-                name="create_service"
-                string="Crear RECOMENDACION" 
-                groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 
-                states="consultation,service"
-            />
-
-            <button 
-                type="object" 
-                class="oe_highlight"
-                name="create_order_pro" 
-                string="Crear PRESUPUESTO - Pro" 
-        groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
-        
-                states="service"
-            />
-
-            <button 
-                type="object" 
-                class="oe_highlight"
-                name="create_procedure_man" 
-                string="Crear PROCEDIMIENTO" 
-                groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
-
-                states="invoice_procedure"
-            />
--->
-
-
-
-<!-- FORM 2 --> 
-        <record model="ir.ui.view" id="openhealth.treatment_2_form_view">
-
+<!-- FORM 3 --> 
+        <record model="ir.ui.view" id="openhealth.treatment_3_form_view">
             <field name="name">treatment.form</field>
             
             <field name="model">openhealth.treatment</field>
             
             <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
             
+                <form string="Treatment 3 Form">
+            
+                    <header>
+
+                            <!-- Consultation Medical --> 
+                            <button 
+                                type="object"
+
+                                class="oe_highlight"
+
+                                name="create_order_con_med"
+
+                                string="CONSULTA MEDICA"
+                            />
+
+
+
+                            <!-- Consultation Gyn --> 
+                            <button 
+                                type="object"
+
+                                class="oe_highlight"
+
+                                name="create_order_con_gyn"
+
+                                string="CONSULTA GINECOLOGIA"
+                            />
+
+
+
+                            <!-- Consultation Premium --> 
+                            <button 
+                                type="object"
+
+                                class="oe_highlight"
+
+                                name="create_order_con_chav"
+
+                                string="CONSULTA DR CHAVARRI"
+                            />
+
+                    </header>
+
+                    <sheet>
+                        <notebook></notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+<!-- FORM 2 --> 
+        <record model="ir.ui.view" id="openhealth.treatment_2_form_view">
+            <field name="name">treatment.form</field>
+            
+            <field name="model">openhealth.treatment</field>
+            
+            <field name="priority" eval="5"/>
             <field name="arch" type="xml">
             
                 <form string="Treatment 2 Form">
             
                     <header>
-
 
                             <!-- CO2 --> 
                             <button 
@@ -170,6 +193,42 @@
 
 
 
+
+
+            <!-- Create Reco --> 
+            <!-- Create Order --> 
+            <!-- Create Procedure --> 
+<!--
+            <button 
+                type="object" 
+                class="oe_highlight"
+                name="create_service"
+                string="Crear RECOMENDACION" 
+                groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+
+                states="consultation,service"
+            />
+
+            <button 
+                type="object" 
+                class="oe_highlight"
+                name="create_order_pro" 
+                string="Crear PRESUPUESTO - Pro" 
+        groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+        
+                states="service"
+            />
+
+            <button 
+                type="object" 
+                class="oe_highlight"
+                name="create_procedure_man" 
+                string="Crear PROCEDIMIENTO" 
+                groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+
+                states="invoice_procedure"
+            />
+-->
 
 
 

@@ -22,7 +22,7 @@
             
             <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
             
-            <field name="idx">7</field>
+            <field name="idx">5</field>
 
             <field name="x_user_name" search="[('name','=','Adriana Pereira')]"/>
         </record>

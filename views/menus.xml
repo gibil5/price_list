@@ -27,21 +27,48 @@
 
 		<!-- Product Templates - 2019 - All --> 
 		<menuitem   id="pricelist_product_template_2019_menu"
+
 					parent="parent_pricelist_product_template_2019_menu"
-					sequence="1"
+			
+					sequence="100"
+			
 					action="product_template_2019_list_action"
 				/>
 
 
 
-<!--
-					name="2019" 
-					name="Laser Co2" 
-					name="Laser exc" 
-					name="Laser ndyag" 
-					name="Quick Laser" 
-					name="Laser ipl" 
--->
+
+
+
+
+
+		<!-- Product Templates - 2019 - prod --> 
+		<menuitem   id="pricelist_product_template_2019_prod_menu"
+
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="1"
+
+					action="product_template_2019_prod_list_action"
+				/>
+
+
+
+
+
+		<!-- Product Templates - 2019 - Consultations --> 
+		<menuitem   id="pricelist_product_template_2019_consultation_menu"
+
+					parent="parent_pricelist_product_template_2019_menu"
+			
+					sequence="2"
+
+					action="product_template_2019_consultation_list_action"
+				/>
+
+
+
+
 
 		<!-- Product Templates - 2019 - Co2 --> 
 		<menuitem   id="pricelist_product_template_2019_co2_menu"
@@ -109,7 +136,7 @@
 
 					parent="parent_pricelist_product_template_2019_menu"
 			
-					sequence="13"
+					sequence="15"
 
 					action="product_template_2019_cos_list_action"
 				/>
@@ -119,7 +146,7 @@
 
 					parent="parent_pricelist_product_template_2019_menu"
 			
-					sequence="15"
+					sequence="13"
 
 					action="product_template_2019_med_list_action"
 				/>
@@ -161,16 +188,6 @@
 
 
 
-
-		<!-- Product Templates - 2019 - prod --> 
-		<menuitem   id="pricelist_product_template_2019_prod_menu"
-
-					parent="parent_pricelist_product_template_2019_menu"
-			
-					sequence="23"
-
-					action="product_template_2019_prod_list_action"
-				/>
 
 
 

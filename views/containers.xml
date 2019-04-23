@@ -67,7 +67,6 @@
 
 
                         <!-- Remove -->
-<!--
                         <button 
                                 type="object"
 
@@ -75,11 +74,11 @@
                                 
                                 name="remove_procurements"
                                 
-                                string="Remove Procurements"
+                                string="Kill Procurements"
                         />
--->
+
                         <!-- Remove -->
-<!--
+
                         <button 
                                 type="object"
 
@@ -87,9 +86,9 @@
                                 
                                 name="remove_stock_moves"
                                 
-                                string="Remove Stock Moves"
+                                string="Kill Stock Moves"
                         />
--->
+
 					</header>
 
 

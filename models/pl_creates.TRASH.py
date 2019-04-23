@@ -1,5 +1,17 @@
 
 
+	#name_list = [
+	#				'CONSULTA MEDICA',
+					#'CONSULTA GINECOLOGICA',
+					#'CONSULTA MEDICA DR. CHAVARRI',
+	#	]
+	# Create Order Lines
+	#for name in name_list:
+
+
+
+
+
 # ----------------------------------------------------------- Create Order Target -----------------
 # Create Order - By Line
 def create_order(self, target):

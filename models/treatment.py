@@ -19,28 +19,64 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Opens a new Form - Service ------------------------------
+
+	@api.multi
+	def create_order_con(self):
+		"""
+		Create Service
+		Opens a new form. For Reco choice. 
+		"""
+		print()
+		print('Pl - Create Order Con')
+
+		# Init
+		res_id = self.id
+		res_model = 'openhealth.treatment'
+		#view_id = self.env.ref('openhealth.treatment_2_form_view').id
+		view_id = self.env.ref('openhealth.treatment_3_form_view').id
+
+		# Open
+		return {
+			# Mandatory
+			'type': 'ir.actions.act_window',
+			'name': 'Open Treatment Current',
+			# Window action
+			'priority': 1,
+			'res_id': res_id,
+			'res_model': res_model,
+			#'view_id': view_id,
+			# Views
+			#"views": [[False, "form"]],
+
+			"views": [[view_id, "form"]],
+
+			'view_mode': 'form',
+			'target': 'current',
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False,
+			'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': False, }
+					},
+			'context': {
+						#'default_treatment': treatment_id,
+					}
+		}
+	# create_order_con
+
+
+
+
 
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
-	def create_order_con(self):
-
-		# Init
-		target = 'consultation'
-
-
-		#order = cre.create_order(self, target)
-		#order = pl_creates.pl_create_order_con(self)
-
-
-		# Create Cart
-
-
-		# Create Order
-		order = pl_creates.pl_create_order_con(self)
-
-		print(order)
-
-
+	def create_order_con_chav(self):
+		print()
+		print('Create Order Con Chav')
+		target = 'premium'
+		
+		order = self.create_order_con_target(target)
 
 		# Open Order
 		return {
@@ -64,7 +100,154 @@ class Treatment(models.Model):
 						},
 				'context': {}
 			}
+
+# ----------------------------------------------------------- Create Order Consultation  ----------
+	@api.multi
+	def create_order_con_gyn(self):
+		print()
+		print('Create Order Con Gyn')
+		target = 'gynecology'
+		
+		order = self.create_order_con_target(target)
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+
+
+# ----------------------------------------------------------- Create Order Consultation  ----------
+	@api.multi
+	def create_order_con_med(self):
+		print()
+		print('Create Order Con Med')
+		target = 'medical'
+
+		order = self.create_order_con_target(target)
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+
+
+
+# ----------------------------------------------------------- Create Order Consultation  ----------
+	@api.multi
+	#def create_order_con(self):
+	def create_order_con_target(self, target):
+		print()
+		print('Create Order Con Med')
+
+		# Init
+		#target = 'consultation'
+
+
+		#order = cre.create_order(self, target)
+		#order = pl_creates.pl_create_order_con(self)
+
+
+		# Create Cart
+
+
+		# Create Order
+		#order = pl_creates.pl_create_order_con(self)
+		order = pl_creates.pl_create_order_con(self, target)
+
+		#print(order)
+
+		return order
+
 	# create_order_con
+
+
+
+
+
+# ----------------------------------------------------------- Opens a new Form - Service ------------------------------
+
+	@api.multi
+	def create_service(self):
+		"""
+		Create Service
+		Opens a new form. For Reco choice. 
+		"""
+		print()
+		print('Pl - Create Service')
+
+		# Init
+		res_id = self.id
+		res_model = 'openhealth.treatment'
+		view_id = self.env.ref('openhealth.treatment_2_form_view').id
+
+		# Open
+		return {
+			# Mandatory
+			'type': 'ir.actions.act_window',
+			'name': 'Open Treatment Current',
+			# Window action
+			'priority': 1,
+			'res_id': res_id,
+			'res_model': res_model,
+			#'view_id': view_id,
+			# Views
+			#"views": [[False, "form"]],
+
+			"views": [[view_id, "form"]],
+
+			'view_mode': 'form',
+			'target': 'current',
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False,
+			'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': False, }
+					},
+			'context': {
+						#'default_treatment': treatment_id,
+					}
+		}
+	# create_service
+
+
+
+
 
 
 

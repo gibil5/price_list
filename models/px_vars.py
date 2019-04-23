@@ -2,38 +2,48 @@
 
 
 
+_family_list = [
+
+	# Prods
+	('topical', 	'Topico'),
+
+	# Servs
+	('laser', 		'Laser'),
+	('medical', 	'T. Medicos'),
+	('cosmetology', 'Cosmeatria'),
+	('gynecology', 	'Ginecologia'),
+	('promotion', 	'Promos'),
+	('echography', 	'Ecografia'),
+
+	('test', 	'test'),
+]
 
 
 
+_subfamily_list = [
+
+('consultation', 	'Consulta'),
 
 
+# Products
+('chavarri', 	'Chavarri'),
+('commercial', 	'Comercial'),
 
 
+# Laser
+('co2', 		'Laser Co2'),
+('quick', 		'QuickLaser'),
+('excilite', 	'Laser Excilite'),
+('m22', 		'Laser M22'),
 
+# Other
+('echography', 	'Ecografia'),
+('gynecology', 	'Ginecologia'),
+('promotion', 	'Promos'),
+('medical', 	'T. Medicos'),
+('cosmetology', 'Cosmeatria'),
 
-
-# File name
-_file_name_list = [
-	
-	#('services.csv', 'services.csv'),
-	#('products.csv', 'products.csv'),
-
-	('TEST.csv', 		'TEST.csv'),
-
-	('CO2.csv', 		'CO2.csv'),
-	('QUICK.csv', 		'QUICK.csv'),
-	('EXCILITE.csv', 	'EXCILITE.csv'),
-	('M22.csv', 		'M22.csv'),
-
-	('MEDICAL.csv', 	'MEDICAL.csv'),
-	('COSMETO.csv', 	'COSMETO.csv'),
-
-	('GINECO.csv', 		'GINECO.csv'),
-	('PROMOS.csv', 		'PROMOS.csv'),
-	('ECO.csv', 		'ECO.csv'),
-
-	#('PRODUCTS.csv', 	'PRODUCTS.csv'),
-	('PRODS.csv', 		'PRODS.csv'),
+('test', 	'test'),
 ]
 
 
@@ -41,16 +51,16 @@ _file_name_list = [
 
 
 
-# Treatment
-_price_policy_list = [
-
-('normal',		'Normal'),
-('vip',			'Vip'),
-('company',		'Empresa'),
-('manual',		'Manual'),
 
 
-]
+
+
+
+
+
+
+
+
 
 
 
@@ -60,8 +70,6 @@ _treatment_list = [
 
 
 
-('test_treatment',	'test_treatment'),
-('na',	'na'),
 
 ('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
 ('QUICKLASER',	'QUICKLASER'),
@@ -111,44 +119,14 @@ _treatment_list = [
 ('ECOGRAFIAS ESPECIALES DOPPLER COLOR',	'ECOGRAFIAS ESPECIALES DOPPLER COLOR'),
 ('ECOGRAFIAS ESPECIALES MORFOLOGICAS + DOPPLER COLOR',	'ECOGRAFIAS ESPECIALES MORFOLOGICAS + DOPPLER COLOR'),
 
+('test_treatment',	'test_treatment'),
+('na',	'na'),
 ]
 
 
 
 
 
-
-_manufacturer_list = [
-	('na', 				'na'),
-	
-	('HILDA', 				'HILDA'),
-	('LA COOPER', 			'LA COOPER'),
-	('ELIAS OCHANTE', 		'ELIAS OCHANTE'),
-	('BOTICA FRANCESA', 	'BOTICA FRANCESA'),
-	('BOTICA VILLEGAS', 	'BOTICA VILLEGAS'),
-
-
-	('CLINICA CHAVARRI', 	'CLINICA CHAVARRI'),
-	('BOTICA SANTA TERESA', 'BOTICA SANTA TERESA'),
-	('EURODERMA', 			'EURODERMA'),
-	('MEDISCIENCE', 		'MEDISCIENCE'),
-	('JEUNESSE', 			'JEUNESSE'),
-	('DROGUERIA ZOMAX', 	'DROGUERIA ZOMAX'),
-	('AKRON', 				'AKRON'),
-
-]
-
-_brand_list = [
-	('na', 				'na'),
-	
-	('CLINICA CHAVARRI', 	'CLINICA CHAVARRI'),
-	('BOTICA SANTA TERESA', 'BOTICA SANTA TERESA'),
-	('EURODERMA', 			'EURODERMA'),
-	('MEDISCIENCE', 		'MEDISCIENCE'),
-	('JEUNESSE', 			'JEUNESSE'),
-	('DROGUERIA ZOMAX', 	'DROGUERIA ZOMAX'),
-	('AKRON', 				'AKRON'),
-]
 
 
 
@@ -173,75 +151,6 @@ _type_list = [
 	('service', 'service'),
 	('product', 'product'),
 ]
-
-
-_family_list = [
-	('test', 	'test'),
-
-	# Prods
-	#('topical', 	'topical'),
-	('topical', 	'Topico'),
-	
-	# Servs
-	#('laser', 		'laser'),
-	#('medical', 	'medical'),
-	#('cosmetology', 'cosmetology'),
-	#('gynecology', 	'gynecology'),
-	#('promotion', 	'promotion'),
-	#('ecography', 	'ecography'),
-
-	# Servs
-	('laser', 		'Laser'),
-	('medical', 	'T. Medicos'),
-	('cosmetology', 'Cosmeatria'),
-	('gynecology', 	'Ginecologia'),
-	('promotion', 	'Promos'),
-
-	#('ecography', 	'Ecografia'),
-	('echography', 	'Ecografia'),
-]
-
-
-
-_subfamily_list = [
-('test', 	'test'),
-
-
-# Products
-#('chavarri', 	'chavarri'),
-#('commercial', 'commercial'),
-('chavarri', 	'Chavarri'),
-('commercial', 	'Comercial'),
-
-
-# Laser
-#('co2', 		'co2'),
-#('quick', 		'quick'),
-#('excilite', 	'excilite'),
-#('m22', 		'm22'),
-('co2', 		'Laser Co2'),
-('quick', 		'QuickLaser'),
-('excilite', 	'Laser Excilite'),
-('m22', 		'Laser M22'),
-
-# Other
-#('ecography', 	'ecography'),
-#('gynecology', 	'gynecology'),
-#('promotion', 	'promotion'),
-#('medical', 	'medical'),
-#('cosmetology', 'cosmetology'),
-
-#('ecography', 	'Ecografia'),
-('echography', 	'Ecografia'),
-
-('gynecology', 	'Ginecologia'),
-('promotion', 	'Promos'),
-('medical', 	'T. Medicos'),
-('cosmetology', 'Cosmeatria'),
-
-
-]
-
 
 
 
@@ -378,3 +287,71 @@ _sessions_list = [
 
 
 
+
+# File name
+_file_name_list = [
+	
+	#('services.csv', 'services.csv'),
+	#('products.csv', 'products.csv'),
+
+	('TEST.csv', 		'TEST.csv'),
+
+	('CO2.csv', 		'CO2.csv'),
+	('QUICK.csv', 		'QUICK.csv'),
+	('EXCILITE.csv', 	'EXCILITE.csv'),
+	('M22.csv', 		'M22.csv'),
+
+	('MEDICAL.csv', 	'MEDICAL.csv'),
+	('COSMETO.csv', 	'COSMETO.csv'),
+
+	('GINECO.csv', 		'GINECO.csv'),
+	('PROMOS.csv', 		'PROMOS.csv'),
+	('ECO.csv', 		'ECO.csv'),
+
+	#('PRODUCTS.csv', 	'PRODUCTS.csv'),
+	('PRODS.csv', 		'PRODS.csv'),
+]
+
+
+
+# Price Policy
+_price_policy_list = [
+('normal',		'Normal'),
+('vip',			'Vip'),
+('company',		'Empresa'),
+('manual',		'Manual'),
+]
+
+
+
+
+_manufacturer_list = [
+	('na', 				'na'),
+	
+	('HILDA', 				'HILDA'),
+	('LA COOPER', 			'LA COOPER'),
+	('ELIAS OCHANTE', 		'ELIAS OCHANTE'),
+	('BOTICA FRANCESA', 	'BOTICA FRANCESA'),
+	('BOTICA VILLEGAS', 	'BOTICA VILLEGAS'),
+
+	('CLINICA CHAVARRI', 	'CLINICA CHAVARRI'),
+	('BOTICA SANTA TERESA', 'BOTICA SANTA TERESA'),
+	('EURODERMA', 			'EURODERMA'),
+	('MEDISCIENCE', 		'MEDISCIENCE'),
+	('JEUNESSE', 			'JEUNESSE'),
+	('DROGUERIA ZOMAX', 	'DROGUERIA ZOMAX'),
+	('AKRON', 				'AKRON'),
+
+]
+
+_brand_list = [
+	('na', 				'na'),
+	
+	('CLINICA CHAVARRI', 	'CLINICA CHAVARRI'),
+	('BOTICA SANTA TERESA', 'BOTICA SANTA TERESA'),
+	('EURODERMA', 			'EURODERMA'),
+	('MEDISCIENCE', 		'MEDISCIENCE'),
+	('JEUNESSE', 			'JEUNESSE'),
+	('DROGUERIA ZOMAX', 	'DROGUERIA ZOMAX'),
+	('AKRON', 				'AKRON'),
+]

@@ -32,13 +32,13 @@ class ProductTemplate(models.Model):
 		"""
 		Update
 		"""
-		print('Product Template - Update')
+		#print('Product Template - Update')
 
 		self.pl_idx_int = int(self.pl_idx)
 
-		print(self.name)
-		print(self.pl_idx)
-		print(self.pl_idx_int)
+		#print(self.name)
+		#print(self.pl_idx)
+		#print(self.pl_idx_int)
 
 
 
@@ -90,7 +90,8 @@ class ProductTemplate(models.Model):
 
 
 	pl_idx_int = fields.Integer(
-			'Idx I',
+			#'Idx I',
+			'Indice',
 			#required=True,
 		)
 

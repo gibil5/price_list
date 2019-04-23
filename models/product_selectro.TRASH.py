@@ -22,10 +22,6 @@
 
 
 
-	#subfamily = fields.Selection(
-	#		selection=px_vars._subfamily_list,
-	#		required=True,
-	#	)
 
 	#treatment = fields.Selection(
 	#		selection=px_vars._treatment_list,

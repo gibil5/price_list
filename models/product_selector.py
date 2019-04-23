@@ -38,13 +38,40 @@ class ProductSelector(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Categories ------------------------------------------------------
+	subfamily = fields.Selection(
+	
+			selection=px_vars_ext._pro_subfamily_list,
+	
+			#required=True,
+		)
+	@api.onchange('subfamily')
+	def _onchange_subfamily(self):
+		if self.subfamily != False: 
+
+			if self.x_type == 'product': 
+			
+				return { 'domain': { 
+										'product_id': [			
+														('type', '=', 'product'),
+														('pl_subfamily', '=', self.subfamily),
+														('pl_price_list', '=', '2019'),
+													],
+									},
+						}
+
+
+
+
 # ----------------------------------------------------------- Categories ------------------------------------------------------
 	
 	family = fields.Selection(
 
 			selection=px_vars_ext._ser_family_list,
 		
-			required=True,
+			#required=True,
 		)
 
 	@api.onchange('family')
@@ -59,6 +86,7 @@ class ProductSelector(models.Model):
 													],
 									},
 						}
+
 
 	treatment_laser = fields.Selection(
 

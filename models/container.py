@@ -3,11 +3,8 @@
 from __future__ import print_function
 import csv
 import pandas
-
 from openerp import models, fields, api
-#import product
 from . import px_vars
-
 
 class Container(models.Model):
 
@@ -39,18 +36,17 @@ class Container(models.Model):
 															#limit=10,
 													)
 		for procurement in procs:
-			print(procurement)
-			print(procurement.name)
+			#print(procurement)
+			#print(procurement.name)
 			procurement.state = 'cancel'
-			print(procurement.state)
-
+			#print(procurement.state)
 			procurement.unlink()
-
-			print()
-
+			#print()
 
 
 
+
+# ----------------------------------------------------------- Remove Stock Moves ----------------------------------------------------
 	@api.multi
 	def remove_stock_moves(self):
 		"""
@@ -86,6 +82,32 @@ class Container(models.Model):
 		Update
 		"""
 		print('Container Update')
+
+
+		# Search
+		products = self.env['product.template'].search([
+															#('x_name_short', 'in', [name]),
+															('pl_price_list', '=', '2019'),
+														],
+															#order='date_begin asc',
+															#limit=1,
+													)
+		for product in products:
+			print(product.name)
+			product.update()
+
+
+
+
+
+
+# ----------------------------------------------------------- Update ----------------------------------------------------
+	@api.multi
+	def update_old(self):
+		"""
+		Update
+		"""
+		print('DEP - Container Update')
 
 		# Search
 		products = self.env['price_list.product'].search([

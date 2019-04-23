@@ -1,6 +1,16 @@
 
 
 
+# Sub Family
+_pro_subfamily_list = [
+
+	# Prods
+('chavarri', 	'CHAVARRI'),
+('commercial', 	'COMERCIAL'),
+]
+
+
+
 # Family
 _ser_family_list = [
 
@@ -12,7 +22,6 @@ _ser_family_list = [
 	('promotion', 	'PROMOCIONES'),
 	('echography', 	'ECOGRAFIA'),
 ]
-
 
 
 

@@ -7,7 +7,6 @@
 from __future__ import print_function
 import datetime
 from openerp import models, fields, api
-
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
@@ -22,25 +21,69 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Validate ----------------------------
-	# States
-	READONLY_STATES = {
-		'draft': 		[('readonly', False)],
-		'sent': 		[('readonly', False)],
-		'sale': 		[('readonly', True)],
-		'cancel': 		[('readonly', True)],
-	}
+
+# ----------------------------------------------------------- Update Descriptors ------------------
 
 
-	# Doctor
-	x_doctor = fields.Many2one(
+	@api.multi
+	def update_descriptors(self):
+		"""
+		For Order Validation.
+		Update Family and Product.
+		"""
+		print()
+		print('Pl - Validate')
 
-			'oeh.medical.physician',
-		
-			string="Médico",
-			states=READONLY_STATES,
-		)
+		out = False
 
+		for line in self.order_line:
+
+			print(line.product_id.pl_subfamily)
+
+			if not out:
+
+				# Consultations
+				#if line.product_id.categ_id.name in ['Consulta', 'Consultas']:
+				if line.product_id.pl_subfamily in ['consultation']:
+					self.x_family = 'consultation'
+					#self.x_product = line.product_id.x_name_ticket
+					out = True
+					print('mark 1')
+
+
+				# Procedures
+				#elif line.product_id.categ_id.name in ['Procedimiento', 'Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']:
+				#elif line.product_id.pl_family in ['laser', 'medical']:
+				elif line.product_id.pl_family in ['laser', 'medical', 'gynecology', 'echography']:
+					self.x_family = 'procedure'
+					#self.x_product = line.product_id.x_name_ticket
+					out = True
+					print('mark 2')
+
+
+				# Cosmetology
+				#elif line.product_id.categ_id.name == 'Cosmeatria':
+				elif line.product_id.pl_family in ['cosmetology']:
+					self.x_family = 'cosmetology'
+					#self.x_product = line.product_id.x_name_ticket
+					out = True
+					print('mark 3')
+
+
+				# Products
+				else:
+					if self.x_family != 'procedure':
+						self.x_family = 'product'
+					#self.x_product = line.product_id.x_name_ticket
+					print('mark 4')
+
+
+		#print
+		#print 'Update descriptors'
+		#print self.x_family
+		#print self.x_product
+
+	#update_descriptors
 
 
 # ----------------------------------------------------------- Validate ----------------------------
@@ -229,3 +272,18 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Validate ----------------------------
+	# States
+	READONLY_STATES = {
+		'draft': 		[('readonly', False)],
+		'sent': 		[('readonly', False)],
+		'sale': 		[('readonly', True)],
+		'cancel': 		[('readonly', True)],
+	}
+
+	# Doctor
+	x_doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string="Médico",
+			states=READONLY_STATES,
+		)

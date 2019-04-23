@@ -47,6 +47,14 @@
                                                                 }"
                                  />
 
+
+                                <field name="subfamily"
+                                                            attrs="{
+                                                                        'invisible':[('x_type', '==', 'service')], 
+                                                                }"
+                                 />
+
+
                                 <field name="treatment_laser"     string="Tratamiento laser"
 
                                                             attrs="{

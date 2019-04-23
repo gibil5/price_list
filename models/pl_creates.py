@@ -10,18 +10,19 @@ from . import pl_user
 
 # ----------------------------------------------------------- Create Order Target -----------------
 # Create Order - By Line
-def pl_create_order_con(self):
+#def pl_create_order_con(self):
+def pl_create_order_con(self, target):
 	"""
 	high level support for doing this and that.
 	"""
 	print()
 	print('Pl - Create Order Con')
+	print(target)
 
 
 	# Create Order
 	order = self.env['sale.order'].create({
 													'state':'draft',
-													'x_family': 'procedure',
 													'x_doctor': self.physician.id,
 													'partner_id': self.partner_id.id,
 													'patient': self.patient.id,
@@ -30,43 +31,43 @@ def pl_create_order_con(self):
 													'x_id_doc': self.patient.x_id_doc,
 													'x_id_doc_type': self.patient.x_id_doc_type,
 
+													'x_family': 'consultation',
 													'treatment': self.id,
 
 													#'pricelist_id': pl.id,
 												})
-	print(order)
+	#print(order)
 
 
-	name_list = [
-					'CONSULTA MEDICA',
-					#'CONSULTA GINECOLOGICA',
-					#'CONSULTA MEDICA DR. CHAVARRI',
-		]
+	# Init
+	_dic_con = {
+					'medical':		'CONSULTA MEDICA',
+					'gynecology':	'CONSULTA GINECOLOGICA',
+					'premium':		'CONSULTA MEDICA DR. CHAVARRI',
+	}
+
+	name = _dic_con[target]
 
 
-	# Create Order Lines
-	for name in name_list:
+	# Search
+	product = self.env['product.product'].search([
+														('name', 'in', [name]),
+														('pl_price_list', 'in', ['2019']),
+													],
+														#order='date_begin asc',
+														#limit=1,
+												)
+	print(product)
+	print(product.name)
 
 
-		# Search
-		product = self.env['product.product'].search([
-															('name', 'in', [name]),
-															('pl_price_list', 'in', ['2019']),
-														],
-															#order='date_begin asc',
-															#limit=1,
-													)
-		print(product)
-		print(product.name)
+	# Create Order Line
+	ol = order.order_line.create({
+									'name': 			product.name,
+									'product_id': 		product.id,
 
-
-		# Create Order Line
-		ol = order.order_line.create({
-										'name': 			product.name,
-										'product_id': 		product.id,
-
-										'order_id': 		order.id,
-									})
+									'order_id': 		order.id,
+								})
 	return order
 
 
@@ -88,7 +89,6 @@ def pl_create_order(self):
 	# Create Order
 	order = self.env['sale.order'].create({
 													'state':'draft',
-													'x_family': 'procedure',
 													'x_doctor': self.physician.id,
 													'partner_id': self.partner_id.id,
 													'patient': self.patient.id,
@@ -97,6 +97,7 @@ def pl_create_order(self):
 													'x_id_doc': self.patient.x_id_doc,
 													'x_id_doc_type': self.patient.x_id_doc_type,
 
+													'x_family': 'procedure',
 													'treatment': self.id,
 
 													#'pricelist_id': pl.id,
