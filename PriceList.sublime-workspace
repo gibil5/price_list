@@ -529,19 +529,19 @@
 			}
 		},
 		{
-			"file": "models/procedure.py",
+			"file": "readme.txt",
 			"settings":
 			{
-				"buffer_size": 1729,
+				"buffer_size": 66,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/procedure.xml",
+			"file": "models/procedure.py",
 			"settings":
 			{
-				"buffer_size": 6436,
+				"buffer_size": 1887,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -550,7 +550,7 @@
 			"file": "models/pro_ses_funcs.py",
 			"settings":
 			{
-				"buffer_size": 4595,
+				"buffer_size": 2473,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -559,16 +559,16 @@
 			"file": "models/pro_con_funcs.py",
 			"settings":
 			{
-				"buffer_size": 3351,
+				"buffer_size": 1818,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/time_funcs.py",
+			"file": "views/procedure.xml",
 			"settings":
 			{
-				"buffer_size": 557,
+				"buffer_size": 6292,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -647,6 +647,10 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/models/time_funcs.py",
+		"/Users/gibil/cellar/github/price_list/models/pro_con_funcs.TRASH.py",
+		"/Users/gibil/cellar/github/price_list/models/pro_ses_funcs.TRASH.py",
+		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/views/procedure_actions.xml",
 		"/Users/gibil/cellar/github/price_list/views/procedure.xml",
 		"/Users/gibil/cellar/github/price_list/views/account_contasis_actions.xml",
@@ -676,7 +680,6 @@
 		"/Users/gibil/cellar/github/price_list/views/configurator_emr.xml",
 		"/Users/gibil/cellar/github/price_list/views/menus_dev.xml",
 		"/Users/gibil/cellar/github/price_list/views/menus.xml",
-		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/views/product_pricelist.xml",
 		"/Users/gibil/cellar/github/price_list/views/TRASH.xml",
 		"/Users/gibil/cellar/github/price_list/views/payment_method_line.xml",
@@ -771,14 +774,11 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/price_list/models/container.py",
 		"/Users/gibil/cellar/github/price_list/views/product_templae_search.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/price_list/views/product_templates.xml",
-		"/Users/gibil/cellar/github/price_list/views/products_search.xml",
-		"/Users/gibil/Virtualenvs/loader/loader/loader.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/price_list/models/buffer.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/price_list/models/patterns.py"
+		"/Users/gibil/cellar/github/price_list/views/products_search.xml"
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -792,6 +792,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"control_id",
+			"session_id",
 			"time_funcs",
 			"nr_controls",
 			"action",
@@ -1057,7 +1059,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1073,8 +1075,8 @@
 						"selection":
 						[
 							[
-								1688,
-								1688
+								157,
+								157
 							]
 						],
 						"settings":
@@ -1092,19 +1094,47 @@
 				},
 				{
 					"buffer": 1,
-					"file": "models/procedure.py",
+					"file": "readme.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1729,
+						"buffer_size": 66,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								168,
-								168
+								64,
+								64
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "models/procedure.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1887,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24,
+								104
 							]
 						],
 						"settings":
@@ -1113,39 +1143,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 451.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "views/procedure.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6436,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5042,
-								5042
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3423.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1154,15 +1155,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4595,
+						"buffer_size": 2473,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1119,
-								1129
+								74,
+								74
 							]
 						],
 						"settings":
@@ -1170,7 +1171,7 @@
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 1.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -1183,15 +1184,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3351,
+						"buffer_size": 1818,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								129,
-								129
+								56,
+								56
 							]
 						],
 						"settings":
@@ -1204,37 +1205,36 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "models/time_funcs.py",
+					"file": "views/procedure.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 557,
+						"buffer_size": 6292,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								557,
-								557
+								606,
+								606
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1291,7 +1291,7 @@
 	"project": "PriceList.sublime-project",
 	"replace":
 	{
-		"height": 66.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
