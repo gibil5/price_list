@@ -50,6 +50,13 @@ class ProductTemplate(models.Model):
 
 
 # ---------------------------------------------- Fields - Chars -----------------------------------
+
+	pl_account = fields.Char(
+			'Cuenta contable',
+			required=False,
+		)
+
+
 	pl_time_stamp = fields.Char(
 			required=False,
 		)

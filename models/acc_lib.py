@@ -2,17 +2,11 @@
 import datetime
 from . import acc_vars
 
-#from openerp import models, fields, api
-
 #def module_method():
 #	return "I am a module method"
 
 #class AccLib:
 class AccFuncs:
-
-
-	_name = 'price_list.acc_funcs'
-
 
 	@staticmethod
 	def static_method():

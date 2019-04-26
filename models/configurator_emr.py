@@ -62,7 +62,7 @@ class ConfiguratorEmr(models.Model):
 
 # ----------------------------------------------------------- Redefined ---------------------------
 
-	name = fields.Selection(			
+	name = fields.Selection(
 			[
 				#('emr', 'Historias'),
 				#('lima', 'Sede Lima'),
@@ -157,5 +157,3 @@ class ConfiguratorEmr(models.Model):
 			'Hora Cierre',
 			default=fields.Date.today,
 		)
-
-

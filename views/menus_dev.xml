@@ -4,10 +4,12 @@
 
 
 
-<!-- Main - Price List -->
-<menuitem   id="main_dev_menu"
-            sequence="-7"
-			name="Dev"    
+<!-- Main - Dev -->
+<menuitem   	id="main_dev_menu"
+				sequence="-7"
+				name="Dev"
+
+				groups="openhealth.roots"
 		/>
 
 

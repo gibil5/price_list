@@ -46,6 +46,7 @@ class ProductSelector(models.Model):
 			selection=px_vars_ext._pro_subfamily_list,
 	
 			#required=True,
+			string='Familia',
 		)
 	@api.onchange('subfamily')
 	def _onchange_subfamily(self):
@@ -71,6 +72,7 @@ class ProductSelector(models.Model):
 
 			selection=px_vars_ext._ser_family_list,
 		
+			string='Familia',
 			#required=True,
 		)
 
@@ -187,7 +189,10 @@ class ProductSelector(models.Model):
 
 	# Qty 
 	product_uom_qty = fields.Float(
-			string='Quantity', 
+
+			#string='Quantity',
+			string='Cantidad',
+
 			digits=(16, 0), 
 			required=True, 
 			default=1.0,

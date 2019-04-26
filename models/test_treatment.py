@@ -90,6 +90,7 @@ def create_recommendations(self):
 
 					'gyn',
 					'echo',
+					
 					'prom',
 
 					'prod',
@@ -107,9 +108,10 @@ def create_recommendations(self):
 
 					'gyn':		'ANALISIS - Vagina - Biopsias',
 					'echo':		'ECOGRAFIAS ESPECIALES - Cadera Pediatrica (Bilateral) - 1 sesion',
+
 					'prom':		'CARBOXITERAPIA - Localizado Cuerpo - Rejuvenecimiento Facial - 6 sesiones',
 
-					'prod':		'ACNETOPIC 200ml',
+					'prod':		'ACNETOPIC 200ML',
 		}
 
 	model_dic = {
@@ -147,7 +149,9 @@ def create_recommendations(self):
 
 		print()
 		print(product)
+		print(product_id)
 		print(product.name)
+
 		if False:
 			print(product.pl_family)
 			print(product.pl_subfamily)

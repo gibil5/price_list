@@ -6,21 +6,39 @@
  	Last up: 				23 April 2019
 """
 from openerp import models, fields, api
-
 from . import acc_lib
-
 from . import acc_vars
-
 from . import pl_acc_lib
 
 class AccountLine(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-
 	_inherit = 'openhealth.account.line'
 
 	_order = 'date_time asc'
+
+
+
+# ----------------------------------------------------------- Relational -----------------------------
+
+	product = fields.Many2one(
+
+			'product.product',
+		
+			string="Producto",
+		)
+
+
+	account_id = fields.Many2one(
+			'openhealth.account.contasis'
+		)
+
+
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string="Nombre",
+		)
 
 
 
@@ -142,12 +160,6 @@ class AccountLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational --------------------------
-
-	# Account
-	account_id = fields.Many2one(
-			'openhealth.account.contasis'
-		)
 
 
 
@@ -391,19 +403,11 @@ class AccountLine(models.Model):
 			'Nr',
 		)
 
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string="Nombre",
-		)
 
 	qty = fields.Integer(
 			string="Cantidad",
 		)
 
-	product = fields.Many2one(
-			'product.product',
-			string="Producto",
-		)
 
 	product_type = fields.Selection(
 			[
@@ -454,5 +458,3 @@ class AccountLine(models.Model):
 	amount_tax = fields.Float(
 			string="Impuesto",
 		)
-
-

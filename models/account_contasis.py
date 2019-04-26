@@ -24,6 +24,9 @@ class AccountContasis(models.Model):
 	# Update
 	@api.multi
 	def update(self):
+		"""
+		Update Account
+		"""
 		#print()
 		#print('Pl - Account - Update')
 
@@ -59,13 +62,13 @@ class AccountContasis(models.Model):
 				document = order.patient.x_ruc
 				document_type = '6'
 				#print('mark 1')
-			
+
 			else:
 				if order.patient.x_dni != False: 				# Dni
 					document = order.patient.x_dni
 					document_type = '1'
 					#print('mark 2')
-			
+
 				else: 											# Other
 					document = order.patient.x_id_doc
 					document_type = acc_vars._doc_type[order.patient.x_id_doc_type]

@@ -1,15 +1,25 @@
 # -*- coding: utf-8 -*-
+"""
+		pl_acc_lib.py
 
-
-
-
+ 		Created: 				12 April 2019
+ 		Last up: 	 		 	12 April 2019
+"""
 
 # ----------------------------------------------------------- Get Cuentab ---------------------
 def get_cuentab(self, product_type):
-	#print()
-	#print('Pl Acc Lib - Get Cuentab')
+	"""
+	Get Cuentab
+	Used by Accounting
+	"""
+	print()
+	print('Pl Acc Lib - Get Cuentab')
 	#print(self)
 	#print(product_type)
+	#print(self.product)
+	print(self.product.name)
+	print(self.product.pl_account)
+
 
 	# Search
 	configurator = self.env['openhealth.configurator.emr'].search([
@@ -21,7 +31,8 @@ def get_cuentab(self, product_type):
 
 
 	if product_type in ['product']:
-		cuentab = configurator.cuentab_products
+		#cuentab = configurator.cuentab_products
+		cuentab = self.product.pl_account
 
 	elif product_type in ['service']:
 		cuentab = configurator.cuentab_services

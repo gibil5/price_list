@@ -30,17 +30,18 @@
 				<!-- Notebook --> 
 				<xpath expr="//notebook" position="inside">
 					<page string="Lista de Precios 2019">
+
 						<group>
+							<field name="pl_account"/>
+						</group>
 
+
+						<group>
 							<field name="pl_price_list"/>
-
 							<field name="pl_name_short"/>
-
 							<field name="pl_prefix"/>
 							<field name="pl_idx"/>
 							<field name="pl_code"/>
-
-
 
 							<field name="pl_family"/>
 							<field name="pl_subfamily"/>
@@ -61,14 +62,12 @@
 							<field name="pl_price_session"/>
 							<field name="pl_price_session_next"/>
 							<field name="pl_price_max"/>
+						</group>
 
+						<group>
 						</group>
 					</page>
-
-
 				</xpath>
-
-
 			</field>
 		</record>
 
@@ -113,6 +112,7 @@
 
 					<field name="pl_price_company"/>
 
+					<field name="pl_account"/>
 
 
 

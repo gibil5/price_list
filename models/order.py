@@ -212,8 +212,7 @@ class sale_order(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print('o ps p')
-		#return self.open_product_selector('product')
+		#print('o ps p')
 		return self.pl_open_product_selector('product')
 
 
@@ -223,8 +222,7 @@ class sale_order(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print('o ps s')
-		#return self.open_product_selector('service')
+		#print('o ps s')
 		return self.pl_open_product_selector('service')
 
 
@@ -236,7 +234,7 @@ class sale_order(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print('o ps')
+		#print('o ps')
 
 
 		# Init Vars

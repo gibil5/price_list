@@ -1,0 +1,38 @@
+                    <field name="nr_sessions"/>
+                    <field name="nr_controls"/>
+
+
+
+                            <!-- Buttons --> 
+
+                                <!-- Nr Controls -->                                                                
+                                <!-- Nr Sessions --> 
+<!--
+                            <div class="oe_left" style="width: 300px;" name="buttons">
+                                <button type="action" class="oe_stat_button" icon="fa-list"
+
+                                    name="%(session_med_form_action)d"  
+                                    
+                                    attrs="{ 'invisible':[  ('nr_sessions','=',0), ]}"
+                                    context="{                                  
+                                                'search_default_procedure': active_id,
+                                            }"                                          
+                                    >
+                                    <field string="Sesiones" name="nr_sessions" widget="statinfo"/>
+                                </button>   
+
+
+                                <button type="action" class="oe_stat_button"    
+                                    name="%(control_form_action)d"  
+                                    context="{                                  
+                                                'search_default_procedure': active_id,
+                                            }"  
+                                    attrs="{'invisible':[
+                                                                ('laser', '!=', 'laser_quick'), 
+                                                                ('laser', '!=', 'laser_co2'), 
+                                                        ]}"
+                                    icon="fa-list">
+                                    <field string="Controles" name="nr_controls" widget="statinfo"/>
+                                </button>   
+                            </div>
+-->

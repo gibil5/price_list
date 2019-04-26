@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
+"""
+	Container
 
+	Created: 			23 Apr 2019
+	Last updated: 		23 Apr 2019
+"""
 from __future__ import print_function
-import csv
 import pandas
 from openerp import models, fields, api
 from . import px_vars
 
 class Container(models.Model):
+	"""
+	Container
+	"""
 
 	_name = 'price_list.container'
 
@@ -156,7 +163,7 @@ class Container(models.Model):
 	product_ids = fields.One2many(
 			'price_list.product',
 
-			'container_id',		
+			'container_id',
 		)
 
 
@@ -165,6 +172,9 @@ class Container(models.Model):
 
 	@api.multi
 	def create_products_2019(self):
+		"""
+		Create Products 2019
+		"""
 		print()
 		print('Create Products 2019')
 
@@ -186,7 +196,7 @@ class Container(models.Model):
 
 
 		for pro in products:
-			
+
 			#print(pro.name)
 
 
@@ -251,6 +261,9 @@ class Container(models.Model):
 
 	@api.multi
 	def update_price_list(self):
+		"""
+		Update Price list
+		"""
 		print('Update Price list')
 
 		# Search
@@ -278,13 +291,16 @@ class Container(models.Model):
 			#print(pro.pl_price_list)
 
 		#print(count)
-		
+
 
 
 
 
 
 	def check(self, value):
+		"""
+		Check var
+		"""
 		#print('Check')
 		#print(value)
 
@@ -347,13 +363,13 @@ class Container(models.Model):
 			if row['x_type'] in ['product']:
 				manufacturer = row['manufacturer']
 				brand = row['brand']
-				name = 			row['name'].upper()
-				name_short = 	row['name_short'].upper()
+				name = row['name'].upper()
+				name_short = row['name_short'].upper()
 			else:
 				manufacturer = False
 				brand = False
-				name = 			row['name']
-				name_short = 	row['name_short']
+				name = row['name']
+				name_short = row['name_short']
 
 
 
@@ -416,7 +432,7 @@ class Container(models.Model):
 
 												'price': 				price,
 												'price_vip': 			price_vip,
-												'price_company': 		price_company,												
+												'price_company': 		price_company,
 												'price_session': 		price_session,
 												'price_session_next': 	price_session_next,
 												'price_max': 			price_max,
@@ -436,7 +452,7 @@ class Container(models.Model):
 
 
 
-			#self.create_product(prefix, idx, code, x_type, family, subfamily, name_short, name, treatment, zone, pathology, level, sessions, time, 
+			#self.create_product(prefix, idx, code, x_type, family, subfamily, name_short, name, treatment, zone, pathology, level, sessions, time,
 			#price, price_vip, price_company, price_session, price_session_next, price_max)
 
 		#f = open(fname, 'r')
@@ -444,7 +460,7 @@ class Container(models.Model):
 		#my_list = []
 
 		#with open('services.csv', 'r') as f:
-		
+
 		#with open(fname, 'r') as f:
 
 		#	reader = csv.reader(f)
@@ -458,7 +474,7 @@ class Container(models.Model):
 
 				# Create
 				#product = self.product_ids.create({
-				#										'name': name,								
+				#										'name': name,
 				#										'container_id': self.id,
 				#		})
 				#print(product)
@@ -472,19 +488,22 @@ class Container(models.Model):
 
 
 	def open_with_pandas_read_csv(self, filename):
+		"""
+		Open with Pandas
+		"""
 		csv_delimiter = ","
 		df = pandas.read_csv(filename, sep=csv_delimiter)
 		#data = df.values
 		#data = df
-		#return data    
-		return df    
+		#return data
+		return df
 
 
 
 	#def create_product(self, name):
 		# Create
 	#	product = self.product_ids.create({
-	#											'name': name,								
+	#											'name': name,
 	#											'container_id': self.id,
 	#			})
 	#	print(product)

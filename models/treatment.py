@@ -19,6 +19,45 @@ class Treatment(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Create Procedure Manual  ------------
+	@api.multi
+	def create_procedure_man(self):
+		print()
+		print('Pl - Create Procedure - Manual')
+
+
+		# Loop - Create Procedures
+		ret = 0
+		for order in self.order_pro_ids:
+
+			if order.state == 'sale':
+
+				# Update
+				order.x_procedure_created = True
+
+				# Loop
+				for line in order.order_line:
+
+
+					# Init
+					date_app = order.date_order
+					product_id = line.product_id
+					product_template = self.env['product.template'].search([
+																				('x_name_short', '=', product_id.x_name_short),
+												])
+					subtype = product_template.x_treatment
+
+
+					# Create - This
+					ret = cre.create_procedure_go(self, date_app, subtype, product_id.id)
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Opens a new Form - Service ------------------------------
 
 	@api.multi

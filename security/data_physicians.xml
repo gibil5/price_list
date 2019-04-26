@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-<!--
-    <data noupdate='0'>
--->
+<!--<data noupdate='0'>-->
     <data>
  
  
-
-<!-- Data - New Physicians -->
-
-
-
-
-
 <!-- Adriana Pereira -->
         <record id="dr_pereira" model="oeh.medical.physician">
 
@@ -25,7 +16,25 @@
             <field name="idx">5</field>
 
             <field name="x_user_name" search="[('name','=','Adriana Pereira')]"/>
+
+            <field name="active" eval="True" />
         </record>
+
+
+
+<!-- Rodrigo Loaiza -->
+<!--
+        <record id="dr_loayza" model="oeh.medical.physician">
+            <field name="name">Dr. Loaiza - Pl</field>
+            <field name="consultancy_type">Residential</field>
+            <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+            <field name="idx">4</field>
+
+            <field name="x_user_name" search="[('name','=','Rodrigo Loaiza')]"/>
+
+            <field name="active" eval="False" />
+        </record>
+-->
 
 
 
