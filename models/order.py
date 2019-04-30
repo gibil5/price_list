@@ -20,6 +20,158 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Descriptors -------------------------------
+	# Product
+	pl_price_list = fields.Char(
+			string="Pl - Price List",
+
+			compute='_compute_pl_price_list',
+		)
+
+	@api.multi
+	def _compute_pl_price_list(self):
+		for record in self:
+
+			price_list = ''
+
+			for line in record.order_line:
+				price_list =line.get_price_list()
+
+			record.pl_price_list = price_list
+
+
+
+
+
+
+	# Family
+	#pl_family = fields.Selection(
+	pl_family = fields.Char(
+
+			string="Pl - Familia",
+
+			#selection=[
+			#				('product', 'Producto'),
+			#				('consultation', 'Consulta'),
+			#				('procedure', 'Procedimiento'),
+			#				('cosmetology', 'Cosmiatría'),
+			#],
+
+			compute='_compute_pl_family',
+		)
+
+	@api.multi
+	def _compute_pl_family(self):
+		for record in self:
+
+			families = ''
+
+			for line in record.order_line:
+				families = families + line.get_family() + ', '
+
+			record.pl_family = families
+
+
+
+
+
+
+
+	# Product
+	pl_product = fields.Char(
+			string="Pl - Producto",
+
+			compute='_compute_pl_product',
+		)
+
+	@api.multi
+	def _compute_pl_product(self):
+		for record in self:
+
+			products = ''
+
+			for line in record.order_line:
+				products = products + line.get_product() + ', '
+
+			record.pl_product = products
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Print Ticket -------------------------------
+
+	def get_total_net(self):
+		"""
+		Used by Print Ticket.
+		"""
+		if self.pl_transfer_free:
+			value = 0
+		else:
+			value = self.x_total_net
+		return value
+
+
+	def get_total_tax(self):
+		"""
+		Used by Print Ticket.
+		"""		
+		if self.pl_transfer_free:
+			value = 0
+		else:
+			value = self.x_total_tax
+		return value
+
+
+	def get_amount_total(self):
+		"""
+		Used by Print Ticket.
+		"""
+		if self.pl_transfer_free:
+			value = 0
+		else:
+			value = self.amount_total
+		return value
+
+
+
+
+	def get_total_in_words(self):
+		"""
+		Used by Print Ticket.
+		"""
+		if self.pl_transfer_free:
+			value = 'Cero'
+		else:
+			value = self.x_total_in_words
+		return value
+
+
+	def get_total_cents(self):
+		"""
+		Used by Print Ticket.
+		"""
+		if self.pl_transfer_free:
+			value = 0
+		else:
+			value = self.x_total_cents
+		return value
+
+
+
+
+# ---------------------------------------------- Fields ------------------------------------------
+	pl_transfer_free = fields.Boolean(
+
+			#'Transferencia Gratuita',
+			'TRANSFERENCIA GRATUITA',
+		
+			default=False,
+		)
+
 
 
 # ----------------------------------------------------------- Update Descriptors ------------------
@@ -187,17 +339,6 @@ class sale_order(models.Model):
 		self.state = 'validated'
 	# validate
 
-
-
-
-
-
-
-# ---------------------------------------------- Fields ------------------------------------------
-	#transfer_free = fields.Boolean(
-	#		'Transferencia Gratuita',
-	#		default=False,
-	#	)
 
 
 

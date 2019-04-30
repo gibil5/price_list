@@ -38,6 +38,7 @@ from . import account_contasis
 
 from . import configurator_emr
 
-
-
 from . import procedure
+
+
+from . import order_report_nex

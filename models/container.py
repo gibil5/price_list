@@ -27,11 +27,11 @@ class Container(models.Model):
 
 # ----------------------------------------------------------- Remove Procurement ----------------------------------------------------
 	@api.multi
-	def remove_procurements(self):
+	def clean_procurements(self):
 		"""
 		Remove Procurement
 		"""
-		print('Container Remove Procurements')
+		print('Container Clean Procurements')
 
 		# Search
 		procs = self.env['procurement.order'].search([
@@ -47,19 +47,21 @@ class Container(models.Model):
 			#print(procurement.name)
 			procurement.state = 'cancel'
 			#print(procurement.state)
-			procurement.unlink()
+			#procurement.unlink()
 			#print()
+		
+		print('Finished !')
 
 
 
 
 # ----------------------------------------------------------- Remove Stock Moves ----------------------------------------------------
 	@api.multi
-	def remove_stock_moves(self):
+	def clean_stock_moves(self):
 		"""
 		Remove stock_move
 		"""
-		print('Container Remove stock_moves')
+		print('Container Clean stock_moves')
 
 		# Search
 		moves = self.env['stock.move'].search([
@@ -75,9 +77,10 @@ class Container(models.Model):
 			#print(stock_move.name)
 			stock_move.state = 'cancel'
 			#print(stock_move.state)
-			stock_move.unlink()
+			#stock_move.unlink()
 			#print()
 
+		print('Finished !')
 
 
 

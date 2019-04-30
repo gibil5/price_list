@@ -20,6 +20,91 @@ class SaleOrderLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Sales -------------------------------
+	def get_price_list(self):
+		print()
+		print('Get Price List')
+
+		return self.product_id.pl_price_list
+
+
+
+
+
+
+	def get_family(self):
+		print()
+		print('Get family')
+
+
+		# 2019
+		if self.product_id.pl_price_list in ['2019']:
+			print(self.product_id.pl_family)
+			print(self.product_id.pl_subfamily)
+			#if self.product_id.pl_family not in [False]:
+			if self.product_id.pl_subfamily not in [False]:
+				#value = self.product_id.pl_family
+				value = self.product_id.pl_subfamily
+			else:
+				value = 'pl'
+
+		# 2018
+		else:
+			if self.product_id.x_family not in [False]:
+				value = self.product_id.x_family
+				#value = self.product_id.pl_subfamily
+			else:
+				value = 'x'
+
+		return value
+
+
+
+
+	def get_product(self):
+
+		return self.product_id.name
+
+
+
+# ----------------------------------------------------------- Print Ticket -------------------------------
+
+	def get_price_unit(self):
+		"""
+		Used by Print Ticket.
+		"""
+		#if self.pl_transfer_free:
+		#	value = 0
+		#else:
+		#	value = self.price_unit
+		value = self.price_unit
+		return value
+
+
+
+	def get_price_subtotal(self):
+		"""
+		Used by Print Ticket.
+		"""
+		#if self.pl_transfer_free:
+		if self.order_id.pl_transfer_free:
+			value = 0
+		else:
+			value = self.price_subtotal
+		return value
+
+
+
+
+	def get_quantity(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return int(self.product_uom_qty)
+
+
+
+
 
 # ---------------------------------------- Constraints Python - Important -------------------------
 
@@ -59,12 +144,6 @@ class SaleOrderLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Print Ticket -------------------------------
-	def get_quantity(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return int(self.product_uom_qty)
 
 
 

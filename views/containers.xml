@@ -54,6 +54,7 @@
 
 
 
+
                         <!-- Update -->
                         <button 
                                 type="object"
@@ -66,28 +67,29 @@
                         />
 
 
-                        <!-- Remove -->
+
+
+                        <!-- Clean -->
                         <button 
                                 type="object"
-
                                 class="oe_highlight oe_right"
                                 
-                                name="remove_procurements"
+                                name="clean_procurements"
                                 
-                                string="Kill Procurements"
+                                string="Clean Procurements"
                         />
 
-                        <!-- Remove -->
 
+                        <!-- Clean -->
                         <button 
                                 type="object"
-
                                 class="oe_highlight oe_right"
                                 
-                                name="remove_stock_moves"
+                                name="clean_stock_moves"
                                 
-                                string="Kill Stock Moves"
+                                string="Clean Stock Moves"
                         />
+
 
 					</header>
 
