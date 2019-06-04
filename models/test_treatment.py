@@ -182,9 +182,9 @@ def create_recommendations(self):
 	#print()
 	#print('Pl - Create Recommendations')
 
-	#create_recommendations_2019(self)
+	create_recommendations_2019(self)
 
-	create_recommendations_2018(self)
+	#create_recommendations_2018(self)
 
 
 
