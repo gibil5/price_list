@@ -48,7 +48,19 @@
 
 
 
-						<!-- RIGHT -->
+
+<!-- RIGHT -->
+
+						<!-- Reset -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+								name="reset"
+
+								string="Reset"    
+						/>
+
 
 						<!-- Vip not used -->
 						<button 
@@ -220,97 +232,110 @@
 							<page   string="Estadistica">
 
 
-						<!-- Sex -->
-						<!-- Age -->
-						<group  col="2" 	string="Sexo">
-							<group       >
-								<field name="sex_male"		string="Masculino"/>
-								<field name="sex_female"	string="Femenino"/>
-								<field name="sex_undefined"	string="Incompleto"/>
-							</group>
-							<group>
-								<field name="sex_male_per"		string="Masculino %"	widget="percentage"/>
-								<field name="sex_female_per"	string="Femenino %"	widget="percentage"/>
-								<field name="sex_undefined_per"	string="Incompleto %" widget="percentage"/>
-							</group>
-						</group>
+								<!-- First Contact -->
+								<group  string="Primer Contacto">
+									<group>                             
+										<field name="how_none"  string="Ninguno"/>
+										<field name="how_reco"  string="Recomendación"/>
+										<field name="how_tv"    string="Tv"/>
+										<field name="how_radio" string="Radio"/>
+										<field name="how_inter" string="Internet"/>
+										<field name="how_web"   string="Web"/>
+										<field name="how_mail"  string="Mail"/>
+										<field name="how_u"     string="No Definido"/>
 
-						<group  string="Edad">
-							<group>
-								<field name="age_mean"	string="Promedio"	/>
-								<field name="age_min"	string="Minimo"/>
-								<field name="age_max"	string="Maximo"	/>
-							</group>
-							<group>
-								<field name="age_undefined"		string="Error"/>
-								<field name="age_undefined_per"	string="Error %"/>
-							</group>
-						</group>
+										<field name="vspace"/>
 
+										<field name="how_facebook"/>
+										<field name="how_instagram"/>
+										<field name="how_callcenter"/>
+										<field name="how_old_patient"/>
+									</group>
 
-						<!-- First Contact -->
-						<group  string="Primer Contacto">
-							<group>                             
-								<field name="how_none"  string="Ninguno"/>
-								<field name="how_reco"  string="Recomendación"/>
-								<field name="how_tv"    string="Tv"/>
-								<field name="how_radio" string="Radio"/>
-
-								<field name="vspace"/>
-
-								<field name="how_inter" string="Internet"/>
-								<field name="how_web"   string="Web"/>
-								<field name="how_mail"  string="Mail"/>
-								<field name="how_u"     string="No Definido"/>
-							</group>
-							<group>                                                             
-								<field name="how_none_per"	string="%"	nolabel="0"	widget="percentage"/>
-								<field name="how_reco_per"	string="%"	nolabel="0"	widget="percentage"/>
-								<field name="how_tv_per"	string="%"	nolabel="0"	widget="percentage"/>
-								<field name="how_radio_per"	string="%"	nolabel="0"	widget="percentage"/>
-
-								<field name="vspace"/>
-
-								<field name="how_inter_per"	string="%"	nolabel="0"	widget="percentage"/>
-								<field name="how_web_per"	string="%"	nolabel="0"	widget="percentage"/>
-								<field name="how_mail_per"	string="%"	nolabel="0"	widget="percentage"/>
-								<field name="how_u_per"		string="%"	nolabel="0"	widget="percentage"/>
-							</group>
-						</group>
+									<group>                                                             
+										<field name="how_none_per"		widget="percentage"/>
+										<field name="how_reco_per"		widget="percentage"/>
+										<field name="how_tv_per"		widget="percentage"/>
+										<field name="how_radio_per"		widget="percentage"/>
 
 
-						<!-- Education -->
-						<group  string="Nivel de Educación">
-							<group>
-								<field name="edu_fir"   string="Primaria"/>
-								<field name="edu_sec"   string="Secundaria"/>
-								<field name="edu_tec"   string="Instituto"/>
-								<field name="edu_uni"   string="Universidad"/>
-								<field name="edu_mas"   string="Posgrado"/>
-								<field name="edu_u"     string="No Definido"/>
-							</group>
-							<group>                             
-								<field name="edu_fir_per"	widget="percentage"/>
-								<field name="edu_sec_per"	widget="percentage"/>
-								<field name="edu_tec_per"	widget="percentage"/>
-								<field name="edu_uni_per"	widget="percentage"/>
-								<field name="edu_mas_per"	widget="percentage"/>
-								<field name="edu_u_per"		widget="percentage"/>
-							</group>
-						</group>
+										<field name="how_inter_per"		widget="percentage"/>
+										<field name="how_web_per"		widget="percentage"/>
+										<field name="how_mail_per"		widget="percentage"/>
+										<field name="how_u_per"			widget="percentage"/>
+
+										<field name="vspace"/>
+
+										<field name="how_facebook_per"/>
+										<field name="how_instagram_per"/>
+										<field name="how_callcenter_per"/>
+										<field name="how_old_patient_per"/>
+									</group>
+								</group>
 
 
-						<!-- Vip -->
-						<group  string="Vip"   >
-							<group>
-								<field name="vip_true"	string="Si"	/>
-								<field name="vip_false"	string="No"	/>
-							</group>
-							<group>                             
-								<field name="vip_true_per"	string="Si %"		widget="percentage"/>
-								<field name="vip_false_per"	string="No %"		widget="percentage"/>
-							</group>
-						</group>
+
+								<!-- Sex -->
+								<group  col="2" 	string="Sexo">
+									<group       >
+										<field name="sex_male"		string="Masculino"/>
+										<field name="sex_female"	string="Femenino"/>
+										<field name="sex_undefined"	string="Incompleto"/>
+									</group>
+									<group>
+										<field name="sex_male_per"		string="Masculino %"	widget="percentage"/>
+										<field name="sex_female_per"	string="Femenino %"	widget="percentage"/>
+										<field name="sex_undefined_per"	string="Incompleto %" widget="percentage"/>
+									</group>
+								</group>
+
+
+								<!-- Age -->
+								<group  string="Edad">
+									<group>
+										<field name="age_mean"	string="Promedio"	/>
+										<field name="age_min"	string="Minimo"/>
+										<field name="age_max"	string="Maximo"	/>
+									</group>
+									<group>
+										<field name="age_undefined"		string="Error"/>
+										<field name="age_undefined_per"	string="Error %"/>
+									</group>
+								</group>
+
+
+								<!-- Education -->
+								<group  string="Nivel de Educación">
+									<group>
+										<field name="edu_fir"   string="Primaria"/>
+										<field name="edu_sec"   string="Secundaria"/>
+										<field name="edu_tec"   string="Instituto"/>
+										<field name="edu_uni"   string="Universidad"/>
+										<field name="edu_mas"   string="Posgrado"/>
+										<field name="edu_u"     string="No Definido"/>
+									</group>
+									<group>                             
+										<field name="edu_fir_per"	widget="percentage"/>
+										<field name="edu_sec_per"	widget="percentage"/>
+										<field name="edu_tec_per"	widget="percentage"/>
+										<field name="edu_uni_per"	widget="percentage"/>
+										<field name="edu_mas_per"	widget="percentage"/>
+										<field name="edu_u_per"		widget="percentage"/>
+									</group>
+								</group>
+
+
+								<!-- Vip -->
+								<group  string="Vip"   >
+									<group>
+										<field name="vip_true"	string="Si"	/>
+										<field name="vip_false"	string="No"	/>
+									</group>
+									<group>                             
+										<field name="vip_true_per"	string="Si %"		widget="percentage"/>
+										<field name="vip_false_per"	string="No %"		widget="percentage"/>
+									</group>
+								</group>
 
 							</page>
 
