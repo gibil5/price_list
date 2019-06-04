@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+<!--
+                    action="openhealth.management_list_mgt_all_action"
+-->
+       <!-- Month All -->
+        <menuitem   id="management_sales_mgt_all_menu" 
+
+                    name="Mensual Todo" 
+            
+                    parent="openhealth.management_menu"
+            
+                    sequence="3"
+            
+                    action="management_list_mgt_all_action"
+
+                />
+
+
+
+	</data>
+</openerp>

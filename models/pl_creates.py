@@ -169,7 +169,8 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 # ----------------------------------------------------------- Create Order Target -----------------
 # Create Order - By Line
 #def pl_create_order_con(self):
-def pl_create_order_con(self, target):
+#def pl_create_order_con(self, target):
+def pl_create_order_con(self, target, price_list):
 	"""
 	high level support for doing this and that.
 	"""
@@ -210,7 +211,8 @@ def pl_create_order_con(self, target):
 	# Search
 	product = self.env['product.product'].search([
 														('name', 'in', [name]),
-														('pl_price_list', 'in', ['2019']),
+														#('pl_price_list', 'in', ['2019']),
+														('pl_price_list', 'in', [price_list]),
 													],
 														#order='date_begin asc',
 														#limit=1,

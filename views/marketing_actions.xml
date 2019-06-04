@@ -1,0 +1,190 @@
+<openerp>
+    <data>
+
+
+
+
+<!-- ACTIONS --> 
+
+
+        <!-- ACTION - All -->
+        <record model="ir.actions.act_window" id="marketing_patient_list_action">   
+            <field name="name">Pacientes Nuevos</field>
+            <field name="res_model">openhealth.marketing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="openhealth.marketing_view_tree"/> 
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+
+
+        <!-- ACTION - 2019 Month -->
+        <record model="ir.actions.act_window" id="marketing_patient_all_month_list_action">   
+            <field name="name">Pacientes Nuevos - 2019</field>
+            <field name="res_model">openhealth.marketing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="openhealth.marketing_view_tree"/> 
+            <field name="domain">[
+                                    ('owner', 'in', ['month']),
+                ]</field>
+
+            <field name="context">{}</field>
+        </record>
+
+
+
+
+
+        <!-- ACTION - 2019 Month -->
+        <record model="ir.actions.act_window" id="marketing_patient_2019_list_action">   
+            <field name="name">Pacientes Nuevos - 2019</field>
+            <field name="res_model">openhealth.marketing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="openhealth.marketing_view_tree"/> 
+            <field name="domain">[
+                                    ('year', '=', '2019'),
+                                    ('owner', 'in', ['month']),
+                ]</field>
+
+            <field name="context">{}</field>
+        </record>
+
+
+
+        <!-- ACTION - 2018 Month -->
+        <record model="ir.actions.act_window" id="marketing_patient_2018_list_action">   
+            <field name="name">Pacientes Nuevos - 2018</field>
+            <field name="res_model">openhealth.marketing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="openhealth.marketing_view_tree"/> 
+            <field name="domain">[
+                                    ('year', '=', '2018'),
+                                    ('owner', 'in', ['month']),
+                ]</field>
+
+            <field name="context">{}</field>
+        </record>
+
+
+
+
+        <!-- ACTION - 2019 Year -->
+        <record model="ir.actions.act_window" id="marketing_patient_2019_year_list_action">   
+            <field name="name">Pacientes Nuevos - 2019</field>
+            <field name="res_model">openhealth.marketing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="openhealth.marketing_view_tree"/> 
+            <field name="domain">[
+                                    ('year', '=', '2019'),
+                                    ('owner', 'in', ['year']),
+                ]</field>
+
+            <field name="context">{}</field>
+        </record>
+
+
+        <!-- ACTION - 2018 Year -->
+        <record model="ir.actions.act_window" id="marketing_patient_2018_year_list_action">   
+            <field name="name">Pacientes Nuevos - 2018</field>
+            <field name="res_model">openhealth.marketing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="openhealth.marketing_view_tree"/> 
+            <field name="domain">[
+                                    ('year', '=', '2018'),
+                                    ('owner', 'in', ['year']),
+                ]</field>
+
+            <field name="context">{}</field>
+        </record>
+
+
+
+
+       <!-- ACTION - 2019 Week -->
+        <record model="ir.actions.act_window" id="marketing_patient_2019_week_list_action">   
+            <field name="name">Pacientes Nuevos - 2019</field>
+            <field name="res_model">openhealth.marketing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="openhealth.marketing_view_tree"/> 
+            <field name="domain">[
+                                    ('year', '=', '2019'),
+                                    ('owner', 'in', ['week']),
+                ]</field>
+
+            <field name="context">{}</field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+        <!-- ACTION - Sex - 2019 -->
+        <record model="ir.actions.act_window" id="marketing_patient_2019_sex_list_action">
+            <field name="name">Pacientes Nuevos - 2019 - Sexo</field>
+            <field name="res_model">openhealth.marketing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+
+            <field name="view_id" ref="view_marketing_sex_tree"/> 
+
+            <field name="domain">[
+                                    ('year', '=', '2019'),
+                ]</field>
+        </record>
+
+
+        <!-- ACTION - Education Level - 2019 -->
+        <record model="ir.actions.act_window" id="marketing_patient_2019_education_level_list_action">
+            <field name="name">Pacientes Nuevos - 2019 - Educacion</field>
+            <field name="res_model">openhealth.marketing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+
+            <field name="view_id" ref="view_marketing_education_level_tree"/> 
+
+            <field name="domain">[
+                                    ('year', '=', '2019'),
+                ]</field>
+        </record>
+
+
+        <!-- ACTION - First Contact - 2019 -->
+        <record model="ir.actions.act_window" id="marketing_patient_2019_first_contact_list_action">
+            <field name="name">Pacientes Nuevos - 2019 - Primer Contacto</field>
+            <field name="res_model">openhealth.marketing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+
+            <field name="view_id" ref="view_marketing_first_contact_tree"/> 
+
+            <field name="domain">[
+                                    ('year', '=', '2019'),
+                ]</field>
+        </record>
+
+
+
+
+
+
+
+
+
+    </data>
+</openerp>

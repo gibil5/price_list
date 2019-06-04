@@ -7,7 +7,7 @@
 <!-- Main - Dev -->
 <menuitem   	id="main_dev_menu"
 				sequence="-7"
-				name="Dev"
+				name="DEV"
 
 				groups="openhealth.roots"
 		/>
@@ -18,7 +18,7 @@
 <!-- Pricelists --> 
 <menuitem   id="parent_dev_menu" 
 
-					name="Dev"
+					name="DEV"
 			
 					parent="main_dev_menu"
 
@@ -34,6 +34,7 @@
 					action="order_line_list_action"
 				/>
 
+
 		<!-- Product Templates --> 
 		<menuitem   id="dev_product_template_menu"
 					parent="parent_dev_menu"
@@ -41,6 +42,7 @@
 
 					action="product_template_list_action"
 				/>
+
 
 
 		<!-- Product products --> 
@@ -109,6 +111,23 @@ procurement.order
 <!--
 openhealth.management.order.line
 -->
+
+
+
+
+		<!-- Electronic Orders --> 
+		<menuitem   id="dev_electronic_order_menu"
+
+					parent="parent_dev_menu"
+
+					sequence="11"
+
+					name="Electronic Orders"
+
+					action="openhealth.electronic_order_form_action"
+				/>
+
+
 
 
 	</data>

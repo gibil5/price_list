@@ -4,13 +4,57 @@
 
 
 
+<!-- FORM -->
+<!--
+-->
+        <record model="ir.ui.view" id="treatment_form_view">
+
+            <field name="name">openhealth.treatment.form</field>
+
+            <field name="model">openhealth.treatment</field>
+            
+            <field name="inherit_id" ref="openhealth.treatment_form_view"/>   
+            
+            <field name="mode">primary</field>
+            
+            <field name="priority">1</field>
+            
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//button[@name='test_integration']" position="before">
+
+                            <button 
+                                type="object"
+                                class="oe_highlight"
+
+                                name="test_one"
+
+                                string="Test 1"
+                            />
+
+                            <button 
+                                type="object"
+                                class="oe_highlight"
+
+                                name="test_two"
+
+                                string="Test 2"
+                            />
+
+                </xpath>
+
+            </field>
+        </record>
+        <!-- Form - END -->
+
+
+
 
 <!-- FORM 3 --> 
         <record model="ir.ui.view" id="openhealth.treatment_3_form_view">
             <field name="name">treatment.form</field>
-            
             <field name="model">openhealth.treatment</field>
-            
             <field name="priority" eval="5"/>
             <field name="arch" type="xml">
             
@@ -21,7 +65,6 @@
                             <!-- Consultation Medical --> 
                             <button 
                                 type="object"
-
                                 class="oe_highlight"
 
                                 name="create_order_con_med"
@@ -34,7 +77,6 @@
                             <!-- Consultation Gyn --> 
                             <button 
                                 type="object"
-
                                 class="oe_highlight"
 
                                 name="create_order_con_gyn"
@@ -47,19 +89,15 @@
                             <!-- Consultation Premium --> 
                             <button 
                                 type="object"
-
                                 class="oe_highlight"
 
                                 name="create_order_con_chav"
 
                                 string="CONSULTA DR CHAVARRI"
                             />
-
                     </header>
 
-                    <sheet>
-                        <notebook></notebook>
-                    </sheet>
+                    <sheet><notebook></notebook></sheet>
                 </form>
             </field>
         </record>
@@ -70,12 +108,10 @@
 <!-- FORM 2 --> 
         <record model="ir.ui.view" id="openhealth.treatment_2_form_view">
             <field name="name">treatment.form</field>
-            
             <field name="model">openhealth.treatment</field>
-            
             <field name="priority" eval="5"/>
             <field name="arch" type="xml">
-            
+
                 <form string="Treatment 2 Form">
             
                     <header>
@@ -85,6 +121,7 @@
                                 type="object" 
                                 class="oe_highlight"    
                                 name="create_service_co2"
+                                
                                 string="LASER CO2"
                             />
 
@@ -93,6 +130,7 @@
                                 type="object" 
                                 class="oe_highlight"    
                                 name="create_service_quick"
+
                                 string="QUICK LASER"
                             />
 
@@ -101,6 +139,7 @@
                                 type="object" 
                                 class="oe_highlight"    
                                 name="create_service_excilite"
+
                                 string=" EXCILITE"
                             />
 
@@ -109,6 +148,7 @@
                                 type="object" 
                                 class="oe_highlight"    
                                 name="create_service_ipl"
+
                                 string=" M22-IPL"
                             />
 
@@ -117,6 +157,7 @@
                                 type="object" 
                                 class="oe_highlight"    
                                 name="create_service_ndyag"
+
                                 string=" M22-NDYAG"
                             />
 
@@ -138,55 +179,43 @@
                                 string="COSMEATRIA"
                             />
 
-
-
                             <!-- gyn --> 
                             <button 
                                 type="object" 
                                 class="oe_highlight"
-
                                 name="create_service_gynecology"
-                                
+
                                 string="GINECOLOGIA"
                             />
-
 
                             <!-- eco --> 
                             <button 
                                 type="object" 
                                 class="oe_highlight"
-
                                 name="create_service_echography"
 
                                 string="ECOGRAFIA"
                             />
 
-
-
                             <!-- promo --> 
                             <button 
                                 type="object" 
-                                class="oe_highlight"
-                                
+                                class="oe_highlight"  
                                 name="create_service_promotion"
-                                
+
                                 string="PROMOS"
                             />
-
 
                             <!-- Product --> 
                             <button 
                                 type="object" 
                                 class="oe_highlight"    
                                 name="create_service_product"
+
                                 string="PRODUCTOS"
                             />
-
-
                     </header>
-                    <sheet>
-                        <notebook></notebook>
-                    </sheet>
+                    <sheet><notebook></notebook></sheet>
                 </form>
             </field>
         </record>

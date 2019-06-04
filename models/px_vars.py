@@ -6,6 +6,9 @@ _family_list = [
 
 	# Prods
 	('topical', 	'Topico'),
+	('card', 		'Tarjeta'),
+	('kit', 		'Kit'),
+	('other', 		'Otros'),
 
 	# Servs
 	('laser', 		'Laser'),

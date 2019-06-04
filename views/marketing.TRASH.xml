@@ -1,0 +1,129 @@
+<!--                                
+                                <field name="x_type"/>
+                                <field name="vspace"/>
+                                <field name="patient_budget_count"      string="Nr Presupuestos > 1500 S/"  />
+-->
+<!--
+                                <field name="sex_undefined_per"     style="background-color:#FFD2C9"  />
+                                <field name="sex_undefined"     style="background-color:#FFD2C9" />
+                                <field name="sex_undefined"     colors="red:sex_male!=0" />
+-->
+<!--
+                                <field name="age_undefined"     style="background-color:#FFD2C9"   />
+                                <field name="age_undefined_per" style="background-color:#FFD2C9"        />
+                                <field name="age_undefined_per" style="background-color:#E6E6FA"        />
+-->
+<!--
+                                <field name="how_u"     string="No Definido"        style="background-color:#FFD2C9"        />
+                                <field name="how_u_per"         style="background-color:#FFD2C9"                />
+-->
+
+<!--
+                                <field name="edu_u"     string="No Definido"        style="background-color:#FFD2C9"    />
+                                <field name="edu_u_per"     style="background-color:#FFD2C9"        />
+-->
+
+
+
+
+
+
+
+
+
+
+                        <!-- Undefined -->
+<!--
+                        <group  string="No definido"   attrs="{'invisible':[('x_type', '!=', 'patient')]}"  >
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+-->
+
+
+
+                        <!-- Country -->
+                        <!--                        
+                        <button 
+                                class="oe_highlight  oe_right"
+                                type="action"                               
+                                name="%(country_line_form_action)d" 
+                                context="{
+                                            'search_default_marketing_id': active_id,   
+                                        }" 
+                                string="Paises" 
+                        />
+                        -->
+
+
+
+
+
+
+                        <!-- Update -->
+<!--
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+                                name="update"
+
+                                string="Actualizar"                             
+                        />
+-->
+
+
+
+                        <!-- Legacy Update -->
+                        <!-- Correct -->
+<!--                        
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+                                name="update_patients_legacy"
+                                groups="openhealth.roots"
+
+                                string="Update - Legacy"    
+                        />
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+                                name="correct_patients"
+                                groups="openhealth.roots"
+
+                                string="Correct - Legacy"
+                        />
+-->
+
+
+
+
+
+
+
+
+<!-- FORM -->
+<!--
+        <record model="ir.ui.view" id="marketing_form_view">
+            <field name="name">marketing.form</field>
+            <field name="model">openhealth.marketing</field>
+            <field name="inherit_id" ref="openhealth.marketing_form_view"/>
+            <field name="mode">primary</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//field[@name='date_end']" position="after">
+
+                    <field name="month"/>
+
+                    <field name="year"/>
+                </xpath>
+
+            </field>
+        </record>
+-->
+        <!-- Form - END -->
+

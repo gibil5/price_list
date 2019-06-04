@@ -24,6 +24,18 @@ class ProductTemplate(models.Model):
 
 
 
+# ---------------------------------------- Constraints Python - Name -------------------------
+
+	# Check Name
+	@api.constrains('name')
+	def check_name(self):
+		"""
+		Check Name
+		"""
+		chk_product.check_name(self)
+
+
+
 
 
 # ----------------------------------------------------------- Update ----------------------------------------------------
@@ -63,15 +75,6 @@ class ProductTemplate(models.Model):
 
 
 
-# ---------------------------------------- Constraints Python - Important -------------------------
-
-	# Check Name
-	@api.constrains('name')
-	def check_name(self):
-		"""
-		Check Name
-		"""
-		chk_product.check_name(self)
 
 
 # ---------------------------------------------- Fields - Chars -----------------------------------

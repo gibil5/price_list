@@ -121,6 +121,11 @@
 						"
 					>
 
+
+					<field name="pl_price_list"	string="Lista de Precios"  	groups="openhealth.roots"/>
+
+
+
 					<field name="name"          string="Referencia"/>
 
 					<field name="date_order"            string="Fecha y hora"/>
@@ -153,10 +158,11 @@
 
 
 
-					<field name="pl_price_list"	string="Lista de Precios"/>
+					
 					<field name="pl_family"		string="Familia"/>
+<!--
 					<field name="pl_product"	string="Producto"/>
-
+-->
 					<field name="user_id"       string="Creado por"/>
 
 				</tree>
@@ -166,10 +172,6 @@
 					<field name="x_family"/>
 					<field name="x_product"/>
 -->
-
-
-
-
 
 
 	</data>

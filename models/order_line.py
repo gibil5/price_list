@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-	Sale Order Line
-	
+	Sale Order Line	
 	Created:            26 Aug 2016
-	Last mod:            9 Apr 2019
+	Last mod:            3 Jun 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
-
 from . import px_vars
-
 from . import chk_order_line
 				
 class SaleOrderLine(models.Model):
@@ -17,7 +14,6 @@ class SaleOrderLine(models.Model):
 	Sale Order Line
 	""" 
 	_inherit = 'sale.order.line'
-
 
 
 # ----------------------------------------------------------- Sales -------------------------------

@@ -26,6 +26,13 @@ class PriceListProduct(models.Model):
 
 
 
+# ----------------------------------------------------------- Handle ------------------------------
+	# Used by Container
+	container_id = fields.Many2one(
+			'price_list.container',
+			ondelete='cascade',
+		)
+
 
 # ----------------------------------------------------------- Update ----------------------------------------------------
 	@api.multi
@@ -121,7 +128,9 @@ class PriceListProduct(models.Model):
 
 
 	family = fields.Selection(
+
 			selection=px_vars._family_list,
+
 			required=True,
 		)
 
@@ -179,9 +188,3 @@ class PriceListProduct(models.Model):
 
 
 
-# ----------------------------------------------------------- Handle ------------------------------
-	# Used by Container
-	container_id = fields.Many2one(
-			'price_list.container',
-			ondelete='cascade',
-		)

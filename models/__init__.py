@@ -2,10 +2,15 @@
 
 #from . import models
 
+
 from . import electronic_order
+from . import electronic_container
+from . import patient
+
 
 from . import product
-from . import container
+#from . import container
+from . import pricelist_container
 
 from . import product_template
 from . import product_product
@@ -42,3 +47,15 @@ from . import procedure
 
 
 from . import order_report_nex
+
+
+from . import marketing
+
+from . import management
+
+from . import doctor_line
+from . import management_order_line
+from . import family_line
+
+
+

@@ -1,0 +1,515 @@
+<openerp>
+	<data>
+
+
+
+
+<!-- FORM -->
+<!--
+		<record model="ir.ui.view" id="marketing_form_view">
+-->
+		<record model="ir.ui.view" id="openhealth.marketing_form_view">
+			<field name="name">marketing.form</field>           
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<form string="Marketing Form">
+
+<!-- Header -->
+					<header>
+
+
+						<!-- Update Patients -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="update_patients"
+
+								string="Pl - Actualizar Pacientes"                               
+						/>
+
+						<!-- Update Sales -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+								name="update_sales"
+
+								string="Actualizar Ventas" 
+						/>
+
+						<!-- Update Recos -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+								name="update_recos"
+
+								string="Actualizar Recomendaciones"    
+						/>
+
+
+
+
+						<!-- RIGHT -->
+
+						<!-- Vip not used -->
+						<button 
+								class="oe_highlight oe_right"
+								type="action"
+								name="%(openhealth.patient_line_vip_not_used_form_action)d"
+								context="{                                          
+											'search_default_marketing_id': active_id,   
+										}"
+								string="Vip No Util."   
+						/>
+
+						<!-- Vip No -->
+						<button 
+								class="oe_highlight oe_right"
+								type="action"
+								name="%(openhealth.patient_line_vip_no_form_action)d" 
+								context="{                                          
+											'search_default_marketing_id': active_id,   
+										}"
+								string="No Vip" 
+						/>
+
+
+						<!-- Vip -->
+						<button 
+								class="oe_highlight oe_right"
+								type="action" 
+								context="{                                          
+											'search_default_marketing_id': active_id,   
+										}"                                          
+								name="%(openhealth.patient_line_vip_form_action)d"
+								string="Vip"    
+						/>
+
+
+
+
+						<!-- City -->
+						<button 
+								class="oe_highlight oe_right"
+								type="action"
+								name="%(openhealth.city_line_form_action)d"
+								context="{
+											'search_default_marketing_id': active_id,   
+										}"
+								string="Ciudades"   
+						/>
+
+
+						<!-- District -->
+						<button 
+								class="oe_highlight oe_right"
+								type="action"
+								name="%(openhealth.district_line_form_action)d"
+								context="{
+											'search_default_marketing_id': active_id,   
+										}"
+								string="Distritos"  
+						/>
+
+						<!-- Media -->
+						<button 
+								class="oe_highlight oe_right"
+								type="action"                               
+								name="%(openhealth.media_line_form_action)d" 
+								context="{
+											'search_default_marketing_id': active_id,   
+										}"
+								string="Medios" 
+						/>
+
+						<!-- Age Histogram -->
+						<button 
+								class="oe_highlight oe_right"                               
+								type="action" 
+								name="%(openhealth.histo_line_form_action)d" 
+								context="{
+											'search_default_marketing_id': active_id,   
+										}"
+								string="Edades" 
+						/>
+
+						<!-- Patients -->
+						<button 
+								class="oe_highlight oe_right"
+								type="action" 
+								context="{
+											'search_default_marketing_id': active_id,   
+										}" 
+								name="%(openhealth.patient_line_proc_form_action)d"
+								string="Ver Pacientes"  
+						/>
+					</header>
+
+
+
+
+
+
+
+<!-- Sheet -->  
+					<sheet>
+
+
+						<group  string="Total"  col="3">
+							<group>
+								<field name="name"/>
+								<field name="date_begin"/>
+								<field name="date_end"/>
+							</group>
+							<group>
+								<field name="total_count"   string="Nr Pacientes"/>
+								<field name="patient_reco_count"/>
+							</group>
+							<group>
+								<field name="patient_sale_count"/>
+								<field name="patient_consu_count"/>
+								<field name="patient_budget_count"/>
+								<field name="patient_proc_count"/>
+							</group>
+						</group>
+
+
+
+
+
+						<!-- Padding -->
+<!--
+						<group  string="">
+							<group></group>
+							<group></group>
+						</group>
+-->
+
+
+						<!-- Notebook --> 
+						<notebook>  
+
+							<!-- Patients --> 
+							<page   string="Pacientes">
+								<field name="patient_line">
+									<tree string="Pacientes"    limit="1000">
+										<field name="patient"/>
+										<field name="sex"/>
+										<field name="age_years"/>
+										<field name="date_record"/>
+										<field name="first_contact"/>
+										<field name="education"/>
+										<field name="country"/>
+										<field name="city"/>
+										<field name="district"/>
+										<field name="vip"/>
+									</tree>
+								</field>
+							</page>
+<!--
+										<field name="date_create"/>
+
+										<field name="dob"/>
+										<field name="age"/>
+										<field name="name"/>
+										<field name="date_create"/>
+										<field name="count"/>
+-->
+
+
+							<!-- Stats --> 
+							<page   string="Estadistica">
+
+
+						<!-- Sex -->
+						<!-- Age -->
+						<group  col="2" 	string="Sexo">
+							<group       >
+								<field name="sex_male"		string="Masculino"/>
+								<field name="sex_female"	string="Femenino"/>
+								<field name="sex_undefined"	string="Incompleto"/>
+							</group>
+							<group>
+								<field name="sex_male_per"		string="Masculino %"	widget="percentage"/>
+								<field name="sex_female_per"	string="Femenino %"	widget="percentage"/>
+								<field name="sex_undefined_per"	string="Incompleto %" widget="percentage"/>
+							</group>
+						</group>
+
+						<group  string="Edad">
+							<group>
+								<field name="age_mean"	string="Promedio"	/>
+								<field name="age_min"	string="Minimo"/>
+								<field name="age_max"	string="Maximo"	/>
+							</group>
+							<group>
+								<field name="age_undefined"		string="Error"/>
+								<field name="age_undefined_per"	string="Error %"/>
+							</group>
+						</group>
+
+
+						<!-- First Contact -->
+						<group  string="Primer Contacto">
+							<group>                             
+								<field name="how_none"  string="Ninguno"/>
+								<field name="how_reco"  string="Recomendación"/>
+								<field name="how_tv"    string="Tv"/>
+								<field name="how_radio" string="Radio"/>
+
+								<field name="vspace"/>
+
+								<field name="how_inter" string="Internet"/>
+								<field name="how_web"   string="Web"/>
+								<field name="how_mail"  string="Mail"/>
+								<field name="how_u"     string="No Definido"/>
+							</group>
+							<group>                                                             
+								<field name="how_none_per"	string="%"	nolabel="0"	widget="percentage"/>
+								<field name="how_reco_per"	string="%"	nolabel="0"	widget="percentage"/>
+								<field name="how_tv_per"	string="%"	nolabel="0"	widget="percentage"/>
+								<field name="how_radio_per"	string="%"	nolabel="0"	widget="percentage"/>
+
+								<field name="vspace"/>
+
+								<field name="how_inter_per"	string="%"	nolabel="0"	widget="percentage"/>
+								<field name="how_web_per"	string="%"	nolabel="0"	widget="percentage"/>
+								<field name="how_mail_per"	string="%"	nolabel="0"	widget="percentage"/>
+								<field name="how_u_per"		string="%"	nolabel="0"	widget="percentage"/>
+							</group>
+						</group>
+
+
+						<!-- Education -->
+						<group  string="Nivel de Educación">
+							<group>
+								<field name="edu_fir"   string="Primaria"/>
+								<field name="edu_sec"   string="Secundaria"/>
+								<field name="edu_tec"   string="Instituto"/>
+								<field name="edu_uni"   string="Universidad"/>
+								<field name="edu_mas"   string="Posgrado"/>
+								<field name="edu_u"     string="No Definido"/>
+							</group>
+							<group>                             
+								<field name="edu_fir_per"	widget="percentage"/>
+								<field name="edu_sec_per"	widget="percentage"/>
+								<field name="edu_tec_per"	widget="percentage"/>
+								<field name="edu_uni_per"	widget="percentage"/>
+								<field name="edu_mas_per"	widget="percentage"/>
+								<field name="edu_u_per"		widget="percentage"/>
+							</group>
+						</group>
+
+
+						<!-- Vip -->
+						<group  string="Vip"   >
+							<group>
+								<field name="vip_true"	string="Si"	/>
+								<field name="vip_false"	string="No"	/>
+							</group>
+							<group>                             
+								<field name="vip_true_per"	string="Si %"		widget="percentage"/>
+								<field name="vip_false_per"	string="No %"		widget="percentage"/>
+							</group>
+						</group>
+
+							</page>
+
+
+
+							<!-- Age Histogram --> 
+							<page   string="Edades">
+
+								<field name="histo_line">
+
+									<tree string="Histograma"   limit="1000"    >   
+
+										<field name="idx"/>
+
+										<field name="x_bin_name"/>
+
+										<field name="count"/>
+
+										<field name="percentage"/>
+
+										<field name="total"/>
+									</tree>
+								</field>
+							</page>
+
+
+
+
+
+							<!-- Districts --> 
+							<page   string="Distritos">
+
+								<field name="district_line">
+
+									<tree string="Distrito" limit="1000"    default_order='count desc'  >   
+										
+										<field name="name"/>
+
+										<field name="count"/>
+									</tree>
+								</field>
+							</page>
+
+
+							<!-- Cities --> 
+							<page   string="Ciudades">
+
+								<field name="city_line">
+
+									<tree string="Ciudad"   limit="1000"    default_order='count desc'  >   
+										
+										<field name="name"/>
+
+										<field name="count"/>
+									</tree>
+								</field>
+							</page>
+
+
+							<!-- Countries --> 
+							<page   string="Países">
+								<field name="country_line">
+									<tree string="Pais" limit="1000"        default_order='count desc'  >   
+										
+										<field name="name"/>
+
+										<field name="count"/>
+									</tree>
+								</field>
+							</page>
+
+
+							<!-- Admin --> 
+							<page   string="Admin"  groups="openhealth.roots">
+								<group>
+									<group>
+										<field name="year"/>
+										<field name="owner"/>
+
+										<field name="write_date"        string="Actualizado"  />
+
+										<field name="delta_patients"    />
+										<field name="delta_sales"       />
+										<field name="delta_recos"       />
+									</group>
+								</group>
+							</page>
+
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+	   
+<!-- TREE -->
+		<record model="ir.ui.view" id="openhealth.marketing_view_tree">
+			<field name="name">openhealth.marketing.tree</field>
+
+			<field name="model">openhealth.marketing</field>
+			
+			<field name="arch" type="xml">
+
+				<tree string="Marketing Tree">
+					
+
+					<field name="name"/>
+
+					<field name="month"/>
+					<field name="year"/>
+					<field name="owner"         groups="openhealth.roots"/>
+
+					<field name="date_begin"    string="Fecha Inicio"/>
+					<field name="date_end"      string="Fecha Fin"/>
+
+
+
+
+					<field name="total_count"	sum="Total Pacientes Nuevos" widget="monetary"/>
+
+					<field name="patient_sale_count"/>
+
+					<field name="patient_consu_count"/>
+
+					<field name="patient_budget_count"/>
+
+					<field name="patient_proc_count"/>
+
+					<field name="patient_reco_count"/>
+
+					<field name="write_date"    string="Actualizado"/>
+				</tree>
+			</field>
+		</record>
+<!--
+					<field name="delta_patients"      groups="openhealth.roots"/>
+					<field name="delta_sales"         groups="openhealth.roots"/>
+					<field name="delta_recos"         groups="openhealth.roots"/>
+-->
+
+
+
+
+
+<!-- TREE - First Contact --> 
+		<record model="ir.ui.view" id="view_marketing_first_contact_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+					<field name="name"/>
+					<field name="how_inter_per"/>
+					<field name="how_web_per"/>
+					<field name="how_mail_per"/>
+					<field name="how_reco_per"/>
+					<field name="how_tv_per"/>
+					<field name="how_radio_per"/>
+					<field name="how_none_per"/>
+					<field name="how_u_per"/>
+				</tree>
+			</field>
+		</record>
+
+
+<!-- TREE Education Level --> 
+		<record model="ir.ui.view" id="view_marketing_education_level_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+					<field name="name"/>
+					<field name="edu_fir_per"/>
+					<field name="edu_sec_per"/>
+					<field name="edu_tec_per"/>
+					<field name="edu_uni_per"/>
+					<field name="edu_mas_per"/>
+					<field name="edu_u_per"/>
+				</tree>
+			</field>
+		</record>
+
+
+<!-- TREE - Sex --> 
+		<record model="ir.ui.view" id="view_marketing_sex_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+					<field name="name"/>
+					<field name="sex_female_per"/>
+					<field name="sex_male_per"/>
+					<field name="sex_undefined_per"/>
+				</tree>
+			</field>
+		</record>
+
+	</data>
+</openerp>

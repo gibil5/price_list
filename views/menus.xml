@@ -6,7 +6,7 @@
 
 <!-- Main - Price List -->
 <menuitem   id="main_pricelist_menu"
-            sequence="-7"
+			sequence="-7"
 			name="Lista de Precios - 2019"    
 		/>
 
@@ -246,10 +246,6 @@
 
 
 
-
-
-
-
 <!-- Configuration --> 
 <menuitem   id="parent_pricelist_config_menu" 
 					name="Configuration"
@@ -275,9 +271,6 @@
 
 					action="product_list_action"
 				/>
-
-
-
 
 	</data>
 </openerp>

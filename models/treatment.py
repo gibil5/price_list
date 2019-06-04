@@ -72,7 +72,6 @@ class Treatment(models.Model):
 		# Init
 		res_id = self.id
 		res_model = 'openhealth.treatment'
-		#view_id = self.env.ref('openhealth.treatment_2_form_view').id
 		view_id = self.env.ref('openhealth.treatment_3_form_view').id
 
 		# Open
@@ -178,6 +177,7 @@ class Treatment(models.Model):
 	def create_order_con_med(self):
 		print()
 		print('Create Order Con Med')
+
 		target = 'medical'
 
 		order = self.create_order_con_target(target)
@@ -207,6 +207,25 @@ class Treatment(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Create Order Consultation  ----------
+	@api.multi
+	def create_order_con_target_2018(self, target):
+		print()
+		print('Create Order Con Med')
+
+		price_list = '2018'
+
+		# Create Order
+		order = pl_creates.pl_create_order_con(self, target, price_list)
+
+		return order
+
+	# create_order_con
+
+
+
+
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
 	#def create_order_con(self):
@@ -215,19 +234,13 @@ class Treatment(models.Model):
 		print('Create Order Con Med')
 
 		# Init
-		#target = 'consultation'
-
-
-		#order = cre.create_order(self, target)
-		#order = pl_creates.pl_create_order_con(self)
-
-
-		# Create Cart
+		price_list = '2019'
 
 
 		# Create Order
 		#order = pl_creates.pl_create_order_con(self)
-		order = pl_creates.pl_create_order_con(self, target)
+		#order = pl_creates.pl_create_order_con(self, target)
+		order = pl_creates.pl_create_order_con(self, target, price_list)
 
 		#print(order)
 
@@ -287,6 +300,97 @@ class Treatment(models.Model):
 
 
 
+# -----------------------------------------------------------  Create Order Pro  ------------------
+	@api.multi
+	#def create_order_pro(self):
+	def create_order_pro_2018(self):
+		print('Create Order Pro - 2018')
+
+		# Clear
+		self.shopping_cart_ids.unlink()
+
+		price_list = '2018'
+
+		# Init
+		service_list = [
+							self.service_product_ids,
+							self.service_co2_ids,
+							self.service_excilite_ids,
+							self.service_ipl_ids,
+							self.service_ndyag_ids,
+							self.service_quick_ids,
+							self.service_medical_ids,
+							self.service_cosmetology_ids,
+							self.service_gynecology_ids,
+							self.service_echography_ids,
+							self.service_promotion_ids,
+		]
+
+
+		# Create Cart
+		for service_ids in service_list:
+
+			for service in service_ids:
+
+				if service.service.name not in [False]:
+					print(service.service)
+					print(service.service.name)
+					print(service.service.id)
+					print(service.price_applied)
+					print(service.qty)
+					print()
+
+					# Product
+					product = self.env['product.product'].search([
+																	('name', '=', service.service.name),
+																	('sale_ok', '=', True),
+
+																	('pl_price_list', '=', price_list),
+													])
+					print(product)
+					print(product.name)
+					print()
+					print()
+
+					# Create Cart
+					if product.name not in [False]:
+						cart_line = self.shopping_cart_ids.create({
+																			'product': 		product.id,
+																			'price': 		service.price_applied,
+																			'qty': 			service.qty,
+																			'treatment': 	self.id,
+																})
+
+
+		# Create Order
+		order = pl_creates.pl_create_order(self)
+		print(order)
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+	# create_order_pro
+
+
 
 
 
@@ -300,7 +404,10 @@ class Treatment(models.Model):
 		# Clear
 		self.shopping_cart_ids.unlink()
 
+		# Init
 		service_list = [
+							self.service_product_ids,
+
 							self.service_co2_ids,
 							self.service_excilite_ids,
 							self.service_ipl_ids,
@@ -308,7 +415,6 @@ class Treatment(models.Model):
 							self.service_quick_ids,
 							self.service_medical_ids,
 							self.service_cosmetology_ids,
-							self.service_product_ids,
 							self.service_gynecology_ids,
 							self.service_echography_ids,
 							self.service_promotion_ids,
@@ -316,39 +422,43 @@ class Treatment(models.Model):
 
 
 		# Create Cart
-		for service in service_list:
-			print(service.service)
-			print(service.service.name)
-			print(service.service.id)
-			print(service.price_applied)
-			print(service.qty)
+		for service_ids in service_list:
 
+			for service in service_ids:
 
-			# Product
-			product = self.env['product.product'].search([
-															('name', '=', service.service.name),
-															('sale_ok', '=', True),
-															('pl_price_list', '=', '2019'),
-											])
-			print(product)
-			print(product.name)
+				if service.service.name not in [False]:
+					print(service.service)
+					print(service.service.name)
+					print(service.service.id)
+					print(service.price_applied)
+					print(service.qty)
+					print()
 
+					# Product
+					product = self.env['product.product'].search([
+																	('name', '=', service.service.name),
+																	('sale_ok', '=', True),
 
-			# Create Cart
-			if product.name not in [False]:
+																	('pl_price_list', '=', '2019'),
+													])
+					print(product)
+					print(product.name)
+					print()
+					print()
 
-				cart_line = self.shopping_cart_ids.create({
-																	'product': 		product.id,
-																	'price': 		service.price_applied,
-																	'qty': 			service.qty,
-																	'treatment': 	self.id,
-														})
+					# Create Cart
+					if product.name not in [False]:
+						cart_line = self.shopping_cart_ids.create({
+																			'product': 		product.id,
+																			'price': 		service.price_applied,
+																			'qty': 			service.qty,
+																			'treatment': 	self.id,
+																})
+
 
 		# Create Order
 		order = pl_creates.pl_create_order(self)
-
 		print(order)
-
 
 		# Open Order
 		return {
@@ -703,6 +813,24 @@ class Treatment(models.Model):
 		if self.patient.x_test:
 			test_treatment.reset_treatment(self)
 
+
+
+
+
+# ----------------------------------------------------------- Test One --------------------------
+	@api.multi
+	def test_one(self):
+		#print()
+		#print('Test One')
+		test_treatment.test_one(self)
+
+# ----------------------------------------------------------- Test two --------------------------
+	@api.multi
+	def test_two(self):
+		#print()
+		#print('Test Two')
+		test_treatment.test_two(self)
+
 # ----------------------------------------------------------- Test Integration --------------------
 	@api.multi
 	def test_integration(self):
@@ -716,4 +844,3 @@ class Treatment(models.Model):
 			#test_treatment.reset_treatment(self)
 			# Test Integration
 			test_treatment.test_integration_treatment(self)
-
