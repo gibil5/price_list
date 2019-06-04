@@ -95,6 +95,7 @@ class Marketing(models.Model):
 			# Count
 			self.patient_budget_count = self.patient_budget_count + len(pat_line.budget_line)
 
+
 			# Update Nrs
 			pat_line.update_nrs()
 

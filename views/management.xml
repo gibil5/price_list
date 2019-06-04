@@ -13,18 +13,6 @@
 					<header>
 
 <!-- Left -->
-						<!-- Update -->
-						<button 
-								type="object"
-								class="oe_highlight"
-								
-								name="create_timeline"
-								
-								string="Create TL"
-						/>
-
-
-
 
 						<!-- Update -->
 						<button 
@@ -33,8 +21,6 @@
 								name="update_fast"
 								string="Actualizar"
 						/>
-
-
 
 
 
@@ -133,6 +119,18 @@
 								string="Diario"   
 						/>
 
+						<!-- Update -->
+						<button 
+								type="object"
+								class="oe_highlight"
+								
+								name="create_timeline"
+								
+								string="Create TL"
+								
+								groups="openhealth.roots"
+						/>
+
 
 
 <!-- Right -->
@@ -188,7 +186,7 @@
 							<group>
 								<field name="total_count"/>
 								<field name="total_tickets"/>
-								<field name="ratio_pro_con"/>
+								<field name="ratio_pro_con"		widget="percentage"/>
 							</group>
 							<group>
 								<field name="total_amount"/>
@@ -246,6 +244,15 @@
 								<field name="nr_ipl"    string="Ipl"/>
 								<field name="nr_ndyag"  string="Ndyag"/>
 								<field name="nr_quick"  string="Quick"/>
+
+								<field name="vspace"/>
+
+								<field name="nr_echo"    	string="Eco"/>
+								<field name="nr_gyn"    	string="Gin"/>
+								<field name="nr_prom"    	string="Promo"/>
+
+								<field name="vspace"/>
+
 								<field name="nr_medical"        string="TM"/>
 								<field name="nr_cosmetology"    string="Cosmeatria"/>
 							</group>
@@ -256,6 +263,16 @@
 								<field name="amo_ipl"   string="Monto"/>
 								<field name="amo_ndyag" string="Monto"/>
 								<field name="amo_quick" string="Monto"/>
+
+								<field name="vspace"/>
+
+								<field name="amo_echo"    string="Monto"/>
+								<field name="amo_gyn"    	string="Monto"/>
+								<field name="amo_prom"    string="Monto"/>
+
+
+								<field name="vspace"/>
+
 								<field name="amo_medical"       string="Monto"/>
 								<field name="amo_cosmetology"   string="Monto"/>
 							</group>
@@ -266,6 +283,15 @@
 								<field name="per_amo_ipl"   string="%"        widget="percentage"/>
 								<field name="per_amo_ndyag" string="%"        widget="percentage"/>
 								<field name="per_amo_quick" string="%"        widget="percentage"/>
+
+								<field name="vspace"/>
+
+								<field name="per_amo_echo"    	string="%"	widget="percentage"/>
+								<field name="per_amo_gyn"    	string="%"	widget="percentage"/>
+								<field name="per_amo_prom"    	string="%"	widget="percentage"/>
+
+								<field name="vspace"/>
+
 								<field name="per_amo_medical"       string="%"    widget="percentage"/>
 								<field name="per_amo_cosmetology"   string="%"    widget="percentage"/>
 							</group>
@@ -417,6 +443,12 @@
 										<field name="avg_quick"         string="Quick"/>
 										<field name="avg_medical"       string="TM"/>
 										<field name="avg_cosmetology"   string="Cosmeatria"/>
+
+										<field name="vspace"/>
+
+										<field name="avg_echo"   string="Eco"/>
+										<field name="avg_gyn"   string="Gin"/>
+										<field name="avg_prom"   string="Prom"/>
 									</group>
 								</group>
 

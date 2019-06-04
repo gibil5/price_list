@@ -25,6 +25,55 @@ class Management(models.Model):
 
 # ----------------------------------------------------------- Natives ----------------------
 
+	# New Procedures
+
+	# Echography
+	nr_echo = fields.Integer(
+			'Nr Ecografia',
+		)
+	amo_echo = fields.Float(
+			'Monto Ecografia',
+		)
+	per_amo_echo = fields.Float(
+			'% Monto Ecografia',
+		)
+	avg_echo = fields.Float(
+			'Precio Prom. Ecografia',
+		)
+
+
+	# Gynecology
+	nr_gyn = fields.Integer(
+			'Nr Ginecologia',
+		)
+	amo_gyn = fields.Float(
+			'Monto Ginecologia',
+		)
+	per_amo_gyn = fields.Float(
+			'% Monto Ginecologia',
+		)
+	avg_gyn = fields.Float(
+			'Precio Prom. Ginecologia',
+		)
+
+
+	# Promotions
+	nr_prom = fields.Integer(
+			'Nr Promocion',
+		)
+	amo_prom = fields.Float(
+			'Monto Promocion',
+		)
+	per_amo_prom = fields.Float(
+			'% Monto Promocion',
+		)
+	avg_prom = fields.Float(
+			'Precio Prom. Promocion',
+		)
+
+
+
+	# Time Line
 	base_dir = fields.Char()
 
 
@@ -393,12 +442,23 @@ class Management(models.Model):
 			self.avg_cosmetology = self.amo_cosmetology / self.nr_cosmetology
 
 
+		if self.nr_echo != 0:
+			self.avg_echo = self.amo_echo / self.nr_echo
+
+		if self.nr_gyn != 0:
+			self.avg_gyn = self.amo_gyn / self.nr_gyn
+
+		if self.nr_prom != 0:
+			self.avg_prom = self.amo_prom / self.nr_prom
+
+
 
 
 
 		# Ratios
 		if self.nr_consultations != 0:
-			self.ratio_pro_med = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
+			#self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
+			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations))
 
 
 
@@ -422,6 +482,11 @@ class Management(models.Model):
 
 		# Month
 		if self.total_amount != 0:
+
+			self.per_amo_echo = (self.amo_echo / self.total_amount)
+			self.per_amo_gyn = (self.amo_gyn / self.total_amount)
+			self.per_amo_prom = (self.amo_prom / self.total_amount)
+
 
 			self.per_amo_other = (self.amo_other / self.total_amount)
 
@@ -1059,4 +1124,126 @@ class Management(models.Model):
 			string='Mes',
 			required=True,
 		)
+
+
+# ----------------------------------------------------------- Update Daily -------------------------
+	# Update Daily
+	@api.multi
+	def update_daily(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update daily')
+		for doctor in self.doctor_line:
+			doctor.update_daily()
+
+
+
+
+	# Reset Macros
+	def reset_macro(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Reset Macros'
+
+		# Clear
+		self.total_amount_year = 0
+
+		self.total_amount = 0
+		self.total_count = 0
+		self.total_tickets = 0
+
+		# Nr
+		self.nr_echo = 0
+		self.nr_gyn = 0
+		self.nr_prom = 0
+
+		self.nr_credit_notes = 0
+		self.nr_other = 0
+		self.nr_products = 0
+		self.nr_services = 0
+		self.nr_consultations = 0
+		self.nr_procedures = 0
+		self.nr_topical = 0
+		self.nr_card = 0
+		self.nr_kit = 0
+		self.nr_co2 = 0
+		self.nr_exc = 0
+		self.nr_ipl = 0
+		self.nr_ndyag = 0
+		self.nr_quick = 0
+		self.nr_medical = 0
+		self.nr_cosmetology = 0
+
+		# Amo
+		self.amo_echo = 0
+		self.amo_gyn = 0
+		self.amo_prom = 0
+
+		self.per_amo_total = 0
+		self.amo_credit_notes = 0
+		self.amo_other = 0
+		self.amo_products = 0
+		self.amo_services = 0
+		self.amo_consultations = 0
+		self.amo_procedures = 0
+		self.amo_topical = 0
+		self.amo_card = 0
+		self.amo_kit = 0
+		self.amo_co2 = 0
+		self.amo_exc = 0
+		self.amo_ipl = 0
+		self.amo_ndyag = 0
+		self.amo_quick = 0
+		self.amo_medical = 0
+		self.amo_cosmetology = 0
+
+		# Per Amo
+		self.per_amo_echo = 0
+		self.per_amo_gyn = 0
+		self.per_amo_prom = 0
+
+		self.per_amo_other = 0
+		self.per_amo_topical = 0
+		self.per_amo_card = 0
+		self.per_amo_kit = 0
+		self.per_amo_products = 0
+		self.per_amo_services = 0
+		self.per_amo_consultations = 0
+		self.per_amo_procedures = 0
+		self.per_amo_co2 = 0
+		self.per_amo_exc = 0
+		self.per_amo_ipl = 0
+		self.per_amo_ndyag = 0
+		self.per_amo_quick = 0
+		self.per_amo_medical = 0
+		self.per_amo_cosmetology = 0
+
+		# Avg
+		self.avg_echo = 0
+		self.avg_gyn = 0
+		self.avg_prom = 0
+
+		self.avg_other = 0
+		self.avg_topical = 0
+		self.avg_kit = 0
+		self.avg_card = 0
+		self.avg_products = 0
+		self.avg_services = 0
+		self.avg_consultations = 0
+		self.avg_procedures = 0
+		self.avg_co2 = 0
+		self.avg_exc = 0
+		self.avg_ipl = 0
+		self.avg_ndyag = 0
+		self.avg_quick = 0
+		self.avg_medical = 0
+		self.avg_cosmetology = 0
+
+		# Ratios
+		self.ratio_pro_con = 0
+	# reset_macro
 

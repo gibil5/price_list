@@ -99,11 +99,16 @@ class DoctorLine(models.Model):
 			if key in ['consultation', 'consultation_gyn', 'consultation_0', 'consultation_100']:
 				self.nr_consultations = self.nr_consultations + count
 
-			elif key in ['laser', 'medical', 'cosmetology']:
+
+			#elif key in ['laser', 'medical', 'cosmetology']:
+			elif key in ['laser', 'medical', 'cosmetology', 'echography', 'gynecology', 'promotion']:
 				self.nr_procedures = self.nr_procedures + count
 
-			elif key in ['topical', 'card']:
+
+			#elif key in ['topical', 'card']:
+			elif key in ['topical', 'card', 'kit']:
 				self.nr_products = self.nr_products + count
+
 
 			# Subfamilies
 			if key == 'medical':
@@ -111,6 +116,7 @@ class DoctorLine(models.Model):
 
 			if key == 'cosmetology':
 				self.nr_cosmetologies = self.nr_cosmetologies + count
+
 
 
 		# Subfamily - Using collections
@@ -218,3 +224,54 @@ class DoctorLine(models.Model):
 			'openhealth.management.order.line',
 			'doctor_id',
 		)
+
+
+
+# ----------------------------------------------------------- Update Daily ------------------------------
+	@api.multi
+	def update_daily(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update Daily')
+
+		print(self.day_line)
+		self.day_line.unlink()
+
+		date_array = []
+
+		for line in self.order_line:
+
+			date = line.x_date_created.split()[0]
+
+			# Create
+			if date not in date_array:
+				date_array.append(date)
+
+
+				# Daily
+				day = self.day_line.create({
+												'date': date,
+
+												'management_id': self.management_id.id,
+												'doctor_id': self.id,
+									})
+
+				day.update()
+
+
+			# Update Lines
+			day.update_line(line)
+
+			if line.product_id.pl_price_list in ['2019']:
+				day.pl_update_macro()
+
+			elif line.product_id.pl_price_list in ['2018']:
+				day.update_macro()
+
+
+
+		print(date_array)
+
+	# update_daily

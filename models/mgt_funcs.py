@@ -16,17 +16,18 @@ def pl_line_analysis(self, line):
 	New - 2019
 	Analyses Line to update counters
 	"""
-	#print()
-	#print('PL - Line Analysis')
+	print()
+	print('PL - Line Analysis')
 
 
 
 	# Init
 	prod = line.product_id
 
-	#print(prod.name)
-	#print(prod.pl_treatment)
-	#print(prod.pl_subfamily)
+	print(prod.name)
+	print(prod.pl_treatment)
+	print(prod.pl_family)
+	print(prod.pl_subfamily)
 
 	#subfamily = prod.pl_subfamily
 
@@ -44,23 +45,54 @@ def pl_line_analysis(self, line):
 			self.amo_consultations = self.amo_consultations + line.price_subtotal
 
 
-
 		# Procedures
 		else:
 			self.nr_procedures = self.nr_procedures + line.product_uom_qty
 			self.amo_procedures = self.amo_procedures + line.price_subtotal
 
+
+			# By Family
+
+			# Echo
+			if prod.pl_family in ['echography']:
+				self.nr_echo = self.nr_echo + line.product_uom_qty
+				self.amo_echo = self.amo_echo + line.price_subtotal
+
+			# Gyn
+			elif prod.pl_family in ['gynecology']:
+				self.nr_gyn = self.nr_gyn + line.product_uom_qty
+				self.amo_gyn = self.amo_gyn + line.price_subtotal
+
+			# Prom
+			elif prod.pl_family in ['promotion']:
+				self.nr_prom = self.nr_prom + line.product_uom_qty
+				self.amo_prom = self.amo_prom + line.price_subtotal
+
+
+
+			# By Sub Family
+
 			# Co2
-			#if prod.pl_subfamily in ['co2']:
-			if prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
+			#elif prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
+			elif prod.pl_subfamily in ['co2']:
 				self.nr_co2 = self.nr_co2 + line.product_uom_qty
 				self.amo_co2 = self.amo_co2 + line.price_subtotal
 
 			# Exc
-			#elif prod.pl_subfamily in ['excilite']:
-			elif prod.pl_treatment in ['LASER EXCILITE']:
+			#elif prod.pl_treatment in ['LASER EXCILITE']:
+			elif prod.pl_subfamily in ['excilite']:
 				self.nr_exc = self.nr_exc + line.product_uom_qty
 				self.amo_exc = self.amo_exc + line.price_subtotal
+
+			# Quick
+			#elif prod.pl_treatment in ['QUICKLASER']:
+			elif prod.pl_subfamily in ['quick']:
+				self.nr_quick = self.nr_quick + line.product_uom_qty
+				self.amo_quick = self.amo_quick + line.price_subtotal
+
+
+
+			# By Treatment
 
 			# Ipl
 			elif prod.pl_treatment in ['LASER M22 IPL']:
@@ -72,11 +104,9 @@ def pl_line_analysis(self, line):
 				self.nr_ndyag = self.nr_ndyag + line.product_uom_qty
 				self.amo_ndyag = self.amo_ndyag + line.price_subtotal
 
-			# Quick
-			#elif prod.pl_subfamily in ['quick']:
-			elif prod.pl_treatment in ['QUICKLASER']:
-				self.nr_quick = self.nr_quick + line.product_uom_qty
-				self.amo_quick = self.amo_quick + line.price_subtotal
+
+
+
 
 
 
