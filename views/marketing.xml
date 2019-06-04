@@ -466,14 +466,14 @@
 			<field name="arch" type="xml">
 				<tree string="Marketing Tree">
 					<field name="name"/>
-					<field name="how_inter_per"/>
-					<field name="how_web_per"/>
-					<field name="how_mail_per"/>
-					<field name="how_reco_per"/>
-					<field name="how_tv_per"/>
-					<field name="how_radio_per"/>
-					<field name="how_none_per"/>
-					<field name="how_u_per"/>
+					<field name="how_inter_per"		widget="percentage"/>
+					<field name="how_web_per"		widget="percentage"/>
+					<field name="how_mail_per"		widget="percentage"/>
+					<field name="how_reco_per"		widget="percentage"/>
+					<field name="how_tv_per"		widget="percentage"/>
+					<field name="how_radio_per"		widget="percentage"/>
+					<field name="how_none_per"		widget="percentage"/>
+					<field name="how_u_per"			widget="percentage"/>
 				</tree>
 			</field>
 		</record>
