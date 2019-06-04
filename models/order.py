@@ -20,6 +20,26 @@ class sale_order(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Natives ----------------------
+	#ORDER_LINE_READONLY_STATES = {
+	#								'draft': 		[('readonly', False)],
+	#								'sent': 		[('readonly', False)],
+	#								'sale': 		[('readonly', False)],
+	#								'cancel': 		[('readonly', False)],
+	#}
+
+	# Order Line
+	#order_line = fields.One2many(
+	#		'sale.order.line',
+	#		'order_id',
+	#		string='Order Lines',
+			#states=READONLY_STATES, 			# By XML
+	#		states=ORDER_LINE_READONLY_STATES,
+	#	)
+
+
+
 # ----------------------------------------------------------- Natives ----------------------
 
 	#price_list = fields.Selection(
