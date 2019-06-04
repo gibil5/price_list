@@ -9,7 +9,7 @@
 
 	'description': 
 		"""
-		3 June 2019
+		4 June 2019
 
 		For Open Health. Service oriented way of adding Price List Management. 
 		""",
