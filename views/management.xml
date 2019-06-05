@@ -457,8 +457,11 @@
 
 
 
-							<!-- Admin --> 
+							<!-- Admin -->
+<!--							
 							<page string="Admin"    groups='openhealth.roots'>
+-->
+							<page string="Admin">
 
 								<group col="2"	string="Admin" 	>
 									<group>
