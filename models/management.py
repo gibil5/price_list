@@ -13,7 +13,9 @@ from openerp import models, fields, api
 #from openerp.addons.openhealth.models.management import mgt_funcs
 from . import mgt_funcs
 from . import pl_mgt_vars
-from . import data_stats
+
+#from . import data_stats
+
 
 class Management(models.Model):
 	"""
