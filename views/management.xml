@@ -465,9 +465,10 @@
 
 								<group col="2"	string="Admin" 	>
 									<group>
-										<field name="owner"   groups="openhealth.roots"/>
-										<field name="month"  groups="openhealth.roots"/>
-										<field name="year"   groups="openhealth.roots"/>
+										<field name="owner"/>
+										<field name="month"/>
+										<field name="year"/>
+
 
 										<field name="configurator"/>
 
