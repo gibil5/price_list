@@ -150,7 +150,7 @@
 								type="action" 
 								context="{
 											'search_default_marketing_id': active_id,   
-										}" 
+										}"
 								name="%(openhealth.patient_line_proc_form_action)d"
 								string="Ver Pacientes"  
 						/>
@@ -185,6 +185,32 @@
 						</group>
 
 
+								<!-- Sex -->
+								<group  col="2" 	string="Sexo">
+									<group>
+										<field name="sex_male"		string="Masculino"/>
+										<field name="sex_female"	string="Femenino"/>
+										<field name="sex_undefined"	string="Incompleto"/>
+									</group>
+									<group>
+										<field name="sex_male_per"		string="Masculino %"	widget="percentage"/>
+										<field name="sex_female_per"	string="Femenino %"		widget="percentage"/>
+										<field name="sex_undefined_per"	string="Incompleto %" 	widget="percentage"/>
+									</group>
+								</group>
+
+								<!-- Age -->
+								<group  string="Edad">
+									<group>
+										<field name="age_mean"	string="Promedio"	/>
+										<field name="age_min"	string="Minimo"/>
+										<field name="age_max"	string="Maximo"	/>
+									</group>
+									<group>
+										<field name="age_undefined"		string="Error"/>
+										<field name="age_undefined_per"	string="Error %"	widget="percentage"/>
+									</group>
+								</group>
 
 
 
@@ -199,33 +225,6 @@
 
 						<!-- Notebook --> 
 						<notebook>  
-
-							<!-- Patients --> 
-							<page   string="Pacientes">
-								<field name="patient_line">
-									<tree string="Pacientes"    limit="1000">
-										<field name="patient"/>
-										<field name="sex"/>
-										<field name="age_years"/>
-										<field name="date_record"/>
-										<field name="first_contact"/>
-										<field name="education"/>
-										<field name="country"/>
-										<field name="city"/>
-										<field name="district"/>
-										<field name="vip"/>
-									</tree>
-								</field>
-							</page>
-<!--
-										<field name="date_create"/>
-
-										<field name="dob"/>
-										<field name="age"/>
-										<field name="name"/>
-										<field name="date_create"/>
-										<field name="count"/>
--->
 
 
 							<!-- Stats --> 
@@ -266,42 +265,15 @@
 
 										<field name="vspace"/>
 
-										<field name="how_facebook_per"/>
-										<field name="how_instagram_per"/>
-										<field name="how_callcenter_per"/>
-										<field name="how_old_patient_per"/>
+										<field name="how_facebook_per"	widget="percentage"/>
+										<field name="how_instagram_per"	widget="percentage"/>
+										<field name="how_callcenter_per"	widget="percentage"/>
+										<field name="how_old_patient_per"	widget="percentage"/>
 									</group>
 								</group>
 
 
 
-								<!-- Sex -->
-								<group  col="2" 	string="Sexo">
-									<group       >
-										<field name="sex_male"		string="Masculino"/>
-										<field name="sex_female"	string="Femenino"/>
-										<field name="sex_undefined"	string="Incompleto"/>
-									</group>
-									<group>
-										<field name="sex_male_per"		string="Masculino %"	widget="percentage"/>
-										<field name="sex_female_per"	string="Femenino %"	widget="percentage"/>
-										<field name="sex_undefined_per"	string="Incompleto %" widget="percentage"/>
-									</group>
-								</group>
-
-
-								<!-- Age -->
-								<group  string="Edad">
-									<group>
-										<field name="age_mean"	string="Promedio"	/>
-										<field name="age_min"	string="Minimo"/>
-										<field name="age_max"	string="Maximo"	/>
-									</group>
-									<group>
-										<field name="age_undefined"		string="Error"/>
-										<field name="age_undefined_per"	string="Error %"/>
-									</group>
-								</group>
 
 
 								<!-- Education -->
@@ -338,6 +310,34 @@
 								</group>
 
 							</page>
+
+
+							<!-- Patients --> 
+							<page   string="Pacientes">
+								<field name="patient_line">
+									<tree string="Pacientes"    limit="1000">
+										<field name="patient"/>
+										<field name="sex"/>
+										<field name="age_years"/>
+										<field name="date_record"/>
+										<field name="first_contact"/>
+										<field name="education"/>
+										<field name="country"/>
+										<field name="city"/>
+										<field name="district"/>
+										<field name="vip"/>
+									</tree>
+								</field>
+							</page>
+<!--
+										<field name="date_create"/>
+										<field name="dob"/>
+										<field name="age"/>
+										<field name="name"/>
+										<field name="date_create"/>
+										<field name="count"/>
+-->
+
 
 
 
@@ -491,6 +491,12 @@
 			<field name="arch" type="xml">
 				<tree string="Marketing Tree">
 					<field name="name"/>
+
+					<field name="how_facebook_per"	widget="percentage"/>
+					<field name="how_instagram_per"	widget="percentage"/>
+					<field name="how_callcenter_per"	widget="percentage"/>
+					<field name="how_old_patient_per"	widget="percentage"/>
+
 					<field name="how_inter_per"		widget="percentage"/>
 					<field name="how_web_per"		widget="percentage"/>
 					<field name="how_mail_per"		widget="percentage"/>
@@ -529,9 +535,9 @@
 			<field name="arch" type="xml">
 				<tree string="Marketing Tree">
 					<field name="name"/>
-					<field name="sex_female_per"/>
-					<field name="sex_male_per"/>
-					<field name="sex_undefined_per"/>
+					<field name="sex_female_per"	widget="percentage"/>
+					<field name="sex_male_per"		widget="percentage"/>
+					<field name="sex_undefined_per"	widget="percentage"/>
 				</tree>
 			</field>
 		</record>

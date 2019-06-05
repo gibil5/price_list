@@ -125,44 +125,7 @@ class Marketing(models.Model):
 		print('Pl - Set Stats')
 
 
-		# Init vars 
-
-		# Sex 
-		count_m = 0
-		count_f = 0
-		count_u = 0
-
-		# Age 
-		count_a = 0
-		age_min = 100 
-		age_max = 0 
-		count_age_u = 0
-
-
-		# First Contact 
-		how_u = 0 
-		how_none = 0 
-		how_reco = 0 
-		how_tv = 0
-		how_radio = 0 
-		how_inter = 0 
-		how_web = 0 
-		how_mail = 0 
-
-
-		# Education 
-		edu_u = 0
-		edu_fir = 0
-		edu_sec = 0
-		edu_tec = 0
-		edu_uni = 0
-		edu_mas = 0
-
-
-		# Vip 
-		vip_true = 0 
-		vip_false = 0 
-
+		# Init 
 
 		# Collections
 		country_arr = []
@@ -172,80 +135,8 @@ class Marketing(models.Model):
 		# Loop 
 		for line in self.patient_line: 
 
-
-			# Sex
-			if line.sex == 'Male': 
-				count_m = count_m + 1
-			elif line.sex == 'Female': 
-				count_f = count_f + 1
-			else: 
-				count_u = count_u + 1
-
-
-			# Age Max and Min 
-			if line.age_years not in[ -1, 0]: 			# Not an Error 
-				count_a = count_a + line.age_years 
-				if line.age_years > age_max: 
-					age_max = line.age_years
-				if line.age_years < age_min: 
-					age_min = line.age_years
-			else: 										# Error 
-				count_age_u = count_age_u + 1
-
-
-			# First Contact 
-			if line.first_contact == 'none': 
-				how_none = how_none + 1
-
-			elif line.first_contact == 'recommendation': 
-				how_reco = how_reco + 1
-
-			elif line.first_contact == 'tv': 
-				how_tv = how_tv + 1
-
-			elif line.first_contact == 'radio': 
-				how_radio = how_radio + 1
-
-			elif line.first_contact == 'internet': 
-				how_inter = how_inter + 1
-
-			elif line.first_contact == 'website':
-				how_web = how_web + 1
-
-			elif line.first_contact == 'mail_campaign':
-				how_mail = how_mail + 1
-
-			else: 
-				how_u = how_u + 1
-
-
-			# Education 
-			if line.education == 'first': 
-				edu_fir = edu_fir + 1
-
-			elif line.education == 'second': 
-				edu_sec = edu_sec + 1
-
-			elif line.education == 'technical': 
-				edu_tec = edu_tec + 1
-
-			elif line.education == 'university': 
-				edu_uni = edu_uni + 1
-
-			elif line.education == 'masterphd': 
-				edu_mas = edu_mas + 1
-
-			else: 
-				edu_u = edu_u + 1
-
-
-			# Vip 
-			if line.vip: 
-				vip_true = vip_true + 1
-
-			else: 
-				vip_false = vip_false + 1
-
+			# Line Analysis
+			mkt_funcs.pl_line_analysis(self, line)
 
 
 			# Address - Using collections
@@ -256,99 +147,64 @@ class Marketing(models.Model):
 
 
 
-		# Update Object 
+# Percentages 
 
-
-		# Sex 
-		# Absolutes 
-		self.sex_male = count_m
-		self.sex_female = count_f
-		self.sex_undefined = count_u
-
-		# Per
-		#if self.total_count != 0: 
-			#self.sex_male_per = ( float(self.sex_male) / float(self.total_count) ) * 100
-			#self.sex_female_per = ( float(self.sex_female) / float(self.total_count) ) * 100
-			#self.sex_undefined_per = ( float(self.sex_undefined) / float(self.total_count) ) * 100
-		self.sex_male_per = mkt_funcs.get_per(self, self.sex_male, self.total_count)
-		self.sex_female_per = mkt_funcs.get_per(self, self.sex_female, self.total_count)
-		self.sex_undefined_per = mkt_funcs.get_per(self, self.sex_undefined, self.total_count)
-
-
-
-
-		# Ages 
-		self.age_min = age_min
-		self.age_max = age_max
-		self.age_undefined = count_age_u
-		
+		# Sex
 		if self.total_count != 0: 
-			self.age_mean = count_a / self.total_count
-			self.age_undefined_per = ( float(self.age_undefined) / float(self.total_count) ) * 100
+			#self.sex_male_per = ( float(self.sex_male) / float(self.total_count) ) 
+			self.sex_male_per = ( self.sex_male / float(self.total_count) ) 
+			self.sex_female_per = ( self.sex_female / float(self.total_count) ) 
+			self.sex_undefined_per = ( self.sex_undefined / float(self.total_count) ) 
+		
+		#self.sex_male_per = mkt_funcs.get_per(self, self.sex_male, self.total_count)
+		#self.sex_female_per = mkt_funcs.get_per(self, self.sex_female, self.total_count)
+		#self.sex_undefined_per = mkt_funcs.get_per(self, self.sex_undefined, self.total_count)
+
+
+		# Age
+		if self.total_count != 0: 
+			self.age_mean = self.age_sum / float(self.total_count)
+			self.age_undefined_per = ( self.age_undefined / float(self.total_count) ) 
+
 
 
 		# First Contact
-		self.how_none = how_none
-		self.how_reco = how_reco
-		self.how_tv = how_tv
-		self.how_radio = how_radio		
-		self.how_inter = how_inter
-		self.how_web = how_web
-		self.how_mail = how_mail
-		self.how_u = how_u
+		self.how_none_per = mkt_funcs.get_per(self, self.how_none, self.total_count)
+		self.how_reco_per = mkt_funcs.get_per(self, self.how_reco, self.total_count)
+		self.how_tv_per = mkt_funcs.get_per(self, self.how_tv, self.total_count)
+		self.how_radio_per = mkt_funcs.get_per(self, self.how_radio, self.total_count)
+		self.how_inter_per = mkt_funcs.get_per(self, self.how_inter, self.total_count)
+		self.how_web_per = mkt_funcs.get_per(self, self.how_web, self.total_count)
+		self.how_mail_per = mkt_funcs.get_per(self, self.how_mail, self.total_count)
+		self.how_u_per = mkt_funcs.get_per(self, self.how_u, self.total_count)
 
-		# Per
-		self.how_none_per = mkt_funcs.get_per(self, how_none, self.total_count)
-		self.how_reco_per = mkt_funcs.get_per(self, how_reco, self.total_count)
-		self.how_tv_per = mkt_funcs.get_per(self, how_tv, self.total_count)
-		self.how_radio_per = mkt_funcs.get_per(self, how_radio, self.total_count)
-		self.how_inter_per = mkt_funcs.get_per(self, how_inter, self.total_count)
-		self.how_web_per = mkt_funcs.get_per(self, how_web, self.total_count)
-		self.how_mail_per = mkt_funcs.get_per(self, how_mail, self.total_count)
-		self.how_u_per = mkt_funcs.get_per(self, how_u, self.total_count)
+		# New
+		self.how_facebook_per = mkt_funcs.get_per(self, self.how_facebook, self.total_count)
+		self.how_instagram_per = mkt_funcs.get_per(self, self.how_instagram, self.total_count)
+		self.how_callcenter_per = mkt_funcs.get_per(self, self.how_callcenter, self.total_count)
+		self.how_old_patient_per = mkt_funcs.get_per(self, self.how_old_patient, self.total_count)
+
+
 
 
 		# Education 
-		self.edu_fir = edu_fir
-		self.edu_sec = edu_sec
-		self.edu_tec = edu_tec
-		self.edu_uni = edu_uni
-		self.edu_mas = edu_mas
-		self.edu_u = edu_u
-
-		# Per 
-		self.edu_fir_per = mkt_funcs.get_per(self, edu_fir, self.total_count)
-		self.edu_sec_per = mkt_funcs.get_per(self, edu_sec, self.total_count)
-		self.edu_tec_per = mkt_funcs.get_per(self, edu_tec, self.total_count)
-		self.edu_uni_per = mkt_funcs.get_per(self, edu_uni, self.total_count)
-		self.edu_mas_per = mkt_funcs.get_per(self, edu_mas, self.total_count)
-		self.edu_u_per = mkt_funcs.get_per(self, edu_u, self.total_count)
+		self.edu_fir_per = mkt_funcs.get_per(self, self.edu_fir, self.total_count)
+		self.edu_sec_per = mkt_funcs.get_per(self, self.edu_sec, self.total_count)
+		self.edu_tec_per = mkt_funcs.get_per(self, self.edu_tec, self.total_count)
+		self.edu_uni_per = mkt_funcs.get_per(self, self.edu_uni, self.total_count)
+		self.edu_mas_per = mkt_funcs.get_per(self, self.edu_mas, self.total_count)
+		self.edu_u_per = mkt_funcs.get_per(self, self.edu_u, self.total_count)
 
 
 		# Vip 
-		self.vip_true = vip_true
-		self.vip_false = vip_false
-
-		 # Per 
-		self.vip_true_per = mkt_funcs.get_per(self, vip_true, self.total_count)
-		self.vip_false_per = mkt_funcs.get_per(self, vip_false, self.total_count)
-
+		self.vip_true_per = mkt_funcs.get_per(self, self.vip_true, self.total_count)
+		self.vip_false_per = mkt_funcs.get_per(self, self.vip_false, self.total_count)
 
 
 
 		# Using collections		
 		# Country
 		counter_country = collections.Counter(country_arr)
-
-
-
-
-		# Clear 
-		self.country_line.unlink()
-		self.city_line.unlink()
-		self.district_line.unlink()
-
-
 
 		# Country
 		#print 'Create Country Line '
@@ -548,26 +404,68 @@ class Marketing(models.Model):
 		)
 
 
+# ----------------------------------------------------------- Age  ----------------------------------
+	# Age
+	age_mean = fields.Float(
+			'Edad Promedio',
+			readonly=True,
+			#digits=(16,1),
+			digits = (12,3),
+		)
+
+	age_sum = fields.Float(
+			#'Edad Promedio',
+			#readonly=True,
+			digits = (12,3),
+		)
+
 
 
 # ----------------------------------------------------------- Sex  ----------------------------------
+
+	# Sex
+	#sex_male = fields.Float(
+	sex_male = fields.Integer(
+			'Sexo M',
+			readonly=True, 
+		)
+
+	#sex_female = fields.Float(
+	sex_female = fields.Integer(
+			'Sexo F',
+			readonly=True, 
+		)
+
+	#sex_undefined = fields.Float(
+	sex_undefined = fields.Integer(
+			'Sexo Error',
+			readonly=True, 	
+		)
+
+
+
 	# Sex 
 	sex_male_per = fields.Float(
 			'M %',
 			readonly=True, 
-			digits=(16,1), 
+			#digits=(16,1), 
+			digits = (12,3),
+			#digits=(12,1),
+			#digits=(12,2),
 		)
 
 	sex_female_per = fields.Float(
 			'F %',
 			readonly=True, 
-			digits=(16,1), 
+			#digits=(16,1), 
+			digits = (12,3),
 		)
 
 	sex_undefined_per = fields.Float(
 			'Error %',
 			readonly=True, 
-			digits=(16,1), 
+			#digits=(16,1), 
+			digits = (12,3),
 		)
 
 
@@ -576,37 +474,37 @@ class Marketing(models.Model):
 	edu_fir_per = fields.Float(
 			'Primaria %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	edu_sec_per = fields.Float(
 			'Secundaria %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	edu_tec_per = fields.Float(
 			'Instituto %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	edu_uni_per = fields.Float(
 			'Universidad %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 	
 	edu_mas_per = fields.Float(
 			'Posgrado %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	edu_u_per = fields.Float(
 			'No Definido %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 # ----------------------------------------------------------- First Contact ----------------------------------
@@ -636,34 +534,38 @@ class Marketing(models.Model):
 	how_u_per = fields.Float(
 			'No Definido %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 
 
 	# New
-	how_facebook = fields.Float(
+	#how_facebook = fields.Float(
+	how_facebook = fields.Integer(
 			'Facebook',
 			readonly=True, 
-			digits=(16,1), 
+			#digits=(12,3), 
 		)
 
-	how_instagram = fields.Float(
+	#how_instagram = fields.Float(
+	how_instagram = fields.Integer(
 			'Instagram',
 			readonly=True, 
-			digits=(16,1), 
+			#digits=(12,3), 
 		)
 
-	how_callcenter = fields.Float(
-			'Callcenter',
+	#how_callcenter = fields.Float(
+	how_callcenter = fields.Integer(
+			'Call center',
 			readonly=True, 
-			digits=(16,1), 
+			#digits=(12,3), 
 		)
 
-	how_old_patient = fields.Float(
-			'Old_patient',
+	#how_old_patient = fields.Float(
+	how_old_patient = fields.Integer(
+			'Paciente Antiguo',
 			readonly=True, 
-			digits=(16,1), 
+			#digits=(12,3), 
 		)
 
 
@@ -672,25 +574,26 @@ class Marketing(models.Model):
 	how_facebook_per = fields.Float(
 			'Facebook %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	how_instagram_per = fields.Float(
 			'Instagram %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	how_callcenter_per = fields.Float(
 			'Callcenter %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	how_old_patient_per = fields.Float(
-			'Old_patient %',
+			#'Old_patient %',
+			'Paciente Antiguo %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 
@@ -700,31 +603,31 @@ class Marketing(models.Model):
 	how_reco_per = fields.Float(
 			'Recomendación %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	how_tv_per = fields.Float(
 			'Tv %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	how_radio_per = fields.Float(
 			'Radio %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	how_web_per = fields.Float(
 			'Web %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	how_mail_per = fields.Float(
 			'Mail %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 
@@ -733,13 +636,13 @@ class Marketing(models.Model):
 	how_inter_per = fields.Float(
 			'Internet %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 	how_none_per = fields.Float(
 			'Ninguno %',
 			readonly=True, 
-			digits=(16,1), 
+			digits=(12,3), 
 		)
 
 
@@ -806,6 +709,47 @@ class Marketing(models.Model):
 		self.how_inter_per = 0
 		self.how_none_per = 0
 
+
+
+		# Sex
+		self.sex_male = 0
+		self.sex_female = 0
+		self.sex_undefined = 0
+		self.sex_male_per = 0
+		self.sex_female_per = 0
+		self.sex_undefined_per = 0
+
+
+		# Age
+		self.age_sum = 0
+		self.age_mean = 0
+		self.age_max = 0
+		self.age_min = 0
+		self.age_undefined = 0
+
+
+		# Education 
+		self.edu_fir = 0
+		self.edu_sec = 0
+		self.edu_tec = 0
+		self.edu_uni = 0
+		self.edu_mas = 0
+		self.edu_u = 0
+
+		self.edu_fir_per = 0
+		self.edu_sec_per = 0
+		self.edu_tec_per = 0
+		self.edu_uni_per = 0
+		self.edu_mas_per = 0
+		self.edu_u_per = 0
+
+
+		# Vip
+		self.vip_true = 0
+		self.vip_false = 0
+
+		self.vip_true_per = 0
+		self.vip_false_per = 0
 
 
 

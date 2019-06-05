@@ -199,13 +199,14 @@
 		<!-- Marketing - First Contact -->
 		<!-- Marketing 2019 - First Contact -->
 <!--
+-->
 		<menuitem   id="sex_menu"
 
 					name="Sexo"
 
 					parent="openhealth.main_marketing_menu"
 
-					sequence="1"					
+					sequence="15"
 				/>
 
 		<menuitem   id="sex_2019_menu"
@@ -218,7 +219,6 @@
 					
 					action="marketing_patient_2019_sex_list_action"
 			/>
--->
 
 
 	</data>
