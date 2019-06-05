@@ -122,7 +122,7 @@ class Marketing(models.Model):
 	@api.multi
 	def update_stats(self):  
 		print()
-		print('Pl - Set Stats')
+		print('Pl - Update Stats')
 
 
 		# Init 
