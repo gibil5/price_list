@@ -5,9 +5,6 @@
 
 
 <!-- FORM -->
-<!--
-		<record model="ir.ui.view" id="marketing_form_view">
--->
 		<record model="ir.ui.view" id="openhealth.marketing_form_view">
 			<field name="name">marketing.form</field>           
 			<field name="model">openhealth.marketing</field>
@@ -409,7 +406,10 @@
 
 
 							<!-- Admin --> 
+<!--
 							<page   string="Admin"  groups="openhealth.roots">
+-->
+							<page   string="Admin">
 								<group>
 									<group>
 										<field name="year"/>
