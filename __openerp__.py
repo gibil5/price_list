@@ -120,6 +120,8 @@
 
 
 		'views/electronic_order.xml',
+
+		
 		'views/electronic_container.xml',
 
 
