@@ -34,12 +34,12 @@ class ElectronicContainer(models.Model):
 
 		patient = self.correct_patient
 
-		print()
-		print(patient.name)
-		print(patient.x_id_doc_type)
-		print(patient.x_id_doc_type_code)
-		print(patient.x_id_doc)
-		print(patient.x_dni)
+		#print()
+		#print(patient.name)
+		#print(patient.x_id_doc_type)
+		#print(patient.x_id_doc_type_code)
+		#print(patient.x_id_doc)
+		#print(patient.x_dni)
 
 		if patient.x_id_doc in [False]:
 			if patient.x_dni not in [False]:
@@ -219,9 +219,9 @@ class ElectronicContainer(models.Model):
 
 
 			#print(receptor)
-			print(order.pl_receptor)
-			print(id_doc)
-			print(id_doc_type)
+			#print(order.pl_receptor)
+			#print(id_doc)
+			#print(id_doc_type)
 			#print(id_doc_type_code)
 
 
@@ -290,9 +290,9 @@ class ElectronicContainer(models.Model):
 																#'container_id': self.container.id,
 																'container_id': self.id,
 			})
-			print(electronic_order)
-			print(electronic_order.container_id)
-			print(electronic_order.name)
+			#print(electronic_order)
+			#print(electronic_order.container_id)
+			#print(electronic_order.name)
 
 
 

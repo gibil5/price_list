@@ -35,6 +35,9 @@
 
                             groups="openhealth.roots"
                             groups="openhealth.roots"
+
+                            string="Pl - Facturación"
+                            string="Pl - Crear TXT"                              
 -->
 
 
@@ -44,7 +47,7 @@
                             class="oe_highlight"
                             name="pl_create_electronic" 
                             
-                            string="Pl - Facturación"
+                            string="Facturación"
                         />
 
 
@@ -54,7 +57,7 @@
                             class="oe_highlight"
                             name="pl_export_txt" 
                             
-                            string="Pl - Crear TXT"                              
+                            string="Crear TXT"                              
                         />
 
 

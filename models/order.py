@@ -20,34 +20,47 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Validate ----------------------------
+
+	# Validate
+	@api.multi
+	def validate_electronic(self):
+		"""
+		Validate Order.
+		Used by Electronic Container (Txt Generation). 
+		"""
+		print()
+		print('Pl - Order Validate')
+
+		#print(self.name)
+		#print(self.patient.name)
+		#print(self.x_type)
+		#print(self.x_type_code)
+		#print(self.x_serial_nr)
+		#print(self.pl_receptor)
+
+		error = 0
+		msg = ''
+
+		#if self.x_type in [False]		or 	self.x_type_code in [False]		or self.x_serial_nr in [False]:
+		if self.x_type in [False]		or 	self.x_type_code in [False]		or self.x_serial_nr in [False]   	or self.pl_receptor in [False, '']:
+			print('Gotcha !')
+
+			msg = 'ERROR - Venta: La Venta esta incompleta. ' + self.patient.name
+			error = 1
+
+			#raise UserError(_(msg))
+		else:
+			print('Validated !')
+
+		return error, msg
+
+	# validate_electronic
+
+
 
 # ----------------------------------------------------------- Natives ----------------------
-	#ORDER_LINE_READONLY_STATES = {
-	#								'draft': 		[('readonly', False)],
-	#								'sent': 		[('readonly', False)],
-	#								'sale': 		[('readonly', False)],
-	#								'cancel': 		[('readonly', False)],
-	#}
 
-	# Order Line
-	#order_line = fields.One2many(
-	#		'sale.order.line',
-	#		'order_id',
-	#		string='Order Lines',
-			#states=READONLY_STATES, 			# By XML
-	#		states=ORDER_LINE_READONLY_STATES,
-	#	)
-
-
-
-# ----------------------------------------------------------- Natives ----------------------
-
-	#price_list = fields.Selection(
-	#		selection=px_vars._price_list_list,
-	#		string='Price list',
-			#default='2019',
-	#		required=True,
-	#	)
 
 	# Price List
 	pl_price_list = fields.Char(
@@ -72,42 +85,6 @@ class sale_order(models.Model):
 			string='Receptor',
 			#required=True,
 		)
-
-
-# ----------------------------------------------------------- Validate ----------------------------
-
-	# Action confirm
-	@api.multi
-	def validate_electronic(self):
-		"""
-		Validate Order.
-		Used by Electronic Container (Txt Generation). 
-		"""
-		print()
-		print('Pl - Order Validate')
-
-		print(self.name)
-		print(self.patient.name)
-		print(self.x_type)
-		print(self.x_type_code)
-		print(self.x_serial_nr)
-		print(self.pl_receptor)
-
-		error = 0
-		msg = ''
-
-		#if self.x_type in [False]		or 	self.x_type_code in [False]		or self.x_serial_nr in [False]:
-		if self.x_type in [False]		or 	self.x_type_code in [False]		or self.x_serial_nr in [False]   	or self.pl_receptor in [False, '']:
-			print('Gotcha !')
-
-			msg = 'ERROR - Venta: La Venta esta incompleta. ' + self.patient.name
-			error = 1
-
-			#raise UserError(_(msg))
-		else:
-			print('Validated !')
-
-		return error, msg
 
 
 
