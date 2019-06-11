@@ -30,6 +30,8 @@ access_price_list_cart_line,access_price_list_cart_line,model_price_list_cart_li
 
 
 access_price_list_product,access_price_list_product,model_price_list_product,,1,1,1,1
+
 access_price_list_product_selector,access_price_list_product_selector,model_price_list_product_selector,,1,1,1,1
+
 access_price_list_service,access_price_list_service,model_price_list_service,,1,1,1,1
 access_price_list_container,access_price_list_container,model_price_list_container,,1,1,1,1

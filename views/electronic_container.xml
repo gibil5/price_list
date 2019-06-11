@@ -32,6 +32,9 @@
                             name="export_txt"                         
                             string="Crear TXT"                              
                         />
+
+                            groups="openhealth.roots"
+                            groups="openhealth.roots"
 -->
 
 
@@ -41,10 +44,10 @@
                             class="oe_highlight"
                             name="pl_create_electronic" 
                             
-                            string="Pl - Facturación"                                
-
-                            groups="openhealth.roots"
+                            string="Pl - Facturación"
                         />
+
+
                         <!-- Pl - Export Txt --> 
                         <button 
                             type="object" 
@@ -52,8 +55,8 @@
                             name="pl_export_txt" 
                             
                             string="Pl - Crear TXT"                              
-                            groups="openhealth.roots"
                         />
+
 
                         <!-- Clear --> 
                         <button 
@@ -62,6 +65,18 @@
                             name="clear"
 
                             string="Clear"
+
+                            groups="openhealth.roots"
+                        />
+
+                        <!-- Clear --> 
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
+
+                            name="correct"
+
+                            string="Correct"
 
                             groups="openhealth.roots"
                         />
@@ -76,13 +91,22 @@
                         <group>
                             <group>                             
                                 <field name="name"/>
+
                                 <field name="export_date_begin"/>
+
+                                <field name="export_date_end"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
+
                                 <field name="txt_pack"      filename="txt_pack_name"/>
                             </group>
                             <group>
                                 <field name="amount_total"/>
                                 <field name="receipt_count"/>
                                 <field name="invoice_count"/>
+
+                                <field name="vspace"/>
+                                <field name="several_dates"/>
+
+                                <field name="correct_patient"/>
                             </group>
                         </group>
 

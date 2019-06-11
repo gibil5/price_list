@@ -12,8 +12,6 @@ from openerp import models, fields, api
 #from . import chk_patient
 from openerp.addons.openhealth.models.libs import count_funcs
 
-
-
 class Patient(models.Model):
 	"""
 	high level support for doing this and that.
@@ -24,6 +22,12 @@ class Patient(models.Model):
 
 	#_description = 'Patient'
 
+
+# ----------------------------------------------------------- Natives -----------
+
+	x_blacklist = fields.Boolean(
+			'Black List',
+		)
 
 
 # ----------------------------------------------------------- Validate -----------

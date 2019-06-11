@@ -23,6 +23,60 @@ class ElectronicContainer(models.Model):
 	_inherit = 'openhealth.container'
 
 
+# ----------------------------------------------------------- Correct ------------------------------
+	@api.multi
+	def correct(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Pl - Correct')
+
+		patient = self.correct_patient
+
+		print()
+		print(patient.name)
+		print(patient.x_id_doc_type)
+		print(patient.x_id_doc_type_code)
+		print(patient.x_id_doc)
+		print(patient.x_dni)
+
+		if patient.x_id_doc in [False]:
+			if patient.x_dni not in [False]:
+				patient.x_id_doc = patient.x_dni
+				patient.x_id_doc_type = 'dni'
+
+
+
+
+
+# ----------------------------------------------------------- Dates -----------
+	# Dates
+	export_date_begin = fields.Date(
+			string="Fecha Inicio",
+			default=fields.Date.today,
+			required=True,
+		)
+
+	# Dates
+	export_date_end = fields.Date(
+			string="Fecha Final",
+			default=fields.Date.today,
+			required=True,
+		)
+
+	several_dates = fields.Boolean(
+			'Varias Fechas',
+		)
+
+	vspace = fields.Char(
+			' ',
+		)
+
+	correct_patient = fields.Many2one(
+			'oeh.medical.patient',
+		)
+
 
 
 # ----------------------------------------------------------- Electronic -----------
@@ -114,9 +168,15 @@ class ElectronicContainer(models.Model):
 		#self.electronic_order.unlink()
 		self.electronic_order_ids.unlink()
 
+
+		if not self.several_dates:
+			self.export_date_end = self.export_date_begin
+
+
 		# Orders
 		#orders, count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
-		orders, count = mgt_funcs.get_orders_filter(self, self.export_date_begin, self.export_date_begin, self.state_arr, self.type_arr)
+		#orders, count = mgt_funcs.get_orders_filter(self, self.export_date_begin, self.export_date_begin, self.state_arr, self.type_arr)
+		orders, count = mgt_funcs.get_orders_filter(self, self.export_date_begin, self.export_date_end, self.state_arr, self.type_arr)
 
 		print(orders)
 		print(count)
@@ -284,7 +344,6 @@ class ElectronicContainer(models.Model):
 # ----------------------------------------------------------- Electronic --------------------------
 	# Create Electronic
 	@api.multi
-	#def create_electronic(self):
 	def pl_create_electronic(self):
 		"""
 		high level support for doing this and that.
