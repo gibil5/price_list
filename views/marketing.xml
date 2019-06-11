@@ -509,6 +509,36 @@
 			</field>
 		</record>
 
+<!-- TREE - First Contact --> 
+		<record model="ir.ui.view" id="view_marketing_first_contact_nr_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+					<field name="name"/>
+
+					<field name="how_facebook"	/>
+					<field name="how_instagram"	/>
+					<field name="how_callcenter"	/>
+					<field name="how_old_patient"	/>
+
+					<field name="how_inter"		/>
+					<field name="how_web"		/>
+					<field name="how_mail"		/>
+					<field name="how_reco"		/>
+					<field name="how_tv"		/>
+					<field name="how_radio"		/>
+					<field name="how_none"		/>
+					<field name="how_u"			/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
 
 <!-- TREE Education Level --> 
 		<record model="ir.ui.view" id="view_marketing_education_level_tree">

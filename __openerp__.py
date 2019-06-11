@@ -109,9 +109,15 @@
 
 
 
+		'views/media_line.xml',
+
 		#'views/patient_line_actions.xml', # Dep - Already in Openhealth
 		'views/marketing.xml',
 		'views/marketing_actions.xml',
+
+
+
+
 
 
 		'views/management.xml',
@@ -129,7 +135,6 @@
 		'views/menus.xml',
 		'views/menus_dev.xml',
 		'views/menus_marketing.xml',
-
 		'views/menus_management.xml',
 
 

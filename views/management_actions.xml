@@ -5,7 +5,7 @@
 
 <!-- ACTION - Management -->
 
-	   <!-- Month All -->
+	   <!-- All -->
 		<record model="ir.actions.act_window" id="management_list_mgt_all_action">
 
 			<field name="name">Análisis de Ventas</field>
@@ -20,6 +20,58 @@
 			</field>
 			<!--
 									('year', 'in', ['2019']),
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>            
+			-->
+			<field name="view_id" ref="openhealth.management_view_tree"/> 
+		</record>
+
+
+
+
+
+	   <!-- AGG -->
+		<record model="ir.actions.act_window" id="management_list_mgt_agg_2019_action">
+
+			<field name="name">Análisis de Ventas</field>
+			<field name="res_model">openhealth.management</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph</field>
+			<field name="context">{}</field>
+
+			<field name="domain">[
+									('owner', 'in', ['aggregate']),
+									('year', 'in', ['2019']),
+								]
+			</field>
+			<!--
+									('year', 'in', ['2019']),
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>            
+			-->
+			<field name="view_id" ref="openhealth.management_view_tree"/> 
+		</record>
+
+
+
+	   <!-- AGG -->
+		<record model="ir.actions.act_window" id="management_list_mgt_agg_2018_action">
+
+			<field name="name">Análisis de Ventas</field>
+			<field name="res_model">openhealth.management</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph</field>
+			<field name="context">{}</field>
+
+			<field name="domain">[
+									('owner', 'in', ['aggregate']),
+									('year', 'in', ['2018']),
+								]
+			</field>
+			<!--
+									('year', 'in', ['2018']),
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
 			<field name="view_id" eval="False"/>            

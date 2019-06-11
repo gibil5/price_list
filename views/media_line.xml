@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+        <!-- Tree - media Line --> 
+        <record model="ir.ui.view" id="openhealth.media_line_view_order_tree">
+
+            <field name="name">openhealth.media.line.tree</field>
+
+            <field name="model">openhealth.media.line</field>
+            
+            <field name="arch" type="xml">
+
+                <tree string="media Line Tree">
+                    
+<!--
+                    <field name="name"/>
+-->
+                    <field name="idx"/>
+
+                    <field name="name_sp"/>
+
+
+                    <field name="count"/>
+                    <field name="percentage"/>
+                    <field name="total"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+
+    </data>
+</openerp>

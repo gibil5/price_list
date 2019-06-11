@@ -16,6 +16,8 @@ from . import mkt_funcs
 #from openerp.addons.openhealth.models.marketing import mkt_funcs, lib_marketing
 from openerp.addons.openhealth.models.marketing import lib_marketing
 
+from . import pl_lib_marketing
+
 
 from openerp.addons.openhealth.models.order import ord_vars
 
@@ -99,8 +101,11 @@ class Marketing(models.Model):
 		# Build Histo
 		lib_marketing.build_histogram(self)
 
+
 		# Build Media
-		lib_marketing.build_media(self)
+		#lib_marketing.build_media(self)
+		pl_lib_marketing.pl_build_media(self)
+
 
 		# Build Places
 		lib_marketing.build_districts(self)

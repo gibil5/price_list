@@ -5,20 +5,50 @@
 <!--
                     action="openhealth.management_list_mgt_all_action"
 -->
-       <!-- Month All -->
-        <menuitem   id="management_sales_mgt_all_menu" 
 
-                    name="Mensual Todo" 
+
+       <!-- Month All -->
+        <menuitem   id="management_sales_mgt_agg_2019_menu" 
+
+                    name="Agregado 2019" 
             
                     parent="openhealth.management_menu"
             
-                    sequence="3"
+                    sequence="5"
             
-                    action="management_list_mgt_all_action"
+                    action="management_list_mgt_agg_2019_action"
 
                 />
 
 
+       <!-- Month All -->
+        <menuitem   id="management_sales_mgt_agg_2018_menu" 
+
+                    name="Agregado 2018" 
+            
+                    parent="openhealth.management_menu"
+            
+                    sequence="7"
+            
+                    action="management_list_mgt_agg_2018_action"
+
+                />
+
+
+
+
+       <!-- Month All -->
+        <menuitem   id="management_sales_mgt_all_menu" 
+
+                    name="Todo" 
+            
+                    parent="openhealth.management_menu"
+            
+                    sequence="13"
+            
+                    action="management_list_mgt_all_action"
+
+                />
 
 	</data>
 </openerp>
