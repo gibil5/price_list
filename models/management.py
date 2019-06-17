@@ -8,15 +8,12 @@ from __future__ import print_function
 from timeit import default_timer as timer
 import collections
 import datetime
-
 from openerp import models, fields, api
 #from openerp.addons.openhealth.models.management import mgt_funcs
 from . import mgt_funcs
 from . import pl_mgt_vars
 #from . import data_stats
-
 from . import pl_ord_vars
-
 
 class Management(models.Model):
 	"""
@@ -26,6 +23,70 @@ class Management(models.Model):
 
 
 
+# ----------------------------------------------------------- Natives -------------------------
+	per_amo_credit_notes = fields.Float(
+		)
+
+
+	# Medical
+	nr_sub_con_med = fields.Integer(
+			'Nr Cons Med',
+		)
+
+	amo_sub_con_med = fields.Float(
+			'Monto Cons Med',
+		)
+	
+	per_amo_sub_con_med = fields.Float(
+			'% Monto Cons Med',
+		)
+
+	# Gyn
+	nr_sub_con_gyn = fields.Integer(
+			'Nr Cons Gin',
+		)
+
+	amo_sub_con_gyn = fields.Float(
+			'Monto Cons Gin',
+		)
+	
+	per_amo_sub_con_gyn = fields.Float(
+			'% Monto Cons Gin',
+		)
+
+	# Chavarri
+	nr_sub_con_cha = fields.Integer(
+			'Nr Cons Dr. Chav',
+		)
+
+	amo_sub_con_cha = fields.Float(
+			'Monto Cons Dr. Chav',
+		)
+	
+	per_amo_sub_con_cha = fields.Float(
+			'% Monto Sub Cons Dr. Chav',
+		)
+
+
+
+
+
+
+	per_amo_families = fields.Float(
+			'% Monto Familias',
+		)
+
+	per_amo_subfamilies = fields.Float(
+			'% Monto Sub Familias',
+		)
+
+	per_amo_subfamilies_products = fields.Float(
+			'% Monto Sub Familias Productos',
+		)
+
+	per_amo_subfamilies_procedures = fields.Float(
+			'% Monto Sub Familias Procedimientos',
+		)
 
 
 
@@ -34,12 +95,26 @@ class Management(models.Model):
 	@api.multi
 	def pl_validate(self):
 		"""
-		high level support for doing this and that.
+		Validates Data for internal coherency and external coherency. 
 		"""
 		print()
 		print('Pl - Validate')
 
+		# Families
+		self.per_amo_families = self.per_amo_products + self.per_amo_consultations + self.per_amo_procedures + self.per_amo_other + self.per_amo_credit_notes
 
+		# Sub Families
+		self.per_amo_subfamilies = self.per_amo_sub_con_med + self.per_amo_sub_con_gyn + self.per_amo_sub_con_cha + \
+									self.per_amo_co2 + self.per_amo_exc + self.per_amo_quick + self.per_amo_ipl + self.per_amo_ndyag + \
+									self.per_amo_medical + self.per_amo_cosmetology + \
+									self.per_amo_echo + self.per_amo_gyn + self.per_amo_prom + \
+									self.per_amo_topical + self.per_amo_card + self.per_amo_kit
+
+		#self.per_amo_subfamilies_products = self.per_amo_topical + self.per_amo_card + self.per_amo_kit
+
+		#self.per_amo_subfamilies_procedures = self.per_amo_co2 + self.per_amo_exc + self.per_amo_quick + self.per_amo_ipl + self.per_amo_ndyag + \
+		#							self.per_amo_medical + self.per_amo_cosmetology + \
+		#							self.per_amo_echo + self.per_amo_gyn + self.per_amo_prom 
 
 
 
@@ -616,16 +691,26 @@ class Management(models.Model):
 		# Month
 		if self.total_amount != 0:
 
-			self.per_amo_echo = (self.amo_echo / self.total_amount)
-			self.per_amo_gyn = (self.amo_gyn / self.total_amount)
-			self.per_amo_prom = (self.amo_prom / self.total_amount)
-
-
 			self.per_amo_other = (self.amo_other / self.total_amount)
+
+
+			# Families
+			self.per_amo_credit_notes = (self.amo_credit_notes / self.total_amount)
 
 			self.per_amo_products = (self.amo_products / self.total_amount)
 			self.per_amo_consultations = (self.amo_consultations / self.total_amount)
 			self.per_amo_procedures = (self.amo_procedures / self.total_amount)
+
+
+			# Sub Families
+			self.per_amo_sub_con_med = (self.amo_sub_con_med / self.total_amount)
+			self.per_amo_sub_con_gyn = (self.amo_sub_con_gyn / self.total_amount)
+			self.per_amo_sub_con_cha = (self.amo_sub_con_cha / self.total_amount)
+
+
+			self.per_amo_echo = (self.amo_echo / self.total_amount)
+			self.per_amo_gyn = (self.amo_gyn / self.total_amount)
+			self.per_amo_prom = (self.amo_prom / self.total_amount)
 
 			self.per_amo_topical = (self.amo_topical / self.total_amount)
 			self.per_amo_card = (self.amo_card / self.total_amount)
@@ -636,6 +721,7 @@ class Management(models.Model):
 			self.per_amo_ipl = (self.amo_ipl / self.total_amount)
 			self.per_amo_ndyag = (self.amo_ndyag / self.total_amount)
 			self.per_amo_quick = (self.amo_quick / self.total_amount)
+
 			self.per_amo_medical = (self.amo_medical / self.total_amount)
 			self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount)
 
@@ -1228,7 +1314,8 @@ class Management(models.Model):
 
 		self.total_amount_year = total
 
-		self.per_amo_total = self.total_amount / self.total_amount_year
+		if self.total_amount_year != 0:
+			self.per_amo_total = self.total_amount / self.total_amount_year
 
 	# update_year
 
@@ -1290,6 +1377,10 @@ class Management(models.Model):
 		self.total_tickets = 0
 
 		# Nr
+		self.nr_sub_con_med = 0
+		self.nr_sub_con_gyn = 0
+		self.nr_sub_con_cha = 0
+
 		self.nr_echo = 0
 		self.nr_gyn = 0
 		self.nr_prom = 0
@@ -1312,6 +1403,10 @@ class Management(models.Model):
 		self.nr_cosmetology = 0
 
 		# Amo
+		self.amo_sub_con_med = 0
+		self.amo_sub_con_gyn = 0
+		self.amo_sub_con_cha = 0
+
 		self.amo_echo = 0
 		self.amo_gyn = 0
 		self.amo_prom = 0
@@ -1335,11 +1430,20 @@ class Management(models.Model):
 		self.amo_cosmetology = 0
 
 		# Per Amo
+		self.per_amo_families = 0
+		self.per_amo_subfamilies = 0
+
+
+		self.per_amo_sub_con_med = 0
+		self.per_amo_sub_con_gyn = 0
+		self.per_amo_sub_con_cha = 0
+
 		self.per_amo_echo = 0
 		self.per_amo_gyn = 0
 		self.per_amo_prom = 0
 
 		self.per_amo_other = 0
+		self.per_amo_credit_notes = 0
 		self.per_amo_topical = 0
 		self.per_amo_card = 0
 		self.per_amo_kit = 0

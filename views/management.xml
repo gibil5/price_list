@@ -43,7 +43,7 @@
 
 								name="pl_update_doctors"
 								
-								string="Pl - Analisis Doctor"
+								string="Analisis Doctor"
 						/>
 
 
@@ -84,7 +84,7 @@
 
 								name="pl_update_productivity"
 								
-								string="Pl - Actualizar Productividad"                             
+								string="Actualizar Productividad"                             
 						/>
 
 
@@ -144,6 +144,8 @@
 								class="oe_highlight oe_right"
 								name="reset"
 								string="Reset"
+
+								groups="openhealth.roots"
 						/>
 
 						<!-- Reset -->
@@ -151,7 +153,9 @@
 								type="object"
 								class="oe_highlight oe_right"
 								name="pl_validate"
-								string="Pl - Validate"
+								string="Validate"
+
+								groups="openhealth.roots"
 						/>
 
 
@@ -182,7 +186,6 @@
 					<!-- Sheet -->  
 					<sheet>
 
-
 						<!-- Totals --> 
 						<group  string="Totales"    col="3">
 							<group>
@@ -197,10 +200,11 @@
 							</group>
 							<group>
 								<field name="total_amount"/>
-
 								<field name="total_amount_year"/>
-
 								<field name="per_amo_total"     widget="percentage"  />
+
+								<field name="per_amo_families"      widget="percentage" />
+								<field name="per_amo_subfamilies"	widget="percentage" />
 							</group>
 						</group>
 
@@ -213,7 +217,7 @@
 								<field name="nr_consultations"  string="Consultas"/>
 								<field name="nr_procedures"     string="Procedimientos"/>
 								<field name="nr_other"          string="Otros"/>
-								<field name="nr_credit_notes"          string="Notas de Credito"/>
+								<field name="nr_credit_notes"   string="Notas de Credito"/>
 							</group>
 
 							<group>
@@ -229,6 +233,11 @@
 								<field name="per_amo_consultations"    string="Porc Monto" widget="percentage" />
 								<field name="per_amo_procedures"       string="Porc Monto" widget="percentage" />
 								<field name="per_amo_other"            string="Porc Monto" widget="percentage" />
+
+								<field name="per_amo_credit_notes"     widget="percentage"/>
+
+<!--
+-->
 							</group>
 
 <!--
@@ -241,6 +250,28 @@
 -->
 						</group>
 
+
+
+						<!-- Sub-Families --> 
+						<group  string="Sub-Familias - Consultas"   col="3" >
+							<group>
+								<field name="nr_sub_con_med"/>
+								<field name="nr_sub_con_gyn"/>
+								<field name="nr_sub_con_cha"/>
+							</group>
+
+							<group>
+								<field name="amo_sub_con_med"/>
+								<field name="amo_sub_con_gyn"/>
+								<field name="amo_sub_con_cha"/>
+							</group>
+
+							<group>
+								<field name="per_amo_sub_con_med"  	widget="percentage"/>
+								<field name="per_amo_sub_con_gyn"  	widget="percentage"/>
+								<field name="per_amo_sub_con_cha"  	widget="percentage"/>
+							</group>
+						</group>
 
 
 						<!-- Sub-Families --> 
@@ -285,22 +316,23 @@
 							</group>
 
 							<group>
-								<field name="per_amo_co2"   string="%"        widget="percentage"/>
-								<field name="per_amo_exc"   string="%"        widget="percentage"/>
-								<field name="per_amo_ipl"   string="%"        widget="percentage"/>
-								<field name="per_amo_ndyag" string="%"        widget="percentage"/>
-								<field name="per_amo_quick" string="%"        widget="percentage"/>
+								<field name="per_amo_co2"   	       widget="percentage"/>
+								<field name="per_amo_exc"  	 	       widget="percentage"/>
+								<field name="per_amo_ipl"   	       widget="percentage"/>
+								<field name="per_amo_ndyag" 	        widget="percentage"/>
+								<field name="per_amo_quick" 	        widget="percentage"/>
 
 								<field name="vspace"/>
 
-								<field name="per_amo_echo"    	string="%"	widget="percentage"/>
-								<field name="per_amo_gyn"    	string="%"	widget="percentage"/>
-								<field name="per_amo_prom"    	string="%"	widget="percentage"/>
+								<field name="per_amo_echo"    		widget="percentage"/>
+								<field name="per_amo_gyn"    		widget="percentage"/>
+								<field name="per_amo_prom"    		widget="percentage"/>
 
 								<field name="vspace"/>
 
-								<field name="per_amo_medical"       string="%"    widget="percentage"/>
-								<field name="per_amo_cosmetology"   string="%"    widget="percentage"/>
+								<field name="per_amo_medical"           widget="percentage"/>
+								<field name="per_amo_cosmetology"       widget="percentage"/>
+
 							</group>
 						</group>
 
@@ -317,9 +349,9 @@
 								<field name="amo_kit"   string="Monto"/>
 							</group>
 							<group>
-								<field name="per_amo_topical"   string="%"    widget="percentage"/>
-								<field name="per_amo_card"   string="%"       widget="percentage"/>
-								<field name="per_amo_kit"   string="%"        widget="percentage"/>
+								<field name="per_amo_topical"      widget="percentage"/>
+								<field name="per_amo_card"        widget="percentage"/>
+								<field name="per_amo_kit"         widget="percentage"/>
 							</group>
 						</group>
 

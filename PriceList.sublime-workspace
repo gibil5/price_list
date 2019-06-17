@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"amo_su",
+				"amo_sub_con_med"
+			],
+			[
+				"per_amo_su",
+				"per_amo_sub_con_med"
+			],
+			[
+				"per_amo_sub_con",
+				"per_amo_sub_con_cha"
+			],
+			[
+				"per_amo_sub_co",
+				"per_amo_sub_con_gyn"
+			],
+			[
+				"per_amo_pro",
+				"per_amo_products"
+			],
+			[
+				"per_amo_e",
+				"per_amo_echo"
+			],
+			[
+				"per",
+				"per_amo_products"
+			],
+			[
 				"x_id",
 				"x_id_doc_type_code"
 			],
@@ -436,10 +464,6 @@
 				"Procedimientos"
 			],
 			[
-				"per_amo_pro",
-				"per_amo_procedures"
-			],
-			[
 				"crea",
 				"create_csv"
 			],
@@ -490,30 +514,6 @@
 			[
 				"tpye",
 				"type_arr"
-			],
-			[
-				"fir",
-				"_first_contact_list"
-			],
-			[
-				"treat",
-				"treatment"
-			],
-			[
-				"ter",
-				"treatment_ids"
-			],
-			[
-				"x_na",
-				"x_name_ticket"
-			],
-			[
-				"ge",
-				"generated_arr"
-			],
-			[
-				"ele",
-				"electronic_order"
 			]
 		]
 	},
@@ -532,7 +532,7 @@
 			"file": "models/management.py",
 			"settings":
 			{
-				"buffer_size": 29103,
+				"buffer_size": 31679,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -541,7 +541,16 @@
 			"file": "views/management.xml",
 			"settings":
 			{
-				"buffer_size": 18470,
+				"buffer_size": 19243,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/mgt_funcs.py",
+			"settings":
+			{
+				"buffer_size": 14335,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -690,6 +699,7 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/views/management_actions.xml",
 		"/Users/gibil/cellar/github/price_list/models/patient.py",
 		"/Users/gibil/cellar/github/price_list/models/order.TRASH.py",
@@ -700,7 +710,6 @@
 		"/Users/gibil/cellar/github/price_list/views/menus_marketing.xml",
 		"/Users/gibil/cellar/github/price_list/views/menus_management.xml",
 		"/Users/gibil/cellar/github/price_list/models/pl_lib_marketing.py",
-		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/views/containers.xml",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.csv",
 		"/Users/gibil/cellar/github/price_list/views/order.xml",
@@ -835,6 +844,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"amo",
+			"Consultas",
+			"Sub ",
+			"med",
+			"per_amo_consul",
+			"med",
+			"per_amo_co2",
+			"per_amo_co2 = fi",
+			"per_amo_total",
 			"month",
 			"Pri ",
 			"how_web",
@@ -953,23 +971,23 @@
 			"order.",
 			"template",
 			"qty",
-			"if",
-			"order_line",
-			"service",
-			"card",
-			"pl_test_treatment",
-			"1,0,0,0",
-			"E.g.",
-			"#",
-			"pl_zone",
-			"zone"
+			"if"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"per_amo",
+			"nr",
+			"Cons",
+			"",
+			"gyn",
+			"cha",
+			"gyn",
+			"cha",
+			"gyn",
 			"",
 			"sex_nr_",
 			"sex_nr",
@@ -1088,16 +1106,7 @@
 			"echography",
 			"gynecology",
 			"quick",
-			"product",
-			"quick",
-			"cosmetology",
-			"medical",
-			"ndyag",
-			"product",
-			"cosmetology",
-			"medical",
-			"ndyag",
-			"ipl"
+			"product"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1108,7 +1117,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1124,8 +1133,8 @@
 						"selection":
 						[
 							[
-								297,
-								344
+								148,
+								148
 							]
 						],
 						"settings":
@@ -1138,7 +1147,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1147,15 +1156,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 29103,
+						"buffer_size": 31679,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1130,
-								1130
+								30831,
+								30831
 							]
 						],
 						"settings":
@@ -1164,10 +1173,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 24076.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1176,15 +1185,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18470,
+						"buffer_size": 19243,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3057,
-								3057
+								5405,
+								5405
 							]
 						],
 						"settings":
@@ -1193,14 +1202,43 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2257.0,
+						"translation.y": 3478.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/mgt_funcs.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14335,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1487,
+								1487
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 436.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "models/marketing.py",
 					"semi_transient": false,
 					"settings":
@@ -1225,11 +1263,11 @@
 						"translation.y": 9536.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "views/marketing.xml",
 					"semi_transient": false,
 					"settings":
@@ -1254,11 +1292,11 @@
 						"translation.y": 749.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "views/menus_marketing.xml",
 					"semi_transient": false,
 					"settings":
@@ -1283,11 +1321,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "views/marketing_actions.xml",
 					"semi_transient": false,
 					"settings":
@@ -1313,11 +1351,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "models/pl_lib_marketing.py",
 					"semi_transient": false,
 					"settings":
@@ -1342,11 +1380,11 @@
 						"translation.y": 69.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "models/pl_ord_vars.py",
 					"semi_transient": false,
 					"settings":
@@ -1370,11 +1408,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "models/mkt_funcs.py",
 					"semi_transient": false,
 					"settings":
@@ -1399,11 +1437,11 @@
 						"translation.y": 812.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "views/media_line.xml",
 					"semi_transient": false,
 					"settings":
@@ -1430,7 +1468,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -1487,7 +1525,7 @@
 	"project": "PriceList.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 66.0
 	},
 	"save_all_on_build": true,
 	"select_file":

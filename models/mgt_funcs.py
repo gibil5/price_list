@@ -44,6 +44,19 @@ def pl_line_analysis(self, line):
 			self.nr_consultations = self.nr_consultations + line.product_uom_qty
 			self.amo_consultations = self.amo_consultations + line.price_subtotal
 
+			if prod.pl_treatment in ['CONSULTA MEDICA']:
+				self.nr_sub_con_med = self.nr_sub_con_med + line.product_uom_qty
+				self.amo_sub_con_med = self.amo_sub_con_med + line.price_subtotal
+				
+			elif prod.pl_treatment in ['CONSULTA GINECOLOGICA']:
+				self.nr_sub_con_gyn = self.nr_sub_con_gyn + line.product_uom_qty
+				self.amo_sub_con_gyn = self.amo_sub_con_gyn + line.price_subtotal
+
+			elif prod.pl_treatment in ['CONSULTA MEDICA DR. CHAVARRI']:
+				self.nr_sub_con_cha = self.nr_sub_con_cha + line.product_uom_qty
+				self.amo_sub_con_cha = self.amo_sub_con_cha + line.price_subtotal
+
+
 
 		# Procedures
 		else:
@@ -103,9 +116,6 @@ def pl_line_analysis(self, line):
 			elif prod.pl_treatment in ['LASER M22 ND YAG']:
 				self.nr_ndyag = self.nr_ndyag + line.product_uom_qty
 				self.amo_ndyag = self.amo_ndyag + line.price_subtotal
-
-
-
 
 
 
@@ -190,6 +200,9 @@ def line_analysis(self, line):
 		if prod.x_treatment in ['consultation']:
 			self.nr_consultations = self.nr_consultations + line.product_uom_qty
 			self.amo_consultations = self.amo_consultations + line.price_subtotal
+
+			self.nr_sub_con_med = self.nr_sub_con_med + line.product_uom_qty
+			self.amo_sub_con_med = self.amo_sub_con_med + line.price_subtotal
 
 
 		# Procedures
