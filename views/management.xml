@@ -553,8 +553,12 @@
 
 					<field name="name"/>
 
-					<field name="month"  groups="openhealth.roots"/>
-					<field name="year"   groups="openhealth.roots"/>
+					<field name="per_amo_families"  	string="% Mto Fam"		groups="openhealth.roots"/>
+					<field name="per_amo_subfamilies"  	string="% Mto Sub Fam"	groups="openhealth.roots"/>
+
+
+					<field name="month"  	groups="openhealth.roots"/>
+					<field name="year"   	groups="openhealth.roots"/>
 					
 					<field name="owner"         	groups="openhealth.roots"/>
 
