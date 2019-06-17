@@ -584,6 +584,10 @@
 					<field name="nr_consultations"/>
 					<field name="nr_procedures"/>
 
+					<field name="nr_credit_notes"/>
+					<field name="nr_other"/>
+
+
 					<field name="ratio_pro_con"     string="Ratio"/>
 					
 					<field name="total_tickets"/>
