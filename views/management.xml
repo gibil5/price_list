@@ -553,8 +553,8 @@
 
 					<field name="name"/>
 
-					<field name="per_amo_families"  	string="% Mto Fam"		groups="openhealth.roots"/>
-					<field name="per_amo_subfamilies"  	string="% Mto Sub Fam"	groups="openhealth.roots"/>
+					<field name="per_amo_families"  	string="% Mto Fam"		widget="percentage"	groups="openhealth.roots"/>
+					<field name="per_amo_subfamilies"  	string="% Mto Sub Fam"	widget="percentage"	groups="openhealth.roots"/>
 
 
 					<field name="month"  	groups="openhealth.roots"/>
