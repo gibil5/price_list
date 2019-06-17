@@ -108,7 +108,9 @@ class Management(models.Model):
 									self.per_amo_co2 + self.per_amo_exc + self.per_amo_quick + self.per_amo_ipl + self.per_amo_ndyag + \
 									self.per_amo_medical + self.per_amo_cosmetology + \
 									self.per_amo_echo + self.per_amo_gyn + self.per_amo_prom + \
-									self.per_amo_topical + self.per_amo_card + self.per_amo_kit
+									self.per_amo_topical + self.per_amo_card + self.per_amo_kit + \
+									self.per_amo_credit_notes
+
 
 		#self.per_amo_subfamilies_products = self.per_amo_topical + self.per_amo_card + self.per_amo_kit
 
