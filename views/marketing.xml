@@ -414,6 +414,7 @@
 									<group>
 										<field name="year"/>
 										<field name="owner"/>
+										<field name="month"/>
 
 										<field name="write_date"        string="Actualizado"  />
 
@@ -509,7 +510,7 @@
 			</field>
 		</record>
 
-<!-- TREE - First Contact --> 
+<!-- TREE - First Contact Nr --> 
 		<record model="ir.ui.view" id="view_marketing_first_contact_nr_tree">
 			<field name="name">openhealth.marketing.tree</field>
 			<field name="model">openhealth.marketing</field>
@@ -517,19 +518,19 @@
 				<tree string="Marketing Tree">
 					<field name="name"/>
 
-					<field name="how_facebook"	/>
-					<field name="how_instagram"	/>
-					<field name="how_callcenter"	/>
-					<field name="how_old_patient"	/>
+					<field name="how_facebook"		sum="Total Facebook"/>
+					<field name="how_instagram"		sum="Total Instagram"/>
+					<field name="how_callcenter"	sum="Total Call Center"/>
+					<field name="how_old_patient"	sum="Total Paciente Antiguo"/>
 
-					<field name="how_inter"		/>
-					<field name="how_web"		/>
-					<field name="how_mail"		/>
-					<field name="how_reco"		/>
-					<field name="how_tv"		/>
-					<field name="how_radio"		/>
-					<field name="how_none"		/>
-					<field name="how_u"			/>
+					<field name="how_inter"		sum="Total Internet"/>
+					<field name="how_web"		sum="Total Web"/>
+					<field name="how_mail"		sum="Total Mail"/>
+					<field name="how_reco"		sum="Total Recomendación"/>
+					<field name="how_tv"		sum="Total TV"/>
+					<field name="how_radio"		sum="Total Radio"/>
+					<field name="how_none"		sum="Total Ninguno"/>
+					<field name="how_u"			sum="Total Error"/>
 				</tree>
 			</field>
 		</record>
@@ -558,6 +559,8 @@
 		</record>
 
 
+
+
 <!-- TREE - Sex --> 
 		<record model="ir.ui.view" id="view_marketing_sex_tree">
 			<field name="name">openhealth.marketing.tree</field>
@@ -571,6 +574,23 @@
 				</tree>
 			</field>
 		</record>
+
+<!-- TREE - Sex --> 
+		<record model="ir.ui.view" id="view_marketing_sex_nr_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+					<field name="name"/>
+					<field name="sex_female"	sum="Total Femenino"/>
+					<field name="sex_male"		sum="Total Masculino"/>
+					<field name="sex_undefined"	sum="Total No Definido"/>
+				</tree>
+			</field>
+		</record>
+
+
+
 
 	</data>
 </openerp>

@@ -7,14 +7,15 @@
 from __future__ import print_function
 from timeit import default_timer as timer
 import collections
+import datetime
 
 from openerp import models, fields, api
-
 #from openerp.addons.openhealth.models.management import mgt_funcs
 from . import mgt_funcs
 from . import pl_mgt_vars
-
 #from . import data_stats
+
+from . import pl_ord_vars
 
 
 class Management(models.Model):
@@ -22,6 +23,136 @@ class Management(models.Model):
 	high level support for doing this and that.
 	"""
 	_inherit = 'openhealth.management'
+
+
+
+
+
+
+# ----------------------------------------------------------- Validate -------------------------
+	# Validate
+	@api.multi
+	def pl_validate(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Pl - Validate')
+
+
+
+
+
+# ----------------------------------------------------------- Update Prod -------------------------
+	# Update Days
+	@api.multi
+	#def update_productivity(self):
+	def pl_update_productivity(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Pl - Update Productivity')
+		
+		self.pl_create_days()
+		print(self.day_line)
+
+		self.update_day_cumulative()
+		
+		self.update_day_avg()
+
+
+
+
+# ----------------------------------------------------------- Create Days -------------------------
+	# Create Days
+	@api.multi
+	def pl_create_days(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Pl - Create Days')
+
+
+		# Clean
+		self.day_line.unlink()
+
+
+		# Holidays
+		days_inactive = []
+		if self.configurator.name not in [False]:
+			for day in self.configurator.day_line:
+				if day.holiday:
+					days_inactive.append(day.date)
+		#print(days_inactive)
+
+
+		# Create
+		#date_format = "%Y-%m-%d %H:%M:%S"
+		date_format = "%Y-%m-%d"
+		date_end_dt = datetime.datetime.strptime(self.date_end, date_format)
+		date_begin_dt = datetime.datetime.strptime(self.date_begin, date_format)
+		delta = date_end_dt - date_begin_dt
+		print(delta)
+
+
+		# Create
+		for i in range(delta.days + 1):
+			
+			print(i)
+
+			date_dt = date_begin_dt + datetime.timedelta(i)
+			weekday = date_dt.weekday()
+
+			#weekday_str = ord_vars._dic_weekday[weekday]
+			weekday_str = pl_ord_vars._dic_weekday[weekday]
+			
+			#print(date_dt, weekday)
+
+
+			# Duration
+			if weekday in [5]:
+				duration = 0.5
+			else:
+				duration = 1
+
+
+			# Not Sunday
+			if weekday in [0, 1, 2, 3, 4, 5]:
+
+
+				#date_date = date_dt.split()[0]
+				#date_date = date_dt.day
+				#date_date = date_dt.date
+				date_s = date_dt.strftime(date_format)
+				
+				#print(date_s)
+
+
+				if date_s not in days_inactive:
+
+					# Create
+					day = self.day_line.create({
+												'date': date_dt,
+												'name': weekday_str,
+												'weekday': weekday_str,
+												'duration': duration,
+												'management_id': self.id,
+									})
+
+
+					day.update_amount()		# Important !
+
+					print(day)
+
+					#print(date_dt, weekday, weekday_str)
+					#print(date_dt)
+					#print(date_s)
+			else:
+				print('Sunday, not counted')
+
+	# create_days
 
 
 

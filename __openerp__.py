@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Price List - 2019",
+	'name': "Price List - 2019 - SERVICE ORIENTED",
 
 	'summary': 
 		"""
@@ -9,9 +9,13 @@
 
 	'description': 
 		"""
-		11 June 2019
+		17 June 2019
 
 		For Open Health. Service oriented way of adding Price List Management. 
+
+		Remember, Hunter and Westerman:
+			- Step 1 - New Thinking: Avoid Value Traps.
+
 		""",
 
 

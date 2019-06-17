@@ -102,9 +102,9 @@ class Marketing(models.Model):
 		lib_marketing.build_histogram(self)
 
 
-		# Build Media
-		#lib_marketing.build_media(self)
-		pl_lib_marketing.pl_build_media(self)
+		# Build Median - Dep ?
+		lib_marketing.build_media(self)
+		#pl_lib_marketing.pl_build_media(self)
 
 
 		# Build Places
@@ -431,19 +431,22 @@ class Marketing(models.Model):
 	# Sex
 	#sex_male = fields.Float(
 	sex_male = fields.Integer(
-			'Sexo M',
+			#'Sexo M',
+			'Masculino',
 			readonly=True, 
 		)
 
 	#sex_female = fields.Float(
 	sex_female = fields.Integer(
-			'Sexo F',
+			#'Sexo F',
+			'Femenino',
 			readonly=True, 
 		)
 
 	#sex_undefined = fields.Float(
 	sex_undefined = fields.Integer(
-			'Sexo Error',
+			#'Sexo Error',
+			'Error',
 			readonly=True, 	
 		)
 
@@ -451,7 +454,8 @@ class Marketing(models.Model):
 
 	# Sex 
 	sex_male_per = fields.Float(
-			'M %',
+			#'M %',
+			'Masculino %',
 			readonly=True, 
 			#digits=(16,1), 
 			digits = (12,3),
@@ -460,7 +464,8 @@ class Marketing(models.Model):
 		)
 
 	sex_female_per = fields.Float(
-			'F %',
+			#'F %',
+			'Femenino %',
 			readonly=True, 
 			#digits=(16,1), 
 			digits = (12,3),
@@ -535,38 +540,66 @@ class Marketing(models.Model):
 
 
 
-	# First Contact 
-	how_u_per = fields.Float(
-			'No Definido %',
+	# First Contact - Nr
+	how_u = fields.Integer(
+			'No Definido',
 			readonly=True, 
-			digits=(12,3), 
 		)
 
+	how_none = fields.Integer(
+			'Ninguno',
+			readonly=True, 
+		)
 
+	how_reco = fields.Integer(
+			'Recomendación',
+			readonly=True, 
+		)
+
+	how_tv = fields.Integer(
+			'Tv',
+			readonly=True, 
+		)
+
+	how_radio = fields.Integer(
+			'Radio',
+			readonly=True, 
+		)
+
+	how_inter = fields.Integer(
+			'Internet',
+			readonly=True, 
+		)
+
+	how_web = fields.Integer(
+			'Web',
+			readonly=True, 
+		)
+
+	how_mail = fields.Integer(
+			'Mail',
+			readonly=True, 
+		)
 
 	# New
-	#how_facebook = fields.Float(
 	how_facebook = fields.Integer(
 			'Facebook',
 			readonly=True, 
 			#digits=(12,3), 
 		)
 
-	#how_instagram = fields.Float(
 	how_instagram = fields.Integer(
 			'Instagram',
 			readonly=True, 
 			#digits=(12,3), 
 		)
 
-	#how_callcenter = fields.Float(
 	how_callcenter = fields.Integer(
 			'Call center',
 			readonly=True, 
 			#digits=(12,3), 
 		)
 
-	#how_old_patient = fields.Float(
 	how_old_patient = fields.Integer(
 			'Paciente Antiguo',
 			readonly=True, 
@@ -574,6 +607,11 @@ class Marketing(models.Model):
 		)
 
 
+
+
+
+
+	# First Contact - %
 
 	# New Per
 	how_facebook_per = fields.Float(
@@ -605,6 +643,12 @@ class Marketing(models.Model):
 
 
 	# Standard
+	how_u_per = fields.Float(
+			'No Definido %',
+			readonly=True, 
+			digits=(12,3), 
+		)
+
 	how_reco_per = fields.Float(
 			'Recomendación %',
 			readonly=True, 

@@ -75,15 +75,19 @@
 								string=" Doctores"
 						/>
 
+
+
 						<!-- Update Productivity -->
 						<button 
 								type="object" 
 								class="oe_highlight"
 
-								name="update_productivity"
+								name="pl_update_productivity"
 								
-								string="Actualizar Productividad"                             
+								string="Pl - Actualizar Productividad"                             
 						/>
+
+
 
 						<!-- See Productivity -->
 						<button
@@ -142,28 +146,33 @@
 								string="Reset"
 						/>
 
-
-						<!-- Update Year -->
+						<!-- Reset -->
 						<button 
 								type="object"
 								class="oe_highlight oe_right"
+								name="pl_validate"
+								string="Pl - Validate"
+						/>
 
+
+
+						<!-- Update Year -->
+						<!-- Update Max -->
+<!--						
+						<button 
+								type="object"
+								class="oe_highlight oe_right"
 								name="update_year_all"
-								
 								string="Year"
 						/>
 
-
-
-						<!-- Update Max -->
 						<button 
 								type="object"
 								class="oe_highlight oe_right"
-
 								name="update_max"
-								
 								string="Max"
 						/>
+-->
 					</header>
 
 
@@ -180,8 +189,6 @@
 								<field name="name"/>
 								<field name="date_begin"/>
 								<field name="date_end"/>
-
-								<field name="base_dir"/>
 							</group>
 							<group>
 								<field name="total_count"/>
@@ -469,6 +476,7 @@
 										<field name="month"/>
 										<field name="year"/>
 
+										<field name="base_dir"/>
 
 										<field name="configurator"/>
 
@@ -533,6 +541,7 @@
 
 
 					<field name="state_arr"     	groups="openhealth.roots"/>
+					<field name="type_arr"     	groups="openhealth.roots"/>
 
 
 					<field name="nr_products"/>
@@ -663,9 +672,6 @@
 			
 			</field>
 		</record>
-
-
-
 
 
 	</data>

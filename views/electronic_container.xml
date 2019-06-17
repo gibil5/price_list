@@ -6,9 +6,10 @@
 
 <!-- FORM --> 
         <record model="ir.ui.view" id="openhealth.container_form_view">
-
             <field name="name">container.form</field>
+
             <field name="model">openhealth.container</field>
+
             <field name="priority" eval="1"/>
             <field name="arch" type="xml">
                 <form string="container Form">
@@ -157,6 +158,28 @@
             </field>
         </record>
  <!-- FORM --> 
+
+
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="container_tree_view">
+            <field name="name">container.tree</field>
+            <field name="model">openhealth.container</field>
+            <field name="arch" type="xml">
+                <tree string="Container Tree">
+                    <field name="name"/>
+
+                    <field name="export_date_begin"/>
+                    <field name="export_date_end"/>
+
+                    <field name="txt_pack"/>
+                </tree>
+            </field>
+        </record>
+
+
 
 
 

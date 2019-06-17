@@ -159,7 +159,7 @@
 
 		<menuitem   id="first_contact_2019_menu"
 
-					name="Primer Contacto - 2019" 
+					name="Medios - 2019 - %" 
 		
 					parent="first_contact_menu"
 					
@@ -167,6 +167,22 @@
 					
 					action="marketing_patient_2019_first_contact_list_action"
 			/>
+
+
+		<menuitem   id="first_contact_2019_nr_menu"
+
+					name="Medios - 2019 - NR" 
+		
+					parent="first_contact_menu"
+					
+					sequence="3"
+					
+					action="marketing_patient_2019_first_contact_nr_list_action"
+			/>
+
+
+
+
 
 
 
@@ -201,17 +217,14 @@
 <!--
 -->
 		<menuitem   id="sex_menu"
-
 					name="Sexo"
-
 					parent="openhealth.main_marketing_menu"
-
 					sequence="15"
 				/>
 
 		<menuitem   id="sex_2019_menu"
 
-					name="Sexo - 2019" 
+					name="Sexo - 2019 - %" 
 		
 					parent="sex_menu"
 					
@@ -219,6 +232,19 @@
 					
 					action="marketing_patient_2019_sex_list_action"
 			/>
+
+		<menuitem   id="sex_2019_nr_menu"
+
+					name="Sexo - 2019 - NR" 
+		
+					parent="sex_menu"
+					
+					sequence="3"
+					
+					action="marketing_patient_2019_sex_nr_list_action"
+			/>
+
+
 
 
 	</data>
