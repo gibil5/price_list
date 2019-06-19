@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+<!-- FORM -->
+		<record model="ir.ui.view" id="report_sale_product_form_view">
+			
+			<field name="name">price_list.report.sale.product.form</field>
+
+			<field name="model">openhealth.report.sale.product</field>
+
+			<field name="inherit_id" ref="openhealth.rsp_form_view"/>
+
+			<field name="mode">primary</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='total']" position="after">
+
+						<field name="management_id"/>
+				</xpath>
+
+			</field>
+		</record>
+
+
+
+
+<!-- TREE -->
+<!--
+		<record model="ir.ui.view" id="report_sale_product_tree_view">
+			<field name="name">price_list.report.sale.product.tree</field>
+			<field name="model">openhealth.report.sale.product</field>
+			<field name="inherit_id" ref="openhealth.rsp_tree"/>
+			<field name="mode">primary</field>
+			<field name="priority" eval="100"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='name']" position="after">
+					<field name="management_id" />
+				</xpath>
+			</field>
+		</record>
+-->
+
+<!-- TREE --> 
+		<record model="ir.ui.view" id="openhealth.rsp_tree">
+			<field name="name">openhealth.report.sale.product.tree</field>
+			<field name="model">openhealth.report.sale.product</field>
+			<field name="arch" type="xml">
+				<tree default_order='name desc'>
+					<field name="name"/>
+
+					<field name="management_id" />
+
+					<field name="test_target"/>
+					<field name="total_qty"/>
+					<field name="total"/>
+				</tree>
+			</field>
+		</record>
+<!--
+				<tree string="Closing Tree">
+					<field name="date"/>
+-->
+
+
+<!-- ACTION -->
+		<record model="ir.actions.act_window" id="rsp_mgt_list_action">
+
+			<field name="name">Reporte de Venta de Productos - Management</field>
+			
+			<field name="res_model">openhealth.report.sale.product</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[
+                                    ('management_id', 'not in', [False]),
+			]</field>
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+		
+<!-- ACTION -->
+		<record model="ir.actions.act_window" id="rsp_list_action">
+			<field name="name">Reporte de Venta de Productos - Por Fecha</field>
+			<field name="res_model">openhealth.report.sale.product</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[
+                                    ('management_id', 'in', [False]),
+			]</field>
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+	</data>
+</openerp>

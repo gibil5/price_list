@@ -68,10 +68,7 @@ class Management(models.Model):
 		)
 
 
-
-
-
-
+	# Families and Sub Families
 	per_amo_families = fields.Float(
 			'% Monto Familias',
 		)
@@ -80,25 +77,98 @@ class Management(models.Model):
 			'% Monto Sub Familias',
 		)
 
-	per_amo_subfamilies_products = fields.Float(
-			'% Monto Sub Familias Productos',
+	#per_amo_subfamilies_products = fields.Float(
+	#		'% Monto Sub Familias Productos',
+	#	)
+
+	#per_amo_subfamilies_procedures = fields.Float(
+	#		'% Monto Sub Familias Procedimientos',
+	#	)
+
+
+	report_sale_product = fields.Many2one(
+			'openhealth.report.sale.product'
 		)
 
-	per_amo_subfamilies_procedures = fields.Float(
-			'% Monto Sub Familias Procedimientos',
+	rsp_count = fields.Integer(
+			'RSP Nr',
+		)
+
+	rsp_total = fields.Float(
+			'RSP Monto',
+		)
+
+	rsp_count_delta = fields.Integer(
+			'RSP Nr Delta',
+		)
+
+	rsp_total_delta = fields.Float(
+			'RSP Total Delta',
 		)
 
 
-
-# ----------------------------------------------------------- Validate -------------------------
+# ----------------------------------------------------------- Validate Internal -------------------------
 	# Validate
 	@api.multi
 	def pl_validate(self):
 		"""
-		Validates Data for internal coherency and external coherency. 
+		Validates Data Coherency - internal and external. 
 		"""
 		print()
 		print('Pl - Validate')
+
+		#self.pl_validate_internal()
+		
+		self.pl_validate_external()
+
+
+
+
+# ----------------------------------------------------------- Validate external -------------------------
+	# Validate
+	@api.multi
+	def pl_validate_external(self):
+		"""
+		Validates Data Coherency - External. 
+		"""
+		print()
+		print('Pl - Validate External')
+
+		if self.report_sale_product.name in [False]:
+
+			date_begin = self.date_begin
+
+			#rsp = self.report_sale_product.create({
+			self.report_sale_product = self.env['openhealth.report.sale.product'].create({
+																							#'name': datetime.datetime.now(),
+																							'name': date_begin,
+
+																							'management_id': self.id,
+				})
+
+		rsp = self.report_sale_product
+		print(rsp)
+		print(rsp.name)
+
+		rsp.update()
+
+		self.rsp_count = rsp.total_qty
+		self.rsp_total = rsp.total
+
+		self.rsp_count_delta = self.nr_products - self.rsp_count
+		self.rsp_total_delta = self.amo_products - self.rsp_total
+
+
+
+# ----------------------------------------------------------- Validate Internal -------------------------
+	# Validate
+	@api.multi
+	def pl_validate_internal(self):
+		"""
+		Validates Data Coherency - internal. 
+		"""
+		print()
+		print('Pl - Validate Internal')
 
 		# Families
 		self.per_amo_families = self.per_amo_products + self.per_amo_consultations + self.per_amo_procedures + self.per_amo_other + self.per_amo_credit_notes
@@ -1370,6 +1440,15 @@ class Management(models.Model):
 		"""
 		#print
 		#print 'Reset Macros'
+
+
+		# Relational
+		#self.report_sale_product = False
+		self.report_sale_product.unlink()
+		self.rsp_count = 0
+		self.rsp_count_delta = 0
+		self.rsp_total = 0
+		self.rsp_total_delta = 0
 
 		# Clear
 		self.total_amount_year = 0

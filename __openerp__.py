@@ -9,12 +9,12 @@
 
 	'description': 
 		"""
-		17 June 2019
+		19 June 2019
 
 		For Open Health. Service oriented way of adding Price List Management. 
 
 		Remember, Hunter and Westerman:
-			- Step 1 - New Thinking: Avoid Value Traps.
+			- Step 1 - New Thinking: Avoid the 7 Value Traps.
 
 		""",
 
@@ -128,6 +128,9 @@
 		'views/management_order_line.xml',
 		'views/management_actions.xml',
 
+		'views/report_sale_product.xml',
+
+
 
 		'views/electronic_order.xml',
 
@@ -140,6 +143,7 @@
 		'views/menus_dev.xml',
 		'views/menus_marketing.xml',
 		'views/menus_management.xml',
+		'views/menus_rsp.xml',
 
 
 		# Security

@@ -152,8 +152,9 @@
 						<button 
 								type="object"
 								class="oe_highlight oe_right"
-								name="pl_validate"
 								string="Validate"
+
+								name="pl_validate"								
 
 								groups="openhealth.roots"
 						/>
@@ -203,10 +204,31 @@
 								<field name="total_amount_year"/>
 								<field name="per_amo_total"     widget="percentage"  />
 
-								<field name="per_amo_families"      widget="percentage" />
-								<field name="per_amo_subfamilies"	widget="percentage" />
 							</group>
 						</group>
+
+
+						<notebook groups="openhealth.roots">  
+							
+							<!-- Validate --> 
+							<page string="Validate">
+								<group>
+									<group>								
+										<field name="per_amo_families"      widget="percentage" />
+										<field name="per_amo_subfamilies"	widget="percentage" />
+									</group>					
+									<group>								
+										<field name="report_sale_product"/>
+
+										<field name="rsp_count"/>
+										<field name="rsp_total"/>
+
+										<field name="rsp_count_delta"/>
+										<field name="rsp_total_delta"/>
+									</group>					
+								</group>
+							</page>
+						</notebook>
 
 
 						<!-- Families --> 
@@ -552,6 +574,11 @@
 
 
 					<field name="name"/>
+
+
+					<field name="rsp_count_delta"	groups="openhealth.roots"/>
+					<field name="rsp_total_delta"	groups="openhealth.roots"/>
+
 
 					<field name="per_amo_families"  	string="% Mto Fam"		widget="percentage"	groups="openhealth.roots"/>
 					<field name="per_amo_subfamilies"  	string="% Mto Sub Fam"	widget="percentage"	groups="openhealth.roots"/>
