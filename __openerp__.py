@@ -59,6 +59,8 @@
 		'views/order.xml',
 		'views/order_line.xml',
 
+		'views/closing.xml',
+
 
 
 		'views/report_order_line.xml',

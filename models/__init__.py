@@ -35,6 +35,8 @@ from . import treatment
 
 from . import product_selector
 from . import order
+from . import payment_method_line
+from . import closing
 
 
 from . import account_line
