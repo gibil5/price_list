@@ -117,7 +117,7 @@ class Management(models.Model):
 		print()
 		print('Pl - Validate')
 
-		#self.pl_validate_internal()
+		self.pl_validate_internal()
 		
 		self.pl_validate_external()
 

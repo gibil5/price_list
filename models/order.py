@@ -20,6 +20,34 @@ class sale_order(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Validate ----------------------------
+	x_amount_flow = fields.Float(
+			'Pl - Total F',
+
+			compute='_compute_x_amount_flow',
+		)
+
+	@api.multi
+	def _compute_x_amount_flow(self):
+		print('Pl - compute x_amount_flow')
+		for record in self:
+
+			if record.x_block_flow:
+				record.x_amount_flow = 0
+
+			#elif record.x_credit_note_amount not in [0, False]:
+			elif record.state in ['credit_note']  and  record.x_credit_note_amount not in [0, False]:
+				#record.x_amount_flow = record.amount_total - record.x_credit_note_amount
+				record.x_amount_flow = - record.x_credit_note_amount
+
+			else:
+				record.x_amount_flow = record.amount_total
+
+
+
+
 # ----------------------------------------------------------- Validate ----------------------------
 
 	# Validate
