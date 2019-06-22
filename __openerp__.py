@@ -9,7 +9,7 @@
 
 	'description': 
 		"""
-		19 June 2019
+		21 June 2019
 
 		For Open Health. Service oriented way of adding Price List Management. 
 
@@ -129,6 +129,9 @@
 		'views/management.xml',
 		'views/management_order_line.xml',
 		'views/management_actions.xml',
+
+		'views/mgt_patient_line.xml',
+
 
 		'views/report_sale_product.xml',
 

@@ -23,6 +23,68 @@ class Management(models.Model):
 
 
 
+# ----------------------------------------------------------- Relational -------------------------
+	# patient
+	patient_line = fields.One2many(
+			'openhealth.management.patient.line',
+			'management_id',
+		)
+
+# ----------------------------------------------------------- Update Patients -------------------------
+	# Update Patients
+	@api.multi
+	def update_patients(self):
+		"""
+		Update Patients. 
+		"""
+		print()
+		print('Pl - Update Patients')
+
+
+		orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
+		print(orders)
+		print(count)
+
+		# Create
+		for order in orders:
+
+			patient = order.patient
+			patient_id = order.patient.id
+
+			if patient.name not in ['REVILLA RONDON JOSE JAVIER']:
+
+				print(patient)
+				print(patient_id)
+
+				# Count
+				pat_count = self.env['openhealth.management.patient.line'].search_count([
+																						('patient', '=', patient_id),
+
+																						('management_id', '=', self.id),
+																				],
+																					#order='x_serial_nr asc',
+																					#limit=1,
+																				)
+				print(pat_count)
+
+
+				if pat_count in [0]:
+
+					#self.report_sale_product = self.env['openhealth.report.sale.product'].create({
+					patient_line = self.patient_line.create({
+																'patient': patient_id,
+
+																'management_id': self.id,
+						})
+
+
+		# Update
+		for patient_line in self.patient_line:
+			patient_line.update()
+
+
+
+
 # ----------------------------------------------------------- Natives -------------------------
 	per_amo_credit_notes = fields.Float(
 		)
@@ -1443,6 +1505,8 @@ class Management(models.Model):
 
 
 		# Relational
+		self.patient_line.unlink()
+
 		#self.report_sale_product = False
 		self.report_sale_product.unlink()
 		self.rsp_count = 0

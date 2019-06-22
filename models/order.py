@@ -16,7 +16,162 @@ class sale_order(models.Model):
 	"""
 	_inherit = 'sale.order'
 
-	_description = 'Order'
+
+
+
+
+# ----------------------------------------------------------- Configurator ------------------------
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+		)
+
+
+	def init_configurator(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Init Configurator')
+
+		# Configurator
+		if self.configurator.name in [False]:
+			self.configurator = self.env['openhealth.configurator.emr'].search([
+																					('x_type', 'in', ['emr']),
+															],
+															#order='date_begin,name asc',
+															limit=1,
+														)
+			print(self.configurator)
+			print(self.configurator.name)
+
+
+
+# ----------------------------------------------------------- Ticket - Header - Getters ----------------
+	def get_company_name(self):
+		"""
+		Used by Print Ticket.
+		"""
+		#company_name = 'SERVICIOS MÉDICOS ESTÉTICOS S.A.C'
+
+		self.init_configurator()
+
+		if self.configurator.name not in [False]:
+			company_name = self.configurator.company_name
+		else:
+			company_name = ''
+		return company_name
+
+
+
+
+	def get_company_address(self):
+		"""
+		Used by Print Ticket.
+		"""
+		#company_address = 'Av. La Merced 161 Miraflores - Lima'
+
+		self.init_configurator()
+
+		if self.configurator.name not in [False]:
+			company_address = self.configurator.company_address
+		else:
+			company_address = ''
+		return company_address
+
+
+
+	def get_company_phone(self):
+		"""
+		Used by Print Ticket.
+		"""
+		#company_phone = 'Teléfono: (051) 321 2394'
+
+		self.init_configurator()
+
+		if self.configurator.name not in [False]:
+			company_phone = self.configurator.company_phone
+		else:
+			company_phone = ''
+		return company_phone
+
+
+
+	def get_company_ruc(self):
+		"""
+		Used by Print Ticket.
+		"""
+		#company_ruc = 'R.U.C.: 20523424221'
+
+		self.init_configurator()
+
+		if self.configurator.name not in [False]:
+			company_ruc = self.configurator.company_ruc
+		else:
+			company_ruc = ''
+		return company_ruc
+
+
+
+
+# ----------------------------------------------------------- Ticket - Footer - Getters ----------------
+
+	# Warning
+	def get_warning(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Get Warning')
+		#return self.x_my_company.x_warning
+		#return self.configurator.warning
+
+		# Configurator
+		self.init_configurator()
+
+		if self.configurator.name not in [False]:
+			warning = self.configurator.warning
+		else:
+			warning = ''
+		return warning
+
+
+	# Website
+	def get_website(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#return self.x_my_company.website
+
+		# Configurator
+		self.init_configurator()
+
+		if self.configurator.name not in [False]:
+			website = self.configurator.website
+		else:
+			website = ''
+		return website
+
+
+
+	# Email
+	def get_email(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#return self.x_my_company.email
+
+		# Configurator
+		self.init_configurator()
+
+		if self.configurator.name not in [False]:
+			email = self.configurator.email
+		else:
+			email = ''
+		return email
+
+
 
 
 
@@ -31,7 +186,7 @@ class sale_order(models.Model):
 
 	@api.multi
 	def _compute_x_amount_flow(self):
-		print('Pl - compute x_amount_flow')
+		#print('Pl - compute x_amount_flow')
 		for record in self:
 
 			if record.x_block_flow:

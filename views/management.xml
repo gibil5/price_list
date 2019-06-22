@@ -24,6 +24,22 @@
 
 
 
+
+						<!-- pl - Update patients -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_patients"
+								
+								string="Analisis Paciente"
+
+								groups="openhealth.roots"
+						/>
+
+
+
+
 						<!-- Update Doctors -->
 <!--						
 						<button 
@@ -210,6 +226,16 @@
 
 						<notebook groups="openhealth.roots">  
 							
+							<!-- Patients --> 
+							<page string="Pacientes">
+
+                                <field name="patient_line"/>
+							
+							</page>
+
+
+
+
 							<!-- Validate --> 
 							<page string="Validate">
 								<group>
