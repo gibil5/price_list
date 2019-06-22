@@ -75,6 +75,9 @@
 <!--
 -->
 				<xpath expr="//field[@name='x_admin_mode']" position="before">
+
+					<field name="configurator"/>
+
 					<field name="pl_transfer_free"/>
 				</xpath>
 
