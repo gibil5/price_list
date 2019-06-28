@@ -33,10 +33,10 @@ def get_file_content(order):
 	print()
 	#print('pl - Format Txt')
 	print('pl - Get File Content')
-	print(order.configurator)
-	print(order.configurator.company_name)
-	print(order.configurator.company_address)
-	print(order.configurator.company_ruc)
+	#print(order.configurator)
+	#print(order.configurator.company_name)
+	#print(order.configurator.company_address)
+	#print(order.configurator.company_ruc)
 
 
 
