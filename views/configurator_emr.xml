@@ -83,6 +83,9 @@
 							<field name="company_ubigeo"/>
 
 							<field name="company_country"/>
+
+
+							<field name="company_account"/>
 					</group>
 				</xpath>
 

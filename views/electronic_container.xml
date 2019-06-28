@@ -112,6 +112,7 @@
 <!--
                                 <field name="correct_patient"/>
 -->
+                                <field name="configurator"/>
                             </group>
                         </group>
 
@@ -127,7 +128,6 @@
 <!--
                                 <field name="mgt"   groups="openhealth.roots"/>
 -->
-                                <field name="configurator"/>
                             </group>
                         </group>
 

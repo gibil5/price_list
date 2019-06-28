@@ -56,12 +56,23 @@ def get_file_content(order):
 	company_name = configurator.company_name 
 	company_ubigeo = configurator.company_ubigeo
 	company_address = configurator.company_address
+
 	company_country = configurator.company_country
+	
 	company_ruc = configurator.company_ruc
 
 	#additional_account_id = "6"
 	#company_account_id = additional_account_id
 	company_account_id = configurator.company_account
+
+	# Debug
+	print(configurator)
+	print(company_name)
+	print(company_ubigeo)
+	print(company_address)
+	print(company_country)
+	print(company_ruc)
+	print(company_account_id)
 
 
 
