@@ -1504,6 +1504,11 @@ class Management(models.Model):
 		#print 'Reset Macros'
 
 
+		# Deltas
+		self.delta_fast = 0
+		self.delta_doctor = 0
+
+
 		# Relational
 		self.patient_line.unlink()
 

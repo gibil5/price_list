@@ -292,6 +292,189 @@ def line_analysis(self, line):
 
 
 
+# ----------------------------------------------------------- Get orders - By Patient - Drafts --------------
+def get_orders_filter_fast_patient_draft(self, date_bx, date_ex, patient):
+	"""
+	Only Drafts.
+	"""
+	#print()
+	#print('Pl - Get Orders Filter Fast - Patient - Draft')
+
+
+	# Init
+	# Dates
+	#DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+	date_begin = date_bx + ' 05:00:00'
+	DATETIME_FORMAT = "%Y-%m-%d"
+
+	date_end_dt = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + \
+																		datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
+
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+	# Prints
+	#print date_end_dt
+
+
+	# Search
+
+	# Orders
+	orders = self.env['sale.order'].search([
+													#('state', 'in', ['sale']),
+													('state', 'in', ['draft']),
+
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+													
+													('patient', '=', patient),
+													('x_legacy', '=', False),
+											],
+												order='x_serial_nr asc',
+												#limit=1,
+											)
+	# Count
+	count = self.env['sale.order'].search_count([
+													#('state', 'in', ['sale']),
+													('state', 'in', ['draft']),
+
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+													
+													('patient', '=', patient),
+													('x_legacy', '=', False),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+	return orders, count
+
+# get_orders_filter_fast_patient_draft
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Get orders - By Patient --------------
+def get_orders_filter_fast_patient(self, date_bx, date_ex, patient):
+	"""
+	Only Sales.
+	"""
+	#print()
+	#print('Pl - Get Orders Filter Fast - Patient')
+
+
+	# Init
+	# Dates
+	#DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+	date_begin = date_bx + ' 05:00:00'
+	DATETIME_FORMAT = "%Y-%m-%d"
+
+	date_end_dt = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + \
+																		datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
+
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+	# Prints
+	#print date_end_dt
+
+
+	# Search
+
+	# Orders
+	orders = self.env['sale.order'].search([
+													#('state', 'in', ['sale', 'credit_note']),
+													#('state', '=', 'sale'),
+													('state', 'in', ['sale']),
+
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+													
+													('patient', '=', patient),
+													('x_legacy', '=', False),
+											],
+												order='x_serial_nr asc',
+												#limit=1,
+											)
+	# Count
+	count = self.env['sale.order'].search_count([
+													#('state', 'in', ['sale', 'credit_note']),
+													#('state', '=', 'sale'),
+													('state', 'in', ['sale']),
+
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+													
+													('patient', '=', patient),
+													('x_legacy', '=', False),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+	return orders, count
+
+# get_orders_filter_fast_patient
+
+
+
+
+
+# ----------------------------------------------------------- Get Orders Faster -------------------
+# States: In State Array
+def get_orders_filter_fast_fast(self, date_bx, date_ex):
+	"""
+	Only Sales.
+	"""
+	#print()
+	#print('Pl - Get Orders - Fast Fast')
+
+
+	# Init
+	DATETIME_FORMAT = "%Y-%m-%d"
+
+	date_end_dt = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + \
+																		datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
+
+	date_begin = date_bx + ' 05:00:00'
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+
+	print(date_begin)
+	print(date_end)
+
+
+	# Orders
+	orders = self.env['sale.order'].search([
+													('state', 'in', ['sale']),
+
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+
+													('x_legacy', '=', False),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+	# Count
+	count = self.env['sale.order'].search_count([
+													('state', 'in', ['sale']),
+
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+
+													('x_legacy', '=', False),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+	return orders, count
+
+# get_orders_filter_fast_fast
+
+
+
 
 
 # ----------------------------------------------------------- Get Orders Fast -------------------

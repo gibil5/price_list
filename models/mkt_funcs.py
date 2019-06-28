@@ -5,6 +5,61 @@ import datetime
 
 
 # ----------------------------------------------------------- Line Analysis - PL -----------------------
+def pl_sale_line_analysis_product(self, line, pat_line):
+	"""
+	New - 2019
+	Marketing
+	Analyses Line
+	"""
+	#print()
+	#print('PL - Sale Line Analysis - Product')
+	#print(line.product_id.name)
+
+	# Product
+	#if line.product_id.type in ['product']:
+	if line.product_id.pl_family in ['card']:
+		pat_line.vip = True
+		#print('PL - Sale Line Analysis - Product')
+		#print(line.product_id.name)
+		#print('Gotcha')
+		#print()
+		self.vip_true = self.vip_true + 1
+		self.vip_false = self.vip_false - 1
+
+
+
+# ----------------------------------------------------------- Line Analysis - PL -----------------------
+def pl_sale_line_analysis(self, line, pat_line):
+	"""
+	New - 2019
+	Marketing
+	Analyses Line to update counters
+	"""
+	#print()
+	#print('PL - Sale Line Analysis')
+	#print(line)
+	#print(line.product_id)
+	#print(line.product_id.name)
+	#print(line.product_id.pl_treatment)
+	#print(line.product_id.pl_subfamily)
+	#print(line.product_id.pl_pathology)
+	#print(line.product_id.pl_zone)
+	#print()
+
+
+	# Service
+	if line.product_id.type in ['service']:
+		pat_line.proc_treatment = line.product_id.pl_treatment
+		pat_line.proc_pathology = line.product_id.pl_pathology
+		pat_line.proc_zone = line.product_id.pl_zone
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Line Analysis - PL -----------------------
 def pl_line_analysis(self, line):
 	"""
 	New - 2019
@@ -151,6 +206,7 @@ def get_per(self, value, total):
 
 
 
+
 # ----------------------------------------------------------- Get Patients ------------------------------------------------------
 
 # Provides Patients between begin date and end date. 
@@ -212,4 +268,40 @@ def get_patients_filter(self, date_bx, date_ex, mode):
 	return patients, count
 
 # get_patients_filter
+
+
+
+
+
+# ----------------------------------------------------------- Get Patients ------------------------------------------------------
+
+# Provides Patients between begin date and end date. 
+@api.multi
+def is_new_patient(self, patient, date_bx, date_ex):
+	#print()
+	#print('Is New Patient')
+	#print(patient)
+	#print(date_bx)
+	#print(date_ex)
+
+	# Dates	
+	DATETIME_FORMAT = "%Y-%m-%d"
+	date_begin = date_bx + ' 05:00:00'
+	date_end_dt  = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5,minutes=0)
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+
+	# Must Correct !
+	#if (patient.x_date_record >= date_bx) and (patient.x_date_record < date_ex):
+	if (patient.x_date_record >= date_begin) and (patient.x_date_record < date_end):
+
+		#print('Gotcha 1')
+		is_new = True
+
+	else:
+		is_new = False
+
+	return is_new
+
+# is_new_patient
 

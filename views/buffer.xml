@@ -4,6 +4,29 @@
 		
 
 
+
+
+
+
+						<!-- sales -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{
+											'search_default_marketing_id': active_id,   
+										}"
+								name="%(sale_line_form_action)d"
+								string="Ver Ventas"  
+						/>
+
+
+
+
+
+
+
+
+
 <!-- FORM -->
 		<record model="ir.ui.view" id="view_order_form">
 			<field name="name">sale.order.form</field>

@@ -73,17 +73,17 @@
                             groups="openhealth.roots"
                         />
 
-                        <!-- Clear --> 
+
+                        <!-- Correct - DEP --> 
+<!--
                         <button 
                             type="object" 
                             class="oe_highlight oe_right"
-
                             name="correct"
-
                             string="Correct"
-
                             groups="openhealth.roots"
                         />
+-->
                     </header>
 
 
@@ -109,8 +109,9 @@
 
                                 <field name="vspace"/>
                                 <field name="several_dates"/>
-
+<!--
                                 <field name="correct_patient"/>
+-->
                             </group>
                         </group>
 
@@ -126,6 +127,7 @@
 <!--
                                 <field name="mgt"   groups="openhealth.roots"/>
 -->
+                                <field name="configurator"/>
                             </group>
                         </group>
 

@@ -5,24 +5,18 @@
 
 
 <!-- FORM --> 
-<!--
--->
 		<record model="ir.ui.view" id="configurator_emr_form_view">
-
 			<field name="name">configurator.emr.form</field>
-			
 			<field name="model">openhealth.configurator.emr</field>
 
 			<field name="inherit_id" ref="openhealth.configurator_emr_form_view"/>
 
 			<field name="mode">primary</field>
-
 			<field name="priority" eval="1"/>
-
 			<field name="arch" type="xml">
 
 
-				<xpath expr="//field[@name='x_type']" position="after">
+
 <!--
 					<group string="Clinica">
 						<group>
@@ -44,7 +38,36 @@
 					</group>
 -->
 
+
+				<xpath expr="//field[@name='x_type']" position="after">
+
+					<!-- Ticket -->
 					<group string="Ticket">
+
+							<field name="website"/>
+
+							<field name="email"/>
+
+							<field name="vspace"/>
+
+
+
+
+							<field name="ticket_company_address"/>
+
+							<field name="ticket_company_ruc"/>
+
+							<field name="ticket_description"/>
+
+							<field name="ticket_warning"/>
+
+							<field name="warning"	string="warning - Deprecated"/>
+					</group>
+
+
+
+					<!-- Electronic -->
+					<group string="Facturacion Electronica">
 
 							<field name="company_name"/>
 
@@ -57,17 +80,10 @@
 
 							<field name="vspace"/>
 
+							<field name="company_ubigeo"/>
 
-							<field name="website"/>
-
-							<field name="email"/>
-
-							<field name="warning"/>
-
+							<field name="company_country"/>
 					</group>
-
-
-
 				</xpath>
 
 			</field>

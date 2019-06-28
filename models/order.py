@@ -75,7 +75,8 @@ class sale_order(models.Model):
 		self.init_configurator()
 
 		if self.configurator.name not in [False]:
-			company_address = self.configurator.company_address
+			#company_address = self.configurator.company_address
+			company_address = self.configurator.ticket_company_address
 		else:
 			company_address = ''
 		return company_address
@@ -107,7 +108,8 @@ class sale_order(models.Model):
 		self.init_configurator()
 
 		if self.configurator.name not in [False]:
-			company_ruc = self.configurator.company_ruc
+			#company_ruc = self.configurator.company_ruc
+			company_ruc = self.configurator.ticket_company_ruc
 		else:
 			company_ruc = ''
 		return company_ruc
@@ -117,6 +119,24 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Ticket - Footer - Getters ----------------
 
+	# description
+	def get_description(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Get description')
+
+		# With Configurator
+		self.init_configurator()
+		if self.configurator.name not in [False]:
+			description = self.configurator.ticket_description
+		else:
+			description = ''
+
+		return description
+
+
 	# Warning
 	def get_warning(self):
 		"""
@@ -124,16 +144,14 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Get Warning')
-		#return self.x_my_company.x_warning
-		#return self.configurator.warning
 
-		# Configurator
+		# With Configurator
 		self.init_configurator()
-
 		if self.configurator.name not in [False]:
-			warning = self.configurator.warning
+			warning = self.configurator.ticket_warning
 		else:
 			warning = ''
+
 		return warning
 
 
@@ -212,8 +230,8 @@ class sale_order(models.Model):
 		Validate Order.
 		Used by Electronic Container (Txt Generation). 
 		"""
-		print()
-		print('Pl - Order Validate')
+		#print()
+		#print('Pl - Order Validate')
 
 		#print(self.name)
 		#print(self.patient.name)
@@ -234,8 +252,8 @@ class sale_order(models.Model):
 
 			#raise UserError(_(msg))
 		else:
-			print('Validated !')
-
+			#print('Validated !')
+			print()
 		return error, msg
 
 	# validate_electronic

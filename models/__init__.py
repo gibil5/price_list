@@ -51,7 +51,12 @@ from . import procedure
 from . import order_report_nex
 
 
+
+from . import pricelist_marketing_order_line
 from . import marketing
+from . import patient_line
+
+
 
 from . import management
 

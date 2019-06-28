@@ -14,15 +14,19 @@
 <!-- Header -->
 					<header>
 
-
 						<!-- Update Patients -->
 						<button 
 								type="object" 
 								class="oe_highlight"
 								name="update_patients"
 
-								string="Pl - Actualizar Pacientes"                               
+								string="Actualizar Pacientes"                               
 						/>
+
+
+
+
+
 
 						<!-- Update Sales -->
 						<button 
@@ -33,14 +37,86 @@
 								string="Actualizar Ventas" 
 						/>
 
-						<!-- Update Recos -->
+
+						<!-- Patients -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{
+											'search_default_marketing_id': active_id,   
+										}"
+								name="%(openhealth.patient_line_proc_form_action)d"
+								string="Ver Pacientes"  
+						/>
+
+
+
+
+
+						<!-- Create Sale Lines -->
 						<button 
 								class="oe_highlight"
 								type="object" 
-								name="update_recos"
 
-								string="Actualizar Recomendaciones"    
+								name="create_sale_lines"
+
+								string="Create Sale Lines" 
+
+								groups="openhealth.roots"
 						/>
+
+						<!-- sales -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{
+											'search_default_marketing_id': active_id,   
+										}"
+								name="%(sale_line_form_action)d"
+
+								string="See Sale Lines"  
+
+								groups="openhealth.roots"
+						/>
+
+
+
+
+						<!-- Vip -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{                                          
+											'search_default_marketing_id': active_id,   
+										}"                                          
+								name="%(openhealth.patient_line_vip_form_action)d"
+								string="Vip"    
+						/>
+
+						<!-- Vip No -->
+						<button 
+								class="oe_highlight"
+								type="action"
+								name="%(openhealth.patient_line_vip_no_form_action)d" 
+								context="{                                          
+											'search_default_marketing_id': active_id,   
+										}"
+								string="No Vip" 
+						/>
+
+						<!-- Vip not used -->
+						<button 
+								class="oe_highlight"
+								type="action"
+								name="%(openhealth.patient_line_vip_not_used_form_action)d"
+								context="{                                          
+											'search_default_marketing_id': active_id,   
+										}"
+								string="Vip No Util."   
+						/>
+
+
+
 
 
 
@@ -50,7 +126,7 @@
 
 						<!-- Reset -->
 						<button 
-								class="oe_highlight"
+								class="oe_highlight oe_right"
 								type="object" 
 
 								name="reset"
@@ -59,40 +135,16 @@
 						/>
 
 
-						<!-- Vip not used -->
+						<!-- Update Recos -->
+<!--
 						<button 
 								class="oe_highlight oe_right"
-								type="action"
-								name="%(openhealth.patient_line_vip_not_used_form_action)d"
-								context="{                                          
-											'search_default_marketing_id': active_id,   
-										}"
-								string="Vip No Util."   
+								type="object" 
+								name="update_recos"
+
+								string="Actualizar Recomendaciones"    
 						/>
-
-						<!-- Vip No -->
-						<button 
-								class="oe_highlight oe_right"
-								type="action"
-								name="%(openhealth.patient_line_vip_no_form_action)d" 
-								context="{                                          
-											'search_default_marketing_id': active_id,   
-										}"
-								string="No Vip" 
-						/>
-
-
-						<!-- Vip -->
-						<button 
-								class="oe_highlight oe_right"
-								type="action" 
-								context="{                                          
-											'search_default_marketing_id': active_id,   
-										}"                                          
-								name="%(openhealth.patient_line_vip_form_action)d"
-								string="Vip"    
-						/>
-
+-->
 
 
 
@@ -141,16 +193,7 @@
 								string="Edades" 
 						/>
 
-						<!-- Patients -->
-						<button 
-								class="oe_highlight oe_right"
-								type="action" 
-								context="{
-											'search_default_marketing_id': active_id,   
-										}"
-								name="%(openhealth.patient_line_proc_form_action)d"
-								string="Ver Pacientes"  
-						/>
+
 					</header>
 
 
@@ -178,6 +221,31 @@
 								<field name="patient_consu_count"/>
 								<field name="patient_budget_count"/>
 								<field name="patient_proc_count"/>
+							</group>
+						</group>
+
+
+						<!-- Vip -->
+<!--
+						<group  string="Vip"   >
+-->
+						<group  string="Macros"   >
+<!--
+							<group>
+								<field name="vip_already_true"	/>
+								<field name="vip_already_false"	/>
+							</group>
+							<group>
+							</group>
+-->
+
+							<group>
+								<field name="vip_true"	string="Vip"/>
+								<field name="vip_false"	string="No Vip"/>
+							</group>
+							<group>                             
+								<field name="vip_true_per"	string="Vip %"			widget="percentage"/>
+								<field name="vip_false_per"	string="No Vip %"		widget="percentage"/>
 							</group>
 						</group>
 
@@ -238,7 +306,8 @@
 										<field name="how_inter" string="Internet"/>
 										<field name="how_web"   string="Web"/>
 										<field name="how_mail"  string="Mail"/>
-										<field name="how_u"     string="No Definido"/>
+
+										<field name="how_u"     string="No Definido"	groups="openhealth.roots"		/>
 
 										<field name="vspace"/>
 
@@ -258,7 +327,8 @@
 										<field name="how_inter_per"		widget="percentage"/>
 										<field name="how_web_per"		widget="percentage"/>
 										<field name="how_mail_per"		widget="percentage"/>
-										<field name="how_u_per"			widget="percentage"/>
+
+										<field name="how_u_per"			widget="percentage"	groups="openhealth.roots"/>
 
 										<field name="vspace"/>
 
@@ -292,20 +362,6 @@
 										<field name="edu_u_per"		widget="percentage"/>
 									</group>
 								</group>
-
-
-								<!-- Vip -->
-								<group  string="Vip"   >
-									<group>
-										<field name="vip_true"	string="Si"	/>
-										<field name="vip_false"	string="No"	/>
-									</group>
-									<group>                             
-										<field name="vip_true_per"	string="Si %"		widget="percentage"/>
-										<field name="vip_false_per"	string="No %"		widget="percentage"/>
-									</group>
-								</group>
-
 							</page>
 
 
@@ -326,6 +382,7 @@
 									</tree>
 								</field>
 							</page>
+
 <!--
 										<field name="date_create"/>
 										<field name="dob"/>
@@ -425,6 +482,13 @@
 								</group>
 							</page>
 
+
+							<!-- Stats --> 
+<!--							
+							<page   string="Ventas"		groups="openhealth.roots">
+								<field name="sale_line"/>
+							</page>
+-->
 						</notebook>
 					</sheet>
 				</form>

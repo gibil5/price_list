@@ -100,7 +100,7 @@
 
 								name="pl_update_productivity"
 								
-								string="Actualizar Productividad"                             
+								string="Act Productividad"                             
 						/>
 
 
@@ -124,7 +124,7 @@
 
 								name="update_daily"
 								
-								string="Actualizar Diario"                             
+								string="Act Diario"                             
 						/>
 
 						<!-- See daily -->
@@ -209,6 +209,9 @@
 								<field name="name"/>
 								<field name="date_begin"/>
 								<field name="date_end"/>
+
+								<field name="delta_fast"/>
+								<field name="delta_doctor"/>
 							</group>
 							<group>
 								<field name="total_count"/>
@@ -229,7 +232,7 @@
 							<!-- Patients --> 
 							<page string="Pacientes">
 
-                                <field name="patient_line"/>
+								<field name="patient_line"/>
 							
 							</page>
 
@@ -566,10 +569,12 @@
 										<field name="state_arr"/>
 										<field name="type_arr"/>
 									</group>
+<!--
 									<group>
 										<field name="delta_fast"/>
 										<field name="delta_doctor"/>
 									</group>                        
+-->
 								</group>
 							</page>
 						</notebook>

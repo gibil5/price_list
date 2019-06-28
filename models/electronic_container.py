@@ -13,6 +13,7 @@ from openerp import models, fields, api
 from openerp.addons.openhealth.models.management import mgt_funcs
 from openerp.addons.openhealth.models.management import mgt_vars
 from openerp.addons.openhealth.models.containers import export
+from . import pl_export
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
@@ -23,28 +24,24 @@ class ElectronicContainer(models.Model):
 	_inherit = 'openhealth.container'
 
 
-# ----------------------------------------------------------- Correct ------------------------------
-	@api.multi
-	def correct(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('Pl - Correct')
 
-		patient = self.correct_patient
 
-		#print()
-		#print(patient.name)
-		#print(patient.x_id_doc_type)
-		#print(patient.x_id_doc_type_code)
-		#print(patient.x_id_doc)
-		#print(patient.x_dni)
+# ----------------------------------------------------------- Relational ------------------------
+	# Electronic Order
+	electronic_order_ids = fields.One2many(
+			'openhealth.electronic.order',
+			'container_id',
+		)
 
-		if patient.x_id_doc in [False]:
-			if patient.x_dni not in [False]:
-				patient.x_id_doc = patient.x_dni
-				patient.x_id_doc_type = 'dni'
+
+# ----------------------------------------------------------- Configurator ------------------------
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+			#required=True,
+			required=False,
+		)
 
 
 
@@ -73,11 +70,6 @@ class ElectronicContainer(models.Model):
 			' ',
 		)
 
-	correct_patient = fields.Many2one(
-			'oeh.medical.patient',
-		)
-
-
 
 # ----------------------------------------------------------- Electronic -----------
 	# Name
@@ -87,11 +79,6 @@ class ElectronicContainer(models.Model):
 			required=True,
 		)
 
-	# Electronic Order
-	electronic_order_ids = fields.One2many(
-			'openhealth.electronic.order',
-			'container_id',
-		)
 
 	# State Array
 	state_arr = fields.Selection(
@@ -128,8 +115,8 @@ class ElectronicContainer(models.Model):
 
 
 		# Export - Here !
-		#fname = export.export_txt(self, self.mgt.electronic_order, self.export_date)
-		fname = export.export_txt(self, self.electronic_order_ids, self.export_date)
+		#fname = export.export_txt(self, self.electronic_order_ids, self.export_date)
+		fname = pl_export.pl_export_txt(self, self.electronic_order_ids, self.export_date)
 
 
 
@@ -359,23 +346,36 @@ class ElectronicContainer(models.Model):
 		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + datetime.timedelta(hours=+5, minutes=0)
 		self.export_date = date_dt.strftime(date_format).replace('-', '_')
 
-		# Init Mgt
-		#self.mgt.date_begin = self.export_date_begin
-		#self.mgt.date_end = self.export_date_begin
-		#self.mgt.container = self.id
-		#self.mgt.state_arr = 'sale,cancel,credit_note'
-
+		# Init
 		self.state_arr = 'sale,cancel,credit_note'
 		self.type_arr = 'ticket_receipt,ticket_invoice'
 
-
-		# Update
-		#self.mgt.update_fast()
-
-
-		# Create
-		#self.amount_total, self.receipt_count, self.invoice_count = self.mgt.update_electronic()
+		# Create Electronic
 		self.amount_total, self.receipt_count, self.invoice_count = self.update_electronic()
 
-
 	# create_electronic
+
+
+
+
+
+# ----------------------------------------------------------- Clean -----------------------------
+	# Clear
+	@api.multi
+	def clear(self):
+		"""
+		Cleans all variables.
+		"""
+
+		#self.txt_pack.unlink()
+		self.txt_pack = False
+
+		# Electronic
+		self.electronic_order_ids.unlink()
+		# Txt
+		self.txt_ids.unlink()
+		# Stats
+		self.amount_total = 0
+		self.invoice_count = 0
+		self.receipt_count = 0
+	# clear

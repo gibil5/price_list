@@ -18,16 +18,23 @@ class ConfiguratorEmr(models.Model):
 
 
 
-# ----------------------------------------------------------- Account -------------------------------
 
-	warning = fields.Text(
+# ----------------------------------------------------------- Dep -------------------------------
+	cuentab_products = fields.Char(
+			'Cuentab Productos',
 		)
 
-	website = fields.Char(
+	cuentab_services = fields.Char(
+			'Cuentab Servicios',
 		)
 
-	email = fields.Char(
+	cuentab_consu = fields.Char(
+			'Cuentab Consumibles',
 		)
+
+
+
+# ----------------------------------------------------------- Natives -------------------------------
 
 	company_name = fields.Char()
 
@@ -37,9 +44,48 @@ class ConfiguratorEmr(models.Model):
 
 	company_ruc = fields.Char()
 
+	company_ubigeo = fields.Char()
+
+	company_country = fields.Char()
+
+	company_account = fields.Char()
+
+
+
+
+	# Ticket
+
+	website = fields.Char(
+		)
+
+	email = fields.Char(
+		)
+
+	ticket_company_address = fields.Char()
+
+	ticket_company_ruc = fields.Char()
+
+	ticket_description = fields.Text()
+
+	ticket_warning = fields.Text()
+
+	warning = fields.Text(
+		)
+
+
+
+# ----------------------------------------------------------- Natives -------------------------------
+
+	x_type = fields.Selection(
+			[
+				('emr', 'Clinica'),
+			],
+			string="Tipo",
+			required=True,
+		)
+
+
 	vspace = fields.Char(
 			' ',
 			readonly=True,
 		)
-
-

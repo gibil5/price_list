@@ -6,7 +6,7 @@
 #
 from __future__ import print_function
 from openerp import models, fields, api
-from . import pat_vars
+#from . import pat_vars
 from openerp.addons.openhealth.models.libs import eval_vars
 from openerp.addons.openhealth.models.emr import prodvars
 
@@ -18,6 +18,26 @@ class PatientLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Natives ------------------------------------------------------
+
+	proc_treatment = fields.Char(
+			'Proc Tratamiento',
+		)
+
+	proc_pathology = fields.Char(
+			'Proc Patologia',
+		)
+
+	proc_zone = fields.Char(
+			'Proc Zona',
+		)
+
+
+	proc_zone = fields.Char(
+			'Proc Zona',
+		)
+
+
 
 
 # ----------------------------------------------------------- Update Fields Proc ------------------------------------------------------
@@ -25,8 +45,8 @@ class PatientLine(models.Model):
 	# Update fields Proc
 	@api.multi
 	def update_nrs(self):  
-		print()
-		print('Pl - Update Nrs')
+		#print()
+		#print('Pl - Update Nrs')
 		#print 
 
 

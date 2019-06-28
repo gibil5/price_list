@@ -212,10 +212,7 @@
 
 
 
-		<!-- Marketing - First Contact -->
-		<!-- Marketing 2019 - First Contact -->
-<!--
--->
+<!-- Marketing - Sex -->
 		<menuitem   id="sex_menu"
 					name="Sexo"
 					parent="openhealth.main_marketing_menu"
@@ -223,28 +220,47 @@
 				/>
 
 		<menuitem   id="sex_2019_menu"
-
 					name="Sexo - 2019 - %" 
-		
 					parent="sex_menu"
-					
 					sequence="1"
 					
 					action="marketing_patient_2019_sex_list_action"
 			/>
 
 		<menuitem   id="sex_2019_nr_menu"
-
 					name="Sexo - 2019 - NR" 
-		
 					parent="sex_menu"
-					
 					sequence="3"
 					
 					action="marketing_patient_2019_sex_nr_list_action"
 			/>
 
 
+
+
+
+<!-- Marketing - Patients All Short -->
+
+		<menuitem   id="patients_all_short_menu"
+					
+					name="Pacientes Contacto"
+					
+					parent="openhealth.main_marketing_menu"
+					
+					sequence="21"
+				/>
+
+
+		<menuitem   id="patients_all_short"
+					
+					name="Pacientes Con Nr de Historia" 
+					
+					parent="patients_all_short_menu"
+					
+					sequence="1"
+					
+					action="patient_short_list_action"
+			/>
 
 
 	</data>

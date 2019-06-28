@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+
+<!-- TREE 2 -->
+        <record model="ir.ui.view" id="oeh_medical_patient_tree_short">
+            <field name="name">patient.tree</field>
+            <field name="model">oeh.medical.patient</field>
+            <field name="arch" type="xml">  
+
+                <tree string="Patient Tree" >
+
+                    <field name="name"/>
+
+                    <field name="phone"/>
+                    <field name="mobile"/>
+                    <field name="email"         string="Email"  />      
+
+                    <field name="dob"/>
+
+
+<!--
+                    <field name="x_id_code"/>       
+                    <field name="x_id_doc_type" string="Tipo Doc"/>
+                    <field name="x_id_doc_type_code"    string="Cod"/>
+                    <field name="x_id_doc"      string="Nr Doc"/>
+                    <field name="x_dni"/>
+                    <field name="x_ruc"/>
+                    <field name="city"          string="Depto"/>                    
+
+
+                    <field name="x_firm"/>
+                    <field name="x_id_doc"      string="Otro"/>
+                    <field name="x_id_doc_type" string="Tipo"/>
+
+                    <field name="street2_sel"/>
+                    <field name="zip"/>                 
+                    <field name="street"/>
+
+                    <field name="phone"/>
+                    <field name="mobile"/>
+                    <field name="email"         string="Email"  />      
+-->
+
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+<!-- ACTIONS -->
+
+
+        <!-- Pacientes Con Nr de His -->
+        <record model="ir.actions.act_window" id="patient_short_list_action">
+
+            <field name="name">Pacientes - Con Nr de Historia</field>
+
+            <field name="res_model">oeh.medical.patient</field>
+
+            <field name="view_type">form</field>
+
+
+
+            <field name="view_id" ref="oeh_medical_patient_tree_short"/> 
+
+
+            
+            <field name="context">{}</field>
+
+            <field name="view_mode">tree,form,kanban</field>
+
+
+            <field name="domain">[
+                                    ('x_id_code', '!=', False), 
+                ]</field>
+
+
+            <field name="limit">100</field>
+
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+    </data>
+</openerp>

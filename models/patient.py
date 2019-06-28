@@ -30,8 +30,8 @@ class Patient(models.Model):
 		Validate Patient, for Id Doc.
 		Used by Electronic Container (Txt Generation). 
 		"""
-		print()
-		print('Pl - Patient Validate')
+		#print()
+		#print('Pl - Patient Validate')
 		#print(self.name)
 		#print(self.x_id_doc)
 		#print(self.x_id_doc_type)
@@ -47,7 +47,8 @@ class Patient(models.Model):
 			error = 1
 			#raise UserError(_(msg))
 		else:
-			print('Validated !')
+			#print('Validated !')
+			print()
 
 		return error, msg
 	# validate

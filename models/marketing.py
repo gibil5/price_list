@@ -10,20 +10,335 @@ import datetime
 from timeit import default_timer as timer
 import collections
 from openerp import models, fields, api
-
 from . import mkt_funcs
-#from . import lib_marketing
-#from openerp.addons.openhealth.models.marketing import mkt_funcs, lib_marketing
+from . import mgt_funcs
 from openerp.addons.openhealth.models.marketing import lib_marketing
-
 from . import pl_lib_marketing
-
-
 from openerp.addons.openhealth.models.order import ord_vars
 
 class Marketing(models.Model):
 
 	_inherit = 'openhealth.marketing'
+
+
+
+	vip_already_true = fields.Integer()
+	
+	vip_already_false = fields.Integer()
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# Patient Lines 
+	patient_line = fields.One2many(
+			'openhealth.patient.line', 
+			'marketing_id', 
+		)
+
+
+	# Sales
+	#sale_line_tkr = fields.One2many(
+	sale_line = fields.One2many(
+			#'openhealth.marketing.order.line', 
+			'price_list.marketing.order_line', 
+			'marketing_id',
+		)
+
+
+
+
+# ----------------------------------------------------------- Create Sale Lines ------------------------
+	# Update Sales
+	@api.multi
+	def create_sale_lines(self):  
+		print()
+		print('Create Sale Lines')
+
+		# Clean
+		self.sale_line.unlink()
+
+
+		# Get - Only Sales - Not CN
+		orders, count = mgt_funcs.get_orders_filter_fast_fast(self, self.date_begin, self.date_end)
+		#print(orders)
+		print(count)
+
+		for order in orders:
+			if order.state in ['credit_note']:
+				print('Gotcha !')
+				print(order.state)
+				print()
+
+			is_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)
+
+			#print(is_new)
+			
+			if is_new:
+				#print('Gotcha 2')
+				#print(order.patient.name)
+
+
+				# Loop
+				for line in order.order_line:
+	
+					price_net = line.price_unit * line.product_uom_qty
+
+
+					# Family
+					if line.product_id.type in ['product']:
+						family = 'product'
+						subfamily = line.product_id.pl_family
+						subsubfamily = line.product_id.pl_subfamily
+
+					elif line.product_id.type in ['service']:
+
+						if line.product_id.pl_subfamily in ['consultation']:
+							#family = line.product_id.pl_subfamily
+							family = 'consultation'
+							subfamily = 'consultation'
+							subsubfamily = 'consultation'
+
+						else:
+							family = 'procedure'
+
+							subfamily = line.product_id.pl_family
+
+							subsubfamily = line.product_id.pl_subfamily
+
+
+
+					sale_line = self.sale_line.create({
+															'order': order.id,
+															'patient': order.patient.id,
+															'date': order.date_order,
+															'product_id': line.product_id.id,
+
+
+															'product_uom_qty': line.product_uom_qty,
+
+															'price_unit': line.price_unit,
+															'price_net': price_net,
+
+
+															'family': family,
+															'subfamily': subfamily,
+															'subsubfamily': subsubfamily,
+
+															'price_list': line.product_id.pl_price_list,
+
+															'marketing_id': self.id,
+						})
+					#print(sale_line)
+
+
+
+# ----------------------------------------------------------- Update Sales ------------------------
+	# Update Sales
+	@api.multi
+	def update_sales(self):  
+		print()
+		print('Pl - Update Sales')
+
+		# QC
+		t0 = timer()
+
+		# Clean Macros 
+		self.patient_budget_count = 0 
+		self.patient_sale_count = 0 
+		self.patient_consu_count = 0 
+		self.patient_proc_count = 0 
+
+
+
+		# Init
+		self.vip_true = self.vip_already_true
+		self.vip_false = self.vip_already_false
+
+
+
+		# Loop - Patient Lines 
+		for pat_line in self.patient_line: 
+
+			# Update Line
+			pat_line.update_fields_mkt()
+
+
+# Budgets
+			# Search
+			#budgets = self.env['sale.order'].search([
+			#												('state', '=', 'draft'),
+			#												('patient', '=', pat_line.patient.name),
+			#										],
+			#											order='date_order asc',
+			#											#limit=1,
+			#									)
+
+			# By Library
+			budgets, count = mgt_funcs.get_orders_filter_fast_patient_draft(self, self.date_begin, self.date_end, pat_line.patient.name)
+
+
+			# Clean 
+			pat_line.budget_line.unlink()
+
+			# Create Budgets
+			for budget in budgets:
+				doctor = budget.x_doctor
+				for line in budget.order_line: 
+					budget_line = pat_line.budget_line.create({
+																'name': line.name,
+																'doctor': doctor.id,
+																'product_id': line.product_id.id, 
+																'x_date_created': budget.date_order, 
+																'product_uom_qty': line.product_uom_qty, 
+																'price_unit': line.price_unit,
+																'patient_line_budget_id': pat_line.id, 
+																'marketing_id': self.id,
+						})
+			# Count
+			self.patient_budget_count = self.patient_budget_count + len(pat_line.budget_line)
+
+			# Update Nrs
+			pat_line.update_nrs()
+
+
+
+
+
+# Sales
+			# Search - DEP - Not Date Restrictions. Over calculates
+			#orders = self.env['sale.order'].search([
+			#												('state', '=', 'sale'),
+			#												('patient', '=', pat_line.patient.name),
+			#										],
+			#											order='date_order asc',
+			#											#limit=1,
+			#									)
+
+
+			# Get - Only Sales - Not CN
+			#orders, count = mgt_funcs.get_orders_filter_fast_fast(self, self.date_begin, self.date_end)
+			orders, count = mgt_funcs.get_orders_filter_fast_patient(self, self.date_begin, self.date_end, pat_line.patient.name)
+			#print(orders)
+			#print(count)
+
+
+
+
+			# Clean 
+			pat_line.sale_line.unlink()
+			pat_line.consu_line.unlink()
+			pat_line.procedure_line.unlink()
+
+
+			# Create
+			for order in orders: 
+
+				doctor = order.x_doctor
+
+				for line in order.order_line: 
+					
+					prod = line.product_id
+
+					# Sale
+					sale_line = pat_line.sale_line.create({
+															'name': line.name,
+															'doctor': doctor.id,
+															'product_id': line.product_id.id,
+															'x_date_created': order.date_order,
+															'product_uom_qty': line.product_uom_qty,
+															'price_unit': line.price_unit,
+
+															'patient_line_sale_id': pat_line.id, 
+															'marketing_id': self.id, 
+						})
+
+
+
+					# Consultation Lines
+					#if prod.x_family in ['consultation']:
+					if prod.pl_subfamily in ['consultation']:
+					#if prod.pl_subfamily in ['consultation'] or prod.x_family in ['consultation']:
+						consu_line = pat_line.consu_line.create({
+																	'name': line.name, 
+																	'product_id': line.product_id.id, 
+																	'x_date_created': order.date_order, 
+																	'product_uom_qty': line.product_uom_qty, 
+																	'price_unit': line.price_unit, 
+
+																	'patient_line_consu_id': pat_line.id, 
+																	'marketing_id': self.id, 
+																})
+
+
+					# Procedure Lines
+					#if 	(prod.type not in ['product'])   and   (prod.x_family not in ['consultation']):
+					#if 	(prod.type not in ['product']) and (prod.pl_subfamily not in ['consultation']):
+					#if 	(prod.type not in ['product']) and (prod.pl_subfamily not in ['consultation']) or (prod.type not in ['product']) and (prod.x_family not in ['consultation']):
+					#if 	(prod.pl_family in ['laser', 'cosmetology', 'medical', 'echography', 'gynecology']) 		or 		(prod.type not in ['product']) and (prod.x_family not in ['consultation', False]):
+					
+					#if 	(prod.pl_subfamily in ['co2', 'excilite', 'm22', 'quick', 'echography', 'gynecology', 'medical', 'cosmetology',  ]):
+					if 	(prod.pl_subfamily in ['co2', 'excilite', 'm22', 'quick', 'echography', 'gynecology', 'medical', 'cosmetology', 'promotion', ]):
+
+						procedure_line = pat_line.procedure_line.create({
+																			'name': line.name, 
+																			'product_id': line.product_id.id, 
+																			'x_date_created': order.date_order, 
+																			'product_uom_qty': line.product_uom_qty, 
+																			'price_unit': line.price_unit,
+
+																			'patient_line_proc_id': pat_line.id, 
+																			'marketing_id': self.id, 
+																		})
+						# Sale Line Analysis - Procedure
+						mkt_funcs.pl_sale_line_analysis(self, line, pat_line)
+
+
+
+					if line.product_id.type in ['product']:
+						# Sale Line Analysis - Product
+						mkt_funcs.pl_sale_line_analysis_product(self, line, pat_line)
+
+
+
+
+			# Update Counts
+			self.patient_sale_count = self.patient_sale_count + len(pat_line.sale_line)
+			self.patient_consu_count = self.patient_consu_count + len(pat_line.consu_line)
+			self.patient_proc_count = self.patient_proc_count + len(pat_line.procedure_line)
+
+			# Update Nrs
+			pat_line.update_nrs()
+
+
+
+
+		# Per - Vip 
+		#if self.total_count != 0:
+		#self.vip_true_per = mkt_funcs.get_per(self, self.vip_true, self.total_count)
+		#self.vip_false_per = mkt_funcs.get_per(self, self.vip_false, self.total_count)
+
+		print('Per - Vip')
+		print(self.vip_true)
+		print(self.vip_false)
+
+		self.vip_true_per = 	float(self.vip_true) / float(self.total_count)
+		self.vip_false_per = 	float(self.vip_false) / float(self.total_count)
+		
+		print(self.vip_true_per)
+		print(self.vip_false_per)		
+
+
+		# QC
+		t1 = timer()
+		self.delta_sales = t1 - t0
+
+	# update_sales
+
+
+
+
+
+
 
 
 
@@ -116,6 +431,10 @@ class Marketing(models.Model):
 		t1 = timer()
 		now_1 = datetime.datetime.now()
 		self.delta_patients = t1 - t0
+
+
+		self.vip_already_true = self.vip_true
+		self.vip_already_false = self.vip_false
 
 	# update_patients
 
@@ -229,163 +548,6 @@ class Marketing(models.Model):
 
 
 
-
-
-
-# ----------------------------------------------------------- Update Sales ------------------------
-	# Update Sales
-	@api.multi
-	def update_sales(self):  
-		print()
-		print('Pl - Update Sales')
-
-		# QC
-		t0 = timer()
-
-		# Clean Macros 
-		self.patient_budget_count = 0 
-		self.patient_sale_count = 0 
-		self.patient_consu_count = 0 
-		self.patient_proc_count = 0 
-
-
-		# Loop - Patient Lines 
-		for pat_line in self.patient_line: 
-
-			# Update Line
-			pat_line.update_fields_mkt()
-
-
-
-
-			# Budgets
-			budgets = self.env['sale.order'].search([
-															('state', '=', 'draft'),
-															('patient', '=', pat_line.patient.name),
-													],
-														order='date_order asc',
-														#limit=1,
-												)
-
-			# Clean 
-			pat_line.budget_line.unlink()
-
-
-			# Create
-			for budget in budgets:
-
-				doctor = budget.x_doctor
-
-				for line in budget.order_line: 
-					
-					if True: 
-
-						# Budgets 
-						budget_line = pat_line.budget_line.create({
-																	'name': line.name,
-																	'doctor': doctor.id,
-																	'product_id': line.product_id.id, 
-																	'x_date_created': budget.date_order, 
-																	'product_uom_qty': line.product_uom_qty, 
-																	'price_unit': line.price_unit,
-																	'patient_line_budget_id': pat_line.id, 
-																	'marketing_id': self.id,
-							})
-
-			# Count
-			self.patient_budget_count = self.patient_budget_count + len(pat_line.budget_line)
-
-
-			# Update Nrs
-			pat_line.update_nrs()
-
-
-
-
-
-			# Orders 
-			orders = self.env['sale.order'].search([
-															('state', '=', 'sale'),
-															('patient', '=', pat_line.patient.name),
-													],
-														order='date_order asc',
-														#limit=1,
-												)
-
-			# Clean 
-			pat_line.sale_line.unlink()
-			pat_line.consu_line.unlink()
-			pat_line.procedure_line.unlink()
-
-
-			# Create
-			for order in orders: 
-
-				doctor = order.x_doctor
-
-				for line in order.order_line: 
-					
-					prod = line.product_id
-
-					# Sale
-					sale_line = pat_line.sale_line.create({
-															'name': line.name,
-															'doctor': doctor.id,
-															'product_id': line.product_id.id,
-															'x_date_created': order.date_order,
-															'product_uom_qty': line.product_uom_qty,
-															'price_unit': line.price_unit,
-															'patient_line_sale_id': pat_line.id, 
-															'marketing_id': self.id, 
-						})
-
-
-
-					# Consultation
-					#if prod.x_family in ['consultation']:
-					#if prod.pl_subfamily in ['consultation']:
-					if prod.pl_subfamily in ['consultation'] or prod.x_family in ['consultation']:
-						consu_line = pat_line.consu_line.create({
-																	'name': line.name, 
-																	'product_id': line.product_id.id, 
-																	'x_date_created': order.date_order, 
-																	'product_uom_qty': line.product_uom_qty, 
-																	'price_unit': line.price_unit, 
-																	'patient_line_consu_id': pat_line.id, 
-																	'marketing_id': self.id, 
-																})
-
-
-					# Procedure
-					#if 	(prod.type not in ['product'])   and   (prod.x_family not in ['consultation']):
-					#if 	(prod.type not in ['product']) and (prod.pl_subfamily not in ['consultation']):
-					#if 	(prod.type not in ['product']) and (prod.pl_subfamily not in ['consultation']) or (prod.type not in ['product']) and (prod.x_family not in ['consultation']):
-					if 	(prod.pl_family in ['laser', 'cosmetology', 'medical', 'echography', 'gynecology']) 		or 		(prod.type not in ['product']) and (prod.x_family not in ['consultation', False]):
-						procedure_line = pat_line.procedure_line.create({
-																			'name': line.name, 
-																			'product_id': line.product_id.id, 
-																			'x_date_created': order.date_order, 
-																			'product_uom_qty': line.product_uom_qty, 
-																			'price_unit': line.price_unit, 
-																			'patient_line_proc_id': pat_line.id, 
-																			'marketing_id': self.id, 
-																		})
-
-
-			# Update Counts
-			self.patient_sale_count = self.patient_sale_count + len(pat_line.sale_line)
-			self.patient_consu_count = self.patient_consu_count + len(pat_line.consu_line)
-			self.patient_proc_count = self.patient_proc_count + len(pat_line.procedure_line)
-
-			# Update Nrs
-			pat_line.update_nrs()
-
-
-		# QC
-		t1 = timer()
-		self.delta_sales = t1 - t0
-
-	# update_sales
 
 
 
@@ -710,6 +872,8 @@ class Marketing(models.Model):
 		self.total_count = 0
 		self.patient_reco_count = 0
 
+
+
 		self.patient_line.unlink()
 		self.histo_line.unlink()
 		self.media_line.unlink()
@@ -794,6 +958,9 @@ class Marketing(models.Model):
 
 
 		# Vip
+		self.vip_already_true = 0
+		self.vip_already_false = 0
+
 		self.vip_true = 0
 		self.vip_false = 0
 
