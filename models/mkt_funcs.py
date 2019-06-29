@@ -4,6 +4,25 @@ from openerp import models, fields, api
 import datetime
 
 
+# ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
+
+# Provides Percentage
+@api.multi
+#def get_per(self, value, total): 
+def get_per(self, value, total): 
+	#print()
+	#print('Pl - Get Per')
+	#per = 0 
+	per = 0.
+	if total != 0: 
+		#per = ( float(value) / float(total) ) * 100
+		per = float(value) / float(total)
+	return per
+# get_per
+
+
+
+
 # ----------------------------------------------------------- Line Analysis - PL -----------------------
 def pl_sale_line_analysis_product(self, line, pat_line):
 	"""
@@ -187,22 +206,6 @@ def pl_line_analysis(self, line):
 
 
 
-
-# ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
-
-# Provides Percentage
-@api.multi
-#def get_per(self, value, total): 
-def get_per(self, value, total): 
-	#print()
-	#print('Pl - Get Per')
-	#per = 0 
-	per = 0.
-	if total != 0: 
-		#per = ( float(value) / float(total) ) * 100
-		per = float(value) / float(total)
-	return per
-# get_per
 
 
 

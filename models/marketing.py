@@ -22,6 +22,24 @@ class Marketing(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Natives ------------------------------------------------------
+	# Vip 
+	vip_true_per = fields.Float(
+			'Vip Si %',
+			readonly=True, 
+			#digits=(16,1), 
+			digits=(12,3), 
+		)
+
+	vip_false_per = fields.Float(
+			'Vip No %',
+			readonly=True, 
+			#digits=(16,1), 
+			digits=(12,3), 
+		)
+
+
 	vip_already_true = fields.Integer()
 	
 	vip_already_false = fields.Integer()
@@ -313,19 +331,18 @@ class Marketing(models.Model):
 
 
 		# Per - Vip 
+		#jx
 		#if self.total_count != 0:
 		#self.vip_true_per = mkt_funcs.get_per(self, self.vip_true, self.total_count)
 		#self.vip_false_per = mkt_funcs.get_per(self, self.vip_false, self.total_count)
 
-		print('Per - Vip')
-		print(self.vip_true)
-		print(self.vip_false)
-
+		#print('Per - Vip')
+		#print(self.vip_true)
+		#print(self.vip_false)
 		self.vip_true_per = 	float(self.vip_true) / float(self.total_count)
 		self.vip_false_per = 	float(self.vip_false) / float(self.total_count)
-		
-		print(self.vip_true_per)
-		print(self.vip_false_per)		
+		#print(self.vip_true_per)
+		#print(self.vip_false_per)		
 
 
 		# QC
@@ -521,8 +538,8 @@ class Marketing(models.Model):
 
 
 		# Vip 
-		self.vip_true_per = mkt_funcs.get_per(self, self.vip_true, self.total_count)
-		self.vip_false_per = mkt_funcs.get_per(self, self.vip_false, self.total_count)
+		#self.vip_true_per = mkt_funcs.get_per(self, self.vip_true, self.total_count)
+		#self.vip_false_per = mkt_funcs.get_per(self, self.vip_false, self.total_count)
 
 
 
