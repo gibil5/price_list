@@ -11,6 +11,8 @@
 		"""
 		28 June 2019
 
+		(Since 22 April, in Prod)
+
 		For Open Health. Service oriented way of adding Price List Management. 
 
 		Remember, Hunter and Westerman:

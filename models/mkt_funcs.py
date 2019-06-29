@@ -4,22 +4,82 @@ from openerp import models, fields, api
 import datetime
 
 
-# ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
+# ----------------------------------------------------------- Line Analysis - PL -----------------------
+def pl_family_analysis_2018(self, line):
+	"""
+	New - 2019
+	Marketing
+	Analyses Line to update counters
+	"""
+	print()
+	print('PL - Family Analysis - 2018')
 
-# Provides Percentage
-@api.multi
-#def get_per(self, value, total): 
-def get_per(self, value, total): 
-	#print()
-	#print('Pl - Get Per')
-	#per = 0 
-	per = 0.
-	if total != 0: 
-		#per = ( float(value) / float(total) ) * 100
-		per = float(value) / float(total)
-	return per
-# get_per
+	family = 'x'
+	subfamily = 'x'
+	subsubfamily = 'x'
 
+
+	# Family
+	if line.product_id.type in ['product']:
+		family = 'product'
+		subfamily = line.product_id.x_family
+		#subsubfamily = line.product_id.pl_subfamily
+
+	elif line.product_id.type in ['service']:
+
+		#if line.product_id.pl_subfamily in ['consultation']:
+		if line.product_id.x_family in ['consultation']:
+			#family = line.product_id.pl_subfamily
+			family = 'consultation'
+			subfamily = 'consultation'
+			subsubfamily = 'consultation'
+
+		else:
+			family = 'procedure'
+
+			subfamily = line.product_id.x_family
+			
+			subsubfamily = line.product_id.x_treatment
+
+
+
+
+
+	return family, subfamily, subsubfamily
+
+
+
+
+# ----------------------------------------------------------- Line Analysis - PL -----------------------
+def pl_family_analysis(self, line):
+	"""
+	New - 2019
+	Marketing
+	Analyses Line to update counters
+	"""
+	print()
+	print('PL - Family Analysis')
+
+	# Family
+	if line.product_id.type in ['product']:
+		family = 'product'
+		subfamily = line.product_id.pl_family
+		subsubfamily = line.product_id.pl_subfamily
+
+	elif line.product_id.type in ['service']:
+
+		if line.product_id.pl_subfamily in ['consultation']:
+			#family = line.product_id.pl_subfamily
+			family = 'consultation'
+			subfamily = 'consultation'
+			subsubfamily = 'consultation'
+
+		else:
+			family = 'procedure'
+			subfamily = line.product_id.pl_family
+			subsubfamily = line.product_id.pl_subfamily
+
+	return family, subfamily, subsubfamily
 
 
 
@@ -47,8 +107,10 @@ def pl_sale_line_analysis_product(self, line, pat_line):
 
 
 
+
 # ----------------------------------------------------------- Line Analysis - PL -----------------------
-def pl_sale_line_analysis(self, line, pat_line):
+#def pl_sale_line_analysis(self, line, pat_line):
+def pl_sale_line_analysis_service(self, line, pat_line):
 	"""
 	New - 2019
 	Marketing
@@ -65,13 +127,18 @@ def pl_sale_line_analysis(self, line, pat_line):
 	#print(line.product_id.pl_zone)
 	#print()
 
-
 	# Service
 	if line.product_id.type in ['service']:
-		pat_line.proc_treatment = line.product_id.pl_treatment
-		pat_line.proc_pathology = line.product_id.pl_pathology
-		pat_line.proc_zone = line.product_id.pl_zone
 
+		if line.product_id.pl_price_list in ['2019']:
+			pat_line.proc_treatment = line.product_id.pl_treatment
+			pat_line.proc_pathology = line.product_id.pl_pathology
+			pat_line.proc_zone = line.product_id.pl_zone
+
+		elif line.product_id.pl_price_list in ['2018']:
+			pat_line.proc_treatment = line.product_id.x_treatment
+			pat_line.proc_pathology = line.product_id.x_pathology
+			pat_line.proc_zone = line.product_id.x_zone
 
 
 
@@ -307,4 +374,21 @@ def is_new_patient(self, patient, date_bx, date_ex):
 	return is_new
 
 # is_new_patient
+
+
+
+# ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
+
+# Provides Percentage
+@api.multi
+def get_per(self, value, total):
+	#print()
+	#print('Pl - Get Per')
+	#per = 0 
+	per = 0.
+	if total != 0: 
+		#per = ( float(value) / float(total) ) * 100
+		per = float(value) / float(total)
+	return per
+# get_per
 

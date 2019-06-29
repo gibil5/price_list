@@ -102,26 +102,13 @@ class Marketing(models.Model):
 					price_net = line.price_unit * line.product_uom_qty
 
 
-					# Family
-					if line.product_id.type in ['product']:
-						family = 'product'
-						subfamily = line.product_id.pl_family
-						subsubfamily = line.product_id.pl_subfamily
 
-					elif line.product_id.type in ['service']:
+					# Family Analysis
+					if line.pl_price_list in ['2019']:
+						family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis(self, line)
 
-						if line.product_id.pl_subfamily in ['consultation']:
-							#family = line.product_id.pl_subfamily
-							family = 'consultation'
-							subfamily = 'consultation'
-							subsubfamily = 'consultation'
-
-						else:
-							family = 'procedure'
-
-							subfamily = line.product_id.pl_family
-
-							subsubfamily = line.product_id.pl_subfamily
+					elif line.pl_price_list in ['2018']:
+						family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis_2018(self, line)
 
 
 
@@ -273,9 +260,15 @@ class Marketing(models.Model):
 
 
 					# Consultation Lines
+					# 2018
 					#if prod.x_family in ['consultation']:
-					if prod.pl_subfamily in ['consultation']:
-					#if prod.pl_subfamily in ['consultation'] or prod.x_family in ['consultation']:
+
+					# 2019
+					#if prod.pl_subfamily in ['consultation']:
+
+					# 2019 and 2018
+					if prod.pl_subfamily in ['consultation'] or prod.x_family in ['consultation']:
+					
 						consu_line = pat_line.consu_line.create({
 																	'name': line.name, 
 																	'product_id': line.product_id.id, 
@@ -289,13 +282,16 @@ class Marketing(models.Model):
 
 
 					# Procedure Lines
+
+					# 2018
 					#if 	(prod.type not in ['product'])   and   (prod.x_family not in ['consultation']):
-					#if 	(prod.type not in ['product']) and (prod.pl_subfamily not in ['consultation']):
-					#if 	(prod.type not in ['product']) and (prod.pl_subfamily not in ['consultation']) or (prod.type not in ['product']) and (prod.x_family not in ['consultation']):
-					#if 	(prod.pl_family in ['laser', 'cosmetology', 'medical', 'echography', 'gynecology']) 		or 		(prod.type not in ['product']) and (prod.x_family not in ['consultation', False]):
-					
+
+					# 2019
 					#if 	(prod.pl_subfamily in ['co2', 'excilite', 'm22', 'quick', 'echography', 'gynecology', 'medical', 'cosmetology',  ]):
-					if 	(prod.pl_subfamily in ['co2', 'excilite', 'm22', 'quick', 'echography', 'gynecology', 'medical', 'cosmetology', 'promotion', ]):
+					#if 	(prod.pl_subfamily in ['co2', 'excilite', 'm22', 'quick', 'echography', 'gynecology', 'medical', 'cosmetology', 'promotion', ]):
+
+					# 2019 and 2018
+					if 	(prod.pl_subfamily in ['co2', 'excilite', 'm22', 'quick', 'echography', 'gynecology', 'medical', 'cosmetology', 'promotion', ])		or prod.x_family in ['laser', 'medical', 'cosmetology']:
 
 						procedure_line = pat_line.procedure_line.create({
 																			'name': line.name, 
@@ -308,7 +304,8 @@ class Marketing(models.Model):
 																			'marketing_id': self.id, 
 																		})
 						# Sale Line Analysis - Procedure
-						mkt_funcs.pl_sale_line_analysis(self, line, pat_line)
+						#mkt_funcs.pl_sale_line_analysis(self, line, pat_line)
+						mkt_funcs.pl_sale_line_analysis_service(self, line, pat_line)
 
 
 
@@ -339,8 +336,9 @@ class Marketing(models.Model):
 		#print('Per - Vip')
 		#print(self.vip_true)
 		#print(self.vip_false)
-		self.vip_true_per = 	float(self.vip_true) / float(self.total_count)
-		self.vip_false_per = 	float(self.vip_false) / float(self.total_count)
+		if self.total_count not in [0]:
+			self.vip_true_per = 	float(self.vip_true) / float(self.total_count)
+			self.vip_false_per = 	float(self.vip_false) / float(self.total_count)
 		#print(self.vip_true_per)
 		#print(self.vip_false_per)		
 

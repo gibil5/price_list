@@ -1,3 +1,36 @@
+
+
+					# Family
+					if line.product_id.type in ['product']:
+						family = 'product'
+						subfamily = line.product_id.pl_family
+						subsubfamily = line.product_id.pl_subfamily
+
+					elif line.product_id.type in ['service']:
+
+						if line.product_id.pl_subfamily in ['consultation']:
+							#family = line.product_id.pl_subfamily
+							family = 'consultation'
+							subfamily = 'consultation'
+							subsubfamily = 'consultation'
+
+						else:
+							family = 'procedure'
+							subfamily = line.product_id.pl_family
+							subsubfamily = line.product_id.pl_subfamily
+
+
+
+
+
+
+
+
+
+
+
+
+
 		# Sex 
 		count_m = 0
 		count_f = 0
