@@ -44,6 +44,26 @@ class ElectronicContainer(models.Model):
 		)
 
 
+	def init_configurator(self):
+		"""
+		Init Configurator
+		"""
+		print()
+		print('Init Configurator')
+
+		# Configurator
+		if self.configurator.name in [False]:
+			self.configurator = self.env['openhealth.configurator.emr'].search([
+																					('x_type', 'in', ['emr']),
+															],
+															#order='date_begin,name asc',
+															limit=1,
+														)
+			print(self.configurator)
+			print(self.configurator.name)
+
+
+
 
 
 
@@ -337,6 +357,11 @@ class ElectronicContainer(models.Model):
 		"""
 		print()
 		print('Pl - Create - Electronic')
+
+
+		# Init Configurator
+		self.init_configurator()
+
 
 		# Clean
 		self.electronic_order_ids.unlink()
