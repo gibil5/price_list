@@ -9,7 +9,7 @@
 
 	'description': 
 		"""
-		28 June 2019
+		29 June 2019
 
 		(Since 22 April, in Prod)
 
@@ -151,11 +151,11 @@
 
 
 
-		'views/menus.xml',
-		'views/menus_dev.xml',
-		'views/menus_marketing.xml',
-		'views/menus_management.xml',
-		'views/menus_rsp.xml',
+		'views/menus/menus.xml',
+		'views/menus/menus_dev.xml',
+		'views/menus/menus_marketing.xml',
+		'views/menus/menus_management.xml',
+		'views/menus/menus_rsp.xml',
 
 
 		# Security

@@ -211,7 +211,10 @@
 								<field name="name"/>
 								<field name="date_begin"/>
 								<field name="date_end"/>
+
+								<field name="test_obj"	groups="openhealth.roots"/>
 							</group>
+
 							<group>
 								<field name="total_count"   string="Nr Pacientes"/>
 								<field name="patient_reco_count"/>
@@ -510,8 +513,11 @@
 
 				<tree string="Marketing Tree">
 					
-
 					<field name="name"/>
+
+					<field name="test_obj"	groups="openhealth.roots"/>
+
+
 
 					<field name="month"/>
 					<field name="year"/>

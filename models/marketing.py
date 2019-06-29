@@ -24,6 +24,11 @@ class Marketing(models.Model):
 
 
 # ----------------------------------------------------------- Natives ------------------------------------------------------
+
+	test_obj = fields.Boolean(
+		)
+
+
 	# Vip 
 	vip_true_per = fields.Float(
 			'Vip Si %',
@@ -38,7 +43,6 @@ class Marketing(models.Model):
 			#digits=(16,1), 
 			digits=(12,3), 
 		)
-
 
 	vip_already_true = fields.Integer()
 	
@@ -357,15 +361,6 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Natives ----------------------
-	owner = fields.Selection(
-			[
-				('week', 'Week'),
-				('month', 'Month'),
-				('year', 'Year'),
-			],
-			required=True,
-		)
 
 
 
@@ -566,25 +561,32 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- QC ----------------------------------
+# ----------------------------------------------------------- Natives ----------------------
 
 	year = fields.Selection(
-
-			selection=ord_vars._year_order_list,
-		
+			selection=ord_vars._year_order_list,		
 			string='Año',
-			#default='2019',
 			required=True,
+
+			default='2019',
 		)
 
 	month = fields.Selection(
-
 			selection=ord_vars._month_order_list,
-		
 			string='Mes',
 			#required=True,
 		)
 
+	owner = fields.Selection(
+			[
+				('week', 'Week'),
+				('month', 'Month'),
+				('year', 'Year'),
+			],
+			required=True,
+
+			default='month',
+		)
 
 # ----------------------------------------------------------- Age  ----------------------------------
 	# Age

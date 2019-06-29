@@ -4,6 +4,33 @@
 
 
 
+<!-- Marketing - Test -->
+
+		<menuitem   id="mkt_patients_test_menu"
+					
+					name="Test"
+					
+					parent="openhealth.main_marketing_menu"
+					
+					sequence="1"
+				/>
+
+
+		<menuitem   id="mkt_patients_test"
+					
+					name="Test" 
+					
+					parent="mkt_patients_test_menu"
+					
+					sequence="1"
+					
+					action="marketing_patient_test_list_action"
+			/>
+
+
+
+
+
 <!-- Marketing -->
 		<!--
 		<menuitem id="main_marketing_menu" 
@@ -34,10 +61,11 @@
 			/>
 -->
 
+<!--
+					name="Mensual 2019" 
+-->
 		<!-- Marketing Patients 2019 -->
 		<menuitem   id="marketing_patient_2019_menu"
-
-					name="Mensual 2019" 
 		
 					parent="openhealth.marketing_menu"
 					
