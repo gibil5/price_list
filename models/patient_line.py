@@ -144,11 +144,11 @@ class PatientLine(models.Model):
 
 
 
-		# Nr Product
-		count = self.env['openhealth.marketing.order.line'].search_count([
-																				('patient_line_product_id','=', self.id),
-																			]) 
-		self.nr_products = count
+		# Nr Product - Dep
+		#count = self.env['openhealth.marketing.order.line'].search_count([
+		#																		('patient_line_product_id','=', self.id),
+		#																	]) 
+		#self.nr_products = count
 
 
 

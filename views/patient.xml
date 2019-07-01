@@ -22,6 +22,9 @@
                     <field name="dob"/>
 
 
+                    <field name="x_date_record"/>       
+
+
 <!--
                     <field name="x_id_code"/>       
                     <field name="x_id_doc_type" string="Tipo Doc"/>

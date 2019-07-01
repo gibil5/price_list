@@ -238,10 +238,14 @@
 							</group>
 
 
-							<group>
+							<group  groups="openhealth.roots">
+
 								<field name="sale_line_sale_count"/>
 								<field name="sale_line_consultation_count"/>
 								<field name="sale_line_procedure_count"/>
+
+								<field name="sale_line_product_count"/>
+
 								<field name="sale_line_budget_count"/>
 							</group>
 
@@ -250,6 +254,9 @@
 								<field name="patient_sale_count"/>
 								<field name="patient_consu_count"/>
 								<field name="patient_proc_count"/>
+
+								<field name="patient_product_count"/>
+
 								<field name="patient_budget_count"/>
 
 							</group>

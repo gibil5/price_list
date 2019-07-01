@@ -30,12 +30,13 @@
 
 					<!-- Medical -->
 					<field name="doctor"/>
+<!--					
 					<field name="nr_reco"/>                     
-
+-->
 					<field name="nr_sale"   	sum="Total Ventas"/>
 					<field name="nr_consu"		sum="Total Consultas"/>
 					<field name="nr_products"	sum="Total Productos"/>
-					<field name="nr_proc"   	sum="Total	Procedimientos"		string="Nr Proc"/>
+					<field name="nr_proc"   	sum="Total	Procedimientos"		string="Nr Procedimientos"/>
 
 <!--
 					<field name="reco_line"/>

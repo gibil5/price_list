@@ -23,7 +23,15 @@ class Marketing(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Natives ------------------------------------------------------
+
+	patient_product_count = fields.Integer(
+			'Nr Productos',
+		)
+
+
 
 	sale_line_sale_count = fields.Integer(
 		)
@@ -291,6 +299,9 @@ class Marketing(models.Model):
 		self.patient_sale_count = 0 
 		self.patient_consu_count = 0 
 		self.patient_proc_count = 0 
+		self.patient_product_count = 0 
+
+
 
 		self.price_list_2019_count = 0
 		self.price_list_2018_count = 0
@@ -1038,6 +1049,7 @@ class Marketing(models.Model):
 		self.price_list_2018_count = 0
 
 
+		self.patient_product_count = 0
 		self.patient_sale_count = 0
 		self.patient_consu_count = 0
 		self.patient_proc_count = 0

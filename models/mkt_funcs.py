@@ -130,8 +130,8 @@ def pl_sale_line_analysis_product(self, line, pat_line):
 	Marketing
 	Analyses Line
 	"""
-	#print()
-	#print('PL - Sale Line Analysis - Product')
+	print()
+	print('PL - Sale Line Analysis - Product')
 	#print(line.product_id.name)
 
 	# Product
@@ -144,6 +144,13 @@ def pl_sale_line_analysis_product(self, line, pat_line):
 		#print()
 		self.vip_true = self.vip_true + 1
 		self.vip_false = self.vip_false - 1
+
+
+	#self.nr_products = self.nr_products + line.product_uom_qty
+
+	pat_line.nr_products = pat_line.nr_products + line.product_uom_qty
+
+	self.patient_product_count = self.patient_product_count + line.product_uom_qty
 
 
 
