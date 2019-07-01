@@ -18,6 +18,26 @@ class PatientLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# Marketing Id 
+	marketing_id = fields.Many2one(
+			'openhealth.marketing', 
+
+			ondelete='cascade', 
+		)
+
+
+
+	# Sales
+	sale_line = fields.One2many(
+			'openhealth.marketing.order.line', 
+			'patient_line_sale_id',
+		)
+
+
+
+
 # ----------------------------------------------------------- Natives ------------------------------------------------------
 
 	proc_treatment = fields.Char(

@@ -2,6 +2,16 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+
+
+access_openhealth_management_patient_line,openhealth.management.patient.line,model_openhealth_management_patient_line,,1,1,1,1
+
+access_price_list_marketing_order_line,price_list.marketing.order.line,model_price_list_marketing_order_line,,1,1,1,1
+
+
+
+
+
 access_price_list_service_co2,access_price_list_service_co2,model_price_list_service_co2,,1,1,1,1
 
 access_price_list_service_excilite,access_price_list_service_excilite,model_price_list_service_excilite,,1,1,1,1

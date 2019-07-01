@@ -2,8 +2,6 @@
 	<data>
 
 
-
-
 <!-- FORM -->
 		<record model="ir.ui.view" id="openhealth.marketing_form_view">
 			<field name="name">marketing.form</field>           
@@ -23,11 +21,6 @@
 								string="Actualizar Pacientes"                               
 						/>
 
-
-
-
-
-
 						<!-- Update Sales -->
 						<button 
 								class="oe_highlight"
@@ -36,7 +29,6 @@
 
 								string="Actualizar Ventas" 
 						/>
-
 
 						<!-- Patients -->
 						<button 
@@ -57,13 +49,39 @@
 						<button 
 								class="oe_highlight"
 								type="object" 
-
 								name="create_sale_lines"
 
 								string="Create Sale Lines" 
 
 								groups="openhealth.roots"
 						/>
+
+						<!-- Analyse Sale Lines -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+								name="analyse_sale_lines"
+
+								string="Analyse Sale Lines" 
+
+								groups="openhealth.roots"
+						/>
+
+
+						<!-- Analyse patient Lines -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+								name="analyse_patient_lines"
+
+								string="Analyse Pat Lines" 
+
+								groups="openhealth.roots"
+						/>
+
+
 
 						<!-- sales -->
 						<button 
@@ -72,6 +90,7 @@
 								context="{
 											'search_default_marketing_id': active_id,   
 										}"
+										
 								name="%(sale_line_form_action)d"
 
 								string="See Sale Lines"  
@@ -118,12 +137,7 @@
 
 
 
-
-
-
-
 <!-- RIGHT -->
-
 						<!-- Reset -->
 						<button 
 								class="oe_highlight oe_right"
@@ -133,6 +147,18 @@
 
 								string="Reset"    
 						/>
+
+						<!-- Clean -->
+						<button 
+								class="oe_highlight oe_right"
+								type="object" 
+
+								name="clean"
+
+								string="CLEAN !"    
+						/>
+
+
 
 
 						<!-- Update Recos -->
@@ -199,12 +225,8 @@
 
 
 
-
-
-
-<!-- Sheet -->  
+<!-- Sheet -->
 					<sheet>
-
 
 						<group  string="Total"  col="3">
 							<group>
@@ -212,21 +234,30 @@
 								<field name="date_begin"/>
 								<field name="date_end"/>
 
-								<field name="test_obj"	groups="openhealth.roots"/>
+								<field name="total_count"   string="Pacientes Nuevos"/>
 							</group>
 
+
 							<group>
-								<field name="total_count"   string="Nr Pacientes"/>
-								<field name="patient_reco_count"/>
+								<field name="sale_line_sale_count"/>
+								<field name="sale_line_consultation_count"/>
+								<field name="sale_line_procedure_count"/>
+								<field name="sale_line_budget_count"/>
 							</group>
+
+
 							<group>
 								<field name="patient_sale_count"/>
 								<field name="patient_consu_count"/>
-								<field name="patient_budget_count"/>
 								<field name="patient_proc_count"/>
+								<field name="patient_budget_count"/>
+
 							</group>
 						</group>
 
+<!--
+								<field name="patient_reco_count"/>
+-->
 
 						<!-- Vip -->
 <!--
@@ -243,11 +274,16 @@
 -->
 
 							<group>
-								<field name="vip_true"	string="Vip"/>
+
+								<field name="vip_already_true"	string="Vip por venta anterior"/>
+
+								<field name="vip_true"	string="Vip por venta mes"/>
 								<field name="vip_false"	string="No Vip"/>
 							</group>
 							<group>                             
-								<field name="vip_true_per"	string="Vip %"			widget="percentage"/>
+								<field name="vip_already_true_per"	string="Vip por venta anterior %"	widget="percentage"/>
+
+								<field name="vip_true_per"	string="Vip por venta mes %"			widget="percentage"/>
 								<field name="vip_false_per"	string="No Vip %"		widget="percentage"/>
 							</group>
 						</group>
@@ -482,6 +518,13 @@
 										<field name="delta_sales"       />
 										<field name="delta_recos"       />
 									</group>
+
+									<group>
+										<field name="test_obj"				groups="openhealth.roots"/>
+										<field name="price_list_2019_count"	groups="openhealth.roots"/>
+										<field name="price_list_2018_count"	groups="openhealth.roots"/>
+									</group>
+
 								</group>
 							</page>
 
@@ -489,9 +532,10 @@
 							<!-- Stats --> 
 <!--							
 							<page   string="Ventas"		groups="openhealth.roots">
+-->
+							<page   string="Ventas">
 								<field name="sale_line"/>
 							</page>
--->
 						</notebook>
 					</sheet>
 				</form>

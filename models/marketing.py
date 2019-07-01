@@ -25,6 +25,35 @@ class Marketing(models.Model):
 
 # ----------------------------------------------------------- Natives ------------------------------------------------------
 
+	sale_line_sale_count = fields.Integer(
+		)
+
+	sale_line_consultation_count = fields.Integer(
+		)
+
+	sale_line_procedure_count = fields.Integer(
+		)
+
+	sale_line_budget_count = fields.Integer(
+		)
+
+	sale_line_product_count = fields.Integer(
+		)
+
+
+
+# ----------------------------------------------------------- Natives ------------------------------------------------------
+
+	price_list_2019_count = fields.Integer(
+			'pl 2019',
+		)
+
+	price_list_2018_count = fields.Integer(
+			'pl 2018',
+		)
+
+
+
 	test_obj = fields.Boolean(
 		)
 
@@ -49,6 +78,14 @@ class Marketing(models.Model):
 	vip_already_false = fields.Integer()
 
 
+
+
+	vip_already_true_per = fields.Float(
+			digits=(12,3), 
+		)
+
+
+
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
 	# Patient Lines 
@@ -69,6 +106,98 @@ class Marketing(models.Model):
 
 
 
+# ----------------------------------------------------------- Analyse Patient Lines ------------------------
+	# Analyse patients
+	@api.multi
+	def analyse_patient_lines(self):  
+		print()
+		print('Analysis patient Lines')
+
+		# Loop
+		for patient_line in self.patient_line:
+
+			patient = patient_line.patient
+
+			print(patient.name)
+
+			orders, count = mgt_funcs.get_orders_filter_fast_patient(self, self.date_begin, self.date_end, patient.name)
+			#print(orders)
+			print(count)
+
+			for order in orders:
+	
+				for line in order.order_line:
+					
+					mkt_funcs.macro_line_analysis(self, line, patient_line)
+
+
+# ----------------------------------------------------------- Analyse Sale Lines ------------------------
+	# Update Sales
+	@api.multi
+	def analyse_sale_lines(self):  
+		print()
+		print('Analysis Sale Lines')
+
+
+		model = 'price_list.marketing.order_line'
+
+
+		# Count
+		state = 'draft'
+		count = self.env[model].search_count([
+												('marketing_id', 'in', [self.id]),
+												('state', 'in', [state]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		print(count)
+		self.sale_line_budget_count = count
+
+
+
+
+		# Count
+		state = 'sale'
+		count = self.env[model].search_count([
+												('marketing_id', 'in', [self.id]),
+												('state', 'in', [state]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		print(count)
+		self.sale_line_sale_count = count
+
+
+
+		# By Family
+		family_list = ['consultation', 'procedure', 'product']
+		state = 'sale'
+
+		for family in family_list:
+
+			count = self.env[model].search_count([
+													('marketing_id', 'in', [self.id]),
+													('family', 'in', [family]),
+													('state', 'in', [state]),
+												],
+													#order='x_serial_nr asc',
+													#limit=1,
+												)
+			print(count)
+
+			if family in ['consultation']:
+				self.sale_line_consultation_count = count
+
+			elif family in ['procedure']:
+				self.sale_line_procedure_count = count
+
+			elif family in ['product']:
+				self.sale_line_product_count = count
+
+
+
 # ----------------------------------------------------------- Create Sale Lines ------------------------
 	# Update Sales
 	@api.multi
@@ -86,6 +215,7 @@ class Marketing(models.Model):
 		print(count)
 
 		for order in orders:
+
 			if order.state in ['credit_note']:
 				print('Gotcha !')
 				print(order.state)
@@ -118,6 +248,11 @@ class Marketing(models.Model):
 
 					sale_line = self.sale_line.create({
 															'order': order.id,
+
+															'state': order.state,
+
+
+
 															'patient': order.patient.id,
 															'date': order.date_order,
 															'product_id': line.product_id.id,
@@ -157,11 +292,14 @@ class Marketing(models.Model):
 		self.patient_consu_count = 0 
 		self.patient_proc_count = 0 
 
-
+		self.price_list_2019_count = 0
+		self.price_list_2018_count = 0
 
 		# Init
-		self.vip_true = self.vip_already_true
+		#self.vip_true = self.vip_already_true
 		self.vip_false = self.vip_already_false
+		self.vip_true = 0
+		#self.vip_false = 0
 
 
 
@@ -225,7 +363,6 @@ class Marketing(models.Model):
 
 
 			# Get - Only Sales - Not CN
-			#orders, count = mgt_funcs.get_orders_filter_fast_fast(self, self.date_begin, self.date_end)
 			orders, count = mgt_funcs.get_orders_filter_fast_patient(self, self.date_begin, self.date_end, pat_line.patient.name)
 			#print(orders)
 			#print(count)
@@ -245,6 +382,12 @@ class Marketing(models.Model):
 				doctor = order.x_doctor
 
 				for line in order.order_line: 
+
+					
+					# Line Analysis
+					mkt_funcs.line_analysis(self, line)
+
+
 					
 					prod = line.product_id
 
@@ -341,6 +484,9 @@ class Marketing(models.Model):
 		#print(self.vip_true)
 		#print(self.vip_false)
 		if self.total_count not in [0]:
+
+			self.vip_already_true_per = 	float(self.vip_already_true) / float(self.total_count)
+
 			self.vip_true_per = 	float(self.vip_true) / float(self.total_count)
 			self.vip_false_per = 	float(self.vip_false) / float(self.total_count)
 		#print(self.vip_true_per)
@@ -443,8 +589,8 @@ class Marketing(models.Model):
 		self.delta_patients = t1 - t0
 
 
-		self.vip_already_true = self.vip_true
-		self.vip_already_false = self.vip_false
+		#self.vip_already_true = self.vip_true
+		#self.vip_already_false = self.vip_false
 
 	# update_patients
 
@@ -470,7 +616,8 @@ class Marketing(models.Model):
 		for line in self.patient_line: 
 
 			# Line Analysis
-			mkt_funcs.pl_line_analysis(self, line)
+			#mkt_funcs.pl_line_analysis(self, line)
+			mkt_funcs.pl_patient_line_analysis(self, line)
 
 
 			# Address - Using collections
@@ -881,6 +1028,16 @@ class Marketing(models.Model):
 	def reset(self):  
 		print('Pl - Reset')
 
+		self.sale_line_consultation_count = 0
+		self.sale_line_procedure_count = 0
+		self.sale_line_product_count = 0
+		self.sale_line_budget_count = 0
+		self.sale_line_sale_count = 0
+
+		self.price_list_2019_count = 0
+		self.price_list_2018_count = 0
+
+
 		self.patient_sale_count = 0
 		self.patient_consu_count = 0
 		self.patient_proc_count = 0
@@ -984,5 +1141,50 @@ class Marketing(models.Model):
 		self.vip_true_per = 0
 		self.vip_false_per = 0
 
+
+
+
+# ----------------------------------------------------------- Clean ------------------------------
+	
+	# Clean
+	@api.multi
+	def clean(self):  
+		print('Pl - Clean')
+		print('Begin')
+
+		# If Test Obj
+		if self.test_obj:
+
+			# Clear
+			self.patient_line.unlink()
+
+
+			# Clear
+			model = 'openhealth.marketing.order.line'
+
+			objs = self.env[model].search([
+												('marketing_id', 'in', [False]),									
+											],
+			#								order='date_begin asc',
+			#								#limit=1,
+				)
+
+			# Unlink
+			limit = 1000
+			count = 0
+			for obj in objs:
+				if count < limit:
+					obj.unlink()
+					count = count + 1
+
+			# Count
+			count = self.env[model].search_count([
+													('marketing_id', 'in', [False]),
+												],
+													#order='x_serial_nr asc',
+													#limit=1,
+												)
+			print(count)
+			print('End')
 
 

@@ -447,7 +447,8 @@ def get_orders_filter_fast_fast(self, date_bx, date_ex):
 
 	# Orders
 	orders = self.env['sale.order'].search([
-													('state', 'in', ['sale']),
+													#('state', 'in', ['sale']),
+													('state', 'in', ['sale', 'draft']),
 
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
@@ -459,7 +460,8 @@ def get_orders_filter_fast_fast(self, date_bx, date_ex):
 											)
 	# Count
 	count = self.env['sale.order'].search_count([
-													('state', 'in', ['sale']),
+													#('state', 'in', ['sale']),
+													('state', 'in', ['sale', 'draft']),
 
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),

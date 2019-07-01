@@ -19,6 +19,8 @@
 -->
 					<field name="order"/>
 
+					<field name="state"/>
+
 
 					<field name="price_list"/>
 
@@ -114,6 +116,9 @@
 				   
 
 					<group expand="1" string="Group By">
+
+						<filter name="Estado" context="{'group_by':'state'}"/>
+
 
 						<filter name="Venta" context="{'group_by':'order'}"/>
 

@@ -17,6 +17,9 @@
 						">
 
 
+					<field name="marketing_id"/>
+
+
 					<field name="emr"/>
 					<field name="patient"/>
 					<field name="date_record"/>

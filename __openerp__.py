@@ -9,7 +9,7 @@
 
 	'description': 
 		"""
-		29 June 2019
+		1 July 2019
 
 		(Since 22 April, in Prod)
 
@@ -121,7 +121,9 @@
 
 
 		'views/media_line.xml',
-		#'views/patient_line_actions.xml', # Dep - Already in Openhealth
+
+		'views/patient_line_actions.xml', # Dep - Already in Openhealth
+
 		'views/patient_line.xml', 
 		'views/patient_line_search.xml', 
 		'views/marketing_order_line.xml',

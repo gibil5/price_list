@@ -4,32 +4,81 @@
 
 
 
-<!-- Main - Dev -->
+<!-- Main - DEV -->
 <menuitem   	id="main_dev_menu"
 				sequence="-7"
 				name="DEV"
-
 				groups="openhealth.roots"
 		/>
 
 
-
-
-<!-- Pricelists --> 
+<!-- DEV --> 
 <menuitem   id="parent_dev_menu" 
-
 					name="DEV"
-			
 					parent="main_dev_menu"
-
 					sequence="1"
 				/>
+
+
+
+<!--
+openhealth.patient.line
+-->
+
+		<!-- MKT Order Line --> 
+		<menuitem   id="dev_mkt_patient_line_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="3"
+
+					action="dev_patient_line_form_action"
+				/>
+
+
+<!--
+openhealth.marketing.order.line
+-->
+		<!-- MKT Order Line --> 
+		<menuitem   id="dev_mkt_order_line_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="5"
+
+					name="Dev - Marketing Order Line" 
+
+					action="openhealth.marketing_order_line_form_action"
+				/>
+
+
+
+
+
+<!--
+openhealth.management.order.line
+-->
+		<!-- Management Order Line --> 
+		<menuitem   id="dev_mgt_order_line_menu"
+					parent="parent_dev_menu"
+			
+					sequence="7"
+
+					name="Dev - Mgt Order Line" 
+
+					action="mgt_order_line_list_action"
+				/>
+
+
+
+
+
 
 
 		<!-- Order Lines --> 
 		<menuitem   id="dev_order_line_menu"
 					parent="parent_dev_menu"
-					sequence="1"
+					sequence="11"
 
 					action="order_line_list_action"
 				/>
@@ -38,29 +87,25 @@
 		<!-- Product Templates --> 
 		<menuitem   id="dev_product_template_menu"
 					parent="parent_dev_menu"
-					sequence="2"
+					sequence="12"
 
 					action="product_template_list_action"
 				/>
 
 
-
 		<!-- Product products --> 
 		<menuitem   id="dev_product_product_menu"
 					parent="parent_dev_menu"
-					sequence="3"
+					sequence="13"
 
 					action="product_product_list_action"
 				/>
 
 
-
 		<!-- Report Order Line --> 
 		<menuitem   id="dev_report_order_line_menu"
-
 					parent="parent_dev_menu"
-			
-					sequence="4"
+					sequence="14"
 
 					action="report_order_line_list_action"
 				/>
@@ -76,7 +121,7 @@ openhealth.report.order_line
 
 					parent="parent_dev_menu"
 			
-					sequence="5"
+					sequence="15"
 
 					action="procurement_order_list_action"
 				/>
@@ -89,7 +134,7 @@ procurement.order
 
 					parent="parent_dev_menu"
 			
-					sequence="6"
+					sequence="16"
 
 					action="stock_move_list_action"
 				/>
@@ -99,19 +144,6 @@ procurement.order
 
 
 
-		<!-- Management Order Line --> 
-		<menuitem   id="dev_mgt_order_line_menu"
-
-					parent="parent_dev_menu"
-			
-					sequence="7"
-
-					action="mgt_order_line_list_action"
-				/>
-<!--
-openhealth.management.order.line
--->
-
 
 
 
@@ -120,7 +152,7 @@ openhealth.management.order.line
 
 					parent="parent_dev_menu"
 
-					sequence="11"
+					sequence="21"
 
 					name="Electronic Orders"
 

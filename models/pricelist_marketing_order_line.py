@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-#
-# 	Pricelist Marketing Order Line 
-#
-# 	Created: 			26 Jun 2019
-# 	Last updated: 		26 Jun 2019
-# 
+"""
+	Pricelist Marketing Order Line 
+
+	Created: 			26 Jun 2019
+	Last updated: 		26 Jun 2019
+"""
 from openerp import models, fields, api
 
 class MarketingOrderLine(models.Model):
-
-	#_inherit='openhealth.line'
 
 	_name = 'price_list.marketing.order_line'
 
@@ -19,6 +17,7 @@ class MarketingOrderLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Relational ------------------------------------------------------
 	# Marketing Id
 	marketing_id = fields.Many2one(			
 			'openhealth.marketing',
@@ -26,13 +25,14 @@ class MarketingOrderLine(models.Model):
 		)
 
 
+
+# ----------------------------------------------------------- Natives ------------------------------------------------------
 	order = fields.Many2one(
 			'sale.order',
 			ondelete='cascade',
 		)
 
 
-	# Patient
 	patient = fields.Many2one(
 			'oeh.medical.patient',
 			string='Paciente',
@@ -75,5 +75,6 @@ class MarketingOrderLine(models.Model):
 	price_list = fields.Char(
 		)
 
-
+	state = fields.Char(
+		)
 

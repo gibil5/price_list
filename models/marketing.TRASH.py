@@ -1,5 +1,83 @@
 
 
+
+
+		_dic  = {
+					'consultation': 	self.sale_line_consultation_count,
+					'procedure': 		self.sale_line_procedure_count,
+					'product': 			self.sale_line_product_count,
+
+		}
+			#_dic[family] = count
+
+
+
+
+
+
+
+
+		# Count
+		count = self.env[model].search_count([
+												('marketing_id', 'in', [self.id]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		print(count)
+		self.sale_line_sale_count = count
+
+
+		# Count
+		family = 'consultation'
+		count = self.env[model].search_count([
+												('marketing_id', 'in', [self.id]),
+												('family', 'in', [family]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		print(count)
+		self.sale_line_consultation_count = count
+
+
+		# Count
+		family = 'procedure'
+		count = self.env[model].search_count([
+												('marketing_id', 'in', [self.id]),
+												('family', 'in', [family]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		print(count)
+		self.sale_line_procedure_count = count
+
+
+		# Count
+		family = 'product'
+		count = self.env[model].search_count([
+												('marketing_id', 'in', [self.id]),
+												('family', 'in', [family]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		print(count)
+		self.sale_line_product_count = count
+
+
+
+
+
+
+
+
+
+
+
+
+
 					# Family
 					if line.product_id.type in ['product']:
 						family = 'product'

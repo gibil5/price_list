@@ -4,6 +4,46 @@ from openerp import models, fields, api
 import datetime
 
 
+
+
+# ----------------------------------------------------------- Line Analysis - PL -----------------------
+def macro_line_analysis(self, line, patient_line):
+	"""
+	New - 2019
+	Marketing
+	Analyses Line to update counters
+	"""
+	print()
+	print('Macro Line Analysis')
+
+	print(patient_line)
+	print(line)
+	print()
+
+
+
+
+# ----------------------------------------------------------- Line Analysis - PL -----------------------
+def line_analysis(self, line):
+	"""
+	New - 2019
+	Marketing
+	Analyses Line to update counters
+	"""
+	#print()
+	#print('PL - Line Analysis')
+	#print(line)
+
+	prod = line.product_id
+
+	if prod.pl_price_list in ['2019']:
+		self.price_list_2019_count = self.price_list_2019_count + line.product_uom_qty
+	elif prod.pl_price_list in ['2018']:
+		self.price_list_2018_count = self.price_list_2018_count + line.product_uom_qty
+	else:
+		print('Error: This should not happen !')
+
+
 # ----------------------------------------------------------- Line Analysis - PL -----------------------
 def pl_family_analysis_2018(self, line):
 	"""
@@ -11,8 +51,8 @@ def pl_family_analysis_2018(self, line):
 	Marketing
 	Analyses Line to update counters
 	"""
-	print()
-	print('PL - Family Analysis - 2018')
+	#print()
+	#print('PL - Family Analysis - 2018')
 
 	family = 'x'
 	subfamily = 'x'
@@ -57,8 +97,8 @@ def pl_family_analysis(self, line):
 	Marketing
 	Analyses Line to update counters
 	"""
-	print()
-	print('PL - Family Analysis')
+	#print()
+	#print('PL - Family Analysis')
 
 	# Family
 	if line.product_id.type in ['product']:
@@ -146,14 +186,15 @@ def pl_sale_line_analysis_service(self, line, pat_line):
 
 
 # ----------------------------------------------------------- Line Analysis - PL -----------------------
-def pl_line_analysis(self, line):
+#def pl_line_analysis(self, line):
+def pl_patient_line_analysis(self, line):
 	"""
 	New - 2019
-	Marketing
-	Analyses Line to update counters
+	Used by: Marketing
+	Patient Line Analysis to update counters
 	"""
 	#print()
-	#print('PL - Line Analysis')
+	#print('PL - Patient Line Analysis')
 
 
 
@@ -264,10 +305,12 @@ def pl_line_analysis(self, line):
 
 	# Vip 
 	if line.vip: 
-		self.vip_true = self.vip_true + 1
+		#self.vip_true = self.vip_true + 1
+		self.vip_already_true = self.vip_already_true + 1
 
 	else: 
-		self.vip_false = self.vip_false + 1
+		#self.vip_false = self.vip_false + 1
+		self.vip_already_false = self.vip_already_false + 1
 
 
 
