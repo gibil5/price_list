@@ -46,6 +46,10 @@ class ProductProduct(models.Model):
 					'commercial':		'commercial',
 					'chavarri':			'chavarri',
 
+					'other':			'other',
+					'commission':		'commission',
+
+
 
 					# 2018
 					#'laser_ipl': 		'laser_ipl',
@@ -58,7 +62,6 @@ class ProductProduct(models.Model):
 					#'intravenous_vitamin':		'intravenous_vitamin',
 
 					#'x':		'x',
-					#'other':		'other',
 
 					#'diamond_tip':		'diamond_tip',
 

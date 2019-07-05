@@ -68,7 +68,6 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 	# Create Sale - Consultation
 	#print('Create Order - Consultation')
-	#self.create_order_con()			# Actual Button
 	self.create_order_con_med()			# Actual Button
 	for order in self.order_ids:
 		if order.state in ['draft']:
@@ -84,15 +83,11 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 	# Create Recommendations
 	if True:
-		print('Create Recommendations')
-
+		#print('Create Recommendations')
 		create_recommendations(self)
-		
 		self.create_order_pro()			# Actual Button
-
 	else:
 		create_order_pro_lines(self)
-
 
 
 
@@ -107,7 +102,7 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 
 
-	# Sessions
+	# Create Sessions
 	if False:
 	#if True:
 		#print('Create Sessions')
@@ -116,7 +111,7 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 			for _ in range(1):
 				procedure.create_sessions()
 
-	# Controls
+	# Create Controls
 	if False:
 	#if True:
 		#print('Create Controls')
@@ -137,7 +132,9 @@ def create_recommendations(self):
 	#print()
 	#print('Pl - Create Recommendations')
 
+	# New Price List 2019
 	create_recommendations_2019(self)
+
 
 	#create_recommendations_2018(self)
 
@@ -158,28 +155,37 @@ def create_recommendations_2019(self):
 	#price_list = '2019'
 
 	name_dic = {
+					'prod_0':		'ACNETOPIC 200ML',
+					'prod_1':		'KIT POST LASER CO2 COOPER',
+					'prod_2':		'TARJETA VIP',
+					'prod_3':		'OTROS',
+					'prod_4':		'COMISION DE ENVIO',
+
+
 					'co2': 		'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',
 					'exc':		'LASER EXCILITE - Abdomen - Alopecias - 1 sesion - 15 min',
 					'ipl':		'LASER M22 IPL - Abdomen - Depilacion - 1 sesion - 15 min',
 					'ndy':		'LASER M22 ND YAG - Localizado Cuerpo - Hemangiomas - 1 sesion - 15 min',
 					'qui':		'QUICKLASER - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',
-					'cos':		'CARBOXITERAPIA - Cuerpo - Rejuvenecimiento - 1 sesion - 30 min',
 
+					'cos':		'CARBOXITERAPIA - Cuerpo - Rejuvenecimiento - 1 sesion - 30 min',
 					'med':		'ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1 sesion - FILORGA UNIVERSAL',
 
 					#'gyn':		'ANALISIS - Vagina - Biopsias',
 					'gyn':		'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
-
 					'echo':		'ECOGRAFIAS ESPECIALES - Cadera Pediatrica (Bilateral) - 1 sesion',
 					'prom':		'CARBOXITERAPIA - Localizado Cuerpo - Rejuvenecimiento Facial - 6 sesiones',
-
-					'prod_0':		'ACNETOPIC 200ML',
-					'prod_1':		'KIT POST LASER CO2 COOPER',
-					'prod_2':		'TARJETA VIP',
 		}
 
 
 	model_dic = {
+					'prod_0': 	'price_list.service_product',
+					'prod_1': 	'price_list.service_product',
+					'prod_2': 	'price_list.service_product',
+					'prod_3': 	'price_list.service_product',
+					'prod_4': 	'price_list.service_product',
+
+
 					'co2': 		'price_list.service_co2',
 					'exc': 		'price_list.service_excilite',
 					'ipl': 		'price_list.service_ipl',
@@ -190,13 +196,8 @@ def create_recommendations_2019(self):
 					'med': 		'price_list.service_medical',
 
 					'gyn': 		'price_list.service_gynecology',
-					
 					'echo': 	'price_list.service_echography',
 					'prom': 	'price_list.service_promotion',
-
-					'prod_0': 	'price_list.service_product',
-					'prod_1': 	'price_list.service_product',
-					'prod_2': 	'price_list.service_product',
 		}
 
 
@@ -204,6 +205,8 @@ def create_recommendations_2019(self):
 					'prod_0',
 					'prod_1',
 					'prod_2',
+					'prod_3',
+					'prod_4',
 
 					'co2',
 					'exc',

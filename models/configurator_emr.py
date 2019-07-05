@@ -36,19 +36,33 @@ class ConfiguratorEmr(models.Model):
 
 # ----------------------------------------------------------- Natives -------------------------------
 
-	company_name = fields.Char()
+	company_name = fields.Char(
+			required=True,
+		)
 
-	company_address = fields.Char()
+	company_address = fields.Char(
+			required=True,
+		)
 
-	company_phone = fields.Char()
+	company_phone = fields.Char(
+			required=True,
+		)
 
-	company_ruc = fields.Char()
+	company_ruc = fields.Char(
+			required=True,
+		)
 
-	company_ubigeo = fields.Char()
+	company_ubigeo = fields.Char(
+			required=True,
+		)
 
-	company_country = fields.Char()
+	company_country = fields.Char(
+			required=True,
+		)
 
-	company_account = fields.Char()
+	company_account = fields.Char(
+			required=True,
+		)
 
 
 
@@ -56,20 +70,31 @@ class ConfiguratorEmr(models.Model):
 	# Ticket
 
 	website = fields.Char(
+			required=True,
 		)
 
 	email = fields.Char(
+			required=True,
 		)
 
-	ticket_company_address = fields.Char()
+	ticket_company_address = fields.Char(
+			required=True,
+		)
 
-	ticket_company_ruc = fields.Char()
+	ticket_company_ruc = fields.Char(
+			required=True,
+		)
 
-	ticket_description = fields.Text()
+	ticket_description = fields.Text(
+			required=True,
+		)
 
-	ticket_warning = fields.Text()
+	ticket_warning = fields.Text(
+			required=True,
+		)
 
 	warning = fields.Text(
+			#required=True,
 		)
 
 

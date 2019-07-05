@@ -35,14 +35,16 @@ _subfamily_list = [
 		('kit',				'Kit'),
 		('card',			'Tarjeta'),
 
+		('other',			'Otros'), 
+		('commission',		'Comision'), 
+
+
+
 
 		('x', 				'x'), 
 
-
-
 		#('none',			'none'),
 		#('credit_note',		'credit_note'), 
-		#('other',			'other'), 
 ]
 
 
@@ -72,6 +74,11 @@ _subsubfamily_list = [
 		('commercial',		'Comercial'),
 		('chavarri',		'Chavarri'),
 
+		# Other
+		('other',			'Otros'), 
+		('commission',		'Comision'), 
+
+
 
 
 		# 2018
@@ -83,7 +90,6 @@ _subsubfamily_list = [
 		('criosurgery', 	'criosurgery'), 
 		('intravenous_vitamin', 	'intravenous_vitamin'), 
 		('x', 				'x'), 
-		('other',			'other'), 
 		('hyaluronic_acid', 	'hyaluronic_acid'), 
 
 		('infiltration',			'infiltration'), 

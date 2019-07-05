@@ -228,19 +228,9 @@
 
 
 						<notebook groups="openhealth.roots">  
-							
-							<!-- Patients --> 
-							<page string="Pacientes">
-
-								<field name="patient_line"/>
-							
-							</page>
-
-
-
 
 							<!-- Validate --> 
-							<page string="Validate">
+							<page string="Validation">
 								<group>
 									<group>								
 										<field name="per_amo_families"      widget="percentage" />
@@ -256,6 +246,11 @@
 										<field name="rsp_total_delta"/>
 									</group>					
 								</group>
+							</page>
+
+							<!-- Patients -->
+							<page string="Pacientes">
+								<field name="patient_line"/>
 							</page>
 						</notebook>
 

@@ -67,12 +67,12 @@ class PatientLine(models.Model):
 	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 						
 			selection = eval_vars._chief_complaint_list, 
-			required=True,
+			#required=True,
 		)
 
 	diagnosis = fields.Char(
 			'Diagnóstico', 
-			required=True,
+			#required=True,
 		)
 
 

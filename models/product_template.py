@@ -26,7 +26,7 @@ class ProductTemplate(models.Model):
 
 	pl_name_short = fields.Char(
 			'Name short',
-			#required=True,
+			required=True,
 		)
 
 	pl_prefix = fields.Char(
@@ -62,13 +62,31 @@ class ProductTemplate(models.Model):
 
 # ---------------------------------------------- Fields - Categorized -----------------------------
 	
+	# Required
+
 	pl_price_list = fields.Selection(
 			selection=px_vars._price_list_list,
 			string='Lista de Precios',
+			required=True,
+		)
+	
+	pl_family = fields.Selection(
+			selection=px_vars._family_list,
+			string='Family',
+			required=True,
+		)
+
+	pl_subfamily = fields.Selection(
+			selection=px_vars._subfamily_list,
+			string='Subfamily',
+			required=True,
 		)
 
 
 
+
+
+	# Not Required
 	pl_manufacturer = fields.Selection(
 			selection=px_vars._manufacturer_list,
 			string='Fabricante',
@@ -80,17 +98,10 @@ class ProductTemplate(models.Model):
 		)
 
 
-	pl_family = fields.Selection(
-			selection=px_vars._family_list,
-			string='Family',
-			#required=True,
-		)
 
-	pl_subfamily = fields.Selection(
-			selection=px_vars._subfamily_list,
-			string='Subfamily',
-			#required=True,
-		)
+
+
+
 
 	pl_treatment = fields.Selection(
 			selection=px_vars._treatment_list,
@@ -170,12 +181,14 @@ class ProductTemplate(models.Model):
 
 
 # ----------------------------------------------------------- Update ----------------------------------------------------
-	@api.multi
-	def update(self):
-		"""
-		Update
-		"""
+	#@api.multi
+	#def update(self):
+	#	"""
+	#	Update
+	#	"""
 		#print()
 		#print('Product Template - Update')
-		self.pl_idx_int = int(self.pl_idx)
-		self.purchase_ok = False
+	#	self.pl_idx_int = int(self.pl_idx)
+	#	self.purchase_ok = False
+
+

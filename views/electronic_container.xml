@@ -6,6 +6,7 @@
 
 <!-- FORM --> 
         <record model="ir.ui.view" id="openhealth.container_form_view">
+            
             <field name="name">container.form</field>
 
             <field name="model">openhealth.container</field>

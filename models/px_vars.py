@@ -2,13 +2,19 @@
 
 
 
+_price_list_list = [
+	
+	('2019', '2019'),
+	('2018', '2018'),
+]
+
+
 _family_list = [
 
 	# Prods
 	('topical', 	'Topico'),
 	('card', 		'Tarjeta'),
 	('kit', 		'Kit'),
-	('other', 		'Otros'),
 
 	# Servs
 	('laser', 		'Laser'),
@@ -19,6 +25,8 @@ _family_list = [
 	('echography', 	'Ecografia'),
 
 	('test', 	'test'),
+
+	('other', 		'Otros'),
 ]
 
 
@@ -46,21 +54,11 @@ _subfamily_list = [
 ('medical', 	'T. Medicos'),
 ('cosmetology', 'Cosmeatria'),
 
-('test', 	'test'),
+('test', 		'test'),
+
+('other', 		'Otros'),
+('commission', 	'Comision'),
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -70,9 +68,6 @@ _subfamily_list = [
 
 # Treatment
 _treatment_list = [
-
-
-
 
 ('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
 ('QUICKLASER',	'QUICKLASER'),
@@ -124,29 +119,9 @@ _treatment_list = [
 
 ('test_treatment',	'test_treatment'),
 ('na',	'na'),
+
+#('other', 		'OTROS'),
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-_price_list_list = [
-	
-	('2019', '2019'),
-	('2018', '2018'),
-]
-
-
 
 
 
@@ -154,7 +129,6 @@ _type_list = [
 	('service', 'service'),
 	('product', 'product'),
 ]
-
 
 
 
@@ -169,9 +143,6 @@ _level_list = [
 ('Grado 4',	'Grado 4'),
 ('Grado 5',	'Grado 5'),
 ]
-
-
-
 
 
 
@@ -327,7 +298,6 @@ _price_policy_list = [
 
 
 
-
 _manufacturer_list = [
 	('na', 				'na'),
 	
@@ -346,6 +316,8 @@ _manufacturer_list = [
 	('AKRON', 				'AKRON'),
 
 ]
+
+
 
 _brand_list = [
 	('na', 				'na'),
