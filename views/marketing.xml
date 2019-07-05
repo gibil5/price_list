@@ -18,58 +18,106 @@
 								class="oe_highlight"
 								name="update_patients"
 
-								string="Actualizar Pacientes"                               
+								string="Act Pacientes"                               
 						/>
 
 						<!-- Update Sales -->
 						<button 
 								class="oe_highlight"
-								type="object" 
+								type="object"
+
 								name="update_sales"
 
-								string="Actualizar Ventas" 
+								string="Act Ventas" 
 						/>
 
-						<!-- Patients -->
+
+						<!-- Update Sales -->
+						<button 
+								class="oe_highlight"
+								type="object"
+
+								name="pl_update_sales"
+
+								string="Pl - Act Ventas" 
+						/>
+
+						<!-- See Patients -->
 						<button 
 								class="oe_highlight"
 								type="action" 
 								context="{
 											'search_default_marketing_id': active_id,   
 										}"
+
 								name="%(openhealth.patient_line_proc_form_action)d"
+
 								string="Ver Pacientes"  
 						/>
+
+
+
+						<!-- See Sales -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{
+											'search_default_marketing_id': active_id,   
+											'state': 'sale',   
+										}"
+										
+								name="%(sale_line_form_action)d"
+
+								string="Ver Ventas"
+						/>
+
+
+						<!-- See Drafts -->
+						<button 
+								class="oe_highlight"
+								type="action"
+
+								context="{
+											'search_default_marketing_id': active_id,   
+											'state': 'draft',   
+										}"
+										
+								name="%(sale_line_draft_form_action)d"
+
+								string="Ver Presupuestos"
+						/>
+
 
 
 
 
 
 						<!-- Create Sale Lines -->
+						<!-- Analyse Sale Lines -->
+						<!-- Analyse patient Lines -->
 						<button 
 								class="oe_highlight"
 								type="object" 
 								name="create_sale_lines"
 
-								string="Create Sale Lines" 
+								string="Create SL" 
 
 								groups="openhealth.roots"
 						/>
 
-						<!-- Analyse Sale Lines -->
+<!--
 						<button 
 								class="oe_highlight"
 								type="object" 
 
 								name="analyse_sale_lines"
 
-								string="Analyse Sale Lines" 
+								string="Analyse SL" 
 
 								groups="openhealth.roots"
 						/>
 
 
-						<!-- Analyse patient Lines -->
 						<button 
 								class="oe_highlight"
 								type="object" 
@@ -80,23 +128,9 @@
 
 								groups="openhealth.roots"
 						/>
+-->
 
 
-
-						<!-- sales -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								context="{
-											'search_default_marketing_id': active_id,   
-										}"
-										
-								name="%(sale_line_form_action)d"
-
-								string="See Sale Lines"  
-
-								groups="openhealth.roots"
-						/>
 
 
 
@@ -124,6 +158,7 @@
 						/>
 
 						<!-- Vip not used -->
+<!--						
 						<button 
 								class="oe_highlight"
 								type="action"
@@ -133,7 +168,7 @@
 										}"
 								string="Vip No Util."   
 						/>
-
+-->
 
 
 
@@ -234,9 +269,23 @@
 								<field name="date_begin"/>
 								<field name="date_end"/>
 
-								<field name="total_count"   string="Pacientes Nuevos"/>
+								<field name="vspace"/>
+
+								<field name="delta_patients"/>
+								<field name="delta_sales"	string="Delta Ventas Dep"	groups="openhealth.roots"/>
+								<field name="delta_sales_pl"/>
+
+								<field name="vspace"/>
+
+								<field name="delta_create_sale_lines"/>
+								<field name="delta_analyse_sale_lines"/>
+								<field name="delta_analyse_patient_lines"/>
 							</group>
 
+
+							<group  groups="openhealth.roots">
+								<field name="total_count"   string="Pacientes Nuevos"/>
+							</group>
 
 							<group  groups="openhealth.roots">
 
@@ -249,17 +298,16 @@
 								<field name="sale_line_budget_count"/>
 							</group>
 
+<!--
 
 							<group>
 								<field name="patient_sale_count"/>
 								<field name="patient_consu_count"/>
 								<field name="patient_proc_count"/>
-
 								<field name="patient_product_count"/>
-
 								<field name="patient_budget_count"/>
-
 							</group>
+-->
 						</group>
 
 <!--
@@ -268,9 +316,8 @@
 
 						<!-- Vip -->
 <!--
-						<group  string="Vip"   >
--->
 						<group  string="Macros"   >
+-->
 <!--
 							<group>
 								<field name="vip_already_true"	/>
@@ -280,8 +327,8 @@
 							</group>
 -->
 
+						<group string="Vip">
 							<group>
-
 								<field name="vip_already_true"	string="Vip por venta anterior"/>
 
 								<field name="vip_true"	string="Vip por venta mes"/>
@@ -521,8 +568,6 @@
 
 										<field name="write_date"        string="Actualizado"  />
 
-										<field name="delta_patients"    />
-										<field name="delta_sales"       />
 										<field name="delta_recos"       />
 									</group>
 

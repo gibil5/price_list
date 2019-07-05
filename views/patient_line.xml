@@ -4,6 +4,101 @@
 
 
 
+
+<!-- FORM --> 
+        <record model="ir.ui.view" id="openhealth.patient_line_form_view">
+            <field name="name">openhealth.patient.line.form</field>
+            <field name="model">openhealth.patient.line</field>
+            <field name="arch" type="xml">
+
+                <form string="Patient Line Form">
+                    
+                    <!-- Header -->
+                    <header></header>
+
+
+
+                    <!-- Sheet -->  
+                    <sheet>
+
+                        <group>                 
+                            <group>
+                                <field name="patient"/>
+
+<!--
+                                <field name="treatment"/>
+                                <field name="consultation"/>
+                                <field name="vip_date"/>
+                                <field name="nr_lines_vip"/>
+-->
+								<field name="doctor"/>
+
+								<field name="proc_treatment"/>
+								<field name="proc_pathology"/>
+								<field name="proc_zone"/>
+								<field name="chief_complaint"/>
+								<field name="diagnosis"/>
+                            </group>
+
+                            <group>
+                                <field name="vip"/>
+
+								<field name="nr_sale"/>
+								<field name="nr_budget"/>
+								<field name="nr_consu"/>
+								<field name="nr_proc"/>
+								<field name="nr_products"/>
+                            </group>
+                        </group>
+
+
+
+                        <group groups="openhealth.roots" >                 
+
+                            <group>
+
+								<!-- Demographics -->
+								<field name="sex"/>
+								<field name="age_years"/>
+								<field name="dob"/>
+
+								<field name="phone_1"/>
+								<field name="phone_2"/>
+								<field name="email"/>
+
+                            </group>
+
+                            <group>
+								<field name="education"/>
+								<field name="function"/>
+								<field name="city"/>
+								<field name="district"/>
+                            </group>
+
+                        </group>
+
+
+
+
+                        <!-- Notebook --> 
+                        <notebook>  
+
+                            <page string="Ventas">
+<!--
+                                <field name="sale_line"/>
+-->
+                                <field name="pl_sale_line"/>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
 <!-- TREE 2 - For Marketing --> 
 		<record model="ir.ui.view" id="openhealth.patient_line_mkt_view_tree">
 
@@ -30,13 +125,25 @@
 
 					<!-- Medical -->
 					<field name="doctor"/>
+
 <!--					
 					<field name="nr_reco"/>                     
 -->
+
+<!--
+					<field name="sl_nr_sale"   		sum="SL Total Ventas"/>
+					<field name="sl_nr_consu"		sum="SL Total Consultas"/>
+					<field name="sl_nr_products"	sum="SL Total Productos"/>
+					<field name="sl_nr_proc"   		sum="SL Total	Procedimientos"/>
+-->
+
+
+
 					<field name="nr_sale"   	sum="Total Ventas"/>
 					<field name="nr_consu"		sum="Total Consultas"/>
 					<field name="nr_products"	sum="Total Productos"/>
 					<field name="nr_proc"   	sum="Total	Procedimientos"		string="Nr Procedimientos"/>
+
 
 <!--
 					<field name="reco_line"/>
@@ -48,9 +155,6 @@
 					<field name="proc_treatment"/>
 					<field name="proc_pathology"/>
 					<field name="proc_zone"/>
-
-
-
 
 					<field name="chief_complaint"/>
 					<field name="diagnosis"/>
@@ -74,6 +178,8 @@
 					<!-- Demographics -->
 					<field name="sex"/>
 					<field name="age_years"/>
+					<field name="dob"/>
+
 					<field name="phone_1"/>
 					<field name="phone_2"/>
 					<field name="email"/>

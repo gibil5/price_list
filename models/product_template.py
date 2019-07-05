@@ -16,64 +16,9 @@ class ProductTemplate(models.Model):
 	"""
 	_inherit = 'product.template'
 
-	#_order = 'name'
-	#_order = 'pl_idx'
 	_order = 'pl_idx_int'
 
 	_description = 'Product Template'
-
-
-
-# ---------------------------------------- Constraints Python - Name -------------------------
-
-	# Check Name
-	@api.constrains('name')
-	def check_name(self):
-		"""
-		Check Name
-		"""
-		chk_product.check_name(self)
-
-
-
-
-
-# ----------------------------------------------------------- Update ----------------------------------------------------
-	@api.multi
-	def update(self):
-		"""
-		Update
-		"""
-		#print('Product Template - Update')
-
-		self.pl_idx_int = int(self.pl_idx)
-
-		self.purchase_ok = False
-
-		#print(self.name)
-		#print(self.pl_idx)
-		#print(self.pl_idx_int)
-
-
-
-
-
-
-
-
-# ---------------------------------------------- Fields - Chars -----------------------------------
-
-	pl_account = fields.Char(
-			'Cuenta contable',
-			required=False,
-		)
-
-
-	pl_time_stamp = fields.Char(
-			required=False,
-		)
-
-
 
 
 
@@ -99,14 +44,20 @@ class ProductTemplate(models.Model):
 			#required=True,
 		)
 
-
-
 	pl_idx_int = fields.Integer(
 			#'Idx I',
 			'Indice',
 			#required=True,
 		)
 
+	pl_account = fields.Char(
+			'Cuenta contable',
+			required=False,
+		)
+
+	pl_time_stamp = fields.Char(
+			required=False,
+		)
 
 
 # ---------------------------------------------- Fields - Categorized -----------------------------
@@ -204,3 +155,27 @@ class ProductTemplate(models.Model):
 	pl_price_max = fields.Float(
 			'Price max',
 		)
+
+
+
+# ---------------------------------------- Constraints Python - Name -------------------------
+
+	# Check Name
+	@api.constrains('name')
+	def check_name(self):
+		"""
+		Check Name
+		"""
+		chk_product.check_name(self)
+
+
+# ----------------------------------------------------------- Update ----------------------------------------------------
+	@api.multi
+	def update(self):
+		"""
+		Update
+		"""
+		#print()
+		#print('Product Template - Update')
+		self.pl_idx_int = int(self.pl_idx)
+		self.purchase_ok = False

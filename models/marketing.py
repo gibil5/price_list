@@ -1,52 +1,77 @@
 # -*- coding: utf-8 -*-
 """
- 	Report Marketing
- 
+ 	Price List - Marketing Report
+
  	Created: 				19 May 2018
- 	Last up: 	 			27 Nov 2018
+ 	Last up: 	 			 3 Jul 2019
 """
 from __future__ import print_function
 import datetime
 from timeit import default_timer as timer
 import collections
 from openerp import models, fields, api
+from openerp.addons.openhealth.models.order import ord_vars
+from openerp.addons.openhealth.models.marketing import lib_marketing
 from . import mkt_funcs
 from . import mgt_funcs
-from openerp.addons.openhealth.models.marketing import lib_marketing
-from . import pl_lib_marketing
-from openerp.addons.openhealth.models.order import ord_vars
+#from . import pl_lib_marketing
 
 class Marketing(models.Model):
+	"""
+	Marketing Report
+	"""
+
 
 	_inherit = 'openhealth.marketing'
 
 
 
-
-
-
 # ----------------------------------------------------------- Natives ------------------------------------------------------
+
+	delta_create_sale_lines = fields.Float(
+		)
+
+	delta_analyse_sale_lines = fields.Float(
+		)
+	
+	delta_analyse_patient_lines = fields.Float(
+		)
+
+
+
+	delta_sales_pl = fields.Float(
+			'Delta Ventas',
+		)
+
+
+
 
 	patient_product_count = fields.Integer(
 			'Nr Productos',
 		)
 
 
-
 	sale_line_sale_count = fields.Integer(
+			'Nr Ventas Alt',
 		)
 
 	sale_line_consultation_count = fields.Integer(
+			'Nr Consultas Alt',
 		)
 
 	sale_line_procedure_count = fields.Integer(
-		)
-
-	sale_line_budget_count = fields.Integer(
+			'Nr Procedimientos Alt',
 		)
 
 	sale_line_product_count = fields.Integer(
+			'Nr Productos Alt',
 		)
+
+
+	sale_line_budget_count = fields.Integer(
+			'Nr Presupuestos Alt',
+		)
+
 
 
 
@@ -66,48 +91,45 @@ class Marketing(models.Model):
 		)
 
 
-	# Vip 
+	# Vip
 	vip_true_per = fields.Float(
 			'Vip Si %',
-			readonly=True, 
-			#digits=(16,1), 
-			digits=(12,3), 
+			readonly=True,
+			#digits=(16,1),
+			digits=(12, 3),
 		)
 
 	vip_false_per = fields.Float(
 			'Vip No %',
-			readonly=True, 
-			#digits=(16,1), 
-			digits=(12,3), 
+			readonly=True,
+			#digits=(16,1),
+			digits=(12, 3),
 		)
 
 	vip_already_true = fields.Integer()
-	
+
 	vip_already_false = fields.Integer()
 
-
-
-
 	vip_already_true_per = fields.Float(
-			digits=(12,3), 
+			digits=(12, 3),
 		)
 
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
-	# Patient Lines 
+	# Patient Lines
 	patient_line = fields.One2many(
-			'openhealth.patient.line', 
-			'marketing_id', 
+			'openhealth.patient.line',
+			'marketing_id',
 		)
 
 
 	# Sales
 	#sale_line_tkr = fields.One2many(
 	sale_line = fields.One2many(
-			#'openhealth.marketing.order.line', 
-			'price_list.marketing.order_line', 
+			#'openhealth.marketing.order.line',
+			'price_list.marketing.order_line',
 			'marketing_id',
 		)
 
@@ -117,34 +139,80 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Analyse Patient Lines ------------------------
 	# Analyse patients
 	@api.multi
-	def analyse_patient_lines(self):  
+	def analyse_patient_lines(self):
+		"""
+		Analyse patient Lines
+		"""
 		print()
-		print('Analysis patient Lines')
+		print('Pl - Analysis patient Lines')
+
+		# Benchmark
+		t0 = timer()
+
+
+		# Clean
+		self.vip_true = 0
+		self.vip_false = 0
+
 
 		# Loop
 		for patient_line in self.patient_line:
 
+			# Clean
+			patient_line.clean() 		# OO
+
+
+			# Lines
 			patient = patient_line.patient
+			#print(patient.name)
+			model = 'price_list.marketing.order_line'
+			lines = self.env[model].search([
+													('state', 'in', ['sale', 'draft']),
+													('patient', 'in', [patient.name]),
+													('marketing_id', '=', self.id),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
 
-			print(patient.name)
+			# Loop
+			for line in lines:
+				#print(line)
+				#mkt_funcs.macro_line_analysis(self, line, patient_line)
 
-			orders, count = mgt_funcs.get_orders_filter_fast_patient(self, self.date_begin, self.date_end, patient.name)
-			#print(orders)
-			print(count)
+				patient_line.analysis(line)  	# OO
 
-			for order in orders:
-	
-				for line in order.order_line:
-					
-					mkt_funcs.macro_line_analysis(self, line, patient_line)
+
+
+		# Update Macros
+		self.vip_false = self.total_count - (self.vip_true + self.vip_already_true)
+
+		if self.total_count not in [0]:
+			#self.vip_already_true_per = float(self.vip_already_true) / float(self.total_count)
+			self.vip_true_per = float(self.vip_true) / float(self.total_count)
+			self.vip_false_per = float(self.vip_false) / float(self.total_count)
+
+
+
+		t1 = timer()
+		self.delta_analyse_patient_lines = t1 - t0
+
+	# analyse_patient_lines
+
 
 
 # ----------------------------------------------------------- Analyse Sale Lines ------------------------
 	# Update Sales
 	@api.multi
-	def analyse_sale_lines(self):  
+	def analyse_sale_lines(self):
+		"""
+		Update Sale Lines
+		"""
 		print()
 		print('Analysis Sale Lines')
+
+		# Benchmark
+		t0 = timer()
 
 
 		model = 'price_list.marketing.order_line'
@@ -159,7 +227,7 @@ class Marketing(models.Model):
 												#order='x_serial_nr asc',
 												#limit=1,
 											)
-		print(count)
+		#print(count)
 		self.sale_line_budget_count = count
 
 
@@ -174,7 +242,7 @@ class Marketing(models.Model):
 												#order='x_serial_nr asc',
 												#limit=1,
 											)
-		print(count)
+		#print(count)
 		self.sale_line_sale_count = count
 
 
@@ -193,7 +261,7 @@ class Marketing(models.Model):
 													#order='x_serial_nr asc',
 													#limit=1,
 												)
-			print(count)
+			#print(count)
 
 			if family in ['consultation']:
 				self.sale_line_consultation_count = count
@@ -205,13 +273,26 @@ class Marketing(models.Model):
 				self.sale_line_product_count = count
 
 
+		t1 = timer()
+		self.delta_analyse_sale_lines = t1 - t0
+
+	# analyse_sale_lines
+
+
 
 # ----------------------------------------------------------- Create Sale Lines ------------------------
-	# Update Sales
+	# Create Sales
 	@api.multi
-	def create_sale_lines(self):  
+	def create_sale_lines(self):
+		"""
+		Create Sale Lines
+		"""
 		print()
 		print('Create Sale Lines')
+
+		# Benchmark
+		t0 = timer()
+
 
 		# Clean
 		self.sale_line.unlink()
@@ -232,7 +313,7 @@ class Marketing(models.Model):
 			is_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)
 
 			#print(is_new)
-			
+
 			if is_new:
 				#print('Gotcha 2')
 				#print(order.patient.name)
@@ -240,7 +321,7 @@ class Marketing(models.Model):
 
 				# Loop
 				for line in order.order_line:
-	
+
 					price_net = line.price_unit * line.product_uom_qty
 
 
@@ -253,53 +334,91 @@ class Marketing(models.Model):
 						family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis_2018(self, line)
 
 
+					# Using Getters - OO
+					subsubfamily = line.product_id.get_subsubfamily()
+
 
 					sale_line = self.sale_line.create({
+															'date': order.date_order,
 															'order': order.id,
-
-															'state': order.state,
-
 
 
 															'patient': order.patient.id,
-															'date': order.date_order,
+															'doctor': order.x_doctor.id,
+
+
 															'product_id': line.product_id.id,
-
-
 															'product_uom_qty': line.product_uom_qty,
-
 															'price_unit': line.price_unit,
 															'price_net': price_net,
-
-
 															'family': family,
 															'subfamily': subfamily,
 															'subsubfamily': subsubfamily,
-
 															'price_list': line.product_id.pl_price_list,
+
+															'state': order.state,
 
 															'marketing_id': self.id,
 						})
 					#print(sale_line)
 
 
+		t1 = timer()
+		self.delta_create_sale_lines = t1 - t0
+
+	# create_sale_lines
+
+
 
 # ----------------------------------------------------------- Update Sales ------------------------
 	# Update Sales
 	@api.multi
-	def update_sales(self):  
+	def pl_update_sales(self):
+		"""
+		Pl - Update Sales
+		"""
 		print()
 		print('Pl - Update Sales')
+
+		self.delta_create_sale_lines = 0
+		self.delta_analyse_sale_lines = 0
+		self.delta_analyse_patient_lines = 0
+
+
+		self.create_sale_lines()
+
+		self.analyse_sale_lines()
+
+		self.analyse_patient_lines()
+		
+
+		# Benchmark
+		#t1 = timer()
+		#self.delta_sales_pl = t1 - t0
+		self.delta_sales_pl = self.delta_create_sale_lines + self.delta_analyse_sale_lines + self.delta_analyse_patient_lines
+
+
+
+
+# ----------------------------------------------------------- Update Sales ------------------------
+	# Update Sales
+	@api.multi
+	def update_sales(self):
+		"""
+		Update Sales
+		"""
+		print()
+		print('Update Sales')
 
 		# QC
 		t0 = timer()
 
-		# Clean Macros 
-		self.patient_budget_count = 0 
-		self.patient_sale_count = 0 
-		self.patient_consu_count = 0 
-		self.patient_proc_count = 0 
-		self.patient_product_count = 0 
+		# Clean Macros
+		self.patient_budget_count = 0
+		self.patient_sale_count = 0
+		self.patient_consu_count = 0
+		self.patient_proc_count = 0
+		self.patient_product_count = 0
 
 
 
@@ -314,8 +433,8 @@ class Marketing(models.Model):
 
 
 
-		# Loop - Patient Lines 
-		for pat_line in self.patient_line: 
+		# Loop - Patient Lines
+		for pat_line in self.patient_line:
 
 			# Update Line
 			pat_line.update_fields_mkt()
@@ -335,21 +454,21 @@ class Marketing(models.Model):
 			budgets, count = mgt_funcs.get_orders_filter_fast_patient_draft(self, self.date_begin, self.date_end, pat_line.patient.name)
 
 
-			# Clean 
+			# Clean
 			pat_line.budget_line.unlink()
 
 			# Create Budgets
 			for budget in budgets:
 				doctor = budget.x_doctor
-				for line in budget.order_line: 
+				for line in budget.order_line:
 					budget_line = pat_line.budget_line.create({
 																'name': line.name,
 																'doctor': doctor.id,
-																'product_id': line.product_id.id, 
-																'x_date_created': budget.date_order, 
-																'product_uom_qty': line.product_uom_qty, 
+																'product_id': line.product_id.id,
+																'x_date_created': budget.date_order,
+																'product_uom_qty': line.product_uom_qty,
 																'price_unit': line.price_unit,
-																'patient_line_budget_id': pat_line.id, 
+																'patient_line_budget_id': pat_line.id,
 																'marketing_id': self.id,
 						})
 			# Count
@@ -381,25 +500,25 @@ class Marketing(models.Model):
 
 
 
-			# Clean 
+			# Clean
 			pat_line.sale_line.unlink()
 			pat_line.consu_line.unlink()
 			pat_line.procedure_line.unlink()
 
 
 			# Create
-			for order in orders: 
+			for order in orders:
 
 				doctor = order.x_doctor
 
-				for line in order.order_line: 
+				for line in order.order_line:
 
-					
+
 					# Line Analysis
 					mkt_funcs.line_analysis(self, line)
 
 
-					
+
 					prod = line.product_id
 
 					# Sale
@@ -411,8 +530,8 @@ class Marketing(models.Model):
 															'product_uom_qty': line.product_uom_qty,
 															'price_unit': line.price_unit,
 
-															'patient_line_sale_id': pat_line.id, 
-															'marketing_id': self.id, 
+															'patient_line_sale_id': pat_line.id,
+															'marketing_id': self.id,
 						})
 
 
@@ -426,16 +545,16 @@ class Marketing(models.Model):
 
 					# 2019 and 2018
 					if prod.pl_subfamily in ['consultation'] or prod.x_family in ['consultation']:
-					
-						consu_line = pat_line.consu_line.create({
-																	'name': line.name, 
-																	'product_id': line.product_id.id, 
-																	'x_date_created': order.date_order, 
-																	'product_uom_qty': line.product_uom_qty, 
-																	'price_unit': line.price_unit, 
 
-																	'patient_line_consu_id': pat_line.id, 
-																	'marketing_id': self.id, 
+						consu_line = pat_line.consu_line.create({
+																	'name': line.name,
+																	'product_id': line.product_id.id,
+																	'x_date_created': order.date_order,
+																	'product_uom_qty': line.product_uom_qty,
+																	'price_unit': line.price_unit,
+
+																	'patient_line_consu_id': pat_line.id,
+																	'marketing_id': self.id,
 																})
 
 
@@ -452,14 +571,14 @@ class Marketing(models.Model):
 					if 	(prod.pl_subfamily in ['co2', 'excilite', 'm22', 'quick', 'echography', 'gynecology', 'medical', 'cosmetology', 'promotion', ])		or prod.x_family in ['laser', 'medical', 'cosmetology']:
 
 						procedure_line = pat_line.procedure_line.create({
-																			'name': line.name, 
-																			'product_id': line.product_id.id, 
-																			'x_date_created': order.date_order, 
-																			'product_uom_qty': line.product_uom_qty, 
+																			'name': line.name,
+																			'product_id': line.product_id.id,
+																			'x_date_created': order.date_order,
+																			'product_uom_qty': line.product_uom_qty,
 																			'price_unit': line.price_unit,
 
-																			'patient_line_proc_id': pat_line.id, 
-																			'marketing_id': self.id, 
+																			'patient_line_proc_id': pat_line.id,
+																			'marketing_id': self.id,
 																		})
 						# Sale Line Analysis - Procedure
 						#mkt_funcs.pl_sale_line_analysis(self, line, pat_line)
@@ -485,7 +604,7 @@ class Marketing(models.Model):
 
 
 
-		# Per - Vip 
+		# Per - Vip
 		#jx
 		#if self.total_count != 0:
 		#self.vip_true_per = mkt_funcs.get_per(self, self.vip_true, self.total_count)
@@ -495,13 +614,11 @@ class Marketing(models.Model):
 		#print(self.vip_true)
 		#print(self.vip_false)
 		if self.total_count not in [0]:
-
-			self.vip_already_true_per = 	float(self.vip_already_true) / float(self.total_count)
-
-			self.vip_true_per = 	float(self.vip_true) / float(self.total_count)
-			self.vip_false_per = 	float(self.vip_false) / float(self.total_count)
+			self.vip_already_true_per = float(self.vip_already_true) / float(self.total_count)
+			self.vip_true_per = float(self.vip_true) / float(self.total_count)
+			self.vip_false_per = float(self.vip_false) / float(self.total_count)
 		#print(self.vip_true_per)
-		#print(self.vip_false_per)		
+		#print(self.vip_false_per)
 
 
 		# QC
@@ -511,20 +628,13 @@ class Marketing(models.Model):
 	# update_sales
 
 
-
-
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Update Patients ---------------------
 	# Update Patients
 	@api.multi
-	def update_patients(self):  
+	def update_patients(self):
+		"""
+		Update Patients
+		"""
 		#print()
 		print('Pl - Update Patients')
 
@@ -539,43 +649,60 @@ class Marketing(models.Model):
 		self.reset()
 
 
-		# Get Patients 
+		# Get Patients
 		mode = 'normal'
-		patients,count = mkt_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
+		patients, count = mkt_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
 
 		self.total_count = count
 
 
-		# Loop 
-		for patient in patients: 
+		# Loop
+		for patient in patients:
 
-			# Create 
+
+			#emr = self.patient.x_id_code
+			#phone_1 = self.patient.mobile
+			#phone_2 = self.patient.phone
+			#email = self.patient.email
+
+
+			# Create
 			pat_line = self.patient_line.create({
-														'patient': patient.id, 
+														'patient': patient.id,
 														'date_create': patient.create_date,
 														'date_record': patient.x_date_record,
-														'sex': patient.sex, 
-														'dob': patient.dob, 
-														'age': patient.age, 
-														'first_contact': patient.x_first_contact, 
-														'education': patient.x_education_level, 
-														'vip': patient.x_vip, 
-														'country': patient.country_id.name, 
-														'city': patient.city, 
-														'district': patient.street2, 
-														'function': patient.function, 
+														'sex': patient.sex,
+														'dob': patient.dob,
+														'age': patient.age,
+														'first_contact': patient.x_first_contact,
+														'education': patient.x_education_level,
+														'vip': patient.x_vip,
+														'country': patient.country_id.name,
+														'city': patient.city,
+														'district': patient.street2,
+														'function': patient.function,
 
-														'marketing_id': self.id, 
+														'emr': 		patient.x_id_code,
+														'phone_1': 	patient.mobile,
+														'phone_2': 	patient.phone,
+														'email': 	patient.email,
+
+														'marketing_id': self.id,
 													})
+			# Old
 			ret = pat_line.update_fields()
 
+			# New
+			pat_line.update_emr()
 
 
-		# Set Stats 
+
+
+		# Set Stats
 		self.update_stats()
 
 
-		# Update Vip Sales 
+		# Update Vip Sales
 		self.update_vip_sales()
 
 
@@ -611,20 +738,23 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Update Stats ------------------------
 	# Set Stats
 	@api.multi
-	def update_stats(self):  
+	def update_stats(self):
+		"""
+		Update Stats
+		"""
 		print()
 		print('Pl - Update Stats')
 
 
-		# Init 
+		# Init
 
 		# Collections
 		country_arr = []
 
 
 
-		# Loop 
-		for line in self.patient_line: 
+		# Loop
+		for line in self.patient_line:
 
 			# Line Analysis
 			#mkt_funcs.pl_line_analysis(self, line)
@@ -633,30 +763,30 @@ class Marketing(models.Model):
 
 			# Address - Using collections
 
-			# Countries 
+			# Countries
 			country_arr.append(line.country)
 
 
 
 
-# Percentages 
+# Percentages
 
 		# Sex
-		if self.total_count != 0: 
-			#self.sex_male_per = ( float(self.sex_male) / float(self.total_count) ) 
-			self.sex_male_per = ( self.sex_male / float(self.total_count) ) 
-			self.sex_female_per = ( self.sex_female / float(self.total_count) ) 
-			self.sex_undefined_per = ( self.sex_undefined / float(self.total_count) ) 
-		
+		if self.total_count != 0:
+			#self.sex_male_per = (float(self.sex_male) / float(self.total_count))
+			self.sex_male_per = (self.sex_male / float(self.total_count))
+			self.sex_female_per = (self.sex_female / float(self.total_count))
+			self.sex_undefined_per = (self.sex_undefined / float(self.total_count))
+
 		#self.sex_male_per = mkt_funcs.get_per(self, self.sex_male, self.total_count)
 		#self.sex_female_per = mkt_funcs.get_per(self, self.sex_female, self.total_count)
 		#self.sex_undefined_per = mkt_funcs.get_per(self, self.sex_undefined, self.total_count)
 
 
 		# Age
-		if self.total_count != 0: 
+		if self.total_count != 0:
 			self.age_mean = self.age_sum / float(self.total_count)
-			self.age_undefined_per = ( self.age_undefined / float(self.total_count) ) 
+			self.age_undefined_per = (self.age_undefined / float(self.total_count))
 
 
 
@@ -677,9 +807,7 @@ class Marketing(models.Model):
 		self.how_old_patient_per = mkt_funcs.get_per(self, self.how_old_patient, self.total_count)
 
 
-
-
-		# Education 
+		# Education
 		self.edu_fir_per = mkt_funcs.get_per(self, self.edu_fir, self.total_count)
 		self.edu_sec_per = mkt_funcs.get_per(self, self.edu_sec, self.total_count)
 		self.edu_tec_per = mkt_funcs.get_per(self, self.edu_tec, self.total_count)
@@ -688,28 +816,28 @@ class Marketing(models.Model):
 		self.edu_u_per = mkt_funcs.get_per(self, self.edu_u, self.total_count)
 
 
-		# Vip 
+		# Vip
 		#self.vip_true_per = mkt_funcs.get_per(self, self.vip_true, self.total_count)
 		#self.vip_false_per = mkt_funcs.get_per(self, self.vip_false, self.total_count)
 
 
 
-		# Using collections		
+		# Using collections
 		# Country
 		counter_country = collections.Counter(country_arr)
 
 		# Country
 		#print 'Create Country Line '
-		for key in counter_country: 
+		for key in counter_country:
 			count = counter_country[key]
 			country = self.country_line.create({
-													'name': key, 
+													'name': key,
 													'count': count,
-													'marketing_id': self.id, 
+													'marketing_id': self.id,
 												})
 			#print country
 		#print self.country_line
-		#print 
+		#print
 
 	# update_stats
 
@@ -722,7 +850,7 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Natives ----------------------
 
 	year = fields.Selection(
-			selection=ord_vars._year_order_list,		
+			selection=ord_vars._year_order_list,
 			string='Año',
 			required=True,
 
@@ -752,13 +880,13 @@ class Marketing(models.Model):
 			'Edad Promedio',
 			readonly=True,
 			#digits=(16,1),
-			digits = (12,3),
+			digits=(12, 3),
 		)
 
 	age_sum = fields.Float(
 			#'Edad Promedio',
 			#readonly=True,
-			digits = (12,3),
+			digits=(12, 3),
 		)
 
 
@@ -770,32 +898,32 @@ class Marketing(models.Model):
 	sex_male = fields.Integer(
 			#'Sexo M',
 			'Masculino',
-			readonly=True, 
+			readonly=True,
 		)
 
 	#sex_female = fields.Float(
 	sex_female = fields.Integer(
 			#'Sexo F',
 			'Femenino',
-			readonly=True, 
+			readonly=True,
 		)
 
 	#sex_undefined = fields.Float(
 	sex_undefined = fields.Integer(
 			#'Sexo Error',
 			'Error',
-			readonly=True, 	
+			readonly=True,
 		)
 
 
 
-	# Sex 
+	# Sex
 	sex_male_per = fields.Float(
 			#'M %',
 			'Masculino %',
-			readonly=True, 
-			#digits=(16,1), 
-			digits = (12,3),
+			readonly=True,
+			#digits=(16,1),
+			digits=(12, 3),
 			#digits=(12,1),
 			#digits=(12,2),
 		)
@@ -803,16 +931,16 @@ class Marketing(models.Model):
 	sex_female_per = fields.Float(
 			#'F %',
 			'Femenino %',
-			readonly=True, 
-			#digits=(16,1), 
-			digits = (12,3),
+			readonly=True,
+			#digits=(16,1),
+			digits=(12, 3),
 		)
 
 	sex_undefined_per = fields.Float(
 			'Error %',
-			readonly=True, 
-			#digits=(16,1), 
-			digits = (12,3),
+			readonly=True,
+			#digits=(16,1),
+			digits=(12, 3),
 		)
 
 
@@ -820,55 +948,54 @@ class Marketing(models.Model):
 
 	edu_fir_per = fields.Float(
 			'Primaria %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	edu_sec_per = fields.Float(
 			'Secundaria %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	edu_tec_per = fields.Float(
 			'Instituto %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	edu_uni_per = fields.Float(
 			'Universidad %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
-	
+
 	edu_mas_per = fields.Float(
 			'Posgrado %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	edu_u_per = fields.Float(
 			'No Definido %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 # ----------------------------------------------------------- First Contact ----------------------------------
-
 
 # From Patient
 #_first_contact_list = [
 #						('facebook','Facebook'), 					# New
 #						('instagram','Instagram'), 					# New
-#						('callcenter','Call Center'), 				# New 
-#						('old_patient','Paciente Antiguo'), 		# New 		
+#						('callcenter','Call Center'), 				# New
+#						('old_patient','Paciente Antiguo'), 		# New
 
-#						('recommendation','Recomendación'), 
-#						('tv','Tv'), 
-#						('radio','Radio'), 		
-#						('website','Web'), 
-#						('mail_campaign','Mailing'), 
+#						('recommendation','Recomendación'),
+#						('tv','Tv'),
+#						('radio','Radio'),
+#						('website','Web'),
+#						('mail_campaign','Mailing'),
 
 
 #						('internet','Internet'), 	# Dep
@@ -880,67 +1007,67 @@ class Marketing(models.Model):
 	# First Contact - Nr
 	how_u = fields.Integer(
 			'No Definido',
-			readonly=True, 
+			readonly=True,
 		)
 
 	how_none = fields.Integer(
 			'Ninguno',
-			readonly=True, 
+			readonly=True,
 		)
 
 	how_reco = fields.Integer(
 			'Recomendación',
-			readonly=True, 
+			readonly=True,
 		)
 
 	how_tv = fields.Integer(
 			'Tv',
-			readonly=True, 
+			readonly=True,
 		)
 
 	how_radio = fields.Integer(
 			'Radio',
-			readonly=True, 
+			readonly=True,
 		)
 
 	how_inter = fields.Integer(
 			'Internet',
-			readonly=True, 
+			readonly=True,
 		)
 
 	how_web = fields.Integer(
 			'Web',
-			readonly=True, 
+			readonly=True,
 		)
 
 	how_mail = fields.Integer(
 			'Mail',
-			readonly=True, 
+			readonly=True,
 		)
 
 	# New
 	how_facebook = fields.Integer(
 			'Facebook',
-			readonly=True, 
-			#digits=(12,3), 
+			readonly=True,
+			#digits=(12, 3),
 		)
 
 	how_instagram = fields.Integer(
 			'Instagram',
-			readonly=True, 
-			#digits=(12,3), 
+			readonly=True,
+			#digits=(12, 3),
 		)
 
 	how_callcenter = fields.Integer(
 			'Call center',
-			readonly=True, 
-			#digits=(12,3), 
+			readonly=True,
+			#digits=(12, 3),
 		)
 
 	how_old_patient = fields.Integer(
 			'Paciente Antiguo',
-			readonly=True, 
-			#digits=(12,3), 
+			readonly=True,
+			#digits=(12, 3),
 		)
 
 
@@ -953,27 +1080,27 @@ class Marketing(models.Model):
 	# New Per
 	how_facebook_per = fields.Float(
 			'Facebook %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	how_instagram_per = fields.Float(
 			'Instagram %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	how_callcenter_per = fields.Float(
 			'Callcenter %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	how_old_patient_per = fields.Float(
 			#'Old_patient %',
 			'Paciente Antiguo %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 
@@ -982,38 +1109,38 @@ class Marketing(models.Model):
 	# Standard
 	how_u_per = fields.Float(
 			'No Definido %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	how_reco_per = fields.Float(
 			'Recomendación %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	how_tv_per = fields.Float(
 			'Tv %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	how_radio_per = fields.Float(
 			'Radio %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	how_web_per = fields.Float(
 			'Web %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	how_mail_per = fields.Float(
 			'Mail %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 
@@ -1021,14 +1148,14 @@ class Marketing(models.Model):
 	# Dep
 	how_inter_per = fields.Float(
 			'Internet %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 	how_none_per = fields.Float(
 			'Ninguno %',
-			readonly=True, 
-			digits=(12,3), 
+			readonly=True,
+			digits=(12, 3),
 		)
 
 
@@ -1036,8 +1163,20 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Reset ------------------------------
 	# Reset
 	@api.multi
-	def reset(self):  
+	def reset(self):
+		"""
+		Reset
+		"""
 		print('Pl - Reset')
+
+		self.delta_patients = 0
+		self.delta_sales_pl = 0
+		self.delta_create_sale_lines = 0
+		self.delta_analyse_sale_lines = 0
+		self.delta_analyse_patient_lines = 0
+
+
+		self.sale_line.unlink()
 
 		self.sale_line_consultation_count = 0
 		self.sale_line_procedure_count = 0
@@ -1068,7 +1207,7 @@ class Marketing(models.Model):
 		self.city_line.unlink()
 
 
-		# First Contact 
+		# First Contact
 
 		# New
 		self.how_facebook = 0
@@ -1127,7 +1266,7 @@ class Marketing(models.Model):
 		self.age_undefined = 0
 
 
-		# Education 
+		# Education
 		self.edu_fir = 0
 		self.edu_sec = 0
 		self.edu_tec = 0
@@ -1157,10 +1296,13 @@ class Marketing(models.Model):
 
 
 # ----------------------------------------------------------- Clean ------------------------------
-	
+
 	# Clean
 	@api.multi
-	def clean(self):  
+	def clean(self):
+		"""
+		Clean
+		"""
 		print('Pl - Clean')
 		print('Begin')
 
@@ -1175,7 +1317,7 @@ class Marketing(models.Model):
 			model = 'openhealth.marketing.order.line'
 
 			objs = self.env[model].search([
-												('marketing_id', 'in', [False]),									
+												('marketing_id', 'in', [False]),
 											],
 			#								order='date_begin asc',
 			#								#limit=1,
@@ -1198,5 +1340,3 @@ class Marketing(models.Model):
 												)
 			print(count)
 			print('End')
-
-

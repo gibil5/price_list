@@ -7,6 +7,30 @@
 <!-- ACTIONS --> 
 
 
+		<!-- ACTION - 2019 Month -->
+		<record model="ir.actions.act_window" id="marketing_patient_2019_list_action">   
+
+			<field name="name">Mensual 2019</field>
+
+			<field name="res_model">openhealth.marketing</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="openhealth.marketing_view_tree"/> 
+<!--
+									('test_obj', 'in', [False]),
+-->
+			<field name="domain">[
+									('year', '=', '2019'),
+									('owner', 'in', ['month']),
+									('test_obj', 'not in', [True]),
+				]</field>
+
+			<field name="context">{}</field>
+		</record>
+
+
+
+
 		<!-- ACTION - Test -->
 		<record model="ir.actions.act_window" id="marketing_patient_test_list_action">
 
@@ -65,23 +89,6 @@
 
 
 
-		<!-- ACTION - 2019 Month -->
-		<record model="ir.actions.act_window" id="marketing_patient_2019_list_action">   
-
-			<field name="name">Mensual 2019</field>
-
-			<field name="res_model">openhealth.marketing</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="openhealth.marketing_view_tree"/> 
-			<field name="domain">[
-									('year', '=', '2019'),
-									('owner', 'in', ['month']),
-									('test_obj', 'in', [False]),
-				]</field>
-
-			<field name="context">{}</field>
-		</record>
 
 
 

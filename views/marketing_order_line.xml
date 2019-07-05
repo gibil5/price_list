@@ -11,8 +11,15 @@
 			<field name="model">price_list.marketing.order_line</field>
 			
 			<field name="arch" type="xml">
-
+<!--
 				<tree string="marketing order line Tree">
+-->
+				<tree string="marketing order Line Tree"
+						colors="
+						red:state=='draft'
+						">
+
+
 
 <!--
 					<field name="marketing_id"/>
@@ -25,6 +32,7 @@
 					<field name="price_list"/>
 
 					<field name="patient"/>
+					<field name="doctor"/>
 
 					<field name="family"/>
 					<field name="subfamily"/>
@@ -94,11 +102,37 @@
 -->
 			<field name="domain">[
 									('marketing_id', '=', active_id),
+
+									('state', 'in', ['sale']),
 								]
 			</field>
 			<field name="context">{}</field>
 			<field name="limit">1000</field>
 		</record>
+
+
+		<!-- For Marketing -->
+		<record model="ir.actions.act_window" id="sale_line_draft_form_action">
+			<field name="name">Ventas</field>
+			<field name="res_model">price_list.marketing.order_line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph,pivot</field>
+<!--
+			<field name="view_id" ref="patient_line_mkt_view_tree"/> 
+-->
+			<field name="domain">[
+									('marketing_id', '=', active_id),
+
+									('state', 'in', ['draft']),
+								]
+			</field>
+			<field name="context">{}</field>
+			<field name="limit">1000</field>
+		</record>
+
+
+
+
 
 
 

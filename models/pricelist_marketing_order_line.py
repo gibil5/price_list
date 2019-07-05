@@ -7,6 +7,8 @@
 """
 from openerp import models, fields, api
 
+from . import mkt_vars
+
 class MarketingOrderLine(models.Model):
 
 	_name = 'price_list.marketing.order_line'
@@ -18,11 +20,56 @@ class MarketingOrderLine(models.Model):
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	#family = fields.Char()
+	#subfamily = fields.Char(
+	#subsubfamily = fields.Char(
+
+
+	family = fields.Selection(
+
+			selection=mkt_vars._family_list,
+		)
+
+
+	subfamily = fields.Selection(
+
+			selection=mkt_vars._subfamily_list,
+		)
+
+
+	subsubfamily = fields.Selection(
+
+			selection=mkt_vars._subsubfamily_list,
+		)
+
+
+
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
 	# Marketing Id
 	marketing_id = fields.Many2one(			
 			'openhealth.marketing',
 			ondelete='cascade', 			
 		)
+
+	# Marketing Id
+	patient_line_id = fields.Many2one(			
+			'openhealth.patient.line',
+			ondelete='cascade', 			
+		)
+
+
+
+
+# ----------------------------------------------------------- Setters ------------------------------------------------------
+
+	def set_patient_line_id(self, patient_line_id):
+
+		self.patient_line_id = patient_line_id
+
+
 
 
 
@@ -37,6 +84,12 @@ class MarketingOrderLine(models.Model):
 			'oeh.medical.patient',
 			string='Paciente',
 			ondelete='cascade',
+		)
+
+
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+			#string = "Médico", 	
 		)
 
 
@@ -61,14 +114,6 @@ class MarketingOrderLine(models.Model):
 
 
 
-	family = fields.Char(
-		)
-
-	subfamily = fields.Char(
-		)
-
-	subsubfamily = fields.Char(
-		)
 
 
 

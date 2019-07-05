@@ -9,15 +9,21 @@
 
 	'description': 
 		"""
-		1 July 2019
+		5 July 2019
 
 		(Since 22 April, in Prod)
 
 		For Open Health. Service oriented way of adding Price List Management. 
 
+		Remember OO Concepts:
+			- Confine change to interfaces, that capture all business logic. The Getters. 
+			- Do not access class variables directly. 
+
 		Remember, Hunter and Westerman:
 			- Step 1 - New Thinking: Avoid the 7 Value Traps.
 
+		Remember John Keegan: 
+			- Two forces always: one slow and the other fast. 
 		""",
 
 
