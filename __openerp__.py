@@ -19,6 +19,9 @@
 			- Confine change to interfaces, that capture all business logic. The Getters. 
 			- Do not access class variables directly. 
 
+		Remember Instrumentation:
+			- Real Data is like White Noise. That will capture your system's actual Transfer Function. Coverage.
+
 		Remember, Hunter and Westerman:
 			- Step 1 - New Thinking: Avoid the 7 Value Traps.
 
