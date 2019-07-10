@@ -2,12 +2,15 @@
 	<data>
 
 
+
+
 <!-- FORM -->
 		<record model="ir.ui.view" id="openhealth.marketing_form_view">
 			<field name="name">marketing.form</field>           
 			<field name="model">openhealth.marketing</field>
 			<field name="arch" type="xml">
 				<form string="Marketing Form">
+
 
 <!-- Header -->
 					<header>
@@ -22,6 +25,7 @@
 						/>
 
 						<!-- Update Sales -->
+<!--						
 						<button 
 								class="oe_highlight"
 								type="object"
@@ -30,7 +34,7 @@
 
 								string="Act Ventas" 
 						/>
-
+-->
 
 						<!-- Update Sales -->
 						<button 
@@ -264,42 +268,29 @@
 					<sheet>
 
 						<group  string="Total"  col="3">
+
 							<group>
 								<field name="name"/>
 								<field name="date_begin"/>
 								<field name="date_end"/>
-
-								<field name="vspace"/>
-
-								<field name="delta_patients"/>
-								<field name="delta_sales"	string="Delta Ventas Dep"	groups="openhealth.roots"/>
-								<field name="delta_sales_pl"/>
-
-								<field name="vspace"/>
-
-								<field name="delta_create_sale_lines"/>
-								<field name="delta_analyse_sale_lines"/>
-								<field name="delta_analyse_patient_lines"/>
 							</group>
 
+							<group>
 
-							<group  groups="openhealth.roots">
 								<field name="total_count"   string="Pacientes Nuevos"/>
 							</group>
 
-							<group  groups="openhealth.roots">
+							<group>
 
 								<field name="sale_line_sale_count"/>
 								<field name="sale_line_consultation_count"/>
 								<field name="sale_line_procedure_count"/>
-
 								<field name="sale_line_product_count"/>
-
 								<field name="sale_line_budget_count"/>
 							</group>
-
+						</group>
 <!--
-
+							<group  groups="openhealth.roots">
 							<group>
 								<field name="patient_sale_count"/>
 								<field name="patient_consu_count"/>
@@ -308,24 +299,49 @@
 								<field name="patient_budget_count"/>
 							</group>
 -->
-						</group>
 
+
+
+
+						<!-- Notebook --> 
+						<notebook>  
+
+
+							<!-- Bench --> 
+							<page   string="Benchmark"	groups="openhealth.roots">
+
+								<group  groups="openhealth.roots">
+									<group>
+										<field name="delta_patients"/>
+										<field name="delta_sales"	string="Delta Ventas Dep"	groups="openhealth.roots"/>
+										<field name="delta_sales_pl"/>
+									</group>
+									<group>
+
+										<field name="delta_create_sale_lines"/>
+										<field name="delta_analyse_sale_lines"/>
+										<field name="delta_analyse_patient_lines"/>
+									</group>
+								</group>
+							</page>
+						</notebook>
 <!--
-								<field name="patient_reco_count"/>
+										<field name="write_date"	string="Actualizado"/>
+
+										<field name="delta_recos"/>
+										<field name="vspace"/>
+										<field name="vspace"/>
 -->
 
-						<!-- Vip -->
-<!--
-						<group  string="Macros"   >
--->
-<!--
-							<group>
-								<field name="vip_already_true"	/>
-								<field name="vip_already_false"	/>
-							</group>
-							<group>
-							</group>
--->
+
+
+
+
+
+
+
+
+
 
 						<group string="Vip">
 							<group>
@@ -383,6 +399,26 @@
 
 						<!-- Notebook --> 
 						<notebook>  
+
+							<!-- Patients --> 
+							<page   string="Pacientes">
+								<field name="patient_line">
+									<tree string="Pacientes"    limit="1000">
+										<field name="patient"/>
+										<field name="sex"/>
+										<field name="age_years"/>
+										<field name="date_record"/>
+										<field name="first_contact"/>
+										<field name="education"/>
+										<field name="country"/>
+										<field name="city"/>
+										<field name="district"/>
+										<field name="vip"/>
+									</tree>
+								</field>
+							</page>
+
+
 
 
 							<!-- Stats --> 
@@ -458,23 +494,6 @@
 							</page>
 
 
-							<!-- Patients --> 
-							<page   string="Pacientes">
-								<field name="patient_line">
-									<tree string="Pacientes"    limit="1000">
-										<field name="patient"/>
-										<field name="sex"/>
-										<field name="age_years"/>
-										<field name="date_record"/>
-										<field name="first_contact"/>
-										<field name="education"/>
-										<field name="country"/>
-										<field name="city"/>
-										<field name="district"/>
-										<field name="vip"/>
-									</tree>
-								</field>
-							</page>
 
 <!--
 										<field name="date_create"/>
@@ -565,10 +584,6 @@
 										<field name="year"/>
 										<field name="owner"/>
 										<field name="month"/>
-
-										<field name="write_date"        string="Actualizado"  />
-
-										<field name="delta_recos"       />
 									</group>
 
 									<group>
@@ -602,13 +617,12 @@
 <!-- TREE -->
 		<record model="ir.ui.view" id="openhealth.marketing_view_tree">
 			<field name="name">openhealth.marketing.tree</field>
-
 			<field name="model">openhealth.marketing</field>
-			
 			<field name="arch" type="xml">
-
 				<tree string="Marketing Tree">
-					
+
+
+
 					<field name="name"/>
 
 					<field name="test_obj"	groups="openhealth.roots"/>

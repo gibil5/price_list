@@ -8,22 +8,17 @@
 <!--
 -->
         <record model="ir.ui.view" id="treatment_form_view">
-
             <field name="name">openhealth.treatment.form</field>
-
             <field name="model">openhealth.treatment</field>
-            
             <field name="inherit_id" ref="openhealth.treatment_form_view"/>   
-            
             <field name="mode">primary</field>
-            
             <field name="priority">1</field>
             
+
             <field name="arch" type="xml">
 
-
                 <xpath expr="//button[@name='test_integration']" position="before">
-
+<!--
                             <button 
                                 type="object"
                                 class="oe_highlight"
@@ -41,8 +36,9 @@
 
                                 string="Test 2"
                             />
-
+-->                            
                 </xpath>
+
 
             </field>
         </record>

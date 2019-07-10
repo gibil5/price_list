@@ -139,31 +139,24 @@
 
 <!-- FILTER --> 
 		<record id="view_marketing_sale_line_filter" model="ir.ui.view">
-
 			<field name="name">sale Line Search</field>
-
 			<field name="model">price_list.marketing.order_line</field>
-			
 			<field name="arch" type="xml">
-			   
+
 			   <search string="sale Lines">
 				   
-
 					<group expand="1" string="Group By">
 
-						<filter name="Estado" context="{'group_by':'state'}"/>
-
-
-						<filter name="Venta" context="{'group_by':'order'}"/>
-
-						<filter name="Paciente" context="{'group_by':'patient'}"/>
-
-						<filter name="Producto" context="{'group_by':'product_id'}"/>
-						
 						<filter name="Familia" context="{'group_by':'family'}"/>
 						<filter name="Sub Familia" context="{'group_by':'subfamily'}"/>
 						<filter name="Sub Sub Familia" context="{'group_by':'subsubfamily'}"/>
 
+
+						<filter name="Estado" context="{'group_by':'state'}"/>
+						<filter name="Venta" context="{'group_by':'order'}"/>
+						<filter name="Paciente" context="{'group_by':'patient'}"/>
+
+						<filter name="Producto" context="{'group_by':'product_id'}"/>
 					</group>
 			   </search>
 		   </field>

@@ -1,3 +1,37 @@
+                        <group>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+
+
+
+
+
+
+
+
+
+<!--
+                                <field name="patient_reco_count"/>
+-->
+
+                        <!-- Vip -->
+<!--
+                        <group  string="Macros"   >
+-->
+<!--
+                            <group>
+                                <field name="vip_already_true"  />
+                                <field name="vip_already_false" />
+                            </group>
+                            <group>
+                            </group>
+-->
+
+
+
 <!--                                
                                 <field name="x_type"/>
                                 <field name="vspace"/>
