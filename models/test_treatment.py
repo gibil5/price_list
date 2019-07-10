@@ -142,10 +142,20 @@ def create_recommendations_2019(self):
 
 
 					# Medical
-					'med_0':		'ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1 sesion - FILORGA UNIVERSAL',	# Hialuronic
-					'med_1':		'PLASMA - Todo Rostro - Rejuvenecimiento Facial - 1 sesion',								# Plasma
-					'med_2':		'BOTOX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',										# Botox
+					'med_0':		'BOTOX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',										# Botox
+					'med_1':		'CRIOCIRUGIA - Todo Rostro - Acne - 1 sesion',												# Plasma
+					'med_2':		'ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1 sesion - FILORGA UNIVERSAL',	# Hialuronic
+					
+					'med_3':		'INFILTRACIONES',			# Plasma
+					'med_4':		'MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 5 sesiones',			# Plasma
+					'med_5':		'PLASMA - Todo Rostro - Rejuvenecimiento Facial - 1 sesion',								# Plasma
+					
+					'med_6':		'REDUX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',			# Plasma
+					'med_7':		'ESCLEROTERAPIA - Piernas - Varices - 1 sesion',			# Plasma
+					'med_8':		'VICTAMINA C ENDOVENOSA',			# Plasma
+
 					#'med_1':		'',			# Plasma
+
 
 
 					# New Services
@@ -174,9 +184,21 @@ def create_recommendations_2019(self):
 					'cos_1': 		'price_list.service_cosmetology',
 					'cos_2': 		'price_list.service_cosmetology',
 
+
+
 					'med_0': 		'price_list.service_medical',
 					'med_1': 		'price_list.service_medical',
 					'med_2': 		'price_list.service_medical',
+
+					'med_3': 		'price_list.service_medical',
+					'med_4': 		'price_list.service_medical',
+					'med_5': 		'price_list.service_medical',
+
+					'med_6': 		'price_list.service_medical',
+					'med_7': 		'price_list.service_medical',
+					'med_8': 		'price_list.service_medical',
+
+
 
 					'gyn': 		'price_list.service_gynecology',
 					'echo': 	'price_list.service_echography',
@@ -202,9 +224,20 @@ def create_recommendations_2019(self):
 					'cos_1',
 					'cos_2',
 
+
 					'med_0',
 					'med_1',
 					'med_2',
+
+					'med_3',
+					'med_4',
+					'med_5',
+
+					'med_6',
+					'med_7',
+					'med_8',
+
+
 
 					'gyn',
 					'echo',

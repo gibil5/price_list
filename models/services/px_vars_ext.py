@@ -176,6 +176,8 @@ _zone_list_med = [
 ('Indeterminada',	'Indeterminada'),
 ('Piernas',	'Piernas'),
 ('Todo Rostro',	'Todo Rostro'),
+
+('na',	'na'),
 ]
 
 

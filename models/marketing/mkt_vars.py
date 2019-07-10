@@ -67,9 +67,21 @@ _subsubfamily_list = [
 
 
 		('medical',			'T. Medico'),
-		('BOTOX',		'BOTOX'),
-		('ACIDO HIALURONICO',		'ACIDO HIALURONICO'),
-		('PLASMA',		'PLASMA'),
+
+		('botox',			'Botox'),
+		('cryosurgery',		'Criocirugia'),
+		('hyaluronic_acid',	'Acido Hialuronico'),
+
+		('infiltrations',		'Infiltraciones'),
+		('mesotherapy',			'Mesoterapia'),
+		('plasma',				'Plasma'),
+
+		('redux',				'Redux'),
+		('sclerotherapy',		'Escleroterapia'),
+		('vitamin_c_intravenous',	'Vitamina C Endovenosa'),
+
+
+
 
 		('cosmetology',		'Cosmeatria'),
 		#('LASER TRIACTIVE + CARBOXITERAPIA',		'LASER TRIACTIVE + CARBOXITERAPIA'),

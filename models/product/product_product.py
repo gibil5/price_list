@@ -36,9 +36,20 @@ class ProductProduct(models.Model):
 
 
 					'medical':		'medical',
-					'ACIDO HIALURONICO':	'ACIDO HIALURONICO',
-					'PLASMA':		'PLASMA',
-					'BOTOX':		'BOTOX',
+
+					'botox':			'botox',
+					'cryosurgery':		'cryosurgery',
+					'hyaluronic_acid':	'hyaluronic_acid',
+
+					'infiltrations':		'infiltrations',
+					'mesotherapy':			'mesotherapy',
+					'plasma':				'plasma',
+
+					'redux':					'redux',
+					'sclerotherapy':			'sclerotherapy',
+					'vitamin_c_intravenous':	'vitamin_c_intravenous',
+
+
 
 
 					'cosmetology':		'cosmetology',

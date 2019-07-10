@@ -61,15 +61,18 @@ _subfamily_list = [
 
 # Medical
 ('medical', 	'T. Medicos'),
-('infiltrations', 			'Infiltraciones'),
-('vitamin_c_intravenous', 	'Vitamina C Endovenosa'),
-('cryosurgery', 			'Criocirugia'),
-('sclerotherapy', 			'Escleroterapia'),
-('plasma', 					'Plasma'),
+
 ('botox', 					'Botox'),
-('redux', 					'Redux'),
+('cryosurgery', 			'Criocirugia'),
 ('hyaluronic_acid', 		'Acido Hialuronico'),
+
+('infiltrations', 			'Infiltraciones'),
 ('mesotherapy', 			'Mesoterapia'),
+('plasma', 					'Plasma'),
+
+('redux', 					'Redux'),
+('sclerotherapy', 			'Escleroterapia'),
+('vitamin_c_intravenous', 	'Vitamina C Endovenosa'),
 
 
 
