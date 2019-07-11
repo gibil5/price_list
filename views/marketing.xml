@@ -188,6 +188,7 @@
 						/>
 
 						<!-- Clean -->
+<!--						
 						<button 
 								class="oe_highlight oe_right"
 								type="object" 
@@ -196,7 +197,7 @@
 
 								string="CLEAN !"    
 						/>
-
+-->
 
 
 
@@ -273,6 +274,8 @@
 								<field name="name"/>
 								<field name="date_begin"/>
 								<field name="date_end"/>
+
+								<field name="mode"/>
 							</group>
 
 							<group>

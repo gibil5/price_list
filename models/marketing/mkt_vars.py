@@ -4,6 +4,14 @@
 # 	- Marketing
 
 
+_mode_list = [
+
+		('normal',	'normal'),
+		('legacy',	'legacy'),
+		('test',	'test'),
+]
+
+
 
 _family_list = [
 

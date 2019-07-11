@@ -12,26 +12,32 @@ import collections
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.marketing import lib_marketing
-
 from . import mkt_funcs
-
-#from . import mgt_funcs
+from . import mkt_vars
 from openerp.addons.price_list.models.management import mgt_funcs
 
-
+#from . import mgt_funcs
 #from . import pl_lib_marketing
 
 class Marketing(models.Model):
 	"""
 	Marketing Report
 	"""
-
-
 	_inherit = 'openhealth.marketing'
 
 
 
 # ----------------------------------------------------------- Natives ------------------------------------------------------
+	
+	mode = fields.Selection(
+
+			selection=mkt_vars._mode_list,
+
+			default='normal',
+			required=True,
+		)
+
+
 
 	delta_create_sale_lines = fields.Float(
 		)
@@ -41,8 +47,6 @@ class Marketing(models.Model):
 	
 	delta_analyse_patient_lines = fields.Float(
 		)
-
-
 
 	delta_sales_pl = fields.Float(
 			'Delta Ventas',
@@ -325,9 +329,10 @@ class Marketing(models.Model):
 
 			#print(is_new)
 
-			if is_new:
-				#print('Gotcha 2')
-				#print(order.patient.name)
+			#if is_new:
+			if is_new 	or 	order.patient.x_test:
+				print('Gotcha')
+				print(order.patient.name)
 
 
 				# Loop
@@ -661,7 +666,8 @@ class Marketing(models.Model):
 
 
 		# Get Patients
-		mode = 'normal'
+		#mode = 'normal'
+		mode = self.mode
 		patients, count = mkt_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
 
 		self.total_count = count

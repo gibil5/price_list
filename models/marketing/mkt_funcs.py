@@ -405,6 +405,7 @@ def get_patients_filter(self, date_bx, date_ex, mode):
 	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
 
 
+
 	# Legacy 
 	if mode == 'legacy': 
 
@@ -427,7 +428,9 @@ def get_patients_filter(self, date_bx, date_ex, mode):
 												)
 
 	# Normal 
-	else:
+	#else:
+	elif mode == 'normal': 
+
 		# Patients 
 		patients = self.env['oeh.medical.patient'].search([
 															('x_date_record', '>=', date_begin),													
@@ -445,6 +448,37 @@ def get_patients_filter(self, date_bx, date_ex, mode):
 													#order='x_serial_nr asc',
 													#limit=1,
 												)
+
+	elif mode == 'test': 
+
+		# Patients 
+		patients = self.env['oeh.medical.patient'].search([
+															#('x_date_record', '>=', date_begin),												
+															#('x_date_record', '<', date_end),
+
+															('x_test', '=', True),
+
+												],
+													order='create_date asc',
+													#limit=1,
+													#limit=500,
+												)
+		# Count 
+		count = self.env['oeh.medical.patient'].search_count([																												
+																#('x_date_record', '>=', date_begin),
+																#('x_date_record', '<', date_end),
+
+																('x_test', '=', True),
+												],
+													#order='x_serial_nr asc',
+													#limit=1,
+												)
+
+
+	else:
+		print('Error: This should not happen !')
+
+
 
 	return patients, count
 
