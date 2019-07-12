@@ -81,6 +81,7 @@ _treatment_list_gynecology = [
 
 _treatment_list_co2 = [
 ('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
+('2018', 	'2018'),
 ]
 
 _treatment_list_exc = [
@@ -89,6 +90,7 @@ _treatment_list_exc = [
 ('LASER EXCILITE',	'LASER EXCILITE'),
 #('LASER M22 IPL',	'LASER M22 IPL'),
 #('LASER M22 ND YAG',	'LASER M22 ND YAG'),
+('2018', 	'2018'),
 ]
 
 _treatment_list_ipl = [
@@ -98,6 +100,7 @@ _treatment_list_ipl = [
 #('LASER EXCILITE',	'LASER EXCILITE'),
 ('LASER M22 IPL',	'LASER M22 IPL'),
 #('LASER M22 ND YAG',	'LASER M22 ND YAG'),
+('2018', 	'2018'),
 ]
 
 _treatment_list_ndy = [
@@ -107,6 +110,7 @@ _treatment_list_ndy = [
 #('LASER EXCILITE',	'LASER EXCILITE'),
 #('LASER M22 IPL',	'LASER M22 IPL'),
 ('LASER M22 ND YAG',	'LASER M22 ND YAG'),
+('2018', 	'2018'),
 ]
 
 _treatment_list_qui = [
@@ -116,6 +120,7 @@ _treatment_list_qui = [
 #('LASER EXCILITE',	'LASER EXCILITE'),
 #('LASER M22 IPL',	'LASER M22 IPL'),
 #('LASER M22 ND YAG',	'LASER M22 ND YAG'),
+('2018', 	'2018'),
 ]
 
 
@@ -131,6 +136,7 @@ _zone_list_co2 = [
 ('Localizado Rostro',	'Localizado Rostro'),
 ('Localizado Cuerpo',	'Localizado Cuerpo'),
 
+('2018', 	'2018'),
 ]
 
 _zone_list_qui = [
@@ -140,6 +146,8 @@ _zone_list_qui = [
 ('Manos',	'Manos'),
 ('Localizado Rostro',	'Localizado Rostro'),
 ('Localizado Cuerpo',	'Localizado Cuerpo'),
+
+('2018', 	'2018'),
 ]
 
 
@@ -160,12 +168,16 @@ _zone_list_exc_ipl = [
 ('Pies',	'Pies'),
 ('Piernas',	'Piernas'),
 ('Rostro',	'Rostro'),
+
+('2018', 	'2018'),
 ]
 
 
 _zone_list_ndy = [
 ('Localizado Rostro',	'Localizado Rostro'),
 ('Localizado Cuerpo',	'Localizado Cuerpo'),
+
+('2018', 	'2018'),
 ]
 
 _zone_list_med = [
@@ -178,6 +190,8 @@ _zone_list_med = [
 ('Todo Rostro',	'Todo Rostro'),
 
 ('na',	'na'),
+
+('2018', 	'2018'),
 ]
 
 
@@ -185,6 +199,8 @@ _zone_list_cos = [
 ('Cuerpo',	'Cuerpo'),
 ('Rostro',	'Rostro'),
 ('Rostro + Papada + Cuello',	'Rostro + Papada + Cuello'),
+
+('2018', 	'2018'),
 ]
 
 

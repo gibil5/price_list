@@ -4,61 +4,16 @@
 
 
 
-<!-- Marketing - Test -->
-
-		<menuitem   id="mkt_patients_test_menu"
-					name="Test"
-					parent="openhealth.main_marketing_menu"
-					sequence="1"
-
-					groups="openhealth.roots"
-				/>
-
-
-		<menuitem   id="mkt_patients_test"
-					
-					name="Test" 
-					
-					parent="mkt_patients_test_menu"
-					
-					sequence="1"
-					
-					action="marketing_patient_test_list_action"
-			/>
-
-
-
-
-
-<!-- Marketing -->
-		<!--
-		<menuitem id="main_marketing_menu" 
-			sequence="1"
-			name="Marketing"
-			groups="openhealth.roots,openhealth.managers,openhealth.directors"
-			/>
-		-->
-		
-		<!-- Marketing -->
-		<menuitem   id="openhealth.marketing_menu"
+<!-- Pacientes Nuevos Mensual -->
+<menuitem   id="openhealth.marketing_menu"
 
 					name="Pacientes Nuevos Mensual"
 			
 					parent="openhealth.main_marketing_menu"
-			/>
 
-
-		<!-- Marketing Patients -->
-<!--		
-		<menuitem   id="marketing_patient_menu"                     
-					name="Pacientes Nuevos" 
-					parent="openhealth.marketing_menu"
-					
 					sequence="1"
-					
-					action="marketing_patient_list_action"
 			/>
--->
+
 
 <!--
 					name="Mensual 2019" 
@@ -72,8 +27,6 @@
 					
 					action="marketing_patient_2019_list_action"
 			/>
-
-
 
 
 		<!-- Marketing Patients 2018 -->
@@ -103,16 +56,17 @@
 
 
 
-		<!-- Marketing -->
-		<menuitem   id="openhealth.marketing_year_menu"
+
+
+<!-- Pacientes Nuevos Anual -->
+<menuitem   id="openhealth.marketing_year_menu"
 
 					name="Pacientes Nuevos Anual"
 			
 					parent="openhealth.main_marketing_menu"
+
+					sequence="3"
 			/>
-
-
-
 
 
 		<!-- Marketing Patients 2019 -->
@@ -171,19 +125,33 @@
 
 
 
+<!-- Marketing - Test -->
+<menuitem   id="mkt_patients_test_menu"
+					name="Test"
+					parent="openhealth.main_marketing_menu"
+					
+					sequence="11"
+
+					groups="openhealth.roots"
+				/>
+
+		<menuitem   id="mkt_patients_test"
+					name="Test" 
+					parent="mkt_patients_test_menu"
+					sequence="1"
+					action="marketing_patient_test_list_action"
+			/>
 
 
-		<!-- Marketing - First Contact -->
-		<!-- Marketing 2019 - First Contact -->
-<!--
--->
-		<menuitem   id="first_contact_menu"
 
+
+
+<!-- Marketing - First Contact -->
+<menuitem   id="first_contact_menu"
 					name="Primer Contacto"
-
 					parent="openhealth.main_marketing_menu"
 
-					sequence="13"					
+					sequence="23"					
 				/>
 
 		<menuitem   id="first_contact_2019_menu"
@@ -213,39 +181,11 @@
 
 
 
-
-
-		<!-- Marketing - Education -->
-		<!-- Marketing Patients 2019 - Education -->
-<!--
-		<menuitem   id="education_level_menu"
-
-					name="Nivel Educacion"
-
-					parent="openhealth.main_marketing_menu"
-
-					sequence="5"					
-				/>
-
-		<menuitem   id="education_level_2019_menu"
-
-					name="Nivel Educacion - 2019" 
-		
-					parent="education_level_menu"
-					
-					sequence="1"
-					
-					action="marketing_patient_2019_education_level_list_action"
-			/>
--->
-
-
-
 <!-- Marketing - Sex -->
-		<menuitem   id="sex_menu"
+<menuitem   id="sex_menu"
 					name="Sexo"
 					parent="openhealth.main_marketing_menu"
-					sequence="15"
+					sequence="23"					
 				/>
 
 		<menuitem   id="sex_2019_menu"
@@ -268,24 +208,18 @@
 
 
 
-<!-- Marketing - Patients All Short -->
-
-		<menuitem   id="patients_all_short_menu"
-					
+<!-- Pacientes Contacto -->
+<menuitem   id="patients_all_short_menu"
 					name="Pacientes Contacto"
-					
 					parent="openhealth.main_marketing_menu"
 					
-					sequence="21"
+					sequence="31"
 				/>
 
 
 		<menuitem   id="patients_all_short"
-					
 					name="Pacientes Con Nr de Historia" 
-					
 					parent="patients_all_short_menu"
-					
 					sequence="1"
 					
 					action="patient_short_list_action"

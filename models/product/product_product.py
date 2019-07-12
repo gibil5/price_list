@@ -104,9 +104,11 @@ class ProductProduct(models.Model):
 				subsubfamily = _dic[self.pl_subfamily]
 
 
+
 		# Other
 		else:
 			subsubfamily = self.x_treatment
+
 
 
 		return subsubfamily

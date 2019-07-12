@@ -161,7 +161,9 @@ class Service(models.Model):
 
 			domain = [
 						('type', '=', 'service'),
+						
 						('pl_price_list', '=', '2019'),
+						#('pl_price_list', '=', '2018'),
 					],
 
 			string="Seleccionar Producto",

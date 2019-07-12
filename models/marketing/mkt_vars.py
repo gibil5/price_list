@@ -74,11 +74,14 @@ _subsubfamily_list = [
 		('laser_quick',			'Quick Laser'), 		
 
 
+
+
+		# Medical
 		('medical',			'T. Medico'),
 
-		('botox',			'Botox'),
-		('cryosurgery',		'Criocirugia'),
-		('hyaluronic_acid',	'Acido Hialuronico'),
+		('botox',				'Botox'),
+		('cryosurgery',			'Criocirugia'),
+		('hyaluronic_acid',		'Acido Hialuronico'),
 
 		('infiltrations',		'Infiltraciones'),
 		('mesotherapy',			'Mesoterapia'),
@@ -91,12 +94,13 @@ _subsubfamily_list = [
 
 
 
+		# Cosmetology
 		('cosmetology',		'Cosmeatria'),
 		#('LASER TRIACTIVE + CARBOXITERAPIA',		'LASER TRIACTIVE + CARBOXITERAPIA'),
 		#('CARBOXITERAPIA',		'CARBOXITERAPIA'),
 		#('PUNTA DE DIAMANTES',		'PUNTA DE DIAMANTES'),
-		('carboxytherapy', 	'Carboxiterapia'),
-		('diamond_tip', 	'Punta de Diamante'),
+		('carboxytherapy', 					'Carboxiterapia'),
+		('diamond_tip', 					'Punta de Diamante'),
 		('laser_triactive_carboxytherapy', 	'Laser Triactivo + Cosmeatria'),
 
 
@@ -116,18 +120,35 @@ _subsubfamily_list = [
 
 
 
+
+
 		# 2018
+
+		# Medical
+		#('botulinum_toxin', 'botulinum_toxin'),
+		('botulinum_toxin', 'Botox - 2018'),
+
+
+
+
+		('lepismatic',			'lepismatic'), 
+		('mesotherapy_nctf',			'mesotherapy_nctf'), 
+		('triactive_carboxytherapy',			'triactive_carboxytherapy'), 
+		('triactive_carboxytherapy_reductionchamber',			'triactive_carboxytherapy_reductionchamber'), 
+		#('lepismatic',			'lepismatic'), 
+
+
+
 		('carboxytherapy', 	'carboxytherapy'), 
 		('laser_ipl', 		'laser_ipl'), 
-		('botulinum_toxin', 'botulinum_toxin'),
 		('diamond_tip', 	'diamond_tip'), 
 		('laser_ndyag', 	'laser_ndyag'), 
 		('criosurgery', 	'criosurgery'), 
 		('intravenous_vitamin', 	'intravenous_vitamin'), 
-		('x', 				'x'), 
 		('hyaluronic_acid', 	'hyaluronic_acid'), 
-
 		('infiltration',			'infiltration'), 
+
+		('x', 				'x'), 
 		#('other',			'other'), 
 		
 ]

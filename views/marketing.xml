@@ -46,18 +46,6 @@
 								string="Pl - Act Ventas" 
 						/>
 
-						<!-- See Patients -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								context="{
-											'search_default_marketing_id': active_id,   
-										}"
-
-								name="%(openhealth.patient_line_proc_form_action)d"
-
-								string="Ver Pacientes"  
-						/>
 
 
 
@@ -93,6 +81,18 @@
 
 
 
+						<!-- See Patients -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{
+											'search_default_marketing_id': active_id,   
+										}"
+
+								name="%(openhealth.patient_line_proc_form_action)d"
+
+								string="Ver Pacientes"  
+						/>
 
 
 

@@ -19,6 +19,19 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Fields --------------------------
+
+	test_pricelist_2019 = fields.Boolean(
+			default=False,
+		)
+
+	test_pricelist_2018 = fields.Boolean(
+			default=False,
+		)
+
+
+
+
 
 # ----------------------------------------------------------- Create Procedure Manual  ------------
 	@api.multi
@@ -304,12 +317,15 @@ class Treatment(models.Model):
 	@api.multi
 	#def create_order_pro(self):
 	def create_order_pro_2018(self):
+		print()
 		print('Create Order Pro - 2018')
+
 
 		# Clear
 		self.shopping_cart_ids.unlink()
 
 		price_list = '2018'
+
 
 		# Init
 		service_list = [
@@ -343,10 +359,13 @@ class Treatment(models.Model):
 					# Product
 					product = self.env['product.product'].search([
 																	('name', '=', service.service.name),
-																	('sale_ok', '=', True),
+																	#('sale_ok', '=', True),
 
 																	('pl_price_list', '=', price_list),
-													])
+													],
+														#order='date_order desc',
+														#limit=1,
+													)
 					print(product)
 					print(product.name)
 					print()

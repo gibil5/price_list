@@ -32,19 +32,33 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 		consultation.autofill()
 
 
-
-
 	# Create Recommendations
-	if True:
+	#if True:
 		#print('Create Recommendations')
 
 		# Here !
-		create_recommendations(self)
+		#create_recommendations(self)
 
+		#if self.test_pricelist_2019:
+		#	self.create_order_pro()				# Actual Button - 2019
 
-		self.create_order_pro()			# Actual Button
+		#if self.test_pricelist_2018:
+		#	self.create_order_pro_2018()		# Actual Button - 2018
+
 	#else:
 	#	create_order_pro_lines(self)
+
+
+
+	# 2019
+	if self.test_pricelist_2019:
+		create_recommendations_2019(self)
+		self.create_order_pro()				# Actual Button - 2019
+
+	# 2018
+	if self.test_pricelist_2018:
+		create_recommendations_2018(self)
+		self.create_order_pro_2018()		# Actual Button - 2018
 
 
 
@@ -90,12 +104,224 @@ def create_recommendations(self):
 
 
 	# New Price List 2019
-	create_recommendations_2019(self)
+	if self.test_pricelist_2019:
+		create_recommendations_2019(self)
 
 
 	# Price List 2018
-	#create_recommendations_2018(self)
+	if self.test_pricelist_2018:
+		create_recommendations_2018(self)
 
+
+
+
+
+# ----------------------------------------------------------- Create Recommendations --------------
+def create_recommendations_2018(self):
+	"""
+	Create Recommendations 2018
+	"""
+	print()
+	print('Pl - Create Recommendations 2018')
+
+	name_dic = {
+					# Products
+					'prod_0':		'ACNETOPIC 200 ML',				# Topic
+					'prod_1':		'KIT POST LASER',				# Kit
+					'prod_2':		'TARJETA VIP',					# Card
+
+					# Lasers
+					'co2': 		'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1',		# Co2
+					'exc':		'LASER EXCILITE - Abdomen - Alopecias - 15 min - 1',					# Excilite
+					'ipl':		'LASER M22 IPL - Abdomen - Depilacion - 30 min - 1',					# Ipl
+					'ndy':		'LASER M22 ND YAG - Localizado Cuerpo - Hemangiomas - 15 min - 1',		# Ndyag
+					'qui':		'QUICKLASER - Cuello + Manos - Rejuvenecimiento - 1',					# Quick
+
+
+					# Cosmetology
+					'cos_0':		'CARBOXITERAPIA - Rostro - Rejuvenecimiento Facial - 30 min - 1',													# Carboxitherapy
+					'cos_1':		'PUNTA DE DIAMANTES - Rostro - Limpieza facial profunda - 30 min - 6',												# Diamond Tip
+					'cos_2':		'LASER TRIACTIVE + CARBOXITERAPIA - Rostro, Papada y Cuello - Rejuvenecimiento Facial - 30 min - 1',				# Laser Triactive + Carboxy
+					'cos_3':		'LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 60 min - 12',	# Laser Triactive + Carboxy + Reduction
+					#'cos_0':		'',				# Carboxitherapy
+
+
+					# Medical
+					'med_0':		'TOXINA BOTULINICA - 1 Zona - Rejuvenecimiento Facial - 1',						# Botox
+					'med_1':		'CRIOCIRUGIA - Todo Rostro - Acne - 1',											# Cryosurgery
+					'med_2':		'ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1',					# Hyaluronic Acid
+
+
+					'med_3':		'INFILTRACIONES - Cicatriz',													# Infiltrations
+					#'med_3':		'INFILTRACIONES - Queloide',													# Infiltrations
+
+
+					'med_4':		'VITAMINA C ENDOVENOSA',														# Vitamin C
+					'med_5':		'LEPISMATICO (resorcina) - Todo Rostro - Acne - 1',								# Lepismatic
+
+					'med_6':		'MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 3',					# Mesotherapy
+					'med_7':		'PLASMA - Cabeza - Rejuvenecimiento Capilar - 1',								# Plasma
+					'med_8':		'ESCLEROTERAPIA - Piernas - Varices - 1',										# Esclero
+
+					#'med_0':		'',				# Botox
+
+		}
+
+	model_dic = {
+					'prod_0': 	'price_list.service_product',
+					'prod_1': 	'price_list.service_product',
+					'prod_2': 	'price_list.service_product',
+
+					'co2': 		'price_list.service_co2',
+					'exc': 		'price_list.service_excilite',
+					'ipl': 		'price_list.service_ipl',
+					'ndy': 		'price_list.service_ndyag',
+					'qui': 		'price_list.service_quick',
+
+					'cos_0': 	'price_list.service_cosmetology',
+					'cos_1': 	'price_list.service_cosmetology',
+					'cos_2': 	'price_list.service_cosmetology',
+					'cos_3': 	'price_list.service_cosmetology',
+
+
+					'med_0': 	'price_list.service_medical',
+					'med_1': 	'price_list.service_medical',
+					'med_2': 	'price_list.service_medical',
+
+					'med_3': 	'price_list.service_medical',
+
+					'med_4': 	'price_list.service_medical',
+					'med_5': 	'price_list.service_medical',
+
+					'med_6': 	'price_list.service_medical',
+					'med_7': 	'price_list.service_medical',
+					'med_8': 	'price_list.service_medical',
+		}
+
+
+	tst_list = [
+					'prod_0',
+					'prod_1',
+					'prod_2',
+
+					'co2',
+					'exc',
+					'ipl',
+					'ndy',
+					'qui',
+
+
+					'cos_0',
+					'cos_1',
+					'cos_2',
+					'cos_3',
+
+
+					'med_0',
+					'med_1',
+					'med_2',
+
+					'med_3',
+					'med_4',
+					'med_5',
+
+					'med_6',
+					'med_7',
+					'med_8',
+	]
+
+	tst_list_med = [
+	
+					'med_0',
+					'med_1',
+					'med_2',
+
+					'med_3',
+					'med_4',
+					'med_5',
+
+					'med_6',
+					'med_7',
+					'med_8',
+	]
+
+
+	tst_list_cos = [
+
+					#'cos_0',
+					#'cos_1',
+					#'cos_2',
+					'cos_3',
+	]
+
+
+	# Loop
+	for tst in tst_list:
+	#for tst in tst_list_med:
+	#for tst in tst_list_cos:
+
+		# Init
+		name = name_dic[tst]
+
+
+		# Search
+		product = self.env['product.template'].search([
+															('name', '=', name),
+															('pl_price_list', 'in', ['2018']),
+											],
+												#order='date_order desc',
+												limit=1,
+									)
+		product_id = product.id
+
+		print()
+		print(tst)
+		print(product)
+		print(product_id)
+		print(product.name)
+		print(product.pl_price_list)
+		print(product.pl_treatment)
+
+
+		# Create Service
+
+		model = model_dic[tst]
+
+		service = self.env[model].create({
+														'service': 			product_id,
+
+														#'family': 			product.pl_family,
+														#'subfamily': 		product.pl_subfamily,
+														#'pathology': 		product.pl_pathology,
+														#'sessions': 		product.pl_sessions,
+														#'zone': 			product.pl_zone,
+														#'level': 			product.pl_level,
+														#'time': 			product.pl_time,
+														#'sel_zone': 		product.pl_zone,
+														#'pl_treatment': 	product.pl_treatment,
+
+														'pl_treatment': 	'2018',
+														'family': 			'2018',
+														'subfamily': 		'2018',
+
+														'pathology': 		'2018',
+														'zone': 			'2018',
+														'sessions': 		'2018',
+														'level': 			'2018',
+														'time': 			'2018',
+														'sel_zone': 		'2018',
+
+
+														'price_applied': 	product.list_price,
+
+														'treatment': 		self.id,
+											})
+		print()
+		print(service)
+		print()
+
+
+# create_recommendations_2018
 
 
 
@@ -269,9 +495,7 @@ def create_recommendations_2019(self):
 		print(product)
 		print(product_id)
 		print(product.name)
-
 		print(product.pl_price_list)
-
 		print(product.pl_treatment)
 
 		#if False:
@@ -304,7 +528,6 @@ def create_recommendations_2019(self):
 
 														'pl_treatment': 	product.pl_treatment,
 														'treatment': 		self.id,
-
 											})
 # create_recommendations
 

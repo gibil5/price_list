@@ -26,8 +26,10 @@ _family_list = [
 	('echography', 	'Ecografia'),
 
 	('test', 	'test'),
-
 	('other', 		'Otros'),
+
+
+	('2018', 	'2018'),
 ]
 
 
@@ -86,6 +88,9 @@ _subfamily_list = [
 
 ('other', 		'Otros'),
 ('commission', 	'Comision'),
+
+
+('2018', 	'2018'),
 ]
 
 
@@ -149,6 +154,8 @@ _treatment_list = [
 ('na',	'na'),
 
 #('other', 		'OTROS'),
+
+('2018', 	'2018'),
 ]
 
 
@@ -170,6 +177,8 @@ _level_list = [
 ('Grado 3',	'Grado 3'),
 ('Grado 4',	'Grado 4'),
 ('Grado 5',	'Grado 5'),
+
+('2018', 	'2018'),
 ]
 
 
@@ -183,6 +192,8 @@ _time_list = [
 ('5 min',	'5 min'),
 ('15 min',	'15 min'),
 ('30 min',	'30 min'),
+
+('2018', 	'2018'),
 ]
 
 
@@ -223,7 +234,10 @@ _zone_list = [
 ('Todo Rostro + Cuello',	'Todo Rostro + Cuello'),
 ('Todo Rostro + Manos',	'Todo Rostro + Manos'),
 ('Todo Rostro + Manos + Cuello',	'Todo Rostro + Manos + Cuello'),
+
+('2018', 	'2018'),
 ]
+
 
 
 _pathology_list = [
@@ -276,6 +290,7 @@ _pathology_list = [
 ('Reafirmacion',	'Reafirmacion'),
 ('Limpieza facial profunda',	'Limpieza facial profunda'),
 
+('2018', 	'2018'),
 ]
 
 
@@ -289,6 +304,8 @@ _sessions_list = [
 ('6 sesiones',	'6 sesiones'),
 ('3 sesiones',	'3 sesiones'),
 ('10 sesiones',	'10 sesiones'),
+
+('2018', 	'2018'),
 ]
 
 

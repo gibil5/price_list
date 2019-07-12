@@ -6,7 +6,9 @@
 
 <!-- Main - DEV -->
 <menuitem   	id="main_dev_menu"
-				sequence="-7"
+
+				sequence="-6"
+	
 				name="DEV"
 				groups="openhealth.roots"
 		/>

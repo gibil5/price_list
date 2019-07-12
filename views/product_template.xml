@@ -32,7 +32,7 @@
 
 
 					<!-- Price List 2018 -->
-					<page string="2018">
+					<page string="Precios 2018">
                         <group>
                             <field name="active"/>
                             <field name="vspace"/>

@@ -1,0 +1,53 @@
+
+<!-- Marketing -->
+		<!--
+		<menuitem id="main_marketing_menu" 
+			sequence="1"
+			name="Marketing"
+			groups="openhealth.roots,openhealth.managers,openhealth.directors"
+			/>
+-->
+
+
+
+		<!-- Marketing Patients -->
+<!--		
+		<menuitem   id="marketing_patient_menu"                     
+					name="Pacientes Nuevos" 
+					parent="openhealth.marketing_menu"
+					
+					sequence="1"
+					
+					action="marketing_patient_list_action"
+			/>
+-->
+
+
+
+
+		<!-- Marketing - Education -->
+		<!-- Marketing Patients 2019 - Education -->
+<!--
+		<menuitem   id="education_level_menu"
+
+					name="Nivel Educacion"
+
+					parent="openhealth.main_marketing_menu"
+
+					sequence="5"					
+				/>
+
+		<menuitem   id="education_level_2019_menu"
+
+					name="Nivel Educacion - 2019" 
+		
+					parent="education_level_menu"
+					
+					sequence="1"
+					
+					action="marketing_patient_2019_education_level_list_action"
+			/>
+-->
+
+
+

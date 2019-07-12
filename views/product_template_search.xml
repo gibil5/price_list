@@ -4,7 +4,6 @@
 
 
 
-
 <!-- FILTER --> 
         <record id="product.view_product_template_filter" model="ir.ui.view">
            <field name="name">Product Search</field>
@@ -21,38 +20,16 @@
                     <group expand="1" string="Group By">
 
                         <filter name="Tipo" context="{'group_by':'type'}"/>
-<!--
-                        <filter name="Code" context="{'group_by':'x_code'}"/>
-                        <filter name="Origen" context="{'group_by':'x_origin'}"/>
-                        <filter name="Categ" context="{'group_by':'categ_id'}"/>
-
-
-                        <filter name="Treatment" context="{'group_by':'x_treatment'}"/>
-
-                        <filter name="Zone" context="{'group_by':'x_zone'}"/>
-
-                        <filter name="Pathology" context="{'group_by':'x_pathology'}"/>
-
-                        <filter name="Time" context="{'group_by':'x_time'}"/>
-
-                        <filter name="Sessions" context="{'group_by':'x_sessions'}"/>
--->
-
 
                         <filter name="Familia" context="{'group_by':'pl_family'}"/>
 
                         <filter name="Subfamilia" context="{'group_by':'pl_subfamily'}"/>
-
-
-
 
                         <filter name="Treatment" context="{'group_by':'pl_treatment'}"/>
 
                         <filter name="Zone" context="{'group_by':'pl_zone'}"/>
 
                         <filter name="Pathology" context="{'group_by':'pl_pathology'}"/>
-
-
 
                         <filter name="Grado" context="{'group_by':'pl_level'}"/>
 
@@ -61,14 +38,21 @@
                         <filter name="Time" context="{'group_by':'pl_time'}"/>
 
 
+                        <filter name="Treatment - 2018" context="{'group_by':'x_treatment'}"/>
                     </group>
                </search>
            </field>
        </record>
-
-
-
-
+<!--
+                        <filter name="Code" context="{'group_by':'x_code'}"/>
+                        <filter name="Origen" context="{'group_by':'x_origin'}"/>
+                        <filter name="Categ" context="{'group_by':'categ_id'}"/>
+                        <filter name="Treatment" context="{'group_by':'x_treatment'}"/>
+                        <filter name="Zone" context="{'group_by':'x_zone'}"/>
+                        <filter name="Pathology" context="{'group_by':'x_pathology'}"/>
+                        <filter name="Time" context="{'group_by':'x_time'}"/>
+                        <filter name="Sessions" context="{'group_by':'x_sessions'}"/>
+-->
 
 
     </data>

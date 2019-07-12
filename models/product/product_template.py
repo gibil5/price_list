@@ -13,6 +13,8 @@ from . import px_vars
 
 from . import chk_product
 
+from . import pl_prod_vars
+
 class ProductTemplate(models.Model):
 	"""
 	high level support for doing this and that.
@@ -24,6 +26,17 @@ class ProductTemplate(models.Model):
 	_description = 'Product Template'
 
 
+
+
+# ----------------------------------------------------------- Natives ----------------------------------------------------
+	# Treatment
+	x_treatment = fields.Selection(
+
+			#selection=prodvars._treatment_list,
+			selection=pl_prod_vars._treatment_list,
+		
+			required=False,
+		)
 
 
 # ----------------------------------------------------------- Correct ----------------------------------------------------
