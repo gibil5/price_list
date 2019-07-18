@@ -5,7 +5,7 @@
 		treatment.py
 
 		Created: 			26 Aug 2016
-		Last up: 	 		19 Apr 2019
+		Last up: 	 		17 Jul 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -13,9 +13,162 @@ from . import reco_funcs
 from . import pl_creates
 from . import test_treatment
 
+from openerp import _
+from openerp.exceptions import Warning as UserError
+
 class Treatment(models.Model):
 
 	_inherit = 'openhealth.treatment'
+
+
+
+# -----------------------------------------------------------  Create Order Pro  ------------------
+	@api.multi
+	def create_order_pro_2018(self):
+		print()
+		print('Create Order Pro - 2018')
+
+
+		# Clear
+		self.shopping_cart_ids.unlink()
+
+		price_list = '2018'
+
+
+		# Init
+		service_list = [
+							self.service_product_ids,
+							self.service_co2_ids,
+							self.service_excilite_ids,
+							self.service_ipl_ids,
+							self.service_ndyag_ids,
+							self.service_quick_ids,
+							self.service_medical_ids,
+							self.service_cosmetology_ids,
+							self.service_gynecology_ids,
+							self.service_echography_ids,
+							self.service_promotion_ids,
+		]
+
+
+		# Create Cart
+		for service_ids in service_list:
+
+			for service in service_ids:
+
+				if service.service.name not in [False]:
+
+					print()
+					#print(service.service)
+					print(service.service.name)
+					#print(service.service.id)
+					#print(service.price_applied)
+					#print(service.qty)
+					#print()
+
+					# Product
+					product = self.env['product.product'].search([
+																	('name', '=', service.service.name),
+																	#('sale_ok', '=', True),
+
+																	('pl_price_list', '=', price_list),
+													],
+														#order='date_order desc',
+														#limit=1,
+													)
+					print(product)
+					#print(product.name)
+					#print()
+					#print()
+
+
+					# Manage Exception
+					try:
+						product.ensure_one()
+
+					except:
+						#print("An exception occurred")
+						#msg = "Error: Record Must be One Only"
+						#msg = "Error: Record Must be One Only\n" + service.service.name
+
+						msg_name = "ERROR: Record Must be One Only."
+						class_name = type(product).__name__
+						obj_name = service.service.name
+
+						msg =  msg_name + '\n' + class_name + '\n' + obj_name
+
+						#raise TreatmentError(_(msg))
+						raise UserError(_(msg))
+
+
+
+					# Create Cart
+					if product.name not in [False]:
+						cart_line = self.shopping_cart_ids.create({
+																			'product': 		product.id,
+																			'price': 		service.price_applied,
+																			'qty': 			service.qty,
+																			'treatment': 	self.id,
+																})
+
+
+		# Create Order
+		order = pl_creates.pl_create_order(self)
+		print(order)
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+	# create_order_pro_2018
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Test --------------------------------
+
+	x_test_scenario = fields.Selection(
+			[
+				('all', 'All'),
+
+				('product', 	'product'),
+				('laser', 		'laser'),
+				('cosmetology', 'cosmetology'),
+				('medical', 	'medical'),
+
+				('new', 	'new'),
+
+				#('co2', 'Co2'),
+				#('exc', 'Exc'),
+				#('quick', 'Quick'),
+				#('ipl', 'Ipl'),
+				#('ndyag', 'Ndyag'),
+			],
+
+			string="Test Scenarios",
+		)
 
 
 
@@ -309,105 +462,6 @@ class Treatment(models.Model):
 					}
 		}
 	# create_service
-
-
-
-
-# -----------------------------------------------------------  Create Order Pro  ------------------
-	@api.multi
-	#def create_order_pro(self):
-	def create_order_pro_2018(self):
-		print()
-		print('Create Order Pro - 2018')
-
-
-		# Clear
-		self.shopping_cart_ids.unlink()
-
-		price_list = '2018'
-
-
-		# Init
-		service_list = [
-							self.service_product_ids,
-							self.service_co2_ids,
-							self.service_excilite_ids,
-							self.service_ipl_ids,
-							self.service_ndyag_ids,
-							self.service_quick_ids,
-							self.service_medical_ids,
-							self.service_cosmetology_ids,
-							self.service_gynecology_ids,
-							self.service_echography_ids,
-							self.service_promotion_ids,
-		]
-
-
-		# Create Cart
-		for service_ids in service_list:
-
-			for service in service_ids:
-
-				if service.service.name not in [False]:
-					print(service.service)
-					print(service.service.name)
-					print(service.service.id)
-					print(service.price_applied)
-					print(service.qty)
-					print()
-
-					# Product
-					product = self.env['product.product'].search([
-																	('name', '=', service.service.name),
-																	#('sale_ok', '=', True),
-
-																	('pl_price_list', '=', price_list),
-													],
-														#order='date_order desc',
-														#limit=1,
-													)
-					print(product)
-					print(product.name)
-					print()
-					print()
-
-					# Create Cart
-					if product.name not in [False]:
-						cart_line = self.shopping_cart_ids.create({
-																			'product': 		product.id,
-																			'price': 		service.price_applied,
-																			'qty': 			service.qty,
-																			'treatment': 	self.id,
-																})
-
-
-		# Create Order
-		order = pl_creates.pl_create_order(self)
-		print(order)
-
-		# Open Order
-		return {
-				# Created
-				'res_id': order.id,
-				# Mandatory
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action
-				'res_model': 'sale.order',
-				# Views
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False,
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},
-				'context': {}
-			}
-	# create_order_pro
 
 
 
@@ -824,14 +878,6 @@ class Treatment(models.Model):
 			#self.test_computes()
 			#self.test_libs()
 
-# ----------------------------------------------------------- Test Reset --------------------------
-	@api.multi
-	def test_reset(self):
-		print()
-		print('Test Case - Reset')
-		if self.patient.x_test:
-			test_treatment.reset_treatment(self)
-
 
 
 
@@ -850,16 +896,37 @@ class Treatment(models.Model):
 		#print('Test Two')
 		test_treatment.test_two(self)
 
+
 # ----------------------------------------------------------- Test Integration --------------------
 	@api.multi
 	def test_integration(self):
 		"""
 		Integration Test of the Treatment Class.
+		Button
 		"""
 		print()
-		print('Test Integration')
+		print('Test Integration Button')
 		if self.patient.x_test:
 			# Reset
 			#test_treatment.reset_treatment(self)
 			# Test Integration
 			test_treatment.test_integration_treatment(self)
+		print()
+		print()
+		print('SUCCESS !')
+
+
+
+
+# ----------------------------------------------------------- Test Reset --------------------------
+	@api.multi
+	def test_reset(self):
+		print()
+		print('Test Reset Button')
+		if self.patient.x_test:
+			#test_treatment.reset_treatment(self)
+			test_treatment.test_reset_treatment(self)
+		print()
+		print()
+		print('SUCCESS !')
+

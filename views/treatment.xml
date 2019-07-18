@@ -39,6 +39,7 @@
 -->                            
 
                             <field name="test_pricelist_2019"/>
+
                             <field name="test_pricelist_2018"/>
 
                 </xpath>

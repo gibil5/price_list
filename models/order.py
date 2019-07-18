@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-	Order
-	Created: 			26 Aug 2016
-	Last mod: 			12 Apr 2019
+		*** Order
+
+		order.py
+
+		Created: 			26 Aug 2016
+		Last up: 	 		17 Jul 2019
 """
 from __future__ import print_function
 import datetime
@@ -15,6 +18,18 @@ class sale_order(models.Model):
 	high level support for doing this and that.
 	"""
 	_inherit = 'sale.order'
+
+
+
+
+	# Pay myself
+	#def pay_myself(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+		#print
+		#print 'Order - Pay myself - Interface'
+	#	test_order.pay_myself(self)
 
 
 
@@ -412,58 +427,47 @@ class sale_order(models.Model):
 		"""
 		For Order Validation.
 		Update Family and Product.
+
+		Used by: validate()
 		"""
-		print()
-		print('Pl - Validate')
+		#print()
+		#print('Pl - Update Descriptors')
+
 
 		out = False
 
 		for line in self.order_line:
 
-			print(line.product_id.pl_subfamily)
+			#print(line.product_id.pl_subfamily)
 
 			if not out:
 
 				# Consultations
-				#if line.product_id.categ_id.name in ['Consulta', 'Consultas']:
 				if line.product_id.pl_subfamily in ['consultation']:
 					self.x_family = 'consultation'
-					#self.x_product = line.product_id.x_name_ticket
 					out = True
-					print('mark 1')
+					#print('mark 1')
 
 
 				# Procedures
-				#elif line.product_id.categ_id.name in ['Procedimiento', 'Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']:
-				#elif line.product_id.pl_family in ['laser', 'medical']:
 				elif line.product_id.pl_family in ['laser', 'medical', 'gynecology', 'echography']:
 					self.x_family = 'procedure'
-					#self.x_product = line.product_id.x_name_ticket
 					out = True
-					print('mark 2')
+					#print('mark 2')
 
 
 				# Cosmetology
-				#elif line.product_id.categ_id.name == 'Cosmeatria':
 				elif line.product_id.pl_family in ['cosmetology']:
 					self.x_family = 'cosmetology'
-					#self.x_product = line.product_id.x_name_ticket
 					out = True
-					print('mark 3')
+					#print('mark 3')
 
 
 				# Products
 				else:
 					if self.x_family != 'procedure':
 						self.x_family = 'product'
-					#self.x_product = line.product_id.x_name_ticket
-					print('mark 4')
-
-
-		#print
-		#print 'Update descriptors'
-		#print self.x_family
-		#print self.x_product
+					#print('mark 4')
 
 	#update_descriptors
 
@@ -480,15 +484,13 @@ class sale_order(models.Model):
 		print('Pl - Validate')
 
 
-		# Price list
-		print('Validate Price list')
-		for line in self.order_line:
 
+		# Price list
+		#print('Validate Price list')
+		for line in self.order_line:
 			#if line.pl_price_list not in ['2019']:
 			if line.pl_price_list not in ['2019', '2018']:
-				
 				msg = "Error: Lista de Precios."
-
 				raise UserError(_(msg))
 
 
@@ -501,24 +503,41 @@ class sale_order(models.Model):
 			uid = self.x_doctor.x_user_name.id
 			self.x_doctor_uid = uid
 
+
 		# Date - Must be that of the Sale, not the Budget.
 		self.date_order = datetime.datetime.now()
 		self.update_day_month()
 
+
 		# Update Descriptors (family and product)
 		self.update_descriptors()
+
+
+		#print('mark 1')
+
 
 		# Change Appointment State - To Invoiced
 		self.update_appointment()
 
+
+		#print('mark 2')
+
+
 		# Vip Card - Detect and Create
 		self.detect_create_card()
+
+
+		#print('mark 3')
+
 
 		# Type
 		#print 'Type'
 		if self.x_payment_method.saledoc != False:
 			self.x_type = self.x_payment_method.saledoc
 		#print self.x_type
+
+
+		#print('mark 4')
 
 
 		# Create Procedure 
@@ -531,6 +550,11 @@ class sale_order(models.Model):
 			# Update
 			self.x_procedure_created = True
 			self.treatment.update_appointments()
+
+
+
+		#print('mark 5')
+
 
 
 		# Id Doc and Ruc
@@ -569,6 +593,9 @@ class sale_order(models.Model):
 
 		# Change State
 		self.state = 'validated'
+
+
+		print('mark 10')
 	# validate
 
 

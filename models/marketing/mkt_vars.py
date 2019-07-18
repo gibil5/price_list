@@ -77,7 +77,7 @@ _subsubfamily_list = [
 
 
 		# Medical
-		('medical',			'T. Medico'),
+		('medical',				'T. Medico'),
 
 		('botox',				'Botox'),
 		('cryosurgery',			'Criocirugia'),
@@ -94,6 +94,8 @@ _subsubfamily_list = [
 
 
 
+
+
 		# Cosmetology
 		('cosmetology',		'Cosmeatria'),
 		#('LASER TRIACTIVE + CARBOXITERAPIA',		'LASER TRIACTIVE + CARBOXITERAPIA'),
@@ -104,7 +106,7 @@ _subsubfamily_list = [
 		('laser_triactive_carboxytherapy', 	'Laser Triactivo + Cosmeatria'),
 
 
-
+		# New
 		('gynecology',		'Ginecologia'),
 		('echography',		'Ecografia'),
 		('promotion',		'Promocion'),
@@ -126,27 +128,34 @@ _subsubfamily_list = [
 
 		# Medical
 		#('botulinum_toxin', 'botulinum_toxin'),
-		('botulinum_toxin', 'Botox - 2018'),
+		#('criosurgery', 	'criosurgery'), 
+		#('hyaluronic_acid', 	'hyaluronic_acid'), 
+		#('infiltration',			'infiltration'), 
+		#('intravenous_vitamin', 	'intravenous_vitamin'), 
+		#('intravenous_vitamin', 	'intravenous_vitamin'), 
+		#('lepismatic',			'lepismatic'), 
+		#('mesotherapy_nctf',			'mesotherapy_nctf'), 
+		('botulinum_toxin', 	'Botox - 2018'),
+		('criosurgery', 		'Criocirugia - 2018'), 
+		('hyaluronic_acid', 	'Acido Hialuronico - 2018'), 
+		('infiltration',		'Infiltraciones - 2018'), 
+		('intravenous_vitamin', 'Vitamina C Endovenosa - 2018'), 
+		('lepismatic',			'Lepismatico - 2018'), 
+		('mesotherapy_nctf',	'Mesoterapia NCTF - 2018'), 
 
 
 
 
-		('lepismatic',			'lepismatic'), 
-		('mesotherapy_nctf',			'mesotherapy_nctf'), 
+		# Cosmetology
 		('triactive_carboxytherapy',			'triactive_carboxytherapy'), 
 		('triactive_carboxytherapy_reductionchamber',			'triactive_carboxytherapy_reductionchamber'), 
-		#('lepismatic',			'lepismatic'), 
+		('carboxytherapy', 	'carboxytherapy'),
+		('diamond_tip', 	'diamond_tip'),
 
 
-
-		('carboxytherapy', 	'carboxytherapy'), 
+		# Laser
 		('laser_ipl', 		'laser_ipl'), 
-		('diamond_tip', 	'diamond_tip'), 
 		('laser_ndyag', 	'laser_ndyag'), 
-		('criosurgery', 	'criosurgery'), 
-		('intravenous_vitamin', 	'intravenous_vitamin'), 
-		('hyaluronic_acid', 	'hyaluronic_acid'), 
-		('infiltration',			'infiltration'), 
 
 		('x', 				'x'), 
 		#('other',			'other'), 

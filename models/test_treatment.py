@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 """
- 	Test - Treatment - Integration Tests for the Treatment Class.
+ 		Test - Treatment - Integration Tests for the Treatment Class.
 
-	Created: 			14 Aug 2018
-	Last up: 	 		10 Jul 2019
+		test_treatment.py
+
+		Created: 			14 Aug 2018
+		Last up: 	 		17 Jul 2019
+
+		Used by:			treatment.py
 """
 from __future__ import print_function
 
-
+from . import test_funcs
 
 
 # ----------------------------------------------- Integration -------------------------------------
@@ -16,7 +20,10 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 	Test - Integration - For Treatment
 	"""
 	print()
-	print('Test Integration Treatment')
+	print('Test Integration Function')
+
+
+	test_funcs.disablePrint()
 
 	# Create Sale - Consultation
 	#print('Create Order - Consultation')
@@ -31,24 +38,13 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 	for consultation in self.consultation_ids:
 		consultation.autofill()
 
+	test_funcs.enablePrint()
+
+
+
+
 
 	# Create Recommendations
-	#if True:
-		#print('Create Recommendations')
-
-		# Here !
-		#create_recommendations(self)
-
-		#if self.test_pricelist_2019:
-		#	self.create_order_pro()				# Actual Button - 2019
-
-		#if self.test_pricelist_2018:
-		#	self.create_order_pro_2018()		# Actual Button - 2018
-
-	#else:
-	#	create_order_pro_lines(self)
-
-
 
 	# 2019
 	if self.test_pricelist_2019:
@@ -57,20 +53,41 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 	# 2018
 	if self.test_pricelist_2018:
+
 		create_recommendations_2018(self)
+
+		#test_funcs.disablePrint()
+		print()
+		print()
 		self.create_order_pro_2018()		# Actual Button - 2018
+		#test_funcs.enablePrint()
+
+
 
 
 
 
 
 	# Pay Order Procedure
-	#if False:
-	if True:
-		print('Create Order - Procedure')
-		for order in self.order_ids:
-			if order.state in ['draft']:
+	test_funcs.disablePrint()
+	
+	#print()
+	#print('Create Order - Procedure')
+	for order in self.order_ids:
+		if order.state in ['draft']:
+			#print('mark 10')
+			try:
 				order.pay_myself()
+			except:
+				print("An exception occurred")
+
+			#print('mark 11')
+	
+	test_funcs.enablePrint()
+
+
+
+
 
 	# Create Sessions
 	if False:
@@ -81,6 +98,7 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 			for _ in range(1):
 				procedure.create_sessions()
 
+
 	# Create Controls
 	if False:
 	#if True:
@@ -90,45 +108,26 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 			for _ in range(6):
 				procedure.create_controls()
 
+
 # test_integration_treatment
 
 
 
-# ----------------------------------------------------------- Create Recommendations --------------
-def create_recommendations(self):
-	"""
-	Create Recommendations
-	"""
-	#print()
-	#print('Pl - Create Recommendations')
 
-
-	# New Price List 2019
-	if self.test_pricelist_2019:
-		create_recommendations_2019(self)
-
-
-	# Price List 2018
-	if self.test_pricelist_2018:
-		create_recommendations_2018(self)
-
-
-
-
-
-# ----------------------------------------------------------- Create Recommendations --------------
+# ----------------------------------------------------------- Create Recommendations - 2018 --------------
 def create_recommendations_2018(self):
 	"""
 	Create Recommendations 2018
 	"""
 	print()
-	print('Pl - Create Recommendations 2018')
+	print('Create Recommendations 2018')
 
 	name_dic = {
 					# Products
 					'prod_0':		'ACNETOPIC 200 ML',				# Topic
 					'prod_1':		'KIT POST LASER',				# Kit
 					'prod_2':		'TARJETA VIP',					# Card
+
 
 					# Lasers
 					'co2': 		'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1',		# Co2
@@ -199,10 +198,12 @@ def create_recommendations_2018(self):
 		}
 
 
-	tst_list = [
+	#tst_list = [
+	tst_list_all = [
 					'prod_0',
 					'prod_1',
 					'prod_2',
+
 
 					'co2',
 					'exc',
@@ -230,7 +231,24 @@ def create_recommendations_2018(self):
 					'med_8',
 	]
 
-	tst_list_med = [
+
+
+	tst_list_product = [
+					'prod_0',
+					'prod_1',
+					'prod_2',
+	]
+
+	tst_list_laser = [
+					'co2',
+					'exc',
+					'ipl',
+					'ndy',
+					'qui',
+	]
+
+
+	tst_list_medical = [
 	
 					'med_0',
 					'med_1',
@@ -246,19 +264,40 @@ def create_recommendations_2018(self):
 	]
 
 
-	tst_list_cos = [
+	tst_list_cosmetology = [
 
-					#'cos_0',
-					#'cos_1',
-					#'cos_2',
+					'cos_0',
+					'cos_1',
+					'cos_2',
 					'cos_3',
 	]
+
+	tst_list = []
+
+
+	if self.x_test_scenario in ['all']:
+		tst_list = tst_list_all
+
+	elif self.x_test_scenario in ['product']:
+		tst_list = tst_list_product
+
+	elif self.x_test_scenario in ['laser']:
+		tst_list = tst_list_laser
+
+	elif self.x_test_scenario in ['cosmetology']:
+		tst_list = tst_list_cosmetology
+
+	elif self.x_test_scenario in ['medical']:
+		tst_list = tst_list_medical
+
+	#elif self.x_test_senario in ['new']:
+	#	tst_list = tst_list_all
+
 
 
 	# Loop
 	for tst in tst_list:
-	#for tst in tst_list_med:
-	#for tst in tst_list_cos:
+
 
 		# Init
 		name = name_dic[tst]
@@ -276,11 +315,11 @@ def create_recommendations_2018(self):
 
 		print()
 		print(tst)
-		print(product)
-		print(product_id)
+		#print(product)
+		#print(product_id)
 		print(product.name)
 		print(product.pl_price_list)
-		print(product.pl_treatment)
+		#print(product.pl_treatment)
 
 
 		# Create Service
@@ -316,17 +355,16 @@ def create_recommendations_2018(self):
 
 														'treatment': 		self.id,
 											})
-		print()
-		print(service)
-		print()
-
+		#print()
+		#print(service)
+		#print()
 
 # create_recommendations_2018
 
 
 
 
-# ----------------------------------------------------------- Create Recommendations --------------
+# ----------------------------------------------------------- Create Recommendations - 2019 --------------
 def create_recommendations_2019(self):
 	"""
 	Create Recommendations 2019
@@ -337,7 +375,7 @@ def create_recommendations_2019(self):
 		- All Sub sub Families.
 	"""
 	print()
-	print('Pl - Create Recommendations 2019')
+	print('Create Recommendations 2019')
 
 	# Init
 
@@ -432,7 +470,8 @@ def create_recommendations_2019(self):
 		}
 
 
-	tst_list = [
+
+	tst_list_all = [
 					'prod_0',
 					'prod_1',
 					'prod_2',
@@ -464,11 +503,77 @@ def create_recommendations_2019(self):
 					'med_8',
 
 
-
 					'gyn',
 					'echo',
 					'prom',
 	]
+
+
+
+	tst_list_product = [
+					'prod_0',
+					'prod_1',
+					'prod_2',
+					'prod_3',
+					'prod_4',
+	]
+
+	tst_list_laser = [
+					'co2',
+					'exc',
+					'ipl',
+					'ndy',
+					'qui',
+	]
+
+	tst_list_cosmetology = [
+					#'cos',
+					'cos_0',
+					'cos_1',
+					'cos_2',
+	]
+
+	tst_list_medical = [
+					'med_0',
+					'med_1',
+					'med_2',
+
+					'med_3',
+					'med_4',
+					'med_5',
+
+					'med_6',
+					'med_7',
+					'med_8',
+	]
+
+	tst_list_new = [
+					'gyn',
+					'echo',
+					'prom',
+	]
+
+
+
+	if self.x_test_scenario in ['all']:
+		tst_list = tst_list_all
+
+	elif self.x_test_scenario in ['product']:
+		tst_list = tst_list_product
+
+	elif self.x_test_scenario in ['laser']:
+		tst_list = tst_list_laser
+
+	elif self.x_test_scenario in ['cosmetology']:
+		tst_list = tst_list_cosmetology
+
+	elif self.x_test_scenario in ['medical']:
+		tst_list = tst_list_medical
+
+	elif self.x_test_senario in ['new']:
+		tst_list = tst_list_new
+
+
 
 
 	# Loop
@@ -529,18 +634,20 @@ def create_recommendations_2019(self):
 														'pl_treatment': 	product.pl_treatment,
 														'treatment': 		self.id,
 											})
-# create_recommendations
+# create_recommendations_2019
+
 
 
 
 # ----------------------------------------------------------- Reset Treatment ---------------------
 
-def reset_treatment(self):
+#def reset_treatment(self):
+def test_reset_treatment(self):
 	"""
 	Reset Treatment
 	"""
 	print()
-	print('Reset')
+	print('Test Reset Function')
 
 
 	# Consultation
@@ -582,46 +689,3 @@ def reset_treatment(self):
 
 
 
-
-# ----------------------------------------------- Test -------------------------------------
-def test_one(self):
-	"""
-	Test - One - 2019
-	"""
-	print()
-	print('Test Treatment - One')
-
-	# Order - Consultation
-	#print('Create Order - Consultation')
-	
-	#self.create_order_con()			# Actual Button
-	self.create_order_con_med()			# Actual Button
-	for order in self.order_ids:
-		if order.state in ['draft']:
-			order.pay_myself()
-
-	# Create Consultation
-	#print('Create Consultation')
-	self.create_consultation()
-	for consultation in self.consultation_ids:
-		consultation.autofill()
-
-	# Create Recommendations
-	if True:
-		print('Create Recommendations')
-
-		#create_recommendations(self)
-		create_recommendations_2019(self)
-		
-		self.create_order_pro()			# Actual Button
-
-	else:
-		create_order_pro_lines(self)
-
-	# Pay Order Procedure
-	#if False:
-	if True:
-		print('Create Order - Procedure')
-		for order in self.order_ids:
-			if order.state in ['draft']:
-				order.pay_myself()

@@ -1,4 +1,98 @@
 
+
+
+# ----------------------------------------------- Test -------------------------------------
+def test_one(self):
+	"""
+	Test - One - 2019
+	"""
+	print()
+	print('Test Treatment - One')
+
+	# Order - Consultation
+	#print('Create Order - Consultation')
+	
+	#self.create_order_con()			# Actual Button
+	self.create_order_con_med()			# Actual Button
+	for order in self.order_ids:
+		if order.state in ['draft']:
+			order.pay_myself()
+
+	# Create Consultation
+	#print('Create Consultation')
+	self.create_consultation()
+	for consultation in self.consultation_ids:
+		consultation.autofill()
+
+	# Create Recommendations
+	if True:
+		print('Create Recommendations')
+
+		#create_recommendations(self)
+		create_recommendations_2019(self)
+		
+		self.create_order_pro()			# Actual Button
+
+	else:
+		create_order_pro_lines(self)
+
+	# Pay Order Procedure
+	#if False:
+	if True:
+		print('Create Order - Procedure')
+		for order in self.order_ids:
+			if order.state in ['draft']:
+				order.pay_myself()
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Recommendations --------------
+def create_recommendations(self):
+	"""
+	Create Recommendations
+	"""
+	#print()
+	#print('Pl - Create Recommendations')
+
+
+	# New Price List 2019
+	if self.test_pricelist_2019:
+		create_recommendations_2019(self)
+
+
+	# Price List 2018
+	if self.test_pricelist_2018:
+		create_recommendations_2018(self)
+
+
+
+
+	# Create Recommendations
+	#if True:
+		#print('Create Recommendations')
+
+		# Here !
+		#create_recommendations(self)
+
+		#if self.test_pricelist_2019:
+		#	self.create_order_pro()				# Actual Button - 2019
+
+		#if self.test_pricelist_2018:
+		#	self.create_order_pro_2018()		# Actual Button - 2018
+
+	#else:
+	#	create_order_pro_lines(self)
+
+
+
+
 # ----------------------------------------------- Test -------------------------------------
 def test_two(self):
 	"""
