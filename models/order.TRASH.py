@@ -1,3 +1,11 @@
+	# Pay myself
+	#def pay_myself(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+		#print
+		#print 'Order - Pay myself - Interface'
+	#	test_order.pay_myself(self)
 
 
 # ----------------------------------------------------------- Natives ----------------------

@@ -29,12 +29,10 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
-
 								name="update_patients"
+								groups="openhealth.roots"
 								
 								string="Analisis Paciente"
-
-								groups="openhealth.roots"
 						/>
 
 
@@ -45,7 +43,6 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
-								
 								name="update_doctors"
 								
 								string="Analisis Doctor"
@@ -56,7 +53,6 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
-
 								name="pl_update_doctors"
 								
 								string="Analisis Doctor"
@@ -73,7 +69,6 @@
 								context="{
 											'search_default_management_id': active_id,  
 										}"
-
 								name="%(openhealth.management_order_line_form_action)d"
 								
 								string="Ventas" 
@@ -97,7 +92,6 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
-
 								name="pl_update_productivity"
 								
 								string="Act Productividad"                             
@@ -116,6 +110,8 @@
 
 								string="Productividad"   
 						/>
+
+
 
 						<!-- Update daily -->
 						<button 
@@ -139,16 +135,16 @@
 								string="Diario"   
 						/>
 
-						<!-- Update -->
+
+
+						<!-- Create Time Line -->
 						<button 
 								type="object"
-								class="oe_highlight"
-								
-								name="create_timeline"
-								
-								string="Create TL"
-								
+								class="oe_highlight"								
 								groups="openhealth.roots"
+								name="create_timeline"
+
+								string="Create TL"
 						/>
 
 
@@ -164,7 +160,7 @@
 								groups="openhealth.roots"
 						/>
 
-						<!-- Reset -->
+						<!-- Validate -->
 						<button 
 								type="object"
 								class="oe_highlight oe_right"
@@ -174,26 +170,6 @@
 
 								groups="openhealth.roots"
 						/>
-
-
-
-						<!-- Update Year -->
-						<!-- Update Max -->
-<!--						
-						<button 
-								type="object"
-								class="oe_highlight oe_right"
-								name="update_year_all"
-								string="Year"
-						/>
-
-						<button 
-								type="object"
-								class="oe_highlight oe_right"
-								name="update_max"
-								string="Max"
-						/>
--->
 					</header>
 
 
@@ -212,6 +188,8 @@
 
 								<field name="delta_fast"/>
 								<field name="delta_doctor"/>
+
+								<field name="configurator"/>
 							</group>
 							<group>
 								<field name="total_count"/>
@@ -556,7 +534,6 @@
 
 										<field name="base_dir"/>
 
-										<field name="configurator"/>
 
 
 										<field name="write_date"    string="Actualizado"/>
@@ -600,6 +577,7 @@
 
 
 					<field name="name"/>
+					<field name="configurator"  string="Config"	/>
 
 
 					<field name="rsp_count_delta"	groups="openhealth.roots"/>

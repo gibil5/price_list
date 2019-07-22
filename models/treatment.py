@@ -53,10 +53,11 @@ class Treatment(models.Model):
 
 		# Create Cart
 		for service_ids in service_list:
-
 			for service in service_ids:
 
-				if service.service.name not in [False]:
+
+				#if service.service.name not in [False]:
+				if (service.service.name not in [False]) 	and 	(service.service.pl_price_list in [price_list]):
 
 					print()
 					#print(service.service)
@@ -68,13 +69,12 @@ class Treatment(models.Model):
 
 					# Product
 					product = self.env['product.product'].search([
-																	('name', '=', service.service.name),
 																	#('sale_ok', '=', True),
-
+																	('name', '=', service.service.name),
 																	('pl_price_list', '=', price_list),
 													],
-														#order='date_order desc',
-														#limit=1,
+														order='create_date desc',
+														limit=1,
 													)
 					print(product)
 					#print(product.name)
@@ -305,6 +305,7 @@ class Treatment(models.Model):
 				'context': {}
 			}
 
+
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
 	def create_order_con_gyn(self):
@@ -477,10 +478,11 @@ class Treatment(models.Model):
 		# Clear
 		self.shopping_cart_ids.unlink()
 
+		price_list = '2019'
+
 		# Init
 		service_list = [
 							self.service_product_ids,
-
 							self.service_co2_ids,
 							self.service_excilite_ids,
 							self.service_ipl_ids,
@@ -496,10 +498,11 @@ class Treatment(models.Model):
 
 		# Create Cart
 		for service_ids in service_list:
-
 			for service in service_ids:
 
-				if service.service.name not in [False]:
+				#if service.service.name not in [False]:
+				if (service.service.name not in [False]) 	and 	(service.service.pl_price_list in [price_list]):
+
 					print(service.service)
 					print(service.service.name)
 					print(service.service.id)

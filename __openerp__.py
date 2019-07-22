@@ -9,7 +9,7 @@
 
 	'description': 
 		"""
-		17 July 2019
+		22 July 2019
 
 		(Since 22 April, in Prod)
 
@@ -68,6 +68,7 @@
 
 
 		'views/order.xml',
+
 		'views/order_line.xml',
 
 		'views/closing.xml',

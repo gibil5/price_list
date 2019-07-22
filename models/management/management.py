@@ -9,10 +9,8 @@ from timeit import default_timer as timer
 import collections
 import datetime
 from openerp import models, fields, api
-#from openerp.addons.openhealth.models.management import mgt_funcs
 from . import mgt_funcs
 from . import pl_mgt_vars
-#from . import data_stats
 from . import pl_ord_vars
 
 class Management(models.Model):
@@ -24,6 +22,16 @@ class Management(models.Model):
 
 
 # ----------------------------------------------------------- Relational -------------------------
+
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			#string="Configuracion",
+			string="Config",
+			required=True,
+		)
+
+
 	# patient
 	patient_line = fields.One2many(
 			'openhealth.management.patient.line',
@@ -253,9 +261,9 @@ class Management(models.Model):
 
 
 # ----------------------------------------------------------- Update Prod -------------------------
-	# Update Days
+
+	# Update Productivity
 	@api.multi
-	#def update_productivity(self):
 	def pl_update_productivity(self):
 		"""
 		high level support for doing this and that.
@@ -273,6 +281,7 @@ class Management(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Create Days -------------------------
 	# Create Days
 	@api.multi
@@ -283,18 +292,22 @@ class Management(models.Model):
 		print()
 		print('Pl - Create Days')
 
-
 		# Clean
 		self.day_line.unlink()
 
 
-		# Holidays
+
+		# Get Holidays
 		days_inactive = []
 		if self.configurator.name not in [False]:
 			for day in self.configurator.day_line:
 				if day.holiday:
 					days_inactive.append(day.date)
-		#print(days_inactive)
+		print()
+		print('Holidays')
+		print(days_inactive)
+		print()
+
 
 
 		# Create
@@ -309,7 +322,7 @@ class Management(models.Model):
 		# Create
 		for i in range(delta.days + 1):
 			
-			print(i)
+			#print(i)
 
 			date_dt = date_begin_dt + datetime.timedelta(i)
 			weekday = date_dt.weekday()
@@ -353,7 +366,7 @@ class Management(models.Model):
 
 					day.update_amount()		# Important !
 
-					print(day)
+					#print(day)
 
 					#print(date_dt, weekday, weekday_str)
 					#print(date_dt)

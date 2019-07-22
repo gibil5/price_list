@@ -1,0 +1,7 @@
+<!-- Not loaded -->
+
+
+<!--
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="inherit_id" ref="openhealth.view_order_form"/>
+-->

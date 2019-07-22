@@ -21,16 +21,39 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Fields ----------------------------
+	#ORDER_LINE_READONLY_STATES = {
+	#								'draft': 		[('readonly', False)],
+	#								'sent': 		[('readonly', False)],
+	#								'cancel': 		[('readonly', False)],
+	#								'sale': 		[('readonly', False)],
+	#								'credit_note': 		[('readonly', False)],
+	#}
 
-	# Pay myself
-	#def pay_myself(self):
-	#	"""
-	#	high level support for doing this and that.
-	#	"""
-		#print
-		#print 'Order - Pay myself - Interface'
-	#	test_order.pay_myself(self)
+	# Order Line
+	#order_line = fields.One2many(
+	#		'sale.order.line',
+	#		'order_id',
+	#		string='Order Lines',
+	#		states=ORDER_LINE_READONLY_STATES,
+	#	)
 
+
+
+# ----------------------------------------------------------- Clean ----------------------------
+
+	@api.multi
+	def clean_order_lines(self):
+		"""
+		Clean Order Lines
+		"""
+		#print()
+		#print('Clean Order Lines')
+		for line in self.order_line:
+			#print(line.product_id.name)
+			if self.x_admin_mode:
+				line.state = 'draft'
+				line.unlink()
 
 
 
@@ -470,6 +493,7 @@ class sale_order(models.Model):
 					#print('mark 4')
 
 	#update_descriptors
+
 
 
 # ----------------------------------------------------------- Validate ----------------------------

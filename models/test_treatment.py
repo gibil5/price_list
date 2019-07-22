@@ -1,20 +1,22 @@
 # -*- coding: utf-8 -*-
 """
  		Test - Treatment - Integration Tests for the Treatment Class.
-
 		test_treatment.py
 
 		Created: 			14 Aug 2018
 		Last up: 	 		17 Jul 2019
 
 		Used by:			treatment.py
+
+		Rules:
+			- Functions should be very small.
+
 """
 from __future__ import print_function
-
 from . import test_funcs
 
 
-# ----------------------------------------------- Integration -------------------------------------
+# ----------------------------------------------- Test Integration -------------------------------------
 def test_integration_treatment(self, date_order_begin=False, date_order_end=False):
 	"""
 	Test - Integration - For Treatment
@@ -22,18 +24,40 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 	print()
 	print('Test Integration Function')
 
+	# Create Consultation
+	create_consultation(self)
+
+
+	# Create Recommendations
+	create_recommentations(self)
+
+
+	# Create Sessions
+	#create_sessions(self)
+
+	# Create Controls
+	#create_controls(self)
+
+# test_integration_treatment
+
+
+
+
+# ----------------------------------------------- Consultation -------------------------------------
+def create_consultation(self):
+
+	# Create Consultation
 
 	test_funcs.disablePrint()
 
-	# Create Sale - Consultation
-	#print('Create Order - Consultation')
+	# Create Consultation Sale
 	self.create_order_con_med()			# Actual Button
 	for order in self.order_ids:
 		if order.state in ['draft']:
 			order.pay_myself()
 
-	# Create Consultation
-	#print('Create Consultation')
+
+	# Create and Fill Consultation
 	self.create_consultation()
 	for consultation in self.consultation_ids:
 		consultation.autofill()
@@ -42,7 +66,8 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 
 
-
+# ----------------------------------------------- Recommendations -------------------------------------
+def create_recommentations(self):
 
 	# Create Recommendations
 
@@ -61,11 +86,6 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 		print()
 		self.create_order_pro_2018()		# Actual Button - 2018
 		#test_funcs.enablePrint()
-
-
-
-
-
 
 
 	# Pay Order Procedure
@@ -87,29 +107,31 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 
 
-
+# ----------------------------------------------- Sessions -------------------------------------
+def create_sessions(self):
 
 	# Create Sessions
-	if False:
-	#if True:
-		#print('Create Sessions')
-		for procedure in self.procedure_ids:
-			#for _ in range(2):
-			for _ in range(1):
-				procedure.create_sessions()
+	#print('Create Sessions')
+	for procedure in self.procedure_ids:
+		#for _ in range(2):
+		for _ in range(1):
+			procedure.create_sessions()
 
+
+
+# ----------------------------------------------- Controls -------------------------------------
+def create_controls(self):
 
 	# Create Controls
-	if False:
-	#if True:
-		#print('Create Controls')
-		for procedure in self.procedure_ids:
-			#for _ in range(1):
-			for _ in range(6):
-				procedure.create_controls()
+	#print('Create Controls')
+	for procedure in self.procedure_ids:
+		#for _ in range(1):
+		for _ in range(6):
+			procedure.create_controls()
 
 
-# test_integration_treatment
+
+
 
 
 
@@ -641,7 +663,6 @@ def create_recommendations_2019(self):
 
 # ----------------------------------------------------------- Reset Treatment ---------------------
 
-#def reset_treatment(self):
 def test_reset_treatment(self):
 	"""
 	Reset Treatment
@@ -649,13 +670,8 @@ def test_reset_treatment(self):
 	print()
 	print('Test Reset Function')
 
-
 	# Consultation
 	self.consultation_ids.unlink()
-
-	# Recos
-	self.service_co2_ids.unlink()
-
 
 	# Recos
 	self.service_co2_ids.unlink()
@@ -683,9 +699,5 @@ def test_reset_treatment(self):
 
 	# Orders
 	for order in self.order_ids:
-		#order.remove_myself()
 		order.remove_myself_force()
 # reset
-
-
-
