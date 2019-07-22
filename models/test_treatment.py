@@ -2,7 +2,6 @@
 """
  		Test - Treatment - Integration Tests for the Treatment Class.
 		test_treatment.py
-
 		Created: 			14 Aug 2018
 		Last up: 	 		17 Jul 2019
 
@@ -10,19 +9,24 @@
 
 		Rules:
 			- Functions should be very small.
-
+			- Do One Thing.
+			- The ideal number of arguments for is Zero.
+			- Have no Side Effects.
+			- Prefer Exceptions to Returning Error Codes.
+			- Don’t Repeat Yourself.
 """
 from __future__ import print_function
 from . import test_funcs
 
 
 # ----------------------------------------------- Test Integration -------------------------------------
-def test_integration_treatment(self, date_order_begin=False, date_order_end=False):
+def test_integration_treatment(self):
 	"""
 	Test - Integration - For Treatment
 	"""
 	print()
 	print('Test Integration Function')
+
 
 	# Create Consultation
 	create_consultation(self)
@@ -45,8 +49,9 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 # ----------------------------------------------- Consultation -------------------------------------
 def create_consultation(self):
-
-	# Create Consultation
+	"""
+	Create Consultation
+	"""
 
 	test_funcs.disablePrint()
 
@@ -68,8 +73,9 @@ def create_consultation(self):
 
 # ----------------------------------------------- Recommendations -------------------------------------
 def create_recommentations(self):
-
-	# Create Recommendations
+	"""
+	Create Recommendations
+	"""
 
 	# 2019
 	if self.test_pricelist_2019:
@@ -90,7 +96,7 @@ def create_recommentations(self):
 
 	# Pay Order Procedure
 	test_funcs.disablePrint()
-	
+
 	#print()
 	#print('Create Order - Procedure')
 	for order in self.order_ids:
@@ -102,15 +108,16 @@ def create_recommentations(self):
 				print("An exception occurred")
 
 			#print('mark 11')
-	
+
 	test_funcs.enablePrint()
 
 
 
 # ----------------------------------------------- Sessions -------------------------------------
 def create_sessions(self):
-
-	# Create Sessions
+	"""
+	Create Sessions
+	"""
 	#print('Create Sessions')
 	for procedure in self.procedure_ids:
 		#for _ in range(2):
@@ -118,21 +125,16 @@ def create_sessions(self):
 			procedure.create_sessions()
 
 
-
 # ----------------------------------------------- Controls -------------------------------------
 def create_controls(self):
-
-	# Create Controls
+	"""
+	Create Controls
+	"""
 	#print('Create Controls')
 	for procedure in self.procedure_ids:
 		#for _ in range(1):
 		for _ in range(6):
 			procedure.create_controls()
-
-
-
-
-
 
 
 
@@ -271,7 +273,6 @@ def create_recommendations_2018(self):
 
 
 	tst_list_medical = [
-	
 					'med_0',
 					'med_1',
 					'med_2',
@@ -287,7 +288,6 @@ def create_recommendations_2018(self):
 
 
 	tst_list_cosmetology = [
-
 					'cos_0',
 					'cos_1',
 					'cos_2',
@@ -392,8 +392,8 @@ def create_recommendations_2019(self):
 	Create Recommendations 2019
 	Test Cases
 	Be sure to cover:
-		- All Families. 
-		- All Sub Families. 
+		- All Families.
+		- All Sub Families.
 		- All Sub sub Families.
 	"""
 	print()
@@ -429,16 +429,16 @@ def create_recommendations_2019(self):
 
 					# Medical
 					'med_0':		'BOTOX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',										# Botox
-					'med_1':		'CRIOCIRUGIA - Todo Rostro - Acne - 1 sesion',												# Plasma
+					'med_1':		'CRIOCIRUGIA - Todo Rostro - Acne - 1 sesion',												# Cryo
 					'med_2':		'ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1 sesion - FILORGA UNIVERSAL',	# Hialuronic
-					
-					'med_3':		'INFILTRACIONES',			# Plasma
-					'med_4':		'MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 5 sesiones',			# Plasma
+
+					'med_3':		'INFILTRACIONES',																			# Infil
+					'med_4':		'MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 5 sesiones',					# Meso
 					'med_5':		'PLASMA - Todo Rostro - Rejuvenecimiento Facial - 1 sesion',								# Plasma
-					
-					'med_6':		'REDUX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',			# Plasma
-					'med_7':		'ESCLEROTERAPIA - Piernas - Varices - 1 sesion',			# Plasma
-					'med_8':		'VICTAMINA C ENDOVENOSA',			# Plasma
+
+					'med_6':		'REDUX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',										# Redux
+					'med_7':		'ESCLEROTERAPIA - Piernas - Varices - 1 sesion',											# Sclero
+					'med_8':		'VICTAMINA C ENDOVENOSA',																	# Vitamin
 
 					#'med_1':		'',			# Plasma
 
@@ -665,10 +665,11 @@ def create_recommendations_2019(self):
 
 def test_reset_treatment(self):
 	"""
-	Reset Treatment
+	Test Reset - For Treatment
 	"""
 	print()
 	print('Test Reset Function')
+
 
 	# Consultation
 	self.consultation_ids.unlink()

@@ -1,3 +1,22 @@
+
+
+# ----------------------------------------------------------- Test One --------------------------
+	@api.multi
+	def test_one(self):
+		#print()
+		#print('Test One')
+		test_treatment.test_one(self)
+
+# ----------------------------------------------------------- Test two --------------------------
+	@api.multi
+	def test_two(self):
+		#print()
+		#print('Test Two')
+		test_treatment.test_two(self)
+
+
+
+
 # ----------------------------------------------------------- Computes --------------------------
 	@api.multi
 	def _compute_nr_invoices_pro(self):

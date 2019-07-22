@@ -1,17 +1,31 @@
 # -*- coding: utf-8 -*-
+"""
+		*** Test Funcs
 
-import sys, os
+		Give low-level services. To Treatment.
+
+		Used by:	test_treatment.py
+
+		Created: 			17 Jul 2019
+		Last up: 	 		22 Jul 2019
+"""
+from __future__ import print_function
+#import sys, os
+import sys
+import os
 
 
 # ----------------------------------------------- Test Funcs -------------------------------------
 
-# Disable
-#def blockPrint():
 def disablePrint():
-    sys.stdout = open(os.devnull, 'w')
+	"""
+	Disable Print
+	"""
+	sys.stdout = open(os.devnull, 'w')
 
 
-# Restore
 def enablePrint():
-    sys.stdout = sys.__stdout__
-
+	"""
+	Enable Print
+	"""
+	sys.stdout = sys.__stdout__

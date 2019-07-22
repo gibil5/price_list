@@ -12,7 +12,6 @@ from openerp import models, fields, api
 from . import reco_funcs
 from . import pl_creates
 from . import test_treatment
-
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
@@ -56,8 +55,7 @@ class Treatment(models.Model):
 			for service in service_ids:
 
 
-				#if service.service.name not in [False]:
-				if (service.service.name not in [False]) 	and 	(service.service.pl_price_list in [price_list]):
+				if (service.service.name not in [False]) and (service.service.pl_price_list in [price_list]):
 
 					print()
 					#print(service.service)
@@ -99,7 +97,6 @@ class Treatment(models.Model):
 
 						#raise TreatmentError(_(msg))
 						raise UserError(_(msg))
-
 
 
 					# Create Cart
@@ -159,12 +156,6 @@ class Treatment(models.Model):
 				('medical', 	'medical'),
 
 				('new', 	'new'),
-
-				#('co2', 'Co2'),
-				#('exc', 'Exc'),
-				#('quick', 'Quick'),
-				#('ipl', 'Ipl'),
-				#('ndyag', 'Ndyag'),
 			],
 
 			string="Test Scenarios",
@@ -192,7 +183,6 @@ class Treatment(models.Model):
 		print()
 		print('Pl - Create Procedure - Manual')
 
-
 		# Loop - Create Procedures
 		ret = 0
 		for order in self.order_pro_ids:
@@ -205,7 +195,6 @@ class Treatment(models.Model):
 				# Loop
 				for line in order.order_line:
 
-
 					# Init
 					date_app = order.date_order
 					product_id = line.product_id
@@ -214,13 +203,10 @@ class Treatment(models.Model):
 												])
 					subtype = product_template.x_treatment
 
-
 					# Create - This
 					ret = cre.create_procedure_go(self, date_app, subtype, product_id.id)
 
-
-
-
+	# create_procedure_man
 
 
 
@@ -268,7 +254,6 @@ class Treatment(models.Model):
 					}
 		}
 	# create_order_con
-
 
 
 
@@ -373,8 +358,6 @@ class Treatment(models.Model):
 			}
 
 
-
-
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
 	def create_order_con_target_2018(self, target):
@@ -414,7 +397,6 @@ class Treatment(models.Model):
 		return order
 
 	# create_order_con
-
 
 
 
@@ -847,8 +829,6 @@ class Treatment(models.Model):
 	# create_procedure_man
 
 
-
-
 # ----------------------------------------------------------- Computes --------------------------
 	@api.multi
 	def _compute_nr_services(self):
@@ -881,26 +861,7 @@ class Treatment(models.Model):
 			#self.test_computes()
 			#self.test_libs()
 
-
-
-
-
-# ----------------------------------------------------------- Test One --------------------------
-	@api.multi
-	def test_one(self):
-		#print()
-		#print('Test One')
-		test_treatment.test_one(self)
-
-# ----------------------------------------------------------- Test two --------------------------
-	@api.multi
-	def test_two(self):
-		#print()
-		#print('Test Two')
-		test_treatment.test_two(self)
-
-
-# ----------------------------------------------------------- Test Integration --------------------
+# ----------------------------------------------------------- Test - Integration --------------------
 	@api.multi
 	def test_integration(self):
 		"""
@@ -918,18 +879,13 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
-
-
-
-# ----------------------------------------------------------- Test Reset --------------------------
+# ----------------------------------------------------------- Test - Reset --------------------------
 	@api.multi
 	def test_reset(self):
 		print()
 		print('Test Reset Button')
 		if self.patient.x_test:
-			#test_treatment.reset_treatment(self)
 			test_treatment.test_reset_treatment(self)
 		print()
 		print()
 		print('SUCCESS !')
-
