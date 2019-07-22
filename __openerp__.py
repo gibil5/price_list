@@ -15,6 +15,11 @@
 
 		For Open Health. Service oriented way of adding Price List Management. 
 
+		Remember Uncle Bob:
+			- Total Productive Maintenance (TPM) focuses on Maintenance, rather than on Production. 
+			- The bulk of the work lies not in Manufactoring, but in Maintenance (or its avoidance).
+			- In software, 80 percent of what we do is called "Maintenance": the act of Repair. 
+
 		Remember OO Concepts:
 			- Confine change to interfaces, that capture all business logic. The Getters. 
 			- Do not access class variables directly. 
