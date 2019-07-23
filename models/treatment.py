@@ -3,7 +3,6 @@
 		*** Treatment
 
 		treatment.py
-
 		Created: 			26 Aug 2016
 		Last up: 	 		17 Jul 2019
 """
@@ -21,20 +20,21 @@ class Treatment(models.Model):
 
 
 
-# -----------------------------------------------------------  Create Order Pro  ------------------
+# -----------------------------------------------------------  Create Order Pro - 2019 ------------------
 	@api.multi
-	def create_order_pro_2018(self):
-		print()
-		print('Create Order Pro - 2018')
-
+	def create_order_pro(self):
+		"""
+		Create Order Procedure - 2019
+		From Recommendations
+		"""
+		print('Create Order Pro')
 
 		# Clear
 		self.shopping_cart_ids.unlink()
 
-		price_list = '2018'
-
-
 		# Init
+		price_list = '2019'
+
 		service_list = [
 							self.service_product_ids,
 							self.service_co2_ids,
@@ -54,12 +54,10 @@ class Treatment(models.Model):
 		for service_ids in service_list:
 			for service in service_ids:
 
+				if (service.service.name not in [False]) 	and 	(service.service.pl_price_list in [price_list]):
 
-				if (service.service.name not in [False]) and (service.service.pl_price_list in [price_list]):
-
-					print()
-					#print(service.service)
 					print(service.service.name)
+					#print(service.service)
 					#print(service.service.id)
 					#print(service.price_applied)
 					#print(service.qty)
@@ -67,7 +65,97 @@ class Treatment(models.Model):
 
 					# Product
 					product = self.env['product.product'].search([
-																	#('sale_ok', '=', True),
+																	('name', '=', service.service.name),
+																	('sale_ok', '=', True),
+
+																	('pl_price_list', '=', '2019'),
+													])
+					#print(product)
+					#print(product.name)
+					#print()
+					#print()
+
+					# Create Cart
+					if product.name not in [False]:
+						cart_line = self.shopping_cart_ids.create({
+																			'product': 		product.id,
+																			'price': 		service.price_applied,
+																			'qty': 			service.qty,
+																			'treatment': 	self.id,
+																})
+
+		# Create Order
+		order = pl_creates.pl_create_order(self)
+		#print(order)
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+	# create_order_pro
+
+
+
+# -----------------------------------------------------------  Create Order Pro - 2018 ------------------
+	@api.multi
+	def create_order_pro_2018(self):
+		"""
+		Create Order Procedure - 2018
+		From Recommendations
+		"""
+		print()
+		print('Create Order Pro - 2018')
+
+		# Clear
+		self.shopping_cart_ids.unlink()
+
+		# Init
+		price_list = '2018'
+
+		service_list = [
+							self.service_product_ids,
+							self.service_co2_ids,
+							self.service_excilite_ids,
+							self.service_ipl_ids,
+							self.service_ndyag_ids,
+							self.service_quick_ids,
+							self.service_medical_ids,
+							self.service_cosmetology_ids,
+							self.service_gynecology_ids,
+							self.service_echography_ids,
+							self.service_promotion_ids,
+		]
+
+
+		# Create Cart
+		for service_ids in service_list:
+			for service in service_ids:
+
+				if (service.service.name not in [False]) and (service.service.pl_price_list in [price_list]):
+
+					print()
+					print(service.service.name)
+
+					# Product
+					product = self.env['product.product'].search([
 																	('name', '=', service.service.name),
 																	('pl_price_list', '=', price_list),
 													],
@@ -86,16 +174,11 @@ class Treatment(models.Model):
 
 					except:
 						#print("An exception occurred")
-						#msg = "Error: Record Must be One Only"
-						#msg = "Error: Record Must be One Only\n" + service.service.name
-
 						msg_name = "ERROR: Record Must be One Only."
 						class_name = type(product).__name__
 						obj_name = service.service.name
-
 						msg =  msg_name + '\n' + class_name + '\n' + obj_name
 
-						#raise TreatmentError(_(msg))
 						raise UserError(_(msg))
 
 
@@ -107,11 +190,9 @@ class Treatment(models.Model):
 																			'qty': 			service.qty,
 																			'treatment': 	self.id,
 																})
-
-
 		# Create Order
 		order = pl_creates.pl_create_order(self)
-		print(order)
+		#print(order)
 
 		# Open Order
 		return {
@@ -138,12 +219,6 @@ class Treatment(models.Model):
 	# create_order_pro_2018
 
 
-
-
-
-
-
-
 # ----------------------------------------------------------- Test --------------------------------
 
 	x_test_scenario = fields.Selection(
@@ -161,10 +236,6 @@ class Treatment(models.Model):
 			string="Test Scenarios",
 		)
 
-
-
-# ----------------------------------------------------------- Fields --------------------------
-
 	test_pricelist_2019 = fields.Boolean(
 			default=False,
 		)
@@ -172,9 +243,6 @@ class Treatment(models.Model):
 	test_pricelist_2018 = fields.Boolean(
 			default=False,
 		)
-
-
-
 
 
 # ----------------------------------------------------------- Create Procedure Manual  ------------
@@ -211,12 +279,10 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- Opens a new Form - Service ------------------------------
-
 	@api.multi
 	def create_order_con(self):
 		"""
-		Create Service
-		Opens a new form. For Reco choice. 
+		Create Order Consultation
 		"""
 		print()
 		print('Pl - Create Order Con')
@@ -261,8 +327,12 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
 	def create_order_con_chav(self):
+		"""
+		Create Order Consultation Dr. Chavarri
+		"""
 		print()
 		print('Create Order Con Chav')
+
 		target = 'premium'
 		
 		order = self.create_order_con_target(target)
@@ -294,8 +364,12 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
 	def create_order_con_gyn(self):
+		"""
+		Create Order Consultation Gynecology
+		"""
 		print()
 		print('Create Order Con Gyn')
+
 		target = 'gynecology'
 		
 		order = self.create_order_con_target(target)
@@ -327,6 +401,9 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
 	def create_order_con_med(self):
+		"""
+		Create Order Consultation Standard
+		"""
 		print()
 		print('Create Order Con Med')
 
@@ -450,97 +527,6 @@ class Treatment(models.Model):
 
 
 
-
-
-# -----------------------------------------------------------  Create Order Pro  ------------------
-	@api.multi
-	def create_order_pro(self):
-		print('Create Order Pro')
-
-		# Clear
-		self.shopping_cart_ids.unlink()
-
-		price_list = '2019'
-
-		# Init
-		service_list = [
-							self.service_product_ids,
-							self.service_co2_ids,
-							self.service_excilite_ids,
-							self.service_ipl_ids,
-							self.service_ndyag_ids,
-							self.service_quick_ids,
-							self.service_medical_ids,
-							self.service_cosmetology_ids,
-							self.service_gynecology_ids,
-							self.service_echography_ids,
-							self.service_promotion_ids,
-		]
-
-
-		# Create Cart
-		for service_ids in service_list:
-			for service in service_ids:
-
-				#if service.service.name not in [False]:
-				if (service.service.name not in [False]) 	and 	(service.service.pl_price_list in [price_list]):
-
-					print(service.service)
-					print(service.service.name)
-					print(service.service.id)
-					print(service.price_applied)
-					print(service.qty)
-					print()
-
-					# Product
-					product = self.env['product.product'].search([
-																	('name', '=', service.service.name),
-																	('sale_ok', '=', True),
-
-																	('pl_price_list', '=', '2019'),
-													])
-					print(product)
-					print(product.name)
-					print()
-					print()
-
-					# Create Cart
-					if product.name not in [False]:
-						cart_line = self.shopping_cart_ids.create({
-																			'product': 		product.id,
-																			'price': 		service.price_applied,
-																			'qty': 			service.qty,
-																			'treatment': 	self.id,
-																})
-
-
-		# Create Order
-		order = pl_creates.pl_create_order(self)
-		print(order)
-
-		# Open Order
-		return {
-				# Created
-				'res_id': order.id,
-				# Mandatory
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action
-				'res_model': 'sale.order',
-				# Views
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False,
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},
-				'context': {}
-			}
-	# create_order_pro
 
 
 
