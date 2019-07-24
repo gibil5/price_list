@@ -16,9 +16,6 @@ from . import mkt_funcs
 from . import mkt_vars
 from openerp.addons.price_list.models.management import mgt_funcs
 
-#from . import mgt_funcs
-#from . import pl_lib_marketing
-
 class Marketing(models.Model):
 	"""
 	Marketing Report

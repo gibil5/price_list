@@ -5,8 +5,6 @@
 
 
 <!-- FORM -->
-<!--
--->
 		<record model="ir.ui.view" id="treatment_form_view">
 			<field name="name">openhealth.treatment.form</field>
 			<field name="model">openhealth.treatment</field>
@@ -22,7 +20,30 @@
 
 					<field name="test_pricelist_2019"/>
 					<field name="test_pricelist_2018"/>
+
+					<field name="report_management"/>
+					<field name="report_marketing"/>
+
+
+					<button 
+							type="object"
+							class="oe_highlight"
+
+							name="test_report_management"
+
+							string="Test MGT"
+					/>
+
+					<button 
+							type="object"
+							class="oe_highlight"
+
+							name="test_report_marketing"
+
+							string="Test MKT"
+					/>
 				</xpath>
+
 			</field>
 
 		</record>

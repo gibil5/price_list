@@ -628,7 +628,8 @@
 
 					<field name="name"/>
 
-					<field name="test_obj"	groups="openhealth.roots"/>
+					<field name="write_date"        string="Actualizado"	groups="openhealth.roots"/>
+
 
 
 
@@ -653,12 +654,12 @@
 					<field name="patient_proc_count"/>
 
 					<field name="patient_reco_count"/>
-
-					<field name="write_date"    string="Actualizado"/>
 				</tree>
 			</field>
 		</record>
 <!--
+					<field name="test_obj"	groups="openhealth.roots"/>
+
 					<field name="delta_patients"      groups="openhealth.roots"/>
 					<field name="delta_sales"         groups="openhealth.roots"/>
 					<field name="delta_recos"         groups="openhealth.roots"/>

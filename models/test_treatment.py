@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 """
- 		Test - Treatment - Integration Tests for the Treatment Class.
-		test_treatment.py
+ 		*** Test Treatment
+
 		Created: 			14 Aug 2018
-		Last up: 	 		17 Jul 2019
+		Last up: 	 		24 Jul 2019
 
 		Used by:			treatment.py
 
 		Rules:
 			- Functions should be very small.
 			- Do One Thing.
-			- The ideal number of arguments for is Zero.
+			- The ideal number of arguments is Zero.
 			- Have no Side Effects.
 			- Prefer Exceptions to Returning Error Codes.
 			- Don’t Repeat Yourself.
@@ -19,10 +19,70 @@ from __future__ import print_function
 from . import test_funcs
 
 
+# ----------------------------------------------- Test Report Management -------------------------------------
+def test_report_management(self):
+	"""
+	Test Report Management
+	"""
+	print()
+	print('Test Report Management')
+
+	# Print Disable
+	test_funcs.disablePrint()
+
+	# Init
+	report = self.report_management
+
+
+	# Test
+	report.update_fast()
+
+	report.update_patients()
+
+	report.pl_update_doctors()
+
+	report.pl_update_productivity()
+
+	report.update_daily()
+
+	# Print Enable
+	test_funcs.enablePrint()
+
+
+
+
+# ----------------------------------------------- Test Report Marketing -------------------------------------
+def test_report_marketing(self):
+	"""
+	Test Report Marketing
+	"""
+	print()
+	print('Test Report Marketing')
+
+
+	# Print Disable
+	test_funcs.disablePrint()
+
+
+	# Init
+	report = self.report_marketing
+
+
+	# Test
+	report.update_patients()
+
+	report.pl_update_sales()
+
+
+	# Print Enable
+	test_funcs.enablePrint()
+
+
+
 # ----------------------------------------------- Test Integration -------------------------------------
 def test_integration_treatment(self):
 	"""
-	Test - Integration - For Treatment
+ 	Integration Tests for the Treatment Class.
 	"""
 	print()
 	print('Test Integration Function')
@@ -222,7 +282,6 @@ def create_recommendations_2018(self):
 		}
 
 
-	#tst_list = [
 	tst_list_all = [
 					'prod_0',
 					'prod_1',
@@ -320,10 +379,8 @@ def create_recommendations_2018(self):
 	# Loop
 	for tst in tst_list:
 
-
 		# Init
 		name = name_dic[tst]
-
 
 		# Search
 		product = self.env['product.template'].search([
@@ -345,36 +402,19 @@ def create_recommendations_2018(self):
 
 
 		# Create Service
-
 		model = model_dic[tst]
-
 		service = self.env[model].create({
 														'service': 			product_id,
-
-														#'family': 			product.pl_family,
-														#'subfamily': 		product.pl_subfamily,
-														#'pathology': 		product.pl_pathology,
-														#'sessions': 		product.pl_sessions,
-														#'zone': 			product.pl_zone,
-														#'level': 			product.pl_level,
-														#'time': 			product.pl_time,
-														#'sel_zone': 		product.pl_zone,
-														#'pl_treatment': 	product.pl_treatment,
-
 														'pl_treatment': 	'2018',
 														'family': 			'2018',
 														'subfamily': 		'2018',
-
 														'pathology': 		'2018',
 														'zone': 			'2018',
 														'sessions': 		'2018',
 														'level': 			'2018',
 														'time': 			'2018',
 														'sel_zone': 		'2018',
-
-
 														'price_applied': 	product.list_price,
-
 														'treatment': 		self.id,
 											})
 		#print()

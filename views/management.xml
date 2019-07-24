@@ -577,7 +577,11 @@
 
 
 					<field name="name"/>
+
 					<field name="configurator"  string="Config"	/>
+
+					<field name="write_date"        string="Actualizado"	groups="openhealth.roots"/>
+
 
 
 					<field name="rsp_count_delta"	groups="openhealth.roots"/>
@@ -625,7 +629,6 @@
 					<field name="total_count"/>
 
 
-					<field name="write_date"        string="Actualizado"/>
 				</tree>
 			</field>
 		</record>

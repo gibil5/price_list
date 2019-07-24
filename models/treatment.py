@@ -4,19 +4,38 @@
 
 		treatment.py
 		Created: 			26 Aug 2016
-		Last up: 	 		17 Jul 2019
+		Last up: 	 		24 Jul 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
+from openerp import _
+from openerp.exceptions import Warning as UserError
 from . import reco_funcs
 from . import pl_creates
 from . import test_treatment
-from openerp import _
-from openerp.exceptions import Warning as UserError
 
 class Treatment(models.Model):
-
+	"""
+	Class Treatment
+	"""
 	_inherit = 'openhealth.treatment'
+
+
+
+# ----------------------------------------------------------- Test Reports -------------------------
+
+	report_management = fields.Many2one(
+			'openhealth.management',
+			string="Report MGT",
+			#required=True,
+		)
+
+	report_marketing = fields.Many2one(
+			'openhealth.marketing',
+			string="Report MKT",
+			#required=True,
+		)
+
 
 
 
@@ -248,6 +267,9 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Create Procedure Manual  ------------
 	@api.multi
 	def create_procedure_man(self):
+		"""
+		Create Procedure Manual
+		"""
 		print()
 		print('Pl - Create Procedure - Manual')
 
@@ -334,7 +356,7 @@ class Treatment(models.Model):
 		print('Create Order Con Chav')
 
 		target = 'premium'
-		
+
 		order = self.create_order_con_target(target)
 
 		# Open Order
@@ -371,7 +393,7 @@ class Treatment(models.Model):
 		print('Create Order Con Gyn')
 
 		target = 'gynecology'
-		
+
 		order = self.create_order_con_target(target)
 
 		# Open Order
@@ -438,8 +460,11 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
 	def create_order_con_target_2018(self, target):
+		"""
+		Create Order Consultation 2018
+		"""
 		print()
-		print('Create Order Con Med')
+		print('Create Order Con 2018')
 
 		price_list = '2018'
 
@@ -455,8 +480,10 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
-	#def create_order_con(self):
 	def create_order_con_target(self, target):
+		"""
+		Create Order Consultation
+		"""
 		print()
 		print('Create Order Con Med')
 
@@ -484,7 +511,7 @@ class Treatment(models.Model):
 	def create_service(self):
 		"""
 		Create Service
-		Opens a new form. For Reco choice. 
+		Opens a new form. For Reco choice.
 		"""
 		print()
 		print('Pl - Create Service')
@@ -525,74 +552,65 @@ class Treatment(models.Model):
 
 
 
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Fields --------------------------
-
 	# co2
-	service_co2_ids = fields.One2many(			
+	service_co2_ids = fields.One2many(
 			'price_list.service_co2',
 			'treatment',
 			string="Servicios Co2"
 			)
 
 	# excilite
-	service_excilite_ids = fields.One2many(			
+	service_excilite_ids = fields.One2many(
 			'price_list.service_excilite',
 			'treatment',
 			string="Servicios excilite"
 			)
 
 	# ipl
-	service_ipl_ids = fields.One2many(			
+	service_ipl_ids = fields.One2many(
 			'price_list.service_ipl',
 			'treatment',
 			string="Servicios ipl"
 			)
 
 	# ndyag
-	service_ndyag_ids = fields.One2many(			
+	service_ndyag_ids = fields.One2many(
 			'price_list.service_ndyag',
 			'treatment',
 			string="Servicios ndyag"
 			)
 
 	# medical
-	service_medical_ids = fields.One2many(			
+	service_medical_ids = fields.One2many(
 			'price_list.service_medical',
 			'treatment',
 			string="Servicios medical"
 			)
 
 	# cosmetology
-	service_cosmetology_ids = fields.One2many(			
+	service_cosmetology_ids = fields.One2many(
 			'price_list.service_cosmetology',
 			'treatment',
 			string="Servicios cosmetology"
 			)
 
 	# quick
-	service_quick_ids = fields.One2many(			
+	service_quick_ids = fields.One2many(
 			'price_list.service_quick',
 			'treatment',
 			string="Servicios quick"
 			)
 
 	# product
-	service_product_ids = fields.One2many(			
+	service_product_ids = fields.One2many(
 			'price_list.service_product',
 			'treatment',
 			string="Servicios product"
 			)
 
 	# gynecology
-	service_gynecology_ids = fields.One2many(			
+	service_gynecology_ids = fields.One2many(
 			'price_list.service_gynecology',
 			'treatment',
 			string="Servicios Ginecologia"
@@ -604,9 +622,9 @@ class Treatment(models.Model):
 			'treatment',
 			string="Servicios Ecografia"
 			)
-	
+
 	# promotion
-	service_promotion_ids = fields.One2many(			
+	service_promotion_ids = fields.One2many(
 			'price_list.service_promotion',
 			'treatment',
 			string="Servicios Promocion"
@@ -625,25 +643,31 @@ class Treatment(models.Model):
 	# co2
 	@api.multi
 	def create_service_co2(self):
+		"""
+		Create Service Co2
+		"""
 		# Init
 		family = 'laser'
 		subfamily = 'co2'
-		treatment_id = self.id 
+		treatment_id = self.id
 		physician_id = self.physician.id
 
 		# Create
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
-		
+
 		return ret
 
 
 	# excilite
 	@api.multi
 	def create_service_excilite(self):
+		"""
+		Create Service Excilite
+		"""
 		# Init
 		family = 'laser'
 		subfamily = 'excilite'
-		treatment_id = self.id 
+		treatment_id = self.id
 		physician_id = self.physician.id
 
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
@@ -654,20 +678,26 @@ class Treatment(models.Model):
 	# ipl
 	@api.multi
 	def create_service_ipl(self):
+		"""
+		Create Service Ipl
+		"""
 		# Init
 		family = 'laser'
 		subfamily = 'ipl'
-		treatment_id = self.id 
+		treatment_id = self.id
 		physician_id = self.physician.id
 
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
-		
+
 		return ret
 
 
 	# ndyag
 	@api.multi
 	def create_service_ndyag(self):
+		"""
+		Create Service Ndyag
+		"""
 		# Init
 		family = 'laser'
 		subfamily = 'ndyag'
@@ -675,13 +705,16 @@ class Treatment(models.Model):
 		physician_id = self.physician.id
 
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
-		
+
 		return ret
 
 
 	# quick
 	@api.multi
 	def create_service_quick(self):
+		"""
+		Create Service Quick
+		"""
 		# Init
 		family = 'laser'
 		subfamily = 'quick'
@@ -689,13 +722,16 @@ class Treatment(models.Model):
 		physician_id = self.physician.id
 
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
-		
+
 		return ret
 
 
 	# medical
 	@api.multi
 	def create_service_medical(self):
+		"""
+		Create Service Medical
+		"""
 		# Init
 		family = 'medical'
 		subfamily = 'medical'
@@ -703,13 +739,16 @@ class Treatment(models.Model):
 		physician_id = self.physician.id
 
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
-		
+
 		return ret
 
 
 	# cosmetology
 	@api.multi
 	def create_service_cosmetology(self):
+		"""
+		Create Service Cosmetology
+		"""
 		# Init
 		family = 'cosmetology'
 		subfamily = 'cosmetology'
@@ -717,13 +756,16 @@ class Treatment(models.Model):
 		physician_id = self.physician.id
 
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
-		
+
 		return ret
 
 
 	# product
 	@api.multi
 	def create_service_product(self):
+		"""
+		Create Service Product
+		"""
 		# Init
 		family = 'topical'
 		subfamily = 'product'
@@ -731,13 +773,16 @@ class Treatment(models.Model):
 		physician_id = self.physician.id
 
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
-		
+
 		return ret
 
 
 	# gynecology
 	@api.multi
 	def create_service_gynecology(self):
+		"""
+		Create Service Gynecology
+		"""
 		# Init
 		family = 'gynecology'
 		subfamily = 'gynecology'
@@ -745,13 +790,16 @@ class Treatment(models.Model):
 		physician_id = self.physician.id
 
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
-		
+
 		return ret
 
 
 	# echography
 	@api.multi
 	def create_service_echography(self):
+		"""
+		Create Service Echography
+		"""
 		# Init
 		family = 'echography'
 		subfamily = 'echography'
@@ -759,13 +807,16 @@ class Treatment(models.Model):
 		physician_id = self.physician.id
 
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
-		
+
 		return ret
 
 
 	# promotion
 	@api.multi
 	def create_service_promotion(self):
+		"""
+		Create Service Promotion
+		"""
 		# Init
 		family = 'promotion'
 		subfamily = 'promotion'
@@ -773,7 +824,7 @@ class Treatment(models.Model):
 		physician_id = self.physician.id
 
 		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
-		
+
 		return ret
 
 
@@ -781,6 +832,9 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Create Procedure Manual  ------------
 	@api.multi
 	def create_procedure_man(self):
+		"""
+		Create Procedure Manual
+		"""
 		print()
 		print('Pl - Create Procedure - Manual')
 
@@ -824,7 +878,7 @@ class Treatment(models.Model):
 			ipl = self.env['price_list.service_ipl'].search_count([('treatment', '=', record.id),])
 			ndyag = self.env['price_list.service_ndyag'].search_count([('treatment', '=', record.id),])
 			quick =	self.env['price_list.service_quick'].search_count([('treatment', '=', record.id),])
-			medical = self.env['price_list.service_medical'].search_count([('treatment', '=', record.id),])			
+			medical = self.env['price_list.service_medical'].search_count([('treatment', '=', record.id),])
 			cosmetology = self.env['price_list.service_cosmetology'].search_count([('treatment', '=', record.id),])
 			product = self.env['price_list.service_product'].search_count([('treatment', '=', record.id),])
 			gynecology = self.env['price_list.service_gynecology'].search_count([('treatment', '=', record.id),])
@@ -838,6 +892,9 @@ class Treatment(models.Model):
 	# Test
 	@api.multi
 	def test(self):
+		"""
+		Test All
+		"""
 		print()
 		print('Treatment - Test')
 		if self.patient.x_test:
@@ -851,8 +908,7 @@ class Treatment(models.Model):
 	@api.multi
 	def test_integration(self):
 		"""
-		Integration Test of the Treatment Class.
-		Button
+		Integration Test
 		"""
 		print()
 		print('Test Integration Button')
@@ -868,6 +924,9 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Test - Reset --------------------------
 	@api.multi
 	def test_reset(self):
+		"""
+		Reset Test
+		"""
 		print()
 		print('Test Reset Button')
 		if self.patient.x_test:
@@ -875,3 +934,35 @@ class Treatment(models.Model):
 		print()
 		print()
 		print('SUCCESS !')
+
+
+# ----------------------------------------------------------- Test Report MGT --------------------------
+	@api.multi
+	def test_report_management(self):
+		"""
+		Test Report Management
+		"""
+		print()
+		print('Test Report Management - Button')
+		test_treatment.test_report_management(self)
+		print()
+		print()
+		print('SUCCESS !')
+
+
+# ----------------------------------------------------------- Test Report MKT --------------------------
+	@api.multi
+	def test_report_marketing(self):
+		"""
+		Test Report Marketing
+		"""
+		print()
+		print('Test Report Marketing - Button')
+		test_treatment.test_report_marketing(self)
+		print()
+		print()
+		print('SUCCESS !')
+
+
+
+
