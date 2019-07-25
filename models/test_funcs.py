@@ -10,19 +10,15 @@
 		Last up: 	 		22 Jul 2019
 """
 from __future__ import print_function
-#import sys, os
 import sys
 import os
 
-
-# ----------------------------------------------- Test Funcs -------------------------------------
-
+# ----------------------------------------------- Test Funcs ----------------------------------------------------------
 def disablePrint():
 	"""
 	Disable Print
 	"""
 	sys.stdout = open(os.devnull, 'w')
-
 
 def enablePrint():
 	"""

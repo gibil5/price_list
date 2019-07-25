@@ -10,10 +10,13 @@
 			<field name="model">openhealth.management</field>
 			<field name="arch" type="xml">
 				<form string="Management Form">
+
+
+<!-- Header -->  
 					<header>
 
-<!-- Left -->
-
+						<!-- Left -->
+						
 						<!-- Update -->
 						<button 
 								type="object"
@@ -21,9 +24,6 @@
 								name="update_fast"
 								string="Actualizar"
 						/>
-
-
-
 
 						<!-- pl - Update patients -->
 						<button 
@@ -35,19 +35,15 @@
 								string="Analisis Paciente"
 						/>
 
-
-
-
 						<!-- Update Doctors -->
-<!--						
+						<!--						
 						<button 
 								type="object" 
 								class="oe_highlight"
-								name="update_doctors"
-								
+								name="update_doctors"								
 								string="Analisis Doctor"
 						/>
--->
+						-->
 
 						<!-- pl - Update Doctors -->
 						<button 
@@ -57,9 +53,6 @@
 								
 								string="Analisis Doctor"
 						/>
-
-
-
 
 
 						<!-- See Sales -->
@@ -87,7 +80,6 @@
 						/>
 
 
-
 						<!-- Update Productivity -->
 						<button 
 								type="object" 
@@ -96,8 +88,6 @@
 								
 								string="Act Productividad"                             
 						/>
-
-
 
 						<!-- See Productivity -->
 						<button
@@ -110,7 +100,6 @@
 
 								string="Productividad"   
 						/>
-
 
 
 						<!-- Update daily -->
@@ -149,26 +138,26 @@
 
 
 
-<!-- Right -->
+						<!-- Right -->
+						
 						<!-- Reset -->
 						<button 
 								type="object"
 								class="oe_highlight oe_right"
-								name="reset"
-								string="Reset"
-
 								groups="openhealth.roots"
+								name="reset"
+
+								string="Reset"
 						/>
 
 						<!-- Validate -->
 						<button 
 								type="object"
 								class="oe_highlight oe_right"
-								string="Validate"
-
+								groups="openhealth.roots"
 								name="pl_validate"								
 
-								groups="openhealth.roots"
+								string="Validate"
 						/>
 					</header>
 
@@ -176,7 +165,7 @@
 
 
 
-					<!-- Sheet -->  
+<!-- Sheet -->  
 					<sheet>
 
 						<!-- Totals --> 
@@ -205,9 +194,12 @@
 						</group>
 
 
-						<notebook groups="openhealth.roots">  
-
+<!-- Notebook -->  
 							<!-- Validate --> 
+							<!-- Patients -->
+
+						<notebook groups="openhealth.roots"		invisible="1">  
+
 							<page string="Validation">
 								<group>
 									<group>								
@@ -226,11 +218,11 @@
 								</group>
 							</page>
 
-							<!-- Patients -->
 							<page string="Pacientes">
 								<field name="patient_line"/>
 							</page>
 						</notebook>
+
 
 
 						<!-- Families --> 

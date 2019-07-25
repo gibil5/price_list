@@ -19,7 +19,8 @@ from __future__ import print_function
 from . import test_funcs
 
 
-# ----------------------------------------------- Test Report Management -------------------------------------
+
+# ----------------------------------------------- Test Report Management ----------------------------------------------
 def test_report_management(self):
 	"""
 	Test Report Management
@@ -30,9 +31,9 @@ def test_report_management(self):
 	# Print Disable
 	test_funcs.disablePrint()
 
+
 	# Init
 	report = self.report_management
-
 
 	# Test
 	report.update_fast()
@@ -45,13 +46,14 @@ def test_report_management(self):
 
 	report.update_daily()
 
+
 	# Print Enable
 	test_funcs.enablePrint()
 
 
 
 
-# ----------------------------------------------- Test Report Marketing -------------------------------------
+# ----------------------------------------------- Test Report Marketing -----------------------------------------------
 def test_report_marketing(self):
 	"""
 	Test Report Marketing
@@ -59,14 +61,12 @@ def test_report_marketing(self):
 	print()
 	print('Test Report Marketing')
 
-
 	# Print Disable
 	test_funcs.disablePrint()
 
 
 	# Init
 	report = self.report_marketing
-
 
 	# Test
 	report.update_patients()
@@ -79,7 +79,7 @@ def test_report_marketing(self):
 
 
 
-# ----------------------------------------------- Test Integration -------------------------------------
+# ----------------------------------------------- Test Integration ----------------------------------------------------
 def test_integration_treatment(self):
 	"""
  	Integration Tests for the Treatment Class.
@@ -87,14 +87,11 @@ def test_integration_treatment(self):
 	print()
 	print('Test Integration Function')
 
-
 	# Create Consultation
 	create_consultation(self)
 
-
 	# Create Recommendations
 	create_recommentations(self)
-
 
 	# Create Sessions
 	#create_sessions(self)
@@ -107,7 +104,7 @@ def test_integration_treatment(self):
 
 
 
-# ----------------------------------------------- Consultation -------------------------------------
+# ----------------------------------------------- Consultation --------------------------------------------------------
 def create_consultation(self):
 	"""
 	Create Consultation
@@ -131,7 +128,7 @@ def create_consultation(self):
 
 
 
-# ----------------------------------------------- Recommendations -------------------------------------
+# ----------------------------------------------- Recommendations -----------------------------------------------------
 def create_recommentations(self):
 	"""
 	Create Recommendations
@@ -172,7 +169,6 @@ def create_recommentations(self):
 	test_funcs.enablePrint()
 
 
-
 # ----------------------------------------------- Sessions -------------------------------------
 def create_sessions(self):
 	"""
@@ -195,7 +191,6 @@ def create_controls(self):
 		#for _ in range(1):
 		for _ in range(6):
 			procedure.create_controls()
-
 
 
 # ----------------------------------------------------------- Create Recommendations - 2018 --------------
@@ -700,7 +695,6 @@ def create_recommendations_2019(self):
 
 
 
-
 # ----------------------------------------------------------- Reset Treatment ---------------------
 
 def test_reset_treatment(self):
@@ -709,7 +703,6 @@ def test_reset_treatment(self):
 	"""
 	print()
 	print('Test Reset Function')
-
 
 	# Consultation
 	self.consultation_ids.unlink()

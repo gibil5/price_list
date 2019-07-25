@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 	Management Report
+
 	Created: 			28 May 2018
-	Last updated: 		 2 Jun 2019
+	Last updated: 		25 Jul 2019
 """
 from __future__ import print_function
 from timeit import default_timer as timer
@@ -15,9 +16,279 @@ from . import pl_ord_vars
 
 class Management(models.Model):
 	"""
-	high level support for doing this and that.
+	Management Report
+	Analyzes Sales and calculates several indicators like:
+		- Doctor performance, 
+		- Productivity, 
+		- Daily Sales, by Doctor. 
 	"""
 	_inherit = 'openhealth.management'
+
+
+
+# ----------------------------------------------------------- Update Fast -----------------------
+	@api.multi
+	def update_fast(self):
+		"""
+		Update Button
+		"""
+		print()
+		print('Pl - Update Fast')
+
+		t0 = timer()
+
+		self.update_sales_fast()
+		
+		self.update_year()
+
+		t1 = timer()
+		self.delta_fast = t1 - t0
+		#print self.delta_fast
+		#print
+
+	# update_fast
+
+
+
+# ----------------------------------------------------------- Update Sales - Fast -----------------
+	def update_sales_fast(self):
+		"""
+		Update Sales - Fast
+		"""
+		print()
+		print('PL - Update Sales Fast')
+
+
+		# Clean
+		self.reset_macro()
+
+
+		# Get Orders
+		if self.type_arr in ['all']:
+			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
+		else:
+			orders, count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
+		#print orders
+		#print count
+
+
+# Loop
+		# Init
+		tickets = 0
+		for order in orders:
+			tickets = tickets + 1
+
+			# Filter Block
+			if not order.x_block_flow:
+
+
+				# Sale
+				if order.state in ['sale']:  	# Sale - Do Line Analysis
+
+					# Lines
+					for line in order.order_line:
+
+						# Line Analysis
+						if line.product_id.pl_price_list in ['2019']:
+							mgt_funcs.pl_line_analysis(self, line)
+
+						else:
+							mgt_funcs.line_analysis(self, line)
+
+
+				# Credit Note
+				elif order.state in ['credit_note']:  									# CN - Do Amount Flow
+					self.nr_credit_notes = self.nr_credit_notes + 1
+					self.amo_credit_notes = self.amo_credit_notes + order.x_amount_flow
+
+# Analysis
+
+		# Averages
+
+		# Families
+		if self.nr_other != 0:
+			self.avg_other = self.amo_other / self.nr_other
+
+		if self.nr_products != 0:
+			self.avg_products = self.amo_products / self.nr_products
+
+		if self.nr_services != 0:
+			self.avg_services = self.amo_services / self.nr_services
+
+		if self.nr_consultations != 0:
+			self.avg_consultations = self.amo_consultations / self.nr_consultations
+
+		if self.nr_procedures != 0:
+			self.avg_procedures = self.amo_procedures / self.nr_procedures
+
+
+		# Subfamilies
+		if self.nr_topical != 0:
+			self.avg_topical = self.amo_topical / self.nr_topical
+
+		if self.nr_card != 0:
+			self.avg_card = self.amo_card / self.nr_card
+
+		if self.nr_kit != 0:
+			self.avg_kit = self.amo_kit / self.nr_kit
+
+		if self.nr_co2 != 0:
+			self.avg_co2 = self.amo_co2 / self.nr_co2
+
+		if self.nr_exc != 0:
+			self.avg_exc = self.amo_exc / self.nr_exc
+
+		if self.nr_ipl != 0:
+			self.avg_ipl = self.amo_ipl / self.nr_ipl
+
+		if self.nr_ndyag != 0:
+			self.avg_ndyag = self.amo_ndyag / self.nr_ndyag
+
+		if self.nr_quick != 0:
+			self.avg_quick = self.amo_quick / self.nr_quick
+
+		if self.nr_medical != 0:
+			self.avg_medical = self.amo_medical / self.nr_medical
+
+		if self.nr_cosmetology != 0:
+			self.avg_cosmetology = self.amo_cosmetology / self.nr_cosmetology
+
+
+		if self.nr_echo != 0:
+			self.avg_echo = self.amo_echo / self.nr_echo
+
+		if self.nr_gyn != 0:
+			self.avg_gyn = self.amo_gyn / self.nr_gyn
+
+		if self.nr_prom != 0:
+			self.avg_prom = self.amo_prom / self.nr_prom
+
+
+
+		# Ratios
+		if self.nr_consultations != 0:
+			#self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
+			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations))
+
+
+
+
+		# Totals
+		#self.total_amount = self.amo_products + self.amo_services + self.amo_other - self.amo_credit_notes
+		self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
+		
+		self.total_count = self.nr_products + self.nr_services
+		self.total_tickets = tickets
+
+
+
+
+		# Percentages
+
+		# Year - Dep !!!
+		#if self.total_amount_year != 0:
+		#		self.per_amo_total = self.total_amount / self.total_amount_year
+
+
+		# Month
+		if self.total_amount != 0:
+
+			self.per_amo_other = (self.amo_other / self.total_amount)
+
+
+			# Families
+			self.per_amo_credit_notes = (self.amo_credit_notes / self.total_amount)
+
+			self.per_amo_products = (self.amo_products / self.total_amount)
+			self.per_amo_consultations = (self.amo_consultations / self.total_amount)
+			self.per_amo_procedures = (self.amo_procedures / self.total_amount)
+
+
+			# Sub Families
+			self.per_amo_sub_con_med = (self.amo_sub_con_med / self.total_amount)
+			self.per_amo_sub_con_gyn = (self.amo_sub_con_gyn / self.total_amount)
+			self.per_amo_sub_con_cha = (self.amo_sub_con_cha / self.total_amount)
+
+
+			self.per_amo_echo = (self.amo_echo / self.total_amount)
+			self.per_amo_gyn = (self.amo_gyn / self.total_amount)
+			self.per_amo_prom = (self.amo_prom / self.total_amount)
+
+			self.per_amo_topical = (self.amo_topical / self.total_amount)
+			self.per_amo_card = (self.amo_card / self.total_amount)
+			self.per_amo_kit = (self.amo_kit / self.total_amount)
+
+			self.per_amo_co2 = (self.amo_co2 / self.total_amount)
+			self.per_amo_exc = (self.amo_exc / self.total_amount)
+			self.per_amo_ipl = (self.amo_ipl / self.total_amount)
+			self.per_amo_ndyag = (self.amo_ndyag / self.total_amount)
+			self.per_amo_quick = (self.amo_quick / self.total_amount)
+
+			self.per_amo_medical = (self.amo_medical / self.total_amount)
+			self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount)
+
+	# update_sales_fast
+
+
+# ----------------------------------------------------------- Update Year - Fields ----------------------
+	# Owner
+	owner = fields.Selection(
+			[
+				('aggregate', 'Aggregate'),
+				('month', 'Month'),
+				('year', 'Year'),
+				('account', 'Account'),
+			],
+			default='month',
+			required=True,
+		)
+
+	month = fields.Selection(
+			selection=pl_mgt_vars._month_order_list,
+			string='Mes',
+			required=True,
+		)
+
+# ----------------------------------------------------------- Update Year -----------------------
+	@api.multi
+	def update_year(self):
+		"""
+		Update Year
+		"""
+		#print()
+		#print('Pl - Update Year')
+
+		# Mgts
+		mgts = self.env['openhealth.management'].search([
+															('owner', 'in', ['month']),
+															('year', 'in', [self.year]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		# Count
+		count = self.env['openhealth.management'].search_count([
+															('owner', 'in', ['month']),
+															('year', 'in', [self.year]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		#print(mgts)
+		#print(count)
+
+		total = 0		
+		for mgt in mgts:
+			total = total + mgt.total_amount
+
+		self.total_amount_year = total
+
+		if self.total_amount_year != 0:
+			self.per_amo_total = self.total_amount / self.total_amount_year
+
+	# update_year
+
+
 
 
 
@@ -690,212 +961,6 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Sales - Fast -----------------
-	# Update Sales - Fast
-	def update_sales_fast(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('PL - Update Sales Fast')
-
-
-		# Clean
-		self.reset_macro()
-
-
-		# Get Orders
-		if self.type_arr in ['all']:
-			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
-		else:
-			orders, count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
-		#print orders
-		#print count
-
-
-
-# Loop
-		# Init
-		tickets = 0
-		for order in orders:
-			tickets = tickets + 1
-
-			# Filter Block
-			if not order.x_block_flow:
-
-
-				# Sale
-				if order.state in ['sale']:  	# Sale - Do Line Analysis
-
-					# Lines
-					for line in order.order_line:
-
-						# Line Analysis
-						if line.product_id.pl_price_list in ['2019']:
-							mgt_funcs.pl_line_analysis(self, line)
-
-						else:
-							mgt_funcs.line_analysis(self, line)
-
-
-				# Credit Note
-				elif order.state in ['credit_note']:  									# CN - Do Amount Flow
-					self.nr_credit_notes = self.nr_credit_notes + 1
-					self.amo_credit_notes = self.amo_credit_notes + order.x_amount_flow
-
-
-# Analysis
-
-		# Averages
-
-		# Families
-		if self.nr_other != 0:
-			self.avg_other = self.amo_other / self.nr_other
-
-		if self.nr_products != 0:
-			self.avg_products = self.amo_products / self.nr_products
-
-		if self.nr_services != 0:
-			self.avg_services = self.amo_services / self.nr_services
-
-		if self.nr_consultations != 0:
-			self.avg_consultations = self.amo_consultations / self.nr_consultations
-
-		if self.nr_procedures != 0:
-			self.avg_procedures = self.amo_procedures / self.nr_procedures
-
-
-		# Subfamilies
-		if self.nr_topical != 0:
-			self.avg_topical = self.amo_topical / self.nr_topical
-
-		if self.nr_card != 0:
-			self.avg_card = self.amo_card / self.nr_card
-
-		if self.nr_kit != 0:
-			self.avg_kit = self.amo_kit / self.nr_kit
-
-		if self.nr_co2 != 0:
-			self.avg_co2 = self.amo_co2 / self.nr_co2
-
-		if self.nr_exc != 0:
-			self.avg_exc = self.amo_exc / self.nr_exc
-
-		if self.nr_ipl != 0:
-			self.avg_ipl = self.amo_ipl / self.nr_ipl
-
-		if self.nr_ndyag != 0:
-			self.avg_ndyag = self.amo_ndyag / self.nr_ndyag
-
-		if self.nr_quick != 0:
-			self.avg_quick = self.amo_quick / self.nr_quick
-
-		if self.nr_medical != 0:
-			self.avg_medical = self.amo_medical / self.nr_medical
-
-		if self.nr_cosmetology != 0:
-			self.avg_cosmetology = self.amo_cosmetology / self.nr_cosmetology
-
-
-		if self.nr_echo != 0:
-			self.avg_echo = self.amo_echo / self.nr_echo
-
-		if self.nr_gyn != 0:
-			self.avg_gyn = self.amo_gyn / self.nr_gyn
-
-		if self.nr_prom != 0:
-			self.avg_prom = self.amo_prom / self.nr_prom
-
-
-
-
-
-		# Ratios
-		if self.nr_consultations != 0:
-			#self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
-			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations))
-
-
-
-
-		# Totals
-		#self.total_amount = self.amo_products + self.amo_services + self.amo_other - self.amo_credit_notes
-		self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
-		
-		self.total_count = self.nr_products + self.nr_services
-		self.total_tickets = tickets
-
-
-
-
-		# Percentages
-
-		# Year - Dep !!!
-		#if self.total_amount_year != 0:
-		#		self.per_amo_total = self.total_amount / self.total_amount_year
-
-
-		# Month
-		if self.total_amount != 0:
-
-			self.per_amo_other = (self.amo_other / self.total_amount)
-
-
-			# Families
-			self.per_amo_credit_notes = (self.amo_credit_notes / self.total_amount)
-
-			self.per_amo_products = (self.amo_products / self.total_amount)
-			self.per_amo_consultations = (self.amo_consultations / self.total_amount)
-			self.per_amo_procedures = (self.amo_procedures / self.total_amount)
-
-
-			# Sub Families
-			self.per_amo_sub_con_med = (self.amo_sub_con_med / self.total_amount)
-			self.per_amo_sub_con_gyn = (self.amo_sub_con_gyn / self.total_amount)
-			self.per_amo_sub_con_cha = (self.amo_sub_con_cha / self.total_amount)
-
-
-			self.per_amo_echo = (self.amo_echo / self.total_amount)
-			self.per_amo_gyn = (self.amo_gyn / self.total_amount)
-			self.per_amo_prom = (self.amo_prom / self.total_amount)
-
-			self.per_amo_topical = (self.amo_topical / self.total_amount)
-			self.per_amo_card = (self.amo_card / self.total_amount)
-			self.per_amo_kit = (self.amo_kit / self.total_amount)
-
-			self.per_amo_co2 = (self.amo_co2 / self.total_amount)
-			self.per_amo_exc = (self.amo_exc / self.total_amount)
-			self.per_amo_ipl = (self.amo_ipl / self.total_amount)
-			self.per_amo_ndyag = (self.amo_ndyag / self.total_amount)
-			self.per_amo_quick = (self.amo_quick / self.total_amount)
-
-			self.per_amo_medical = (self.amo_medical / self.total_amount)
-			self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount)
-
-	# update_sales_fast
-
-
-
-
-# ----------------------------------------------------------- Update Fast -----------------------
-	@api.multi
-	def update_fast(self):
-		"""
-		Update Button
-		"""
-		print()
-		print('Pl - Update Fast')
-		t0 = timer()
-
-		self.update_sales_fast()
-		
-		self.update_year()
-
-		t1 = timer()
-		self.delta_fast = t1 - t0
-		#print self.delta_fast
-		#print
-	# update
 
 
 # ----------------------------------------------------------- Update Doctors ----------------------
@@ -1420,79 +1485,6 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Year -----------------------
-	@api.multi
-	def update_year(self):
-		"""
-		Update Year
-		"""
-		#print()
-		#print('Pl - Update Year')
-
-
-		# Mgts
-		mgts = self.env['openhealth.management'].search([
-															('owner', 'in', ['month']),
-															#('year', 'in', ['2019']),
-															('year', 'in', [self.year]),
-											],
-												#order='x_serial_nr asc',
-												#limit=1,
-											)
-		# Count
-		count = self.env['openhealth.management'].search_count([
-															('owner', 'in', ['month']),
-															#('year', 'in', ['2019']),
-															('year', 'in', [self.year]),
-											],
-												#order='x_serial_nr asc',
-												#limit=1,
-											)
-
-		#print(mgts)
-		#print(count)
-
-		total = 0
-		
-		for mgt in mgts:
-			#print(mgt.name)
-			#print(mgt.total_amount)
-			total = total + mgt.total_amount
-
-		self.total_amount_year = total
-
-		if self.total_amount_year != 0:
-			self.per_amo_total = self.total_amount / self.total_amount_year
-
-	# update_year
-
-
-
-
-# ----------------------------------------------------------- Natives ----------------------
-	# Owner
-	owner = fields.Selection(
-			[
-				('aggregate', 'Aggregate'),
-
-				('month', 'Month'),
-				('year', 'Year'),
-				('account', 'Account'),
-			],
-			default='month',
-			required=True,
-		)
-
-	month = fields.Selection(
-
-			#selection=ord_vars._month_order_list,
-			selection=pl_mgt_vars._month_order_list,
-		
-			string='Mes',
-			required=True,
-		)
-
-
 # ----------------------------------------------------------- Update Daily -------------------------
 	# Update Daily
 	@api.multi
@@ -1646,4 +1638,3 @@ class Management(models.Model):
 		# Ratios
 		self.ratio_pro_con = 0
 	# reset_macro
-

@@ -22,23 +22,6 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Test Reports -------------------------
-
-	report_management = fields.Many2one(
-			'openhealth.management',
-			string="Report MGT",
-			#required=True,
-		)
-
-	report_marketing = fields.Many2one(
-			'openhealth.marketing',
-			string="Report MKT",
-			#required=True,
-		)
-
-
-
-
 # -----------------------------------------------------------  Create Order Pro - 2019 ------------------
 	@api.multi
 	def create_order_pro(self):
@@ -243,13 +226,11 @@ class Treatment(models.Model):
 	x_test_scenario = fields.Selection(
 			[
 				('all', 'All'),
-
-				('product', 	'product'),
-				('laser', 		'laser'),
+				('product', 'product'),
+				('laser', 'laser'),
 				('cosmetology', 'cosmetology'),
-				('medical', 	'medical'),
-
-				('new', 	'new'),
+				('medical', 'medical'),
+				('new', 'new'),
 			],
 
 			string="Test Scenarios",
@@ -904,6 +885,7 @@ class Treatment(models.Model):
 			#self.test_computes()
 			#self.test_libs()
 
+
 # ----------------------------------------------------------- Test - Integration --------------------
 	@api.multi
 	def test_integration(self):
@@ -921,6 +903,7 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
+
 # ----------------------------------------------------------- Test - Reset --------------------------
 	@api.multi
 	def test_reset(self):
@@ -936,7 +919,21 @@ class Treatment(models.Model):
 		print('SUCCESS !')
 
 
-# ----------------------------------------------------------- Test Report MGT --------------------------
+
+# ----------------------------------------------------------- Relational ----------------------------------------------
+	report_management = fields.Many2one(
+			'openhealth.management',
+			string="Report MGT",
+			#required=True,
+		)
+
+	report_marketing = fields.Many2one(
+			'openhealth.marketing',
+			string="Report MKT",
+			#required=True,
+		)
+
+# ----------------------------------------------------------- Test Report MGT -----------------------------------------
 	@api.multi
 	def test_report_management(self):
 		"""
@@ -950,7 +947,7 @@ class Treatment(models.Model):
 		print('SUCCESS !')
 
 
-# ----------------------------------------------------------- Test Report MKT --------------------------
+# ----------------------------------------------------------- Test Report MKT -----------------------------------------
 	@api.multi
 	def test_report_marketing(self):
 		"""
@@ -962,7 +959,3 @@ class Treatment(models.Model):
 		print()
 		print()
 		print('SUCCESS !')
-
-
-
-

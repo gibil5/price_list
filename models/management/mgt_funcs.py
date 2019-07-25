@@ -8,6 +8,8 @@
 from __future__ import print_function
 import datetime
 
+from . import test_funcs
+
 
 
 # ----------------------------------------------------------- Line Analysis - PL -----------------------
@@ -16,6 +18,10 @@ def pl_line_analysis(self, line):
 	New - 2019
 	Analyses Line to update counters
 	"""
+	# Print Disable
+	test_funcs.disablePrint()
+
+
 	print()
 	print('PL - Line Analysis')
 
@@ -168,6 +174,11 @@ def pl_line_analysis(self, line):
 		#if prod.x_family in ['credit_note']:
 		#	self.nr_credit_notes = self.nr_credit_notes + line.product_uom_qty
 		#	self.amo_credit_notes = self.amo_credit_notes + line.price_subtotal
+
+
+
+	# Print Enable
+	test_funcs.enablePrint()
 
 	return False
 
