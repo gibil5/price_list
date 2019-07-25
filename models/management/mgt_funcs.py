@@ -3,12 +3,167 @@
 	Mgt Funcs
 
 	Created: 			28 May 2018
-	Last mod: 			31 May 2019
+	Last mod: 			25 Jul 2019
 """
 from __future__ import print_function
 import datetime
+from openerp.addons.price_list.models.lib import test_funcs
 
-from . import test_funcs
+
+# ----------------------------------------------------------- Set Ratios --------------------------------------------
+def set_ratios(self):
+	"""
+	Set Ratios
+	"""
+	print()
+	print('Set Ratios')
+
+	# Set Ratios
+	if self.nr_consultations != 0:
+		self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations))
+
+# set_ratios
+
+
+# ----------------------------------------------------------- Set Totals --------------------------------------------
+def set_totals(self, tickets):
+	"""
+	Set Totals
+	"""
+	print()
+	print('Set Totals')
+
+	# Set Totals
+	self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
+	self.total_count = self.nr_products + self.nr_services
+	self.total_tickets = tickets
+
+# set_totals
+
+
+# ----------------------------------------------------------- Set Percentages --------------------------------------------
+def set_percentages(self):
+	"""
+	Set Percentages
+	"""
+	print()
+	print('Set Percentages')
+
+	# Set Percentages
+
+
+	# By Month
+	if self.total_amount != 0:
+
+		self.per_amo_other = (self.amo_other / self.total_amount)
+
+
+		# Families
+		self.per_amo_credit_notes = (self.amo_credit_notes / self.total_amount)
+
+		self.per_amo_products = (self.amo_products / self.total_amount)
+		self.per_amo_consultations = (self.amo_consultations / self.total_amount)
+		self.per_amo_procedures = (self.amo_procedures / self.total_amount)
+
+
+		# Sub Families
+		self.per_amo_sub_con_med = (self.amo_sub_con_med / self.total_amount)
+		self.per_amo_sub_con_gyn = (self.amo_sub_con_gyn / self.total_amount)
+		self.per_amo_sub_con_cha = (self.amo_sub_con_cha / self.total_amount)
+
+
+		self.per_amo_echo = (self.amo_echo / self.total_amount)
+		self.per_amo_gyn = (self.amo_gyn / self.total_amount)
+		self.per_amo_prom = (self.amo_prom / self.total_amount)
+
+		self.per_amo_topical = (self.amo_topical / self.total_amount)
+		self.per_amo_card = (self.amo_card / self.total_amount)
+		self.per_amo_kit = (self.amo_kit / self.total_amount)
+
+		self.per_amo_co2 = (self.amo_co2 / self.total_amount)
+		self.per_amo_exc = (self.amo_exc / self.total_amount)
+		self.per_amo_ipl = (self.amo_ipl / self.total_amount)
+		self.per_amo_ndyag = (self.amo_ndyag / self.total_amount)
+		self.per_amo_quick = (self.amo_quick / self.total_amount)
+
+		self.per_amo_medical = (self.amo_medical / self.total_amount)
+		self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount)
+
+
+	# By Year - Dep !!!
+	#if self.total_amount_year != 0:
+	#		self.per_amo_total = self.total_amount / self.total_amount_year
+
+# set_percentages
+
+
+# ----------------------------------------------------------- Set Averages --------------------------------------------
+def set_averages(self):
+	"""
+	Set Averages
+	"""
+	print()
+	print('Set Averages')
+
+
+# Families
+	if self.nr_other != 0:
+		self.avg_other = self.amo_other / self.nr_other
+
+	if self.nr_products != 0:
+		self.avg_products = self.amo_products / self.nr_products
+
+	if self.nr_services != 0:
+		self.avg_services = self.amo_services / self.nr_services
+
+	if self.nr_consultations != 0:
+		self.avg_consultations = self.amo_consultations / self.nr_consultations
+
+	if self.nr_procedures != 0:
+		self.avg_procedures = self.amo_procedures / self.nr_procedures
+
+
+# Subfamilies
+	if self.nr_topical != 0:
+		self.avg_topical = self.amo_topical / self.nr_topical
+
+	if self.nr_card != 0:
+		self.avg_card = self.amo_card / self.nr_card
+
+	if self.nr_kit != 0:
+		self.avg_kit = self.amo_kit / self.nr_kit
+
+	if self.nr_co2 != 0:
+		self.avg_co2 = self.amo_co2 / self.nr_co2
+
+	if self.nr_exc != 0:
+		self.avg_exc = self.amo_exc / self.nr_exc
+
+	if self.nr_ipl != 0:
+		self.avg_ipl = self.amo_ipl / self.nr_ipl
+
+	if self.nr_ndyag != 0:
+		self.avg_ndyag = self.amo_ndyag / self.nr_ndyag
+
+	if self.nr_quick != 0:
+		self.avg_quick = self.amo_quick / self.nr_quick
+
+	if self.nr_medical != 0:
+		self.avg_medical = self.amo_medical / self.nr_medical
+
+	if self.nr_cosmetology != 0:
+		self.avg_cosmetology = self.amo_cosmetology / self.nr_cosmetology
+
+	if self.nr_echo != 0:
+		self.avg_echo = self.amo_echo / self.nr_echo
+
+	if self.nr_gyn != 0:
+		self.avg_gyn = self.amo_gyn / self.nr_gyn
+
+	if self.nr_prom != 0:
+		self.avg_prom = self.amo_prom / self.nr_prom
+
+# set_averages
 
 
 

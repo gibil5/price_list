@@ -175,15 +175,17 @@
 								<field name="date_begin"/>
 								<field name="date_end"/>
 
-								<field name="delta_fast"/>
-								<field name="delta_doctor"/>
-
 								<field name="configurator"/>
+								<field name="admin_mode"		groups="openhealth.roots"/>
 							</group>
 							<group>
 								<field name="total_count"/>
 								<field name="total_tickets"/>
 								<field name="ratio_pro_con"		widget="percentage"/>
+<!--
+								<field name="delta_fast"		groups="openhealth.roots"/>
+								<field name="delta_doctor"		groups="openhealth.roots"/>
+-->
 							</group>
 							<group>
 								<field name="total_amount"/>
@@ -197,8 +199,13 @@
 <!-- Notebook -->  
 							<!-- Validate --> 
 							<!-- Patients -->
-
+<!--
 						<notebook groups="openhealth.roots"		invisible="1">  
+-->
+						<notebook groups="openhealth.roots"		attrs="{'invisible':[   
+																						('admin_mode','not in',[True]),
+																		]}">  
+
 
 							<page string="Validation">
 								<group>
@@ -220,6 +227,35 @@
 
 							<page string="Pacientes">
 								<field name="patient_line"/>
+							</page>
+
+
+							<!-- Admin -->
+							<page string="Admin">
+
+								<group col="3"	string="Admin" 	>
+
+									<group>
+										<field name="delta_fast"/>
+										<field name="delta_doctor"/>
+										<field name="write_date"    string="Actualizado"/>
+									</group>                        
+
+									<group>
+										<field name="owner"/>
+										<field name="month"/>
+										<field name="year"/>
+									</group>
+
+									<group>
+										<field name="base_dir"/>
+										<field name="state_arr"/>
+										<field name="type_arr"/>
+									</group>
+
+<!--
+-->
+								</group>
 							</page>
 						</notebook>
 
@@ -511,36 +547,6 @@
 
 
 
-
-							<!-- Admin -->
-<!--							
-							<page string="Admin"    groups='openhealth.roots'>
--->
-							<page string="Admin">
-
-								<group col="2"	string="Admin" 	>
-									<group>
-										<field name="owner"/>
-										<field name="month"/>
-										<field name="year"/>
-
-										<field name="base_dir"/>
-
-
-
-										<field name="write_date"    string="Actualizado"/>
-		
-										<field name="state_arr"/>
-										<field name="type_arr"/>
-									</group>
-<!--
-									<group>
-										<field name="delta_fast"/>
-										<field name="delta_doctor"/>
-									</group>                        
--->
-								</group>
-							</page>
 						</notebook>
 					</sheet>
 				</form>
