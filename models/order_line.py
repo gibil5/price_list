@@ -16,6 +16,25 @@ class SaleOrderLine(models.Model):
 	_inherit = 'sale.order.line'
 
 
+
+
+
+# ----------------------------------------------------------- Remove Myself -------------------------------
+
+	@api.multi
+	def remove_myself(self):
+		"""
+		Remove Myself
+		"""
+		print()
+		print('Remove Myself')
+
+		self.state = 'draft'
+		self.unlink()
+
+
+
+
 # ----------------------------------------------------------- Sales -------------------------------
 
 	def get_family(self):

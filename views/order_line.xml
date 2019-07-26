@@ -3,45 +3,152 @@
 
 
 
-        <!-- TREE -->
-        <record model="ir.ui.view" id="order_line_tree_view">
 
-            <field name="name">order_line.tree</field>
-
-            <field name="model">sale.order.line</field>
-
-            <field name="arch" type="xml">
-
-                <tree string="order_line Tree">
-
-
-                    <field name="pl_price_list"/>
-
-
-                    <field name="order_id"/>
+<!-- FORM -->
 <!--
-                    <field name="name"/>
+		<record model="ir.ui.view" id="view_order_line_form">
 -->
-                    <field name="product_id"/>
+		<record model="ir.ui.view" id="sale.view_order_line_form">
 
-                    <field name="create_date"/>
+			<field name="name">sale.order.line.form</field>
 
-                    <field name="__last_update"/>
-                </tree>
-            </field>
-        </record>
+			<field name="model">sale.order.line</field>                     
+
+			<field name="arch" type="xml">
+
+				<form string="Service - Form">
+
+
+<!-- Header -->
+					<header>
+
+						<button
+								type="object"
+								class="oe_highlight"
+
+								name="remove_myself"
+
+								string="Eliminar"
+							/>
+					</header>
+					
+
+
+<!-- Sheet -->
+					<sheet>
+
+						<group>
+							<group>
+								<field name="product_id" />
+								<field name="state"		readonly="0"/>
+							</group>
+
+							<group>
+								<field name="order_id" />                           
+							</group>
+						</group>
+
+
+
+						<group>
+							<group>                             
+								<field name="product_uom_qty" />
+								<field name="price_unit" />
+								<field name="price_subtotal" />
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+					</sheet>
+
+					<notebook></notebook>
+				</form>
+			</field>
+		</record>
+
+<!--
+						<group>
+							<group>
+							</group>
+							<group>
+							</group>
+						</group>
+-->
+
+<!--
+								<field name="name" />
+								<field name="product_uom_qty" />
+								<field name="price_unit" />
+								<field name="price_subtotal" />
+
+
+								<field name="service_product_id" />
+								<field name="service_vip_id" />
+								<field name="service_consultation_id" />
+								<field name="service_co2_id" />
+								<field name="service_quick_id" />
+								<field name="service_excilite_id" />
+								<field name="service_ipl_id" />
+								<field name="service_ndyag_id" />
+								<field name="service_medical_id" />
+								<field name="service_cosmetology_id" />
+-->
+
+
+
+
+
+
+
+<!-- TREE -->
+<!--
+		<record model="ir.ui.view" id="order_line_tree_view">
+		<record model="ir.ui.view" id="sale.order_line_tree_view">
+-->
+<!--
+		<record model="ir.ui.view" id="sale.view_order_line_tree">
+
+			<field name="name">order_line.tree</field>
+			
+			<field name="model">sale.order.line</field>
+			
+			<field name="arch" type="xml">
+
+
+
+				<tree string="order_line Tree">
+
+					<button 
+						type="object" 
+						class="oe_highlight"    
+
+						name="open_line_current" 
+
+						string="Entrar"
+					/>
+
+
+					<field name="pl_price_list"/>
+
+
+					<field name="product_id"/>
+
+
+					<field name="price_subtotal"/>
+				</tree>
+			</field>
+		</record>
+-->
+<!--
+					<field name="order_id"/>
+					<field name="create_date"/>
+					<field name="__last_update"/>
+					<field name="name"/>
+-->
 	
 
-
-		<!-- Actions -->
-		<record model="ir.actions.act_window" id="order_line_list_action">
-			
-			<field name="name">Order Line</field>
-			
-			<field name="res_model">sale.order.line</field>
-			
-			<field name="view_mode">tree,form</field>
-		</record>
 
 
 	</data>

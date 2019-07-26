@@ -115,11 +115,41 @@
 -->
 
 <xpath expr="//field[@name='order_line']" position="attributes">
-
 	<attribute name='attrs'>{'readonly': [('state', 'in', ('sent'))]}</attribute>
 </xpath>
 
 
+<!--
+	<field name="pl_price_list"/>
+-->
+    <!-- Hot Button -->
+<!--
+<xpath expr="//field[@name='product_id']" position="before">
+    <button 
+        type="object" 
+        class="oe_highlight"    
+
+        name="open_line_current" 
+
+        string="Entrar"
+    />
+
+</xpath>
+-->
+<!--
+<xpath expr="//tree/field[@name='name']" position="after">
+-->
+<xpath expr="//tree/field[@name='product_id']" position="before">
+    <button 
+        type="object" 
+        class="oe_highlight"    
+
+        name="open_line_current" 
+
+        string="E"
+    />
+	<field name="state"/>
+</xpath>
 
 
 

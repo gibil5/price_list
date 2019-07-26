@@ -72,14 +72,15 @@
 
 
 
+
+
+		'views/order_line.xml',					# Here !
+		'views/order_line_actions.xml',
 		'views/order.xml',
 
-		'views/order_line.xml',
+
 
 		'views/closing.xml',
-
-
-
 		'views/report_order_line.xml',
 
 
