@@ -4,15 +4,22 @@
 
 	Created: 			28 May 2018
 	Last updated: 		25 Jul 2019
+
+	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
+	  without having to know its Implementation. 
 """
 from __future__ import print_function
 from timeit import default_timer as timer
 import collections
 import datetime
 from openerp import models, fields, api
-from . import mgt_funcs
 from . import pl_mgt_vars
 from . import pl_ord_vars
+
+from . import mgt_funcs
+from . import mgt_line_funcs
+
+from . import stats
 
 class Management(models.Model):
 	"""
@@ -57,6 +64,28 @@ class Management(models.Model):
 
 
 
+# ----------------------------------------------------------- Statistics -----------------
+	
+	#statistics = stats.Statistics('management')
+	statistics = stats.Statistics()
+
+	@api.multi
+	def check_stats(self):
+		"""
+		Check Stats
+		"""
+		print()
+		print('Check Stats')
+
+		print(self.statistics)
+		print(self.statistics.name)
+
+
+		#self.statistics.print()
+		self.statistics.print_short()
+
+
+
 # ----------------------------------------------------------- Update Sales - Fast -----------------
 	def update_sales_fast(self):
 		"""
@@ -80,6 +109,10 @@ class Management(models.Model):
 # Loop
 
 		# Init
+		#self.statistics = stats.Statistics(self.name)
+		self.statistics.initialize(self.name)
+
+
 		tickets = 0
 
 		for order in orders:
@@ -94,12 +127,20 @@ class Management(models.Model):
 					# Lines
 					for line in order.order_line:
 
-						# Line Analysis
+						# Line Analysis - Here !
 						if line.product_id.pl_price_list in ['2019']:
-							mgt_funcs.pl_line_analysis(self, line)
+							#mgt_funcs.pl_line_analysis(self, line)
+							mgt_line_funcs.line_analysis_2019(self, line)
 
 						else:
-							mgt_funcs.line_analysis(self, line)
+							#mgt_funcs.line_analysis(self, line)
+							mgt_line_funcs.line_analysis_2018(self, line)
+
+
+					# Object Oriented - Stats
+					self.statistics.update(line)
+
+
 
 				# Credit Note
 				elif order.state in ['credit_note']:  									# CN - Do Amount Flow
@@ -123,6 +164,12 @@ class Management(models.Model):
 		# Set Percentages
 		mgt_funcs.set_percentages(self)
 
+
+
+		# Object Oriented - Stats
+		self.statistics.set_stats()
+		print(self.statistics)
+		print(self.statistics.name)
 	# update_sales_fast
 
 
@@ -1428,21 +1475,14 @@ class Management(models.Model):
 		self.total_count = 0
 		self.total_tickets = 0
 
-		# Nr
-		self.nr_sub_con_med = 0
-		self.nr_sub_con_gyn = 0
-		self.nr_sub_con_cha = 0
 
-		self.nr_echo = 0
-		self.nr_gyn = 0
-		self.nr_prom = 0
-
-		self.nr_credit_notes = 0
-		self.nr_other = 0
+		# Nr - 1st level
 		self.nr_products = 0
 		self.nr_services = 0
 		self.nr_consultations = 0
 		self.nr_procedures = 0
+
+		# Nr - 2nd level
 		self.nr_topical = 0
 		self.nr_card = 0
 		self.nr_kit = 0
@@ -1453,23 +1493,25 @@ class Management(models.Model):
 		self.nr_quick = 0
 		self.nr_medical = 0
 		self.nr_cosmetology = 0
+		self.nr_echo = 0
+		self.nr_gyn = 0
+		self.nr_prom = 0
+		self.nr_credit_notes = 0
+		self.nr_other = 0
+		self.nr_sub_con_med = 0
+		self.nr_sub_con_gyn = 0
+		self.nr_sub_con_cha = 0
 
-		# Amo
-		self.amo_sub_con_med = 0
-		self.amo_sub_con_gyn = 0
-		self.amo_sub_con_cha = 0
 
-		self.amo_echo = 0
-		self.amo_gyn = 0
-		self.amo_prom = 0
-
-		self.per_amo_total = 0
-		self.amo_credit_notes = 0
-		self.amo_other = 0
+		# Amo - 1st Level
 		self.amo_products = 0
 		self.amo_services = 0
 		self.amo_consultations = 0
 		self.amo_procedures = 0
+		self.amo_credit_notes = 0
+		self.amo_other = 0
+
+		# Amo - 2nd Level
 		self.amo_topical = 0
 		self.amo_card = 0
 		self.amo_kit = 0
@@ -1480,11 +1522,19 @@ class Management(models.Model):
 		self.amo_quick = 0
 		self.amo_medical = 0
 		self.amo_cosmetology = 0
+		self.amo_echo = 0
+		self.amo_gyn = 0
+		self.amo_prom = 0
+		self.amo_sub_con_med = 0
+		self.amo_sub_con_gyn = 0
+		self.amo_sub_con_cha = 0
+
+
 
 		# Per Amo
+		self.per_amo_total = 0
 		self.per_amo_families = 0
 		self.per_amo_subfamilies = 0
-
 
 		self.per_amo_sub_con_med = 0
 		self.per_amo_sub_con_gyn = 0

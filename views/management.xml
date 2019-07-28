@@ -127,6 +127,7 @@
 
 
 						<!-- Create Time Line -->
+<!--
 						<button 
 								type="object"
 								class="oe_highlight"								
@@ -135,7 +136,17 @@
 
 								string="Create TL"
 						/>
+-->
+						<!-- Check Stats -->
+						<button 
+								type="object"
+								class="oe_highlight"								
+								groups="openhealth.roots"
 
+								name="check_stats"
+
+								string="Check Stats"
+						/>
 
 
 						<!-- Right -->

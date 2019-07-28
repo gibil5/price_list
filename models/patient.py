@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 """
 		Patient
+
  		Created: 		26 Aug 2016
 		Last up: 		 2 May 2019
+
+	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
+	  without having to know its Implementation. 
 """
 from __future__ import print_function
 from openerp import models, fields, api
-#from . import pat_vars
-#from . import pat_funcs
-#from . import chk_patient
 from openerp.addons.openhealth.models.libs import count_funcs
 
 class Patient(models.Model):

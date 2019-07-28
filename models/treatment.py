@@ -5,6 +5,9 @@
 		treatment.py
 		Created: 			26 Aug 2016
 		Last up: 	 		24 Jul 2019
+
+	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
+	  without having to know its Implementation. 
 """
 from __future__ import print_function
 from openerp import models, fields, api
