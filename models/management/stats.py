@@ -14,10 +14,10 @@ from . import mgt_line_funcs
 class Statistics:
 
 
-	#def __init__(self, name):
-	def initialize(self, name):
+	#def initialize(self, name):
+	def __init__(self, name):
 		print()
-		print('Stats - Init')
+		print('Stats - Initialize')
 		self.name = name
 
 		# Nr - 1st level
@@ -114,12 +114,13 @@ class Statistics:
 	def update(self, line):
 		print()
 		print('Stats - Update')
-		print(line)
-
+		#print(line)
 		mgt_line_funcs.line_analysis(self, line)
 
 
 
 	def set_stats(self):
 		print()
-		print('Stats - Set Stats')		
+		print('Stats - Set Stats')
+
+

@@ -17,8 +17,8 @@ def set_ratios(self):
 	"""
 	Set Ratios
 	"""
-	print()
-	print('Set Ratios')
+	#print()
+	#print('Set Ratios')
 
 	# Set Ratios
 	if self.nr_consultations != 0:
@@ -32,8 +32,8 @@ def set_totals(self, tickets):
 	"""
 	Set Totals
 	"""
-	print()
-	print('Set Totals')
+	#print()
+	#print('Set Totals')
 
 	# Set Totals
 	self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
@@ -48,8 +48,8 @@ def set_percentages(self):
 	"""
 	Set Percentages
 	"""
-	print()
-	print('Set Percentages')
+	#print()
+	#print('Set Percentages')
 
 	# Set Percentages
 
@@ -105,8 +105,8 @@ def set_averages(self):
 	"""
 	Set Averages
 	"""
-	print()
-	print('Set Averages')
+	#print()
+	#print('Set Averages')
 
 
 # Families

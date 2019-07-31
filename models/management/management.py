@@ -35,6 +35,13 @@ class Management(models.Model):
 
 # ----------------------------------------------------------- Admin ---------------------------------------------
 
+	nr_products_stats = fields.Integer()
+
+	nr_consultations_stats = fields.Integer()
+
+	nr_procedures_stats = fields.Integer()
+
+
 	admin_mode = fields.Boolean(
 		)
 
@@ -46,8 +53,8 @@ class Management(models.Model):
 		"""
 		Update Button
 		"""
-		print()
-		print('Pl - Update Fast')
+		#print()
+		#print('Pl - Update Fast')
 
 		t0 = timer()
 
@@ -67,7 +74,7 @@ class Management(models.Model):
 # ----------------------------------------------------------- Statistics -----------------
 	
 	#statistics = stats.Statistics('management')
-	statistics = stats.Statistics()
+	#statistics = stats.Statistics()
 
 	@api.multi
 	def check_stats(self):
@@ -92,7 +99,14 @@ class Management(models.Model):
 		Update Sales - Fast
 		"""
 		print()
-		print('PL - Update Sales Fast')
+		print('Update Sales Fast')
+
+
+		# Init
+		#self.statistics.initialize(self.name)
+		#self.statistics = stats.Statistics(self.name)
+		statistics = stats.Statistics(self.name)
+
 
 
 		# Clean
@@ -107,12 +121,6 @@ class Management(models.Model):
 
 		
 # Loop
-
-		# Init
-		#self.statistics = stats.Statistics(self.name)
-		self.statistics.initialize(self.name)
-
-
 		tickets = 0
 
 		for order in orders:
@@ -138,7 +146,8 @@ class Management(models.Model):
 
 
 					# Object Oriented - Stats
-					self.statistics.update(line)
+					#self.statistics.update(line)
+					statistics.update(line)
 
 
 
@@ -167,9 +176,16 @@ class Management(models.Model):
 
 
 		# Object Oriented - Stats
-		self.statistics.set_stats()
-		print(self.statistics)
-		print(self.statistics.name)
+		#statistics.set_stats()
+		
+		# Print
+		print(statistics)
+		print(statistics.name)
+		
+		print(statistics.nr_products)
+		print(statistics.nr_consultations)
+		print(statistics.nr_procedures)
+		
 	# update_sales_fast
 
 
