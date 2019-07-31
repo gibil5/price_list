@@ -16,8 +16,10 @@ class Statistics:
 
 	#def initialize(self, name):
 	def __init__(self, name):
-		print()
-		print('Stats - Initialize')
+		#print()
+		#print('Stats - Initialize')
+
+		# Init
 		self.name = name
 
 		# Nr - 1st level
@@ -77,8 +79,8 @@ class Statistics:
 
 
 	def print(self):
-		print()
-		print('Stats - Print')
+		#print()
+		#print('Stats - Print')
 		#print(self.locals())
 
 		#for name, value in globals().items():
@@ -112,8 +114,8 @@ class Statistics:
 
 
 	def update(self, line):
-		print()
-		print('Stats - Update')
+		#print()
+		#print('Stats - Update')
 		#print(line)
 		mgt_line_funcs.line_analysis(self, line)
 

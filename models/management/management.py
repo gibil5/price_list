@@ -7,6 +7,8 @@
 
 	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
 	  without having to know its Implementation. 
+
+	- Respect the Law of Demeter. Avoid Train Wrecks.
 """
 from __future__ import print_function
 from timeit import default_timer as timer
@@ -41,9 +43,7 @@ class Management(models.Model):
 
 	nr_procedures_stats = fields.Integer()
 
-
-	admin_mode = fields.Boolean(
-		)
+	admin_mode = fields.Boolean()
 
 
 
@@ -86,7 +86,6 @@ class Management(models.Model):
 
 		print(self.statistics)
 		print(self.statistics.name)
-
 
 		#self.statistics.print()
 		self.statistics.print_short()
@@ -136,12 +135,14 @@ class Management(models.Model):
 					for line in order.order_line:
 
 						# Line Analysis - Here !
-						if line.product_id.pl_price_list in ['2019']:
-							#mgt_funcs.pl_line_analysis(self, line)
+						
+						#if line.product_id.pl_price_list in ['2019']:		# Train Wreck of size 3 - Violates the LOD !
+						if line.is_price_list_2019():						# Respects the LOD !
+
+
 							mgt_line_funcs.line_analysis_2019(self, line)
 
 						else:
-							#mgt_funcs.line_analysis(self, line)
 							mgt_line_funcs.line_analysis_2018(self, line)
 
 
@@ -178,13 +179,13 @@ class Management(models.Model):
 		# Object Oriented - Stats
 		#statistics.set_stats()
 		
+
 		# Print
-		print(statistics)
-		print(statistics.name)
-		
-		print(statistics.nr_products)
-		print(statistics.nr_consultations)
-		print(statistics.nr_procedures)
+		#print(statistics)
+		#print(statistics.name)
+		#print(statistics.nr_products)
+		#print(statistics.nr_consultations)
+		#print(statistics.nr_procedures)
 		
 	# update_sales_fast
 

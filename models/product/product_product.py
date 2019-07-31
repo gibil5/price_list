@@ -4,14 +4,35 @@
  
 		Created: 			 9 Apr 2019
 		Last up: 	 		 3 Jul 2019
+
+	- Respect the Law of Demeter. Avoid Train Wrecks.
 """
+from __future__ import print_function
 from openerp import models, fields, api
 
 class ProductProduct(models.Model):
-
+	"""
+	Product Product
+	Used by Order Line
+	"""
 	_inherit = 'product.product'
 
 	_order = 'pl_idx'
+
+
+# ----------------------------------------------------------- Is Price List 2019 -------------------------------
+
+	def is_price_list_2019(self):
+		print()
+		print('Product - Is Price List 2019')
+
+		if self.pl_price_list in ['2019']:					# Respects the LOD
+			is_2019 = True
+
+		else:		
+			is_2019 = False
+
+		return is_2019
 
 
 

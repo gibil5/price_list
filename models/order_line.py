@@ -3,6 +3,8 @@
 	Sale Order Line	
 	Created:            26 Aug 2016
 	Last mod:            3 Jun 2019
+
+	- Respect the Law of Demeter. Avoid Train Wrecks.
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -16,7 +18,20 @@ class SaleOrderLine(models.Model):
 	_inherit = 'sale.order.line'
 
 
+# ----------------------------------------------------------- Is Price List 2019 -------------------------------
 
+	def is_price_list_2019(self):
+		print()
+		print('Order Line - Is Price List 2019')
+
+		#if self.product_id.pl_price_list in ['2019']:		# Train Wreck of Size 2
+		if self.product_id.is_price_list_2019():			# Respects the LOD
+			is_2019 = True
+
+		else:		
+			is_2019 = False
+
+		return is_2019
 
 
 # ----------------------------------------------------------- Remove Myself -------------------------------
@@ -31,8 +46,6 @@ class SaleOrderLine(models.Model):
 
 		self.state = 'draft'
 		self.unlink()
-
-
 
 
 # ----------------------------------------------------------- Sales -------------------------------
