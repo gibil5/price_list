@@ -1,10 +1,8 @@
 
 Price List - 2019
-
 For Openhealth
-
 Created:	April 2019
+Last up:
 
-July
-
-31
+Aug
+2

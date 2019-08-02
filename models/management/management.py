@@ -9,6 +9,9 @@
 	  without having to know its Implementation. 
 
 	- Respect the Law of Demeter. Avoid Train Wrecks.
+
+	- Treat the Active Record as a data structure and create separate objects that contain the business rules 
+	  and that hide their internal data. These Objects are just instances of the Active Record.	
 """
 from __future__ import print_function
 from timeit import default_timer as timer
@@ -17,10 +20,8 @@ import datetime
 from openerp import models, fields, api
 from . import pl_mgt_vars
 from . import pl_ord_vars
-
 from . import mgt_funcs
 from . import mgt_line_funcs
-
 from . import stats
 
 class Management(models.Model):
@@ -138,8 +139,6 @@ class Management(models.Model):
 						
 						#if line.product_id.pl_price_list in ['2019']:		# Train Wreck of size 3 - Violates the LOD !
 						if line.is_price_list_2019():						# Respects the LOD !
-
-
 							mgt_line_funcs.line_analysis_2019(self, line)
 
 						else:
@@ -149,7 +148,6 @@ class Management(models.Model):
 					# Object Oriented - Stats
 					#self.statistics.update(line)
 					statistics.update(line)
-
 
 
 				# Credit Note
@@ -530,15 +528,21 @@ class Management(models.Model):
 
 
 		# Get Holidays
-		days_inactive = []
-		if self.configurator.name not in [False]:
-			for day in self.configurator.day_line:
-				if day.holiday:
-					days_inactive.append(day.date)
+
+		days_inactive = self.configurator.get_inactive_days()					# Respects the LOD !
 		print()
 		print('Holidays')
 		print(days_inactive)
 		print()
+
+
+		#days_inactive = []
+		#if self.configurator.name not in [False]:		
+			#for day in self.configurator.day_line:								# Train Wreck of size 2 - Violates the LOD
+			#	if day.holiday:
+			#		days_inactive.append(day.date)
+
+
 
 
 

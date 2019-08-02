@@ -6,15 +6,30 @@
 	Last updated: 		25 Jan 2019
 """
 from __future__ import print_function
-
 from openerp import models, fields, api
 
 class ConfiguratorEmr(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-	#_inherit = 'openhealth.configurator'
 	_inherit = 'openhealth.configurator.emr'
+
+
+
+# ----------------------------------------------------------- Get Inactive Days -------------------------------
+
+	def get_inactive_days(self):
+		print()
+		print('Configurator - Get Inactive Days')
+
+		days_inactive = []
+
+		if self.name not in [False]:		
+			for day in self.day_line:								# Respects the LOD
+				if day.holiday:
+					days_inactive.append(day.date)
+
+		return days_inactive
 
 
 
