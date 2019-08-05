@@ -19,6 +19,9 @@ class ConfiguratorEmr(models.Model):
 # ----------------------------------------------------------- Get Inactive Days -------------------------------
 
 	def get_inactive_days(self):
+		"""
+		Gets Inactive Days. From Configurator.
+		"""
 		print()
 		print('Configurator - Get Inactive Days')
 

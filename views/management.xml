@@ -35,6 +35,7 @@
 								string="Analisis Paciente"
 						/>
 
+
 						<!-- Update Doctors -->
 						<!--						
 						<button 
@@ -45,14 +46,19 @@
 						/>
 						-->
 
+<!--
+								name="pl_update_doctors"
+-->
 						<!-- pl - Update Doctors -->
 						<button 
 								type="object" 
 								class="oe_highlight"
-								name="pl_update_doctors"
+
+								name="update_doctors"
 								
 								string="Analisis Doctor"
 						/>
+
 
 
 						<!-- See Sales -->
@@ -80,11 +86,15 @@
 						/>
 
 
+<!--
+								name="pl_update_productivity"
+-->
 						<!-- Update Productivity -->
 						<button 
 								type="object" 
 								class="oe_highlight"
-								name="pl_update_productivity"
+
+								name="update_productivity"
 								
 								string="Act Productividad"                             
 						/>
@@ -156,17 +166,23 @@
 								type="object"
 								class="oe_highlight oe_right"
 								groups="openhealth.roots"
+
 								name="reset"
 
 								string="Reset"
 						/>
 
+
+<!--
+								name="pl_validate"								
+-->
 						<!-- Validate -->
 						<button 
 								type="object"
 								class="oe_highlight oe_right"
 								groups="openhealth.roots"
-								name="pl_validate"								
+
+								name="validate"								
 
 								string="Validate"
 						/>

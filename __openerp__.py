@@ -9,7 +9,7 @@
 
 	'description': 
 		"""
-		2 Aug 2019
+		4 Aug 2019
 
 		(Since 22 April, in Prod)
 
@@ -20,6 +20,7 @@
 			- A Class exposes an abstract interface that allows users to manipulate the Essence of the data,
 			without having to know its Implementation. 
 			- Respect the Law of Demeter. Avoid Train Wreckages.
+			- Handle Exceptions.
 
 
 		Remember OO Concepts:

@@ -20,19 +20,19 @@ class ProductProduct(models.Model):
 	_order = 'pl_idx'
 
 
-# ----------------------------------------------------------- Is Price List 2019 -------------------------------
+# ----------------------------------------------------------- Is Current Price List -------------------------------
 
-	def is_price_list_2019(self):
+	def is_current_price_list(self):
 		print()
-		print('Product - Is Price List 2019')
+		print('Product - Is Current Price List')
 
 		if self.pl_price_list in ['2019']:					# Respects the LOD
-			is_2019 = True
+			is_current = True
 
 		else:		
-			is_2019 = False
+			is_current = False
 
-		return is_2019
+		return is_current
 
 
 

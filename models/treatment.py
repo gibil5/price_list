@@ -8,6 +8,13 @@
 
 	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
 	  without having to know its Implementation. 
+
+	- Respect the Law of Demeter. Avoid Train Wrecks.
+
+	- Treat the Active Record as a data structure and create separate objects that contain the business rules 
+	  and that hide their internal data. These Objects are just instances of the Active Record.	
+
+	- Handle Exceptions.
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -16,6 +23,8 @@ from openerp.exceptions import Warning as UserError
 from . import reco_funcs
 from . import pl_creates
 from . import test_treatment
+
+from . import tre_exc
 
 class Treatment(models.Model):
 	"""
@@ -61,7 +70,8 @@ class Treatment(models.Model):
 
 				if (service.service.name not in [False]) 	and 	(service.service.pl_price_list in [price_list]):
 
-					print(service.service.name)
+					#print(service.service.name)
+
 					#print(service.service)
 					#print(service.service.id)
 					#print(service.price_applied)
@@ -156,8 +166,8 @@ class Treatment(models.Model):
 
 				if (service.service.name not in [False]) and (service.service.pl_price_list in [price_list]):
 
-					print()
-					print(service.service.name)
+					#print()
+					#print(service.service.name)
 
 					# Product
 					product = self.env['product.product'].search([
@@ -167,7 +177,7 @@ class Treatment(models.Model):
 														order='create_date desc',
 														limit=1,
 													)
-					print(product)
+					#print(product)
 					#print(product.name)
 					#print()
 					#print()
@@ -235,7 +245,6 @@ class Treatment(models.Model):
 				('medical', 'medical'),
 				('new', 'new'),
 			],
-
 			string="Test Scenarios",
 		)
 
@@ -872,6 +881,9 @@ class Treatment(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Last Level - Testing ---------------------------------------------
+
 # ----------------------------------------------------------- Test --------------------------------
 	# Test
 	@api.multi
@@ -906,7 +918,6 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
-
 # ----------------------------------------------------------- Test - Reset --------------------------
 	@api.multi
 	def test_reset(self):
@@ -920,8 +931,6 @@ class Treatment(models.Model):
 		print()
 		print()
 		print('SUCCESS !')
-
-
 
 # ----------------------------------------------------------- Relational ----------------------------------------------
 	report_management = fields.Many2one(
@@ -948,7 +957,6 @@ class Treatment(models.Model):
 		print()
 		print()
 		print('SUCCESS !')
-
 
 # ----------------------------------------------------------- Test Report MKT -----------------------------------------
 	@api.multi

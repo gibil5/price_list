@@ -18,20 +18,20 @@ class SaleOrderLine(models.Model):
 	_inherit = 'sale.order.line'
 
 
-# ----------------------------------------------------------- Is Price List 2019 -------------------------------
+# ----------------------------------------------------------- Is Current Price List -------------------------------
 
-	def is_price_list_2019(self):
+	def is_current_price_list(self):
 		print()
-		print('Order Line - Is Price List 2019')
+		print('Order Line - Is Current Price List')
 
 		#if self.product_id.pl_price_list in ['2019']:		# Train Wreck of Size 2
-		if self.product_id.is_price_list_2019():			# Respects the LOD
-			is_2019 = True
+		if self.product_id.is_current_price_list():			# Respects the LOD
+			is_current = True
 
 		else:		
-			is_2019 = False
+			is_current = False
 
-		return is_2019
+		return is_current
 
 
 # ----------------------------------------------------------- Remove Myself -------------------------------

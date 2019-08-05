@@ -14,81 +14,43 @@
 			- Have no Side Effects.
 			- Prefer Exceptions to Returning Error Codes.
 			- Don’t Repeat Yourself.
+
+
+	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
+	  without having to know its Implementation. 
+
+	- Respect the Law of Demeter. Avoid Train Wrecks.
+
+	- Treat the Active Record as a data structure and create separate objects that contain the business rules 
+	  and that hide their internal data. These Objects are just instances of the Active Record.	
+
+	- Handle Exceptions.
+
 """
 from __future__ import print_function
-
-#from . import test_funcs
 from openerp.addons.price_list.models.lib import test_funcs
 
+from . import tre_exc
 
 
 
-# ----------------------------------------------- Test Report Management ----------------------------------------------
-def test_report_management(self):
-	"""
-	Test Report Management
-	"""
-	print()
-	print('Test Report Management')
-
-	# Print Disable
-	test_funcs.disablePrint()
+# ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 
 
-	# Init
-	report = self.report_management
-
-	# Test
-	report.update_fast()
-
-	report.update_patients()
-
-	report.pl_update_doctors()
-
-	report.pl_update_productivity()
-
-	report.update_daily()
-
-
-	# Print Enable
-	test_funcs.enablePrint()
-
-
-
-
-# ----------------------------------------------- Test Report Marketing -----------------------------------------------
-def test_report_marketing(self):
-	"""
-	Test Report Marketing
-	"""
-	print()
-	print('Test Report Marketing')
-
-	# Print Disable
-	test_funcs.disablePrint()
-
-
-	# Init
-	report = self.report_marketing
-
-	# Test
-	report.update_patients()
-
-	report.pl_update_sales()
-
-
-	# Print Enable
-	test_funcs.enablePrint()
-
-
-
-# ----------------------------------------------- Test Integration ----------------------------------------------------
+# ----------------------------------------------- Test Integration --------------------------------
 def test_integration_treatment(self):
 	"""
  	Integration Tests for the Treatment Class.
 	"""
 	print()
 	print('Test Integration Function')
+
+
+	# Handle Exceptions
+	tre_exc.handle_exceptions(self)
+
+
+	# Go
 
 	# Create Consultation
 	create_consultation(self)
@@ -106,8 +68,53 @@ def test_integration_treatment(self):
 
 
 
+# ----------------------------------------------- Test Report Management ----------------------------------------------
+def test_report_management(self):
+	"""
+	Test Report Management
+	"""
+	print()
+	print('Test Report Management')
 
-# ----------------------------------------------- Consultation --------------------------------------------------------
+	# Print Disable
+	test_funcs.disablePrint()
+
+	# Test
+	report = self.report_management
+	report.update_fast()
+	report.update_patients()
+	report.pl_update_doctors()
+	report.pl_update_productivity()
+	report.update_daily()
+
+	# Print Enable
+	test_funcs.enablePrint()
+
+
+# ----------------------------------------------- Test Report Marketing -----------------------------------------------
+def test_report_marketing(self):
+	"""
+	Test Report Marketing
+	"""
+	print()
+	print('Test Report Marketing')
+
+	# Print Disable
+	test_funcs.disablePrint()
+
+	# Test
+	report = self.report_marketing
+	report.update_patients()
+	report.pl_update_sales()
+
+	# Print Enable
+	test_funcs.enablePrint()
+
+
+
+# ----------------------------------------------------------- Second Level ---------------------------------------------
+
+# ----------------------------------------------- Consultation ------------------------------------
 def create_consultation(self):
 	"""
 	Create Consultation
@@ -390,12 +397,12 @@ def create_recommendations_2018(self):
 									)
 		product_id = product.id
 
-		print()
-		print(tst)
+		#print()
+		#print(tst)
+		#print(product.name)
+		#print(product.pl_price_list)
 		#print(product)
 		#print(product_id)
-		print(product.name)
-		print(product.pl_price_list)
 		#print(product.pl_treatment)
 
 
@@ -655,13 +662,13 @@ def create_recommendations_2019(self):
 									)
 		product_id = product.id
 
-		print()
-		print(tst)
-		print(product)
-		print(product_id)
-		print(product.name)
-		print(product.pl_price_list)
-		print(product.pl_treatment)
+		#print()
+		#print(tst)
+		#print(product)
+		#print(product_id)
+		#print(product.name)
+		#print(product.pl_price_list)
+		#print(product.pl_treatment)
 
 		#if False:
 		#	print(product.pl_family)
@@ -677,21 +684,17 @@ def create_recommendations_2019(self):
 		# Create
 		service = self.env[model].create({
 														'service': 			product_id,
-
 														'family': 			product.pl_family,
 														'subfamily': 		product.pl_subfamily,
-
 														'zone': 			product.pl_zone,
 														'pathology': 		product.pl_pathology,
 														'sessions': 		product.pl_sessions,
 														'level': 			product.pl_level,
 														'time': 			product.pl_time,
-
 														'price_applied': 	product.list_price,
-
 														'sel_zone': 		product.pl_zone,
-
 														'pl_treatment': 	product.pl_treatment,
+
 														'treatment': 		self.id,
 											})
 # create_recommendations_2019

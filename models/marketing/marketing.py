@@ -4,6 +4,17 @@
 
  	Created: 				19 May 2018
  	Last up: 	 			 3 Jul 2019
+
+	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
+	  without having to know its Implementation. 
+
+	- Respect the Law of Demeter. Avoid Train Wrecks.
+
+	- Treat the Active Record as a data structure and create separate objects that contain the business rules 
+	  and that hide their internal data. These Objects are just instances of the Active Record.	
+
+	- Handle Exceptions.
+
 """
 from __future__ import print_function
 import datetime
@@ -16,6 +27,10 @@ from . import mkt_funcs
 from . import mkt_vars
 from openerp.addons.price_list.models.management import mgt_funcs
 
+from . import mkt_exc
+
+from openerp.addons.price_list.models.lib import test_funcs
+
 class Marketing(models.Model):
 	"""
 	Marketing Report
@@ -24,46 +39,391 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Natives ------------------------------------------------------
+# ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
+
+
+# ----------------------------------------------------------- Update Patients - Button ---------------------
+	# Update Patients
+	@api.multi
+	def update_patients(self):
+		"""
+		Update Patients
+		"""
+		#print()
+		print('Pl - Update Patients')
+
+
+		# Handle Exceptions
+		mkt_exc.handle_exceptions(self)
+
+
+		# Go
+		# QC
+		t0 = timer()
+		now_0 = datetime.datetime.now()
+
+		# Clear
+		self.reset()
+
+		# Get Patients
+		mode = self.mode
+		patients, count = mkt_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
+		self.total_count = count
+
+
+		# Loop
+		for patient in patients:
+
+			# Create
+			pat_line = self.patient_line.create({
+														'patient': patient.id,
+														'date_create': patient.create_date,
+														'date_record': patient.x_date_record,
+														'sex': patient.sex,
+														'dob': patient.dob,
+														'age': patient.age,
+														'first_contact': patient.x_first_contact,
+														'education': patient.x_education_level,
+														'vip': patient.x_vip,
+														'country': patient.country_id.name,
+														'city': patient.city,
+														'district': patient.street2,
+														'function': patient.function,
+														'emr': 		patient.x_id_code,
+														'phone_1': 	patient.mobile,
+														'phone_2': 	patient.phone,
+														'email': 	patient.email,
+
+														'marketing_id': self.id,
+													})
+			# Old
+			ret = pat_line.update_fields()
+
+			# New
+			pat_line.update_emr()
+
+
+		# Set Stats
+		self.update_stats()
+
+		# Update Vip Sales
+		self.update_vip_sales()
+
+		# Build Histo
+		lib_marketing.build_histogram(self)
+
+		# Build Media - Dep ?
+		lib_marketing.build_media(self)
+
+		# Build Places
+		lib_marketing.build_districts(self)
+		lib_marketing.build_cities(self)
+
+		t1 = timer()
+		now_1 = datetime.datetime.now()
+		self.delta_patients = t1 - t0
+
+	# update_patients
+
+
+
+
+# ----------------------------------------------------------- Update Sales - Button ------------------------
+	# Update Sales
+	@api.multi
+	def pl_update_sales(self):
+		"""
+		Pl - Update Sales
+		"""
+		print()
+		print('Pl - Update Sales')
+
+
+		# Handle Exceptions
+		mkt_exc.handle_exceptions(self)
+
+
+		# Go
+
+		# Print Disable
+		test_funcs.disablePrint()
+
+		# Init 
+		self.delta_create_sale_lines = 0
+		self.delta_analyse_sale_lines = 0
+		self.delta_analyse_patient_lines = 0
+
+		# Analyze
+		self.create_sale_lines()
+		self.analyse_sale_lines()
+		self.analyse_patient_lines()
+		
+		# Benchmark
+		self.delta_sales_pl = self.delta_create_sale_lines + self.delta_analyse_sale_lines + self.delta_analyse_patient_lines
+
+
+		# Print Enable
+		test_funcs.enablePrint()
+
+	# pl_update_sales
+
+
+
+
+# ----------------------------------------------------------- Create Sale Lines - Button ------------------------
+	# Create Sales
+	@api.multi
+	def create_sale_lines(self):
+		"""
+		Create Sale Lines
+		"""
+		print()
+		print('Create Sale Lines')
+
+
+		# Handle Exceptions
+		mkt_exc.handle_exceptions(self)
+
+
+
+		# Go
+
+		# Print Disable
+		test_funcs.disablePrint()
+
+
+		# Benchmark
+		t0 = timer()
+
+
+		# Clean
+		self.sale_line.unlink()
+
+
+		# Get - Only Sales - Not CN
+		orders, count = mgt_funcs.get_orders_filter_fast_fast(self, self.date_begin, self.date_end)
+		#print(orders)
+		print(count)
+
+		for order in orders:
+
+			if order.state in ['credit_note']:
+				print('Gotcha !')
+				print(order.state)
+				print()
+
+			is_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)
+
+			#print(is_new)
+
+			#if is_new:
+			if is_new 	or 	order.patient.x_test:
+				print('Gotcha')
+				print(order.patient.name)
+
+
+				# Loop
+				for line in order.order_line:
+
+					price_net = line.price_unit * line.product_uom_qty
+
+
+					# Family Analysis
+					if line.pl_price_list in ['2019']:
+						family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis(self, line)
+
+					elif line.pl_price_list in ['2018']:
+						family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis_2018(self, line)
+
+
+					# Using Getters - OO
+					subsubfamily = line.product_id.get_subsubfamily()
+
+
+					sale_line = self.sale_line.create({
+															'date': order.date_order,
+															'order': order.id,
+															'patient': order.patient.id,
+															'doctor': order.x_doctor.id,
+															'product_id': line.product_id.id,
+															'product_uom_qty': line.product_uom_qty,
+															'price_unit': line.price_unit,
+															'price_net': price_net,
+															'family': family,
+															'subfamily': subfamily,
+															'subsubfamily': subsubfamily,
+															'price_list': line.product_id.pl_price_list,
+															'state': order.state,
+
+															'marketing_id': self.id,
+						})
+					#print(sale_line)
+
+
+		t1 = timer()
+		self.delta_create_sale_lines = t1 - t0
+
+		# Print Enable
+		test_funcs.enablePrint()
+
+	# create_sale_lines
+
+
+
+
+
+# ----------------------------------------------------------- Reset - Button ------------------------------
+	# Reset
+	@api.multi
+	def reset(self):
+		"""
+		Reset
+		"""
+		print()
+		print('Reset')
+
+
+		# Handle Exceptions
+		mkt_exc.handle_exceptions(self)
+
+
+		# Go
+		self.delta_patients = 0
+		self.delta_sales_pl = 0
+		self.delta_create_sale_lines = 0
+		self.delta_analyse_sale_lines = 0
+		self.delta_analyse_patient_lines = 0
+
+		# Counts
+		self.sale_line_consultation_count = 0
+		self.sale_line_procedure_count = 0
+		self.sale_line_product_count = 0
+		self.sale_line_budget_count = 0
+		self.sale_line_sale_count = 0
+		self.price_list_2019_count = 0
+		self.price_list_2018_count = 0
+		self.patient_product_count = 0
+		self.patient_sale_count = 0
+		self.patient_consu_count = 0
+		self.patient_proc_count = 0
+		self.patient_budget_count = 0
+		self.total_count = 0
+		self.patient_reco_count = 0
+
+		# Unlinks
+		self.sale_line.unlink()
+		self.patient_line.unlink()
+		self.histo_line.unlink()
+		self.media_line.unlink()
+		self.district_line.unlink()
+		self.country_line.unlink()
+		self.city_line.unlink()
+
+
+		# First Contact
+		self.how_facebook = 0
+		self.how_instagram = 0
+		self.how_callcenter = 0
+		self.how_old_patient = 0
+		self.how_facebook_per = 0
+		self.how_instagram_per = 0
+		self.how_callcenter_per = 0
+		self.how_old_patient_per = 0
+
+		# Standard
+		self.how_u = 0
+		self.how_reco = 0
+		self.how_tv = 0
+		self.how_radio = 0
+		self.how_web = 0
+		self.how_mail = 0
+
+		# Dep
+		self.how_inter = 0
+		self.how_none = 0
+
+		# Standard
+		self.how_u_per = 0
+		self.how_reco_per = 0
+		self.how_tv_per = 0
+		self.how_radio_per = 0
+		self.how_web_per = 0
+		self.how_mail_per = 0
+
+		# Dep
+		self.how_inter_per = 0
+		self.how_none_per = 0
+
+		# Sex
+		self.sex_male = 0
+		self.sex_female = 0
+		self.sex_undefined = 0
+		self.sex_male_per = 0
+		self.sex_female_per = 0
+		self.sex_undefined_per = 0
+
+		# Age
+		self.age_sum = 0
+		self.age_mean = 0
+		self.age_max = 0
+		self.age_min = 0
+		self.age_undefined = 0
+
+		# Education
+		self.edu_fir = 0
+		self.edu_sec = 0
+		self.edu_tec = 0
+		self.edu_uni = 0
+		self.edu_mas = 0
+		self.edu_u = 0
+		self.edu_fir_per = 0
+		self.edu_sec_per = 0
+		self.edu_tec_per = 0
+		self.edu_uni_per = 0
+		self.edu_mas_per = 0
+		self.edu_u_per = 0
+
+		# Vip
+		self.vip_already_true = 0
+		self.vip_already_false = 0
+		self.vip_true = 0
+		self.vip_false = 0
+		self.vip_true_per = 0
+		self.vip_false_per = 0
+
+	# reset
+
+
+
+# ----------------------------------------------------------- Second Level ---------------------------------------------
+
+# ----------------------------------------------------------- Natives -----------------------------
 	
 	mode = fields.Selection(
-
 			selection=mkt_vars._mode_list,
-
 			default='normal',
 			required=True,
 		)
 
+	delta_create_sale_lines = fields.Float()
 
-
-	delta_create_sale_lines = fields.Float(
-		)
-
-	delta_analyse_sale_lines = fields.Float(
-		)
+	delta_analyse_sale_lines = fields.Float()
 	
-	delta_analyse_patient_lines = fields.Float(
-		)
+	delta_analyse_patient_lines = fields.Float()
 
 	delta_sales_pl = fields.Float(
 			'Delta Ventas',
 		)
 
-
-
-
 	patient_product_count = fields.Integer(
 			'Nr Productos',
 		)
-
-
 
 	# Alt
 	sale_line_sale_count = fields.Integer(
 			#'Nr Ventas Alt',
 			'Nr Ventas',
 		)
-
 	sale_line_consultation_count = fields.Integer(
 			#'Nr Consultas Alt',
 			'Nr Consultas',
@@ -98,23 +458,19 @@ class Marketing(models.Model):
 		)
 
 
-
-	test_obj = fields.Boolean(
-		)
+	test_obj = fields.Boolean()
 
 
 	# Vip
 	vip_true_per = fields.Float(
 			'Vip Si %',
 			readonly=True,
-			#digits=(16,1),
 			digits=(12, 3),
 		)
 
 	vip_false_per = fields.Float(
 			'Vip No %',
 			readonly=True,
-			#digits=(16,1),
 			digits=(12, 3),
 		)
 
@@ -277,10 +633,8 @@ class Marketing(models.Model):
 
 			if family in ['consultation']:
 				self.sale_line_consultation_count = count
-
 			elif family in ['procedure']:
 				self.sale_line_procedure_count = count
-
 			elif family in ['product']:
 				self.sale_line_product_count = count
 
@@ -289,462 +643,6 @@ class Marketing(models.Model):
 		self.delta_analyse_sale_lines = t1 - t0
 
 	# analyse_sale_lines
-
-
-
-# ----------------------------------------------------------- Create Sale Lines ------------------------
-	# Create Sales
-	@api.multi
-	def create_sale_lines(self):
-		"""
-		Create Sale Lines
-		"""
-		print()
-		print('Create Sale Lines')
-
-		# Benchmark
-		t0 = timer()
-
-
-		# Clean
-		self.sale_line.unlink()
-
-
-		# Get - Only Sales - Not CN
-		orders, count = mgt_funcs.get_orders_filter_fast_fast(self, self.date_begin, self.date_end)
-		#print(orders)
-		print(count)
-
-		for order in orders:
-
-			if order.state in ['credit_note']:
-				print('Gotcha !')
-				print(order.state)
-				print()
-
-			is_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)
-
-			#print(is_new)
-
-			#if is_new:
-			if is_new 	or 	order.patient.x_test:
-				print('Gotcha')
-				print(order.patient.name)
-
-
-				# Loop
-				for line in order.order_line:
-
-					price_net = line.price_unit * line.product_uom_qty
-
-
-
-					# Family Analysis
-					if line.pl_price_list in ['2019']:
-						family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis(self, line)
-
-					elif line.pl_price_list in ['2018']:
-						family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis_2018(self, line)
-
-
-					# Using Getters - OO
-					subsubfamily = line.product_id.get_subsubfamily()
-
-
-					sale_line = self.sale_line.create({
-															'date': order.date_order,
-															'order': order.id,
-
-
-															'patient': order.patient.id,
-															'doctor': order.x_doctor.id,
-
-
-															'product_id': line.product_id.id,
-															'product_uom_qty': line.product_uom_qty,
-															'price_unit': line.price_unit,
-															'price_net': price_net,
-															'family': family,
-															'subfamily': subfamily,
-															'subsubfamily': subsubfamily,
-															'price_list': line.product_id.pl_price_list,
-
-															'state': order.state,
-
-															'marketing_id': self.id,
-						})
-					#print(sale_line)
-
-
-		t1 = timer()
-		self.delta_create_sale_lines = t1 - t0
-
-	# create_sale_lines
-
-
-
-# ----------------------------------------------------------- Update Sales ------------------------
-	# Update Sales
-	@api.multi
-	def pl_update_sales(self):
-		"""
-		Pl - Update Sales
-		"""
-		print()
-		print('Pl - Update Sales')
-
-		self.delta_create_sale_lines = 0
-		self.delta_analyse_sale_lines = 0
-		self.delta_analyse_patient_lines = 0
-
-
-		self.create_sale_lines()
-
-		self.analyse_sale_lines()
-
-		self.analyse_patient_lines()
-		
-
-		# Benchmark
-		#t1 = timer()
-		#self.delta_sales_pl = t1 - t0
-		self.delta_sales_pl = self.delta_create_sale_lines + self.delta_analyse_sale_lines + self.delta_analyse_patient_lines
-
-
-
-
-# ----------------------------------------------------------- Update Sales ------------------------
-	# Update Sales
-	@api.multi
-	def update_sales(self):
-		"""
-		Update Sales
-		"""
-		print()
-		print('Update Sales')
-
-		# QC
-		t0 = timer()
-
-		# Clean Macros
-		self.patient_budget_count = 0
-		self.patient_sale_count = 0
-		self.patient_consu_count = 0
-		self.patient_proc_count = 0
-		self.patient_product_count = 0
-
-
-
-		self.price_list_2019_count = 0
-		self.price_list_2018_count = 0
-
-		# Init
-		#self.vip_true = self.vip_already_true
-		self.vip_false = self.vip_already_false
-		self.vip_true = 0
-		#self.vip_false = 0
-
-
-
-		# Loop - Patient Lines
-		for pat_line in self.patient_line:
-
-			# Update Line
-			pat_line.update_fields_mkt()
-
-
-# Budgets
-			# Search
-			#budgets = self.env['sale.order'].search([
-			#												('state', '=', 'draft'),
-			#												('patient', '=', pat_line.patient.name),
-			#										],
-			#											order='date_order asc',
-			#											#limit=1,
-			#									)
-
-			# By Library
-			budgets, count = mgt_funcs.get_orders_filter_fast_patient_draft(self, self.date_begin, self.date_end, pat_line.patient.name)
-
-
-			# Clean
-			pat_line.budget_line.unlink()
-
-			# Create Budgets
-			for budget in budgets:
-				doctor = budget.x_doctor
-				for line in budget.order_line:
-					budget_line = pat_line.budget_line.create({
-																'name': line.name,
-																'doctor': doctor.id,
-																'product_id': line.product_id.id,
-																'x_date_created': budget.date_order,
-																'product_uom_qty': line.product_uom_qty,
-																'price_unit': line.price_unit,
-																'patient_line_budget_id': pat_line.id,
-																'marketing_id': self.id,
-						})
-			# Count
-			self.patient_budget_count = self.patient_budget_count + len(pat_line.budget_line)
-
-			# Update Nrs
-			pat_line.update_nrs()
-
-
-
-
-
-# Sales
-			# Search - DEP - Not Date Restrictions. Over calculates
-			#orders = self.env['sale.order'].search([
-			#												('state', '=', 'sale'),
-			#												('patient', '=', pat_line.patient.name),
-			#										],
-			#											order='date_order asc',
-			#											#limit=1,
-			#									)
-
-
-			# Get - Only Sales - Not CN
-			orders, count = mgt_funcs.get_orders_filter_fast_patient(self, self.date_begin, self.date_end, pat_line.patient.name)
-			#print(orders)
-			#print(count)
-
-
-
-
-			# Clean
-			pat_line.sale_line.unlink()
-			pat_line.consu_line.unlink()
-			pat_line.procedure_line.unlink()
-
-
-			# Create
-			for order in orders:
-
-				doctor = order.x_doctor
-
-				for line in order.order_line:
-
-
-					# Line Analysis
-					mkt_funcs.line_analysis(self, line)
-
-
-
-					prod = line.product_id
-
-					# Sale
-					sale_line = pat_line.sale_line.create({
-															'name': line.name,
-															'doctor': doctor.id,
-															'product_id': line.product_id.id,
-															'x_date_created': order.date_order,
-															'product_uom_qty': line.product_uom_qty,
-															'price_unit': line.price_unit,
-
-															'patient_line_sale_id': pat_line.id,
-															'marketing_id': self.id,
-						})
-
-
-
-					# Consultation Lines
-					# 2018
-					#if prod.x_family in ['consultation']:
-
-					# 2019
-					#if prod.pl_subfamily in ['consultation']:
-
-					# 2019 and 2018
-					if prod.pl_subfamily in ['consultation'] or prod.x_family in ['consultation']:
-
-						consu_line = pat_line.consu_line.create({
-																	'name': line.name,
-																	'product_id': line.product_id.id,
-																	'x_date_created': order.date_order,
-																	'product_uom_qty': line.product_uom_qty,
-																	'price_unit': line.price_unit,
-
-																	'patient_line_consu_id': pat_line.id,
-																	'marketing_id': self.id,
-																})
-
-
-					# Procedure Lines
-
-					# 2018
-					#if 	(prod.type not in ['product'])   and   (prod.x_family not in ['consultation']):
-
-					# 2019
-					#if 	(prod.pl_subfamily in ['co2', 'excilite', 'm22', 'quick', 'echography', 'gynecology', 'medical', 'cosmetology',  ]):
-					#if 	(prod.pl_subfamily in ['co2', 'excilite', 'm22', 'quick', 'echography', 'gynecology', 'medical', 'cosmetology', 'promotion', ]):
-
-					# 2019 and 2018
-					if 	(prod.pl_subfamily in ['co2', 'excilite', 'm22', 'quick', 'echography', 'gynecology', 'medical', 'cosmetology', 'promotion', ])		or prod.x_family in ['laser', 'medical', 'cosmetology']:
-
-						procedure_line = pat_line.procedure_line.create({
-																			'name': line.name,
-																			'product_id': line.product_id.id,
-																			'x_date_created': order.date_order,
-																			'product_uom_qty': line.product_uom_qty,
-																			'price_unit': line.price_unit,
-
-																			'patient_line_proc_id': pat_line.id,
-																			'marketing_id': self.id,
-																		})
-						# Sale Line Analysis - Procedure
-						#mkt_funcs.pl_sale_line_analysis(self, line, pat_line)
-						mkt_funcs.pl_sale_line_analysis_service(self, line, pat_line)
-
-
-
-					if line.product_id.type in ['product']:
-						# Sale Line Analysis - Product
-						mkt_funcs.pl_sale_line_analysis_product(self, line, pat_line)
-
-
-
-
-			# Update Counts
-			self.patient_sale_count = self.patient_sale_count + len(pat_line.sale_line)
-			self.patient_consu_count = self.patient_consu_count + len(pat_line.consu_line)
-			self.patient_proc_count = self.patient_proc_count + len(pat_line.procedure_line)
-
-			# Update Nrs
-			pat_line.update_nrs()
-
-
-
-
-		# Per - Vip
-		#jx
-		#if self.total_count != 0:
-		#self.vip_true_per = mkt_funcs.get_per(self, self.vip_true, self.total_count)
-		#self.vip_false_per = mkt_funcs.get_per(self, self.vip_false, self.total_count)
-
-		#print('Per - Vip')
-		#print(self.vip_true)
-		#print(self.vip_false)
-		if self.total_count not in [0]:
-			self.vip_already_true_per = float(self.vip_already_true) / float(self.total_count)
-			self.vip_true_per = float(self.vip_true) / float(self.total_count)
-			self.vip_false_per = float(self.vip_false) / float(self.total_count)
-		#print(self.vip_true_per)
-		#print(self.vip_false_per)
-
-
-		# QC
-		t1 = timer()
-		self.delta_sales = t1 - t0
-
-	# update_sales
-
-
-# ----------------------------------------------------------- Update Patients ---------------------
-	# Update Patients
-	@api.multi
-	def update_patients(self):
-		"""
-		Update Patients
-		"""
-		#print()
-		print('Pl - Update Patients')
-
-
-		# QC
-		t0 = timer()
-		now_0 = datetime.datetime.now()
-
-
-		# Clear
-		#self.patient_line.unlink()
-		self.reset()
-
-
-		# Get Patients
-		#mode = 'normal'
-		mode = self.mode
-		patients, count = mkt_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
-
-		self.total_count = count
-
-
-		# Loop
-		for patient in patients:
-
-
-			#emr = self.patient.x_id_code
-			#phone_1 = self.patient.mobile
-			#phone_2 = self.patient.phone
-			#email = self.patient.email
-
-
-			# Create
-			pat_line = self.patient_line.create({
-														'patient': patient.id,
-														'date_create': patient.create_date,
-														'date_record': patient.x_date_record,
-														'sex': patient.sex,
-														'dob': patient.dob,
-														'age': patient.age,
-														'first_contact': patient.x_first_contact,
-														'education': patient.x_education_level,
-														'vip': patient.x_vip,
-														'country': patient.country_id.name,
-														'city': patient.city,
-														'district': patient.street2,
-														'function': patient.function,
-
-														'emr': 		patient.x_id_code,
-														'phone_1': 	patient.mobile,
-														'phone_2': 	patient.phone,
-														'email': 	patient.email,
-
-														'marketing_id': self.id,
-													})
-			# Old
-			ret = pat_line.update_fields()
-
-			# New
-			pat_line.update_emr()
-
-
-
-
-		# Set Stats
-		self.update_stats()
-
-
-		# Update Vip Sales
-		self.update_vip_sales()
-
-
-
-		# Build Histo
-		lib_marketing.build_histogram(self)
-
-
-		# Build Median - Dep ?
-		lib_marketing.build_media(self)
-		#pl_lib_marketing.pl_build_media(self)
-
-
-		# Build Places
-		lib_marketing.build_districts(self)
-		lib_marketing.build_cities(self)
-
-
-
-		t1 = timer()
-		now_1 = datetime.datetime.now()
-		self.delta_patients = t1 - t0
-
-
-		#self.vip_already_true = self.vip_true
-		#self.vip_already_false = self.vip_false
-
-	# update_patients
 
 
 
@@ -764,7 +662,6 @@ class Marketing(models.Model):
 
 		# Collections
 		country_arr = []
-
 
 
 		# Loop
@@ -858,9 +755,6 @@ class Marketing(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------------- Natives ----------------------
 
 	year = fields.Selection(
@@ -893,7 +787,6 @@ class Marketing(models.Model):
 	age_mean = fields.Float(
 			'Edad Promedio',
 			readonly=True,
-			#digits=(16,1),
 			digits=(12, 3),
 		)
 
@@ -936,24 +829,19 @@ class Marketing(models.Model):
 			#'M %',
 			'Masculino %',
 			readonly=True,
-			#digits=(16,1),
 			digits=(12, 3),
-			#digits=(12,1),
-			#digits=(12,2),
 		)
 
 	sex_female_per = fields.Float(
 			#'F %',
 			'Femenino %',
 			readonly=True,
-			#digits=(16,1),
 			digits=(12, 3),
 		)
 
 	sex_undefined_per = fields.Float(
 			'Error %',
 			readonly=True,
-			#digits=(16,1),
 			digits=(12, 3),
 		)
 
@@ -997,26 +885,6 @@ class Marketing(models.Model):
 		)
 
 # ----------------------------------------------------------- First Contact ----------------------------------
-
-# From Patient
-#_first_contact_list = [
-#						('facebook','Facebook'), 					# New
-#						('instagram','Instagram'), 					# New
-#						('callcenter','Call Center'), 				# New
-#						('old_patient','Paciente Antiguo'), 		# New
-
-#						('recommendation','Recomendación'),
-#						('tv','Tv'),
-#						('radio','Radio'),
-#						('website','Web'),
-#						('mail_campaign','Mailing'),
-
-
-#						('internet','Internet'), 	# Dep
-#						('none','Ninguno'), 		# Dep
-#]
-
-
 
 	# First Contact - Nr
 	how_u = fields.Integer(
@@ -1086,9 +954,6 @@ class Marketing(models.Model):
 
 
 
-
-
-
 	# First Contact - %
 
 	# New Per
@@ -1116,8 +981,6 @@ class Marketing(models.Model):
 			readonly=True,
 			digits=(12, 3),
 		)
-
-
 
 
 	# Standard
@@ -1158,7 +1021,6 @@ class Marketing(models.Model):
 		)
 
 
-
 	# Dep
 	how_inter_per = fields.Float(
 			'Internet %',
@@ -1171,141 +1033,6 @@ class Marketing(models.Model):
 			readonly=True,
 			digits=(12, 3),
 		)
-
-
-
-# ----------------------------------------------------------- Reset ------------------------------
-	# Reset
-	@api.multi
-	def reset(self):
-		"""
-		Reset
-		"""
-		print('Pl - Reset')
-
-		self.delta_patients = 0
-		self.delta_sales_pl = 0
-		self.delta_create_sale_lines = 0
-		self.delta_analyse_sale_lines = 0
-		self.delta_analyse_patient_lines = 0
-
-
-		self.sale_line.unlink()
-
-		self.sale_line_consultation_count = 0
-		self.sale_line_procedure_count = 0
-		self.sale_line_product_count = 0
-		self.sale_line_budget_count = 0
-		self.sale_line_sale_count = 0
-
-		self.price_list_2019_count = 0
-		self.price_list_2018_count = 0
-
-
-		self.patient_product_count = 0
-		self.patient_sale_count = 0
-		self.patient_consu_count = 0
-		self.patient_proc_count = 0
-		self.patient_budget_count = 0
-
-		self.total_count = 0
-		self.patient_reco_count = 0
-
-
-
-		self.patient_line.unlink()
-		self.histo_line.unlink()
-		self.media_line.unlink()
-		self.district_line.unlink()
-		self.country_line.unlink()
-		self.city_line.unlink()
-
-
-		# First Contact
-
-		# New
-		self.how_facebook = 0
-		self.how_instagram = 0
-		self.how_callcenter = 0
-		self.how_old_patient = 0
-
-		self.how_facebook_per = 0
-		self.how_instagram_per = 0
-		self.how_callcenter_per = 0
-		self.how_old_patient_per = 0
-
-
-
-		# Standard
-		self.how_u = 0
-		self.how_reco = 0
-		self.how_tv = 0
-		self.how_radio = 0
-		self.how_web = 0
-		self.how_mail = 0
-
-		# Dep
-		self.how_inter = 0
-		self.how_none = 0
-
-
-		# Standard
-		self.how_u_per = 0
-		self.how_reco_per = 0
-		self.how_tv_per = 0
-		self.how_radio_per = 0
-		self.how_web_per = 0
-		self.how_mail_per = 0
-
-		# Dep
-		self.how_inter_per = 0
-		self.how_none_per = 0
-
-
-
-		# Sex
-		self.sex_male = 0
-		self.sex_female = 0
-		self.sex_undefined = 0
-		self.sex_male_per = 0
-		self.sex_female_per = 0
-		self.sex_undefined_per = 0
-
-
-		# Age
-		self.age_sum = 0
-		self.age_mean = 0
-		self.age_max = 0
-		self.age_min = 0
-		self.age_undefined = 0
-
-
-		# Education
-		self.edu_fir = 0
-		self.edu_sec = 0
-		self.edu_tec = 0
-		self.edu_uni = 0
-		self.edu_mas = 0
-		self.edu_u = 0
-
-		self.edu_fir_per = 0
-		self.edu_sec_per = 0
-		self.edu_tec_per = 0
-		self.edu_uni_per = 0
-		self.edu_mas_per = 0
-		self.edu_u_per = 0
-
-
-		# Vip
-		self.vip_already_true = 0
-		self.vip_already_false = 0
-
-		self.vip_true = 0
-		self.vip_false = 0
-
-		self.vip_true_per = 0
-		self.vip_false_per = 0
-
 
 
 
@@ -1326,15 +1053,14 @@ class Marketing(models.Model):
 			# Clear
 			self.patient_line.unlink()
 
-
 			# Clear
 			model = 'openhealth.marketing.order.line'
 
 			objs = self.env[model].search([
 												('marketing_id', 'in', [False]),
 											],
-			#								order='date_begin asc',
-			#								#limit=1,
+											#order='date_begin asc',
+											#limit=1,
 				)
 
 			# Unlink
@@ -1354,3 +1080,5 @@ class Marketing(models.Model):
 												)
 			print(count)
 			print('End')
+
+	# clean

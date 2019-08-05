@@ -256,13 +256,11 @@ def pl_create_order(self):
 													'x_dni': self.partner_id.x_dni,
 													'x_id_doc': self.patient.x_id_doc,
 													'x_id_doc_type': self.patient.x_id_doc_type,
-
 													'x_family': 'procedure',
-													'treatment': self.id,
 
-													#'pricelist_id': pl.id,
+													'treatment': self.id,
 												})
-	print(order)
+	#print(order)
 
 
 
@@ -271,10 +269,8 @@ def pl_create_order(self):
 
 		product = cart_line.product
 
-
-		print(product)
-		print(product.name)
-
+		#print(product)
+		#print(product.name)
 
 		# Create Order Line
 		ol = order.order_line.create({
@@ -283,13 +279,8 @@ def pl_create_order(self):
 										'price_unit': 	cart_line.price,
 										'product_uom_qty': cart_line.qty,
 
-										#'price_unit': 	price_manual,
-										#'price_unit': 	product.list_price,
-
 										'order_id': 	order.id,
 									})
-
-
 	return order
 
 
