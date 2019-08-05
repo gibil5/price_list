@@ -17,9 +17,24 @@ from product import *
 
 
 
+# Order
+from order import *
+#from . import order_line
+#from . import order
+#from . import payment_method_line
+#from . import closing
+#from . import order_report_nex
+#from . import report_sale_product
 
+
+
+
+
+# Electronic
 from . import electronic_order
 from . import electronic_container
+
+# Patient
 from . import patient
 
 
@@ -35,8 +50,6 @@ from . import patient
 #from . import container
 from . import pricelist_container
 
-from . import order_line
-from . import report_sale_product
 
 
 
@@ -60,9 +73,6 @@ from . import report_sale_product
 from . import cart_line
 from . import treatment
 
-from . import order
-from . import payment_method_line
-from . import closing
 
 
 from . import account_line
@@ -74,7 +84,6 @@ from . import configurator_emr
 from . import procedure
 
 
-from . import order_report_nex
 
 
 

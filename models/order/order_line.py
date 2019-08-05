@@ -8,9 +8,10 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-from . import px_vars
 from . import chk_order_line
 				
+#from . import px_vars  		# Dep
+
 class SaleOrderLine(models.Model):
 	""" 
 	Sale Order Line
@@ -172,8 +173,9 @@ class SaleOrderLine(models.Model):
 
 # ---------------------------------------------- Fields - Categorized -----------------------------
 	
-	pl_price_list = fields.Selection(
-			selection=px_vars._price_list_list,
+	#pl_price_list = fields.Selection(
+	pl_price_list = fields.Char(
+			#selection=px_vars._price_list_list,		# Dep
 			string='Lista de Precios',
 
 			compute='_compute_pl_price_list',
