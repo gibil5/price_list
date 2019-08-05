@@ -83,8 +83,8 @@ def test_report_management(self):
 	report = self.report_management
 	report.update_fast()
 	report.update_patients()
-	report.pl_update_doctors()
-	report.pl_update_productivity()
+	report.update_doctors()
+	report.update_productivity()
 	report.update_daily()
 
 	# Print Enable

@@ -31,11 +31,18 @@ from order import *
 
 
 # Electronic
-from . import electronic_order
-from . import electronic_container
+from electronic import *
+#from . import electronic_order
+#from . import electronic_container
+#from . import account_line
+#from . import account_contasis
+
+
+
 
 # Patient
-from . import patient
+from patient import *
+#from . import patient
 
 
 
@@ -49,9 +56,6 @@ from . import patient
 
 #from . import container
 from . import pricelist_container
-
-
-
 
 
 #from . import service
@@ -70,18 +74,17 @@ from . import pricelist_container
 
 
 
-from . import cart_line
-from . import treatment
-
-
-
-from . import account_line
-from . import account_contasis
-
-
 from . import configurator_emr
 
-from . import procedure
+
+
+
+from treatment import *
+#from . import cart_line
+#from . import treatment
+#from . import procedure
+
+
 
 
 

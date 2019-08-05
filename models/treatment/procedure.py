@@ -6,7 +6,9 @@
 	Last updated: 	 	 	25 Apr 2019
 """
 from openerp import models, fields, api
-from . import px_vars
+
+#from . import px_vars		# Dep
+
 from . import pro_con_funcs
 from . import pro_ses_funcs
 
@@ -68,10 +70,11 @@ class Procedure(models.Model):
 # ---------------------------------------------- Fields ------------------------------------------
 	# Laser
 	#laser = fields.Selection(
-	pl_laser = fields.Selection(
+	#pl_laser = fields.Selection(
+	pl_laser = fields.Char(
 
 			#selection=prodvars._laser_type_list,
-			selection=px_vars._treatment_list,
+			#selection=px_vars._treatment_list,  			# Dep
 		
 			string="Pl Láser",
 
