@@ -170,7 +170,7 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Sale Lines - Button ------------------------
+# ----------------------------------------------------------- Create Sale Lines - Button Hidden ------------------------
 	# Create Sales
 	@api.multi
 	def create_sale_lines(self):
@@ -180,21 +180,16 @@ class Marketing(models.Model):
 		print()
 		print('Create Sale Lines')
 
-
 		# Handle Exceptions
 		mkt_exc.handle_exceptions(self)
 
 
-
 		# Go
-
 		# Print Disable
-		test_funcs.disablePrint()
-
+		#test_funcs.disablePrint()
 
 		# Benchmark
 		t0 = timer()
-
 
 		# Clean
 		self.sale_line.unlink()
@@ -203,30 +198,26 @@ class Marketing(models.Model):
 		# Get - Only Sales - Not CN
 		orders, count = mgt_funcs.get_orders_filter_fast_fast(self, self.date_begin, self.date_end)
 		#print(orders)
-		print(count)
+		#print(count)
 
 		for order in orders:
-
-			if order.state in ['credit_note']:
-				print('Gotcha !')
-				print(order.state)
-				print()
+			#if order.state in ['credit_note']:
+			#	print('Gotcha !')
+			#	print(order.state)
+			#	print()
 
 			is_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)
 
 			#print(is_new)
 
 			#if is_new:
-			if is_new 	or 	order.patient.x_test:
-				print('Gotcha')
-				print(order.patient.name)
-
+			if is_new or order.patient.x_test:
+				#print('Gotcha')
+				#print(order.patient.name)
 
 				# Loop
 				for line in order.order_line:
-
 					price_net = line.price_unit * line.product_uom_qty
-
 
 					# Family Analysis
 					if line.pl_price_list in ['2019']:
@@ -259,12 +250,11 @@ class Marketing(models.Model):
 						})
 					#print(sale_line)
 
-
 		t1 = timer()
 		self.delta_create_sale_lines = t1 - t0
 
 		# Print Enable
-		test_funcs.enablePrint()
+		#test_funcs.enablePrint()
 
 	# create_sale_lines
 

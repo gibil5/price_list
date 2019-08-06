@@ -5,7 +5,7 @@
 		order.py
 
 		Created: 			26 Aug 2016
-		Last up: 	 		17 Jul 2019
+		Last up: 	 		 6 Aug 2019
 """
 from __future__ import print_function
 import datetime
@@ -15,7 +15,7 @@ from openerp.exceptions import Warning as UserError
 
 class sale_order(models.Model):
 	"""
-	high level support for doing this and that.
+	Inherits Sale Classe from Openhealth
 	"""
 	_inherit = 'sale.order'
 
@@ -24,7 +24,7 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Ticket - Header - Getters ----------------
 	def get_firm_address(self):
 		"""
-		high level support for doing this and that.
+		Used by Print Ticket
 		"""
 		return self.patient.x_firm_address
 
@@ -34,7 +34,7 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Ticket - Header - Getters ----------------
 	def get_company_name(self):
 		"""
-		Used by Print Ticket.
+		Used by Print Ticket
 		"""
 		self.init_configurator()
 
@@ -45,10 +45,9 @@ class sale_order(models.Model):
 		return company_name
 
 
-
 	def get_company_address(self):
 		"""
-		Used by Print Ticket.
+		Used by Print Ticket
 		"""
 		self.init_configurator()
 
@@ -60,10 +59,9 @@ class sale_order(models.Model):
 		return company_address
 
 
-
 	def get_company_phone(self):
 		"""
-		Used by Print Ticket.
+		Used by Print Ticket
 		"""
 		self.init_configurator()
 
@@ -74,10 +72,9 @@ class sale_order(models.Model):
 		return company_phone
 
 
-
 	def get_company_ruc(self):
 		"""
-		Used by Print Ticket.
+		Used by Print Ticket
 		"""
 		self.init_configurator()
 
@@ -106,7 +103,6 @@ class sale_order(models.Model):
 			description = self.configurator.ticket_description
 		else:
 			description = ''
-
 		return description
 
 
@@ -124,7 +120,6 @@ class sale_order(models.Model):
 			warning = self.configurator.ticket_warning
 		else:
 			warning = ''
-
 		return warning
 
 
@@ -142,7 +137,6 @@ class sale_order(models.Model):
 		else:
 			website = ''
 		return website
-
 
 
 	# Email
@@ -163,9 +157,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------------- Validate ----------------------------
 	x_amount_flow = fields.Float(
 			'Pl - Total F',
@@ -175,20 +166,13 @@ class sale_order(models.Model):
 
 	@api.multi
 	def _compute_x_amount_flow(self):
-		#print('Pl - compute x_amount_flow')
 		for record in self:
-
 			if record.x_block_flow:
 				record.x_amount_flow = 0
-
-			#elif record.x_credit_note_amount not in [0, False]:
 			elif record.state in ['credit_note']  and  record.x_credit_note_amount not in [0, False]:
-				#record.x_amount_flow = record.amount_total - record.x_credit_note_amount
 				record.x_amount_flow = - record.x_credit_note_amount
-
 			else:
 				record.x_amount_flow = record.amount_total
-
 
 
 
