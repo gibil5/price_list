@@ -1,3 +1,32 @@
+
+
+
+
+
+# ----------------------------------------------------------- Fields ----------------------------
+	#ORDER_LINE_READONLY_STATES = {
+	#								'draft': 		[('readonly', False)],
+	#								'sent': 		[('readonly', False)],
+	#								'cancel': 		[('readonly', False)],
+	#								'sale': 		[('readonly', False)],
+	#								'credit_note': 		[('readonly', False)],
+	#}
+
+	# Order Line
+	#order_line = fields.One2many(
+	#		'sale.order.line',
+	#		'order_id',
+	#		string='Order Lines',
+	#		states=ORDER_LINE_READONLY_STATES,
+	#	)
+
+
+
+
+
+
+
+
 	# Pay myself
 	#def pay_myself(self):
 	#	"""

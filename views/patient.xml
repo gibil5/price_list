@@ -4,26 +4,52 @@
 
 
 
+<!-- FORM -->
+                <!-- NEW FIELDS --> 
+<!--
+                <xpath expr="//field[@name='x_firm']" position="after">
+                    <field name="x_firm_address"/>
+                </xpath>
+
+        <record model="ir.ui.view" id="view_patient_form">
+            <field name="name">oeh.medical.patient</field>
+            <field name="model">oeh.medical.patient</field>
+            <field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>            
+            <field name="mode">primary</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='test']" position="after">
+                    <button 
+                            type="object"
+                            class="oe_highlight"                            
+                            name="validate"
+                            string="Validar"
+                        />
+                </xpath>
+            </field>
+        </record>
+-->
+
+
+
+
+
 
 <!-- TREE 2 -->
         <record model="ir.ui.view" id="oeh_medical_patient_tree_short">
             <field name="name">patient.tree</field>
             <field name="model">oeh.medical.patient</field>
             <field name="arch" type="xml">  
-
                 <tree string="Patient Tree" >
-
                     <field name="name"/>
-
                     <field name="phone"/>
                     <field name="mobile"/>
-                    <field name="email"         string="Email"  />      
-
+                    <field name="email"         string="Email"/>
                     <field name="dob"/>
-
-
-                    <field name="x_date_record"/>       
-
+                    <field name="x_date_record"/>
+                </tree>
+            </field>
+        </record>
 
 <!--
                     <field name="x_id_code"/>       
@@ -33,7 +59,6 @@
                     <field name="x_dni"/>
                     <field name="x_ruc"/>
                     <field name="city"          string="Depto"/>                    
-
 
                     <field name="x_firm"/>
                     <field name="x_id_doc"      string="Otro"/>
@@ -48,44 +73,24 @@
                     <field name="email"         string="Email"  />      
 -->
 
-                </tree>
-            </field>
-        </record>
-
 
 
 
 
 <!-- ACTIONS -->
 
-
         <!-- Pacientes Con Nr de His -->
         <record model="ir.actions.act_window" id="patient_short_list_action">
-
             <field name="name">Pacientes - Con Nr de Historia</field>
-
             <field name="res_model">oeh.medical.patient</field>
-
             <field name="view_type">form</field>
-
-
-
-            <field name="view_id" ref="oeh_medical_patient_tree_short"/> 
-
-
-            
+            <field name="view_id" ref="oeh_medical_patient_tree_short"/>
             <field name="context">{}</field>
-
             <field name="view_mode">tree,form,kanban</field>
-
-
             <field name="domain">[
                                     ('x_id_code', '!=', False), 
                 ]</field>
-
-
             <field name="limit">100</field>
-
             <!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
@@ -96,8 +101,6 @@
             </field>
             -->
         </record>
-
-
 
     </data>
 </openerp>

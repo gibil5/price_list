@@ -137,6 +137,7 @@
 
 
 		'views/patient.xml',
+		'views/patient_personal.xml',
 
 
 		'views/media_line.xml',

@@ -21,68 +21,13 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Fields ----------------------------
-	#ORDER_LINE_READONLY_STATES = {
-	#								'draft': 		[('readonly', False)],
-	#								'sent': 		[('readonly', False)],
-	#								'cancel': 		[('readonly', False)],
-	#								'sale': 		[('readonly', False)],
-	#								'credit_note': 		[('readonly', False)],
-	#}
-
-	# Order Line
-	#order_line = fields.One2many(
-	#		'sale.order.line',
-	#		'order_id',
-	#		string='Order Lines',
-	#		states=ORDER_LINE_READONLY_STATES,
-	#	)
-
-
-
-# ----------------------------------------------------------- Clean ----------------------------
-
-	@api.multi
-	def clean_order_lines(self):
-		"""
-		Clean Order Lines
-		"""
-		#print()
-		#print('Clean Order Lines')
-		for line in self.order_line:
-			#print(line.product_id.name)
-			if self.x_admin_mode:
-				line.state = 'draft'
-				line.unlink()
-
-
-
-
-# ----------------------------------------------------------- Configurator ------------------------
-	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Configuracion",
-		)
-
-
-	def init_configurator(self):
+# ----------------------------------------------------------- Ticket - Header - Getters ----------------
+	def get_firm_address(self):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Init Configurator')
+		return self.patient.x_firm_address
 
-		# Configurator
-		if self.configurator.name in [False]:
-			self.configurator = self.env['openhealth.configurator.emr'].search([
-																					('x_type', 'in', ['emr']),
-															],
-															#order='date_begin,name asc',
-															limit=1,
-														)
-			print(self.configurator)
-			print(self.configurator.name)
 
 
 
@@ -91,8 +36,6 @@ class sale_order(models.Model):
 		"""
 		Used by Print Ticket.
 		"""
-		#company_name = 'SERVICIOS MÉDICOS ESTÉTICOS S.A.C'
-
 		self.init_configurator()
 
 		if self.configurator.name not in [False]:
@@ -103,13 +46,10 @@ class sale_order(models.Model):
 
 
 
-
 	def get_company_address(self):
 		"""
 		Used by Print Ticket.
 		"""
-		#company_address = 'Av. La Merced 161 Miraflores - Lima'
-
 		self.init_configurator()
 
 		if self.configurator.name not in [False]:
@@ -125,8 +65,6 @@ class sale_order(models.Model):
 		"""
 		Used by Print Ticket.
 		"""
-		#company_phone = 'Teléfono: (051) 321 2394'
-
 		self.init_configurator()
 
 		if self.configurator.name not in [False]:
@@ -141,12 +79,9 @@ class sale_order(models.Model):
 		"""
 		Used by Print Ticket.
 		"""
-		#company_ruc = 'R.U.C.: 20523424221'
-
 		self.init_configurator()
 
 		if self.configurator.name not in [False]:
-			#company_ruc = self.configurator.company_ruc
 			company_ruc = self.configurator.ticket_company_ruc
 		else:
 			company_ruc = ''
@@ -160,7 +95,7 @@ class sale_order(models.Model):
 	# description
 	def get_description(self):
 		"""
-		high level support for doing this and that.
+		Used by Print Ticket
 		"""
 		print()
 		print('Get description')
@@ -178,7 +113,7 @@ class sale_order(models.Model):
 	# Warning
 	def get_warning(self):
 		"""
-		high level support for doing this and that.
+		Used by Print Ticket
 		"""
 		print()
 		print('Get Warning')
@@ -196,9 +131,8 @@ class sale_order(models.Model):
 	# Website
 	def get_website(self):
 		"""
-		high level support for doing this and that.
+		Used by Print Ticket
 		"""
-		#return self.x_my_company.website
 
 		# Configurator
 		self.init_configurator()
@@ -214,9 +148,8 @@ class sale_order(models.Model):
 	# Email
 	def get_email(self):
 		"""
-		high level support for doing this and that.
+		Used by Print Ticket
 		"""
-		#return self.x_my_company.email
 
 		# Configurator
 		self.init_configurator()
@@ -709,3 +642,45 @@ class sale_order(models.Model):
 			string="Médico",
 			states=READONLY_STATES,
 		)
+
+
+
+# ----------------------------------------------------------- Clean ----------------------------
+	@api.multi
+	def clean_order_lines(self):
+		"""
+		Clean Order Lines
+		"""
+		#print()
+		#print('Clean Order Lines')
+		for line in self.order_line:
+			#print(line.product_id.name)
+			if self.x_admin_mode:
+				line.state = 'draft'
+				line.unlink()
+
+# ----------------------------------------------------------- Configurator ------------------------
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+		)
+
+	def init_configurator(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Init Configurator')
+
+		# Configurator
+		if self.configurator.name in [False]:
+			self.configurator = self.env['openhealth.configurator.emr'].search([
+																					('x_type', 'in', ['emr']),
+															],
+															#order='date_begin,name asc',
+															limit=1,
+														)
+			print(self.configurator)
+			print(self.configurator.name)
+
