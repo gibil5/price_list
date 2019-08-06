@@ -87,7 +87,10 @@ _subsubfamily_list = [
 		('mesotherapy',			'Mesoterapia'),
 		('plasma',				'Plasma'),
 
+
+		('REDUX',				'REDUX'),
 		('redux',				'Redux'),
+
 		('sclerotherapy',		'Escleroterapia'),
 		('vitamin_c_intravenous',	'Vitamina C Endovenosa'),
 
