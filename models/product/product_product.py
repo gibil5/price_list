@@ -66,7 +66,10 @@ class ProductProduct(models.Model):
 					'mesotherapy':			'mesotherapy',
 					'plasma':				'plasma',
 
+
+					'REDUX':					'REDUX',
 					'redux':					'redux',
+
 					'sclerotherapy':			'sclerotherapy',
 					'vitamin_c_intravenous':	'vitamin_c_intravenous',
 
