@@ -5,7 +5,7 @@
 		order.py
 
 		Created: 			26 Aug 2016
-		Last up: 	 		 6 Aug 2019
+		Last updated: 		 9 Aug 2019
 """
 from __future__ import print_function
 import datetime

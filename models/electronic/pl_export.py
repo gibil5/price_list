@@ -3,7 +3,7 @@
 	Export
 
 	Created: 			11 Sep 2018
-	Last up: 	 		22 Jun 2019
+	Last updated: 		 9 Aug 2019
 """
 from __future__ import print_function  # Only needed for Python 2
 import os

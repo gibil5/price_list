@@ -3,7 +3,7 @@
 	Configurator - EMR
 
 	Created: 			25 Jan 2019
-	Last updated: 		25 Jan 2019
+	Last updated: 		 9 Aug 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -58,18 +58,16 @@ class ConfiguratorEmr(models.Model):
 
 # ----------------------------------------------------------- Error Validation -------------------------------
 
-	def validate_errors_electronic(self):
-		"""
-		Validate Electronic Errors ?
-		"""
-		print()
-		print('Configurator - Validate Errors Electronic')
-		if self.error_validation_electronic:
-			return True
-		else:
-			return False
-
-
+	#def validate_errors_electronic(self):
+	#	"""
+	#	Validate Electronic Errors ?
+	#	"""
+	#	print()
+	#	print('Configurator - Validate Errors Electronic')
+	#	if self.error_validation_electronic:
+	#		return True
+	#	else:
+	#		return False
 
 
 	error_validation_electronic = fields.Boolean(
@@ -86,8 +84,6 @@ class ConfiguratorEmr(models.Model):
 			'Validacion de Errores Venta',
 			default=True,
 		)
-
-
 
 	error_validation_product = fields.Boolean(
 			'Validacion de Errores Producto',

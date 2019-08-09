@@ -3,7 +3,7 @@
 	Container
 
 	Created: 				30 Sep 2018
-	Last mod: 				 2 May 2019
+	Last mod: 				 9 Aug 2019
 """
 from __future__ import print_function
 import base64
@@ -22,7 +22,6 @@ class ElectronicContainer(models.Model):
 	high level support for doing this and that.
 	"""
 	_inherit = 'openhealth.container'
-
 
 
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
@@ -124,104 +123,10 @@ class ElectronicContainer(models.Model):
 
 
 
-# ----------------------------------------------------------- Second Level ---------------------------------------------
-
-# ----------------------------------------------------------- Relational ------------------------
-	# Electronic Order
-	electronic_order_ids = fields.One2many(
-			'openhealth.electronic.order',
-			'container_id',
-		)
+# ----------------------------------------------------------- Second Level - Services ---------------------------------------------
 
 
-# ----------------------------------------------------------- Configurator ------------------------
-	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Configuracion",
-			required=True,
-			#required=False,
-		)
-
-
-	def init_configurator(self):
-		"""
-		Init Configurator
-		"""
-		print()
-		print('Init Configurator')
-
-		# Configurator
-		if self.configurator.name in [False]:
-			self.configurator = self.env['openhealth.configurator.emr'].search([
-																					('x_type', 'in', ['emr']),
-															],
-															#order='date_begin,name asc',
-															limit=1,
-														)
-			print(self.configurator)
-			print(self.configurator.name)
-
-
-
-
-
-
-# ----------------------------------------------------------- Dates -----------
-	# Dates
-	export_date_begin = fields.Date(
-			string="Fecha Inicio",
-			default=fields.Date.today,
-			required=True,
-		)
-
-	# Dates
-	export_date_end = fields.Date(
-			string="Fecha Final",
-			default=fields.Date.today,
-			required=True,
-		)
-
-	several_dates = fields.Boolean(
-			'Varias Fechas',
-		)
-
-	vspace = fields.Char(
-			' ',
-		)
-
-
-# ----------------------------------------------------------- Electronic -----------
-	# Name
-	name = fields.Char(
-			'Nombre',
-			default='Generador',
-			required=True,
-		)
-
-
-	# State Array
-	state_arr = fields.Selection(
-			selection=mgt_vars._state_arr_list,
-			string='State Array',
-			default='sale,cancel,credit_note',
-			required=True,
-		)
-
-	# Type Array
-	type_arr = fields.Selection(
-			selection=mgt_vars._type_arr_list,
-			string='Type Array',
-			default='ticket_receipt,ticket_invoice',
-			required=True,
-		)
-
-
-
-
-
-
-# ----------------------------------------------------------- Update Sales - Electronic -----------
+# ----------------------------------------------------------- Update Sales Electronic -----------
 
 	# Update Electronic
 	@api.multi
@@ -234,15 +139,14 @@ class ElectronicContainer(models.Model):
 		print('Update - Electronic')
 
 		# Clean
-		#self.electronic_order.unlink()
 		self.electronic_order_ids.unlink()
 
-
+		# Init
 		if not self.several_dates:
 			self.export_date_end = self.export_date_begin
 
 
-		# Orders
+		# Get Orders
 		orders, count = mgt_funcs.get_orders_filter(self, self.export_date_begin, self.export_date_end, self.state_arr, self.type_arr)
 		#print(orders)
 		#print(count)
@@ -260,17 +164,12 @@ class ElectronicContainer(models.Model):
 
 			# Generate Id Doc
 			if order.x_type in ['ticket_invoice', 'invoice']:
-
-				#receptor = order.patient.x_firm.upper()
 				order.pl_receptor = order.patient.x_firm.upper()
-
 				id_doc = order.patient.x_ruc
 				id_doc_type = 'ruc'
 				id_doc_type_code = '6'
 			else:
-				#receptor = order.patient.name
 				order.pl_receptor = order.patient.name
-
 				id_doc = order.patient.x_id_doc
 				id_doc_type = order.patient.x_id_doc_type
 				id_doc_type_code = order.patient.x_id_doc_type_code
@@ -343,7 +242,6 @@ class ElectronicContainer(models.Model):
 			#print(electronic_order.name)
 
 
-
 			# Create Lines
 			for line in order.order_line:
 				# Create
@@ -353,7 +251,7 @@ class ElectronicContainer(models.Model):
 																					'product_uom_qty': 		line.product_uom_qty,
 																					'price_unit': 			line.price_unit,
 
-																					# Rel
+																					# Handle
 																					'electronic_order_id': 	electronic_order.id,
 					})
 
@@ -369,10 +267,95 @@ class ElectronicContainer(models.Model):
 					invoice_count = invoice_count + 1
 
 		return amount_total, receipt_count, invoice_count
-
 	# update_electronic
 
 
+# ----------------------------------------------------------- Init Configurator -----------
+	def init_configurator(self):
+		"""
+		Init Configurator
+		"""
+		print()
+		print('Init Configurator')
+
+		# Configurator
+		if self.configurator.name in [False]:
+			self.configurator = self.env['openhealth.configurator.emr'].search([
+																					('x_type', 'in', ['emr']),
+															],
+															#order='date_begin,name asc',
+															limit=1,
+														)
+			#print(self.configurator)
+			#print(self.configurator.name)
+	# init_configurator
 
 
 
+# ----------------------------------------------------------- Third Level - Fields ---------------------------------------------
+
+
+# ----------------------------------------------------------- Relational ----------------
+	# Electronic Order
+	electronic_order_ids = fields.One2many(
+			'openhealth.electronic.order',
+			'container_id',
+		)
+
+
+# ----------------------------------------------------------- Configurator --------------
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+			required=True,
+			#required=False,
+		)
+
+# ----------------------------------------------------------- Dates ---------------------
+	# Dates
+	export_date_begin = fields.Date(
+			string="Fecha Inicio",
+			default=fields.Date.today,
+			required=True,
+		)
+
+	# Dates
+	export_date_end = fields.Date(
+			string="Fecha Final",
+			default=fields.Date.today,
+			required=True,
+		)
+
+	several_dates = fields.Boolean(
+			'Varias Fechas',
+		)
+
+# ----------------------------------------------------------- Electronic ----------------
+	# Name
+	name = fields.Char(
+			'Nombre',
+			default='Generador',
+			required=True,
+		)
+
+	# State Array
+	state_arr = fields.Selection(
+			selection=mgt_vars._state_arr_list,
+			string='State Array',
+			default='sale,cancel,credit_note',
+			required=True,
+		)
+
+	# Type Array
+	type_arr = fields.Selection(
+			selection=mgt_vars._type_arr_list,
+			string='Type Array',
+			default='ticket_receipt,ticket_invoice',
+			required=True,
+		)
+
+# ----------------------------------------------------------- Common ----------------
+	vspace = fields.Char(
+			' ',
+		)

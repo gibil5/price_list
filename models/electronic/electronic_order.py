@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
  	Electronic Order - Sunat compatible
- 	Created: 			15 Apr 2019
- 	Last updated: 		22 Jun 2019
 
+ 	Created: 			15 Apr 2019
+	Last updated: 		 9 Aug 2019
 """
 from __future__ import print_function  # Only needed for Python 2
 import io

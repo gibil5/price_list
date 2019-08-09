@@ -62,6 +62,7 @@
 
 		'views/containers.xml',
 
+
 		# Product
 		'views/product/product_pricelist.xml',
 		'views/product/product_template.xml',
@@ -81,8 +82,6 @@
 		'views/order/report_order_line.xml',
 
 
-
-
 		# Service
 		'views/service/service.xml',
 		'views/service/service_co2.xml',
@@ -98,7 +97,6 @@
 		'views/service/service_product.xml',
 
 
-
 		# Treatment
 		'views/treatment/treatment_cart.xml',
 		'views/treatment/cart_line.xml',
@@ -108,12 +106,8 @@
 		'views/treatment/procedure.xml',
 
 
-
-
-
-
+		# Configurator
 		'views/configurator_emr.xml',
-
 
 
 		# Patient
@@ -131,10 +125,7 @@
 		'views/marketing/marketing_actions.xml',
 
 
-
-
-
-
+		# Management
 		'views/management/management.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_actions.xml',
@@ -153,14 +144,10 @@
 		'views/electronic/electronic_container.xml',
 
 
-
-
 		# Appointment
 		'views/appointment/wizard.xml',
 		'views/appointment/matrix.xml',
 		'views/appointment/appointment.xml',
-
-
 
 
 		# Menus
