@@ -17,6 +17,19 @@
 
 				<xpath expr="//field[@name='x_type']" position="after">
 
+					<group string="Validacion de Errores"	group="openhealth.roots">
+					<!-- Error Validation -->
+							<field name="error_validation_electronic"/>
+							<field name="error_validation_patient"/>
+							<field name="error_validation_order"/>
+							<field name="error_validation_product"/>
+							<field name="error_validation_management"/>
+							<field name="error_validation_marketing"/>
+					</group>
+
+					<group>
+					</group>
+					
 					<!-- Ticket -->
 					<group string="Ticket">
 							<field name="website"/>
@@ -42,9 +55,9 @@
 							<field name="company_ubigeo"/>
 							<field name="company_country"/>
 							<field name="company_account"/>
-
-							<field name="error_electronic_validation"/>
 					</group>
+
+
 				</xpath>
 			</field>
 		</record>

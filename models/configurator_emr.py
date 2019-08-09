@@ -56,7 +56,7 @@ class ConfiguratorEmr(models.Model):
 
 
 
-# ----------------------------------------------------------- Natives -------------------------------
+# ----------------------------------------------------------- Error Validation -------------------------------
 
 	def validate_errors_electronic(self):
 		"""
@@ -64,8 +64,7 @@ class ConfiguratorEmr(models.Model):
 		"""
 		print()
 		print('Configurator - Validate Errors Electronic')
-
-		if self.error_electronic_validation:
+		if self.error_validation_electronic:
 			return True
 		else:
 			return False
@@ -73,14 +72,42 @@ class ConfiguratorEmr(models.Model):
 
 
 
-	#validate_errors_electronic = fields.Boolean(
-	error_electronic_validation = fields.Boolean(
-			'Validacion de Errores Electronicos',
-			default=False,
+	error_validation_electronic = fields.Boolean(
+			'Validacion de Errores Electronico',
+			default=True,
+		)
+
+	error_validation_patient = fields.Boolean(
+			'Validacion de Errores Paciente',
+			default=True,
+		)
+
+	error_validation_order = fields.Boolean(
+			'Validacion de Errores Venta',
+			default=True,
 		)
 
 
 
+	error_validation_product = fields.Boolean(
+			'Validacion de Errores Producto',
+			default=True,
+		)
+
+	error_validation_management = fields.Boolean(
+			'Validacion de Errores Reporte MGT',
+			default=True,
+		)
+
+	error_validation_marketing = fields.Boolean(
+			'Validacion de Errores Reporte MKT',
+			default=True,
+		)
+
+
+
+
+# ----------------------------------------------------------- Natives -------------------------------
 	company_name = fields.Char(
 			required=True,
 		)

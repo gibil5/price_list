@@ -294,7 +294,7 @@ class ElectronicContainer(models.Model):
 
 			# Validate Errors
 			#if self.configurator.validate_errors_electronic():
-			if self.configurator.error_electronic_validation:
+			if self.configurator.error_validation_electronic:
 
 				# Validate Order Patient
 				order.validate_patient()							# Good - Respects the LOD
