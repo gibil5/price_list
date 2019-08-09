@@ -3,6 +3,12 @@
 #from . import models
 
 
+# Appointment
+from appointment import *
+
+
+
+
 # Marketing
 from marketing import *
 

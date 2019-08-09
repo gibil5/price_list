@@ -403,13 +403,12 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	"""
 	high level support for doing this and that.
 	"""
-	print('')
-	print('Get Orders - Filter')
-	print(date_bx)
-	print(date_ex)
-	print(state_arr)
-	print(type_arr)
-
+	#print()
+	#print('Get Orders - Filter')
+	#print(date_bx)
+	#print(date_ex)
+	#print(state_arr)
+	#print(type_arr)
 
 	# Init
 	DATETIME_FORMAT = "%Y-%m-%d"
@@ -420,7 +419,6 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	date_begin = date_bx + ' 05:00:00'
 	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
 
-
 	_dic_states = {
 					'sale,cancel,credit_note': 	['sale', 'cancel', 'credit_note'],
 					'sale,cancel': 	['sale', 'cancel'],
@@ -428,10 +426,8 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 					'cancel': 		['cancel'],
 	}
 
-
 	_dic_types = {
 					'ticket_receipt,ticket_invoice,receipt,invoice,sale_note,advertisement': ['ticket_receipt', 'ticket_invoice', 'receipt', 'invoice', 'sale_note', 'advertisement'],
-
 
 					'ticket_receipt,ticket_invoice': 	['ticket_receipt', 'ticket_invoice'],
 					'ticket_receipt': 					['ticket_receipt'],
@@ -439,7 +435,6 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 					'ticket_receipt,ticket_invoice,receipt,invoice': \
 																	['ticket_receipt', 'ticket_invoice', 'receipt', 'invoice'],
 	}
-
 
 
 	if state_arr in _dic_states and type_arr in _dic_types:
@@ -478,10 +473,7 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 		# Count
 		count = 0
 
-
-
 	return orders, count
-
 # get_orders_filter
 
 

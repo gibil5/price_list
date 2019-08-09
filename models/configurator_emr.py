@@ -16,6 +16,22 @@ class ConfiguratorEmr(models.Model):
 
 
 
+# ----------------------------------------------------------- Dep ! -------------------------------
+	#cuentab_products = fields.Char(
+	#		'Cuentab Productos',
+	#	)
+
+	#cuentab_services = fields.Char(
+	#		'Cuentab Servicios',
+	#	)
+
+	#cuentab_consu = fields.Char(
+	#		'Cuentab Consumibles',
+	#	)
+
+
+
+
 # ----------------------------------------------------------- Get Inactive Days -------------------------------
 
 	def get_inactive_days(self):
@@ -37,22 +53,33 @@ class ConfiguratorEmr(models.Model):
 
 
 
-# ----------------------------------------------------------- Dep -------------------------------
-	cuentab_products = fields.Char(
-			'Cuentab Productos',
-		)
-
-	cuentab_services = fields.Char(
-			'Cuentab Servicios',
-		)
-
-	cuentab_consu = fields.Char(
-			'Cuentab Consumibles',
-		)
 
 
 
 # ----------------------------------------------------------- Natives -------------------------------
+
+	def validate_errors_electronic(self):
+		"""
+		Validate Electronic Errors ?
+		"""
+		print()
+		print('Configurator - Validate Errors Electronic')
+
+		if self.error_electronic_validation:
+			return True
+		else:
+			return False
+
+
+
+
+	#validate_errors_electronic = fields.Boolean(
+	error_electronic_validation = fields.Boolean(
+			'Validacion de Errores Electronicos',
+			default=False,
+		)
+
+
 
 	company_name = fields.Char(
 			required=True,

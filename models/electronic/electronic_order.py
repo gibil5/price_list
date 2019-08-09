@@ -44,15 +44,14 @@ class electronic_order(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Electronic - Create Content -------------------------------
-
+# ----------------------------------------------------------- Init -------------------------------
 	def pl_init(self, id_serial_nr, path, file_name):
 		"""
 		Used by Txt Generation
 		From pl_export
 		"""
-		print()
-		print('Pl - Init')
+		#print()
+		#print('Pl - Init')
 		#print(self)
 		#print(id_serial_nr)
 		#print(path)
@@ -61,28 +60,23 @@ class electronic_order(models.Model):
 		self.id_serial_nr = id_serial_nr
 		self.path = path
 		self.file_name = file_name
-
 		self.configurator = self.container_id.configurator
 
 
 
-# ----------------------------------------------------------- Electronic - Create Content -------------------------------
-
+# ----------------------------------------------------------- Electronic - Create TXT -------------------------------
 	def pl_create_txt(self):
 		"""
 		Used by Txt Generation
 		From pl_export
 		"""
-		print()
-		print('Pl - Create Txt')
-
+		#print()
+		#print('Pl - Create Txt')
 
 		# Content - This !!!
 		self.content = pl_lib_exp.get_file_content(self)
-
 		
 		#print(self.content)
-
 
 
 # ----------------------------------------------------------- Electronic - Create File ----------------------------
@@ -92,9 +86,8 @@ class electronic_order(models.Model):
 		Used by Txt Generation
 		From pl_export
 		"""
-		print()
-		print('Pl - Create File')
-
+		#print()
+		#print('Pl - Create File')
 
 		# Create File
 		fname = self.path + '/' + self.file_name + '.txt'
@@ -105,14 +98,11 @@ class electronic_order(models.Model):
 		
 		f.close()
 
-
-
 		# Create Txt Ids
-		print(self.container_id)
+		#print(self.container_id)
 		self.container_id.txt_ids.create({
 											'name': 			self.file_name,
 											'content': 			self.content,
-
 											'container_id': 	self.container_id.id,
 			})
 

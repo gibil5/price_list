@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-
-#from . import lib_account_codes as acc
 from openerp.addons.openhealth.models.containers import lib_account_codes as acc
-
 
 #------------------------------------------------ Const -------------------------------------------
 _DIC_PREFIX = {
@@ -13,42 +10,13 @@ _DIC_PREFIX = {
 }
 
 
-#------------------------------------------------ Get File Content --------------------------------
-# Get File Content
-#def get_file_content(order):
-#	"""
-#	Just a wrapper.
-#	"""
-#	return format_txt(order)
-
-
-
 #------------------------------------------------ Format Txt --------------------------------------
-# Format Txt
-#def format_txt(order):
 def get_file_content(order):
 	"""
-	high level support for doing this and that.
+	Build TXT content
 	"""
-	print()
-	#print('pl - Format Txt')
-	print('pl - Get File Content')
-	#print(order.configurator)
-	#print(order.configurator.company_name)
-	#print(order.configurator.company_address)
-	#print(order.configurator.company_ruc)
-
-
-
-
-	# jx
-	# Init - Company
-	#company_name = order.firm 
-	#company_ubigeo = order.ubigeo
-	#company_address = order.address
-	#company_country = order.country
-	#company_account_id = additional_account_id
-	#company_ruc = order.ruc
+	#print()
+	#print('pl - Get File Content')
 
 
 	# Init - Company - From Configurator
@@ -56,25 +24,9 @@ def get_file_content(order):
 	company_name = configurator.company_name 
 	company_ubigeo = configurator.company_ubigeo
 	company_address = configurator.company_address
-
 	company_country = configurator.company_country
-	
 	company_ruc = configurator.company_ruc
-
-	#additional_account_id = "6"
-	#company_account_id = additional_account_id
 	company_account_id = configurator.company_account
-
-	# Debug
-	#print(configurator)
-	#print(company_name)
-	#print(company_ubigeo)
-	#print(company_address)
-	#print(company_country)
-	#print(company_ruc)
-	#print(company_account_id)
-
-
 
 
 	# Init
@@ -83,8 +35,6 @@ def get_file_content(order):
 	sep = "|"            	# Data
 	eot = "!"           	# Table
 	blank = ""
-
-
 
 
 # Table 1 - General, Emitter and Receptor
@@ -112,13 +62,10 @@ def get_file_content(order):
 					sep + eol
 
 
-
 # Credit Note - Cancel
 # FC02-00009990|2017-11-09|07|PEN|||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]
 #_gen = "FC02-00009990|2017-11-09|07|PEN|||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]"
 #_general = "||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]"
-
-
 
 	# Credit Note
 	elif order.state in ['credit_note']:
@@ -272,14 +219,10 @@ def get_file_content(order):
 	#amount_total = coeff * order.amount_total
 	amount_total =  abs(order.amount_total)
 
-
 	#table_3 = blank + sep + acc.fmt(order.amount_total) + \
 	table_3 = blank + sep + acc.fmt(amount_total) + \
 												frac_1 + \
 												eol + ret + eot + ret
-
-
-
 
 
 
@@ -491,33 +434,24 @@ def pl_get_file_name(order):
 	"""
 	high level support for doing this and that.
 	"""
-	print()
-	print('pl - Get File Name')
-
+	#print()
+	#print('pl - Get File Name')
 
 	# Prefix
 	type_prefix = _DIC_PREFIX[order.type_code]
-
 
 	# Id Serial Nr
 	nr_zeros = 8
 	id_serial_nr = type_prefix + '-' + str(order.counter_value).zfill(nr_zeros)
 
-
 	date_export = order.export_date.replace("-", "")
-
-
 	if order.state in ['sale', 'cancel']:
 		type_code = order.type_code
 	else:
 		type_code = '07'
-
 
 	name = 'RUC' + order.ruc + '-' + type_code + '-' + date_export + '-' + id_serial_nr
 
 	return name, id_serial_nr
 
 # get_file_name
-
-
-

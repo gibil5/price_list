@@ -933,6 +933,14 @@ class Treatment(models.Model):
 		print('SUCCESS !')
 
 # ----------------------------------------------------------- Relational ----------------------------------------------
+
+	report_account = fields.Many2one(
+			'openhealth.container',
+			string="Report TXT",
+			#required=True,
+		)
+
+
 	report_management = fields.Many2one(
 			'openhealth.management',
 			string="Report MGT",
@@ -970,3 +978,19 @@ class Treatment(models.Model):
 		print()
 		print()
 		print('SUCCESS !')
+
+
+# ----------------------------------------------------------- Test Report ACC -----------------------------------------
+	@api.multi
+	def test_report_account(self):
+		"""
+		Test Report account
+		"""
+		print()
+		print('Test Report account - Button')
+		test_treatment.test_report_account(self)
+		print()
+		print()
+		print('SUCCESS !')
+
+

@@ -1,0 +1,153 @@
+<openerp>
+	<data>
+
+
+
+<!-- FORM -->
+		<record model="ir.ui.view" id="wizard_form_view">
+
+			<field name="name">price_list.wizard.form</field>
+			
+			<field name="model">price_list.wizard</field>
+			
+			<field name="arch" type="xml">
+			
+				<form string="wizard Form">
+
+					<sheet>
+
+
+<field name="name" />
+
+<field name="task_ids" widget="x2many_2d_matrix" field_x_axis="project_id" field_y_axis="user_id" field_value="planned_hours" />
+					</sheet>
+			
+
+<!--
+<field name="task_ids" />
+<field name="name" />
+
+
+-->
+
+				</form>
+			</field>
+		</record>
+
+
+<!-- TREE -->
+<!--
+<field name="task_ids" widget="x2many_2d_matrix" field_x_axis="project_id" field_y_axis="user_id" field_value="planned_hours" />
+-->
+		<record model="ir.ui.view" id="wizard_view_tree">
+			<field name="name">price_list.wizard.tree</field>
+			<field name="model">price_list.wizard</field>
+			<field name="arch" type="xml">
+				<tree string="wizard Tree">
+
+<field name="name" />
+<field name="task_ids" />
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+<!-- TREE -->
+		<record model="ir.ui.view" id="task_view_tree">
+			<field name="name">price_list.task.tree</field>
+			<field name="model">price_list.task</field>
+			<field name="arch" type="xml">
+				<tree string="task Tree">
+
+					<field name="planned_hours"/>
+				
+					<field name="user_id"/>
+
+					<field name="project_id"/>				
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+<!-- ACTIONS -->
+
+
+        <!-- wizard -->
+        <record model="ir.actions.act_window" id="wizard_all_tree_action">
+
+            <field name="name">wizard Tree Action</field>
+            
+            <field name="res_model">price_list.wizard</field>
+            
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form</field>
+
+            <field name="domain">[]</field>
+
+            <field name="context">{}</field>
+
+            <field name="limit">1000</field>
+<!--
+            <field name="view_id" ref="account_line_view_contasis_tree"/>
+-->
+        </record>
+
+
+
+        <!-- user -->
+        <record model="ir.actions.act_window" id="user_all_tree_action">
+
+            <field name="name">user Tree Action</field>
+            
+            <field name="res_model">price_list.user</field>
+            
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form</field>
+
+            <field name="domain">[]</field>
+
+            <field name="context">{}</field>
+
+            <field name="limit">1000</field>
+<!--
+            <field name="view_id" ref="account_line_view_contasis_tree"/>
+-->
+        </record>
+
+
+
+        <!-- project -->
+        <record model="ir.actions.act_window" id="project_all_tree_action">
+
+            <field name="name">project Tree Action</field>
+            
+            <field name="res_model">price_list.project</field>
+            
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form</field>
+
+            <field name="domain">[]</field>
+
+            <field name="context">{}</field>
+
+            <field name="limit">1000</field>
+<!--
+            <field name="view_id" ref="account_line_view_contasis_tree"/>
+-->
+        </record>
+
+
+
+	</data>
+</openerp>

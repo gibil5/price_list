@@ -13,11 +13,47 @@ from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
+from . import ord_exc
+
+
 class sale_order(models.Model):
 	"""
 	Inherits Sale Classe from Openhealth
 	"""
 	_inherit = 'sale.order'
+
+
+# ----------------------------------------------------------- Validate Patient ----------------------------
+	#@api.multi
+	def validate_patient(self):
+		"""
+		Validate Patient
+		Used by Electronic Container (Txt Generation). 
+		"""
+		print()
+		print('Order Validate Patient')
+		self.patient.validate()
+
+
+
+# ----------------------------------------------------------- Validate Electronic ----------------------------
+	@api.multi
+	def validate_electronic(self):
+		"""
+		Validate Electronic
+		Used by Electronic Container (Txt Generation). 
+		"""
+		print()
+		print('Order Validate Electronic')
+
+		# Handle Exceptions
+		ord_exc.handle_exceptions_electronic(self)
+
+
+	# validate_electronic
+
+
+
 
 
 
@@ -174,44 +210,6 @@ class sale_order(models.Model):
 			else:
 				record.x_amount_flow = record.amount_total
 
-
-
-# ----------------------------------------------------------- Validate ----------------------------
-
-	# Validate
-	@api.multi
-	def validate_electronic(self):
-		"""
-		Validate Order.
-		Used by Electronic Container (Txt Generation). 
-		"""
-		#print()
-		#print('Pl - Order Validate')
-
-		#print(self.name)
-		#print(self.patient.name)
-		#print(self.x_type)
-		#print(self.x_type_code)
-		#print(self.x_serial_nr)
-		#print(self.pl_receptor)
-
-		error = 0
-		msg = ''
-
-		#if self.x_type in [False]		or 	self.x_type_code in [False]		or self.x_serial_nr in [False]:
-		if self.x_type in [False]		or 	self.x_type_code in [False]		or self.x_serial_nr in [False]   	or self.pl_receptor in [False, '']:
-			print('Gotcha !')
-
-			msg = 'ERROR - Venta: La Venta esta incompleta. ' + self.patient.name
-			error = 1
-
-			#raise UserError(_(msg))
-		else:
-			#print('Validated !')
-			print()
-		return error, msg
-
-	# validate_electronic
 
 
 

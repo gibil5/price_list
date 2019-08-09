@@ -1,0 +1,48 @@
+<openerp>
+	<data>
+
+
+
+<!-- TREE -->
+		<record model="ir.ui.view" id="appointment_view_tree">
+			<field name="name">price_list.appointment.tree</field>
+			<field name="model">price_list.appointment</field>
+			<field name="arch" type="xml">
+				<tree string="appointment Tree">
+
+					<field name="x"/>
+
+					<field name="y"/>
+
+					<field name="value"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+<!-- ACTIONS -->
+<!--
+        <record model="ir.actions.act_window" id="appointment_all_tree_action">
+
+            <field name="name">appointment Tree Action</field>
+            
+            <field name="res_model">price_list.appointment</field>
+            
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form</field>
+
+            <field name="domain">[]</field>
+
+            <field name="context">{}</field>
+
+            <field name="limit">1000</field>
+            <field name="view_id" ref="account_line_view_contasis_tree"/>
+        </record>
+-->
+
+
+	</data>
+</openerp>

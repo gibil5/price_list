@@ -25,6 +25,106 @@ class ElectronicContainer(models.Model):
 
 
 
+# ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
+
+# ----------------------------------------------------------- Create Electronic - Button --------------------------
+	# Create Electronic
+	@api.multi
+	def pl_create_electronic(self):
+		"""
+		Create Electronic Orders - Button
+		"""
+		print()
+		print('Pl - Create - Electronic - Button')
+
+
+		# Init Configurator
+		self.init_configurator()
+
+
+		# Clean
+		self.electronic_order_ids.unlink()
+
+		# Init Dates
+		date_format = "%Y-%m-%d"
+		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + datetime.timedelta(hours=+5, minutes=0)
+		self.export_date = date_dt.strftime(date_format).replace('-', '_')
+
+		# Init
+		self.state_arr = 'sale,cancel,credit_note'
+		self.type_arr = 'ticket_receipt,ticket_invoice'
+
+		# Create Electronic
+		self.amount_total, self.receipt_count, self.invoice_count = self.update_electronic()
+
+	# create_electronic
+
+
+
+# ----------------------------------------------------------- Export TXT - Button ------------------------------
+	@api.multi
+	#def export_txt(self):
+	def pl_export_txt(self):
+		"""
+		Export TXT - Button
+		"""
+		print()
+		print('Pl - Export - Txt')
+
+		# Clean
+		self.txt_ids.unlink()
+
+
+
+		# Export - Here !
+		fname = pl_export.pl_export_txt(self, self.electronic_order_ids, self.export_date)
+
+
+
+		# Download file
+		fname_txt = fname.split('/')[-1]
+
+		# Read Binary
+		f = io.open(fname, mode="rb")
+		out = f.read()
+		f.close()
+
+		# Update
+		self.write({
+					'txt_pack': base64.b64encode(out),
+					'txt_pack_name': fname_txt,
+				})
+	# export_txt
+
+
+# ----------------------------------------------------------- Clear - Button  -----------------------------
+	@api.multi
+	def clear(self):
+		"""
+		Cleans all variables - Button
+		"""
+
+		#self.txt_pack.unlink()
+		self.txt_pack = False
+
+		# Electronic
+		self.electronic_order_ids.unlink()
+		# Txt
+		self.txt_ids.unlink()
+		# Stats
+		self.amount_total = 0
+		self.invoice_count = 0
+		self.receipt_count = 0
+	# clear
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Second Level ---------------------------------------------
 
 # ----------------------------------------------------------- Relational ------------------------
 	# Electronic Order
@@ -39,8 +139,8 @@ class ElectronicContainer(models.Model):
 	configurator = fields.Many2one(
 			'openhealth.configurator.emr',
 			string="Configuracion",
-			#required=True,
-			required=False,
+			required=True,
+			#required=False,
 		)
 
 
@@ -119,45 +219,6 @@ class ElectronicContainer(models.Model):
 
 
 
-# ----------------------------------------------------------- Export TXT ------------------------------
-	@api.multi
-	#def export_txt(self):
-	def pl_export_txt(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('Pl - Export - Txt')
-
-		# Clean
-		self.txt_ids.unlink()
-
-
-
-		# Export - Here !
-		#fname = export.export_txt(self, self.electronic_order_ids, self.export_date)
-		fname = pl_export.pl_export_txt(self, self.electronic_order_ids, self.export_date)
-
-
-
-		# Download file
-		fname_txt = fname.split('/')[-1]
-
-		# Read Binary
-		f = io.open(fname, mode="rb")
-		out = f.read()
-		f.close()
-
-		# Update
-		self.write({
-					'txt_pack': base64.b64encode(out),
-					'txt_pack_name': fname_txt,
-				})
-	# export_txt
-
-
-
-
 
 
 # ----------------------------------------------------------- Update Sales - Electronic -----------
@@ -169,7 +230,8 @@ class ElectronicContainer(models.Model):
 		high level support for doing this and that.
 		"""
 		print()
-		print('Pl - Update - Electronic')
+		#print('Pl - Update - Electronic')
+		print('Update - Electronic')
 
 		# Clean
 		#self.electronic_order.unlink()
@@ -181,12 +243,9 @@ class ElectronicContainer(models.Model):
 
 
 		# Orders
-		#orders, count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
-		#orders, count = mgt_funcs.get_orders_filter(self, self.export_date_begin, self.export_date_begin, self.state_arr, self.type_arr)
 		orders, count = mgt_funcs.get_orders_filter(self, self.export_date_begin, self.export_date_end, self.state_arr, self.type_arr)
-
-		print(orders)
-		print(count)
+		#print(orders)
+		#print(count)
 
 
 		# Init
@@ -233,26 +292,22 @@ class ElectronicContainer(models.Model):
 
 
 
-			# Validate Patient - Id Doc
-			error, msg = order.patient.validate()
-			#print(error)
-			#print(msg)
-			if error in [1]:
-				raise UserError(_(msg))
-			print()
+			# Validate Errors
+			#if self.configurator.validate_errors_electronic():
+			if self.configurator.error_electronic_validation:
+
+				# Validate Order Patient
+				order.validate_patient()							# Good - Respects the LOD
+				#error, msg = order.patient.validate()				# Train Wreck ! - Does not respect the LOD
+
+				# Validate Order 	
+				order.validate_electronic()							# Good - Respects the LOD
+				#error, msg = order.validate_electronic()   		# # Train Wreck !
 
 
-			# Validate Order - Type, Serial Nr and Receptor
-			error, msg = order.validate_electronic()
-			#print(error)
-			#print(msg)
-			if error in [1]:
-				raise UserError(_(msg))
-			print()
 
 
 			# Create Electronic Order
-			#electronic_order = self.electronic_order.create({
 			electronic_order = self.electronic_order_ids.create({
 																# Required
 																'id_doc': 				id_doc,
@@ -261,25 +316,14 @@ class ElectronicContainer(models.Model):
 																'x_type': 				order.x_type,
 																'type_code': 			order.x_type_code,
 																'serial_nr': 			order.x_serial_nr,
-																#'receptor': 			receptor,
 																'receptor': 			order.pl_receptor,
-
-
 																'name': 				order.name,
 																'patient': 				order.patient.id,
-
 																'x_date_created': 		order.date_order,
-
-
 																#'amount_total': 		order.amount_total,
+																'amount_total': 		order.x_amount_flow,
 																'amount_total_net': 	order.x_total_net,
 																'amount_total_tax': 	order.x_total_tax,
-
-																'amount_total': 		order.x_amount_flow,
-
-
-
-
 																'doctor': 				order.x_doctor.id,
 																'state': 				order.state,
 
@@ -291,10 +335,7 @@ class ElectronicContainer(models.Model):
 																'credit_note_owner': 	order.x_credit_note_owner.id,
 																'credit_note_type': 	order.x_credit_note_type,
 
-
 																# Handles
-																#'management_id': self.id,
-																#'container_id': self.container.id,
 																'container_id': self.id,
 			})
 			#print(electronic_order)
@@ -305,13 +346,7 @@ class ElectronicContainer(models.Model):
 
 			# Create Lines
 			for line in order.order_line:
-				#print line
-				#print line.product_id.name
-				#print line.product_uom_qty
-				#print line.price_unit
-				#print electronic_order
-				#print
-
+				# Create
 				electronic_order.electronic_line_ids.create({
 																					# Line
 																					'product_id': 			line.product_id.id,
@@ -323,24 +358,15 @@ class ElectronicContainer(models.Model):
 					})
 
 
-
 			# Update Amount Total
-			#if order.state in ['sale', 'cancel']:
 			if order.state in ['sale', 'cancel', 'credit_note']:
-
-
 				# Total
-				#amount_total = amount_total + order.amount_total
 				amount_total = amount_total + order.x_amount_flow
-
-
 				# Count
 				if order.x_type in ['ticket_receipt']:
 					receipt_count = receipt_count + 1
 				elif order.x_type in ['ticket_invoice']:
 					invoice_count = invoice_count + 1
-
-
 
 		return amount_total, receipt_count, invoice_count
 
@@ -348,59 +374,5 @@ class ElectronicContainer(models.Model):
 
 
 
-# ----------------------------------------------------------- Electronic --------------------------
-	# Create Electronic
-	@api.multi
-	def pl_create_electronic(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('Pl - Create - Electronic')
 
 
-		# Init Configurator
-		self.init_configurator()
-
-
-		# Clean
-		self.electronic_order_ids.unlink()
-
-		# Init Dates
-		date_format = "%Y-%m-%d"
-		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + datetime.timedelta(hours=+5, minutes=0)
-		self.export_date = date_dt.strftime(date_format).replace('-', '_')
-
-		# Init
-		self.state_arr = 'sale,cancel,credit_note'
-		self.type_arr = 'ticket_receipt,ticket_invoice'
-
-		# Create Electronic
-		self.amount_total, self.receipt_count, self.invoice_count = self.update_electronic()
-
-	# create_electronic
-
-
-
-
-
-# ----------------------------------------------------------- Clean -----------------------------
-	# Clear
-	@api.multi
-	def clear(self):
-		"""
-		Cleans all variables.
-		"""
-
-		#self.txt_pack.unlink()
-		self.txt_pack = False
-
-		# Electronic
-		self.electronic_order_ids.unlink()
-		# Txt
-		self.txt_ids.unlink()
-		# Stats
-		self.amount_total = 0
-		self.invoice_count = 0
-		self.receipt_count = 0
-	# clear

@@ -1,0 +1,141 @@
+
+
+
+
+
+
+		<!-- openhealth.patient.line -->
+		<!-- MKT Order Line --> 
+		<menuitem   id="dev_mkt_patient_line_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="3"
+
+					action="dev_patient_line_form_action"
+				/>
+
+
+		<!-- openhealth.marketing.order.line -->
+		<!-- MKT Order Line --> 
+		<menuitem   id="dev_mkt_order_line_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="5"
+
+					name="Dev - Marketing Order Line" 
+
+					action="openhealth.marketing_order_line_form_action"
+				/>
+
+
+
+
+
+<!--
+openhealth.management.order.line
+-->
+		<!-- Management Order Line --> 
+		<menuitem   id="dev_mgt_order_line_menu"
+					parent="parent_dev_menu"
+			
+					sequence="7"
+
+					name="Dev - Mgt Order Line" 
+
+					action="mgt_order_line_list_action"
+				/>
+
+
+
+
+
+
+
+		<!-- Order Lines --> 
+		<menuitem   id="dev_order_line_menu"
+					parent="parent_dev_menu"
+					sequence="11"
+
+					action="order_line_list_action"
+				/>
+
+
+		<!-- Product Templates --> 
+		<menuitem   id="dev_product_template_menu"
+					parent="parent_dev_menu"
+					sequence="12"
+
+					action="product_template_list_action"
+				/>
+
+
+		<!-- Product products --> 
+		<menuitem   id="dev_product_product_menu"
+					parent="parent_dev_menu"
+					sequence="13"
+
+					action="product_product_list_action"
+				/>
+
+
+		<!-- Report Order Line --> 
+		<menuitem   id="dev_report_order_line_menu"
+					parent="parent_dev_menu"
+					sequence="14"
+
+					action="report_order_line_list_action"
+				/>
+<!--
+openhealth.report.order_line
+-->
+
+
+
+
+		<!-- Procurement Orders --> 
+		<menuitem   id="dev_procurement_order_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="15"
+
+					action="procurement_order_list_action"
+				/>
+<!--
+procurement.order
+-->
+
+		<!-- Stock Moves --> 
+		<menuitem   id="dev_stock_move_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="16"
+
+					action="stock_move_list_action"
+				/>
+<!--
+procurement.order
+-->
+
+
+
+
+
+
+		<!-- Electronic Orders --> 
+		<menuitem   id="dev_electronic_order_menu"
+
+					parent="parent_dev_menu"
+
+					sequence="21"
+
+					name="Electronic Orders"
+
+					action="openhealth.electronic_order_form_action"
+				/>
+
+
+

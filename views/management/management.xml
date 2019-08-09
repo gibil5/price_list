@@ -202,6 +202,8 @@
 								<field name="date_begin"/>
 								<field name="date_end"/>
 
+								<field name="month"/>
+
 								<field name="configurator"/>
 								<field name="admin_mode"		groups="openhealth.roots"/>
 							</group>
@@ -270,7 +272,6 @@
 
 									<group>
 										<field name="owner"/>
-										<field name="month"/>
 										<field name="year"/>
 									</group>
 

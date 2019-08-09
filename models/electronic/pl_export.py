@@ -18,8 +18,8 @@ def pl_export_txt(self, electronic_order, export_date):
 	"""
 	high level support for doing this and that.
 	"""
-	print()
-	print('pl - Export Text')
+	#print()
+	#print('pl - Export Text')
 	#print(os.environ['HOME'])
 
 

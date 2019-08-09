@@ -8,57 +8,23 @@
 		<record model="ir.ui.view" id="configurator_emr_form_view">
 			<field name="name">configurator.emr.form</field>
 			<field name="model">openhealth.configurator.emr</field>
-
 			<field name="inherit_id" ref="openhealth.configurator_emr_form_view"/>
-
 			<field name="mode">primary</field>
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 
 
 
-<!--
-					<group string="Clinica">
-						<group>
-
-							<field name="website"/>
-
-						</group>
-						<group>
-							<field name="email"/>
-						</group>
-					</group>
-
-					<group string="Ticket Pie de Pagina">
-						<group>
-							<field name="warning"/>
-						</group>
-						<group>
-						</group>
-					</group>
--->
-
-
 				<xpath expr="//field[@name='x_type']" position="after">
 
 					<!-- Ticket -->
 					<group string="Ticket">
-
 							<field name="website"/>
-
 							<field name="email"/>
-
 							<field name="vspace"/>
-
-
-
-
 							<field name="ticket_company_address"/>
-
 							<field name="ticket_company_ruc"/>
-
 							<field name="ticket_description"/>
-
 							<field name="ticket_warning"/>
 
 							<field name="warning"	string="warning - Deprecated"/>
@@ -68,30 +34,19 @@
 
 					<!-- Electronic -->
 					<group string="Facturacion Electronica">
-
 							<field name="company_name"/>
-
 							<field name="company_address"/>
-
 							<field name="company_phone"/>
-
 							<field name="company_ruc"/>
-
-
 							<field name="vspace"/>
-
 							<field name="company_ubigeo"/>
-
 							<field name="company_country"/>
-
-
 							<field name="company_account"/>
+
+							<field name="error_electronic_validation"/>
 					</group>
 				</xpath>
-
 			</field>
 		</record>
-
-
 	</data>
 </openerp>

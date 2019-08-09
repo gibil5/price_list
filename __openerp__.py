@@ -9,7 +9,7 @@
 
 	'description': 
 		"""
-		6 Aug 2019
+		8 Aug 2019
 
 		(Since 22 April, in Prod)
 
@@ -60,129 +60,116 @@
 		'views/templates.xml',
 
 
-		'views/product_pricelist.xml',
-
 		'views/containers.xml',
 
-		'views/product_template.xml',
-
-		'views/product_template_search.xml',
-		'views/product_template_actions.xml',
-
-
-		'views/product_product.xml',
-		'views/product_product_actions.xml',
-
+		# Product
+		'views/product/product_pricelist.xml',
+		'views/product/product_template.xml',
+		'views/product/product_template_search.xml',
+		'views/product/product_template_actions.xml',
+		'views/product/product_product.xml',
+		'views/product/product_product_actions.xml',
 
 
-
-
-		'views/order_line.xml',					# Here !
-		'views/order_line_actions.xml',
-		'views/order.xml',
-
-
-
-		'views/closing.xml',
-		'views/report_order_line.xml',
+		# Order
+		'views/order/product_selector.xml',
+		'views/order/payment_method_line.xml',
+		'views/order/order_line.xml',					# Here !
+		'views/order/order_line_actions.xml',
+		'views/order/order.xml',
+		'views/order/closing.xml',
+		'views/order/report_order_line.xml',
 
 
 
 
-
-		'views/service.xml',
-		
-		'views/service_co2.xml',
-
-		'views/service_exc.xml',
-		'views/service_ipl.xml',
-		'views/service_ndyag.xml',
-		'views/service_quick.xml',
-
-		'views/service_medical.xml',
-		'views/service_cosmetology.xml',
-
-
-		'views/service_gyn.xml',
-		'views/service_echo.xml',
-		'views/service_promo.xml',
-		
-		'views/service_product.xml',
+		# Service
+		'views/service/service.xml',
+		'views/service/service_co2.xml',
+		'views/service/service_exc.xml',
+		'views/service/service_ipl.xml',
+		'views/service/service_ndyag.xml',
+		'views/service/service_quick.xml',
+		'views/service/service_medical.xml',
+		'views/service/service_cosmetology.xml',
+		'views/service/service_gyn.xml',
+		'views/service/service_echo.xml',
+		'views/service/service_promo.xml',
+		'views/service/service_product.xml',
 
 
 
-		'views/treatment_cart.xml',
-		'views/cart_line.xml',
-
-		'views/treatment_services.xml',
-		'views/treatment.xml',
-
-
-
-		'views/product_selector.xml',
+		# Treatment
+		'views/treatment/treatment_cart.xml',
+		'views/treatment/cart_line.xml',
+		'views/treatment/treatment_services.xml',
+		'views/treatment/treatment.xml',
+		'views/treatment/procedure_actions.xml',
+		'views/treatment/procedure.xml',
 
 
-		'views/payment_method_line.xml',
-		'views/account_line.xml',
-		'views/account_contasis_actions.xml',
-		'views/account_contasis.xml',
+
+
 
 
 		'views/configurator_emr.xml',
 
 
-		'views/procedure_actions.xml',
-		'views/procedure.xml',
+
+		# Patient
+		'views/patient/patient.xml',
+		'views/patient/patient_personal.xml',
 
 
-
-		'views/patient.xml',
-		'views/patient_personal.xml',
-
-
-		'views/media_line.xml',
-
-		'views/patient_line_actions.xml', # Dep - Already in Openhealth
-
-		'views/patient_line.xml', 
-		'views/patient_line_search.xml', 
-		'views/marketing_order_line.xml',
-		'views/marketing.xml',
-		'views/marketing_actions.xml',
+		# Marketing
+		'views/marketing/media_line.xml',
+		'views/marketing/patient_line_actions.xml', # Dep - Already in Openhealth
+		'views/marketing/patient_line.xml', 
+		'views/marketing/patient_line_search.xml', 
+		'views/marketing/marketing_order_line.xml',
+		'views/marketing/marketing.xml',
+		'views/marketing/marketing_actions.xml',
 
 
 
 
 
 
-		'views/management.xml',
-		'views/management_order_line.xml',
-		'views/management_actions.xml',
+		'views/management/management.xml',
+		'views/management/management_order_line.xml',
+		'views/management/management_actions.xml',
+		'views/management/mgt_patient_line.xml',
 
-		'views/mgt_patient_line.xml',
 
-
+		# RSP
 		'views/report_sale_product.xml',
 
 
+		# Electronic
+		'views/electronic/account_line.xml',
+		'views/electronic/account_contasis_actions.xml',
+		'views/electronic/account_contasis.xml',
+		'views/electronic/electronic_order.xml',
+		'views/electronic/electronic_container.xml',
 
-		'views/electronic_order.xml',
-
-		
-		'views/electronic_container.xml',
 
 
 
+		# Appointment
+		'views/appointment/wizard.xml',
+		'views/appointment/matrix.xml',
+		'views/appointment/appointment.xml',
+
+
+
+
+		# Menus
 		'views/menus/menus.xml',
 		'views/menus/menus_dev.xml',
 		'views/menus/menus_marketing.xml',
 		'views/menus/menus_management.xml',
 		'views/menus/menus_rsp.xml',
-
 		'views/menus/menus_products_2018.xml',
-
-
-
 
 		# Security
 		'security/data_users.xml',

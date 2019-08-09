@@ -1,3 +1,28 @@
+			#print(error)
+			#print(msg)
+			#if error in [1]:
+			#	raise UserError(_(msg))
+			#print()
+
+
+
+				#print line
+				#print line.product_id.name
+				#print line.product_uom_qty
+				#print line.price_unit
+				#print electronic_order
+				#print
+
+
+
+			#print(error)
+			#print(msg)
+			#if error in [1]:
+			#	raise UserError(_(msg))
+			#print()
+
+
+
 
 # ----------------------------------------------------------- Correct ------------------------------
 	correct_patient = fields.Many2one(

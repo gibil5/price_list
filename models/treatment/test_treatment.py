@@ -111,6 +111,31 @@ def test_report_marketing(self):
 	test_funcs.enablePrint()
 
 
+# ----------------------------------------------- Test Report account -----------------------------------------------
+def test_report_account(self):
+	"""
+	Test Report account
+	"""
+	print()
+	print('Test Report account')
+
+	# Print Disable
+	#test_funcs.disablePrint()
+
+
+	# Test
+	report = self.report_account
+	report.pl_create_electronic()
+	report.pl_export_txt()
+
+
+	# Print Enable
+	#test_funcs.enablePrint()
+
+
+
+
+
 
 # ----------------------------------------------------------- Second Level ---------------------------------------------
 
@@ -637,14 +662,15 @@ def create_recommendations_2019(self):
 	elif self.x_test_scenario in ['medical']:
 		tst_list = tst_list_medical
 
-	elif self.x_test_senario in ['new']:
+	elif self.x_test_scenario in ['new']:
 		tst_list = tst_list_new
 
 
 
 
 	# Loop
-	for tst in tst_list:
+	#for tst in tst_list:
+	for tst in tst_list_all:
 
 		# Init
 		name = name_dic[tst]

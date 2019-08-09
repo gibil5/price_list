@@ -458,9 +458,8 @@ class Management(models.Model):
 	# Configurator
 	configurator = fields.Many2one(
 			'openhealth.configurator.emr',
-			#string="Configuracion",
 			string="Config",
-			#required=True,
+			required=True,
 		)
 
 
