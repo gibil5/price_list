@@ -16,9 +16,12 @@
 
 
 				<xpath expr="//field[@name='x_type']" position="after">
-
+<!--
 					<group string="Validacion de Errores"	group="openhealth.roots">
+-->
+
 					<!-- Error Validation -->
+					<group string="Validacion de Errores">
 							<field name="error_validation_electronic"/>
 							<field name="error_validation_patient"/>
 							<field name="error_validation_order"/>
