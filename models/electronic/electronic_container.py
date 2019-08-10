@@ -196,8 +196,14 @@ class ElectronicContainer(models.Model):
 			if self.configurator.error_validation_electronic:
 
 				# Validate Order Patient
-				order.validate_patient()							# Good - Respects the LOD
 				#error, msg = order.patient.validate()				# Train Wreck ! - Does not respect the LOD
+				#order.validate_patient()							
+
+				if order.x_type in ['ticket_invoice', 'invoice']:
+					order.validate_patient_for_invoice()							# Good - Respects the LOD
+
+
+
 
 				# Validate Order 	
 				order.validate_electronic()							# Good - Respects the LOD

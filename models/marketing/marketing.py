@@ -27,7 +27,7 @@ from . import mkt_funcs
 from . import mkt_vars
 from openerp.addons.price_list.models.management import mgt_funcs
 
-from . import mkt_exc
+from . import exc_mkt
 
 from openerp.addons.price_list.models.lib import test_funcs
 
@@ -54,7 +54,7 @@ class Marketing(models.Model):
 
 
 		# Handle Exceptions
-		mkt_exc.handle_exceptions(self)
+		exc_mkt.handle_exceptions(self)
 
 
 		# Go
@@ -140,7 +140,7 @@ class Marketing(models.Model):
 
 
 		# Handle Exceptions
-		mkt_exc.handle_exceptions(self)
+		exc_mkt.handle_exceptions(self)
 
 
 		# Go
@@ -181,7 +181,7 @@ class Marketing(models.Model):
 		print('Create Sale Lines')
 
 		# Handle Exceptions
-		mkt_exc.handle_exceptions(self)
+		exc_mkt.handle_exceptions(self)
 
 
 		# Go
@@ -274,7 +274,7 @@ class Marketing(models.Model):
 
 
 		# Handle Exceptions
-		mkt_exc.handle_exceptions(self)
+		exc_mkt.handle_exceptions(self)
 
 
 		# Go

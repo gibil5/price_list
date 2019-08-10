@@ -26,7 +26,7 @@ from . import mgt_funcs
 from . import mgt_line_funcs
 from . import stats
 
-from . import mgt_exc
+from . import exc_mgt
 
 class Management(models.Model):
 	"""
@@ -68,7 +68,7 @@ class Management(models.Model):
 
 
 		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
+		exc_mgt.handle_exceptions(self)
 
 
 		# Go
@@ -98,7 +98,7 @@ class Management(models.Model):
 
 
 		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
+		exc_mgt.handle_exceptions(self)
 
 
 		# Go
@@ -157,7 +157,7 @@ class Management(models.Model):
 
 
 		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
+		exc_mgt.handle_exceptions(self)
 
 
 		# Go
@@ -186,7 +186,7 @@ class Management(models.Model):
 		
 
 		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
+		exc_mgt.handle_exceptions(self)
 
 
 		# Go
@@ -209,7 +209,7 @@ class Management(models.Model):
 
 
 		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
+		exc_mgt.handle_exceptions(self)
 
 
 		# Go
@@ -232,7 +232,7 @@ class Management(models.Model):
 
 
 		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
+		exc_mgt.handle_exceptions(self)
 
 
 		# Go
@@ -259,7 +259,7 @@ class Management(models.Model):
 
 
 		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
+		exc_mgt.handle_exceptions(self)
 
 
 		# Go
@@ -281,7 +281,7 @@ class Management(models.Model):
 
 
 		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
+		exc_mgt.handle_exceptions(self)
 
 
 		# Go

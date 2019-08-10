@@ -1,4 +1,9 @@
 <!--
+                <xpath expr="//button[@name='test_integration']" position="before">
+-->
+
+
+<!--
                             <button 
                                 type="object"
                                 class="oe_highlight"

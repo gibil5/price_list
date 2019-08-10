@@ -30,7 +30,7 @@
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs
 
-from . import tre_exc
+from . import exc_tre
 
 
 
@@ -47,7 +47,7 @@ def test_integration_treatment(self):
 
 
 	# Handle Exceptions
-	tre_exc.handle_exceptions(self)
+	exc_tre.handle_exceptions(self)
 
 
 	# Go

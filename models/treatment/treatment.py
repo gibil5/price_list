@@ -24,7 +24,7 @@ from . import reco_funcs
 from . import pl_creates
 from . import test_treatment
 
-from . import tre_exc
+from . import exc_tre
 
 class Treatment(models.Model):
 	"""
@@ -249,10 +249,14 @@ class Treatment(models.Model):
 		)
 
 	test_pricelist_2019 = fields.Boolean(
+			#'Price List 2019',
+			'PL 2019',
 			default=False,
 		)
 
 	test_pricelist_2018 = fields.Boolean(
+			#'Price List 2018',
+			'PL 2018',
 			default=False,
 		)
 
@@ -936,20 +940,22 @@ class Treatment(models.Model):
 
 	report_account = fields.Many2one(
 			'openhealth.container',
-			string="Report TXT",
+			#string="Report TXT",
+			string="TXT",
 			#required=True,
 		)
 
-
 	report_management = fields.Many2one(
 			'openhealth.management',
-			string="Report MGT",
+			#string="Report MGT",
+			string="MGT",
 			#required=True,
 		)
 
 	report_marketing = fields.Many2one(
 			'openhealth.marketing',
-			string="Report MKT",
+			#string="Report MKT",
+			string="MKT",
 			#required=True,
 		)
 

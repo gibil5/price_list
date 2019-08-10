@@ -14,16 +14,13 @@
 			<field name="name">Patient personal information</field>
 			<field name="model">oeh.medical.patient</field>
 			<field name="priority" eval="1"/>
-
 			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
-			
 			<field name="arch" type="xml">
 
+
 				<notebook position="inside">
-					
 
 					<page string="Personal - 2019">
-
 						<group>
 
 							<!-- First Group - Address Peru --> 
@@ -168,9 +165,15 @@
 								<field string="Parentesco"  name="x_caregiver_relation"/>
 							</group>
 						</group>
-
-
 					</page>
+
+
+					<page string="Admin">
+						<group>
+							<field name="configurator"/>
+						</group>
+					</page>
+
 				</notebook>
 			</field>
 		</record>

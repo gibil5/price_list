@@ -13,8 +13,7 @@ from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
-from . import ord_exc
-
+from . import exc_ord
 
 class sale_order(models.Model):
 	"""
@@ -25,14 +24,16 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Validate Patient ----------------------------
 	#@api.multi
-	def validate_patient(self):
+	#def validate_patient(self):
+	def validate_patient_for_invoice(self):
 		"""
 		Validate Patient
 		Used by Electronic Container (Txt Generation). 
 		"""
 		print()
-		print('Order Validate Patient')
-		self.patient.validate()
+		print('Order Validate Patient For Invoice')
+		#self.patient.validate()
+		self.patient.validate_for_invoice()
 
 
 
@@ -47,8 +48,7 @@ class sale_order(models.Model):
 		print('Order Validate Electronic')
 
 		# Handle Exceptions
-		ord_exc.handle_exceptions_electronic(self)
-
+		exc_ord.handle_exceptions_electronic(self)
 
 	# validate_electronic
 
@@ -650,7 +650,7 @@ class sale_order(models.Model):
 
 	def init_configurator(self):
 		"""
-		high level support for doing this and that.
+		Init Configurator
 		"""
 		print()
 		print('Init Configurator')
