@@ -26,15 +26,14 @@
 					<field name="report_marketing"/>
 					<field name="report_account"/>
 
+					<field name="report_product"/>
+
+
 
 					<!-- Buttons -->
-
-
-
                     <group>
 	                    <group>
 	                        <!-- Test Integration -->
-
 	                        <button 
 	                            type="object" 
 	                            class="oe_highlight"
@@ -86,6 +85,15 @@
 									name="test_report_account"
 
 									string="TXT"
+							/>
+
+							<button 
+									type="object"
+									class="oe_highlight"
+
+									name="test_report_product"
+
+									string="PROD"
 							/>
 	                    </group>
                     </group>

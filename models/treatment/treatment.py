@@ -938,6 +938,13 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Relational ----------------------------------------------
 
+	report_product = fields.Many2one(
+			'price_list.container',
+			string="PROD",
+			#required=True,
+		)
+
+
 	report_account = fields.Many2one(
 			'openhealth.container',
 			#string="Report TXT",
@@ -999,4 +1006,21 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
+
+
+
+# ----------------------------------------------------------- Test Report PROD -----------------------------------------
+	@api.multi
+	def test_report_product(self):
+		"""
+		Test Report Produc
+		"""
+		print()
+		print('Test Report Product - Button')
+
+		test_treatment.test_report_product(self)
+
+		print()
+		print()
+		print('SUCCESS !')
 

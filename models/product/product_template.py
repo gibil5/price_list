@@ -7,13 +7,11 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-
-#from openerp.addons.price_list.models.services import px_vars
 from . import px_vars
-
 from . import chk_product
-
 from . import pl_prod_vars
+
+from . import exc_prod
 
 class ProductTemplate(models.Model):
 	"""
@@ -24,6 +22,82 @@ class ProductTemplate(models.Model):
 	_order = 'pl_idx_int'
 
 	_description = 'Product Template'
+
+
+
+# ----------------------------------------------------------- Validate -----------
+	@api.multi
+	def validate(self):
+		"""
+		Validate Product
+		"""
+		print()
+		print('Product Validate')
+
+		# Handle Exceptions
+		exc_prod.handle_exceptions(self)
+
+
+	@api.multi
+	def validate_all(self):
+		"""
+		Validate Product
+		"""
+		print()
+		print('Product Validate All')
+
+
+		# Search
+		products = self.env['product.template'].search([
+																	('pl_price_list', 'in', ['2019']),
+															],
+															#order='pl_prefix,pl_idx_int asc',
+															#order='pl_idx_int,pl_prefix asc',
+															order='pl_prefix asc',
+															#limit=10,
+															#limit=100,
+															limit=600,
+														)
+		# Loop
+		idx = 0
+		for product in products:
+			print()
+			print(product.name)
+	
+			idx = idx + 1
+
+			# Handle Exceptions
+			exc_prod.handle_exceptions(product)
+
+		print(idx)
+
+
+
+# ----------------------------------------------------------- Configurator ------------------------
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+		)
+
+
+	def init_configurator(self):
+		"""
+		Initializes the Configurator
+		Is compatible with Tacna. Does the search by type, not by name
+		"""
+		# Search
+		if self.configurator.name in [False]:
+			self.configurator = self.env['openhealth.configurator.emr'].search([
+																					('x_type', 'in', ['emr']),
+															],
+															#order='date_begin,name asc',
+															limit=1,
+														)
+
+
+
+
 
 
 
@@ -49,6 +123,7 @@ class ProductTemplate(models.Model):
 
 
 
+# ----------------------------------------------------------- Correct ----------------------------------------------------
 	@api.multi
 	def correct_subfamilies(self):
 		"""

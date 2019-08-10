@@ -4,7 +4,6 @@
 # 	- Product Template
 
 
-
 _family_list = [
 
 	# Prods
@@ -15,9 +14,7 @@ _family_list = [
 
 	# Servs
 	('consultation', 	'Consulta'),
-
 	('laser', 		'Laser'),
-
 	('medical', 	'T. Medicos'),
 	('cosmetology', 'Cosmeatria'),
 
@@ -27,7 +24,6 @@ _family_list = [
 
 	('test', 	'test'),
 	('other', 		'Otros'),
-
 
 	('2018', 	'2018'),
 ]

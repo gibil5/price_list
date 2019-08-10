@@ -9,7 +9,7 @@
 
 	'description': 
 		"""
-		9 Aug 2019
+		10 Aug 2019
 
 		(Since 22 April, in Prod)
 
@@ -60,10 +60,10 @@
 		'views/templates.xml',
 
 
-		'views/containers.xml',
 
 
 		# Product
+		'views/product/pricelist_container.xml',
 		'views/product/product_pricelist.xml',
 		'views/product/product_template.xml',
 		'views/product/product_template_search.xml',

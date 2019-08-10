@@ -4,7 +4,6 @@
 
 
 
-
 <!-- FORM -->
 <!--
 		<record model="ir.ui.view" id="patient_personal_form_view">
@@ -16,22 +15,20 @@
 			<field name="priority" eval="1"/>
 			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
 			<field name="arch" type="xml">
-
-
 				<notebook position="inside">
 
+
+					<!-- Personal -->
 					<page string="Personal - 2019">
 						<group>
 
 							<!-- First Group - Address Peru --> 
+
+<!-- Address Personal -->
 							<group  attrs="{ 'required': [   
 															('x_foreign', '=', False), 
 														],
 											}">
-								
-								
-								
-<!-- Address Personal -->
 
 								<!-- Country --> 
 								<field name="country_id"    class="oe_no_button" 
@@ -115,32 +112,34 @@
 						</group>
 
 
-
-
-
-
 						<group>
-<!-- Third Group - Email --> 
+							<!-- Third Group - Email --> 
 							<group>
 								<field name="email"     string="Email"      widget="email" />
-								<field name="phone"     />  
-								<field name="mobile"    />
+								<field name="phone"/>
+								<field name="mobile"/>
+
+								<field name="vspace"/>
+
+								<field name="function"  required="0"/>
+								<field name="x_education_level" required="0"/>
 							</group>
 
-
-<!-- Fourth Group - Firm --> 
+							<!-- Fourth Group - Firm --> 
 							<group>
 								<field  name="x_ruc"/>
 								<field  name="x_firm"/>
 								<field  name="x_firm_address"/>
 							</group>
 						</group>
-		<hr></hr>
-
+<!--
+<hr></hr>
+-->
 
 
 
 <!-- Fifth Group - Function --> 
+<!--
 						<group>
 							<group>
 								<field name="function"  required="0"/>
@@ -149,9 +148,10 @@
 								<field name="x_education_level" required="0"/>
 							</group>
 						</group>
-		<hr></hr>
+-->
 
 
+<hr></hr>
 
 <!-- Sixth Group - Caregiver --> 
 						<group string="Acompañante">

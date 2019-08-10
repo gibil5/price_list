@@ -134,6 +134,25 @@ def test_report_account(self):
 
 
 
+# ----------------------------------------------- Test Report product -----------------------------------------------
+def test_report_product(self):
+	"""
+	Test Report product
+	"""
+	print()
+	print('Test Report product')
+
+	# Print Disable
+	#test_funcs.disablePrint()
+
+	# Test
+	report = self.report_product
+	report.validate()
+
+	# Print Enable
+	#test_funcs.enablePrint()
+
+
 
 
 

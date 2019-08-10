@@ -14,7 +14,6 @@
 			<field name="arch" type="xml">
 
 
-
 				<!-- Xpaths --> 
 				<!--
 				<xpath expr="//field[@name='invoice_policy']" position="after">
@@ -23,6 +22,34 @@
 				-->
 				<xpath expr="//field[@name='invoice_policy']" position="after">
 						<field name="pl_account"/>
+
+						<field name="configurator"/>
+
+						<group>
+
+                        <!-- Validate -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            help=''
+                            
+                            name="validate" 
+                            
+                            string="Validate"
+                        />
+
+
+                        <!-- Validate -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            help=''
+                            
+                            name="validate_all" 
+                            
+                            string="Validate All"
+                        />
+                    	</group>
 				</xpath>
 
 
@@ -60,10 +87,7 @@
 
 					<!-- Price List 2019 -->
 					<page string="Lista de Precios 2019">
-
-
 						<group  groups="openhealth.roots">
-
 
 							<field name="corr_medical"/>
 
@@ -139,6 +163,8 @@
 
 
 					<field name="pl_price_list"/>
+					<field name="configurator"/>
+
 
 					<field name="pl_prefix"			groups='openhealth.roots'/>
 
@@ -215,8 +241,12 @@
 				<tree>
 
 					<field name="pl_price_list"/>
+					<field name="configurator"/>
 
+
+					<field name="pl_prefix"/>
 					<field name="pl_idx_int"/>
+
 
 					<field name="name"/>
 					<field name="pl_name_short"		groups='openhealth.roots'/>

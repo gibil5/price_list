@@ -18,8 +18,10 @@ from services import *
 # Management
 from management import *
 
+
 # Product
 from product import *
+#from . import pricelist_container
 
 
 
@@ -61,7 +63,6 @@ from patient import *
 
 
 #from . import container
-from . import pricelist_container
 
 
 #from . import service

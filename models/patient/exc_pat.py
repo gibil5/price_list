@@ -4,7 +4,6 @@ from __future__ import print_function
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
-
 # ----------------------------------------------------------- Exceptions -------------------------
 class RequiredParameterException(Exception):
     pass

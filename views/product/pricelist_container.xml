@@ -7,97 +7,106 @@
 <!-- FORM --> 
 		<record model="ir.ui.view" id="container_form_view">
 			<field name="name">container.form</field>
-
 			<field name="model">price_list.container</field>
-			
 			<field name="arch" type="xml">
 				<form string="container Form">
 
 					<!-- Header -->
 					<header>
 
-
-                        <!-- Load -->
+<!-- Left -->
+                        <!-- Update -->
                         <button 
                                 type="object"
+                                class="oe_highlight"
 
+                                name="validate"
+
+                                string="Validate all"
+                        />
+
+                        <!-- Load CSV -->
+                        <button 
+                                name="load_csv"
+
+                                type="object"
                                 class="oe_highlight"
                                 
-                                name="load"
+                                groups="openhealth.roots"
                                 
                                 string="Load CSV"
+
+                                help="Important: Loads CSV !"
+
+                                confirm="Are you sure ?"
+                        />
+
+                        <!-- Create Products -->
+                        <button 
+                                name="create_products_2019"
+
+                                type="object"
+                                class="oe_highlight"
+                                
+                                groups="openhealth.roots"
+                                
+                                string="Create Products 2019"
+
+                                help="Important: Creates Products !"
+
+                                confirm="Are you sure ?"
                         />
 
 
-                        <!-- Update -->
+
+                        <!-- Example Remove --> 
 <!--
-                        <button 
-                                type="object"
+                        <button
+                                name="remove_myself"    
+                                type="object" 
                                 class="oe_highlight"
-                                name="update_price_list"
-                                string="Update Price list - 2018"
+                                groups="openhealth.roots,openhealth.managers"
+                                states="sale"
+                                string="ELIMINAR"
+                                help="Importante: Esta operación es REVERSIBLE !"
+                                confirm="Importante: La Venta va a ser convertida en Presupuesto. Desea continuar ?"
                         />
 -->
 
 
-                        <!-- Create -->
-                        <button 
-                                type="object"
-
-                                class="oe_highlight"
-                                
-                                name="create_products_2019"
-                                
-                                string="Create Products 2019"
-                        />
-
-
-
-
-
+<!-- Right -->
                         <!-- Update -->
                         <button 
                                 type="object"
-
                                 class="oe_highlight oe_right"
-                                
                                 name="update"
-                                
                                 string="Update"
+                                confirm="Are you sure ?"
                         />
 
-
-
-
-                        <!-- Clean -->
+                        <!-- Clean Procurements -->
                         <button 
                                 type="object"
                                 class="oe_highlight oe_right"
-                                
                                 name="clean_procurements"
-                                
                                 string="Clean Procurements"
+                                confirm="Are you sure ?"
                         />
 
-
-                        <!-- Clean -->
+                        <!-- Clean Stock Moves -->
                         <button 
                                 type="object"
-                                class="oe_highlight oe_right"
-                                
+                                class="oe_highlight oe_right"      
                                 name="clean_stock_moves"
-                                
                                 string="Clean Stock Moves"
+                                confirm="Are you sure ?"
                         />
-
-
 					</header>
 
 
 
 					<!-- Sheet -->  
 					<sheet>
-
 
                         <!-- Padding -->
                         <group>
@@ -110,11 +119,6 @@
                             </group>
                         </group>
 
-
-
-
-
-
                         <!-- Padding -->
                         <group>
                             <group>
@@ -124,13 +128,10 @@
                             </group>
                         </group>
 
-
                         <!-- Notebook --> 
                         <notebook>  
                             <page string="Products">
-
                                 <field name="product_ids"/>
-                            
                             </page>
                         </notebook>
                     </sheet>
@@ -140,22 +141,13 @@
 
 
 
-
-	
-
-
+<!-- ACTION --> 
 		<!-- actions opening views on models -->
-		<record model="ir.actions.act_window" id="price_list.container_list_action">
-			
+		<record model="ir.actions.act_window" id="price_list.container_list_action">			
 			<field name="name">price_list window</field>
-			
 			<field name="res_model">price_list.container</field>
-			
 			<field name="view_mode">tree,form</field>
 		</record>
-
-
-
 
 	</data>
 </openerp>
