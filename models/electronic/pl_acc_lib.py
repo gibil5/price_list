@@ -29,7 +29,6 @@ def get_cuentab(self, product_type):
 												)
 	#print(configurator.name)
 
-
 	if product_type in ['product']:
 		#cuentab = configurator.cuentab_products
 		cuentab = self.product.pl_account

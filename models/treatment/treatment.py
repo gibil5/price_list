@@ -945,6 +945,12 @@ class Treatment(models.Model):
 		)
 
 
+	report_contasis = fields.Many2one(
+			'openhealth.account.contasis',
+			string="ACC",
+		)
+
+
 	report_account = fields.Many2one(
 			'openhealth.container',
 			#string="Report TXT",
@@ -1006,6 +1012,19 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
+
+# ----------------------------------------------------------- Test Report ACC -----------------------------------------
+	@api.multi
+	def test_report_contasis(self):
+		"""
+		Test Report account
+		"""
+		print()
+		print('Test Report Contasis - Button')
+		test_treatment.test_report_contasis(self)
+		print()
+		print()
+		print('SUCCESS !')
 
 
 

@@ -122,15 +122,33 @@ def test_report_account(self):
 	# Print Disable
 	#test_funcs.disablePrint()
 
-
 	# Test
 	report = self.report_account
 	report.pl_create_electronic()
 	report.pl_export_txt()
 
+	# Print Enable
+	#test_funcs.enablePrint()
+
+
+# ----------------------------------------------- Test Report account -----------------------------------------------
+def test_report_contasis(self):
+	"""
+	Test Report account
+	"""
+	print()
+	print('Test Report Contasis')
+
+	# Print Disable
+	#test_funcs.disablePrint()
+
+	# Test
+	report = self.report_contasis
+	report.update()
 
 	# Print Enable
 	#test_funcs.enablePrint()
+
 
 
 

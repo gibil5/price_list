@@ -16,18 +16,18 @@ class ConfiguratorEmr(models.Model):
 
 
 
-# ----------------------------------------------------------- Dep ! -------------------------------
-	#cuentab_products = fields.Char(
-	#		'Cuentab Productos',
-	#	)
+# ----------------------------------------------------------- Important - Used by Account Contasis Line -------------------------------
+	cuentab_services = fields.Char(
+			'Cuentab Servicios',
+		)
 
-	#cuentab_services = fields.Char(
-	#		'Cuentab Servicios',
-	#	)
+	cuentab_products = fields.Char(
+			'Cuentab Productos',
+		)
 
-	#cuentab_consu = fields.Char(
-	#		'Cuentab Consumibles',
-	#	)
+	cuentab_consu = fields.Char(
+			'Cuentab Consumibles',
+		)
 
 
 
