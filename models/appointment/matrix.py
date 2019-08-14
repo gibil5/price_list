@@ -1,66 +1,39 @@
 # -*- coding: utf-8 -*-
 """
- 		Pricelist - Matrix
+		Pricelist - Matrix
 
- 		Created: 			 6 Aug 2019
+		Created: 			 6 Aug 2019
 		Last updated: 	 	 6 Aug 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
 
 class Matrix(models.Model):
-	"""
-	Day Schedule for the Clini
-	"""
+
 	_name = 'price_list.matrix'
 
 	_description = 'Price List Matrix'
 
-	#_order = 'day_date asc'
-
 
 
 	# ----------------------------------------------------------- Fields ---------------------
-	appointment = fields.One2many(
-			'price_list.appointment',
-			'matrix_id',
+	name = fields.Char()
+
+
+	task_ids = fields.Many2many(
+			'price_list.task',
+			relation='matrix_project_user_relation', 
+			column1='project_id',
+			column2='user_id', 
 		)
 
-	#date = fields.Datetime(
-	name = fields.Datetime(
-			'Fecha',
-		)
 
-
-
-
-
-
-
-	# ----------------------------------------------------------- Update - Button ---------------------
-
-	@api.multi
-	def update(self):
-		"""
-		Update
-		"""
-		print()
-		print('Update')
-
-
-	# ----------------------------------------------------------- validate - Button ---------------------
-
-	@api.multi
-	def validate(self):
-		"""
-		validate
-		"""
-		print()
-		print('validate')
-
-
-
-
-
+	#attendee_ids = fields.Many2many(
+	#		'management.student',
+	#		relation='your_table_name', 
+	#		column1='course_id',
+	#		column2='student_id', 
+	#		string="Attendees"
+	#	)
 
 

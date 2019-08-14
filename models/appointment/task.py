@@ -6,8 +6,11 @@ class Task(models.Model):
 	"""
 	Task
 	"""
-
 	_name = 'price_list.task'
+
+
+
+	planned_hours = fields.Char()
 
 
 	project_id = fields.Many2one(
@@ -15,10 +18,7 @@ class Task(models.Model):
 		)
 
 	user_id = fields.Many2one(
-			#'res.user',
 			'price_list.user',
 		)
 
-	planned_hours = fields.Char(
-		)
 

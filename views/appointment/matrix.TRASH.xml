@@ -1,0 +1,39 @@
+
+
+						<!-- Validate -->
+<!--
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="validate"
+								string="Validate"                               
+						/>
+-->
+
+
+
+<!--
+						<group  string="Total"  col="3">
+-->
+
+<!--
+								<field name="appointment" widget="x2many_2d_matrix" />
+								<field name="appointment"/>
+-->
+
+
+						<!-- Notebook --> 
+						<notebook>  
+							<!-- Bench --> 
+							<page   string="Appointments">
+								<group>
+									<group>
+									</group>
+									<group>
+									</group>
+								</group>
+							</page>
+						</notebook>
+
+
+					<field name="appointment"/>

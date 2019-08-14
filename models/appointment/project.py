@@ -8,8 +8,7 @@ class Project(models.Model):
 	"""
 	_name = 'price_list.project'
 
-	name = fields.Char(
-		)
+	name = fields.Char()
 
 	task_ids = fields.One2many(
 			'price_list.task',

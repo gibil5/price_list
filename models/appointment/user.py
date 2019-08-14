@@ -8,8 +8,7 @@ class User(models.Model):
 	"""
 	_name = 'price_list.user'
 
-	name = fields.Char(
-		)
+	name = fields.Char()
 
 	task_ids = fields.One2many(
 			'price_list.task',
