@@ -38,8 +38,20 @@
                             string="Validate"
                         />
 
+                        <!-- Fix -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            help=''
+                            
+                            name="fix" 
+                            
+                            string="FIX"
+                        />
 
-                        <!-- Validate -->
+
+                        <!-- Validate All -->
+<!--
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -49,6 +61,7 @@
                             
                             string="Validate All"
                         />
+-->
                     	</group>
 				</xpath>
 

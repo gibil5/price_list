@@ -25,7 +25,23 @@ class ProductTemplate(models.Model):
 
 
 
-# ----------------------------------------------------------- Validate -----------
+# ----------------------------------------------------------- Fix - Button -----------
+	@api.multi
+	def fix(self):
+		"""
+		Fix Product
+		"""
+		print()
+		print('Product Fix')
+
+		# Handle Exceptions
+		#exc_prod.handle_exceptions(self)
+		exc_prod.fix_exceptions(self)
+
+
+
+
+# ----------------------------------------------------------- Validate - Button -----------
 	@api.multi
 	def validate(self):
 		"""

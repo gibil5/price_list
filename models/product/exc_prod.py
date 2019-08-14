@@ -16,6 +16,36 @@ class ProductSubFamilyValueException(Exception):
 
 # ----------------------------------------------------------- Handle Exceptions -------------------------
 #@api.multi
+def fix_exceptions(self):
+	"""
+	Fix Exceptions
+	"""
+	print()
+	print('PROD - Fix Exceptions')
+
+	_dic = {
+		
+		'VICTAMINA C ENDOVENOSA':	'vitamin_c_intravenous', 
+		'CRIOCIRUGIA':	'cryosurgery',
+		'ESCLEROTERAPIA': 'sclerotherapy',
+		'PLASMA': 'plasma',
+		'BOTOX': 'botox', 
+		'REDUX': 'redux',
+		'ACIDO HIALURONICO': 'hyaluronic_acid',
+		'MESOTERAPIA NCTF': 'mesotherapy',
+		'INFILTRACIONES': 'infiltrations', 
+	}
+
+	#if self.pl_treatment in ['MESOTERAPIA NCTF']:
+	#	self.pl_subfamily = 'mesotherapy'
+
+	if self.pl_treatment in _dic:
+		self.pl_subfamily = _dic[self.pl_treatment]
+
+
+
+# ----------------------------------------------------------- Handle Exceptions -------------------------
+#@api.multi
 def handle_exceptions(self):
 	"""
 	Handle Exceptions
