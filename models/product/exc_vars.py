@@ -45,15 +45,17 @@ _subfamily_list = [
 'm22',
 
 
+
 # Cosmetology
-'cosmetology',
+#'cosmetology',				# Dep
 'carboxytherapy',
 'diamond_tip',
 'laser_triactive_carboxytherapy',
 
 
+
 # Medical
-'medical',
+#'medical',		# Dep
 
 'botox',
 'cryosurgery',
