@@ -37,6 +37,9 @@ def fix_exceptions(self):
 		'INFILTRACIONES': 'infiltrations', 
 
 		# Cosmetology
+		'PUNTA DE DIAMANTES': 'diamond_tip', 
+		'CARBOXITERAPIA': 'carboxytherapy', 
+		'LASER TRIACTIVE + CARBOXITERAPIA': 'laser_triactive_carboxytherapy',
 
 	}
 
