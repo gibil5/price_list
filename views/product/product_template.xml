@@ -111,7 +111,10 @@
 							<field name="pl_price_list"/>
 							<field name="pl_name_short"/>
 							<field name="pl_prefix"/>
+		
 							<field name="pl_idx"/>
+							<field name="pl_idx_int"/>
+
 							<field name="pl_code"/>
 
 							<field name="pl_family"/>
