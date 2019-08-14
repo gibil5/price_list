@@ -9,7 +9,7 @@
 
 	'description': 
 		"""
-		10 Aug 2019
+		13 Aug 2019
 
 		(Since 22 April, in Prod)
 

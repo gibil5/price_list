@@ -28,6 +28,7 @@
 
 """
 from __future__ import print_function
+
 from openerp.addons.price_list.models.lib import test_funcs
 
 from . import exc_tre

@@ -9,8 +9,9 @@ from __future__ import print_function
 import pandas
 from openerp import models, fields, api
 from . import px_vars
-
 from . import exc_prod
+
+from openerp.addons.price_list.models.lib import sys_func
 
 class PricelistContainer(models.Model):
 	"""
@@ -47,14 +48,16 @@ class PricelistContainer(models.Model):
 		# Loop
 		idx = 0
 		for product in products:
-			print()
-			print(product.name)
+			#print()
+			#print(product.name)
+			#sys_func.print_x(product.name)
+
 			idx = idx + 1
 
 			# Handle Exceptions
 			exc_prod.handle_exceptions(product)
 
-		print(idx)
+		#print(idx)
 
 
 
