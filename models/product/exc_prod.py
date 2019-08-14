@@ -24,7 +24,8 @@ def fix_exceptions(self):
 	print('PROD - Fix Exceptions')
 
 	_dic = {
-		
+
+		# Medical
 		'VICTAMINA C ENDOVENOSA':	'vitamin_c_intravenous', 
 		'CRIOCIRUGIA':	'cryosurgery',
 		'ESCLEROTERAPIA': 'sclerotherapy',
@@ -34,11 +35,12 @@ def fix_exceptions(self):
 		'ACIDO HIALURONICO': 'hyaluronic_acid',
 		'MESOTERAPIA NCTF': 'mesotherapy',
 		'INFILTRACIONES': 'infiltrations', 
+
+		# Cosmetology
+
 	}
 
-	#if self.pl_treatment in ['MESOTERAPIA NCTF']:
-	#	self.pl_subfamily = 'mesotherapy'
-
+	# Fix
 	if self.pl_treatment in _dic:
 		self.pl_subfamily = _dic[self.pl_treatment]
 
