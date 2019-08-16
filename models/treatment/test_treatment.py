@@ -707,8 +707,8 @@ def create_recommendations_2019(self):
 
 
 	# Loop
-	#for tst in tst_list:
-	for tst in tst_list_all:
+	#for tst in tst_list_all:
+	for tst in tst_list:
 
 		# Init
 		name = name_dic[tst]
