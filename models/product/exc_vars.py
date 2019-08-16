@@ -33,17 +33,14 @@ _subfamily_list = [
 'chavarri',
 'commercial',
 
-
 # Consultation
 'consultation', 
-
 
 # Laser
 'co2',
 'quick',
 'excilite',
 'm22',
-
 
 
 # Cosmetology
@@ -53,18 +50,14 @@ _subfamily_list = [
 'laser_triactive_carboxytherapy',
 
 
-
 # Medical
 #'medical',		# Dep
-
 'botox',
 'cryosurgery',
 'hyaluronic_acid',
-
 'infiltrations',
 'mesotherapy',
 'plasma',
-
 'redux',
 'sclerotherapy',
 'vitamin_c_intravenous',
