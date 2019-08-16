@@ -546,7 +546,7 @@ def create_recommendations_2019(self):
 
 					'med_6':		'REDUX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',										# Redux
 					'med_7':		'ESCLEROTERAPIA - Piernas - Varices - 1 sesion',											# Sclero
-					'med_8':		'VICTAMINA C ENDOVENOSA',																	# Vitamin
+					'med_8':		'VITAMINA C ENDOVENOSA',																	# Vitamin
 
 					#'med_1':		'',			# Plasma
 
