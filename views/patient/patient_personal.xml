@@ -5,9 +5,6 @@
 
 
 <!-- FORM -->
-<!--
-		<record model="ir.ui.view" id="patient_personal_form_view">
--->
 		<!-- Personal -->
 		<record model="ir.ui.view" id="openhealth.patient_personal_form_view">
 			<field name="name">Patient personal information</field>
@@ -169,16 +166,6 @@
 
 
 <hr></hr>
-
-
-						<group string="Citas">
-<!--
-							<group>
-							</group>
-							<group>
-							</group>
--->
-						</group>
 
 					</page>
 
