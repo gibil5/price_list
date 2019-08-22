@@ -15,6 +15,7 @@
 			<field name="priority" eval="1"/>
 			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
 			<field name="arch" type="xml">
+
 				<notebook position="inside">
 
 
@@ -165,10 +166,27 @@
 								<field string="Parentesco"  name="x_caregiver_relation"/>
 							</group>
 						</group>
+
+
+<hr></hr>
+
+
+						<group string="Citas">
+<!--
+							<group>
+							</group>
+							<group>
+							</group>
+-->
+						</group>
+
 					</page>
 
 
-					<page string="Admin">
+
+
+					<!-- Admin -->
+					<page string="Admin"	groups="openhealth.roots"	>
 						<group>
 							<field name="configurator"/>
 						</group>
