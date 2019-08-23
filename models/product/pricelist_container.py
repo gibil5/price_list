@@ -17,10 +17,29 @@ class PricelistContainer(models.Model):
 	"""
 	Creates, updates and manages Products
 	Pricelist 2019
+
+	Uses PL Products
 	"""
 	_name = 'price_list.container'
 
 	_description = 'container'
+
+
+
+# ----------------------------------------------------------- Relational --------------------------
+	#product_ids = fields.One2many(
+	#		'price_list.product',
+	#		'container_id',
+	#	)
+
+
+	#product_ids = fields.Char(
+	product_ids = fields.One2many(
+			'price_list.product',
+			'container_id',
+		)
+
+
 
 
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
@@ -324,12 +343,6 @@ class PricelistContainer(models.Model):
 
 
 # ----------------------------------------------------------- Third Level - Fields ---------------------------------------------
-
-# ----------------------------------------------------------- Relational --------------------------
-	product_ids = fields.One2many(
-			'price_list.product',
-			'container_id',
-		)
 
 
 # ---------------------------------------------- Natives -----------------------

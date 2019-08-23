@@ -13,25 +13,31 @@ from . import px_vars
 class PriceListProduct(models.Model):
 
 	"""
-	high level support for doing this and that.
+	Is Used by PL Container
 	"""
 	_name = 'price_list.product'
 	
 	_description = 'Product'
 	
-	#_inherit = 'sale.order'
-	
-	#_order = 'date_begin asc'
 	_order = 'idx_int'
 
 
 
 # ----------------------------------------------------------- Handle ------------------------------
+
 	# Used by Container
-	container_id = fields.Many2one(
+	#container_id = fields.Many2one(		
+	#		'price_list.container',
+	#		#ondelete='cascade',
+	#	)
+
+
+	#container_id = fields.Char(			
+	container_id = fields.Many2one(		
 			'price_list.container',
 			ondelete='cascade',
 		)
+
 
 
 # ----------------------------------------------------------- Update ----------------------------------------------------
@@ -41,22 +47,10 @@ class PriceListProduct(models.Model):
 		Update
 		"""
 		print('Product Pricelist - Update')
-
 		self.idx_int = int(self.idx)
-
 		print(self.name)
 		print(self.idx)
 		print(self.idx_int)
-
-
-
-
-
-# ---------------------------------------------- Fields - Chars -----------------------------------
-	time_stamp = fields.Char(
-			required=False,
-		)
-
 
 
 # ---------------------------------------------- Fields - Chars -----------------------
@@ -64,7 +58,6 @@ class PriceListProduct(models.Model):
 	name = fields.Char(
 			required=True,
 		)
-
 
 	name_short = fields.Char(
 			required=True,
@@ -79,38 +72,28 @@ class PriceListProduct(models.Model):
 		)
 
 	code = fields.Char(
-			#required=True,
 		)
-
 
 	idx_int = fields.Integer(
 			'Idx I',
-			#required=True,
 		)
 
-
+	time_stamp = fields.Char(
+			required=False,
+		)
 
 
 # ---------------------------------------------- Fields - Categorized ---------
 	
 	manufacturer = fields.Selection(
-
 			selection=px_vars._manufacturer_list,
-		
 			string='Manufacturer',
 		)
 
 	brand = fields.Selection(
-
-			selection=px_vars._brand_list,
-		
+			selection=px_vars._brand_list,		
 			string='brand',
 		)
-
-
-
-
-
 
 
 	x_type = fields.Selection(
@@ -171,7 +154,6 @@ class PriceListProduct(models.Model):
 		)
 
 
-
 # ---------------------------------------------- Fields - Floats -----------------------
 	price = fields.Float()
 
@@ -184,7 +166,4 @@ class PriceListProduct(models.Model):
 	price_session_next = fields.Float()
 
 	price_max = fields.Float()
-
-
-
 

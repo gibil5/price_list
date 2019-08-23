@@ -3,8 +3,8 @@
 #from . import models
 
 
-# Appointment
-from appointment import *
+# Appointment - Dep
+#from appointment import *
 
 
 
@@ -19,9 +19,6 @@ from services import *
 from management import *
 
 
-# Product
-from product import *
-#from . import pricelist_container
 
 
 
@@ -110,5 +107,13 @@ from treatment import *
 #from . import family_line
 #from . import day_doctor_line
 #from . import mgt_patient_line
+
+
+
+
+
+# Product
+#from product import *
+#from . import pricelist_container
 
 

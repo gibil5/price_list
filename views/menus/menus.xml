@@ -172,6 +172,8 @@
 					name="Configuration"
 					parent="main_pricelist_menu"
 					sequence="10"
+
+					groups="openhealth.roots,openhealth.directors"
 				/>
 
 		<!-- Containers --> 
@@ -181,6 +183,8 @@
 					sequence="1"
 
 					action="container_list_action"
+
+					groups="openhealth.roots,openhealth.directors"
 				/>
 
 		<!-- Pricelist Products --> 
@@ -190,6 +194,8 @@
 					sequence="2"
 
 					action="product_list_action"
+
+					groups="openhealth.roots,openhealth.directors"
 				/>
 
 	</data>

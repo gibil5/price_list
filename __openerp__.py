@@ -49,15 +49,16 @@
 
 	# any module necessary for this one to work correctly
 	#'depends': ['base'],
-	'depends': ['base', 'oehealth'],
+	#'depends': ['base', 'oehealth'],
+	'depends': ['base', 'oehealth', 'openhealth'],
 
 
 
 	# always loaded
 	'data': [
 		# 'security/ir.model.access.csv',
-		'views/views.xml',
-		'views/templates.xml',
+		#'views/views.xml',
+		#'views/templates.xml',
 
 
 
@@ -72,8 +73,10 @@
 		'views/product/product_product_actions.xml',
 
 
+
+
 		# Order
-		'views/order/product_selector.xml',
+		#'views/order/product_selector.xml',
 		'views/order/payment_method_line.xml',
 		'views/order/order_line.xml',					# Here !
 		'views/order/order_line_actions.xml',
@@ -112,7 +115,7 @@
 
 		# Patient
 		'views/patient/patient.xml',
-		'views/patient/patient_personal.xml',
+		#'views/patient/patient_personal.xml',
 
 
 		# Marketing
@@ -144,19 +147,24 @@
 		'views/electronic/electronic_container.xml',
 
 
+
 		# Appointment
-		'views/appointment/wizard.xml',
-		'views/appointment/matrix.xml',
-		'views/appointment/appointment.xml',
+		#'views/appointment/wizard.xml',			# Dep 
+		#'views/appointment/matrix.xml',			# Dep
+		#'views/appointment/appointment.xml',		# Dep
+
 
 
 		# Menus
 		'views/menus/menus.xml',
-		'views/menus/menus_dev.xml',
+		#'views/menus/menus_dev.xml',
 		'views/menus/menus_marketing.xml',
 		'views/menus/menus_management.xml',
-		'views/menus/menus_rsp.xml',
+		
+		#'views/menus/menus_rsp.xml',			# Dep
+		
 		'views/menus/menus_products_2018.xml',
+
 
 		# Security
 		'security/data_users.xml',
