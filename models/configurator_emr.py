@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-	Configurator - EMR
+Configurator - EMR
 
-	Created: 			25 Jan 2019
-	Last updated: 		14 Aug 2019
+Created: 			25 Jan 2019
+Last updated: 		14 Aug 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -13,6 +13,16 @@ class ConfiguratorEmr(models.Model):
 	high level support for doing this and that.
 	"""
 	_inherit = 'openhealth.configurator.emr'
+
+
+
+# ----------------------------------------------------------- 2019 Price list -------------------------------
+
+	#path = fields.Char(
+	path_csv_pricelist = fields.Char(
+			required=False,
+		)
+
 
 
 

@@ -22,6 +22,39 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 
+
+# ----------------------------------------------------------- Configurator ------------------------
+	# Configurator
+	#configurator = fields.Many2one(
+	#		'openhealth.configurator.emr',
+	#		string="Configuracion",
+	#	)
+
+
+	def init_configurator(self):
+		"""
+		Init Configurator
+		For past orders
+		"""
+		print()
+		print('Init Configurator')
+
+		# Configurator
+		if self.configurator.name in [False]:
+			self.configurator = self.env['openhealth.configurator.emr'].search([
+																					('x_type', 'in', ['emr']),
+															],
+															#order='date_begin,name asc',
+															limit=1,
+														)
+			#print(self.configurator)
+			#print(self.configurator.name)
+
+
+
+
+
+
 # ----------------------------------------------------------- Validate Patient ----------------------------
 	#@api.multi
 	#def validate_patient(self):
@@ -640,29 +673,4 @@ class sale_order(models.Model):
 			if self.x_admin_mode:
 				line.state = 'draft'
 				line.unlink()
-
-# ----------------------------------------------------------- Configurator ------------------------
-	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Configuracion",
-		)
-
-	def init_configurator(self):
-		"""
-		Init Configurator
-		"""
-		print()
-		print('Init Configurator')
-
-		# Configurator
-		if self.configurator.name in [False]:
-			self.configurator = self.env['openhealth.configurator.emr'].search([
-																					('x_type', 'in', ['emr']),
-															],
-															#order='date_begin,name asc',
-															limit=1,
-														)
-			print(self.configurator)
-			print(self.configurator.name)
 

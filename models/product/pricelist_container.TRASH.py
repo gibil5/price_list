@@ -1,4 +1,70 @@
 
+# ----------------------------------------------------------- Remove Stock Moves - Button ----------------------------------------------------
+	@api.multi
+	def clean_stock_moves(self):
+		"""
+		Cancels stock moves
+		Remove manually
+		"""
+		print('Container Clean stock_moves')
+
+		# Search
+		moves = self.env['stock.move'].search([
+													#('x_name_short', 'in', [name]),
+												],
+												#order='date_begin asc',
+												#limit=10,
+											)
+		for stock_move in moves:
+			#print()
+			#print(stock_move)
+			#print(stock_move.name)
+			#print(stock_move.state)
+			#stock_move.unlink()
+			stock_move.state = 'cancel'
+
+		print('Finished !')
+
+	# clean_stock_moves
+
+
+
+# ----------------------------------------------------------- Remove Procurement - Button ----------------------------------------------------
+	@api.multi
+	def clean_procurements(self):
+		"""
+		Cancels Procurements
+		Remove manually
+		"""
+		print('Container Clean Procurements')
+
+		# Search
+		procs = self.env['procurement.order'].search([
+															#('x_name_short', 'in', [name]),
+														],
+															#order='date_begin asc',
+															#limit=10,
+													)
+		for procurement in procs:
+			#print()
+			#print(procurement)
+			#print(procurement.name)
+			#print(procurement.state)
+			#procurement.unlink()
+			procurement.state = 'cancel'
+		
+		print('Finished !')
+
+	# clean_procurements
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,34 @@
+time_stamp,prefix,idx,code,x_type,family,subfamily,name_short,new,name,manufacturer,brand,price,price_company,treatment,zone,pathology,level,sessions,time,price_vip,price_session,price_session_next,price_max
+2019-08-27,001,1,,product,topical,chavarri,PROTECTOR SOLAR - H,,PROTECTOR SOLAR - H,HILDA,CLINICA CHAVARRI,200,35,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,2,,product,topical,chavarri,Protector solar Cooper,1,Protector solar Cooper,LA COOPER,CLINICA CHAVARRI,200,35,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,3,,product,topical,chavarri,Despigmentante GLI-KO,1,Despigmentante GLI-KO,LA COOPER,CLINICA CHAVARRI,250,35,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,4,,product,topical,chavarri,Crema Revitalizante con vitaminas,1,Crema Revitalizante con vitaminas,LA COOPER,CLINICA CHAVARRI,200,35,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,5,,product,topical,chavarri,RegeneraDerm D-Pantenol,1,RegeneraDerm D-Pantenol,LA COOPER,CLINICA CHAVARRI,150,35,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,6,,product,topical,chavarri,Acne Clean Dermolimpiador,1,Acne Clean Dermolimpiador,LA COOPER,CLINICA CHAVARRI,70,35,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,7,,product,topical,chavarri,Tretinoina,,Tretinoina,HILDA,CLINICA CHAVARRI,200,35,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,8,,product,topical,chavarri,Mascara astringente Liquido,,Mascara astringente Liquido,ELIAS OCHANTE,CLINICA CHAVARRI,100,35,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,9,,product,topical,chavarri,Mascara astringente Polvo,,Mascara astringente Polvo,ELIAS OCHANTE,CLINICA CHAVARRI,100,35,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,10,,product,topical,chavarri,Despigmentante HQ,,Despigmentante HQ,BOTICA FRANCESA,CLINICA CHAVARRI,200,50,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,11,,product,topical,chavarri,Despigmentante AHA,,Despigmentante AHA,BOTICA FRANCESA,CLINICA CHAVARRI,200,50,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,12,,product,topical,chavarri,Crema con Vitaminas,,Crema con Vitaminas,BOTICA FRANCESA,CLINICA CHAVARRI,200,50,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,13,,product,card,commercial,Tarjeta VIP,,Tarjeta VIP,CLINICA CHAVARRI,CLINICA CHAVARRI,200,0,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,14,,product,kit,commercial,Kit post laser CO2,,Kit post laser CO2,BOTICA VILLEGAS,CLINICA CHAVARRI,150,75,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,15,,product,kit,commercial,Kit post laser CO2 Cooper,1,Kit post laser CO2 Cooper,LA COOPER,CLINICA CHAVARRI,200,75,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,16,,product,kit,commercial,Kit post QL,1,Kit post QL,CLINICA CHAVARRI,CLINICA CHAVARRI,200,200,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,17,,product,topical,commercial,Despigmentante Santa Teresa,,Despigmentante Santa Teresa,BOTICA SANTA TERESA,BOTICA SANTA TERESA,300,90,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,18,,product,topical,commercial,Despigmentante formula 1,,Despigmentante formula 1,BOTICA SANTA TERESA,BOTICA SANTA TERESA,300,120,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,19,,product,topical,commercial,ANTIRROJECES,,ANTIRROJECES,EURODERMA,EURODERMA,200,100,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,20,,product,topical,commercial,HIDRATOPIC LOCION 120ml,,HIDRATOPIC LOCION 120ml,MEDISCIENCE,MEDISCIENCE,80,40,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,21,,product,topical,commercial,COLAGENO NAARA,,COLAGENO NAARA,JEUNESSE,JEUNESSE,170,85,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,22,,product,topical,commercial,AGELESS CAJA,,AGELESS CAJA,JEUNESSE,JEUNESSE,250,190,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,23,,product,topical,commercial,AGELESS BLISTER de 5,,AGELESS BLISTER de 5,JEUNESSE,JEUNESSE,50,50,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,24,,product,topical,commercial,DERMATOPIC LOCION 120ml,,DERMATOPIC LOCION 120ml,MEDISCIENCE,MEDISCIENCE,80,40,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,25,,product,topical,commercial,DERMATOPIC SULFUR 90gr,,DERMATOPIC SULFUR 90gr,MEDISCIENCE,MEDISCIENCE,80,40,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,26,,product,topical,commercial,ACNETOPIC 200ml,,ACNETOPIC 200ml,MEDISCIENCE,MEDISCIENCE,120,75,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,27,,product,topical,commercial,Q54,,Q54,DROGUERIA ZOMAX,DROGUERIA ZOMAX,350,210,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,28,,product,topical,commercial,VITAMINA SKIN,1,VITAMINA SKIN,AKRON,AKRON,200,150,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,29,,product,topical,commercial,VITAMINA SKIN C,1,VITAMINA SKIN C,AKRON,AKRON,300,180,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,30,,product,topical,chavarri,TRANSFERENCIA A TITULO GRATUITO,,TRANSFERENCIA A TITULO GRATUITO,na,na,0,0,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,31,,product,topical,chavarri,CLARIDERMIL,,CLARIDERMIL,na,na,208,0,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,32,,product,other,other,OTROS,,OTROS,na,na,0,0,na,na,na,na,na,na,-1,-1,-1,-1
+2019-08-27,001,33,,product,other,commission,COMISION DE ENVIO,,COMISION DE ENVIO,na,na,0,0,na,na,na,na,na,na,-1,-1,-1,-1

@@ -11,8 +11,6 @@
 				groups="openhealth.roots"
 		/>
 
-
-
 		<!-- DEV --> 
 		<menuitem   id="parent_dev_menu" 
 							name="DEV"

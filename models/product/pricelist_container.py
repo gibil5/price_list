@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-	Container
+Container
 
-	Created: 			23 Apr 2019
-	Last updated: 		10 Aug 2019
+Created: 			23 Apr 2019
+Last updated: 		10 Aug 2019
 """
 from __future__ import print_function
 import pandas
@@ -26,11 +26,23 @@ class PricelistContainer(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational --------------------------
-	#product_ids = fields.One2many(
-	#		'price_list.product',
-	#		'container_id',
+# ----------------------------------------------------------- Dep --------------------------
+
+	#path = fields.Char(
+	#		required=False,
 	#	)
+
+
+
+# ----------------------------------------------------------- Relational --------------------------
+
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+			required=True,
+		)
+
 
 
 	#product_ids = fields.Char(
@@ -45,12 +57,14 @@ class PricelistContainer(models.Model):
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 
 	@api.multi
-	def validate(self):
+	#def validate(self):
+	def validate_product_templates(self):
+
 		"""
-		Validate All Products
+		Validate All Product Templates
 		"""
 		print()
-		print('Product Validate')
+		print('Product Validate Product Templates')
 
 
 		# Search
@@ -84,7 +98,6 @@ class PricelistContainer(models.Model):
 
 # ----------------------------------------------------------- Load CSV - Button -------------------
 	@api.multi
-	#def load(self):
 	def load_csv(self):
 		"""
 		Load CSV file, created with Excel.
@@ -92,13 +105,20 @@ class PricelistContainer(models.Model):
 		"""
 		print('Load')
 
+
 		# Clean
-		self.product_ids.unlink()
+		#self.product_ids.unlink()
+		self.clear()
+
+
 
 		# Init
-		fname = self.path + self.file_name
+		#fname = self.path + self.file_name
+		fname = self.configurator.path_csv_pricelist + self.file_name
+
 		df = self.open_with_pandas_read_csv(fname)
 		#print(df)
+
 
 		# Loop
 		for index, row in df.iterrows():
@@ -168,7 +188,10 @@ class PricelistContainer(models.Model):
 	@api.multi
 	def create_products_2019(self):
 		"""
-		Create Products 2019
+		Create Product Templates 2019
+		Uses Pricelist Products
+		Avoids Product Template Duplication
+
 		"""
 		print()
 		print('Create Products 2019')
@@ -180,14 +203,23 @@ class PricelistContainer(models.Model):
 															#order='date_begin asc',
 															#limit=1,
 													)
+		print(products)
+
+
 		# Count
 		count = self.env['price_list.product'].search_count([
 														],
 															#order='x_serial_nr asc',
 															#limit=1,
 													)
+		print(count)
+
+
 		for pro in products:
-			#print(pro.name)
+
+			print(pro)
+			print(pro.name)
+
 			
 			# Count
 			count = self.env['product.template'].search_count([
@@ -196,12 +228,15 @@ class PricelistContainer(models.Model):
 														])
 			#print(count)
 
+			# Avoids Product Template Duplication
 			if count == 0:
 				product_template = self.env['product.template'].create({
+
+																			'name': 			pro.name,
+
 																			'pl_price_list': 	'2019',
 																			'pl_time_stamp': 	pro.time_stamp,
 																			'type': 			pro.x_type,
-																			'name': 			pro.name,
 																			'pl_name_short': 	pro.name_short,
 																			'pl_prefix': 		pro.prefix,
 																			'pl_idx': 			pro.idx,
@@ -233,65 +268,6 @@ class PricelistContainer(models.Model):
 	# create_products_2019
 
 
-# ----------------------------------------------------------- Remove Stock Moves - Button ----------------------------------------------------
-	@api.multi
-	def clean_stock_moves(self):
-		"""
-		Cancels stock moves
-		Remove manually
-		"""
-		print('Container Clean stock_moves')
-
-		# Search
-		moves = self.env['stock.move'].search([
-													#('x_name_short', 'in', [name]),
-												],
-												#order='date_begin asc',
-												#limit=10,
-											)
-		for stock_move in moves:
-			#print()
-			#print(stock_move)
-			#print(stock_move.name)
-			#print(stock_move.state)
-			#stock_move.unlink()
-			stock_move.state = 'cancel'
-
-		print('Finished !')
-
-	# clean_stock_moves
-
-
-
-# ----------------------------------------------------------- Remove Procurement - Button ----------------------------------------------------
-	@api.multi
-	def clean_procurements(self):
-		"""
-		Cancels Procurements
-		Remove manually
-		"""
-		print('Container Clean Procurements')
-
-		# Search
-		procs = self.env['procurement.order'].search([
-															#('x_name_short', 'in', [name]),
-														],
-															#order='date_begin asc',
-															#limit=10,
-													)
-		for procurement in procs:
-			#print()
-			#print(procurement)
-			#print(procurement.name)
-			#print(procurement.state)
-			#procurement.unlink()
-			procurement.state = 'cancel'
-		
-		print('Finished !')
-
-	# clean_procurements
-
-
 # ----------------------------------------------------------- Update - Button ----------------------------------------------------
 	@api.multi
 	def update(self):
@@ -310,6 +286,8 @@ class PricelistContainer(models.Model):
 		for product in products:
 			product.update()
 	# update
+
+
 
 
 
@@ -344,23 +322,34 @@ class PricelistContainer(models.Model):
 
 # ----------------------------------------------------------- Third Level - Fields ---------------------------------------------
 
-
-# ---------------------------------------------- Natives -----------------------
 	name = fields.Char(
 			required=True,
 		)
 
 	file_name = fields.Selection(
 			selection=px_vars._file_name_list,
-			#required=True,
-			required=False,
-		)
-
-	path = fields.Char(
-			#required=True,
-			required=False,
+			required=True,
 		)
 
 	caps_name = fields.Boolean(
 			default=False,
 		)
+
+
+
+# ----------------------------------------------------------- Clear - Button ----------------------------------------------------
+	@api.multi
+	def clear(self):
+		"""
+		Clear
+		"""
+		self.product_ids.unlink()
+
+		# Pricelist Products
+		products = self.env['price_list.product'].search([
+															#('x_name_short', 'in', [name]),
+														],
+															#order='date_begin asc',
+															#limit=1,
+													)
+		products.unlink()

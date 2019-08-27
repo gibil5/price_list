@@ -20,6 +20,16 @@
 					<group string="Validacion de Errores"	group="openhealth.roots">
 -->
 
+					<!-- CSV Pricelist 2019 -->
+					<group string="CSV Pricelist 2019">
+
+							<field name="path_csv_pricelist"/>
+						
+					</group>
+					<group></group>
+
+
+
 					<!-- Error Validation -->
 					<group string="Validacion de Errores">
 							<field name="error_validation_electronic"/>

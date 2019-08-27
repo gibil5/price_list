@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-		*** Product Template
+*** Product Template
 
-		Created: 			  8 Apr 2019
-		Last up: 	 		  8 Apr 2019
+Created: 			  8 Apr 2019
+Last up: 	 		 23 Aug 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
 from . import px_vars
 from . import chk_product
 from . import pl_prod_vars
-
 from . import exc_prod
 
 class ProductTemplate(models.Model):
@@ -22,6 +21,26 @@ class ProductTemplate(models.Model):
 	_order = 'pl_idx_int'
 
 	_description = 'Product Template'
+
+
+
+
+# ----------------------------------------------------------- Fields ------------------------
+
+	pl_price_list = fields.Selection(
+
+			#selection=px_vars._price_list_list,
+
+			[
+				('2019', '2019'),
+				('2018', '2018'),
+			],
+		
+			string='Lista de Precios',
+			required=True,
+		)
+
+
 
 
 
@@ -249,15 +268,6 @@ class ProductTemplate(models.Model):
 			string='Marca',
 		)
 
-
-	pl_price_list = fields.Selection(
-
-			selection=px_vars._price_list_list,
-		
-			string='Lista de Precios',
-			required=True,
-		)
-	
 
 
 

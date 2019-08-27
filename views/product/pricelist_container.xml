@@ -20,11 +20,16 @@
                                 type="object"
                                 class="oe_highlight"
 
-                                name="validate"
+                                name="validate_product_templates"
 
                                 string="Validate all"
                         />
 
+<!--
+                                name="validate"
+
+                                confirm="Are you sure ?"
+-->
                         <!-- Load CSV -->
                         <button 
                                 name="load_csv"
@@ -38,8 +43,11 @@
 
                                 help="Important: Loads CSV !"
 
-                                confirm="Are you sure ?"
                         />
+
+<!--
+                                confirm="Are you sure ?"
+-->
 
                         <!-- Create Products -->
                         <button 
@@ -54,7 +62,6 @@
 
                                 help="Important: Creates Products !"
 
-                                confirm="Are you sure ?"
                         />
 
 
@@ -79,12 +86,26 @@
                         <button 
                                 type="object"
                                 class="oe_highlight oe_right"
+
+                                name="clear"
+
+                                string="Clear"
+                        />
+
+
+                        <!-- Update -->
+                        <button 
+                                type="object"
+                                class="oe_highlight oe_right"
                                 name="update"
                                 string="Update"
                                 confirm="Are you sure ?"
                         />
 
+
                         <!-- Clean Procurements -->
+                        <!-- Clean Stock Moves -->
+<!--
                         <button 
                                 type="object"
                                 class="oe_highlight oe_right"
@@ -93,7 +114,6 @@
                                 confirm="Are you sure ?"
                         />
 
-                        <!-- Clean Stock Moves -->
                         <button 
                                 type="object"
                                 class="oe_highlight oe_right"      
@@ -101,6 +121,7 @@
                                 string="Clean Stock Moves"
                                 confirm="Are you sure ?"
                         />
+-->                        
 					</header>
 
 
@@ -114,7 +135,12 @@
 								<field name="name"/>
                             </group>
                             <group>
+<!--
                                 <field name="path"/>
+-->
+
+                                <field name="configurator"/>
+
                                 <field name="file_name"/>
                             </group>
                         </group>

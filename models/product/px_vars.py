@@ -4,6 +4,15 @@
 # 	- Product Template
 
 
+_price_list_list = [
+	
+	('2019', '2019'),
+	('2018', '2018'),
+]
+
+
+
+
 _family_list = [
 
 	# Prods
@@ -377,8 +386,3 @@ _brand_list = [
 ]
 
 
-_price_list_list = [
-	
-	('2019', '2019'),
-	('2018', '2018'),
-]
