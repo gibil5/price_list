@@ -523,7 +523,7 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 5090,
+				"buffer_size": 5089,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1083,15 +1083,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5090,
+						"buffer_size": 5089,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								215,
-								215
+								1340,
+								1340
 							]
 						],
 						"settings":
@@ -1100,7 +1100,7 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
+						"translation.x": 2.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -1512,7 +1512,7 @@
 		[
 			[
 				"",
-				"~/cellar/github/openhealth/OpenHealth-MIN.sublime-project"
+				"~/Virtualenvs/Odoo9-min/odoo/addons/matrix/Matrix.sublime-project"
 			],
 			[
 				"\t",

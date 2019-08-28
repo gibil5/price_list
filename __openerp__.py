@@ -9,7 +9,7 @@
 
     'description': 
         """
-        27 Aug 2019
+        28 Aug 2019
 
         (Since 22 April, in Prod)
 
@@ -30,7 +30,7 @@
             - Real Data is like White Noise. That will capture your system's actual Transfer Function. Coverage.
 
         Remember, Hunter and Westerman:
-            - Step 1 - New Thinking: Avoid the 7 Value Traps.
+            - Step 1: New Thinking: Avoid the 7 Value Traps.
 
         Remember John Keegan: 
             - Two forces always: one slow and the other fast. 
