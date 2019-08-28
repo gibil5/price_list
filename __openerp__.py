@@ -9,7 +9,7 @@
 
     'description': 
         """
-        22 Aug 2019
+        27 Aug 2019
 
         (Since 22 April, in Prod)
 
@@ -17,8 +17,7 @@
 
         Remember Robert C. Martin:
             - In software, 80 percent of what we do is called "Maintenance": the act of Repair. 
-            - A Class exposes an abstract interface that allows users to manipulate the Essence of the data,
-            without having to know its Implementation. 
+            - A Class exposes an abstract interface that allows users to manipulate the Essence of the data, without having to know its Implementation. 
             - Respect the Law of Demeter. Avoid Train Wreckages.
             - Handle Exceptions.
 

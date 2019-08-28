@@ -322,7 +322,11 @@ _file_name_list = [
 	#('services.csv', 'services.csv'),
 	#('products.csv', 'products.csv'),
 
+
 	('TEST.csv', 		'TEST.csv'),
+
+	('PRODS.csv', 			'PRODS.csv'),
+	('CONSULTATIONS.csv', 	'CONSULTATIONS.csv'),
 
 	('CO2.csv', 		'CO2.csv'),
 	('QUICK.csv', 		'QUICK.csv'),
@@ -335,9 +339,6 @@ _file_name_list = [
 	('GINECO.csv', 		'GINECO.csv'),
 	('PROMOS.csv', 		'PROMOS.csv'),
 	('ECO.csv', 		'ECO.csv'),
-
-	#('PRODUCTS.csv', 	'PRODUCTS.csv'),
-	('PRODS.csv', 		'PRODS.csv'),
 ]
 
 

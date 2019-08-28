@@ -488,8 +488,8 @@ class sale_order(models.Model):
 		#print('mark 1')
 
 
-		# Change Appointment State - To Invoiced
-		self.update_appointment()
+		# Change Appointment State - To Invoiced - Dep !!!
+		#self.update_appointment()
 
 
 		#print('mark 2')
@@ -521,7 +521,7 @@ class sale_order(models.Model):
 				line.update_recos()
 			# Update
 			self.x_procedure_created = True
-			self.treatment.update_appointments()
+			#self.treatment.update_appointments()		# Dep !
 
 
 

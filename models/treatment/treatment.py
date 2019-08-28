@@ -6,13 +6,11 @@
 		Created: 			26 Aug 2016
 		Last up: 	 		24 Jul 2019
 
-	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
-	  without having to know its Implementation. 
+	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, without having to know its Implementation. 
 
 	- Respect the Law of Demeter. Avoid Train Wrecks.
 
-	- Treat the Active Record as a data structure and create separate objects that contain the business rules 
-	  and that hide their internal data. These Objects are just instances of the Active Record.	
+	- Treat the Active Record as a data structure and create separate objects that contain the business rules and that hide their internal data. These Objects are just instances of the Active Record.	
 
 	- Handle Exceptions.
 """

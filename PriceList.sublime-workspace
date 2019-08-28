@@ -4,12 +4,20 @@
 		"selected_items":
 		[
 			[
-				"pl",
-				"pl_treatment"
+				"def",
+				"default"
 			],
 			[
 				"pro",
-				"product"
+				"products"
+			],
+			[
+				"produ",
+				"product_ids"
+			],
+			[
+				"pl",
+				"pl_treatment"
 			],
 			[
 				"pl_pr",
@@ -162,10 +170,6 @@
 			[
 				"mar",
 				"marketing_id"
-			],
-			[
-				"produ",
-				"product_id"
 			],
 			[
 				"order",
@@ -510,10 +514,6 @@
 			[
 				"f",
 				"fields"
-			],
-			[
-				"csv",
-				"csv_delimiter"
 			]
 		]
 	},
@@ -523,25 +523,8 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 5091,
+				"buffer_size": 5090,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order/order.py",
-			"settings":
-			{
-				"buffer_size": 13269,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/management/management.py",
-			"settings":
-			{
-				"buffer_size": 35013,
 				"line_ending": "Unix"
 			}
 		},
@@ -549,91 +532,16 @@
 			"file": "models/configurator_emr.py",
 			"settings":
 			{
-				"buffer_size": 3201,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/management/exc_mgt.py",
-			"settings":
-			{
-				"buffer_size": 734,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/product/product.py",
-			"settings":
-			{
-				"buffer_size": 2886,
+				"buffer_size": 4337,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/product/exc_prod.py",
+			"file": "views/configurator_emr.xml",
 			"settings":
 			{
-				"buffer_size": 2969,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/product/product_product.py",
-			"settings":
-			{
-				"buffer_size": 4025,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/product/product_template.xml",
-			"settings":
-			{
-				"buffer_size": 9963,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/treatment/procedure.xml",
-			"settings":
-			{
-				"buffer_size": 6300,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/menus/menus_dev.xml",
-			"settings":
-			{
-				"buffer_size": 950,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/menus/menus_dev.BUSS.xml",
-			"settings":
-			{
-				"buffer_size": 2116,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/product/product_template.py",
-			"settings":
-			{
-				"buffer_size": 7402,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/product/px_vars.py",
-			"settings":
-			{
-				"buffer_size": 9092,
+				"buffer_size": 1957,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -642,7 +550,51 @@
 			"file": "models/product/pricelist_container.py",
 			"settings":
 			{
-				"buffer_size": 9106,
+				"buffer_size": 8718,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/treatment/treatment.py",
+			"settings":
+			{
+				"buffer_size": 24003,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/treatment/test_treatment.py",
+			"settings":
+			{
+				"buffer_size": 18764,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/order.py",
+			"settings":
+			{
+				"buffer_size": 13290,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/product/px_vars.py",
+			"settings":
+			{
+				"buffer_size": 9103,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/product/pricelist_container.xml",
+			"settings":
+			{
+				"buffer_size": 5501,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -721,40 +673,46 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/models/product/pricelist_container.TRASH.py",
+		"/Users/gibil/cellar/github/price_list/models/management/management.py",
+		"/Users/gibil/cellar/github/price_list/views/menus/menus_products_2018.xml",
+		"/Users/gibil/cellar/github/price_list/views/menus/menus.xml",
+		"/Users/gibil/cellar/github/price_list/views/configurator_emr.xml",
+		"/Users/gibil/cellar/github/price_list/models/product/product_template.py",
+		"/Users/gibil/cellar/github/price_list/readme.txt",
+		"/Users/gibil/cellar/github/price_list/models/management/exc_mgt.py",
+		"/Users/gibil/cellar/github/price_list/models/product/product.py",
+		"/Users/gibil/cellar/github/price_list/models/product/exc_prod.py",
+		"/Users/gibil/cellar/github/price_list/models/product/product_product.py",
+		"/Users/gibil/cellar/github/price_list/models/product/px_vars.py",
+		"/Users/gibil/cellar/github/price_list/models/product/pricelist_container.py",
+		"/Users/gibil/cellar/github/price_list/views/menus/menus_dev.BUSS.xml",
+		"/Users/gibil/cellar/github/price_list/views/menus/menus_dev.xml",
+		"/Users/gibil/cellar/github/price_list/views/treatment/procedure.xml",
+		"/Users/gibil/cellar/github/price_list/views/product/product_template.xml",
 		"/Users/gibil/cellar/github/price_list/models/product/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/__init__.py",
-		"/Users/gibil/cellar/github/price_list/readme.txt",
-		"/Users/gibil/cellar/github/price_list/models/product/product.py",
 		"/Users/gibil/cellar/github/price_list/models/treatment/test_treatment.py",
 		"/Users/gibil/cellar/github/price_list/models/treatment/treatment.py",
 		"/Users/gibil/cellar/github/price_list/views/report_sale_product.xml",
-		"/Users/gibil/cellar/github/price_list/views/menus/menus.xml",
-		"/Users/gibil/cellar/github/price_list/views/configurator_emr.xml",
 		"/Users/gibil/cellar/github/price_list/models/appointment/__init__.py",
 		"/Users/gibil/cellar/github/price_list/views/menus/menus_management.xml",
 		"/Users/gibil/cellar/github/price_list/views/menus/menus_marketing.xml",
 		"/Users/gibil/cellar/github/price_list/models/patient/patient.py",
 		"/Users/gibil/cellar/github/price_list/views/product/product_template_search.xml",
-		"/Users/gibil/cellar/github/price_list/models/product/exc_prod.py",
-		"/Users/gibil/cellar/github/price_list/models/product/product_template.py",
 		"/Users/gibil/cellar/github/price_list/views/order/order_line_actions.xml",
 		"/Users/gibil/cellar/github/price_list/views/appointment/wizard.xml",
 		"/Users/gibil/cellar/github/price_list/views/appointment/matrix.xml",
-		"/Users/gibil/cellar/github/price_list/models/management/management.py",
 		"/Users/gibil/cellar/github/price_list/views/patient/patient_personal.xml",
 		"/Users/gibil/cellar/github/price_list/views/patient/patient.xml",
-		"/Users/gibil/cellar/github/price_list/views/menus/menus_products_2018.xml",
-		"/Users/gibil/cellar/github/price_list/views/menus/menus_dev.xml",
 		"/Users/gibil/cellar/github/price_list/views/menus/menus_rsp.xml",
 		"/Users/gibil/cellar/github/price_list/models/appointment/matrix.py",
 		"/Users/gibil/cellar/github/price_list/views/treatment/treatment.xml",
 		"/Users/gibil/cellar/github/price_list/models/product/exc_vars.py",
-		"/Users/gibil/cellar/github/price_list/views/product/product_template.xml",
 		"/Users/gibil/cellar/github/price_list/models/appointment/task.py",
 		"/Users/gibil/cellar/github/price_list/models/lib/test_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/lib/sys_func.py",
 		"/Users/gibil/cellar/github/price_list/models/appointment/appointment.py",
-		"/Users/gibil/cellar/github/price_list/models/product/pricelist_container.py",
 		"/Users/gibil/cellar/github/price_list/models/appointment/wizard.py",
 		"/Users/gibil/cellar/github/price_list/views/appointment/matrix.TRASH.xml",
 		"/Users/gibil/cellar/github/price_list/models/appointment/user.py",
@@ -768,14 +726,11 @@
 		"/Users/gibil/cellar/github/price_list/views/product/pricelist_container.xml",
 		"/Users/gibil/cellar/github/price_list/views/product/pricelist_container.TRASH.xml",
 		"/Users/gibil/cellar/github/price_list/views/order/order.xml",
-		"/Users/gibil/cellar/github/price_list/models/product/pricelist_container.TRASH.py",
-		"/Users/gibil/cellar/github/price_list/models/product/px_vars.py",
 		"/Users/gibil/cellar/github/price_list/models/lib/sys_funcs.py",
 		"/Users/gibil/cellar/github/price_list/views/containers.xml",
 		"/Users/gibil/cellar/github/price_list/models/marketing/mkt_vars.py",
 		"/Users/gibil/cellar/github/price_list/models/product/pl_prod_vars.py",
 		"/Users/gibil/cellar/github/price_list/models/patient/patient.TRASH.py",
-		"/Users/gibil/cellar/github/price_list/models/management/exc_mgt.py",
 		"/Users/gibil/cellar/github/price_list/models/order/order.py",
 		"/Users/gibil/cellar/github/price_list/models/electronic/electronic_container.py",
 		"/Users/gibil/cellar/github/price_list/models/patient/exc_pat.py",
@@ -807,8 +762,6 @@
 		"/Users/gibil/cellar/github/price_list/views/procedure_actions.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing.xml",
 		"/Users/gibil/cellar/github/price_list/views/appointment.xml",
-		"/Users/gibil/cellar/github/price_list/views/menus/menus_dev.BUSS.xml",
-		"/Users/gibil/cellar/github/price_list/models/product/product_product.py",
 		"/Users/gibil/cellar/github/price_list/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/appointment/day.py",
 		"/Users/gibil/cellar/github/price_list/models/patient/__init__.py",
@@ -847,8 +800,7 @@
 		"/Users/gibil/cellar/github/price_list/models/management/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/lib/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/test_funcs.py",
-		"/Users/gibil/cellar/github/price_list/views/management.TRASH.xml",
-		"/Users/gibil/cellar/github/price_list/models/treatment.TRASH.py"
+		"/Users/gibil/cellar/github/price_list/views/management.TRASH.xml"
 	],
 	"find":
 	{
@@ -866,6 +818,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"name = fi",
+			"company_ruc",
+			"make",
+			"make_q",
+			"update_app",
+			"name = field",
+			"name",
+			"clean",
+			"configurator",
+			"path",
 			"machine",
 			"configurator",
 			"tick",
@@ -983,17 +945,7 @@
 			"12,3",
 			"product.",
 			"product",
-			"treatment",
-			"pathology",
-			"treatment",
-			"delta_sales_pl",
-			"update_pa",
-			"phone_1",
-			"treatment",
-			"sl_",
-			"treatment",
-			"macro_line_analysis",
-			"procedure"
+			"treatment"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1139,7 +1091,7 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1148,15 +1100,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5091,
+						"buffer_size": 5090,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1312,
-								1312
+								583,
+								583
 							]
 						],
 						"settings":
@@ -1166,7 +1118,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 611.0,
+						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -1174,19 +1126,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "models/order/order.py",
+					"file": "models/configurator_emr.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13269,
+						"buffer_size": 4337,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1061,
-								1061
+								2428,
+								2428
 							]
 						],
 						"settings":
@@ -1195,27 +1147,56 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 364.0,
+						"translation.y": 1751.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "models/management/management.py",
+					"file": "views/configurator_emr.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 35013,
+						"buffer_size": 1957,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9456,
-								9456
+								1596,
+								1596
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/product/pricelist_container.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8718,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1116,
+								1116
 							]
 						],
 						"settings":
@@ -1223,57 +1204,28 @@
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 10.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 903.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "models/configurator_emr.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3201,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2337,
-								2387
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1856.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
 					"buffer": 4,
-					"file": "models/management/exc_mgt.py",
+					"file": "models/treatment/treatment.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 734,
+						"buffer_size": 24003,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								429,
-								713
+								21016,
+								21016
 							]
 						],
 						"settings":
@@ -1290,19 +1242,19 @@
 				},
 				{
 					"buffer": 5,
-					"file": "models/product/product.py",
+					"file": "models/treatment/test_treatment.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2886,
+						"buffer_size": 18764,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								266,
-								269
+								16599,
+								16599
 							]
 						],
 						"settings":
@@ -1311,7 +1263,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 11654.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
@@ -1319,19 +1271,19 @@
 				},
 				{
 					"buffer": 6,
-					"file": "models/product/exc_prod.py",
+					"file": "models/order/order.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2969,
+						"buffer_size": 13290,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1976,
-								1976
+								6059,
+								6059
 							]
 						],
 						"settings":
@@ -1340,242 +1292,69 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1618.0,
+						"translation.y": 5185.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "models/product/px_vars.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9103,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7845,
+								7845
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5377.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "models/product/product_product.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4025,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3917,
-								3921
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2893.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
 					"buffer": 8,
-					"file": "views/product/product_template.xml",
+					"file": "views/product/pricelist_container.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9963,
+						"buffer_size": 5501,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								764,
-								764
+								520,
+								546
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 47.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "views/treatment/procedure.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6300,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4061,
-								4068
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2789.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "views/menus/menus_dev.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 950,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								294,
-								294
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "views/menus/menus_dev.BUSS.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2116,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1595,
-								1595
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1548.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "models/product/product_template.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7402,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								475,
-								758
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 215.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "models/product/px_vars.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9092,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								83,
-								121
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "models/product/pricelist_container.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9106,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6331,
-								6869
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3849.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]

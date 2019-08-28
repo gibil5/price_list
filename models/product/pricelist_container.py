@@ -54,10 +54,24 @@ class PricelistContainer(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- 0 Level ---------------------------------------------
+
+	#@api.multi
+	def validate(self):
+		"""
+		Validate
+		"""
+		print()
+		print('Validate')
+		self.validate_product_templates()
+
+
+
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 
 	@api.multi
-	#def validate(self):
 	def validate_product_templates(self):
 
 		"""
