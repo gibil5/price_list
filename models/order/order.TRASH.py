@@ -1,6 +1,72 @@
 # 29 Aug
 
 
+# ----------------------------------------------------------- Ticket - Amount - Getters ----------------
+
+# ----------------------------------------------------------- Print Ticket -------------------------------
+
+	def get_total_net(self):
+		"""
+		Used by Print Ticket.
+		"""
+		if self.pl_transfer_free:
+			value = 0
+		else:
+			value = self.x_total_net
+		return value
+
+
+	def get_total_tax(self):
+		"""
+		Used by Print Ticket.
+		"""		
+		if self.pl_transfer_free:
+			value = 0
+		else:
+			value = self.x_total_tax
+		return value
+
+
+	def get_amount_total(self):
+		"""
+		Used by Print Ticket.
+		"""
+		if self.pl_transfer_free:
+			value = 0
+		else:
+			value = self.amount_total
+		return value
+
+
+
+
+	def get_total_in_words(self):
+		"""
+		Used by Print Ticket.
+		"""
+		if self.pl_transfer_free:
+			value = 'Cero'
+		else:
+			value = self.x_total_in_words
+		return value
+
+
+	def get_total_cents(self):
+		"""
+		Used by Print Ticket.
+		"""
+		if self.pl_transfer_free:
+			value = 0
+		else:
+			value = self.x_total_cents
+		return value
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Ticket - Header - Getters ----------------
 
 	# Patient Firm Address

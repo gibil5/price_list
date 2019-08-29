@@ -76,12 +76,12 @@
         # Order
         #'views/order/product_selector.xml',            # Dep
 
-        #'views/order/payment_method_line.xml',              # Min
-        #'views/order/order_line.xml',                      # Min
-        #'views/order/order_line_actions.xml',              # MIn
-        #'views/order/order.xml',                           # Min
-        #'views/order/closing.xml',                         # Min
-        #'views/order/report_order_line.xml',               # Min
+        'views/order/payment_method_line.xml',              # Min
+        'views/order/order_line.xml',                      # Min
+        'views/order/order_line_actions.xml',              # MIn
+        'views/order/order.xml',                           # Min
+        'views/order/closing.xml',                         # Min
+        'views/order/report_order_line.xml',               # Min
 
 
 
@@ -102,9 +102,9 @@
 
         # Treatment
         'views/treatment/cart_line.xml',
-        #'views/treatment/treatment_cart.xml',          # Min
-        #'views/treatment/treatment_services.xml',      # Min
-        #'views/treatment/treatment.xml',               # Min
+        'views/treatment/treatment_cart.xml',          # Min
+        'views/treatment/treatment_services.xml',      # Min
+        'views/treatment/treatment.xml',               # Min
         'views/treatment/procedure_actions.xml',
         'views/treatment/procedure.xml',
 
@@ -140,11 +140,11 @@
 
 
         # Electronic
-        #'views/electronic/account_line.xml',               # Min
-        #'views/electronic/account_contasis_actions.xml',   # Min
-        #'views/electronic/account_contasis.xml',           # Min
-        #'views/electronic/electronic_order.xml',           # Min
-        #'views/electronic/electronic_container.xml',       # Min
+        'views/electronic/account_line.xml',               # Min
+        'views/electronic/account_contasis_actions.xml',   # Min
+        'views/electronic/account_contasis.xml',           # Min
+        'views/electronic/electronic_order.xml',           # Min
+        'views/electronic/electronic_container.xml',       # Min
 
 
 
