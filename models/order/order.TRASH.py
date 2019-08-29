@@ -1,3 +1,139 @@
+# 29 Aug
+
+
+# ----------------------------------------------------------- Ticket - Header - Getters ----------------
+
+	# Patient Firm Address
+	def get_firm_address(self):
+		"""
+		Used by Print Ticket
+		"""
+		return self.patient.x_firm_address
+
+
+	# Company Address
+	def get_company_name(self):
+		"""
+		Used by Print Ticket
+		"""
+		company_name = self.configurator.company_name
+		return company_name
+
+
+	# Company Address
+	def get_company_address(self):
+		"""
+		Used by Print Ticket
+		"""
+		company_address = self.configurator.ticket_company_address
+		return company_address
+
+
+	# Company Address
+	def get_company_phone(self):
+		"""
+		Used by Print Ticket
+		"""
+		company_phone = self.configurator.company_phone
+		return company_phone
+
+
+	# Company Address
+	def get_company_ruc(self):
+		"""
+		Used by Print Ticket
+		"""
+		company_ruc = self.configurator.ticket_company_ruc
+		return company_ruc
+
+
+
+# ----------------------------------------------------------- Ticket - Footer - Getters ----------------
+
+	# Description
+	def get_description(self):
+		"""
+		Used by Print Ticket
+		"""
+		print()
+		print('Get description')
+		description = self.configurator.ticket_description
+		return description
+
+
+	# Warning
+	def get_warning(self):
+		"""
+		Used by Print Ticket
+		"""
+		print()
+		print('Get Warning')
+		warning = self.configurator.ticket_warning
+		return warning
+
+
+	# Website
+	def get_website(self):
+		"""
+		Used by Print Ticket
+		"""
+		website = self.configurator.website
+		return website
+
+
+	# Email
+	def get_email(self):
+		"""
+		Used by Print Ticket
+		"""
+		email = self.configurator.email
+		return email
+
+
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Configurator ------------------------
+	# Configurator
+	#configurator = fields.Many2one(
+	#		'openhealth.configurator.emr',
+	#		string="Configuracion",
+	#	)
+
+
+	def init_configurator(self):
+		"""
+		Init Configurator
+		For past orders
+		"""
+		print()
+		print('Init Configurator')
+
+		# Configurator
+		if self.configurator.name in [False]:
+			self.configurator = self.env['openhealth.configurator.emr'].search([
+																					('x_type', 'in', ['emr']),
+															],
+															#order='date_begin,name asc',
+															limit=1,
+														)
+			#print(self.configurator)
+			#print(self.configurator.name)
+
+
+
+
+
+
+
+
 
 
 

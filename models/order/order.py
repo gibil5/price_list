@@ -5,14 +5,13 @@
 		order.py
 
 		Created: 			26 Aug 2016
-		Last updated: 		 9 Aug 2019
+		Last updated: 		29 Aug 2019
 """
 from __future__ import print_function
 import datetime
 from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
-
 from . import exc_ord
 
 class sale_order(models.Model):
@@ -20,38 +19,6 @@ class sale_order(models.Model):
 	Inherits Sale Classe from Openhealth
 	"""
 	_inherit = 'sale.order'
-
-
-
-# ----------------------------------------------------------- Configurator ------------------------
-	# Configurator
-	#configurator = fields.Many2one(
-	#		'openhealth.configurator.emr',
-	#		string="Configuracion",
-	#	)
-
-
-	def init_configurator(self):
-		"""
-		Init Configurator
-		For past orders
-		"""
-		print()
-		print('Init Configurator')
-
-		# Configurator
-		if self.configurator.name in [False]:
-			self.configurator = self.env['openhealth.configurator.emr'].search([
-																					('x_type', 'in', ['emr']),
-															],
-															#order='date_begin,name asc',
-															limit=1,
-														)
-			#print(self.configurator)
-			#print(self.configurator.name)
-
-
-
 
 
 
@@ -86,142 +53,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
-# ----------------------------------------------------------- Ticket - Header - Getters ----------------
-	def get_firm_address(self):
-		"""
-		Used by Print Ticket
-		"""
-		return self.patient.x_firm_address
-
-
-
-	def get_company_name(self):
-		"""
-		Used by Print Ticket
-		"""
-		self.init_configurator()
-
-		if self.configurator.name not in [False]:
-			company_name = self.configurator.company_name
-		else:
-			company_name = ''
-		return company_name
-
-
-
-	def get_company_address(self):
-		"""
-		Used by Print Ticket
-		"""
-		self.init_configurator()
-
-		if self.configurator.name not in [False]:
-			#company_address = self.configurator.company_address
-			company_address = self.configurator.ticket_company_address
-		else:
-			company_address = ''
-		return company_address
-
-
-
-	def get_company_phone(self):
-		"""
-		Used by Print Ticket
-		"""
-		self.init_configurator()
-
-		if self.configurator.name not in [False]:
-			company_phone = self.configurator.company_phone
-		else:
-			company_phone = ''
-		return company_phone
-
-
-
-	def get_company_ruc(self):
-		"""
-		Used by Print Ticket
-		"""
-		self.init_configurator()
-
-		if self.configurator.name not in [False]:
-			company_ruc = self.configurator.ticket_company_ruc
-		else:
-			company_ruc = ''
-		return company_ruc
-
-
-
-
-# ----------------------------------------------------------- Ticket - Footer - Getters ----------------
-
-	# description
-	def get_description(self):
-		"""
-		Used by Print Ticket
-		"""
-		print()
-		print('Get description')
-
-		# With Configurator
-		self.init_configurator()
-		if self.configurator.name not in [False]:
-			description = self.configurator.ticket_description
-		else:
-			description = ''
-		return description
-
-
-	# Warning
-	def get_warning(self):
-		"""
-		Used by Print Ticket
-		"""
-		print()
-		print('Get Warning')
-
-		# With Configurator
-		self.init_configurator()
-		if self.configurator.name not in [False]:
-			warning = self.configurator.ticket_warning
-		else:
-			warning = ''
-		return warning
-
-
-	# Website
-	def get_website(self):
-		"""
-		Used by Print Ticket
-		"""
-
-		# Configurator
-		self.init_configurator()
-
-		if self.configurator.name not in [False]:
-			website = self.configurator.website
-		else:
-			website = ''
-		return website
-
-
-	# Email
-	def get_email(self):
-		"""
-		Used by Print Ticket
-		"""
-
-		# Configurator
-		self.init_configurator()
-
-		if self.configurator.name not in [False]:
-			email = self.configurator.email
-		else:
-			email = ''
-		return email
 
 
 
