@@ -9,7 +9,7 @@
 
     'description': 
         """
-        28 Aug 2019
+        29 Aug 2019
 
         (Since 22 April, in Prod)
 
@@ -55,9 +55,8 @@
 
     # always loaded
     'data': [
+
         # 'security/ir.model.access.csv',
-        #'views/views.xml',
-        #'views/templates.xml',
 
 
 
@@ -75,13 +74,15 @@
 
 
         # Order
-        #'views/order/product_selector.xml',
-        'views/order/payment_method_line.xml',
-        'views/order/order_line.xml',                   # Here !
-        'views/order/order_line_actions.xml',
-        'views/order/order.xml',
-        'views/order/closing.xml',
-        'views/order/report_order_line.xml',
+        #'views/order/product_selector.xml',            # Dep
+
+        #'views/order/payment_method_line.xml',              # Min
+        #'views/order/order_line.xml',                      # Min
+        #'views/order/order_line_actions.xml',              # MIn
+        #'views/order/order.xml',                           # Min
+        #'views/order/closing.xml',                         # Min
+        #'views/order/report_order_line.xml',               # Min
+
 
 
         # Service
@@ -100,26 +101,26 @@
 
 
         # Treatment
-        'views/treatment/treatment_cart.xml',
         'views/treatment/cart_line.xml',
-        'views/treatment/treatment_services.xml',
-        'views/treatment/treatment.xml',
+        #'views/treatment/treatment_cart.xml',          # Min
+        #'views/treatment/treatment_services.xml',      # Min
+        #'views/treatment/treatment.xml',               # Min
         'views/treatment/procedure_actions.xml',
         'views/treatment/procedure.xml',
 
 
         # Configurator
-        'views/configurator_emr.xml',
+        #'views/configurator_emr.xml',                  # MIN
 
 
         # Patient
         'views/patient/patient.xml',
-        #'views/patient/patient_personal.xml',
+        #'views/patient/patient_personal.xml',          # Dep
 
 
         # Marketing
         'views/marketing/media_line.xml',
-        'views/marketing/patient_line_actions.xml', # Dep - Already in Openhealth
+        'views/marketing/patient_line_actions.xml',     # Dep - Already in Openhealth
         'views/marketing/patient_line.xml', 
         'views/marketing/patient_line_search.xml', 
         'views/marketing/marketing_order_line.xml',
@@ -139,11 +140,11 @@
 
 
         # Electronic
-        'views/electronic/account_line.xml',
-        'views/electronic/account_contasis_actions.xml',
-        'views/electronic/account_contasis.xml',
-        'views/electronic/electronic_order.xml',
-        'views/electronic/electronic_container.xml',
+        #'views/electronic/account_line.xml',               # Min
+        #'views/electronic/account_contasis_actions.xml',   # Min
+        #'views/electronic/account_contasis.xml',           # Min
+        #'views/electronic/electronic_order.xml',           # Min
+        #'views/electronic/electronic_container.xml',       # Min
 
 
 
@@ -156,12 +157,10 @@
 
         # Menus
         'views/menus/menus.xml',
-        #'views/menus/menus_dev.xml',
         'views/menus/menus_marketing.xml',
         'views/menus/menus_management.xml',
-        
-        #'views/menus/menus_rsp.xml',           # Dep
-        
+        #'views/menus/menus_dev.xml',               # Dep
+        #'views/menus/menus_rsp.xml',               # Dep
         #'views/menus/menus_products_2018.xml',     # Dep
 
 

@@ -84,7 +84,9 @@
 				<xpath expr="//field[@name='x_admin_mode']" position="before">
 -->
 				<xpath expr="//field[@name='x_partner_vip']" position="after">
+<!--
 					<field name="configurator"/>
+-->
 					<field name="pl_transfer_free"/>
 				</xpath>
 

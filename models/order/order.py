@@ -57,7 +57,6 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Validate Patient ----------------------------
 	#@api.multi
-	#def validate_patient(self):
 	def validate_patient_for_invoice(self):
 		"""
 		Validate Patient
@@ -99,8 +98,6 @@ class sale_order(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Ticket - Header - Getters ----------------
 	def get_company_name(self):
 		"""
 		Used by Print Ticket
@@ -112,6 +109,7 @@ class sale_order(models.Model):
 		else:
 			company_name = ''
 		return company_name
+
 
 
 	def get_company_address(self):
@@ -128,6 +126,7 @@ class sale_order(models.Model):
 		return company_address
 
 
+
 	def get_company_phone(self):
 		"""
 		Used by Print Ticket
@@ -139,6 +138,7 @@ class sale_order(models.Model):
 		else:
 			company_phone = ''
 		return company_phone
+
 
 
 	def get_company_ruc(self):
@@ -446,11 +446,12 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Validate ----------------------------
 
-	# Action confirm
+
 	@api.multi
-	def validate(self):
+	#def validate(self):
+	def validate_dep(self):
 		"""
-		high level support for doing this and that.
+		Deprecated
 		"""
 		print()
 		print('Pl - Validate')
@@ -573,26 +574,21 @@ class sale_order(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------- Product Selector --------------------------
 
 	@api.multi
-	#def open_product_selector_product(self):
 	def pl_open_product_selector_product(self):
 		"""
-		high level support for doing this and that.
+		Open Product Selector Product
 		"""
 		#print('o ps p')
 		return self.pl_open_product_selector('product')
 
 
 	@api.multi
-	#def open_product_selector_service(self):
 	def pl_open_product_selector_service(self):
 		"""
-		high level support for doing this and that.
+		Open Product Selector Service
 		"""
 		#print('o ps s')
 		return self.pl_open_product_selector('service')
@@ -601,7 +597,6 @@ class sale_order(models.Model):
 
 	# Buttons  - Agregar Producto Servicio
 	@api.multi
-	#def open_product_selector(self, x_type):
 	def pl_open_product_selector(self, x_type):
 		"""
 		high level support for doing this and that.
@@ -619,12 +614,13 @@ class sale_order(models.Model):
 				'name': ' New Orderline Selector Current',
 				'view_type': 'form',
 				'view_mode': 'form',
+
 				#'target': 'current',
 				'target': 'new',
+
 				'res_id': res_id,
 
 
-				#'res_model': 'openhealth.product.selector',
 				'res_model': 'price_list.product.selector',
 
 

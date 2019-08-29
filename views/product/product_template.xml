@@ -5,6 +5,14 @@
 
 
 <!-- FORM -->
+				<!-- Notebook --> 
+					<!-- Price List 2018 -->
+					<!-- Price List 2019 -->
+							<!-- Correct -->
+
+
+							
+<!--
 		<record model="ir.ui.view" id="product_template_form">
 			<field name="name">product.template.product.form</field>
 			<field name="model">product.template</field>
@@ -14,12 +22,6 @@
 			<field name="arch" type="xml">
 
 
-				<!-- Xpaths --> 
-				<!--
-				<xpath expr="//field[@name='invoice_policy']" position="after">
-						<field name="default_code"/>
-				</xpath>
-				-->
 				<xpath expr="//field[@name='invoice_policy']" position="after">
 						<field name="pl_account"/>
 
@@ -27,7 +29,6 @@
 
 						<group>
 
-                        <!-- Validate -->
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -38,7 +39,6 @@
                             string="Validate"
                         />
 
-                        <!-- Fix -->
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -50,8 +50,6 @@
                         />
 
 
-                        <!-- Validate All -->
-<!--
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -61,17 +59,14 @@
                             
                             string="Validate All"
                         />
--->
                     	</group>
 				</xpath>
 
 
 
-				<!-- Notebook --> 
 				<xpath expr="//notebook" position="inside">
 
 
-					<!-- Price List 2018 -->
 					<page string="Precios 2018">
                         <group>
                             <field name="active"/>
@@ -98,7 +93,6 @@
 					</page>
 
 
-					<!-- Price List 2019 -->
 					<page string="Lista de Precios 2019">
 						<group  groups="openhealth.roots">
 
@@ -107,7 +101,6 @@
 							<field name="corr_cosmetology"/>
 
 
-							<!-- Correct -->
 							<button 
 									type="object" 
 									class="oe_highlight"
@@ -141,9 +134,6 @@
 						</group>
 
 						<group>
-<!--
-							<field name="list_price"/>
--->
 							<field name="pl_price_vip"/>
 							<field name="pl_price_company"/>
 							<field name="pl_price_session"/>
@@ -157,11 +147,8 @@
 				</xpath>
 			</field>
 		</record>
-<!--
-						<group>
-							<field name="pl_account"/>
-						</group>
 -->
+
 
 
 
@@ -178,76 +165,56 @@
 				<tree>
 
 
+					<field name="name"/>
 					<field name="pl_price_list"/>
+					<field name="sale_ok"/>
+					<field name="purchase_ok"/>
+
+
 					<field name="configurator"/>
 
-
 					<field name="pl_prefix"			groups='openhealth.roots'/>
-
 					<field name="pl_idx_int"/>
 
 
-					<field name="name"/>
+
+
+
 					<field name="pl_name_short"		groups='openhealth.roots'/>
-
-
 					<field name="pl_manufacturer"/>
-
 					<field name="pl_brand"/>
-
-
-
 					<field name="list_price"/>
-
 					<field name="pl_price_company"/>
-
 					<field name="pl_account"/>
-
-
-
-					<field name="type"				string="Tipo"	groups='openhealth.roots'		/>
-
-
-
-					
+					<field name="type"				string="Tipo"	groups='openhealth.roots'/>
 					<field name="pl_family"			groups='openhealth.roots'/>
 					<field name="pl_subfamily"		groups='openhealth.roots'/>
-
-
-<!--					
-					<field name="pl_time_stamp"		groups='openhealth.roots'	/>
-					<field name="pl_code"			groups='openhealth.roots'/>
-
-
-					<field name="pl_idx"			groups='openhealth.roots'/>
-					<field name="pl_treatment"		groups='openhealth.roots'/>
-					<field name="pl_zone"			groups='openhealth.roots'/>
-					<field name="pl_pathology"		groups='openhealth.roots'/>
-
-					<field name="pl_level"			groups='openhealth.roots'/>
-					<field name="pl_sessions"		groups='openhealth.roots'/>
-					<field name="pl_time"			groups='openhealth.roots'/>
-
-
-					<field name="pl_price_vip"/>
-
-					<field name="pl_price_session"		groups='openhealth.roots'/>
-					<field name="pl_price_session_next"	groups='openhealth.roots'/>
-					<field name="pl_price_max"			groups='openhealth.roots'/>
--->
 				</tree>
 			</field>
 		</record>
 
 <!--
 					<field name="pl_price"/>
+					<field name="pl_time_stamp"		groups='openhealth.roots'/>
+					<field name="pl_code"			groups='openhealth.roots'/>
+					<field name="pl_idx"			groups='openhealth.roots'/>
+					<field name="pl_treatment"		groups='openhealth.roots'/>
+					<field name="pl_zone"			groups='openhealth.roots'/>
+					<field name="pl_pathology"		groups='openhealth.roots'/>
+					<field name="pl_level"			groups='openhealth.roots'/>
+					<field name="pl_sessions"		groups='openhealth.roots'/>
+					<field name="pl_time"			groups='openhealth.roots'/>
+					<field name="pl_price_vip"/>
+					<field name="pl_price_session"		groups='openhealth.roots'/>
+					<field name="pl_price_session_next"	groups='openhealth.roots'/>
+					<field name="pl_price_max"			groups='openhealth.roots'/>
 -->
 
 
 
 
 
-		<!-- TREE - SERVICES -->
+<!-- TREE - SERVICES -->
 		<record model="ir.ui.view" id="price_list.product_template_list">
 			<field name="name">price_list product template list</field>
 			<field name="model">product.template</field>
@@ -256,31 +223,32 @@
 			<field name="arch" type="xml">
 				<tree>
 
+
+					<field name="name"/>
 					<field name="pl_price_list"/>
+					<field name="sale_ok"/>
+					<field name="purchase_ok"/>
+
+
 					<field name="configurator"/>
-
-
 					<field name="pl_prefix"/>
 					<field name="pl_idx_int"/>
 
 
-					<field name="name"/>
+
+
+
+
 					<field name="pl_name_short"		groups='openhealth.roots'/>
-
-
 					<field name="list_price"/>
 					<field name="pl_price_vip"/>
 					<field name="pl_price_company"/>
-
-
-					<field name="type"				string="Tipo"	groups='openhealth.roots'		/>
-
+					<field name="type"				string="Tipo"	groups='openhealth.roots'/>
 					<field name="pl_family"			groups='openhealth.roots'/>
 					<field name="pl_subfamily"		groups='openhealth.roots'/>
 					<field name="pl_treatment"		groups='openhealth.roots'/>
 					<field name="pl_zone"			groups='openhealth.roots'/>
 					<field name="pl_pathology"		groups='openhealth.roots'/>
-
 					<field name="pl_level"			groups='openhealth.roots'/>
 					<field name="pl_sessions"		groups='openhealth.roots'/>
 					<field name="pl_time"			groups='openhealth.roots'/>
@@ -290,14 +258,11 @@
 
 <!--
 					<field name="pl_prefix"			groups='openhealth.roots'/>
-
 					<field name="pl_price_session"		groups='openhealth.roots'/>
 					<field name="pl_price_session_next"	groups='openhealth.roots'/>
 					<field name="pl_price_max"			groups='openhealth.roots'/>
 					<field name="pl_time_stamp"		groups='openhealth.roots'	/>
 					<field name="pl_code"			groups='openhealth.roots'/>
-					
-
 					<field name="pl_manufacturer"  	attrs="{'invisible':[('type', '=', 'service')]}"		/>
 					<field name="pl_brand"/>
 					<field name="pl_idx"			groups='openhealth.roots'/>
@@ -307,22 +272,15 @@
 
 
 
-		<!-- explicit list view definition -->
+		<!-- TREE 2 -->
 		<record model="ir.ui.view" id="product_template_list_2">
-
 			<field name="name">price_list product template list</field>
-			
 			<field name="model">product.template</field>
-			
 			<field name="arch" type="xml">
 				<tree>
-
 					<field name="name"/>
-
 					<field name="pl_treatment"/>
-
                     <field name="create_date"/>
-
                     <field name="__last_update"/>
 				</tree>
 			</field>
@@ -335,37 +293,26 @@
 
 
 
+<!-- ACTIONS -->
 
 
 		<!-- Action - All -->
 		<record model="ir.actions.act_window" id="product_template_list_action">
-			
 			<field name="name">Product Template</field>
-
 			<field name="res_model">product.template</field>
-
 			<field name="view_mode">tree,form</field>
-
 			<field name="view_id" ref="product_template_list_2"/> 
-
 			<field name="domain">[]</field>
-
 			<field name="limit">700</field>
 		</record>
 
 
 		<!-- Action - 2018 -->
 		<record model="ir.actions.act_window" id="price_list.product_template_2018_list_action">
-			
 			<field name="name">product template 2018</field>
-			
 			<field name="res_model">product.template</field>
-			
 			<field name="view_mode">tree,form</field>
-
 			<field name="view_id" ref="price_list.product_template_list"/> 
-
-
 			<field name="domain">[
 									('pl_price_list', '=', '2018'),
 								]
@@ -373,21 +320,13 @@
 		</record>
 
 
-
-
 		<!-- actions opening views on models -->
 		<record model="ir.actions.act_window" id="price_list.product_template_list_action">
-			
 			<field name="name">product template window</field>
-			
 			<field name="res_model">product.template</field>
-			
 			<field name="view_mode">tree,form</field>
-
 			<field name="view_id" ref="price_list.product_template_list"/> 
 		</record>
-
-
 
 	</data>
 </openerp>

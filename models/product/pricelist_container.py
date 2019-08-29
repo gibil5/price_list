@@ -248,6 +248,11 @@ class PricelistContainer(models.Model):
 
 																			'name': 			pro.name,
 
+																			'sale_ok': 			True,
+																			'purchase_ok': 		False,
+
+
+
 																			'pl_price_list': 	'2019',
 																			'pl_time_stamp': 	pro.time_stamp,
 																			'type': 			pro.x_type,
