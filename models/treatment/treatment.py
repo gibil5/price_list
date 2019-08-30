@@ -27,9 +27,20 @@ from . import exc_tre
 class Treatment(models.Model):
 	"""
 	Class Treatment
+	Extends the Business Rules. Should not extend the Data Model.
+	Should contain only functions
 	"""
 	_inherit = 'openhealth.treatment'
 
+
+
+# ----------------------------------------------------------- Price List Fields - Relational ----------------------------------------------
+
+	report_product = fields.Many2one(
+			'price_list.container',
+			string="PROD",
+			#required=True,
+		)
 
 
 # -----------------------------------------------------------  Create Order Pro - 2019 ------------------
@@ -230,33 +241,6 @@ class Treatment(models.Model):
 				'context': {}
 			}
 	# create_order_pro_2018
-
-
-# ----------------------------------------------------------- Test --------------------------------
-
-	x_test_scenario = fields.Selection(
-			[
-				('all', 'All'),
-				('product', 'product'),
-				('laser', 'laser'),
-				('cosmetology', 'cosmetology'),
-				('medical', 'medical'),
-				('new', 'new'),
-			],
-			string="Test Scenarios",
-		)
-
-	test_pricelist_2019 = fields.Boolean(
-			#'Price List 2019',
-			'PL 2019',
-			default=False,
-		)
-
-	test_pricelist_2018 = fields.Boolean(
-			#'Price List 2018',
-			'PL 2018',
-			default=False,
-		)
 
 
 # ----------------------------------------------------------- Create Procedure Manual  ------------
@@ -547,7 +531,7 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Fields --------------------------
+# ----------------------------------------------------------- Fields Services --------------------------
 	# co2
 	service_co2_ids = fields.One2many(
 			'price_list.service_co2',
@@ -624,8 +608,6 @@ class Treatment(models.Model):
 			'treatment',
 			string="Servicios Promocion"
 			)
-
-
 
 	# Shopping cart
 	shopping_cart_ids = fields.One2many(
@@ -934,42 +916,6 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
-# ----------------------------------------------------------- Relational ----------------------------------------------
-
-	report_product = fields.Many2one(
-			'price_list.container',
-			string="PROD",
-			#required=True,
-		)
-
-
-	report_contasis = fields.Many2one(
-			'openhealth.account.contasis',
-			string="ACC",
-		)
-
-
-	report_account = fields.Many2one(
-			'openhealth.container',
-			#string="Report TXT",
-			string="TXT",
-			#required=True,
-		)
-
-	report_management = fields.Many2one(
-			'openhealth.management',
-			#string="Report MGT",
-			string="MGT",
-			#required=True,
-		)
-
-	report_marketing = fields.Many2one(
-			'openhealth.marketing',
-			#string="Report MKT",
-			string="MKT",
-			#required=True,
-		)
-
 # ----------------------------------------------------------- Test Report MGT -----------------------------------------
 	@api.multi
 	def test_report_management(self):
@@ -1034,9 +980,7 @@ class Treatment(models.Model):
 		"""
 		print()
 		print('Test Report Product - Button')
-
 		test_treatment.test_report_product(self)
-
 		print()
 		print()
 		print('SUCCESS !')

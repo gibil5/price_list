@@ -1,3 +1,105 @@
+<!--
+29 Aug 2019
+-->
+
+
+<!-- 29 Jul 2019 -->
+<!--
+				<xpath expr="//field[@name='x_partner_vip']" position="after">
+				</xpath>
+
+				<xpath expr="//tree/field[@name='name']" position="after">
+				</xpath>
+
+				<xpath expr="//field[@name='x_admin_mode']" position="replace">
+				</xpath>
+
+
+
+				<xpath expr="//tree/field[@name='product_id']" position="before">
+				    <button 
+				        type="object" 
+				        class="oe_highlight"    
+				        name="open_line_current" 
+				        string="E"
+				    />
+					<field name="state"/>
+				</xpath>
+-->
+
+
+
+
+
+<!-- TREE --> 
+		<record model="ir.ui.view" id="sale.view_order_tree">
+			<field name="name">sale.order.tree</field>
+			<field name="model">sale.order</field>
+			<field name="arch" type="xml">
+
+				<tree string="Order Tree"
+						colors="
+						red:state=='draft';
+						green:state=='credit_note';
+						blue:state=='sale';
+						grey:state in ('cancel')
+						">
+
+					<field name="pl_price_list"	string="Lista de Precios"  	groups="openhealth.roots"/>
+					<field name="name"          string="Referencia"/>
+					<field name="date_order"            string="Fecha y hora"/>
+
+					<field name="patient"/>
+					<field name="x_doctor"/>
+					<field name="treatment"/>
+					<field name="nr_lines"/>
+
+					<field name="x_serial_nr"/>
+					<field name="x_type" />
+					<field name="state"/>
+
+
+					<field name="amount_total"     	sum="Total Montos"/>
+					<field name="x_total_net"/>
+					<field name="x_total_tax"/>
+
+					<field name="x_id_doc_type"/>
+					<field name="x_id_doc"/>
+					<field name="x_ruc"/>
+
+					
+					<field name="pl_family"		string="Familia"/>
+<!--
+					<field name="pl_product"	string="Producto"/>
+-->
+					<field name="user_id"       string="Creado por"/>
+
+				</tree>
+			</field>
+		</record>
+
+<!--
+					<field name="x_amount_flow"     sum="Total Flujos"/>
+					<field name="x_credit_note"/>
+					<field name="x_credit_note_type"/>
+					<field name="x_credit_note_amount"/>
+					<field name="x_block_flow"/>
+
+					<field name="x_counter_value"   groups="openhealth.roots"/>
+					<field name="x_electronic"  groups="openhealth.roots"/>
+					<field name="x_day_order"   groups="openhealth.roots"/>
+					<field name="x_month_order"           groups='openhealth.roots'   />
+
+					<field name="x_family"/>
+					<field name="x_product"/>
+-->
+
+
+
+
+
+
+
 <!-- Not loaded -->
 
 

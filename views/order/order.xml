@@ -2,25 +2,23 @@
 <openerp>
 	<data>
 		
+<!--
+Should only contain functions
+-->
+
 
 
 <!-- FORM -->
 		<record model="ir.ui.view" id="view_order_form">
 			<field name="name">sale.order.form</field>
 			<field name="model">sale.order</field>
-
 			<field name="inherit_id" ref="openhealth.view_order_form"/>
-			
 			<field name="mode">primary</field>
 			<field name="priority">1</field>
 			<field name="arch" type="xml">
 
 
-<!-- NEW BUTTONS --> 
-<!--
-				<xpath expr="//button[@name='action_confirm_nex']" position="before">
--->
-				
+<!-- NEW BUTTONS --> 				
 				<xpath expr="//field[@name='state']" position="before">
 
 					<!-- Add Prod -->
@@ -43,15 +41,6 @@
 							string="Agregar SERVICIO - 2019"
 						/>
 
-
-<!--
-							attrs="{'invisible':[   '|',
-													('x_type','not in',['ticket_invoice','ticket_receipt']),
-													('state','not in',['sale', 'credit_note']), 
-											]}"
-							states="sale"
--->
-
 					<!-- Clean Lines -->
 					<button 
 							type="object"
@@ -73,173 +62,8 @@
 						/>
 				</xpath>
 
-
-
-
-
-
-				<!-- REDEFINE -->
-				<!-- Price List --> 
-<!--
-				<xpath expr="//field[@name='x_admin_mode']" position="before">
--->
-				<xpath expr="//field[@name='x_partner_vip']" position="after">
-<!--
-					<field name="configurator"/>
--->
-					<field name="pl_transfer_free"/>
-				</xpath>
-
-
-				<xpath expr="//tree/field[@name='name']" position="after">
-					<field name="pl_price_list"/>
-				</xpath>
-
-
-
-				<xpath expr="//field[@name='x_admin_mode']" position="replace">
-
-					<field name="x_admin_mode"          
-
-							attrs="{'invisible':[
-													('state','not in',['sale', 'credit_note']),
-											]}"
-
-							groups="openhealth.roots,openhealth.managers,openhealth.caja,openhealth.directors"
-						/>
-				</xpath>
-
-
-
-<!-- 19 Jul 2019 -->
-<!--
-	<attribute name='attrs'>{'readonly': [('state', 'not in', ('sale', 'draft', 'cancel', 'sent', 'credit_note'))]}</attribute>
--->
-
-<xpath expr="//field[@name='order_line']" position="attributes">
-	<attribute name='attrs'>{'readonly': [('state', 'in', ('sent'))]}</attribute>
-</xpath>
-
-
-<!--
-	<field name="pl_price_list"/>
--->
-    <!-- Hot Button -->
-<!--
-<xpath expr="//field[@name='product_id']" position="before">
-    <button 
-        type="object" 
-        class="oe_highlight"    
-
-        name="open_line_current" 
-
-        string="Entrar"
-    />
-
-</xpath>
--->
-<!--
-<xpath expr="//tree/field[@name='name']" position="after">
--->
-<xpath expr="//tree/field[@name='product_id']" position="before">
-    <button 
-        type="object" 
-        class="oe_highlight"    
-
-        name="open_line_current" 
-
-        string="E"
-    />
-	<field name="state"/>
-</xpath>
-
-
-
 			</field>
 		</record>
-		<!-- Form - END -->
-
-
-
-
-
-
-
-
-
-<!-- TREE --> 
-		<record model="ir.ui.view" id="sale.view_order_tree">
-			<field name="name">sale.order.tree</field>
-			<field name="model">sale.order</field>
-			<field name="arch" type="xml">
-
-				<tree string="Order Tree"
-						colors="
-						red:state=='draft';
-						green:state=='credit_note';
-						blue:state=='sale';
-						grey:state in ('cancel')
-						">
-
-
-					<field name="pl_price_list"	string="Lista de Precios"  	groups="openhealth.roots"/>
-					<field name="name"          string="Referencia"/>
-
-					<field name="date_order"            string="Fecha y hora"/>
-
-					<field name="patient"/>
-					<field name="x_doctor"/>
-					<field name="treatment"/>
-					<field name="nr_lines"/>
-
-
-
-					<field name="x_serial_nr"/>
-					
-					<field name="x_type" />
-
-					<field name="state"/>
-
-
-
-
-					<field name="amount_total"     	sum="Total Montos"/>
-
-
-					<field name="x_total_net"/>
-					<field name="x_total_tax"/>
-
-
-
-					<field name="x_id_doc_type"/>
-					<field name="x_id_doc"/>
-					<field name="x_ruc"/>
-
-					
-					<field name="pl_family"		string="Familia"/>
-<!--
-					<field name="pl_product"	string="Producto"/>
--->
-					<field name="user_id"       string="Creado por"/>
-
-				</tree>
-			</field>
-		</record>
-<!--
-					<field name="x_amount_flow"     sum="Total Flujos"/>
-					<field name="x_credit_note"/>
-					<field name="x_credit_note_type"/>
-					<field name="x_credit_note_amount"/>
-					<field name="x_block_flow"/>
-
-					<field name="x_counter_value"   groups="openhealth.roots"/>
-					<field name="x_electronic"  groups="openhealth.roots"/>
-					<field name="x_day_order"   groups="openhealth.roots"/>
-					<field name="x_month_order"           groups='openhealth.roots'   />
-
-					<field name="x_family"/>
-					<field name="x_product"/>
--->
 
 
 	</data>

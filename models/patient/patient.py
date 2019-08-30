@@ -18,15 +18,28 @@
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import count_funcs
-
 from . import exc_pat
 
 class Patient(models.Model):
 	"""
-	high level support for doing this and that.
+	Patient Class. 
+	Inherits from Openhealth and OeHealth.
+	Encapsulates Business Rules. Should not extend the Data Model.
 	"""
 	_inherit = 'oeh.medical.patient'
 
+
+# ----------------------------------------------------------- Natives - Dep ? -----------
+	#x_blacklist = fields.Boolean(
+	#		'Black List',
+	#	)
+
+
+# ----------------------------------------------------------- Fields -----------
+
+	x_firm_address = fields.Char(
+			'Direccion de la Empresa',
+		)
 
 
 # ----------------------------------------------------------- Configurator ------------------------
@@ -58,7 +71,6 @@ class Patient(models.Model):
 
 
 
-
 # ----------------------------------------------------------- Validate -----------
 	@api.multi
 	def validate(self):
@@ -71,7 +83,6 @@ class Patient(models.Model):
 
 		# Handle Exceptions
 		exc_pat.handle_exceptions(self)
-
 
 
 # ----------------------------------------------------------- Validate -----------
@@ -87,18 +98,3 @@ class Patient(models.Model):
 		# Handle Exceptions
 		exc_pat.handle_exceptions_invoice(self)
 
-
-
-
-
-
-# ----------------------------------------------------------- Fields -----------
-
-	x_firm_address = fields.Char(
-			'Direccion de la Empresa',
-		)
-
-# ----------------------------------------------------------- Natives -----------
-	x_blacklist = fields.Boolean(
-			'Black List',
-		)

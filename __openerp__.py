@@ -9,7 +9,7 @@
 
     'description': 
         """
-        29 Aug 2019
+        30 Aug 2019
 
         (Since 22 April, in Prod)
 
@@ -76,7 +76,7 @@
         # Order
         #'views/order/product_selector.xml',            # Dep
 
-        'views/order/payment_method_line.xml',              # Min
+        'views/order/payment_method_line.xml',             # Min
         'views/order/order_line.xml',                      # Min
         'views/order/order_line_actions.xml',              # MIn
         'views/order/order.xml',                           # Min
