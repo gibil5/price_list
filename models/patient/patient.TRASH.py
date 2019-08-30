@@ -2,6 +2,56 @@
 
 
 
+# ----------------------------------------------------------- Fields -----------
+
+	x_firm_address = fields.Char(
+			'Direccion de la Empresa',
+		)
+
+# ----------------------------------------------------------- Configurator ------------------------
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+		)
+
+
+
+
+
+
+
+
+
+
+# Before
+# ----------------------------------------------------------- Natives - Dep ? -----------
+	#x_blacklist = fields.Boolean(
+	#		'Black List',
+	#	)
+
+
+	def init_configurator(self):
+		"""
+		Init Configurator
+		"""
+		#print()
+		#print('Init Configurator')
+
+		# Configurator
+		if self.configurator.name in [False]:
+			self.configurator = self.env['openhealth.configurator.emr'].search([
+																					('x_type', 'in', ['emr']),
+															],
+															#order='date_begin,name asc',
+															limit=1,
+														)
+			#print(self.configurator)
+			#print(self.configurator.name)
+
+
+
+
 
 
 # Before

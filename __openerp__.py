@@ -59,9 +59,7 @@
         # 'security/ir.model.access.csv',
 
 
-
-
-        # Product
+        # Product - 2019
         'views/product/pricelist_container.xml',
         'views/product/product_pricelist.xml',
         'views/product/product_template.xml',
@@ -74,7 +72,7 @@
 
 
         # Order
-        #'views/order/product_selector.xml',            # Dep
+        #'views/order/product_selector.xml',               # Dep
 
         'views/order/payment_method_line.xml',             # Min
         'views/order/order_line.xml',                      # Min
@@ -110,11 +108,11 @@
 
 
         # Configurator
-        #'views/configurator_emr.xml',                  # MIN
+        #'views/configurator_emr.xml',                  # Dep
 
 
         # Patient
-        'views/patient/patient.xml',
+        'views/patient/patient.xml',                   
         #'views/patient/patient_personal.xml',          # Dep
 
 
@@ -159,6 +157,7 @@
         'views/menus/menus.xml',
         'views/menus/menus_marketing.xml',
         'views/menus/menus_management.xml',
+
         #'views/menus/menus_dev.xml',               # Dep
         #'views/menus/menus_rsp.xml',               # Dep
         #'views/menus/menus_products_2018.xml',     # Dep
