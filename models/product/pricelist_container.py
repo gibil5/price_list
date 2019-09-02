@@ -20,9 +20,32 @@ class PricelistContainer(models.Model):
 
 	Uses PL Products
 	"""
-	_name = 'price_list.container'
+	#_name = 'price_list.container'
+	_inherit = 'openhealth.container.pricelist'
 
 	_description = 'container'
+
+
+
+
+# ----------------------------------------------------------- Relational --------------------------
+
+	#product_ids = fields.One2many(
+	#		'price_list.product',
+	#		'container_id',
+	#	)
+
+
+	# Configurator
+	#configurator = fields.Many2one(
+	#		'openhealth.configurator.emr',
+	#		string="Configuracion",
+	#		required=True,
+	#	)
+
+
+
+
 
 
 
@@ -31,29 +54,6 @@ class PricelistContainer(models.Model):
 	#path = fields.Char(
 	#		required=False,
 	#	)
-
-
-
-# ----------------------------------------------------------- Relational --------------------------
-
-	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Configuracion",
-			required=True,
-		)
-
-
-
-	#product_ids = fields.Char(
-	product_ids = fields.One2many(
-			'price_list.product',
-			'container_id',
-		)
-
-
-
-
 
 
 # ----------------------------------------------------------- 0 Level ---------------------------------------------
@@ -350,9 +350,9 @@ class PricelistContainer(models.Model):
 			required=True,
 		)
 
-	caps_name = fields.Boolean(
-			default=False,
-		)
+	#caps_name = fields.Boolean(
+	#		default=False,
+	#	)
 
 
 

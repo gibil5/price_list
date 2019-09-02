@@ -5,9 +5,14 @@
 
 
 <!-- FORM --> 
+<!--
+            <field name="model">price_list.container</field>
+-->
 		<record model="ir.ui.view" id="container_form_view">
 			<field name="name">container.form</field>
-			<field name="model">price_list.container</field>
+
+			<field name="model">openhealth.container.pricelist</field>
+
 			<field name="arch" type="xml">
 				<form string="container Form">
 
@@ -150,7 +155,9 @@
                             <group>
                             </group>
                             <group>
+<!--
                                 <field name="caps_name"/>
+-->
                             </group>
                         </group>
 
@@ -168,11 +175,16 @@
 
 
 <!-- ACTION --> 
+<!--
+            <field name="res_model">price_list.container</field>
+-->
 		<!-- actions opening views on models -->
 		<record model="ir.actions.act_window" id="price_list.container_list_action">			
 			<field name="name">price_list window</field>
-			<field name="res_model">price_list.container</field>
-			<field name="view_mode">tree,form</field>
+			
+            <field name="res_model">openhealth.container.pricelist</field>
+			
+            <field name="view_mode">tree,form</field>
 		</record>
 
 	</data>

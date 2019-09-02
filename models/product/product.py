@@ -15,7 +15,8 @@ class PriceListProduct(models.Model):
 	"""
 	Is Used by PL Container
 	"""
-	_name = 'price_list.product'
+	#_name = 'price_list.product'
+	_inherit = 'openhealth.product.pricelist'
 	
 	_description = 'Product'
 	
@@ -28,15 +29,8 @@ class PriceListProduct(models.Model):
 	# Used by Container
 	#container_id = fields.Many2one(		
 	#		'price_list.container',
-	#		#ondelete='cascade',
+	#		ondelete='cascade',
 	#	)
-
-
-	#container_id = fields.Char(			
-	container_id = fields.Many2one(		
-			'price_list.container',
-			ondelete='cascade',
-		)
 
 
 
