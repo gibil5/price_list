@@ -36,11 +36,11 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Price List Fields - Relational ----------------------------------------------
 
-	report_product = fields.Many2one(
-			'price_list.container',
-			string="PROD",
+	#report_product = fields.Many2one(
+	#		'price_list.container',
+	#		string="PROD",
 			#required=True,
-		)
+	#	)
 
 
 # -----------------------------------------------------------  Create Order Pro - 2019 ------------------

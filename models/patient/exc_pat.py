@@ -9,6 +9,27 @@ class RequiredParameterException(Exception):
     pass
 
 
+
+# ----------------------------------------------------------- Handle Exceptions -------------------------
+#@api.multi
+def handle_exceptions(self):
+	"""
+	Handle Exceptions
+	"""
+	print()
+	print('PAT - Handle Exceptions')
+
+	#self.init_configurator()  	# Dep !
+
+	if self.configurator.error_validation_patient:
+		print('Error validation ACTIVE')
+		handle_exceptions_id_doc(self)
+	else:
+		print('Error validation INACTIVE')
+
+
+
+
 # ----------------------------------------------------------- Handle Exceptions Invoice -------------------------
 #@api.multi
 def handle_exceptions_invoice(self):
@@ -45,23 +66,6 @@ def handle_exceptions_invoice(self):
 
 
 
-
-# ----------------------------------------------------------- Handle Exceptions -------------------------
-#@api.multi
-def handle_exceptions(self):
-	"""
-	Handle Exceptions
-	"""
-	print()
-	print('PAT - Handle Exceptions')
-
-	self.init_configurator()
-
-	if self.configurator.error_validation_patient:
-		print('Error validation ACTIVE')
-		handle_exceptions_id_doc(self)
-	else:
-		print('Error validation INACTIVE')
 
 
 
