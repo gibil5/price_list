@@ -210,8 +210,13 @@ class PricelistContainer(models.Model):
 		print()
 		print('Create Products 2019')
 
+		#model = 'price_list.product'
+		model = 'openhealth.product.pricelist'
+
+
 		# Search
-		products = self.env['price_list.product'].search([
+		#products = self.env['price_list.product'].search([
+		products = self.env[model].search([
 															#('x_name_short', 'in', [name]),
 														],
 															#order='date_begin asc',
@@ -221,7 +226,8 @@ class PricelistContainer(models.Model):
 
 
 		# Count
-		count = self.env['price_list.product'].search_count([
+		#count = self.env['price_list.product'].search_count([
+		count = self.env[model].search_count([
 														],
 															#order='x_serial_nr asc',
 															#limit=1,
@@ -364,8 +370,14 @@ class PricelistContainer(models.Model):
 		"""
 		self.product_ids.unlink()
 
+
+		#model = 'price_list.product'
+		model = 'openhealth.product.pricelist'
+
+
 		# Pricelist Products
-		products = self.env['price_list.product'].search([
+		#products = self.env['price_list.product'].search([
+		products = self.env[model].search([
 															#('x_name_short', 'in', [name]),
 														],
 															#order='date_begin asc',

@@ -523,15 +523,7 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 5363,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "security/ir.model.access.BUFF.csv",
-			"settings":
-			{
-				"buffer_size": 622,
+				"buffer_size": 5362,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -540,8 +532,16 @@
 			"file": "models/product/pricelist_container.py",
 			"settings":
 			{
-				"buffer_size": 8832,
+				"buffer_size": 9103,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/product/product.py",
+			"settings":
+			{
+				"buffer_size": 2805,
 				"line_ending": "Unix"
 			}
 		},
@@ -646,6 +646,8 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/readme.txt",
+		"/Users/gibil/cellar/github/price_list/security/ir.model.access.BUFF.csv",
 		"/Users/gibil/cellar/github/price_list/openerp.TRASH.py",
 		"/Users/gibil/cellar/github/price_list/__init__.py",
 		"/Users/gibil/cellar/github/price_list/views/order/order.xml",
@@ -653,7 +655,6 @@
 		"/Users/gibil/cellar/github/price_list/models/order/order.TRASH.py",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.csv",
 		"/Users/gibil/cellar/github/price_list/__openerp__.py",
-		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/models/treatment/treatment.TRASH.py",
 		"/Users/gibil/cellar/github/price_list/views/treatment/treatment.TRASH.xml",
 		"/Users/gibil/cellar/github/price_list/models/order/order.py",
@@ -772,12 +773,11 @@
 		"/Users/gibil/cellar/github/price_list/models/management/mgt_line_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/management/stats.py",
 		"/Users/gibil/cellar/github/price_list/models/order_line.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/marketing.TRASH.py",
-		"/Users/gibil/cellar/github/price_list/models/management/mgt_excs.py"
+		"/Users/gibil/cellar/github/price_list/models/marketing/marketing.TRASH.py"
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -1073,7 +1073,66 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5363,
+						"buffer_size": 5362,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1657,
+								1657
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 2.0,
+						"translation.y": 2333.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "models/product/pricelist_container.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9103,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8822,
+								8822
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5889.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "models/product/product.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2805,
 						"regions":
 						{
 						},
@@ -1087,68 +1146,10 @@
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "security/ir.model.access.BUFF.csv",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 622,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1,
-								1
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "models/product/pricelist_container.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8832,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								713,
-								713
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 412.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
