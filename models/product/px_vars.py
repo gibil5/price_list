@@ -329,9 +329,9 @@ _file_name_list = [
 	('CONSULTATIONS.csv', 	'CONSULTATIONS.csv'),
 
 	('CO2.csv', 		'CO2.csv'),
-	('QUICK.csv', 		'QUICK.csv'),
 	('EXCILITE.csv', 	'EXCILITE.csv'),
 	('M22.csv', 		'M22.csv'),
+	('QUICK.csv', 		'QUICK.csv'),
 
 	('MEDICAL.csv', 	'MEDICAL.csv'),
 	('COSMETO.csv', 	'COSMETO.csv'),

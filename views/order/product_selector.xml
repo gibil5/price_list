@@ -4,9 +4,8 @@
         
 
 
-        <!-- FORM -->
+<!-- FORM -->
         <record model="ir.ui.view" id="view_product_selector_form">
-
             <field name="name">price_list.product.selector.form</field>
             
             <field name="model">price_list.product.selector</field>

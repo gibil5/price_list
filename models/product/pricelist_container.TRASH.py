@@ -1,3 +1,36 @@
+# 4 Sep 2019
+# The Data model should be declared in Open Health
+
+	#_name = 'price_list.container'
+
+
+
+# ----------------------------------------------------------- Relational --------------------------
+
+	#product_ids = fields.One2many(
+	#		'price_list.product',
+	#		'container_id',
+	#	)
+
+
+	# Configurator
+	#configurator = fields.Many2one(
+	#		'openhealth.configurator.emr',
+	#		string="Configuracion",
+	#		required=True,
+	#	)
+
+
+# ----------------------------------------------------------- Dep --------------------------
+
+	#path = fields.Char(
+	#		required=False,
+	#	)
+
+
+
+
+
 
 # ----------------------------------------------------------- Remove Stock Moves - Button ----------------------------------------------------
 	@api.multi

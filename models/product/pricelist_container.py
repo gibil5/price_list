@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Container
+	Container
 
-Created: 			23 Apr 2019
-Last updated: 		10 Aug 2019
+	Created: 			23 Apr 2019
+	Last updated: 		10 Aug 2019
 """
 from __future__ import print_function
 import pandas
 from openerp import models, fields, api
 from . import px_vars
 from . import exc_prod
-
 from openerp.addons.price_list.models.lib import sys_func
 
 class PricelistContainer(models.Model):
@@ -20,40 +19,11 @@ class PricelistContainer(models.Model):
 
 	Uses PL Products
 	"""
-	#_name = 'price_list.container'
 	_inherit = 'openhealth.container.pricelist'
 
 	_description = 'container'
 
 
-
-
-# ----------------------------------------------------------- Relational --------------------------
-
-	#product_ids = fields.One2many(
-	#		'price_list.product',
-	#		'container_id',
-	#	)
-
-
-	# Configurator
-	#configurator = fields.Many2one(
-	#		'openhealth.configurator.emr',
-	#		string="Configuracion",
-	#		required=True,
-	#	)
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Dep --------------------------
-
-	#path = fields.Char(
-	#		required=False,
-	#	)
 
 
 # ----------------------------------------------------------- 0 Level ---------------------------------------------
@@ -119,81 +89,106 @@ class PricelistContainer(models.Model):
 		"""
 		print('Load')
 
-
 		# Clean
-		#self.product_ids.unlink()
 		self.clear()
 
 
-
 		# Init
-		#fname = self.path + self.file_name
-		fname = self.configurator.path_csv_pricelist + self.file_name
+		_file_name_list = [
+								'PRODS.csv',
 
-		df = self.open_with_pandas_read_csv(fname)
-		#print(df)
+								'CONSULTATIONS.csv',
+
+								'CO2.csv',
+								'EXCILITE.csv',
+								'M22.csv',
+								'QUICK.csv',
+
+								'MEDICAL.csv',
+								'COSMETO.csv',
+
+								'GINECO.csv',
+								'PROMOS.csv',
+								'ECO.csv',
+						]
 
 
 		# Loop
-		for index, row in df.iterrows():
-			#print(row['idx'], row['name'])
-			#print(row['name'])
-			#print(row['name_short'])
+		for file_name in _file_name_list:
 
-			# Check Values
-			level = self.check(row['level'])
-			time = self.check(row['time'])
-			price = self.check(row['price'])
-			price_vip = self.check(row['price_vip'])
-			price_company = self.check(row['price_company'])
-			price_session = self.check(row['price_session'])
-			price_session_next = self.check(row['price_session_next'])
-			price_max = self.check(row['price_max'])
-			time_stamp = row['time_stamp']
 
-			if row['x_type'] in ['product']:
-				manufacturer = row['manufacturer']
-				brand = row['brand']
-				name = row['name'].upper()
-				name_short = row['name_short'].upper()
-			else:
-				manufacturer = False
-				brand = False
-				name = row['name']
-				name_short = row['name_short']
+			# Init
+			#fname = self.configurator.path_csv_pricelist + self.file_name
+			fname = self.configurator.path_csv_pricelist + file_name
 
-			# Create
-			product = self.product_ids.create({
-												'name': 			name,
-												'name_short': 		name_short,
-												'time_stamp': 		time_stamp,
-												'prefix': 			row['prefix'],
-												'idx': 				row['idx'],
-												'code': 			False,
-												'x_type': 			row['x_type'],
-												'family': 			row['family'],
-												'subfamily': 		row['subfamily'],
-												'treatment': 		row['treatment'],
-												'zone': 			row['zone'],
-												'pathology': 		row['pathology'],
-												'sessions': 		row['sessions'],
-												'level': 			level,
-												'time': 				time,
-												'price': 				price,
-												'price_vip': 			price_vip,
-												'price_company': 		price_company,
-												'price_session': 		price_session,
-												'price_session_next': 	price_session_next,
-												'price_max': 			price_max,
 
-												# Only Prods
-												'manufacturer': 	manufacturer,
-												'brand': 			brand,
 
-												# Handle
-												'container_id': 	self.id,
-											})
-			#print(product)
+			df = self.open_with_pandas_read_csv(fname)
+			#print(df)
+
+
+			# Loop
+			for index, row in df.iterrows():
+				#print(row['idx'], row['name'])
+				#print(row['name'])
+				#print(row['name_short'])
+
+				# Check Values
+				level = self.check(row['level'])
+				time = self.check(row['time'])
+				price = self.check(row['price'])
+				price_vip = self.check(row['price_vip'])
+				price_company = self.check(row['price_company'])
+				price_session = self.check(row['price_session'])
+				price_session_next = self.check(row['price_session_next'])
+				price_max = self.check(row['price_max'])
+				time_stamp = row['time_stamp']
+
+				if row['x_type'] in ['product']:
+					manufacturer = row['manufacturer']
+					brand = row['brand']
+					name = row['name'].upper()
+					name_short = row['name_short'].upper()
+				else:
+					manufacturer = False
+					brand = False
+					name = row['name']
+					name_short = row['name_short']
+
+				# Create
+				product = self.product_ids.create({
+													'name': 			name,
+													'name_short': 		name_short,
+													'time_stamp': 		time_stamp,
+													'prefix': 			row['prefix'],
+													'idx': 				row['idx'],
+													'code': 			False,
+													'x_type': 			row['x_type'],
+													'family': 			row['family'],
+													'subfamily': 		row['subfamily'],
+													'treatment': 		row['treatment'],
+													'zone': 			row['zone'],
+													'pathology': 		row['pathology'],
+													'sessions': 		row['sessions'],
+													'level': 			level,
+													'time': 				time,
+													'price': 				price,
+													'price_vip': 			price_vip,
+													'price_company': 		price_company,
+													'price_session': 		price_session,
+													'price_session_next': 	price_session_next,
+													'price_max': 			price_max,
+
+													# Only Prods
+													'manufacturer': 	manufacturer,
+													'brand': 			brand,
+
+													# Handle
+													'container_id': 	self.id,
+												})
+				#print(product)
+
+
 	# load_csv
 
 
