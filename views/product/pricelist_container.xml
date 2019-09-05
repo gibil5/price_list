@@ -142,11 +142,12 @@
                             <group>
 <!--
                                 <field name="path"/>
+                                <field name="file_name"/>
 -->
 
                                 <field name="configurator"/>
 
-                                <field name="file_name"/>
+                                <field name="family"/>
                             </group>
                         </group>
 

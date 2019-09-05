@@ -826,6 +826,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"create_pro",
 			"caps",
 			"fields.",
 			"pl_min",
@@ -952,8 +953,7 @@
 			"create_order_pro",
 			"Product Templates - 2019 - ",
 			"search",
-			"mgt_funcs",
-			"update"
+			"mgt_funcs"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1099,7 +1099,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1115,8 +1115,8 @@
 						"selection":
 						[
 							[
-								215,
-								215
+								181,
+								183
 							]
 						],
 						"settings":
@@ -1125,11 +1125,11 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
+						"translation.x": 7.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1145,8 +1145,8 @@
 						"selection":
 						[
 							[
-								2131,
-								2131
+								4514,
+								4524
 							]
 						],
 						"settings":
@@ -1155,10 +1155,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1580.0,
+						"translation.y": 3511.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
