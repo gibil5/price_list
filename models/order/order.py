@@ -10,8 +10,10 @@
 from __future__ import print_function
 import datetime
 from openerp import models, fields, api
+
 from openerp import _
 from openerp.exceptions import Warning as UserError
+
 from . import exc_ord
 
 class sale_order(models.Model):

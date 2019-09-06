@@ -44,6 +44,20 @@ class Management(models.Model):
 
 
 
+# ----------------------------------------------------------- Test -------------------------
+	mode = fields.Selection(
+
+			[
+				('normal', 'Normal'),
+				('test', 'Test'),
+				#('legacy', 'Legacy'),
+			],
+
+			default='normal',
+			required=True,
+		)
+
+
 # ----------------------------------------------------------- Relational Extension -------------------------
 	# patient
 	patient_line = fields.One2many(
@@ -111,7 +125,11 @@ class Management(models.Model):
 			patient = order.patient
 			patient_id = order.patient.id
 
-			if patient.name not in ['REVILLA RONDON JOSE JAVIER']:
+
+			#if patient.name not in ['REVILLA RONDON JOSE JAVIER']:
+			
+			if self.mode in ['test']  	or  	self.mode in ['normal'] and patient.name not in ['REVILLA RONDON JOSE JAVIER']:
+
 
 				print(patient)
 				print(patient_id)
@@ -150,8 +168,8 @@ class Management(models.Model):
 		Pl - Update Doctors
 		"""
 		print()
-		#print('Pl - Update Doctors')
-		print('Update Doctors')
+		#print('Update Doctors')
+		print('Pl - Update Doctors')
 
 
 		# Handle Exceptions
@@ -1063,7 +1081,7 @@ class Management(models.Model):
 
 # ----------------------------------------------------------- Create Doctor Data ------------
 	def create_doctor_data(self, doctor_name, orders):
-		#print()
+		print()
 		print('Create Doctor Data')
 
 
@@ -1132,6 +1150,8 @@ class Management(models.Model):
 				# Sale
 				if order.state in ['sale']:  	# Sale - Do Line Analysis
 
+					print('SALE')
+
 					# Order Lines
 					for line in order.order_line:
 
@@ -1185,6 +1205,10 @@ class Management(models.Model):
 															})
 						#print('mark 0')
 
+						print(line)
+						print(line.product_id)
+						print(line.product_id.name)
+
 						if line.product_id.pl_price_list in ['2019']:
 							order_line.pl_update_fields()
 
@@ -1200,6 +1224,9 @@ class Management(models.Model):
 
 				# Credit Note
 				elif order.state in ['credit_note']:
+
+					print('CREDIT NOTE')
+
 
 					# Price
 					price_unit = order.x_amount_flow
@@ -1241,6 +1268,11 @@ class Management(models.Model):
 															# Price
 															'price_unit': 			price_unit,
 														})
+
+
+					print(line)
+					print(line.product_id)
+					print(line.product_id.name)
 
 					#order_line.update_fields()
 					#order_line.pl_update_fields()

@@ -15,6 +15,7 @@
 			string="Test Scenarios",
 		)
 
+
 	test_pricelist_2019 = fields.Boolean(
 			#'Price List 2019',
 			'PL 2019',

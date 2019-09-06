@@ -29,6 +29,9 @@ from __future__ import print_function
 
 from openerp.addons.price_list.models.lib import test_funcs
 
+from openerp import _
+from openerp.exceptions import Warning as UserError
+
 from . import exc_tre
 
 
@@ -55,8 +58,20 @@ def test_integration_treatment(self):
 	# Create Consultation
 	create_consultation(self)
 
-	# Create Recommendations
-	create_recommentations(self)
+
+	if self.x_test_scenario in ['credit_note']:
+		create_credit_note(self)
+
+	elif self.x_test_scenario in ['block_flow']:
+		create_block_flow(self)
+
+	else:
+		# Create Recommendations
+		create_recommentations(self)
+
+
+
+
 
 	# Create Sessions
 	#create_sessions(self)
@@ -69,6 +84,35 @@ def test_integration_treatment(self):
 
 
 # ----------------------------------------------------------- Second Level ---------------------------------------------
+
+def create_credit_note(self):
+	"""
+	Create Credit Note
+	"""
+	print()
+	print('Create Credit Note')
+
+	for order in self.order_ids:
+
+		if order.state in ['sale']:
+		
+			order.create_credit_note()
+
+			order.cancel_order()
+
+
+
+
+def create_block_flow(self):
+	"""
+	Create Block Flow
+	"""
+	print()
+	print('Create Block Flow')
+
+
+
+
 
 # ----------------------------------------------- Consultation ------------------------------------
 def create_consultation(self):
@@ -218,7 +262,11 @@ def create_recommendations_2019(self):
 
 					'med_6':		'REDUX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',										# Redux
 					'med_7':		'ESCLEROTERAPIA - Piernas - Varices - 1 sesion',											# Sclero
+
+
 					'med_8':		'VITAMINA C ENDOVENOSA',																	# Vitamin
+					#'med_8':		'VICTAMINA C ENDOVENOSA',																	# Vitamin
+
 
 					#'med_1':		'',			# Plasma
 
@@ -355,6 +403,7 @@ def create_recommendations_2019(self):
 					'prom',
 	]
 
+	tst_list_empty = []
 
 
 	if self.x_test_scenario in ['all']:
@@ -376,6 +425,9 @@ def create_recommendations_2019(self):
 		tst_list = tst_list_new
 
 
+	elif self.x_test_scenario in [False]:
+		tst_list = tst_list_empty
+
 
 
 	# Loop
@@ -396,6 +448,26 @@ def create_recommendations_2019(self):
 												#order='date_order desc',
 												limit=1,
 									)
+		# Manage Exception
+		try:
+			product.ensure_one()
+
+		except:
+			#print("An exception occurred")
+			msg_name = "ERROR: Record Must be One Only."
+
+			class_name = type(product).__name__
+
+			#obj_name = product.name
+			obj_name = name
+
+			msg =  msg_name + '\n' + class_name + '\n' + obj_name
+			#msg =  msg_name + '\n' + class_name + '\n' 
+
+			raise UserError(_(msg))
+
+
+
 		product_id = product.id
 
 		print()

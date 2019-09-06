@@ -390,7 +390,9 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Natives -----------------------------
 	
 	mode = fields.Selection(
+
 			selection=mkt_vars._mode_list,
+
 			default='normal',
 			required=True,
 		)

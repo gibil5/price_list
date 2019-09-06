@@ -276,9 +276,13 @@
 									</group>
 
 									<group>
-										<field name="base_dir"/>
+										<field name="mode"/>
+
 										<field name="state_arr"/>
+
 										<field name="type_arr"/>
+
+										<field name="base_dir"/>
 									</group>
 
 <!--
