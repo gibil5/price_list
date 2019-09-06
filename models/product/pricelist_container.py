@@ -272,8 +272,8 @@ class PricelistContainer(models.Model):
 
 		for pro in products:
 
-			print(pro)
-			print(pro.name)
+			#print(pro)
+			#print(pro.name)  		# Generates Encode Error
 
 			
 			# Count
