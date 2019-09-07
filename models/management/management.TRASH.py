@@ -1,3 +1,27 @@
+# 4 Sep
+
+	def create_doctor_data(self, doctor_name, orders):
+
+				# Amount
+				#amount = amount + order.amount_total
+
+					#amount = amount - order.amount_total
+					#amount = amount - order.amount_total
+					#amount = amount - order.x_credit_note_amount
+					#print('Gotcha !')
+					#print(amount)
+
+						# State
+						#if order.state in ['credit_note']:
+						#	price_unit = -line.price_unit
+						#elif order.state in ['sale']:
+						#	price_unit = line.price_unit
+
+
+
+
+
+
 # 29 Aug 2019
 
 

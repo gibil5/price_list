@@ -277,19 +277,16 @@
 
 									<group>
 										<field name="mode"/>
-
-										<field name="state_arr"/>
-
 										<field name="type_arr"/>
-
-										<field name="base_dir"/>
 									</group>
-
-<!--
--->
 								</group>
 							</page>
 						</notebook>
+<!--
+Dep !
+										<field name="state_arr"/>
+										<field name="base_dir"/>
+-->
 
 
 
@@ -641,7 +638,6 @@
 
 
 
-					<field name="state_arr"     	groups="openhealth.roots"/>
 					<field name="type_arr"     	groups="openhealth.roots"/>
 
 

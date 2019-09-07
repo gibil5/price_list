@@ -110,6 +110,12 @@ def create_block_flow(self):
 	print()
 	print('Create Block Flow')
 
+	for order in self.order_ids:
+
+		if order.state in ['sale']:
+		
+			order.block_flow()
+
 
 
 
