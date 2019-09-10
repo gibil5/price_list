@@ -48,8 +48,8 @@ class management_order_line(models.Model):
 	# Update Fields
 	@api.multi
 	def pl_update_fields(self):
-		print()
-		print('Pl - Update Fields - Order - 2019')
+		#print()
+		#print('Pl - Update Fields - Order - 2019')
 
 
 		# If Service 
@@ -98,8 +98,8 @@ class management_order_line(models.Model):
 	# Update Fields
 	@api.multi
 	def update_fields(self):
-		print()
-		print('Update Fields - Order - 2018')
+		#print()
+		#print('Update Fields - Order - 2018')
 
 
 		# If Product 

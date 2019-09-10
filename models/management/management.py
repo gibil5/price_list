@@ -187,6 +187,7 @@ class Management(models.Model):
 	# update_doctors
 
 
+
 # ----------------------------------------------------------- Update Prod -------------------------
 
 	# Update Productivity
@@ -896,8 +897,8 @@ class Management(models.Model):
 		"""
 		Update Stats - Doctors, Families, Sub-families
 		"""
-		print()
-		print('Pl - Update Stats')
+		#print()
+		#print('Pl - Update Stats')
 
 
 		# Using collections - More Abstract !
@@ -1082,7 +1083,7 @@ class Management(models.Model):
 # ----------------------------------------------------------- Create Doctor Data ------------
 	def create_doctor_data(self, doctor_name, orders):
 		print()
-		print('Create Doctor Data')
+		print('Pl - Create Doctor Data')
 
 
 		# Init Loop
