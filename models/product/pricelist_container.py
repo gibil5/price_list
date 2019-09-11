@@ -25,6 +25,18 @@ class PricelistContainer(models.Model):
 
 
 
+# ----------------------------------------------------------- Dep ---------------------------------------------
+
+	#file_name = fields.Selection(
+	#		selection=px_vars._file_name_list,
+	#		required=True,
+	#	)
+
+	#caps_name = fields.Boolean(
+	#		default=False,
+	#	)
+
+
 
 # ----------------------------------------------------------- 0 Level ---------------------------------------------
 
@@ -386,11 +398,6 @@ class PricelistContainer(models.Model):
 			required=True,
 		)
 
-	file_name = fields.Selection(
-			selection=px_vars._file_name_list,
-			required=True,
-		)
-
 
 	family = fields.Selection(
 
@@ -401,9 +408,6 @@ class PricelistContainer(models.Model):
 
 
 
-	#caps_name = fields.Boolean(
-	#		default=False,
-	#	)
 
 
 
