@@ -538,19 +538,19 @@
 			}
 		},
 		{
-			"file": "views/treatment/treatment_cart.xml",
+			"file": "models/treatment/test_treatment.py",
 			"settings":
 			{
-				"buffer_size": 575,
+				"buffer_size": 23477,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/treatment/test_treatment.py",
+			"file": "views/treatment/treatment_cart.xml",
 			"settings":
 			{
-				"buffer_size": 23477,
+				"buffer_size": 575,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1107,7 +1107,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1137,7 +1137,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1166,11 +1166,40 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "models/treatment/test_treatment.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 23477,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4549,
+								4549
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2577.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "views/treatment/treatment_cart.xml",
 					"semi_transient": false,
 					"settings":
@@ -1196,35 +1225,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "models/treatment/test_treatment.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 23477,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4549,
-								4549
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3304.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
 					"type": "text"
 				},
 				{

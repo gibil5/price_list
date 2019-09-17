@@ -57,7 +57,10 @@
     # always loaded
     'data': [
 
-        # 'security/ir.model.access.csv',
+        # Data - Gynecology - Dep ?
+        #'data/data_users.xml',
+        #'data/data_physicians.xml',
+
 
 
         # Product - 2019
@@ -164,9 +167,8 @@
         #'views/menus/menus_products_2018.xml',     # Dep
 
 
+
         # Security
-        'security/data_users.xml',
-        'security/data_physicians.xml',
         'security/ir.model.access.csv',
     ],
 
