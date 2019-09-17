@@ -10,6 +10,7 @@ from openerp import models, fields, api
 #from . import px_vars		# Dep
 
 from . import pro_con_funcs
+
 from . import pro_ses_funcs
 
 class Procedure(models.Model):

@@ -866,12 +866,119 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Last Level - Testing ---------------------------------------------
+# ----------------------------------------------------------- Test --------------------------------
+
+
+
+# ----------------------------------------------------------- Test Cycle ---------------------------------------------
+
+	@api.multi
+	def test_create_budget_consultation(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Budget Consultation')
+		test_treatment.test_create_budget_consultation(self)
+
+
+	@api.multi
+	def test_create_sale_consultation(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Sale Consultation')
+		test_treatment.test_create_sale_consultation(self)
+
+
+
+
+	@api.multi
+	def test_create_consultation(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Consultation')
+		test_treatment.test_create_consultation(self)
+
+
+	@api.multi
+	def test_create_recommendations(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Recommendations')
+		test_treatment.test_create_recommendations(self)
+
+
+
+
+
+
+
+	@api.multi
+	def test_create_budget_procedure(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Budget procedure')
+		test_treatment.test_create_budget_procedure(self)
+
+
+	@api.multi
+	def test_create_sale_procedure(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Sale procedure')
+		test_treatment.test_create_sale_procedure(self)
+
+
+
+
+	@api.multi
+	def test_create_procedure(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create procedure')
+		test_treatment.test_create_procedure(self)
+
+	@api.multi
+	def test_create_sessions(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create sessions')
+		test_treatment.test_create_sessions(self)
+
+	@api.multi
+	def test_create_controls(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create controls')
+		test_treatment.test_create_controls(self)
+
+
+
+
+
+# ----------------------------------------------------------- Test Integration ---------------------------------------------
 
 # ----------------------------------------------------------- Test --------------------------------
 	# Test
 	@api.multi
-	def test(self):
+	#def test(self):
+	def test_all(self):
 		"""
 		Test All
 		"""
@@ -901,6 +1008,7 @@ class Treatment(models.Model):
 		print()
 		print()
 		print('SUCCESS !')
+
 
 # ----------------------------------------------------------- Test - Reset --------------------------
 	@api.multi

@@ -14,29 +14,225 @@ Rules:
 	- Have no Side Effects.
 	- Prefer Exceptions to Returning Error Codes.
 	- Don’t Repeat Yourself.
-
-
 	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, without having to know its Implementation. 
-
 	- Respect the Law of Demeter. Avoid Train Wrecks.
-
 	- Treat the Active Record as a data structure and create separate objects that contain the business rules and that hide their internal data. These Objects are just instances of the Active Record.	
-
 	- Handle Exceptions.
 """
 
 from __future__ import print_function
-
 from openerp.addons.price_list.models.lib import test_funcs
-
 from openerp import _
 from openerp.exceptions import Warning as UserError
-
 from . import exc_tre
 
-
-
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
+
+
+# ----------------------------------------------- Test Cycle --------------------------------
+
+def test_create_budget_consultation(self):
+	"""
+	Test
+	"""
+	print()
+	print('Test Create Budget Consultation')
+
+	# Create Budget Consultation
+	self.create_order_con_med()			# Actual Button
+
+
+def test_create_sale_consultation(self):
+	"""
+	Test
+	"""
+	print()
+	print('Test Create Sale Consultation')
+
+	# Pay Budget Consultation
+	for order in self.order_ids:
+		if order.state in ['draft']:
+			order.pay_myself()
+
+
+def test_create_consultation(self):
+	"""
+	Test
+	"""
+	print()
+	print('Test Create Consultation')
+
+	# Create and Fill Consultation
+	self.create_consultation()
+	for consultation in self.consultation_ids:
+		consultation.autofill()
+
+
+def test_create_recommendations(self):
+	"""
+	Test
+	"""
+	print()
+	print('Test Create Recommendations')
+
+	name_dic = {
+
+
+					# Lasers
+					'co2': 		'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
+		}
+
+
+	model_dic = {
+					'co2': 		'price_list.service_co2',
+		}
+
+
+
+	tst_list = [
+					'co2',
+	]
+
+
+
+	# Loop
+	for tst in tst_list:
+
+		# Init
+		name = name_dic[tst]
+		model = model_dic[tst]
+
+		# Search
+		product = self.env['product.template'].search([
+															('name', '=', name),
+															('pl_price_list', 'in', ['2019']),
+											],
+												#order='date_order desc',
+												limit=1,
+									)
+		# Manage Exception
+		try:
+			product.ensure_one()
+
+		except:
+			#print("An exception occurred")
+			msg_name = "ERROR: Record Must be One Only."
+			class_name = type(product).__name__
+			obj_name = name
+			msg =  msg_name + '\n' + class_name + '\n' + obj_name
+			raise UserError(_(msg))
+
+
+
+		product_id = product.id
+
+		print()
+		print(product)
+		print(product.name)
+
+
+		# Create
+		service = self.env[model].create({
+														'service': 			product_id,
+														'family': 			product.pl_family,
+														'subfamily': 		product.pl_subfamily,
+														'zone': 			product.pl_zone,
+														'pathology': 		product.pl_pathology,
+														'sessions': 		product.pl_sessions,
+														'level': 			product.pl_level,
+														'time': 			product.pl_time,
+														'price_applied': 	product.list_price,
+														'sel_zone': 		product.pl_zone,
+														'pl_treatment': 	product.pl_treatment,
+
+														'treatment': 		self.id,
+											})
+# test_create_recommendations
+
+
+
+
+
+
+
+
+def test_create_budget_procedure(self):
+	"""
+	Test
+	"""
+	print()
+	print('Test Create Budget Procedure')
+
+	# Pay Budget Procedures
+	self.create_order_pro()				# Actual Button - 2019
+
+
+def test_create_sale_procedure(self):
+	"""
+	Test
+	"""
+	print()
+	print('Test Create Sale Procedure')
+
+	# Pay Budget Procedures
+	for order in self.order_ids:
+		if order.state in ['draft']:
+			try:
+				order.pay_myself()
+			except:
+				print("An exception occurred")
+
+
+
+
+
+
+def test_create_procedure(self):
+	"""
+	Test
+	"""
+	print()
+	print('Test Create Procedure')
+
+	# Create Procedure 
+	self.create_procedure_man()
+
+
+
+def test_create_sessions(self):
+	"""
+	Test
+	"""
+	print()
+	print('Test Create Sessions')
+
+	# Create Sessions
+	for procedure in self.procedure_ids:
+		print(procedure)
+		#for _ in range(2):
+		for _ in range(1):
+			print('create sesion')
+			procedure.create_sessions_manual()
+
+
+
+def test_create_controls(self):
+	"""
+	Test
+	"""
+	print()
+	print('Test Create Controls')
+
+	# Create Controls
+	for procedure in self.procedure_ids:
+		print(procedure)
+		#for _ in range(1):
+		for _ in range(6):
+			print('create control')
+			procedure.create_controls_manual()
+
+
+
 
 
 # ----------------------------------------------- Test Integration --------------------------------
