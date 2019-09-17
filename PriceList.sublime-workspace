@@ -689,11 +689,11 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/models/management/management_order_line.py",
 		"/Users/gibil/cellar/github/price_list/models/management/family_line.py",
 		"/Users/gibil/cellar/github/price_list/models/management/doctor_line.py",
 		"/Users/gibil/cellar/github/price_list/models/management/management.py",
-		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/views/management/management.xml",
 		"/Users/gibil/cellar/github/price_list/models/treatment/treatment.py",
 		"/Users/gibil/cellar/github/price_list/views/treatment/treatment.xml",
@@ -1107,7 +1107,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1123,8 +1123,8 @@
 						"selection":
 						[
 							[
-								3471,
-								3478
+								216,
+								216
 							]
 						],
 						"settings":
@@ -1137,7 +1137,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1166,7 +1166,7 @@
 						"translation.y": 10103.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1195,7 +1195,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1661,7 +1661,7 @@
 		[
 			[
 				"",
-				"~/cellar/github/openhealth/OpenHealth-MIN.sublime-project"
+				"~/Virtualenvs/Odoo9-min/odoo/addons/matrix/Matrix.sublime-project"
 			],
 			[
 				"\t",
