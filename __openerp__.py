@@ -10,7 +10,7 @@
     'description': 
         """
 
-        17 Sep 2019
+        19 Sep 2019
 
         (Since 22 April, in Prod)
 
@@ -66,9 +66,12 @@
         # Product - 2019
         'views/product/pricelist_container.xml',
         'views/product/product_pricelist.xml',
-        'views/product/product_template.xml',
-        'views/product/product_template_search.xml',
+
         'views/product/product_template_actions.xml',
+        'views/product/product_template.xml',
+        'views/product/product_template_tree.xml',
+        'views/product/product_template_search.xml',
+
         'views/product/product_product.xml',
         'views/product/product_product_actions.xml',
 
@@ -101,6 +104,9 @@
         'views/service/service_promo.xml',
         'views/service/service_product.xml',
 
+        'views/service/service_actions.xml',
+
+
 
         # Treatment
         'views/treatment/cart_line.xml',
@@ -109,6 +115,10 @@
         'views/treatment/treatment.xml',               # Min
         'views/treatment/procedure_actions.xml',
         'views/treatment/procedure.xml',
+
+        'views/treatment/session_config_1.xml',
+        'views/treatment/session_config_2.xml',
+
 
 
         # Configurator

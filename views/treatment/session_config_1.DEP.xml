@@ -1,0 +1,15 @@
+<!--
+19 Set 2019
+-->
+
+
+						<!--
+						<group string="Láser Co2"   attrs="{'invisible':[('laser', '!=', 'laser_co2')]}">
+						-->
+<!--
+															('laser', '!=', 'laser_co2' )
+-->
+
+<!--
+															('laser', '!=', 'laser_co2' ),
+-->

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+        <!-- Co2 -->
+        <record model="ir.actions.act_window" id="openhealth.service_co2_list_action">
+
+            <field name="name">Servicios Co2 - 5</field>
+<!--
+            <field name="res_model">openhealth.service.co2</field>
+-->
+            <field name="res_model">price_list.service_co2</field>
+
+
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form</field>
+            
+            <field name="context">{}
+            </field>
+        </record>
+<!--
+                                    'default_laser': 'laser_co2',
+-->
+
+
+	</data>
+</openerp>

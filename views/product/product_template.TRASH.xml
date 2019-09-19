@@ -1,0 +1,74 @@
+<!--
+19 Sep 2019
+-->
+
+
+				<xpath expr="//field[@name='invoice_policy']" position="after">
+						<field name="pl_account"/>
+
+						<field name="configurator"/>
+
+						<group>
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            help=''
+                            
+                            name="validate" 
+                            
+                            string="Validate"
+                        />
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            help=''
+                            
+                            name="fix" 
+                            
+                            string="FIX"
+                        />
+
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            help=''
+                            
+                            name="validate_all" 
+                            
+                            string="Validate All"
+                        />
+                    	</group>
+				</xpath>
+
+
+
+
+					<page string="Lista de Precios 2019">
+
+						<!-- Correct -->
+						<group  groups="openhealth.roots">
+
+							<field name="corr_medical"/>
+
+							<field name="corr_cosmetology"/>
+
+
+							<button 
+									type="object" 
+									class="oe_highlight"
+
+									name="correct_subfamilies"
+
+									string="Correct Sub Families"                               
+							/>
+						</group>
+
+
+
+
+
+
+
