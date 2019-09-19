@@ -116,8 +116,8 @@
         'views/treatment/procedure_actions.xml',
         'views/treatment/procedure.xml',
 
-        'views/treatment/session_config_1.xml',
-        'views/treatment/session_config_2.xml',
+        #'views/treatment/session_config_1.xml',
+        #'views/treatment/session_config_2.xml',
 
 
 

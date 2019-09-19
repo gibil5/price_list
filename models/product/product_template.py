@@ -24,6 +24,58 @@ class ProductTemplate(models.Model):
 
 
 
+# ----------------------------------------------------------- Getters -------------------------
+
+	# Get Treatment
+	#@api.multi
+	def get_treatment(self):
+		"""
+		Get Product Treatment
+		Used by: Session, Control.
+		"""
+
+		# Init
+		_dic = {
+					'LASER CO2 FRACCIONAL': 	'laser_co2',
+
+					'QUICKLASER': 				'laser_quick',
+
+					'LASER EXCILITE':			'laser_excilite',
+
+					'LASER M22 IPL':			'laser_ipl',
+
+					'LASER M22 ND YAG':			'laser_ndyag',
+		}
+
+		treatment = False
+
+
+		print(self.pl_treatment)
+
+
+		if self.pl_price_list in ['2019']:
+
+			if self.pl_treatment in _dic:
+
+				#treatment = self.pl_treatment
+				treatment = _dic[self.pl_treatment]
+
+			else:
+				print('Error: 1')
+
+
+		elif self.pl_price_list in ['2018']:
+			treatment = self.x_treatment
+
+		
+		else:
+			print('Error: 2')
+
+
+		return treatment
+
+
+
 
 # ----------------------------------------------------------- Fields ------------------------
 

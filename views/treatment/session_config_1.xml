@@ -94,8 +94,20 @@
 
 
 <!-- QUICK --> 
-						<group string="Quick Laser"   attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
+<!--
+														('laser', '!=', 'laser_quick')
+-->
+
+						<group 	string="Quick Laser"   
+								attrs="{'invisible':[
+														('laser', 'not in', ['laser_quick', 'QUICKLASER']),
+
+							]}">
+
+
+
 							<group>
+								
 								<field name="quick_type"    attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 
 
