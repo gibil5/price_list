@@ -1064,7 +1064,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1138,8 +1138,8 @@
 						"selection":
 						[
 							[
-								314,
-								314
+								164,
+								253
 							]
 						],
 						"settings":
@@ -1151,7 +1151,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1167,8 +1167,8 @@
 						"selection":
 						[
 							[
-								318,
-								318
+								168,
+								168
 							]
 						],
 						"settings":
@@ -1179,7 +1179,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1470,7 +1470,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9-min/odoo/addons/matrix/Matrix.sublime-project"
+				"~/cellar/github/openhealth/OpenHealth-MIN.sublime-project"
 			],
 			[
 				"\t",
