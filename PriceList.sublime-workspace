@@ -529,15 +529,6 @@
 			}
 		},
 		{
-			"file": "models/treatment/__init__.py",
-			"settings":
-			{
-				"buffer_size": 144,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "models/treatment/control.py",
 			"settings":
 			{
@@ -646,6 +637,8 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/readme.txt",
+		"/Users/gibil/cellar/github/price_list/models/treatment/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/product/product_template.py",
 		"/Users/gibil/cellar/github/price_list/models/product/px_vars.py",
 		"/Users/gibil/cellar/github/price_list/views/treatment/session_config_1.xml",
@@ -659,7 +652,6 @@
 		"/Users/gibil/cellar/github/price_list/views/treatment/treatment_cart.xml",
 		"/Users/gibil/cellar/github/price_list/models/treatment/test_treatment.py",
 		"/Users/gibil/cellar/github/price_list/models/treatment/treatment.py",
-		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/views/service/service.xml",
 		"/Users/gibil/cellar/github/price_list/views/service/service_actions.xml",
 		"/Users/gibil/cellar/github/price_list/views/product/product_template.TRASH.xml",
@@ -772,8 +764,7 @@
 		"/Users/gibil/cellar/github/price_list/views/order.xml",
 		"/Users/gibil/cellar/github/price_list/views/patient_personal.xml",
 		"/Users/gibil/cellar/github/price_list/views/patient.xml",
-		"/Users/gibil/cellar/github/price_list/models/marketing/pricelist_marketing_order_line.py",
-		"/Users/gibil/cellar/github/price_list/models/pricelist_container.py"
+		"/Users/gibil/cellar/github/price_list/models/marketing/pricelist_marketing_order_line.py"
 	],
 	"find":
 	{
@@ -1064,7 +1055,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1080,8 +1071,8 @@
 						"selection":
 						[
 							[
-								3585,
-								3585
+								216,
+								216
 							]
 						],
 						"settings":
@@ -1091,42 +1082,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1569.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "models/treatment/__init__.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 144,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								122,
-								122
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "models/treatment/control.py",
 					"semi_transient": false,
 					"settings":
@@ -1151,11 +1114,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "models/treatment/session.py",
 					"semi_transient": false,
 					"settings":
@@ -1179,11 +1142,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "models/treatment/treatment.py",
 					"semi_transient": false,
 					"settings":
@@ -1212,7 +1175,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "models/treatment/procedure.py",
 					"semi_transient": false,
 					"settings":
@@ -1470,7 +1433,7 @@
 		[
 			[
 				"",
-				"~/cellar/github/openhealth/OpenHealth-MIN.sublime-project"
+				"~/Virtualenvs/Odoo9-min/odoo/addons/matrix/Matrix.sublime-project"
 			],
 			[
 				"\t",
