@@ -15,6 +15,16 @@
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 
+				
+				<!-- Account -->
+				<xpath expr="//field[@name='invoice_policy']" position="after">
+
+						<field name="vspace"/>
+
+						<field name="pl_account"/>
+
+				</xpath>
+
 
 				<!-- Notebook --> 
 				<xpath expr="//notebook" position="inside">

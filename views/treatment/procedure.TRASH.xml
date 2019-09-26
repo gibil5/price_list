@@ -1,3 +1,49 @@
+<!--
+26 Sep 2019
+-->
+
+                        <!-- App -->
+                        <!-- Clear Sessions -->
+                        <!-- Clear Controls -->
+<!--
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+
+                            name="update_appointment"   
+
+                            string="Update App"
+                        />
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            groups="openhealth.roots"
+                            name="clear_sessions"   
+
+                            string="Clear Sessions"
+                        />
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            attrs="{'invisible':[
+                                                    ('laser', 'not in', ['laser_quick', 'laser_co2']), 
+                                                ]}"
+                            groups="openhealth.roots"
+                            name="clear_controls"   
+
+                            string="Clear Controls"
+                        />
+-->
+
+
+
+
+
+
+
+
                     <field name="nr_sessions"/>
                     <field name="nr_controls"/>
 

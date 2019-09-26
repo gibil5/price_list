@@ -4,6 +4,7 @@
 
 
 				<xpath expr="//field[@name='invoice_policy']" position="after">
+
 						<field name="pl_account"/>
 
 						<field name="configurator"/>

@@ -4,38 +4,11 @@
 # 	- Product Template
 
 
-_family_file_list = [
-	
-	('all', 'all'),
-
-
-	('product', 'product'),
-
-	('consultation', 'consultation'),
-
-	('co2', 'co2'),
-	('excilite', 'excilite'),
-	('m22', 'm22'),
-	('quick', 'quick'),
-
-	('medical', 'medical'),
-	('cosmetology', 'cosmetology'),
-
-	('gynecology', 'gynecology'),
-	('echography', 'echography'),
-	('promotion', 'promotion'),
-]
-
-
-
-
-
 _price_list_list = [
 	
 	('2019', '2019'),
 	('2018', '2018'),
 ]
-
 
 
 
@@ -418,3 +391,17 @@ _brand_list = [
 ]
 
 
+_family_file_list = [
+	('all', 'all'),
+	('product', 'product'),
+	('consultation', 'consultation'),
+	('co2', 'co2'),
+	('excilite', 'excilite'),
+	('m22', 'm22'),
+	('quick', 'quick'),
+	('medical', 'medical'),
+	('cosmetology', 'cosmetology'),
+	('gynecology', 'gynecology'),
+	('echography', 'echography'),
+	('promotion', 'promotion'),
+]

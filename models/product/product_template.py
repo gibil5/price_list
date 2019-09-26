@@ -24,6 +24,8 @@ class ProductTemplate(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Getters -------------------------
 
 	# Get Treatment
@@ -57,7 +59,6 @@ class ProductTemplate(models.Model):
 
 			if self.pl_treatment in _dic:
 
-				#treatment = self.pl_treatment
 				treatment = _dic[self.pl_treatment]
 
 			else:

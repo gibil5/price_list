@@ -12,12 +12,90 @@ from openerp import models, fields, api
 
 class ProductProduct(models.Model):
 	"""
-	Product Product
-	Used by Order Line
+	Product Product. Used by Order Line
 	"""
 	_inherit = 'product.product'
 
 	_order = 'pl_idx'
+
+
+
+# ----------------------------------------------------------- Getters -------------------------
+
+	#@api.multi
+	def get_product_template(self):
+		"""
+		Get Product Template
+		Used by: PL Creates.
+		"""
+
+		product_template = False
+
+		# 2019
+		if self.pl_price_list in ['2019']:
+
+			# Search
+			product_template = self.env['product.template'].search([
+																		('name', '=', self.name),
+																		('pl_price_list', 'in', ['2019']),
+													],
+														#order='create_date desc',
+														limit=1,
+													)
+
+		# 2019
+		elif self.pl_price_list in ['2018']:
+
+			# Search
+			product_template = self.env['product.template'].search([
+																		('name', '=', self.name),
+																		('pl_price_list', 'in', ['2018']),
+													],
+														#order='create_date desc',
+														limit=1,
+													)
+
+		else:
+			print('Error: This should not happen !')
+
+
+		return product_template
+
+
+
+
+# ----------------------------------------------------------- Getters -------------------------
+
+	#@api.multi
+	def get_family(self):
+		"""
+		Get Product Family
+		Used by: Order.
+		"""
+
+		family = False
+
+
+		# 2019
+		if self.pl_price_list in ['2019']:
+
+			family = self.pl_family
+
+
+		# 2018
+		elif self.pl_price_list in ['2018']:
+
+			family = self.x_family
+
+
+		# No price list
+		else:
+			print('Error: This should not happen')
+
+
+		return family
+
+
 
 
 # ----------------------------------------------------------- Is Current Price List -------------------------------

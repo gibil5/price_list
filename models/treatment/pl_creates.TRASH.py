@@ -1,4 +1,291 @@
+# 24 Sep 2019
 
+
+# Continues
+
+	# Search - Product Product
+	product_product = self.env['product.product'].search([
+																('id', '=', product.id),
+													])
+	print(product_product)
+
+	# Search - Product Template
+	product_template = self.env['product.template'].search([
+																('x_name_short', '=', product_product.x_name_short),
+																('x_origin', '=', False),
+														])
+
+
+
+	# Init
+	#consultation_id = False
+	#procedure_id = False
+	#session_id = False
+	#control_id = False
+	#ret = 0
+
+
+
+
+
+
+
+
+
+
+# Dup !
+
+
+#------------------------------------------------ Create Procedure --------------------------------
+# Create procedure
+def create_procedure_go(self, app_date_str, subtype, product_id):
+	"""
+	high level support for doing this and that.
+	"""
+	#print()
+	#print 'Create Procedure - Go'
+
+	# Init
+	treatment_id = self.id
+	patient = self.patient.id
+
+
+	chief_complaint = self.chief_complaint
+
+
+	# Doctor
+	doctor = pl_user.get_actual_doctor(self)
+
+	doctor_id = doctor.id
+	if doctor_id == False:
+		doctor_id = self.physician.id
+
+
+
+
+	# Create App - Dep !
+	if False:
+		# Search - Appointment
+		appointment = self.env['oeh.medical.appointment'].search([
+																	('patient', '=', self.patient.name),
+																	('doctor', '=', self.physician.name),
+																	('x_type', '=', 'procedure'),
+																	('x_subtype', '=', subtype),
+															],
+																order='appointment_date desc', limit=1)
+		#print appointment
+
+
+		# Delta - Check if existing App is in the Future
+		if appointment.name != False:
+			future = appointment.appointment_date
+			delta, delta_sec = lib.get_delta_now(self, future)
+
+
+		if appointment.name == False or delta_sec < 0: 		# If no appointment or appointment in the past
+
+			# Is the hour before 21:00
+			app_date_ok = lib.doctor_available(self, app_date_str)
+
+			if app_date_ok:
+
+				# Create App
+				appointment = self.env['oeh.medical.appointment'].create({
+																			'appointment_date': app_date_str,
+																			'patient':			self.patient.id,
+																			'doctor':			self.physician.id,
+																			'state': 			'pre_scheduled',
+																			'x_type': 			'procedure',
+																			'x_subtype': 		subtype,
+
+																			'treatment':		self.id,
+																	})
+		appointment_id = appointment.id
+		#print appointment
+
+
+
+
+
+	appointment_id = False
+
+	# Search - Product Product
+	product_product = self.env['product.product'].search([
+																('id', '=', product_id),
+													])
+	
+
+
+
+	# Search - Product Template
+	product_template = self.env['product.template'].search([
+																#('x_name_short', '=', product_product.x_name_short),
+																#('x_origin', '=', False),
+
+																('name', '=', product_product.name),
+																('sale_ok', '=', True),
+																('pl_price_list', '=', '2019'),
+														])
+	print(product_template)
+	print(product_template.name)
+
+
+
+
+	# Create Proc
+
+	# Init
+	consultation_id = False
+	procedure_id = False
+	session_id = False
+	control_id = False
+	ret = 0
+
+
+	# If Dr available
+	#app_date_ok = lib.doctor_available(self, app_date_str)
+
+
+	#if app_date_ok:
+	if True:
+
+		# Create Procedure
+		procedure = self.procedure_ids.create({
+												#'evaluation_start_date':app_date_str,
+
+												'appointment': appointment_id,
+												'patient':patient,
+												'doctor':doctor_id,
+												'product':product_template.id,
+												'chief_complaint':chief_complaint,
+
+												'treatment':treatment_id,
+											})
+		procedure_id = procedure.id
+
+
+
+
+
+		# Create Controls
+		procedure.create_controls()  			# Here !
+
+		# Create Sessions
+		procedure.create_sessions()  			# Here !
+
+
+
+
+
+		# Create Session - Dep !
+		#session = self.env['openhealth.session.med'].create({
+																#'evaluation_start_date':app_date_str,
+
+		#														'appointment': appointment_id,
+		#														'patient': patient,
+		#														'doctor': doctor_id,
+		#														'product': product_template.id,
+		#														'chief_complaint': chief_complaint,
+
+		#														'procedure': procedure_id,
+		#														'treatment': treatment_id,
+		#												})
+		#session_id = session.id
+
+
+
+	# Update Appointment
+	if False:
+		if procedure_id != False:
+			ret = user.update_appointment_handlers(self, appointment_id, consultation_id, procedure_id, session_id, control_id)
+
+
+	return ret
+# create_procedure_go
+
+
+# App Dep !
+def create_procedure_go(self, product):
+
+
+
+	# Create App - Dep !
+	if False:
+		# Search - Appointment
+		appointment = self.env['oeh.medical.appointment'].search([
+																	('patient', '=', self.patient.name),
+																	('doctor', '=', self.physician.name),
+																	('x_type', '=', 'procedure'),
+																	('x_subtype', '=', subtype),
+															],
+																order='appointment_date desc', limit=1)
+		#print appointment
+
+
+		# Delta - Check if existing App is in the Future
+		if appointment.name != False:
+			future = appointment.appointment_date
+			delta, delta_sec = lib.get_delta_now(self, future)
+
+
+		if appointment.name == False or delta_sec < 0: 		# If no appointment or appointment in the past
+
+			# Is the hour before 21:00
+			app_date_ok = lib.doctor_available(self, app_date_str)
+
+			if app_date_ok:
+
+				# Create App
+				appointment = self.env['oeh.medical.appointment'].create({
+																			'appointment_date': app_date_str,
+																			'patient':			self.patient.id,
+																			'doctor':			self.physician.id,
+																			'state': 			'pre_scheduled',
+																			'x_type': 			'procedure',
+																			'x_subtype': 		subtype,
+
+																			'treatment':		self.id,
+																	})
+		appointment_id = appointment.id
+		#print appointment
+
+		# Create Session - Dep !
+		#session = self.env['openhealth.session.med'].create({
+																#'evaluation_start_date':app_date_str,
+
+		#														'appointment': appointment_id,
+		#														'patient': patient,
+		#														'doctor': doctor_id,
+		#														'product': product_template.id,
+		#														'chief_complaint': chief_complaint,
+
+		#														'procedure': procedure_id,
+		#														'treatment': treatment_id,
+		#												})
+		#session_id = session.id
+	# If Dr available
+	#app_date_ok = lib.doctor_available(self, app_date_str)
+
+
+	# Update Appointment
+	if False:
+		if procedure_id != False:
+			ret = user.update_appointment_handlers(self, appointment_id, consultation_id, procedure_id, session_id, control_id)
+
+
+
+	#if app_date_ok:
+	#if True:
+
+
+
+
+
+
+
+
+
+# Aug 2019
 
 	#name_list = [
 	#				'CONSULTA MEDICA',

@@ -248,7 +248,6 @@ def test_integration_treatment(self):
 	#exc_tre.handle_exceptions(self)
 
 
-
 	# Go
 
 	# Create Consultation
@@ -263,10 +262,8 @@ def test_integration_treatment(self):
 
 	else:
 		# Create Recommendations
-		create_recommentations(self)
-
-
-
+		#create_recommentations(self)
+		create_recommentations_and_procedure_sale(self)
 
 
 	# Create Sessions
@@ -344,9 +341,10 @@ def create_consultation(self):
 
 
 # ----------------------------------------------- Recommendations -----------------------------------------------------
-def create_recommentations(self):
+#def create_recommentations(self):
+def create_recommentations_and_procedure_sale(self):
 	"""
-	Create Recommendations
+	Create Recommendations and Procedure Sale
 	"""
 	print()
 	print('Create Consultation')

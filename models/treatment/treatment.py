@@ -20,6 +20,7 @@ from openerp import _
 from openerp.exceptions import Warning as UserError
 from . import reco_funcs
 from . import pl_creates
+
 from . import test_treatment
 
 from . import exc_tre
@@ -999,7 +1000,7 @@ class Treatment(models.Model):
 		Integration Test
 		"""
 		print()
-		print('Test Integration Button')
+		print('PL - Test Integration Button')
 		if self.patient.x_test:
 			# Reset
 			#test_treatment.reset_treatment(self)
