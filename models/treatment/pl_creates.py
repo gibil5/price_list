@@ -94,21 +94,36 @@ def pl_create_order_con(self, target, price_list):
 	print(target)
 
 
+	partner = self.env['res.partner'].search([
+													#('name', 'like', record.patient.name),
+													('name', '=', self.patient.name),
+												],
+												#order='appointment_date desc',
+												limit=1,)
+	#partner_id = partner.id
+
+
 	# Create Order
 	order = self.env['sale.order'].create({
-													'state':'draft',
-													'x_doctor': self.physician.id,
-													'partner_id': self.partner_id.id,
 													'patient': self.patient.id,
-													'x_ruc': self.partner_id.x_ruc,
-													'x_dni': self.partner_id.x_dni,
 													'x_id_doc': self.patient.x_id_doc,
 													'x_id_doc_type': self.patient.x_id_doc_type,
 
+													'x_doctor': self.physician.id,
+
+													'state':'draft',
+
+													#'partner_id': self.partner_id.id,
+													'partner_id': partner.id,
+
+													#'x_ruc': self.partner_id.x_ruc,
+													#'x_dni': self.partner_id.x_dni,
+
 													'x_family': 'consultation',
-													'treatment': self.id,
 
 													#'pricelist_id': pl.id,
+
+													'treatment': self.id,
 												})
 	#print(order)
 
@@ -161,14 +176,24 @@ def pl_create_order(self):
 	print('Pl - Create Order')
 
 
+	partner = self.env['res.partner'].search([
+													('name', '=', self.patient.name),
+												],
+												#order='appointment_date desc',
+												limit=1,)
+
+
 	# Create Order
 	order = self.env['sale.order'].create({
 													'state':'draft',
 													'x_doctor': self.physician.id,
-													'partner_id': self.partner_id.id,
+
+													#'partner_id': self.partner_id.id,
+													'partner_id': partner.id,
+													#'x_ruc': self.partner_id.x_ruc,
+													#'x_dni': self.partner_id.x_dni,
+
 													'patient': self.patient.id,
-													'x_ruc': self.partner_id.x_ruc,
-													'x_dni': self.partner_id.x_dni,
 													'x_id_doc': self.patient.x_id_doc,
 													'x_id_doc_type': self.patient.x_id_doc_type,
 													'x_family': 'procedure',
@@ -197,4 +222,6 @@ def pl_create_order(self):
 										'order_id': 	order.id,
 									})
 	return order
+
+
 

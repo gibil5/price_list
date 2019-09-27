@@ -222,6 +222,8 @@ class Service(models.Model):
 	price_policy = fields.Selection(
 			selection=px_vars._price_policy_list,
 			string='Tipo de Precio',
+			required=True,
+			default='normal',
 		)
 
 	manufacturer = fields.Selection(
@@ -280,37 +282,46 @@ class Service(models.Model):
 	pl_treatment = fields.Selection(
 			selection=px_vars._treatment_list,
 			string='Treatment',
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 	zone = fields.Selection(
 			selection=px_vars._zone_list,
 			string='Zone',
-			required=True,
+			#required=True,
+			required=False,
 		)
+
+
 
 	pathology = fields.Selection(
 			selection=px_vars._pathology_list,
 			string='Pathology',
-			required=True,
+			#required=True,
+			required=False,
 		)
+
 
 	level = fields.Selection(
 			selection=px_vars._level_list,
 			string='Level',
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 	sessions = fields.Selection(
 			selection=px_vars._sessions_list,
 			string='Sessions',
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 	time = fields.Selection(
 			selection=px_vars._time_list,
 			string='Time',
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 

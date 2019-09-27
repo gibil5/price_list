@@ -78,14 +78,14 @@
 								<field name="pl_treatment"	string="Tratamiento"/>
 
 								<field name="family"		string="Familia"		readonly="0"	/>
-								<field name="subfamily"	string="Sub familia"	readonly="0"/>
+								<field name="subfamily"	string="Sub familia"		readonly="0"/>
 								
-								<field name="zone"		string="Zona"			readonly="0"/>       
-								<field name="pathology"	string="Patologia"		readonly="0"/>
-								<field name="sessions"	string="Sesiones"		readonly="0"/>
+								<field name="zone"		string="Zona"				required="1"/>       
+								<field name="pathology"	string="Patologia"			required="1"/>
+								<field name="sessions"	string="Sesiones"			required="1"/>
+								<field name="level"		string="Nivel"				required="1"/>							
 
-								<field name="level"		string="Nivel"			readonly="0"/>							
-								<field name="time"		string="Tiempo"			readonly="0"/>
+								<field name="time"		string="Tiempo"				readonly="0"/>
 							</group>
 
 							<group>

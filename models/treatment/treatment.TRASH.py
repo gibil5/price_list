@@ -1,3 +1,18 @@
+# 26 sep 2019
+
+# ----------------------------------------------------------- Price List Fields - Relational ----------------------------------------------
+
+	#report_product = fields.Many2one(
+	#		'price_list.container',
+	#		string="PROD",
+			#required=True,
+	#	)
+
+
+
+
+
+
 # 30 Aug
 
 

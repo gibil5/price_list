@@ -7,41 +7,121 @@
 		Last up: 	 		24 Jul 2019
 
 	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, without having to know its Implementation. 
-
 	- Respect the Law of Demeter. Avoid Train Wrecks.
-
 	- Treat the Active Record as a data structure and create separate objects that contain the business rules and that hide their internal data. These Objects are just instances of the Active Record.	
-
 	- Handle Exceptions.
 """
 from __future__ import print_function
+import datetime
 from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
 from . import reco_funcs
 from . import pl_creates
-
 from . import test_treatment
-
 from . import exc_tre
+
+from . import pl_user
+from . import time_funcs
 
 class Treatment(models.Model):
 	"""
 	Class Treatment
 	Extends the Business Rules. Should not extend the Data Model.
-	Should contain only functions
+	Should contain only functions and libraries.
+
+	All Creation Buttons should be Here.
 	"""
 	_inherit = 'openhealth.treatment'
 
 
 
-# ----------------------------------------------------------- Price List Fields - Relational ----------------------------------------------
 
-	#report_product = fields.Many2one(
-	#		'price_list.container',
-	#		string="PROD",
-			#required=True,
-	#	)
+# ----------------------------------------------------- Create Consultation -----------------------
+	# Create Consultation
+	@api.multi
+	def create_consultation(self):
+		print()
+		print('PL - Create Consultation')
+
+		# Init vars
+		patient_id = self.patient.id
+		treatment_id = self.id
+		chief_complaint = self.chief_complaint
+
+
+		# Doctor
+		#doctor = user.get_actual_doctor(self)
+		doctor = pl_user.get_actual_doctor(self)
+
+		doctor_id = doctor.id
+		if doctor_id == False:
+			doctor_id = self.physician.id
+
+
+		# Date
+		GMT = time_funcs.Zone(0, False, 'GMT')
+		evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+
+
+		# Search
+		consultation = self.env['openhealth.consultation'].search([
+																		('treatment', '=', self.id),
+																],
+																#order='appointment_date desc',
+																limit=1,)
+
+		# If Consultation does not exist - Create
+		if consultation.name == False:
+
+			# Consultation
+			consultation = self.env['openhealth.consultation'].create({
+																		'patient': patient_id,
+																		'treatment': treatment_id,
+																		'evaluation_start_date': evaluation_start_date,
+																		'chief_complaint': chief_complaint,
+																		'doctor': doctor_id,
+													})
+			consultation_id = consultation.id
+
+
+		consultation_id = consultation.id
+
+
+		return {
+
+			# Mandatory
+			'type': 'ir.actions.act_window',
+			'name': 'Open Consultation Current',
+			# Window action
+			'res_model': 'openhealth.consultation',
+			'res_id': consultation_id,
+			# Views
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+			#'view_id': view_id,
+			#'view_id': 'oeh_medical_evaluation_view',
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False,
+			'flags': {
+						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						#'form': {'action_buttons': True, }
+					},
+			'context':   {
+							'search_default_treatment': treatment_id,
+							'default_patient': patient_id,
+							'default_doctor': doctor_id,
+							'default_treatment': treatment_id,
+							'default_evaluation_start_date': evaluation_start_date,
+							'default_chief_complaint': chief_complaint,
+			}
+		}
+
+	# create_consultation
+
+
+
 
 
 # -----------------------------------------------------------  Create Order Pro - 2019 ------------------
@@ -51,7 +131,7 @@ class Treatment(models.Model):
 		Create Order Procedure - 2019
 		From Recommendations
 		"""
-		print('Create Order Pro')
+		print('PL - Create Order Pro')
 
 		# Clear
 		self.shopping_cart_ids.unlink()
@@ -147,7 +227,7 @@ class Treatment(models.Model):
 		From Recommendations
 		"""
 		print()
-		print('Create Order Pro - 2018')
+		print('Pl - Create Order Pro - 2018')
 
 		# Clear
 		self.shopping_cart_ids.unlink()
@@ -333,7 +413,7 @@ class Treatment(models.Model):
 		Create Order Consultation Dr. Chavarri
 		"""
 		print()
-		print('Create Order Con Chav')
+		print('PL - Create Order Con Chav')
 
 		target = 'premium'
 
@@ -370,7 +450,7 @@ class Treatment(models.Model):
 		Create Order Consultation Gynecology
 		"""
 		print()
-		print('Create Order Con Gyn')
+		print('PL - Create Order Con Gyn')
 
 		target = 'gynecology'
 
@@ -407,7 +487,7 @@ class Treatment(models.Model):
 		Create Order Consultation Standard
 		"""
 		print()
-		print('Create Order Con Med')
+		print('PL - Create Order Con Med')
 
 		target = 'medical'
 
@@ -444,7 +524,7 @@ class Treatment(models.Model):
 		Create Order Consultation 2018
 		"""
 		print()
-		print('Create Order Con 2018')
+		print('PL - Create Order Con 2018')
 
 		price_list = '2018'
 
@@ -465,7 +545,7 @@ class Treatment(models.Model):
 		Create Order Consultation
 		"""
 		print()
-		print('Create Order Con Med')
+		print('PL - Create Order Con Target')
 
 		# Init
 		price_list = '2019'
