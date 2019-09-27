@@ -1,3 +1,132 @@
+# 27 sep 2019
+
+
+# Dep
+# ----------------------------------------------------------- Create Order Consultation  ----------
+	@api.multi
+	def create_order_con_chav(self):
+		"""
+		Create Order Consultation Dr. Chavarri
+		"""
+		print()
+		print('PL - Create Order Con Chav')
+
+		target = 'premium'
+
+		order = self.create_order_con_target(target)
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+
+
+# Dep
+# ----------------------------------------------------------- Create Order Consultation  ----------
+	@api.multi
+	def create_order_con_gyn(self):
+		"""
+		Create Order Consultation Gynecology
+		"""
+		print()
+		print('PL - Create Order Con Gyn')
+
+		target = 'gynecology'
+
+		order = self.create_order_con_target(target)
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+
+
+
+
+# Dup
+# ----------------------------------------------------------- Create Procedure Manual  ------------
+	@api.multi
+	def create_procedure_man(self):
+		"""
+		Create Procedure Manual
+		"""
+		print()
+		print('Pl - Create Procedure - Manual - 1')
+
+		# Loop - Create Procedures
+		ret = 0
+		for order in self.order_pro_ids:
+
+			if order.state == 'sale':
+
+				# Update
+				order.x_procedure_created = True
+
+				# Loop
+				for line in order.order_line:
+
+					# Init
+					date_app = order.date_order
+					product_id = line.product_id
+					product_template = self.env['product.template'].search([
+																				('x_name_short', '=', product_id.x_name_short),
+												])
+					subtype = product_template.x_treatment
+
+					# Create - This
+					ret = cre.create_procedure_go(self, date_app, subtype, product_id.id)
+
+	# create_procedure_man
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 26 sep 2019
 
 # ----------------------------------------------------------- Price List Fields - Relational ----------------------------------------------

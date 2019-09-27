@@ -3,7 +3,7 @@
 		*** Product Product
  
 		Created: 			 9 Apr 2019
-		Last up: 	 		 3 Jul 2019
+		Last up: 	 		27 Sep 2019
 
 	- Respect the Law of Demeter. Avoid Train Wrecks.
 """
@@ -18,6 +18,34 @@ class ProductProduct(models.Model):
 
 	_order = 'pl_idx'
 
+
+
+# ----------------------------------------------------------- IS Funcs -------------------------
+
+	def is_procedure(self):
+		"""
+		Test if it is a procedure
+		Used by: PL - Treatment
+		"""
+
+		is_procedure = False
+
+
+		# 2019
+		if self.pl_price_list in ['2019']:
+
+			if self.pl_family in  ['laser', 'medical', 'cosmetology', 'echography', 'gynecology', 'promotion']:
+
+				is_procedure = True
+
+			else:				
+				is_procedure = False
+
+		else:
+			print('Error: This should not happen !')
+
+
+		return is_procedure
 
 
 # ----------------------------------------------------------- Getters -------------------------

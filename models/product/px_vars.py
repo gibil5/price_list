@@ -20,19 +20,22 @@ _family_list = [
 	('kit', 		'Kit'),
 
 
-	# Servs
+	# Consultations
 	('consultation', 	'Consulta'),
+
+
+	# Procedures
 	('laser', 		'Laser'),
 	('medical', 	'T. Medicos'),
 	('cosmetology', 'Cosmeatria'),
-
 	('gynecology', 	'Ginecologia'),
 	('promotion', 	'Promos'),
 	('echography', 	'Ecografia'),
 
+
+	# Other
 	('test', 	'test'),
 	('other', 		'Otros'),
-
 	('2018', 	'2018'),
 ]
 

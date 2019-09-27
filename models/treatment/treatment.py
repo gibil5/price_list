@@ -2,9 +2,8 @@
 """
 		*** Treatment
 
-		treatment.py
 		Created: 			26 Aug 2016
-		Last up: 	 		24 Jul 2019
+		Last up: 	 		27 Sep 2019
 
 	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, without having to know its Implementation. 
 	- Respect the Law of Demeter. Avoid Train Wrecks.
@@ -17,7 +16,9 @@ from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
 from . import reco_funcs
+
 from . import pl_creates
+
 from . import test_treatment
 from . import exc_tre
 
@@ -37,94 +38,72 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------- Create Consultation -----------------------
-	# Create Consultation
-	@api.multi
-	def create_consultation(self):
+# ----------------------------------------------------- Create Procedures ---------------------------------------------
+
+
+# ----------------------------------------------------------- Create Procedure  -------------------
+	# Create Procedure
+	#@api.multi
+	#def create_procedure(self, product):
+	def create_procedure_auto(self, product):
+		"""
+		Used by: Order
+		Uses: Price List PL-Creates Library
+		"""
 		print()
-		print('PL - Create Consultation')
+		print('PL - Create Procedure Auto')
+		print(self)
+		print(product)
 
-		# Init vars
-		patient_id = self.patient.id
-		treatment_id = self.id
-		chief_complaint = self.chief_complaint
+		pl_creates.create_procedure_go(self, product)
 
-
-		# Doctor
-		#doctor = user.get_actual_doctor(self)
-		doctor = pl_user.get_actual_doctor(self)
-
-		doctor_id = doctor.id
-		if doctor_id == False:
-			doctor_id = self.physician.id
+	# create_procedure
 
 
-		# Date
-		GMT = time_funcs.Zone(0, False, 'GMT')
-		evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+
+# ----------------------------------------------------------- Create Procedure Manual  ------------
+	@api.multi
+	def create_procedure_man(self):
+		"""
+		Create Procedure Manual
+		"""
+		print()
+		print('Pl - Create Procedure - Manual - 2')
 
 
-		# Search
-		consultation = self.env['openhealth.consultation'].search([
-																		('treatment', '=', self.id),
-																],
-																#order='appointment_date desc',
-																limit=1,)
+		# Loop
+		for order in self.order_pro_ids:
 
-		# If Consultation does not exist - Create
-		if consultation.name == False:
-
-			# Consultation
-			consultation = self.env['openhealth.consultation'].create({
-																		'patient': patient_id,
-																		'treatment': treatment_id,
-																		'evaluation_start_date': evaluation_start_date,
-																		'chief_complaint': chief_complaint,
-																		'doctor': doctor_id,
-													})
-			consultation_id = consultation.id
+			#if order.state == 'sale':
+			#if (order.state == 'sale')	and  (not order.x_procedure_created):
+			if (order.state == 'sale')	and  (not order.is_procedure_created()):
 
 
-		consultation_id = consultation.id
+				# Update Order
+				order.set_procedure_created(True)
 
 
-		return {
+				# Loop
+				for line in order.order_line:
 
-			# Mandatory
-			'type': 'ir.actions.act_window',
-			'name': 'Open Consultation Current',
-			# Window action
-			'res_model': 'openhealth.consultation',
-			'res_id': consultation_id,
-			# Views
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-			#'view_id': view_id,
-			#'view_id': 'oeh_medical_evaluation_view',
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False,
-			'flags': {
-						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						#'form': {'action_buttons': True, }
-					},
-			'context':   {
-							'search_default_treatment': treatment_id,
-							'default_patient': patient_id,
-							'default_doctor': doctor_id,
-							'default_treatment': treatment_id,
-							'default_evaluation_start_date': evaluation_start_date,
-							'default_chief_complaint': chief_complaint,
-			}
-		}
+					print(line.product_id)
 
-	# create_consultation
+					if line.product_id.is_procedure():
+
+						product_product = line.product_id
+
+						# Create
+						pl_creates.create_procedure_go(self, product_product)
+
+	# create_procedure_man
 
 
 
 
 
-# -----------------------------------------------------------  Create Order Pro - 2019 ------------------
+# ----------------------------------------------------- Create Orders ---------------------------------------------
+
+# -----------------------------------------------------------  Create Order Procedure - 2019 -------------
 	@api.multi
 	def create_order_pro(self):
 		"""
@@ -219,279 +198,23 @@ class Treatment(models.Model):
 
 
 
-# -----------------------------------------------------------  Create Order Pro - 2018 ------------------
+# ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
-	def create_order_pro_2018(self):
-		"""
-		Create Order Procedure - 2018
-		From Recommendations
-		"""
-		print()
-		print('Pl - Create Order Pro - 2018')
-
-		# Clear
-		self.shopping_cart_ids.unlink()
-
-		# Init
-		price_list = '2018'
-
-		service_list = [
-							self.service_product_ids,
-							self.service_co2_ids,
-							self.service_excilite_ids,
-							self.service_ipl_ids,
-							self.service_ndyag_ids,
-							self.service_quick_ids,
-							self.service_medical_ids,
-							self.service_cosmetology_ids,
-							self.service_gynecology_ids,
-							self.service_echography_ids,
-							self.service_promotion_ids,
-		]
-
-
-		# Create Cart
-		for service_ids in service_list:
-			for service in service_ids:
-
-				if (service.service.name not in [False]) and (service.service.pl_price_list in [price_list]):
-
-					#print()
-					#print(service.service.name)
-
-					# Product
-					product = self.env['product.product'].search([
-																	('name', '=', service.service.name),
-																	('pl_price_list', '=', price_list),
-													],
-														order='create_date desc',
-														limit=1,
-													)
-					#print(product)
-					#print(product.name)
-					#print()
-					#print()
-
-
-					# Manage Exception
-					try:
-						product.ensure_one()
-
-					except:
-						#print("An exception occurred")
-						msg_name = "ERROR: Record Must be One Only."
-						class_name = type(product).__name__
-						obj_name = service.service.name
-						msg =  msg_name + '\n' + class_name + '\n' + obj_name
-
-						raise UserError(_(msg))
-
-
-					# Create Cart
-					if product.name not in [False]:
-						cart_line = self.shopping_cart_ids.create({
-																			'product': 		product.id,
-																			'price': 		service.price_applied,
-																			'qty': 			service.qty,
-																			'treatment': 	self.id,
-																})
-		# Create Order
-		order = pl_creates.pl_create_order(self)
-		#print(order)
-
-		# Open Order
-		return {
-				# Created
-				'res_id': order.id,
-				# Mandatory
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action
-				'res_model': 'sale.order',
-				# Views
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False,
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},
-				'context': {}
-			}
-	# create_order_pro_2018
-
-
-# ----------------------------------------------------------- Create Procedure Manual  ------------
-	@api.multi
-	def create_procedure_man(self):
-		"""
-		Create Procedure Manual
-		"""
-		print()
-		print('Pl - Create Procedure - Manual')
-
-		# Loop - Create Procedures
-		ret = 0
-		for order in self.order_pro_ids:
-
-			if order.state == 'sale':
-
-				# Update
-				order.x_procedure_created = True
-
-				# Loop
-				for line in order.order_line:
-
-					# Init
-					date_app = order.date_order
-					product_id = line.product_id
-					product_template = self.env['product.template'].search([
-																				('x_name_short', '=', product_id.x_name_short),
-												])
-					subtype = product_template.x_treatment
-
-					# Create - This
-					ret = cre.create_procedure_go(self, date_app, subtype, product_id.id)
-
-	# create_procedure_man
-
-
-
-# ----------------------------------------------------------- Opens a new Form - Service ------------------------------
-	@api.multi
+	#def create_order_con_med(self):
 	def create_order_con(self):
 		"""
-		Create Order Consultation
-		"""
-		print()
-		print('Pl - Create Order Con')
-
-		# Init
-		res_id = self.id
-		res_model = 'openhealth.treatment'
-		view_id = self.env.ref('openhealth.treatment_3_form_view').id
-
-		# Open
-		return {
-			# Mandatory
-			'type': 'ir.actions.act_window',
-			'name': 'Open Treatment Current',
-			# Window action
-			'priority': 1,
-			'res_id': res_id,
-			'res_model': res_model,
-			#'view_id': view_id,
-			# Views
-			#"views": [[False, "form"]],
-
-			"views": [[view_id, "form"]],
-
-			'view_mode': 'form',
-			'target': 'current',
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False,
-			'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': False, }
-					},
-			'context': {
-						#'default_treatment': treatment_id,
-					}
-		}
-	# create_order_con
-
-
-
-
-# ----------------------------------------------------------- Create Order Consultation  ----------
-	@api.multi
-	def create_order_con_chav(self):
-		"""
-		Create Order Consultation Dr. Chavarri
-		"""
-		print()
-		print('PL - Create Order Con Chav')
-
-		target = 'premium'
-
-		order = self.create_order_con_target(target)
-
-		# Open Order
-		return {
-				# Created
-				'res_id': order.id,
-				# Mandatory
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action
-				'res_model': 'sale.order',
-				# Views
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False,
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},
-				'context': {}
-			}
-
-
-# ----------------------------------------------------------- Create Order Consultation  ----------
-	@api.multi
-	def create_order_con_gyn(self):
-		"""
-		Create Order Consultation Gynecology
-		"""
-		print()
-		print('PL - Create Order Con Gyn')
-
-		target = 'gynecology'
-
-		order = self.create_order_con_target(target)
-
-		# Open Order
-		return {
-				# Created
-				'res_id': order.id,
-				# Mandatory
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action
-				'res_model': 'sale.order',
-				# Views
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False,
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},
-				'context': {}
-			}
-
-
-# ----------------------------------------------------------- Create Order Consultation  ----------
-	@api.multi
-	def create_order_con_med(self):
-		"""
-		Create Order Consultation Standard
+		Create Order Consultation Standard - Medical
+		One mode
 		"""
 		print()
 		print('PL - Create Order Con Med')
 
+		# Init
+		price_list = '2019'
 		target = 'medical'
 
-		order = self.create_order_con_target(target)
+		#order = self.create_order_con_target(target)
+		order = pl_creates.pl_create_order_con(self, target, price_list)
 
 		# Open Order
 		return {
@@ -501,7 +224,9 @@ class Treatment(models.Model):
 				'type': 'ir.actions.act_window',
 				'name': 'Open Order Current',
 				# Window action
+
 				'res_model': 'sale.order',
+
 				# Views
 				"views": [[False, "form"]],
 				'view_mode': 'form',
@@ -517,55 +242,92 @@ class Treatment(models.Model):
 			}
 
 
-# ----------------------------------------------------------- Create Order Consultation  ----------
+
+
+
+# ----------------------------------------------------- Create Consultations ---------------------------------------------
+
+# ----------------------------------------------------- Create Consultation -----------------------
+	# Create Consultation
 	@api.multi
-	def create_order_con_target_2018(self, target):
-		"""
-		Create Order Consultation 2018
-		"""
+	def create_consultation(self):
 		print()
-		print('PL - Create Order Con 2018')
+		print('PL - Create Consultation')
 
-		price_list = '2018'
+		# Init vars
+		patient_id = self.patient.id
+		treatment_id = self.id
+		chief_complaint = self.chief_complaint
 
-		# Create Order
-		order = pl_creates.pl_create_order_con(self, target, price_list)
+		# Doctor
+		doctor = pl_user.get_actual_doctor(self)
+		doctor_id = doctor.id
+		if doctor_id == False:
+			doctor_id = self.physician.id
 
-		return order
+		# Date
+		GMT = time_funcs.Zone(0, False, 'GMT')
+		evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 
-	# create_order_con
+		# Search
+		consultation = self.env['openhealth.consultation'].search([
+																		('treatment', '=', self.id),
+																],
+																#order='appointment_date desc',
+																limit=1,)
+
+		# If Consultation not exist
+		if consultation.name == False:
+			# Create
+			consultation = self.env['openhealth.consultation'].create({
+																		'patient': patient_id,
+																		'treatment': treatment_id,
+																		'evaluation_start_date': evaluation_start_date,
+																		'chief_complaint': chief_complaint,
+																		'doctor': doctor_id,
+													})
+
+		return {
+
+			# Mandatory
+			'type': 'ir.actions.act_window',
+			'name': 'Open Consultation Current',
+			# Window action
+
+			'res_model': 'openhealth.consultation',
+			#'res_id': consultation_id,
+			'res_id': consultation.id,
+
+			# Views
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+			#'view_id': view_id,
+			#'view_id': 'oeh_medical_evaluation_view',
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False,
+			'flags': {
+						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						#'form': {'action_buttons': True, }
+					},
+			'context':   {
+							'search_default_treatment': treatment_id,
+							'default_patient': patient_id,
+							'default_doctor': doctor_id,
+							'default_treatment': treatment_id,
+							'default_evaluation_start_date': evaluation_start_date,
+							'default_chief_complaint': chief_complaint,
+			}
+		}
+
+	# create_consultation
 
 
 
 
-# ----------------------------------------------------------- Create Order Consultation  ----------
-	@api.multi
-	def create_order_con_target(self, target):
-		"""
-		Create Order Consultation
-		"""
-		print()
-		print('PL - Create Order Con Target')
+# ----------------------------------------------------- Create Services ---------------------------------------------
 
-		# Init
-		price_list = '2019'
-
-
-		# Create Order
-		#order = pl_creates.pl_create_order_con(self)
-		#order = pl_creates.pl_create_order_con(self, target)
-		order = pl_creates.pl_create_order_con(self, target, price_list)
-
-		#print(order)
-
-		return order
-
-	# create_order_con
-
-
-
-
-# ----------------------------------------------------------- Opens a new Form - Service ------------------------------
+# ----------------------------------------------------------- Create Service ---------------------------
 
 	@api.multi
 	def create_service(self):
@@ -612,7 +374,8 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Fields Services --------------------------
+
+# ----------------------------------------------------------- Fields - Services ------------------------
 	# co2
 	service_co2_ids = fields.One2many(
 			'price_list.service_co2',
@@ -697,7 +460,7 @@ class Treatment(models.Model):
 			string="Shopping Cart"
 		)
 
-# ----------------------------------------------------------- Actions --------------------------
+# ----------------------------------------------------------- Actions - Serivces --------------------------
 	# co2
 	@api.multi
 	def create_service_co2(self):
@@ -887,47 +650,9 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Procedure Manual  ------------
-	@api.multi
-	def create_procedure_man(self):
-		"""
-		Create Procedure Manual
-		"""
-		print()
-		print('Pl - Create Procedure - Manual')
-
-		# Loop - Create Procedures
-		ret = 0
-		for order in self.order_pro_ids:
-			if order.state == 'sale':
-
-				# Update
-				order.x_procedure_created = True
-
-				# Loop
-				for line in order.order_line:
-
-					# Init
-					date_app = order.date_order
-					product_id = line.product_id
-
-					# Search
-					product_template = self.env['product.template'].search([
-																				('name', '=', product_id.name),
-																				('sale_ok', '=', True),
-																				('pl_price_list', '=', '2019'),
-												])
-					print(product_template)
-					print(product_template.name)
-
-					subtype = product_template.x_treatment
-
-					# Create
-					ret = pl_creates.create_procedure_go(self, date_app, subtype, product_id.id)
-	# create_procedure_man
 
 
-# ----------------------------------------------------------- Computes --------------------------
+# ----------------------------------------------------------- Computes - Serivces --------------------------
 	@api.multi
 	def _compute_nr_services(self):
 		for record in self:
@@ -947,12 +672,11 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Test --------------------------------
+# ----------------------------------------------------------- Test ----------------------------------------------------
 
 
 
-# ----------------------------------------------------------- Test Cycle ---------------------------------------------
-
+# ----------------------------------------------------------- Test All Cycle - Step by Step --------------------------
 	@api.multi
 	def test_create_budget_consultation(self):
 		"""
@@ -971,8 +695,6 @@ class Treatment(models.Model):
 		print()
 		print('Test Create Sale Consultation')
 		test_treatment.test_create_sale_consultation(self)
-
-
 
 
 	@api.multi
@@ -995,11 +717,6 @@ class Treatment(models.Model):
 		test_treatment.test_create_recommendations(self)
 
 
-
-
-
-
-
 	@api.multi
 	def test_create_budget_procedure(self):
 		"""
@@ -1018,8 +735,6 @@ class Treatment(models.Model):
 		print()
 		print('Test Create Sale procedure')
 		test_treatment.test_create_sale_procedure(self)
-
-
 
 
 	@api.multi
@@ -1051,11 +766,9 @@ class Treatment(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Test Integration ---------------------------------------------
 
-# ----------------------------------------------------------- Test --------------------------------
+# ----------------------------------------------------------- Test All --------------------------------
 	# Test
 	@api.multi
 	#def test(self):
@@ -1073,7 +786,7 @@ class Treatment(models.Model):
 			#self.test_libs()
 
 
-# ----------------------------------------------------------- Test - Integration --------------------
+# ----------------------------------------------------------- Test Integration --------------------
 	@api.multi
 	def test_integration(self):
 		"""
@@ -1091,7 +804,7 @@ class Treatment(models.Model):
 		print('SUCCESS !')
 
 
-# ----------------------------------------------------------- Test - Reset --------------------------
+# ----------------------------------------------------------- Test Reset --------------------------
 	@api.multi
 	def test_reset(self):
 		"""
@@ -1131,12 +844,11 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
-
 # ----------------------------------------------------------- Test Report ACC -----------------------------------------
 	@api.multi
 	def test_report_account(self):
 		"""
-		Test Report account
+		Test Report Accounting
 		"""
 		print()
 		print('Test Report account - Button')
@@ -1145,12 +857,11 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
-
 # ----------------------------------------------------------- Test Report ACC -----------------------------------------
 	@api.multi
 	def test_report_contasis(self):
 		"""
-		Test Report account
+		Test Report Accounting Contasis
 		"""
 		print()
 		print('Test Report Contasis - Button')
@@ -1159,13 +870,11 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
-
-
 # ----------------------------------------------------------- Test Report PROD -----------------------------------------
 	@api.multi
 	def test_report_product(self):
 		"""
-		Test Report Produc
+		Test Report Products
 		"""
 		print()
 		print('Test Report Product - Button')
@@ -1173,4 +882,5 @@ class Treatment(models.Model):
 		print()
 		print()
 		print('SUCCESS !')
+
 

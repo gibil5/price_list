@@ -1,3 +1,19 @@
+# 27 Sep 2019
+
+def create_procedure_go(self, product):
+
+	# Create Sessions
+	#procedure.create_sessions()  			# Here !
+
+	# Create Controls
+	#procedure.create_controls()  			# Here !
+
+	#return ret
+
+
+
+
+
 # 24 Sep 2019
 
 

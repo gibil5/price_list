@@ -2,35 +2,30 @@
 """
 	Encapsulates actual Creation on Database.
 	Created: 			16 Apr 2019
- 	Last up: 	 		16 Apr 2019
+ 	Last up: 	 		26 Sep 2019
 """
 from __future__ import print_function
 from . import pl_user
 
 
-#------------------------------------------------ Create Procedure --------------------------------
-# Create procedure
-#def create_procedure_go(self, app_date_str, subtype, product_id):
+#------------------------------------------------ Create Procedure Go --------------------------------
+
 def create_procedure_go(self, product):
 
 	"""
-	Create Procedure 
-	Core Lib
+	Create Procedure - Core
 	Used by: Treatment
+	Input is a Product Product !!!
 	"""
 	print()
 	print('PLC - Create Procedure Go')
 
 
-
-
-# Create Procedure
-
-	# Init
+# Init
 
 	# Product Template
 	product_template = product.get_product_template()
-	print(product_template)
+	#print(product_template)
 
 
 	# Patient
@@ -52,8 +47,7 @@ def create_procedure_go(self, product):
 	treatment_id = self.id
 
 
-
-	# Create Procedure
+# Create Procedure
 	procedure = self.procedure_ids.create({
 											'patient':patient_id,
 											'doctor':doctor_id,
@@ -64,30 +58,17 @@ def create_procedure_go(self, product):
 										})
 	print(procedure)
 	print(procedure.name)
-	#procedure_id = procedure.id
-
-
-	# Create Sessions
-	#procedure.create_sessions()  			# Here !
-
-
-	# Create Controls
-	#procedure.create_controls()  			# Here !
-
-
-	#return ret
 
 # create_procedure_go
 
 
 
+
 # ----------------------------------------------------------- Create Order Target -----------------
-# Create Order - By Line
-#def pl_create_order_con(self):
-#def pl_create_order_con(self, target):
+
 def pl_create_order_con(self, target, price_list):
 	"""
-	high level support for doing this and that.
+	Create Order - By Line
 	"""
 	print()
 	print('Pl - Create Order Con')
@@ -113,9 +94,8 @@ def pl_create_order_con(self, target, price_list):
 
 													'state':'draft',
 
-													#'partner_id': self.partner_id.id,
 													'partner_id': partner.id,
-
+													#'partner_id': self.partner_id.id,
 													#'x_ruc': self.partner_id.x_ruc,
 													#'x_dni': self.partner_id.x_dni,
 
@@ -155,22 +135,18 @@ def pl_create_order_con(self, target, price_list):
 	ol = order.order_line.create({
 									'name': 			product.name,
 									'product_id': 		product.id,
-
 									'order_id': 		order.id,
 								})
 	return order
 
-
-
-
+	# pl_create_order_con
 
 
 
 # ----------------------------------------------------------- Create Order Target -----------------
-# Create Order - By Line
 def pl_create_order(self):
 	"""
-	high level support for doing this and that.
+	Create Order - By Line
 	"""
 	print()
 	print('Pl - Create Order')
@@ -218,10 +194,8 @@ def pl_create_order(self):
 										'product_id': 	product.id,
 										'price_unit': 	cart_line.price,
 										'product_uom_qty': cart_line.qty,
-
 										'order_id': 	order.id,
 									})
 	return order
 
-
-
+	# pl_create_order

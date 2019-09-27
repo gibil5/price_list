@@ -10,10 +10,8 @@
 from __future__ import print_function
 import datetime
 from openerp import models, fields, api
-
 from openerp import _
 from openerp.exceptions import Warning as UserError
-
 from . import exc_ord
 
 class sale_order(models.Model):
@@ -23,6 +21,24 @@ class sale_order(models.Model):
 	Should only have functions.
 	"""
 	_inherit = 'sale.order'
+
+
+
+# ----------------------------------------------------------- Setters ----------------------------
+
+	def set_procedure_created(self, value):
+		"""
+		Set Procedure Created
+		Used by: Treatment and Order
+		"""
+		self.x_procedure_created = value
+
+
+	def is_procedure_created(self):
+		"""
+		Used by: Treatment
+		"""
+		return self.x_procedure_created
 
 
 
