@@ -39,7 +39,7 @@ def test_create_budget_consultation(self):
 	print('Test Create Budget Consultation')
 
 	# Create Budget Consultation
-	self.create_order_con_med()			# Actual Button
+	self.create_order_con()			# Actual Button
 
 
 def test_create_sale_consultation(self):
@@ -325,7 +325,7 @@ def create_consultation(self):
 	test_funcs.disablePrint()
 
 	# Create Consultation Sale
-	self.create_order_con_med()			# Actual Button
+	self.create_order_con()			# Actual Button
 	for order in self.order_ids:
 		if order.state in ['draft']:
 			order.pay_myself()

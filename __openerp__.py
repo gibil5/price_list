@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Price List - 2019 - SERVICE ORIENTED",
+	'name': "Busness Logic - 2019 - SERVICE ORIENTED",
 
 	'summary': 
 		"""
-		Price List Loader for the Openhealth System
+		BL Encapsulator for the Openhealth System
 		""",
 
 	'description': 
 		"""
 
-		27 Sep 2019
+		29 Sep 2019
 
 		(Since 22 April, in Prod)
 
