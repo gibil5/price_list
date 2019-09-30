@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Busness Logic - 2019 - SERVICE ORIENTED",
+	'name': "Business Logic - 2019 - SERVICE ORIENTED",
 
 	'summary': 
 		"""
@@ -10,11 +10,11 @@
 	'description': 
 		"""
 
-		29 Sep 2019
+		30 Sep 2019
 
 		(Since 22 April, in Prod)
 
-		For Open Health. Service oriented way of adding Price List Management. 
+		For Open Health. Service oriented way of adding BUSINESS LOGIC. 
 
 		Remember Robert C. Martin:
 			- In software, 80 percent of what we do is called "Maintenance": the act of Repair. 
