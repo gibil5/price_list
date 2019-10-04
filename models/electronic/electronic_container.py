@@ -8,6 +8,8 @@
 from __future__ import print_function
 import base64
 import io
+import os
+import shutil
 import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.management import mgt_funcs
@@ -76,7 +78,24 @@ class ElectronicContainer(models.Model):
 
 
 		# Export - Here !
-		fname = pl_export.pl_export_txt(self, self.electronic_order_ids, self.export_date)
+		#fname = pl_export.pl_export_txt(self, self.electronic_order_ids, self.export_date)
+
+
+		# Init
+		#base_dir = os.environ['HOME']
+		#path = base_dir + "/mssoft/ventas/" + self.export_date
+
+		path = self.configurator.path_account_txt + self.export_date
+		print(path)
+
+		# Remove and Create
+		if os.path.isdir(path) and not os.path.islink(path):
+			shutil.rmtree(path)		# Remove if exists
+		os.mkdir(path)  			# Create
+
+
+		# Export to a file
+		fname = pl_export.pl_export_txt(self, self.electronic_order_ids, path)
 
 
 

@@ -14,7 +14,8 @@ from . import pl_lib_exp
 
 
 # -------------------------------------------------------------------------------------------------
-def pl_export_txt(self, electronic_order, export_date):
+#def pl_export_txt(self, electronic_order, export_date):
+def pl_export_txt(self, electronic_order, path):
 	"""
 	high level support for doing this and that.
 	"""
@@ -25,21 +26,24 @@ def pl_export_txt(self, electronic_order, export_date):
 
 # Prepare
 	# Init
-	base_dir = os.environ['HOME']
-	path = base_dir + "/mssoft/ventas/" + export_date
+	#base_dir = os.environ['HOME']
+	#path = base_dir + "/mssoft/ventas/" + export_date
 
-	# Make Dirs
-	target = base_dir + "/mssoft/"
-	if not os.path.isdir(target):
-		os.mkdir(target)
 
-	target = base_dir + "/mssoft/ventas/"
-	if not os.path.isdir(target):
-		os.mkdir(target)
+	# Make Dirs if necessary
+#	target = base_dir + "/mssoft/"
+#	if not os.path.isdir(target):
+#		os.mkdir(target)
+
+#	target = base_dir + "/mssoft/ventas/"
+#	if not os.path.isdir(target):
+#		os.mkdir(target)
+
 
 	# Remove
 	if os.path.isdir(path) and not os.path.islink(path):
 		shutil.rmtree(path)		# If dir
+	
 	#elif os.path.exists(path):
 	#	os.remove(path)			# If file
 
