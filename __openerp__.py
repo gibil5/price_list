@@ -10,7 +10,7 @@
 	'description': 
 		"""
 
-		4 Oct 2019
+		7 Oct 2019
 
 		(Since 22 April, in Prod)
 
@@ -171,7 +171,8 @@
 		# Menus
 		'views/menus/menus.xml',
 		'views/menus/menus_marketing.xml',
-		'views/menus/menus_management.xml',
+
+		#'views/menus/menus_management.xml',		# Dep
 
 		#'views/menus/menus_dev.xml',               # Dep
 		#'views/menus/menus_rsp.xml',               # Dep
