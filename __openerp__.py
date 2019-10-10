@@ -157,6 +157,7 @@
 		'views/electronic/account_contasis_actions.xml',   # Min
 		'views/electronic/account_contasis.xml',           # Min
 		'views/electronic/electronic_order.xml',           # Min
+
 		'views/electronic/electronic_container.xml',       # Min
 
 

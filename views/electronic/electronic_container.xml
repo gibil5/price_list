@@ -102,6 +102,10 @@
                                 <field name="export_date_end"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
 
                                 <field name="txt_pack"      filename="txt_pack_name"/>
+<!--
+                                <field name="txt_pack_name"     string="Archivo TXT"/>
+-->
+                                <field name="txt_pack_name"/>
                             </group>
                             <group>
                                 <field name="amount_total"/>
