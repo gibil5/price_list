@@ -1,169 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-    <data>
+	<data>
 
 
 
 <!-- FORM --> 
-        <record model="ir.ui.view" id="openhealth.container_form_view">
-            
-            <field name="name">container.form</field>
+		<record model="ir.ui.view" id="openhealth.container_form_view">
+			
+			<field name="name">container.form</field>
 
-            <field name="model">openhealth.container</field>
+			<field name="model">openhealth.container</field>
 
-            <field name="priority" eval="1"/>
-            <field name="arch" type="xml">
-                <form string="container Form">
-                    <header>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+				<form string="container Form">
+					<header>
 
 <!--
-                            string="Crear Electrónico"                              
+							string="Crear Electrónico"                              
 -->
-                        <!-- Create Electronic --> 
-                        <!-- Export Txt --> 
+						<!-- Create Electronic --> 
+						<!-- Export Txt --> 
 <!--
-                        <button 
-                            type="object"
-                            class="oe_highlight"
-                            name="create_electronic"  
-                            string="Facturación"                                
-                        />
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
-                            name="export_txt"                         
-                            string="Crear TXT"                              
-                        />
+						<button 
+							type="object"
+							class="oe_highlight"
+							name="create_electronic"  
+							string="Facturación"                                
+						/>
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="export_txt"                         
+							string="Crear TXT"                              
+						/>
 
-                            groups="openhealth.roots"
-                            groups="openhealth.roots"
+							groups="openhealth.roots"
+							groups="openhealth.roots"
 
-                            string="Pl - Facturación"
-                            string="Pl - Crear TXT"                              
+							string="Pl - Facturación"
+							string="Pl - Crear TXT"                              
 -->
 
 
-                        <!-- Pl - Create Electronic --> 
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
-                            name="pl_create_electronic" 
-                            
-                            string="Facturación"
-                        />
+						<!-- Pl - Create Electronic --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="pl_create_electronic" 
+							
+							string="Facturación"
+						/>
 
 
-                        <!-- Pl - Export Txt --> 
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
-                            name="pl_export_txt" 
-                            
-                            string="Crear TXT"                              
-                        />
+						<!-- Pl - Export Txt --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="pl_export_txt" 
+							
+							string="Crear TXT"                              
+						/>
 
 
-                        <!-- Clear --> 
-                        <button 
-                            type="object" 
-                            class="oe_highlight oe_right"
-                            name="clear"
+						<button 
+								type="object" 
+								icon="gtk-ok" 
+								class="oe_highlight" 
 
-                            string="Clear"
+								name="export_file" 
+								
+								string="Download" 
+							/>
 
-                            groups="openhealth.roots"
-                        />
 
 
-                        <!-- Correct - DEP --> 
+						<!-- Clear --> 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							name="clear"
+
+							string="Clear"
+
+							groups="openhealth.roots"
+						/>
+
+
+						<!-- Correct - DEP --> 
 <!--
-                        <button 
-                            type="object" 
-                            class="oe_highlight oe_right"
-                            name="correct"
-                            string="Correct"
-                            groups="openhealth.roots"
-                        />
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							name="correct"
+							string="Correct"
+							groups="openhealth.roots"
+						/>
 -->
-                    </header>
+					</header>
 
 
 
 
-                    <!-- Sheet -->  
-                    <sheet>
+					<!-- Sheet -->  
+					<sheet>
 
-                        <group>
-                            <group>                             
-                                <field name="name"/>
+						<group>
+							<group>                             
+								<field name="name"/>
 
-                                <field name="export_date_begin"/>
+								<field name="export_date_begin"/>
 
-                                <field name="export_date_end"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
+								<field name="export_date_end"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
 
-                                <field name="txt_pack"      filename="txt_pack_name"/>
+								<field name="txt_pack"      filename="txt_pack_name"/>
 <!--
-                                <field name="txt_pack_name"     string="Archivo TXT"/>
+								<field name="txt_pack_name"     string="Archivo TXT"/>
 -->
-                                <field name="txt_pack_name"/>
-                            </group>
-                            <group>
-                                <field name="amount_total"/>
-                                <field name="receipt_count"/>
-                                <field name="invoice_count"/>
+								<field name="txt_pack_name"/>
+							</group>
+							<group>
+								<field name="amount_total"/>
+								<field name="receipt_count"/>
+								<field name="invoice_count"/>
 
-                                <field name="vspace"/>
-                                <field name="several_dates"/>
+								<field name="vspace"/>
+								<field name="several_dates"/>
 <!--
-                                <field name="correct_patient"/>
+								<field name="correct_patient"/>
 -->
-                                <field name="configurator"/>
-                            </group>
-                        </group>
+								<field name="configurator"/>
+							</group>
+						</group>
 
 
 
-                        <group groups="openhealth.roots">
-                            <group>                             
-                                <field name="state_arr"   groups="openhealth.roots"/>
-                                <field name="type_arr"   groups="openhealth.roots"/>
-                            </group>                             
+						<group groups="openhealth.roots">
+							<group>                             
+								<field name="state_arr"   groups="openhealth.roots"/>
+								<field name="type_arr"   groups="openhealth.roots"/>
+							</group>                             
 
-                            <group>
+							<group>
 <!--
-                                <field name="mgt"   groups="openhealth.roots"/>
+								<field name="mgt"   groups="openhealth.roots"/>
 -->
-                            </group>
-                        </group>
+							</group>
+						</group>
 
 
 
-                        <!-- Padding -->
-                        <group>
-                            <group></group>
-                            <group></group>
-                        </group>
+						<!-- Padding -->
+						<group>
+							<group></group>
+							<group></group>
+						</group>
 
-                        <!-- Notebook --> 
-                        <notebook>
+						<!-- Notebook --> 
+						<notebook>
 
-                            <page string="Facturacion">
-                                <field name="electronic_order_ids"/>
-                            </page>
+							<page string="Facturacion">
+								<field name="electronic_order_ids"/>
+							</page>
 
-                            <page string="TXT">
-                                <field name="txt_ids"/> 
-                            </page>
+							<page string="TXT">
+								<field name="txt_ids"/> 
+							</page>
 <!--
-                            <page string="MSSOFT">
-                                <field name="txt_ref_ids"/>
-                            </page>
+							<page string="MSSOFT">
+								<field name="txt_ref_ids"/>
+							</page>
 -->
-                        </notebook>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
  <!-- FORM --> 
 
 
@@ -171,24 +183,24 @@
 
 
 <!-- TREE --> 
-        <record model="ir.ui.view" id="container_tree_view">
-            <field name="name">container.tree</field>
-            <field name="model">openhealth.container</field>
-            <field name="arch" type="xml">
-                <tree string="Container Tree">
-                    <field name="name"/>
+		<record model="ir.ui.view" id="container_tree_view">
+			<field name="name">container.tree</field>
+			<field name="model">openhealth.container</field>
+			<field name="arch" type="xml">
+				<tree string="Container Tree">
+					<field name="name"/>
 
-                    <field name="export_date_begin"/>
-                    <field name="export_date_end"/>
+					<field name="export_date_begin"/>
+					<field name="export_date_end"/>
 
-                    <field name="txt_pack"/>
-                </tree>
-            </field>
-        </record>
-
-
+					<field name="txt_pack"/>
+				</tree>
+			</field>
+		</record>
 
 
 
-    </data>
+
+
+	</data>
 </openerp>

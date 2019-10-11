@@ -26,6 +26,22 @@ class ElectronicContainer(models.Model):
 	_inherit = 'openhealth.container'
 
 
+
+
+# ----------------------------------------------------------- Download --------------------------
+
+	@api.multi
+	def export_file( self ):
+	    return {
+		        'type' : 'ir.actions.act_url',
+		        #'url':   '/web/binary/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.excel_file.id ),
+		        'url':   '/web/binary/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),
+		        'target': 'self',
+	        }
+
+
+
+
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 
 # ----------------------------------------------------------- Create Electronic - Button --------------------------
