@@ -4,13 +4,13 @@
 
 	'summary': 
 		"""
-		BL Encapsulator for the Openhealth System
+		Business Logic Encapsulator for the Openhealth System
 		""",
 
 	'description': 
 		"""
 
-		11 Oct 2019
+		15 Oct 2019
 
 		(Since 22 April, in Prod)
 

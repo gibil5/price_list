@@ -21,13 +21,50 @@ class electronic_order(models.Model):
 	_inherit = 'openhealth.electronic.order'
 
 
+
+
+# ----------------------------------------------------------- Update Constants -------------------------------
+
+	def update_constants(self):
+		"""
+		Update Electronic Order Constants:
+			- Firm
+		Used by Txt Generation
+		"""
+		print()
+		print('EO - Update Constants')
+
+
+
+		# Firm
+		self.firm = self.configurator.company_name
+
+		self.ruc = self.configurator.company_ruc
+
+		self.address = self.configurator.company_address
+
+		self.ubigeo = self.configurator.company_ubigeo
+
+		self.country = self.configurator.company_country
+
+
+
+
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Configurator ------------------------
 	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
+	#configurator = fields.Many2one(
+	#		'openhealth.configurator.emr',
 			#string="Configuracion",
 			#required=False,
-		)
+	#	)
 
 
 

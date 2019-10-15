@@ -20,6 +20,7 @@
                     <field name="container_id"/>
 
 
+                    <!-- Company -->
                     <field name="firm"/>
                     <field name="ruc"/>
                     <field name="address"/>

@@ -12,7 +12,9 @@ import os
 import shutil
 import datetime
 from openerp import models, fields, api
+
 from openerp.addons.openhealth.models.management import mgt_funcs
+
 from openerp.addons.openhealth.models.management import mgt_vars
 from openerp.addons.openhealth.models.containers import export
 from . import pl_export
@@ -34,10 +36,16 @@ class ElectronicContainer(models.Model):
 	def export_file( self ):
 	    return {
 		        'type' : 'ir.actions.act_url',
+		        
 		        #'url':   '/web/binary/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.excel_file.id ),
-		        'url':   '/web/binary/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),
+		        #'url':   '/web/binary/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),
+		        #'url':   ' /Users/gibil/mssoft/ventas/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),
+			    #"url": "http://odoo.com/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),",
+			    "url": "http://localhost:8069/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),",
+
 		        'target': 'self',
 	        }
+
 
 
 
@@ -70,6 +78,7 @@ class ElectronicContainer(models.Model):
 		# Init
 		self.state_arr = 'sale,cancel,credit_note'
 		self.type_arr = 'ticket_receipt,ticket_invoice'
+
 
 		# Create Electronic
 		self.amount_total, self.receipt_count, self.invoice_count = self.update_electronic()
@@ -173,6 +182,7 @@ class ElectronicContainer(models.Model):
 		#print('Pl - Update - Electronic')
 		print('Update - Electronic')
 
+
 		# Clean
 		self.electronic_order_ids.unlink()
 
@@ -230,6 +240,7 @@ class ElectronicContainer(models.Model):
 			#if self.configurator.validate_errors_electronic():
 			if self.configurator.error_validation_electronic:
 
+
 				# Validate Order Patient
 				#error, msg = order.patient.validate()				# Train Wreck ! - Does not respect the LOD
 				#order.validate_patient()							
@@ -250,34 +261,48 @@ class ElectronicContainer(models.Model):
 			# Create Electronic Order
 			electronic_order = self.electronic_order_ids.create({
 																# Required
+
+																# Electronic order
+																'name': 				order.name,
+																'x_date_created': 		order.date_order,
+
+
+																# Firm ?
+
+
+																# Patient
+																'receptor': 			order.pl_receptor,
+																'patient': 				order.patient.id,
 																'id_doc': 				id_doc,
 																'id_doc_type': 			id_doc_type,
 																'id_doc_type_code': 	id_doc_type_code,
+
+
+																# Sale
+																'doctor': 				order.x_doctor.id,
 																'x_type': 				order.x_type,
 																'type_code': 			order.x_type_code,
 																'serial_nr': 			order.x_serial_nr,
-																'receptor': 			order.pl_receptor,
-																'name': 				order.name,
-																'patient': 				order.patient.id,
-																'x_date_created': 		order.date_order,
-																#'amount_total': 		order.amount_total,
 																'amount_total': 		order.x_amount_flow,
 																'amount_total_net': 	order.x_total_net,
 																'amount_total_tax': 	order.x_total_tax,
-																'doctor': 				order.x_doctor.id,
 																'state': 				order.state,
-
-																# Counter
 																'counter_value': 		order.x_counter_value,
 																'delta': 				order.x_delta,
-
-																# Credit Note
 																'credit_note_owner': 	order.x_credit_note_owner.id,
 																'credit_note_type': 	order.x_credit_note_type,
 
+
 																# Handles
-																'container_id': self.id,
+																'container_id': 		self.id,
 			})
+
+
+			# Update constants (Firm)
+			electronic_order.update_constants()
+
+
+
 			#print(electronic_order)
 			#print(electronic_order.container_id)
 			#print(electronic_order.name)

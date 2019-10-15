@@ -52,8 +52,8 @@ class Patient(models.Model):
 		Validate Patient, for Invoice
 		Used by Electronic Container (Txt Generation). 
 		"""
-		print()
-		print('Pl - Patient Validate')
+		#print()
+		#print('Pl - Patient Validate')
 
 		# Handle Exceptions
 		exc_pat.handle_exceptions_invoice(self)

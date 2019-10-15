@@ -62,8 +62,8 @@ class sale_order(models.Model):
 		Validate Electronic
 		Used by Electronic Container (Txt Generation). 
 		"""
-		print()
-		print('Order Validate Electronic')
+		#print()
+		#print('Order Validate Electronic')
 
 		# Handle Exceptions
 		exc_ord.handle_exceptions_electronic(self)

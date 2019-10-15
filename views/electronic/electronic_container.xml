@@ -62,7 +62,7 @@
 							string="Crear TXT"                              
 						/>
 
-
+<!--
 						<button 
 								type="object" 
 								icon="gtk-ok" 
@@ -72,7 +72,7 @@
 								
 								string="Download" 
 							/>
-
+-->
 
 
 						<!-- Clear --> 

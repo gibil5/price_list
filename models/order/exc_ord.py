@@ -14,8 +14,8 @@ def handle_exceptions_electronic(self):
 	"""
 	Handle Exceptions Electronic
 	"""
-	print()
-	print('ORD - Handle Exceptions Electronic')
+	#print()
+	#print('ORD - Handle Exceptions Electronic')
 
 
 	# Required parameters

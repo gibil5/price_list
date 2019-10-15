@@ -36,8 +36,8 @@ def handle_exceptions_invoice(self):
 	"""
 	Handle Exceptions Invoice
 	"""
-	print()
-	print('PAT - Handle Exceptions Invoice')
+	#print()
+	#print('PAT - Handle Exceptions Invoice')
 
 	# Patient using RUC
 	try:
