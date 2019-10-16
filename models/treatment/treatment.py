@@ -76,7 +76,8 @@ class Treatment(models.Model):
 
 			#if order.state == 'sale':
 			#if (order.state == 'sale')	and  (not order.x_procedure_created):
-			if (order.state == 'sale')	and  (not order.is_procedure_created()):
+			#if (order.state == 'sale')	and  (not order.is_procedure_created()):
+			if self.override or 		((order.state == 'sale')	and  	(not order.is_procedure_created())):
 
 
 				# Update Order

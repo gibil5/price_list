@@ -27,13 +27,14 @@
 				<tree default_order='name desc'>
 					<field name="name"/>
 					<field name="management_id" />
-					<field name="test_target"/>
 					<field name="total_qty"/>
 					<field name="total"/>
 				</tree>
 			</field>
 		</record>
-
+<!--
+					<field name="test_target"/>
+-->
 
 
 
