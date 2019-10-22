@@ -21,6 +21,35 @@ class ProductProduct(models.Model):
 
 
 # ----------------------------------------------------------- IS Funcs -------------------------
+	def is_product(self):
+		"""
+		Test if it is a Product
+		Used by: PL - Report Sale Product (Reporte de Ventas)
+		"""
+
+		is_product = False
+
+
+		# Only 2019 is covered 
+		if self.pl_price_list in ['2019']:
+
+
+			if self.pl_family in ['topical', 'card', 'kit']:   		# LOD compliant !
+
+				is_product = True
+
+			else:				
+				is_product = False
+
+		else:
+			print('Error: This should not happen !')
+
+
+		return is_product
+
+
+
+# ----------------------------------------------------------- IS Funcs -------------------------
 
 	def is_procedure(self):
 		"""

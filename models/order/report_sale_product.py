@@ -6,18 +6,11 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-#from openerp.addons.openhealth.models.management import mgt_funcs
 
 class ReportSaleProduct(models.Model):
 	
 	_inherit = 'openhealth.report.sale.product'
 	
-
-
-# ----------------------------------------------------------- Relational -----------------
-	management_id = fields.Many2one(
-			'openhealth.management',
-		)
 
 
 # ----------------------------------------------------------- Create Lines - 2019 -----------------
@@ -30,10 +23,12 @@ class ReportSaleProduct(models.Model):
 		# Loop
 		for order in orders: 
 			for line in order.order_line: 
-				#if line.product_id.categ_id.name == 'Cremas':
-				#if line.product_id.pl_family in ['topical']:
-				if line.product_id.pl_family in ['topical', 'card', 'kit']:
+
+
+				#if line.product_id.pl_family in ['topical', 'card', 'kit']:   		# This is a Trainwreck !
+				if line.product_id.is_product():
 					
+
 					print('Create !')
 
 					# Create Order Line 

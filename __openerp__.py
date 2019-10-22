@@ -10,7 +10,7 @@
 	'description': 
 		"""
 
-		16 Oct 2019
+		22 Oct 2019
 
 		(Since 22 April, in Prod)
 
@@ -148,8 +148,10 @@
 		'views/management/mgt_patient_line.xml',
 
 
+
 		# RSP
-		'views/report_sale_product.xml',
+		#'views/report_sale_product.xml',  					# Dep
+
 
 
 		# Electronic
