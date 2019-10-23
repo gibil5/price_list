@@ -127,7 +127,8 @@ class PatientLine(models.Model):
 
 	district = fields.Char(
 			'Distrito', 
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 
