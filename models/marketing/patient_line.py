@@ -97,7 +97,8 @@ class PatientLine(models.Model):
 	sex = fields.Selection(
 			selection = pat_vars._sex_type_list,
 			string="Sexo",
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 	
