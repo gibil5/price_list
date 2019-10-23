@@ -7,10 +7,10 @@
 		Business Logic Encapsulator for the Openhealth System
 		""",
 
-	'description': 
+	'description':
 		"""
 
-		22 Oct 2019
+		23 Oct 2019
 
 		(Since 22 April, in Prod)
 

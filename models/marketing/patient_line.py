@@ -103,13 +103,15 @@ class PatientLine(models.Model):
 	education = fields.Selection(
 			selection = pat_vars._education_level_type,
 			string = 'Grado de instrucción',
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 	# Function
 	function = fields.Char(
 			'Ocupación', 
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 
