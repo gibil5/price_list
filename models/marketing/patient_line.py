@@ -49,17 +49,20 @@ class PatientLine(models.Model):
 	# Contact
 	phone_1 = fields.Char(
 			'Tel 1', 
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 	phone_2 = fields.Char(
 			'Tel 2', 
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 	email = fields.Char(
 			'Email', 
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 
