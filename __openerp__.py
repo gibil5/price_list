@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Business Logic - 2019 - SERVICE ORIENTED",
+	'name': "Price List 2019 - ODOO 9 MODULE",
 
 	'summary': 
 		"""

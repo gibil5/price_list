@@ -1,7 +1,26 @@
-Business Logic
-For Openhealth
+Price List - 2019 - ODOO 9 MODULE
+------------------------------------------------------
 
-Created:	April 2019
+23 Oct 2019
 
-Oct
-23
+(Since 22 April, in Prod)
+
+
+Description
+------------
+
+For Open Health. Service oriented way of adding BUSINESS LOGIC. 
+
+Business Logic Encapsulator for the Openhealth System
+
+Author
+Javier Revilla
+
+Website
+http://jrevilla.com
+
+Categories
+Object Oriented, Service Oriented, Odoo 9, Medical services
+
+Version:
+5
