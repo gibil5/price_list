@@ -1,4 +1,4 @@
-Business Logic - 2019 - Odoo 9 Module - Python 
+Business Logic 2019 - Odoo 9 Module - Python 
 ------------------------------------------------------
 
 
@@ -8,6 +8,10 @@ Description
 For Open Health. Service oriented way of adding BUSINESS LOGIC. 
 
 Business Logic Encapsulator for the Openhealth System
+
+
+## Version
+5
 
 ## Author
 Javier Revilla
@@ -26,5 +30,3 @@ Javier Revilla
 - Business Logic
 - New Price List
 
-Version:
-5
