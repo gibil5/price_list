@@ -1,8 +1,6 @@
 # Business Logic 2019 - Odoo 9 Module - Python 
 
-
-## Version
-5
+## Version 5.0
 
 
 Description
