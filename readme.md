@@ -13,17 +13,22 @@ For Open Health. Service oriented way of adding BUSINESS LOGIC.
 
 Business Logic Encapsulator for the Openhealth System
 
-Author
+## Author
 Javier Revilla
-o
-Website
-http://jrevilla.com
 
-Categories
-Object Oriented, Service Oriented, Odoo 9, Medical services
+
+## History
+- Created: April 2019
+- Last updated: 1 Nov 2019
+
+
+### Categories
+- Object Oriented
+- Service Oriented
+- Odoo 9
+- Medical services
+- Business Logic
+- New Price List
 
 Version:
 5
-
-
-
