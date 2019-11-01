@@ -1,9 +1,5 @@
-Price List - 2019 - ODOO 9 MODULE
+Price List - 2019 - Odoo 9 Module - Python 
 ------------------------------------------------------
-
-23 Oct 2019
-
-(Since 22 April, in Prod)
 
 
 Description
