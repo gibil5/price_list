@@ -11,9 +11,9 @@ For Open Health. Service oriented way of adding BUSINESS LOGIC.
 Business Logic Encapsulator for the Openhealth System
 
 
-
 ## Author
 Javier Revilla
+jrevilla55@gmail.com
 
 
 ## History
