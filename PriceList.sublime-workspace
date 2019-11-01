@@ -532,7 +532,7 @@
 			"file": "readme.md",
 			"settings":
 			{
-				"buffer_size": 431,
+				"buffer_size": 469,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1186,15 +1186,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 431,
+						"buffer_size": 469,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								102,
-								102
+								114,
+								114
 							]
 						],
 						"settings":
