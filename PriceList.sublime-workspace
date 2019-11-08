@@ -523,7 +523,7 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 4889,
+				"buffer_size": 4888,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -532,7 +532,7 @@
 			"file": "readme.md",
 			"settings":
 			{
-				"buffer_size": 419,
+				"buffer_size": 439,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -541,7 +541,7 @@
 			"file": "readme.txt",
 			"settings":
 			{
-				"buffer_size": 829,
+				"buffer_size": 61,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -860,7 +860,7 @@
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
@@ -1147,7 +1147,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1156,15 +1156,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4889,
+						"buffer_size": 4888,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								169,
-								169
+								153,
+								153
 							]
 						],
 						"settings":
@@ -1177,7 +1177,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1186,15 +1186,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 419,
+						"buffer_size": 439,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								63,
-								63
+								213,
+								213
 							]
 						],
 						"settings":
@@ -1205,7 +1205,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1214,15 +1214,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 829,
+						"buffer_size": 61,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								829,
-								829
+								16,
+								16
 							]
 						],
 						"settings":
@@ -1668,7 +1668,7 @@
 	"project": "PriceList.sublime-project",
 	"replace":
 	{
-		"height": 66.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
