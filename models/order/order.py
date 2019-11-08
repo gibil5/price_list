@@ -24,6 +24,53 @@ class sale_order(models.Model):
 
 
 
+
+# ----------------------------------------------------- Fixers --------------------------
+
+	@api.multi
+	def fix_treatment(self):
+		"""
+		Fix Treatment
+		"""
+		print()
+		print('Fix Treatment')
+
+
+		# Treatment
+		self.treatment = self.env['openhealth.treatment'].search([
+																	('patient', '=', self.patient.id),
+																	('physician', '=', self.x_doctor.id),
+											],
+												order='start_date desc',
+												limit=1,
+											)
+		print(self.treatment.name)
+
+
+
+
+	@api.multi
+	def fix_treatment_month(self):
+		"""
+		Fix Treatment Month
+		"""
+		print()
+		print('Fix Treatment Month')
+
+
+	@api.multi
+	def fix_treatment_all(self):
+		"""
+		Fix Treatment All
+		"""
+		print()
+		print('Fix Treatment All')
+
+
+
+
+
+
 # ----------------------------------------------------------- Setters ----------------------------
 
 	def set_procedure_created(self, value):
