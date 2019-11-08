@@ -550,7 +550,7 @@
 			"file": "models/order/order.py",
 			"settings":
 			{
-				"buffer_size": 3547,
+				"buffer_size": 3849,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1192,15 +1192,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3547,
+						"buffer_size": 3849,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								568,
-								568
+								970,
+								970
 							]
 						],
 						"settings":
@@ -1209,7 +1209,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 328.0,
+						"translation.y": 373.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1619,7 +1619,7 @@
 		[
 			[
 				"",
-				"~/cellar/github/openhealth/OpenHealth-MIN.sublime-project"
+				"~/Virtualenvs/Odoo9-min/odoo/addons/clean/Clean.sublime-project"
 			],
 			[
 				"\t",

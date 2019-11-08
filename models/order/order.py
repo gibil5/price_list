@@ -44,7 +44,7 @@ class sale_order(models.Model):
 												order='start_date desc',
 												limit=1,
 											)
-		print(self.treatment.name)
+		#print(self.treatment.name)
 
 
 
@@ -56,6 +56,7 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Fix Treatment Month')
+
 
 
 	@api.multi
