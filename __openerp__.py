@@ -10,7 +10,7 @@
 	'description':
 		"""
 
-		8 Nov 2019
+		21 Nov 2019
 
 		(Since 22 April, in Prod)
 
@@ -126,9 +126,11 @@
 		#'views/configurator_emr.xml',                  # Dep
 
 
+
 		# Patient
 		'views/patient/patient.xml',                   
 		#'views/patient/patient_personal.xml',          # Dep
+
 
 
 		# Marketing

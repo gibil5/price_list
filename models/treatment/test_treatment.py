@@ -570,10 +570,10 @@ def create_recommendations_2019(self):
 
 	tst_list_laser = [
 					'co2',
-					'exc',
-					'ipl',
-					'ndy',
-					'qui',
+					#'exc',
+					#'ipl',
+					#'ndy',
+					#'qui',
 	]
 
 	tst_list_cosmetology = [
@@ -603,7 +603,10 @@ def create_recommendations_2019(self):
 					'prom',
 	]
 
+
+
 	tst_list_empty = []
+
 
 
 	if self.x_test_scenario in ['all']:
