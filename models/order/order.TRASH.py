@@ -1,6 +1,47 @@
+# 23 Nov 2019
+
+# ----------------------------------------------------- Admin --------------------------
+	@api.multi
+	def admin_mode(self):
+		"""
+		Admin Mode
+		"""
+		print()
+		print('Admin Mode')
+
+		# Init
+		self.configurator.order_admin.order = self.id
+		res_id = self.configurator.order_admin.id
+
+		# Open
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Order Admin',
+				'view_type': 'form',
+				'view_mode': 'form',
+				'target': 'current',
+				#'target': 'new',
+				'res_id': res_id,
+				'res_model': 'openhealth.order.admin',
+				'flags': 	{
+								'form': {'action_buttons': True, }
+								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+								#'form': {'action_buttons': False, }
+								#'form':{'action_buttons': False, 'options': {'mode': 'edit'}}
+							},
+				'context': {
+								#'default_order': order_id,
+								#'default_x_type': x_type,
+					}}
+
+	# pl_open_product_selector
+
+
+
+
+
+
 # 29 Aug - Fields - Dep
-
-
 
 # ----------------------------------------------------------- Price List - Computes ----------------------
 

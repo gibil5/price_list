@@ -979,9 +979,11 @@ def test_reset_treatment(self):
 	# Alta
 	self.treatment_closed = False
 
-	# Orders
-	for order in self.order_ids:
-		order.remove_myself_force()
+
+	# Orders - Keep them !
+	#for order in self.order_ids:
+	#	order.remove_myself_force()
+
 # reset
 
 
