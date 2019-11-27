@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"s",
+				"subtotal"
+			],
+			[
 				"ord",
 				"ord_funcs"
 			],
@@ -510,10 +514,6 @@
 			[
 				"line",
 				"line_list"
-			],
-			[
-				"echo",
-				"echography"
 			]
 		]
 	},
@@ -541,7 +541,7 @@
 			"file": "models/order/pl_clos_funcs.py",
 			"settings":
 			{
-				"buffer_size": 2526,
+				"buffer_size": 3068,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1216,15 +1216,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2526,
+						"buffer_size": 3068,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1460,
-								1460
+								2696,
+								2696
 							]
 						],
 						"settings":
@@ -1233,7 +1233,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 311.0,
+						"translation.y": 1666.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
