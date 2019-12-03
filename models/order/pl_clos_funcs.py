@@ -28,7 +28,7 @@ def pl_set_form_totals(self):
 
 	state = 'credit_note'
 	#orders, count = clos_funcs.get_orders_by_state(self, self.date, state)
-	orders, count = clos_funcs.get_orders_by_state_all(self, self.date)
+	orders, count = clos_funcs.get_orders_by_state_all(self, self.date)  		# Only used by Closings
 
 
 	print(orders)
