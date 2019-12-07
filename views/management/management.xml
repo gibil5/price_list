@@ -587,6 +587,9 @@ Dep !
 
 
 
+
+
+
 <!-- TREE --> 
 		<record model="ir.ui.view" id="openhealth.management_view_tree">
 			<field name="name">openhealth.management.tree</field>
@@ -605,7 +608,7 @@ Dep !
 
 					<field name="name"/>
 
-					<field name="configurator"  string="Config"	/>
+					<field name="configurator"  string="Config - 07-12"	/>
 
 					<field name="write_date"        string="Actualizado"	groups="openhealth.roots"/>
 
@@ -686,92 +689,6 @@ Dep !
 
 
 
-
-<!-- TREE 3 - Family --> 
-		<record model="ir.ui.view" id="openhealth.management_view_families_tree">
-			<field name="name">openhealth.management.tree.3</field>
-			<field name="model">openhealth.management</field>
-			<field name="arch" type="xml">
-
-				<tree string="Management Tree - Familias">
-					
-					<field name="name"/>
-
-					<field name="total_amount" sum="Total" widget="monetary"/>
-
-<!--
-					<field name="nr_products"/>
-					<field name="nr_consultations"/>
-					<field name="nr_procedures"/>
--->
-					<field name="amo_products"          sum="Productos" 	string="Monto Productos"	widget="monetary"/>
-					<field name="amo_consultations"     sum="Consultas" 	string="Monto Consultas"	widget="monetary"/>
-					<field name="amo_procedures"        sum="Proc."			string="Monto Proc."		widget="monetary"/>
-
-					<field name="per_amo_products"      string="% Productos" 	widget="percentage"/>
-					<field name="per_amo_consultations" string="% Consultas"	widget="percentage"/>
-					<field name="per_amo_procedures"    string="% Proc."	widget="percentage"/>
-				</tree>
-			</field>
-		</record>
-
-
-
-
-
-<!-- TREE 4 - Sub Family --> 
-		<record model="ir.ui.view" id="openhealth.management_view_subfamilies_tree">
-			<field name="name">openhealth.management.tree.4</field>
-			<field name="model">openhealth.management</field>
-			<field name="arch" type="xml">
-				
-				<tree string="Management Tree - Sub Familias">
-					
-
-					<field name="name"/>
-
-					<field name="total_amount" sum="Total" widget="monetary"/>
-
-
-
-					<field name="amo_topical"	/>
-					<field name="amo_card"		/>
-					<field name="amo_kit"		/>
-
-
-					<field name="per_amo_topical"	string="% Cremas"	widget="percentage"/>
-					<field name="per_amo_card"		string="% Vip"	widget="percentage"/>
-					<field name="per_amo_kit"		string="% Kits"		widget="percentage"	/>
-
-
-					<field name="amo_co2"		string="Monto Co2"/>
-					<field name="amo_quick"		string="Monto Quick"	/>
-					<field name="amo_exc"		string="Monto Exc"	/>
-					<field name="amo_ipl"		string="Monto Ipl"	/>
-					<field name="amo_ndyag"		string="Monto Ndyag" />
-					<field name="amo_medical"	string="Monto T. Medicos"	/>
-					<field name="amo_cosmetology"	string="Monto Cosmeatria"	/>
-
-					<field name="amo_echo"		string="Monto Eco"/>
-					<field name="amo_gyn"		string="Monto Gin"/>
-					<field name="amo_prom"		string="Monto Prom"/>
-
-
-					<field name="per_amo_co2"			string="% Co2"		widget="percentage"/>
-					<field name="per_amo_quick"			string="% Quick"	widget="percentage"/>
-					<field name="per_amo_exc"			string="% Exc"		widget="percentage"/>
-					<field name="per_amo_ipl"			string="% Ipl"		widget="percentage"/>
-					<field name="per_amo_ndyag"			string="% Ndyag"	widget="percentage"/>
-					<field name="per_amo_medical"		string="T. Medicos"	widget="percentage"/>
-					<field name="per_amo_cosmetology"	string="Cosmeatria"	widget="percentage"/>
-
-					<field name="per_amo_echo"		string="% Eco"	widget="percentage"/>
-					<field name="per_amo_gyn"		string="% Gin"	widget="percentage"/>
-					<field name="per_amo_prom"		string="% Prom"	widget="percentage"/>
-				</tree>
-			
-			</field>
-		</record>
 
 
 	</data>
