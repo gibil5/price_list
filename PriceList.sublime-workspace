@@ -532,7 +532,16 @@
 			"file": "models/management/management.py",
 			"settings":
 			{
-				"buffer_size": 30955,
+				"buffer_size": 32544,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/configurator_emr.py",
+			"settings":
+			{
+				"buffer_size": 792,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -871,6 +880,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"update_pro",
 			"create days",
 			"Create Day",
 			"pl_stats",
@@ -997,8 +1007,7 @@
 			"fields.",
 			"pl_min",
 			"fields.",
-			"init_",
-			"blacklist"
+			"init_"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1174,7 +1183,7 @@
 						"translation.y": 2149.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -1183,15 +1192,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 30955,
+						"buffer_size": 32544,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12632,
-								12632
+								5618,
+								5618
 							]
 						],
 						"settings":
@@ -1200,7 +1209,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 10071.0,
+						"translation.y": 4426.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1208,6 +1217,35 @@
 				},
 				{
 					"buffer": 2,
+					"file": "models/configurator_emr.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 792,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								524,
+								524
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "models/management/day_doctor_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1232,11 +1270,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "models/management/management_doctor_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1261,11 +1299,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "models/management/doctor_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1290,11 +1328,11 @@
 						"translation.y": 119.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "models/management/mgt_patient_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1319,11 +1357,11 @@
 						"translation.y": 933.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "models/management/mgt_line_funcs.py",
 					"semi_transient": false,
 					"settings":
@@ -1348,11 +1386,11 @@
 						"translation.y": 4843.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "models/management/exc_mgt.py",
 					"semi_transient": false,
 					"settings":
@@ -1377,11 +1415,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "models/order/order_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1406,11 +1444,11 @@
 						"translation.y": 264.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "models/product/product_product.py",
 					"semi_transient": false,
 					"settings":
@@ -1435,11 +1473,11 @@
 						"translation.y": 2334.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "models/product/product_template.py",
 					"semi_transient": false,
 					"settings":
@@ -1464,11 +1502,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "models/order/order.py",
 					"semi_transient": false,
 					"settings":
@@ -1493,11 +1531,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "models/management/management.TRASH.py",
 					"semi_transient": false,
 					"settings":
@@ -1522,11 +1560,11 @@
 						"translation.y": 300.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "views/management/management.xml",
 					"semi_transient": false,
 					"settings":
@@ -1551,11 +1589,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "views/management/management.DEP.xml",
 					"semi_transient": false,
 					"settings":
@@ -1580,7 +1618,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				}
 			]
