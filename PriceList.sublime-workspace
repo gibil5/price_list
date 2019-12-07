@@ -550,7 +550,7 @@
 			"file": "models/management/management.py",
 			"settings":
 			{
-				"buffer_size": 32183,
+				"buffer_size": 32401,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1153,15 +1153,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 32183,
+						"buffer_size": 32401,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								29652,
-								29652
+								2259,
+								2259
 							]
 						],
 						"settings":
