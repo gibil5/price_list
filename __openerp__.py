@@ -144,10 +144,14 @@
 
 
 		# Management
-		'views/management/management.xml',
+		#'views/management/management.xml',   	# Dep
+
 		'views/management/management_order_line.xml',
+
 		'views/management/management_actions.xml',
+
 		'views/management/mgt_patient_line.xml',
+
 
 
 

@@ -117,18 +117,6 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Test -------------------------
-	mode = fields.Selection(
-
-			[
-				('normal', 'Normal'),
-				('test', 'Test'),
-				#('legacy', 'Legacy'),
-			],
-
-			default='normal',
-			required=True,
-		)
 
 
 # ----------------------------------------------------------- Relational Extension -------------------------
@@ -137,6 +125,8 @@ class Management(models.Model):
 			'openhealth.management.patient.line',
 			'management_id',
 		)
+
+
 
 
 
@@ -1457,8 +1447,11 @@ class Management(models.Model):
 		self.delta_doctor = 0
 
 
+
 		# Relational
-		self.patient_line.unlink()
+		if self.patient_line not in [False]:
+			self.patient_line.unlink()
+
 
 		#self.report_sale_product = False
 		self.report_sale_product.unlink()
