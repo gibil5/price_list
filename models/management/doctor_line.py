@@ -6,10 +6,8 @@
 	Last up: 			13 Feb 2019
 """
 from __future__ import print_function
-
 import collections
 from openerp import models, fields, api
-#from . import mgt_vars
 
 class DoctorLine(models.Model):
 	"""
@@ -24,13 +22,13 @@ class DoctorLine(models.Model):
 
 	# Stats
 	@api.multi
-	#def stats(self):
 	def pl_stats(self):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Pl - Doctor - Stats')
+		#print()
+		#print('Pl - Doctor - Stats')
+
 
 		# Using collections - More Abstract !
 

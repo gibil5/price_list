@@ -158,8 +158,8 @@ class ProductProduct(models.Model):
 # ----------------------------------------------------------- Is Current Price List -------------------------------
 
 	def is_current_price_list(self):
-		print()
-		print('Product - Is Current Price List')
+		#print()
+		#print('Product - Is Current Price List')
 
 		if self.pl_price_list in ['2019']:					# Respects the LOD
 			is_current = True

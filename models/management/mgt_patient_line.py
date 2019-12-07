@@ -66,8 +66,9 @@ class PatientLine(models.Model):
 		"""
 		Update 
 		"""
-		print()
-		print('Update')
+		#print()
+		#print('Update')
+
 
 		self.sex = self.patient.sex
 		self.age = self.patient.age
@@ -76,12 +77,11 @@ class PatientLine(models.Model):
 		self.count_total = 0
 
 
-		#orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
-		#orders, count = pl_mgt_funcs.get_orders_filter_by_patient(self, self.date_begin, self.date_end, self.patient.id)
+		# Get Orders
 		orders, count = pl_mgt_funcs.get_orders_filter_by_patient_fast(self, self.patient.id)
-		
-		print(orders)
-		print(count)
+		#print(orders)
+		#print(count)
+
 
 		for order in orders:
 			self.amount_total = self.amount_total + order.x_amount_flow

@@ -1,3 +1,65 @@
+# 7 Dec 2019
+
+
+	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
+	  without having to know its Implementation. 
+
+	- Respect the Law of Demeter. Avoid Train Wrecks.
+
+	- Treat the Active Record as a data structure and create separate objects that contain the business rules 
+	  and that hide their internal data. These Objects are just instances of the Active Record.	
+
+	- Handle Exceptions.
+
+
+
+
+# ----------------------------------------------------------- Check Statistics - Dep -----------------
+
+	@api.multi
+	def check_stats(self):
+		"""
+		Check Stats
+		"""
+		print()
+		print('Check Stats')
+
+		# Handle Exceptions
+		exc_mgt.handle_exceptions(self)
+
+		# Go
+		print(self.statistics)
+		print(self.statistics.name)
+		#self.statistics.print()
+		self.statistics.print_short()
+	# check_stats
+
+
+
+# ----------------------------------------------------------- Validate Internal - Dep -------------------------
+	# Validate
+	@api.multi
+	def validate(self):
+		"""
+		Validates Data Coherency - internal and external. 
+		"""
+		print()
+		#print('Pl - Validate')
+		print('Validate')
+
+		# Handle Exceptions
+		exc_mgt.handle_exceptions(self)
+
+		# Go
+		self.pl_validate_internal()
+		self.pl_validate_external()
+	# validate
+
+
+
+
+
+
 # 4 Sep
 
 	def create_doctor_data(self, doctor_name, orders):

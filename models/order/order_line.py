@@ -20,11 +20,6 @@ class SaleOrderLine(models.Model):
 
 
 
-
-
-
-
-
 # ----------------------------------------------------------- Get Product -------------------------------
 	def get_product(self):
 		return self.product_id.name
@@ -35,8 +30,8 @@ class SaleOrderLine(models.Model):
 # ----------------------------------------------------------- Is Current Price List -------------------------------
 
 	def is_current_price_list(self):
-		print()
-		print('Order Line - Is Current Price List')
+		#print()
+		#print('Order Line - Is Current Price List')
 
 		#if self.product_id.pl_price_list in ['2019']:		# Train Wreck of Size 2
 		if self.product_id.is_current_price_list():			# Respects the LOD

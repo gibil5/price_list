@@ -21,8 +21,8 @@ def line_analysis(self, line):
 	"""
 	Line Analyses Line
 	"""
-	print()
-	print('Line Analysis')
+	#print()
+	#print('Line Analysis')
 
 	if line.product_id.pl_price_list in ['2019']:
 		line_analysis_2019(self, line)
@@ -45,8 +45,8 @@ def line_analysis_2019(self, line):
 	"""
 	# Print Disable
 	test_funcs.disablePrint()
-	print()
-	print('Line Analysis - 2019')
+	#print()
+	#print('Line Analysis - 2019')
 
 
 
@@ -214,8 +214,8 @@ def line_analysis_2018(self, line):
 	Old - 2018
 	Analyses Line to update counters
 	"""
-	print()
-	print('Line Analysis - 2018')
+	#print()
+	#print('Line Analysis - 2018')
 
 
 	# Init

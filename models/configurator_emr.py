@@ -24,8 +24,9 @@ class ConfiguratorEmr(models.Model):
 		Gets Inactive Days. From Configurator.
 		LOD friendly.
 		"""
-		print()
-		print('Configurator - Get Inactive Days')
+		#print()
+		#print('Configurator - Get Inactive Days')
+
 		days_inactive = []
 		if self.name not in [False]:		
 			for day in self.day_line:								# Respects the LOD

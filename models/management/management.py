@@ -3,18 +3,9 @@
 	Management Report
 
 	Created: 			28 May 2018
-	Last updated: 		 7 Nov 2019
-
-	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
-	  without having to know its Implementation. 
-
-	- Respect the Law of Demeter. Avoid Train Wrecks.
-
-	- Treat the Active Record as a data structure and create separate objects that contain the business rules 
-	  and that hide their internal data. These Objects are just instances of the Active Record.	
-
-	- Handle Exceptions.
+	Last updated: 		 7 Dec 2019
 """
+
 from __future__ import print_function
 from timeit import default_timer as timer
 import collections
@@ -40,6 +31,253 @@ class Management(models.Model):
 	Should NOT contain Data Model
 	"""
 	_inherit = 'openhealth.management'
+
+
+
+# ----------------------------------------------------------- First Level - Update Buttons ---------------------------------------------
+
+
+# ----------------------------------------------------------- Update Fast ---------------------------------------------
+	@api.multi
+	def update_fast(self):
+		"""
+		Update Macros
+		"""
+		print()
+		print('X - Update Fast')
+
+
+		# Handle Exceptions
+		exc_mgt.handle_exceptions(self)
+
+
+		# Go
+		t0 = timer()
+		self.update_sales_fast()
+		self.update_year()
+		t1 = timer()
+		self.delta_fast = t1 - t0
+		#print self.delta_fast
+		#print
+
+		print()
+	# update_fast
+
+
+
+# ----------------------------------------------------------- Update Patients -------------------------
+	# Update Patients
+	@api.multi
+	def update_patients(self):
+		"""
+		Update Patients. 
+		"""
+		print()
+		print('X - Update Patients')
+
+
+		# Handle Exceptions
+		exc_mgt.handle_exceptions(self)
+
+
+		# Go
+		orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
+		#print(orders)
+		#print(count)
+
+		# Create
+		for order in orders:
+
+			patient = order.patient
+			patient_id = order.patient.id
+
+
+			#if patient.name not in ['REVILLA RONDON JOSE JAVIER']:
+			
+			if self.mode in ['test']  	or  	self.mode in ['normal'] and patient.name not in ['REVILLA RONDON JOSE JAVIER']:
+
+
+				#print(patient)
+				#print(patient_id)
+
+				# Count
+				pat_count = self.env['openhealth.management.patient.line'].search_count([
+																						('patient', '=', patient_id),
+																						('management_id', '=', self.id),
+																				],
+																					#order='x_serial_nr asc',
+																					#limit=1,
+																				)
+				#print(pat_count)
+
+
+				if pat_count in [0]:
+
+					#self.report_sale_product = self.env['openhealth.report.sale.product'].create({
+					patient_line = self.patient_line.create({
+																'patient': patient_id,
+																'management_id': self.id,
+						})
+
+		# Update
+		for patient_line in self.patient_line:
+			patient_line.update()
+
+
+		print()
+	# update_patients
+
+
+
+
+# ----------------------------------------------------------- Update Doctors ----------------------
+	@api.multi
+	def update_doctors(self):
+		"""
+		Update Doctors
+		"""
+		print()
+		print('X - Update Doctors')
+
+
+		# Handle Exceptions
+		exc_mgt.handle_exceptions(self)
+
+
+		# Go
+		t0 = timer()
+		self.pl_update_sales_by_doctor()
+		#self.update_stats()
+		self.pl_update_stats()
+		t1 = timer()
+		self.delta_doctor = t1 - t0
+
+
+		print()
+	# update_doctors
+
+
+
+
+
+
+
+
+# -------------------------------------------------------------------------------------------------
+# 																Productivity                       
+# -------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------- Update Prod -------------------------
+
+	# Update Productivity
+	@api.multi
+	def update_productivity(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('X - Update Productivity')
+		
+
+		# Handle Exceptions
+		exc_mgt.handle_exceptions(self)
+
+
+		# Go
+		self.create_days()
+
+		#self.update_day_cumulative()
+		#self.update_day_avg()
+		self.pl_update_day_cumulative()
+		self.pl_update_day_avg()
+
+
+		print()
+	# update_productivity
+
+
+
+# ----------------------------------------------------------- Update Cumulative -------------------
+	# Update Cumulative
+	@api.multi
+	#def update_day_cumulative(self):
+	def pl_update_day_cumulative(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('X - Update - Cumulative')
+
+		# Init
+		amount_total = 0
+		duration_total = 0
+
+		# Clean
+		#for day in self.day_line:
+		#	if day.amount in [0]:
+				#day.duration = 0
+		#		day.unlink()
+
+		# Update Cumulative and Nr Days
+		for day in self.day_line:
+			#print(day.name)
+			#print(day.date)
+			amount_total = amount_total  + day.amount
+			day.cumulative = amount_total
+			duration_total = duration_total + day.duration
+			day.nr_days = duration_total
+
+		# Update Nr Days Total
+		for day in self.day_line:
+			day.nr_days_total = duration_total
+
+	# update_day_cumulative
+
+
+
+# ----------------------------------------------------------- Update Averages ---------------------
+	# Update Averages
+	@api.multi
+	#def update_day_avg(self):
+	def pl_update_day_avg(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('X - Update - Average')
+
+		# Update
+		for day in self.day_line:
+			#print(day.date)
+			day.update_avg()
+			day.update_projection()
+
+	# update_day_avg
+
+
+
+# ----------------------------------------------------------- Update Daily -------------------------
+	# Update Daily
+	@api.multi
+	def update_daily(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('X - Update daily')
+
+
+		# Handle Exceptions
+		exc_mgt.handle_exceptions(self)
+
+
+		# Go
+		for doctor in self.doctor_line:
+			doctor.update_daily()
+
+
+		print()
+	# update_daily
 
 
 
@@ -127,226 +365,6 @@ class Management(models.Model):
 		)
 
 
-
-
-
-# ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
-
-
-# ----------------------------------------------------------- Update Fast ---------------------------------------------
-	@api.multi
-	def update_fast(self):
-		"""
-		Update Button
-		"""
-		#print()
-		#print('Pl - Update Fast')
-
-
-		# Handle Exceptions
-		exc_mgt.handle_exceptions(self)
-
-
-		# Go
-		t0 = timer()
-		self.update_sales_fast()
-		self.update_year()
-		t1 = timer()
-		self.delta_fast = t1 - t0
-		#print self.delta_fast
-		#print
-
-	# update_fast
-
-
-
-
-# ----------------------------------------------------------- Update Patients -------------------------
-	# Update Patients
-	@api.multi
-	def update_patients(self):
-		"""
-		Update Patients. 
-		"""
-		print()
-		#print('Pl - Update Patients')
-		print('Update Patients')
-
-
-		# Handle Exceptions
-		exc_mgt.handle_exceptions(self)
-
-
-		# Go
-		orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
-		print(orders)
-		print(count)
-
-		# Create
-		for order in orders:
-
-			patient = order.patient
-			patient_id = order.patient.id
-
-
-			#if patient.name not in ['REVILLA RONDON JOSE JAVIER']:
-			
-			if self.mode in ['test']  	or  	self.mode in ['normal'] and patient.name not in ['REVILLA RONDON JOSE JAVIER']:
-
-
-				print(patient)
-				print(patient_id)
-
-				# Count
-				pat_count = self.env['openhealth.management.patient.line'].search_count([
-																						('patient', '=', patient_id),
-																						('management_id', '=', self.id),
-																				],
-																					#order='x_serial_nr asc',
-																					#limit=1,
-																				)
-				print(pat_count)
-
-
-				if pat_count in [0]:
-
-					#self.report_sale_product = self.env['openhealth.report.sale.product'].create({
-					patient_line = self.patient_line.create({
-																'patient': patient_id,
-																'management_id': self.id,
-						})
-
-		# Update
-		for patient_line in self.patient_line:
-			patient_line.update()
-
-	# update_patients
-
-
-
-# ----------------------------------------------------------- Update Doctors ----------------------
-	@api.multi
-	def update_doctors(self):
-		"""
-		Pl - Update Doctors
-		"""
-		print()
-		#print('Update Doctors')
-		print('Pl - Update Doctors')
-
-
-		# Handle Exceptions
-		exc_mgt.handle_exceptions(self)
-
-
-		# Go
-		t0 = timer()
-		self.pl_update_sales_by_doctor()
-		#self.update_stats()
-		self.pl_update_stats()
-		t1 = timer()
-		self.delta_doctor = t1 - t0
-
-	# update_doctors
-
-
-
-# ----------------------------------------------------------- Update Prod -------------------------
-
-	# Update Productivity
-	@api.multi
-	def update_productivity(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		#print('Pl - Update Productivity')
-		print('Update Productivity')
-		
-
-		# Handle Exceptions
-		exc_mgt.handle_exceptions(self)
-
-
-		# Go
-		self.create_days()
-		self.update_day_cumulative()
-		self.update_day_avg()
-
-	# update_productivity
-
-
-# ----------------------------------------------------------- Update Daily -------------------------
-	# Update Daily
-	@api.multi
-	def update_daily(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('Update daily')
-
-
-		# Handle Exceptions
-		exc_mgt.handle_exceptions(self)
-
-
-		# Go
-		for doctor in self.doctor_line:
-			doctor.update_daily()
-
-	# update_daily
-
-
-
-# ----------------------------------------------------------- Check Statistics -----------------
-
-	@api.multi
-	def check_stats(self):
-		"""
-		Check Stats
-		"""
-		print()
-		print('Check Stats')
-
-
-		# Handle Exceptions
-		exc_mgt.handle_exceptions(self)
-
-
-		# Go
-		print(self.statistics)
-		print(self.statistics.name)
-		#self.statistics.print()
-		self.statistics.print_short()
-
-	# check_stats
-
-
-
-# ----------------------------------------------------------- Validate Internal -------------------------
-	# Validate
-	@api.multi
-	def validate(self):
-		"""
-		Validates Data Coherency - internal and external. 
-		"""
-		print()
-		#print('Pl - Validate')
-		print('Validate')
-
-
-		# Handle Exceptions
-		exc_mgt.handle_exceptions(self)
-
-
-		# Go
-		self.pl_validate_internal()
-		self.pl_validate_external()
-	# validate
-
-
-
 # ----------------------------------------------------------- Reset -------------------------------
 	# Reset
 	@api.multi
@@ -357,10 +375,8 @@ class Management(models.Model):
 		#print()
 		print('Reset')
 
-
 		# Handle Exceptions
 		exc_mgt.handle_exceptions(self)
-
 
 		# Go
 		self.reset_macro()
@@ -378,7 +394,7 @@ class Management(models.Model):
 		Update Sales - Fast
 		"""
 		print()
-		print('Update Sales Fast')
+		print('X - Update Sales Fast')
 
 
 		# Init
@@ -477,7 +493,7 @@ class Management(models.Model):
 		Update Year
 		"""
 		print()
-		print('Pl - Update Year')
+		print('X - Update Year')
 
 		# Mgts
 		mgts = self.env['openhealth.management'].search([
@@ -597,8 +613,7 @@ class Management(models.Model):
 		high level support for doing this and that.
 		"""
 		print()
-		#print('Pl - Create Days')
-		print('Create Days')
+		print('X - Create Days')
 
 
 		# Clean
@@ -607,10 +622,11 @@ class Management(models.Model):
 
 		# Get Holidays
 		days_inactive = self.configurator.get_inactive_days()					# Respects the LOD !
-		print()
-		print('Holidays')
-		print(days_inactive)
-		print()
+		#print()
+		#print('Holidays')
+		#print(days_inactive)
+		#print()
+
 
 		#days_inactive = []
 		#if self.configurator.name not in [False]:								# Train Wreck of size 2 - Violates the LOD
@@ -628,7 +644,7 @@ class Management(models.Model):
 		date_end_dt = datetime.datetime.strptime(self.date_end, date_format)
 		date_begin_dt = datetime.datetime.strptime(self.date_begin, date_format)
 		delta = date_end_dt - date_begin_dt
-		print(delta)
+		#print(delta)
 
 
 		# Create
@@ -638,10 +654,7 @@ class Management(models.Model):
 
 			date_dt = date_begin_dt + datetime.timedelta(i)
 			weekday = date_dt.weekday()
-
-			#weekday_str = ord_vars._dic_weekday[weekday]
-			weekday_str = pl_ord_vars._dic_weekday[weekday]
-			
+			weekday_str = pl_ord_vars._dic_weekday[weekday]			
 			#print(date_dt, weekday)
 
 
@@ -656,11 +669,7 @@ class Management(models.Model):
 			if weekday in [0, 1, 2, 3, 4, 5]:
 
 
-				#date_date = date_dt.split()[0]
-				#date_date = date_dt.day
-				#date_date = date_dt.date
-				date_s = date_dt.strftime(date_format)
-				
+				date_s = date_dt.strftime(date_format)				
 				#print(date_s)
 
 
@@ -679,12 +688,12 @@ class Management(models.Model):
 					day.update_amount()		# Important !
 
 					#print(day)
-
 					#print(date_dt, weekday, weekday_str)
 					#print(date_dt)
 					#print(date_s)
 			else:
-				print('Sunday, not counted')
+				#print('Sunday, not counted')
+				pass
 
 	# create_days
 
@@ -947,12 +956,6 @@ class Management(models.Model):
 
 
 
-
-
-
-
-
-
 # ----------------------------------------------------------- Update Stats ------------------------
 
 	#def update_stats(self):
@@ -960,8 +963,8 @@ class Management(models.Model):
 		"""
 		Update Stats - Doctors, Families, Sub-families
 		"""
-		#print()
-		#print('Pl - Update Stats')
+		print()
+		print('X - Update Stats')
 
 
 		# Using collections - More Abstract !
@@ -1009,10 +1012,9 @@ class Management(models.Model):
 
 
 			# Doctor Stats
-			print('mark 0')
-			#doctor.stats()
+			#print('mark 0')
 			doctor.pl_stats()
-			print('mark 1')
+			#print('mark 1')
 
 
 
@@ -1072,7 +1074,7 @@ class Management(models.Model):
 		Pl - Update Sales
 		"""
 		print()
-		print('Pl - Update Sales - By Doctor')
+		print('X - Update Sales - By Doctor')
 
 
 		# Clean - Important 
@@ -1146,7 +1148,7 @@ class Management(models.Model):
 # ----------------------------------------------------------- Create Doctor Data ------------
 	def create_doctor_data(self, doctor_name, orders):
 		print()
-		print('Pl - Create Doctor Data')
+		print('X - Create Doctor Data')
 
 
 		# Init Loop
@@ -1203,7 +1205,7 @@ class Management(models.Model):
 				# State equal to Sale
 				if order.state in ['sale']:  	# Sale - Do Line Analysis
 
-					print('SALE')
+					#print('SALE')
 
 					# Order Lines
 					for line in order.order_line:
@@ -1269,7 +1271,7 @@ class Management(models.Model):
 				# State equal to Credit Note
 				elif order.state in ['credit_note']:
 
-					print('CREDIT NOTE')
+					#print('CREDIT NOTE')
 
 
 					# Order Lines
@@ -1354,7 +1356,7 @@ class Management(models.Model):
 		Update Year All
 		"""
 		print()
-		print('Pl - Update Max')
+		print('X - Update Max')
 
 		# Clear
 		mgts = self.env['openhealth.management'].search([
@@ -1401,8 +1403,9 @@ class Management(models.Model):
 		"""
 		Update Year All
 		"""
-		#print()
-		#print('Pl - Update Year All')
+		print()
+		print('X - Update Year All')
+
 
 		# Mgts
 		mgts = self.env['openhealth.management'].search([

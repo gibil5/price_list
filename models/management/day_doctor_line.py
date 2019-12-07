@@ -3,13 +3,10 @@
 	Day Doctor Line
 
 	Created: 			25 Jan 2019
-	Last up: 			25 Jan 2019
+	Last up: 			 7 Dec 2019
 """
 from __future__ import print_function
-
-#import datetime
 from openerp import models, fields, api
-#from openerp.addons.openhealth.models.order import ord_vars
 
 class DayDoctorLine(models.Model):
 	"""
@@ -22,7 +19,6 @@ class DayDoctorLine(models.Model):
 
 # ----------------------------------------------------------- 2019 ------------------------------
 	@api.multi
-	#def update_macro(self):
 	def pl_update_macro(self):
 		"""
 		high level support for doing this and that.

@@ -11,8 +11,8 @@ def handle_exceptions(self):
 	"""
 	Handle Exceptions
 	"""
-	print()
-	print('MGT - Handle Exceptions')
+	#print()
+	#print('MGT - Handle Exceptions')
 
 
 	# Configurator not existant
