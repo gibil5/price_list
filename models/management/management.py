@@ -3,7 +3,7 @@
 	Management Report
 
 	Created: 			28 May 2018
-	Last updated: 		29 Aug 2019
+	Last updated: 		 7 Nov 2019
 
 	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
 	  without having to know its Implementation. 
@@ -40,6 +40,79 @@ class Management(models.Model):
 	Should NOT contain Data Model
 	"""
 	_inherit = 'openhealth.management'
+
+
+
+
+# ----------------------------------------------------- Django Interface --------------------------
+
+	@api.multi
+	def get_name(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get name')
+		return self.name
+
+
+	@api.multi
+	def get_date(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_begin
+
+
+	@api.multi
+	def get_date_update(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.write_date
+
+
+
+
+	@api.multi
+	def get_total(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get total')
+
+		if self.total_amount not in [False]:
+			return self.total_amount
+
+		else:
+			return 0
+
+
+	@api.multi
+	def get_state(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get state')
+		return self.state
+
+
+	@api.multi
+	def get_configurator(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get state')
+		return self.configurator.name
+
+
 
 
 

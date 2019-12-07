@@ -5,7 +5,7 @@
 		order.py
 
 		Created: 			26 Aug 2016
-		Last updated: 		29 Aug 2019
+		Last updated: 		 7 Dec 2019
 """
 from __future__ import print_function
 import datetime
@@ -13,10 +13,7 @@ from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
 from . import exc_ord
-
 from openerp.addons.openhealth.models.order import ord_funcs
-
-
 
 class sale_order(models.Model):
 	"""
@@ -25,6 +22,87 @@ class sale_order(models.Model):
 	Should only have functions.
 	"""
 	_inherit = 'sale.order'
+
+
+
+
+
+# ----------------------------------------------------- Django Interface --------------------------
+
+	@api.multi
+	def get_name(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get name')
+		return self.name
+
+
+	@api.multi
+	def get_date(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_order
+
+
+	@api.multi
+	def get_state(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get state')
+		return self.state
+
+
+
+
+
+	@api.multi
+	def get_total(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get total')
+		return self.amount_total
+
+
+
+	@api.multi
+	def get_patient(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get patient')
+		return self.patient.name
+
+
+	@api.multi
+	def get_type(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get type')
+		return self.x_type
+
+
+
+
+	@api.multi
+	def get_serial_number(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get serial_number')
+		return self.x_serial_nr
 
 
 
