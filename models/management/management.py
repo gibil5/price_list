@@ -256,15 +256,19 @@ class Management(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Update Daily -------------------------
 	# Update Daily
 	@api.multi
 	def update_daily(self):
 		"""
-		high level support for doing this and that.
+		Update daily sales for each doctor
+
+		self.doctor_line
+			'openhealth.management.doctor.line',
 		"""
 		print()
-		print('X - Update daily')
+		print('X - Update Daily Sales')
 
 
 		# Handle Exceptions
@@ -373,7 +377,7 @@ class Management(models.Model):
 		Reset Button.
 		"""
 		#print()
-		print('Reset')
+		print('X - Reset')
 
 		# Handle Exceptions
 		exc_mgt.handle_exceptions(self)
@@ -531,75 +535,26 @@ class Management(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Validate external -------------------------
+# ----------------------------------------------------------- Validate Internal - Dep -------------------------
 	# Validate
 	@api.multi
-	def pl_validate_external(self):
+	def validate(self):
 		"""
-		Validates Data Coherency - External. 
-		"""
-		print()
-		print('Pl - Validate External')
-
-		if self.report_sale_product.name in [False]:
-
-			date_begin = self.date_begin
-
-			#rsp = self.report_sale_product.create({
-			self.report_sale_product = self.env['openhealth.report.sale.product'].create({
-																							'name': date_begin,
-																							'management_id': self.id,
-				})
-
-		rsp = self.report_sale_product
-		print(rsp)
-		print(rsp.name)
-
-		rsp.update()
-
-		self.rsp_count = rsp.total_qty
-		self.rsp_total = rsp.total
-
-		self.rsp_count_delta = self.nr_products - self.rsp_count
-		self.rsp_total_delta = self.amo_products - self.rsp_total
-
-
-
-# ----------------------------------------------------------- Validate Internal -------------------------
-	# Validate
-	@api.multi
-	def pl_validate_internal(self):
-		"""
-		Validates Data Coherency - internal. 
+		Validates Data Coherency - internal and external. 
 		"""
 		print()
-		print('Pl - Validate Internal')
-
-		# Families
-		self.per_amo_families = self.per_amo_products + self.per_amo_consultations + self.per_amo_procedures + self.per_amo_other + self.per_amo_credit_notes
-
-		# Sub Families
-		self.per_amo_subfamilies = self.per_amo_sub_con_med + self.per_amo_sub_con_gyn + self.per_amo_sub_con_cha + \
-									self.per_amo_co2 + self.per_amo_exc + self.per_amo_quick + self.per_amo_ipl + self.per_amo_ndyag + \
-									self.per_amo_medical + self.per_amo_cosmetology + \
-									self.per_amo_echo + self.per_amo_gyn + self.per_amo_prom + \
-									self.per_amo_topical + self.per_amo_card + self.per_amo_kit + \
-									self.per_amo_credit_notes
+		print('X - Validate')
 
 
-		#self.per_amo_subfamilies_products = self.per_amo_topical + self.per_amo_card + self.per_amo_kit
-
-		#self.per_amo_subfamilies_procedures = self.per_amo_co2 + self.per_amo_exc + self.per_amo_quick + self.per_amo_ipl + self.per_amo_ndyag + \
-		#							self.per_amo_medical + self.per_amo_cosmetology + \
-		#							self.per_amo_echo + self.per_amo_gyn + self.per_amo_prom 
+		# Handle Exceptions
+		exc_mgt.handle_exceptions(self)
 
 
+		# Go
+		#self.pl_validate_internal()  	# Dep !
+		#self.pl_validate_external()  	# Dep !
 
-
-
-
-
+	# validate
 
 
 
@@ -607,7 +562,6 @@ class Management(models.Model):
 # ----------------------------------------------------------- Create Days -------------------------
 	# Create Days
 	@api.multi
-	#def pl_create_days(self):
 	def create_days(self):
 		"""
 		high level support for doing this and that.
@@ -626,13 +580,6 @@ class Management(models.Model):
 		#print('Holidays')
 		#print(days_inactive)
 		#print()
-
-
-		#days_inactive = []
-		#if self.configurator.name not in [False]:								# Train Wreck of size 2 - Violates the LOD
-			#for day in self.configurator.day_line:								
-			#	if day.holiday:
-			#		days_inactive.append(day.date)
 
 
 

@@ -232,9 +232,10 @@ class DoctorLine(models.Model):
 		high level support for doing this and that.
 		"""
 		print()
-		print('Update Daily')
+		print('X - Update Daily')
 
-		print(self.day_line)
+		#print(self.day_line)
+
 		self.day_line.unlink()
 
 		date_array = []

@@ -66,8 +66,8 @@ class PatientLine(models.Model):
 		"""
 		Update 
 		"""
-		#print()
-		#print('Update')
+		print()
+		print('X - Update')
 
 
 		self.sex = self.patient.sex
