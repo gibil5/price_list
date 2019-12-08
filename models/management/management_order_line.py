@@ -14,6 +14,18 @@ class management_order_line(models.Model):
 	_inherit = 'openhealth.management.order.line'
 	
 
+
+# ----------------------------------------------------------- Handles Nex -----------------------------
+	
+	# Doctor Daily
+	doctor_daily_id = fields.Many2one(			
+			'doctor.daily',
+			ondelete='cascade', 			
+		)
+
+
+
+
 # ----------------------------------------------------------- 2019 !!! ------------------------------------------------------
 	# Family 
 	family = fields.Selection(

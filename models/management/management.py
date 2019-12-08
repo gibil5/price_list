@@ -3,7 +3,7 @@
 	Management Report
 
 	Created: 			28 May 2018
-	Last updated: 		 7 Dec 2019
+	Last updated: 		 8 Dec 2019
 """
 
 from __future__ import print_function
@@ -19,18 +19,130 @@ from . import stats
 
 from . import exc_mgt
 
+from . import prod_funcs
+
+
 class Management(models.Model):
 	"""
-	Management Report. 
-	Analyzes Sales and calculates several indicators like:
-		- Doctor performance, 
-		- Productivity, 
-		- Daily Sales, by Doctor. 
+	Contains only functions. Not the data model. 
 
-	Extends Business Rules. 
-	Should NOT contain Data Model
+	Management Report. 
+	Analyzes Sales and calculates several indicators like: Doctor performance,  Productivity, Daily Sales, by Doctor. 
+	Extends Business Rules. Should NOT contain Data Model
 	"""
 	_inherit = 'openhealth.management'
+
+
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# 																Productivity                       
+# ---------------------------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------- Update Prod -------------------------
+
+	# 	# For Update Productivity
+	#day_line = fields.One2many(
+	#		'openhealth.management.day.line',
+	#		'management_id',
+	#	)
+
+
+
+	# For Update Productivity
+	productivity_day = fields.One2many(
+
+			'productivity.day',
+
+			'management_id',
+		)
+
+
+
+	# Update Productivity
+	@api.multi
+	def update_productivity(self):
+		"""
+		Update productivity
+		"""
+		print()
+		print('X - Update Productivity')
+		
+
+		# Handle Exceptions - Dep !
+		#exc_mgt.handle_exceptions(self)
+
+
+		# Go
+		prod_funcs.create_days(self)
+
+		
+		# Update cumulative and average
+		prod_funcs.pl_update_day_cumulative(self)
+		prod_funcs.pl_update_day_avg(self)
+
+		print()
+	# update_productivity
+
+
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# 																Daily                       
+# ---------------------------------------------------------------------------------------------------------------------
+
+
+# ----------------------------------------------------------- Update Daily -------------------------
+
+	# Doctor
+	#doctor_line = fields.One2many(
+	#		'openhealth.management.doctor.line',
+	#		'management_id',
+	#	)
+
+	
+	# Doctor Day
+	doctor_daily = fields.One2many(
+	
+			'doctor.daily',
+	
+			'management_id',
+		)
+
+
+
+	# Update Daily
+	@api.multi
+	def update_daily(self):
+		"""
+		Update daily sales for each doctor
+
+		self.doctor_line
+			'openhealth.management.doctor.line',
+		"""
+		print()
+		print('X - Update Daily Sales')
+
+
+		# Handle Exceptions - Dep !
+		#exc_mgt.handle_exceptions(self)
+
+
+		# For each doctor line
+		for doctor in self.doctor_line:
+			print(doctor.name)
+			
+			#doctor.update_daily() 	# Here !
+			doctor.update_daily(self.id) 	# Here !
+
+
+		print()
+
+	# update_daily
+
+
+
+
 
 
 
@@ -146,9 +258,12 @@ class Management(models.Model):
 
 		# Go
 		t0 = timer()
+
 		self.pl_update_sales_by_doctor()
+
 		#self.update_stats()
 		self.pl_update_stats()
+
 		t1 = timer()
 		self.delta_doctor = t1 - t0
 
@@ -163,125 +278,9 @@ class Management(models.Model):
 
 
 
-# -------------------------------------------------------------------------------------------------
-# 																Productivity                       
-# -------------------------------------------------------------------------------------------------
-
-# ----------------------------------------------------------- Update Prod -------------------------
-
-	# Update Productivity
-	@api.multi
-	def update_productivity(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('X - Update Productivity')
-		
-
-		# Handle Exceptions
-		exc_mgt.handle_exceptions(self)
-
-
-		# Go
-		self.create_days()
-
-		#self.update_day_cumulative()
-		#self.update_day_avg()
-		self.pl_update_day_cumulative()
-		self.pl_update_day_avg()
-
-
-		print()
-	# update_productivity
 
 
 
-# ----------------------------------------------------------- Update Cumulative -------------------
-	# Update Cumulative
-	@api.multi
-	#def update_day_cumulative(self):
-	def pl_update_day_cumulative(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('X - Update - Cumulative')
-
-		# Init
-		amount_total = 0
-		duration_total = 0
-
-		# Clean
-		#for day in self.day_line:
-		#	if day.amount in [0]:
-				#day.duration = 0
-		#		day.unlink()
-
-		# Update Cumulative and Nr Days
-		for day in self.day_line:
-			#print(day.name)
-			#print(day.date)
-			amount_total = amount_total  + day.amount
-			day.cumulative = amount_total
-			duration_total = duration_total + day.duration
-			day.nr_days = duration_total
-
-		# Update Nr Days Total
-		for day in self.day_line:
-			day.nr_days_total = duration_total
-
-	# update_day_cumulative
-
-
-
-# ----------------------------------------------------------- Update Averages ---------------------
-	# Update Averages
-	@api.multi
-	#def update_day_avg(self):
-	def pl_update_day_avg(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('X - Update - Average')
-
-		# Update
-		for day in self.day_line:
-			#print(day.date)
-			day.update_avg()
-			day.update_projection()
-
-	# update_day_avg
-
-
-
-
-# ----------------------------------------------------------- Update Daily -------------------------
-	# Update Daily
-	@api.multi
-	def update_daily(self):
-		"""
-		Update daily sales for each doctor
-
-		self.doctor_line
-			'openhealth.management.doctor.line',
-		"""
-		print()
-		print('X - Update Daily Sales')
-
-
-		# Handle Exceptions
-		exc_mgt.handle_exceptions(self)
-
-
-		# Go
-		for doctor in self.doctor_line:
-			doctor.update_daily()
-
-
-		print()
-	# update_daily
 
 
 
@@ -369,23 +368,6 @@ class Management(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Reset -------------------------------
-	# Reset
-	@api.multi
-	def reset(self):
-		"""
-		Reset Button.
-		"""
-		#print()
-		print('X - Reset')
-
-		# Handle Exceptions
-		exc_mgt.handle_exceptions(self)
-
-		# Go
-		self.reset_macro()
-		self.reset_micro()
-	# reset
 
 
 
@@ -559,90 +541,6 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Days -------------------------
-	# Create Days
-	@api.multi
-	def create_days(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('X - Create Days')
-
-
-		# Clean
-		self.day_line.unlink()
-
-
-		# Get Holidays
-		days_inactive = self.configurator.get_inactive_days()					# Respects the LOD !
-		#print()
-		#print('Holidays')
-		#print(days_inactive)
-		#print()
-
-
-
-
-
-		# Create
-		#date_format = "%Y-%m-%d %H:%M:%S"
-		date_format = "%Y-%m-%d"
-		date_end_dt = datetime.datetime.strptime(self.date_end, date_format)
-		date_begin_dt = datetime.datetime.strptime(self.date_begin, date_format)
-		delta = date_end_dt - date_begin_dt
-		#print(delta)
-
-
-		# Create
-		for i in range(delta.days + 1):
-			
-			#print(i)
-
-			date_dt = date_begin_dt + datetime.timedelta(i)
-			weekday = date_dt.weekday()
-			weekday_str = pl_ord_vars._dic_weekday[weekday]			
-			#print(date_dt, weekday)
-
-
-			# Duration
-			if weekday in [5]:
-				duration = 0.5
-			else:
-				duration = 1
-
-
-			# Not Sunday
-			if weekday in [0, 1, 2, 3, 4, 5]:
-
-
-				date_s = date_dt.strftime(date_format)				
-				#print(date_s)
-
-
-				if date_s not in days_inactive:
-
-					# Create
-					day = self.day_line.create({
-												'date': date_dt,
-												'name': weekday_str,
-												'weekday': weekday_str,
-												'duration': duration,
-												'management_id': self.id,
-									})
-
-
-					day.update_amount()		# Important !
-
-					#print(day)
-					#print(date_dt, weekday, weekday_str)
-					#print(date_dt)
-					#print(date_s)
-			else:
-				#print('Sunday, not counted')
-				pass
-
-	# create_days
 
 
 
@@ -909,6 +807,8 @@ class Management(models.Model):
 	def pl_update_stats(self):
 		"""
 		Update Stats - Doctors, Families, Sub-families
+		Used by
+			update_doctors
 		"""
 		print()
 		print('X - Update Stats')
@@ -959,9 +859,9 @@ class Management(models.Model):
 
 
 			# Doctor Stats
-			#print('mark 0')
+			# openhealth.management.doctor.line
 			doctor.pl_stats()
-			#print('mark 1')
+
 
 
 
@@ -1059,12 +959,12 @@ class Management(models.Model):
 
 
 		doctors = doctors_inactive + doctors_active
-		#print(doctors)
+		print(doctors)
 
 
 		# Create Sales - By Doctor
 		for doctor in doctors:
-			#print(doctor.name)
+			print(doctor.name)
 			#print(doctor.active)
 
 			# Clear
@@ -1382,20 +1282,43 @@ class Management(models.Model):
 
 
 
+# ----------------------------------------------------------- Reset -------------------------------
+	# Reset
+	@api.multi
+	def reset(self):
+		"""
+		Reset Button.
+		"""
+		#print()
+		print('X - Reset')
+
+		# Handle Exceptions
+		#exc_mgt.handle_exceptions(self)
+
+		# Go
+		self.reset_macro()
+
+		#self.reset_micro()
+		self.reset_relationals()
+	# reset
+
+
+
+
 # ----------------------------------------------------------- Reset -------------------------
 	# Reset Macros
 	def reset_macro(self):
 		"""
-		high level support for doing this and that.
+		Reset Macro
+		All self fields
 		"""
-		#print
-		#print 'Reset Macros'
+		print()
+		print('X - Reset Macros')
 
 
 		# Deltas
 		self.delta_fast = 0
 		self.delta_doctor = 0
-
 
 
 		# Relational
@@ -1527,3 +1450,40 @@ class Management(models.Model):
 		# Ratios
 		self.ratio_pro_con = 0
 	# reset_macro
+
+
+
+
+
+	# Reset Relationals
+	def reset_relationals(self):
+		"""
+		Reset Micro
+
+		All Relational
+			Doctors, Families, Sub-families
+		"""
+		print()
+		print('X - Reset Micros')
+		
+
+		# Productivity Days
+		self.productivity_day.unlink()
+
+
+		# Order Lines
+		self.order_line.unlink()
+
+
+		# Doctor lines
+		self.doctor_line.unlink()
+
+
+		# Family lines
+		self.family_line.unlink()
+		self.sub_family_line.unlink()
+
+	# reset_micro
+
+
+

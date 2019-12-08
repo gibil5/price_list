@@ -16,7 +16,7 @@ from openerp.addons.openhealth.models.order import ord_vars
 
 class DayDoctorLine(models.Model):
 	"""
-	high level support for doing this and that.
+	Dep - Doctor Daily
 	"""
 
 	_inherit = 'openhealth.management.day.doctor.line'
@@ -102,6 +102,8 @@ class DayDoctorLine(models.Model):
 		self.nr_consultations = 0
 		self.nr_procedures = 0
 		self.ratio_pro_con = 0
+
+
 
 # ----------------------------------------------------------- Update ------------------------------
 	def update(self):
