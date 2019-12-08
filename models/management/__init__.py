@@ -5,18 +5,29 @@ from . import management
 
 
 # Productivity
-from . import productivity_day
+from productivity import *
 
 
 # Doctor Daily
-from . import doctor_daily
+from doctor_daily import *
+
+
 
 
 
 #from . import doctor_line
-from . import management_doctor_line
+#from . import management_doctor_line
+from doctor import *
+
+
 from . import management_order_line
+
 from . import family_line
-from . import day_doctor_line
-from . import mgt_patient_line
+
+#from . import day_doctor_line  # Dep ?
+
+
+# Patient
+from patient import *
+#from . import mgt_patient_line
 
