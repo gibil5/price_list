@@ -2,6 +2,8 @@
 """
 	Management Report
 
+	Only functions. Not the data model. 
+
 	Created: 			28 May 2018
 	Last updated: 		 8 Dec 2019
 """
@@ -11,14 +13,14 @@ from timeit import default_timer as timer
 import collections
 import datetime
 from openerp import models, fields, api
+
+# Lib
 from . import pl_mgt_vars
 from . import pl_ord_vars
 from . import mgt_funcs
 from . import mgt_line_funcs
 from . import stats
-
 from . import exc_mgt
-
 from . import prod_funcs
 
 
@@ -177,6 +179,13 @@ class Management(models.Model):
 
 
 
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# 																Patients                       
+# ---------------------------------------------------------------------------------------------------------------------
+
+
 # ----------------------------------------------------------- Update Patients -------------------------
 	# Update Patients
 	@api.multi
@@ -242,6 +251,11 @@ class Management(models.Model):
 
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+# 																Doctors                       
+# ---------------------------------------------------------------------------------------------------------------------
+
+
 # ----------------------------------------------------------- Update Doctors ----------------------
 	@api.multi
 	def update_doctors(self):
@@ -270,15 +284,6 @@ class Management(models.Model):
 
 		print()
 	# update_doctors
-
-
-
-
-
-
-
-
-
 
 
 
