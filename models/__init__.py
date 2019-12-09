@@ -83,7 +83,8 @@ from patient import *
 
 
 
-from . import configurator_emr
+from configurator import *
+#from . import configurator_emr
 
 
 

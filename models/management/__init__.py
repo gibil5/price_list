@@ -13,21 +13,28 @@ from doctor_daily import *
 
 
 
+# Order
+#from order import *
 
 
-#from . import doctor_line
-#from . import management_doctor_line
+
+# Doctor
 from doctor import *
 
 
-from . import management_order_line
 
-from . import family_line
 
-#from . import day_doctor_line  # Dep ?
+# Family
+from family import *
 
 
 # Patient
 from patient import *
-#from . import mgt_patient_line
 
+
+from . import management_order_line
+from . import family_line
+from . import subfamily_line
+
+
+#from . import day_doctor_line  # Dep ?

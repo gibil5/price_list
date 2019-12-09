@@ -2,15 +2,14 @@
 """
 	Doctor Line
 
+	Only functions. Not the data model. 
+
 	Created: 			18 May 2018
 	Last up: 			 8 Dec 2019
 """
 from __future__ import print_function
-
 import collections
-
 from openerp import models, fields, api
-
 
 class DoctorLine(models.Model):
 	"""

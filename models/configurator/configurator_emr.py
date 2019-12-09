@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Configurator - EMR
+	Configurator - EMR
 
-Created: 			25 Jan 2019
-Last updated: 		29 Aug 2019
+	Only functions. Not the data model. 
+
+	Created: 			25 Jan 2019
+	Last updated: 		 9 Dec 2019
 """
+
 from __future__ import print_function
+
 from openerp import models, fields, api
 
 class ConfiguratorEmr(models.Model):

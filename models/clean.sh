@@ -10,6 +10,8 @@ mv management/productivity/*.pyc ./pyc/.
 mv management/doctor_daily/*.pyc ./pyc/.
 mv management/doctor/*.pyc ./pyc/.
 mv management/patient/*.pyc ./pyc/.
+mv management/order/*.pyc ./pyc/.
+mv management/family/*.pyc ./pyc/.
 
 
 mv product/*.pyc ./pyc/.
