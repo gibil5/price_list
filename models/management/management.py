@@ -24,6 +24,7 @@ from . import exc_mgt
 from . import prod_funcs
 
 
+
 class Management(models.Model):
 	"""
 	Contains only functions. Not the data model. 
