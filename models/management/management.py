@@ -5,12 +5,12 @@
 	Only functions. Not the data model. 
 
 	Created: 			28 May 2018
-	Last updated: 		 8 Dec 2019
+	Last updated: 		 9 Dec 2019
 """
 
 from __future__ import print_function
 from timeit import default_timer as timer
-import collections
+#import collections
 import datetime
 from openerp import models, fields, api
 
@@ -22,6 +22,8 @@ from lib import mgt_line_funcs
 from lib import prod_funcs
 from lib import exc_mgt
 from lib import stats
+
+from . import stax
 
 class Management(models.Model):
 	"""
@@ -284,10 +286,15 @@ class Management(models.Model):
 		# Go
 		t0 = timer()
 
+
+		# Sales by Doctor
 		self.pl_update_sales_by_doctor()
 
+
+		# Stats
 		#self.update_stats()
-		self.pl_update_stats()
+		stax.update_stats(self)
+
 
 		t1 = timer()
 		self.delta_doctor = t1 - t0
@@ -549,15 +556,16 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Validate Internal - Dep -------------------------
+# ----------------------------------------------------------- Validate Internal -------------------------
 	# Validate
 	@api.multi
 	def validate(self):
 		"""
-		Validates Data Coherency - internal and external. 
+		Validates the content. 
+		For internal Data Coherency - internal and external. 
 		"""
 		print()
-		print('X - Validate')
+		print('X - Validate the content !')
 
 
 		# Handle Exceptions
@@ -565,10 +573,72 @@ class Management(models.Model):
 
 
 		# Go
-		#self.pl_validate_internal()  	# Dep !
-		#self.pl_validate_external()  	# Dep !
+		self.pl_validate_internal()
+
+		self.pl_validate_external()  	# Dep !
 
 	# validate
+
+
+
+# ----------------------------------------------------------- Validate Internal -------------------------
+	# Validate
+	@api.multi
+	def pl_validate_internal(self):
+		"""
+		Validates Data Coherency - internal. 
+		"""
+		print()
+		print('X - Validate Internal')
+
+
+		# Families
+		self.per_amo_families = self.per_amo_products + self.per_amo_consultations + self.per_amo_procedures + self.per_amo_other + self.per_amo_credit_notes
+		print(self.per_amo_families)
+
+
+		# Sub Families
+		self.per_amo_subfamilies = self.per_amo_sub_con_med + self.per_amo_sub_con_gyn + self.per_amo_sub_con_cha + \
+									self.per_amo_co2 + self.per_amo_exc + self.per_amo_quick + self.per_amo_ipl + self.per_amo_ndyag + \
+									self.per_amo_medical + self.per_amo_cosmetology + \
+									self.per_amo_echo + self.per_amo_gyn + self.per_amo_prom + \
+									self.per_amo_topical + self.per_amo_card + self.per_amo_kit + \
+									self.per_amo_credit_notes
+		print(self.per_amo_subfamilies)
+
+
+
+# ----------------------------------------------------------- Validate external -------------------------
+	# Validate
+	@api.multi
+	def pl_validate_external(self):
+		"""
+		Validates Data Coherency - External. 
+		"""
+		print()
+		print('X - Validate External')
+
+		if self.report_sale_product.name in [False]:
+
+			date_begin = self.date_begin
+
+			#rsp = self.report_sale_product.create({
+			self.report_sale_product = self.env['openhealth.report.sale.product'].create({
+																							'name': date_begin,
+																							'management_id': self.id,
+				})
+
+		rsp = self.report_sale_product
+		print(rsp)
+		print(rsp.name)
+
+
+		rsp.update()
+
+		self.rsp_count = rsp.total_qty
+		self.rsp_total = rsp.total
+		self.rsp_count_delta = self.nr_products - self.rsp_count
+		self.rsp_total_delta = self.amo_products - self.rsp_total
 
 
 
@@ -833,115 +903,6 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Stats ------------------------
-
-	#def update_stats(self):
-	def pl_update_stats(self):
-		"""
-		Update Stats - Doctors, Families, Sub-families
-		Used by
-			update_doctors
-		"""
-		print()
-		print('X - Update Stats')
-
-
-		# Using collections - More Abstract !
-
-
-		# Clean
-		self.family_line.unlink()
-		self.sub_family_line.unlink()
-
-
-		# Init
-		family_arr = []
-		sub_family_arr = []
-		_h_amount = {}
-		_h_sub = {}
-
-
-	# All
-		# Loop - Doctors
-		for doctor in self.doctor_line:
-
-			# Loop - Order Lines
-			for line in doctor.order_line:
-
-				# Family
-				family_arr.append(line.family)
-
-				# Sub family
-				sub_family_arr.append(line.sub_family)
-
-				# Amount - Family
-				if line.family in _h_amount:
-					_h_amount[line.family] = _h_amount[line.family] + line.price_total
-
-				else:
-					_h_amount[line.family] = line.price_total
-
-				# Amount - Sub Family
-				if line.sub_family in _h_sub:
-					_h_sub[line.sub_family] = _h_sub[line.sub_family] + line.price_total
-
-				else:
-					_h_sub[line.sub_family] = line.price_total
-
-
-
-			# Doctor Stats
-			# openhealth.management.doctor.line
-			doctor.pl_stats()
-
-
-
-
-	# By Family
-
-		# Count
-		counter_family = collections.Counter(family_arr)
-
-		# Create
-		for key in counter_family:
-			count = counter_family[key]
-			amount = _h_amount[key]
-			family = self.family_line.create({
-													'name': key,
-													'x_count': count,
-													'amount': amount,
-													'management_id': self.id,
-												})
-			family.update()
-
-			# Percentage
-			if self.total_amount != 0:
-				family.per_amo = family.amount / self.total_amount
-
-
-
-	# Subfamily
-
-		# Count
-		counter_sub_family = collections.Counter(sub_family_arr)
-
-		# Create
-		for key in counter_sub_family:
-			count = counter_sub_family[key]
-			amount = _h_sub[key]
-			sub_family = self.sub_family_line.create({
-														'name': key,
-														'x_count': count,
-														'amount': amount,
-														'management_id': self.id,
-												})
-			sub_family.update()
-
-			# Percentage
-			if self.total_amount != 0:
-				sub_family.per_amo = sub_family.amount / self.total_amount
-
-	# update_stats
 
 
 
@@ -991,12 +952,12 @@ class Management(models.Model):
 
 
 		doctors = doctors_inactive + doctors_active
-		print(doctors)
+		#print(doctors)
 
 
-		# Create Sales - By Doctor
+		# Create Sales - By Doctor - All 
 		for doctor in doctors:
-			print(doctor.name)
+			#print(doctor.name)
 			#print(doctor.active)
 
 			# Clear
@@ -1081,6 +1042,8 @@ class Management(models.Model):
 
 
 
+
+
 				# State equal to Sale
 				if order.state in ['sale']:  	# Sale - Do Line Analysis
 
@@ -1093,6 +1056,15 @@ class Management(models.Model):
 
 						# Price
 						price_unit = line.price_unit						
+
+
+
+						# Families
+						family = line.product_id.get_family()
+
+						#sub_family = line.product_id.get_subfamily()
+						sub_family = line.product_id.get_subsubfamily()
+
 
 
 						# Create
@@ -1128,17 +1100,24 @@ class Management(models.Model):
 
 																# Price
 																'price_unit': 			price_unit,
+
+																'family': family, 
+																'sub_family': sub_family, 
 															})
 
 						#print(line)
 						#print(line.product_id)
 						#print(line.product_id.name)
 
-						if line.product_id.pl_price_list in ['2019']:
-							order_line.pl_update_fields()
 
-						elif line.product_id.pl_price_list in ['2018']:
-							order_line.update_fields()
+						# Update Families
+						#if line.product_id.pl_price_list in ['2019']:
+						#	order_line.pl_update_fields()
+
+						#elif line.product_id.pl_price_list in ['2018']:
+						#	order_line.update_fields()
+
+
 
 					# Line Analysis Sale - End
 

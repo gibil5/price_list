@@ -20,6 +20,148 @@ class ProductProduct(models.Model):
 
 
 
+# ----------------------------------------------------------- Get Family -------------------------
+
+	#@api.multi
+	def get_family(self):
+		"""
+		Get Product Family
+		Used by: 
+			Order
+			Management
+		"""
+
+		family = False
+
+
+		# 2019
+		if self.pl_price_list in ['2019']:
+
+			family = self.pl_family
+
+
+		# 2018
+		elif self.pl_price_list in ['2018']:
+
+			family = self.x_family
+
+
+		# No price list
+		else:
+			print('Error: This should not happen')
+
+
+		return family
+
+
+# ---------------------------------------------- Get Subfamily -----------------------------------
+
+	# Sub sub family
+	def get_subsubfamily(self):
+		"""
+		Used by 
+			Marketing. Create Sale Lines
+			Management
+		"""
+
+		_dic = {
+					# Consultation
+					'consultation':		'consultation',
+
+
+					# Laser
+					'co2':		'laser_co2',
+					'excilite':	'laser_excilite',
+					'm22':		'laser_m22',
+					'quick':	'laser_quick',
+
+
+					'medical':		'medical',
+
+					'botox':			'botox',
+					'cryosurgery':		'cryosurgery',
+					'hyaluronic_acid':	'hyaluronic_acid',
+
+					'infiltrations':		'infiltrations',
+					'mesotherapy':			'mesotherapy',
+					'plasma':				'plasma',
+
+
+					'REDUX':					'REDUX',
+					'redux':					'redux',
+
+					'sclerotherapy':			'sclerotherapy',
+					'vitamin_c_intravenous':	'vitamin_c_intravenous',
+
+
+
+
+					'cosmetology':		'cosmetology',
+					#'LASER TRIACTIVE + CARBOXITERAPIA':		'LASER TRIACTIVE + CARBOXITERAPIA',
+					#'CARBOXITERAPIA':		'CARBOXITERAPIA',
+					#'PUNTA DE DIAMANTES':		'PUNTA DE DIAMANTES',
+					'carboxytherapy': 	'carboxytherapy',
+					'diamond_tip':		'diamond_tip',					
+					'laser_triactive_carboxytherapy':		'laser_triactive_carboxytherapy',					
+
+
+
+					'promotion':		'promotion',
+					'echography':		'echography',
+					'gynecology':		'gynecology',
+
+
+					'commercial':		'commercial',
+					'chavarri':			'chavarri',
+
+					'other':			'other',
+					'commission':		'commission',
+
+
+
+					# 2018
+					#'laser_ipl': 		'laser_ipl',
+					#'laser_ndyag':		'laser_ndyag',
+
+					#'carboxytherapy': 	'carboxytherapy',
+					#'botulinum_toxin':	'botulinum_toxin',
+					#'diamond_tip':		'diamond_tip',					
+					#'criosurgery':		'criosurgery',
+					#'intravenous_vitamin':		'intravenous_vitamin',
+
+					#'x':		'x',
+
+					#'diamond_tip':		'diamond_tip',
+
+		}
+
+
+
+		# 2019
+		if self.pl_price_list in ['2019']:
+
+			if self.pl_subfamily in ['medical']:
+				subsubfamily = _dic[self.pl_treatment]
+
+			else:
+				subsubfamily = _dic[self.pl_subfamily]
+
+
+
+		# Other - 2018
+		else:
+			subsubfamily = self.x_treatment
+
+
+		return subsubfamily
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- IS Funcs -------------------------
 	def is_product(self):
 		"""
@@ -121,36 +263,7 @@ class ProductProduct(models.Model):
 
 
 
-# ----------------------------------------------------------- Getters -------------------------
 
-	#@api.multi
-	def get_family(self):
-		"""
-		Get Product Family
-		Used by: Order.
-		"""
-
-		family = False
-
-
-		# 2019
-		if self.pl_price_list in ['2019']:
-
-			family = self.pl_family
-
-
-		# 2018
-		elif self.pl_price_list in ['2018']:
-
-			family = self.x_family
-
-
-		# No price list
-		else:
-			print('Error: This should not happen')
-
-
-		return family
 
 
 
@@ -170,107 +283,6 @@ class ProductProduct(models.Model):
 		return is_current
 
 
-
-
-# ---------------------------------------------- Getters - Used by Marketing -----------------------------------
-
-	# Sub sub family
-	def get_subsubfamily(self):
-		"""
-		Contains all Business Logic
-		Do not access class variables directly
-		Used by Create Sale Lines
-		"""
-
-		_dic = {
-					'consultation':		'consultation',
-
-					'co2':		'laser_co2',
-					'excilite':	'laser_excilite',
-					'm22':		'laser_m22',
-					'quick':	'laser_quick',
-
-
-					'medical':		'medical',
-
-					'botox':			'botox',
-					'cryosurgery':		'cryosurgery',
-					'hyaluronic_acid':	'hyaluronic_acid',
-
-					'infiltrations':		'infiltrations',
-					'mesotherapy':			'mesotherapy',
-					'plasma':				'plasma',
-
-
-					'REDUX':					'REDUX',
-					'redux':					'redux',
-
-					'sclerotherapy':			'sclerotherapy',
-					'vitamin_c_intravenous':	'vitamin_c_intravenous',
-
-
-
-
-					'cosmetology':		'cosmetology',
-					#'LASER TRIACTIVE + CARBOXITERAPIA':		'LASER TRIACTIVE + CARBOXITERAPIA',
-					#'CARBOXITERAPIA':		'CARBOXITERAPIA',
-					#'PUNTA DE DIAMANTES':		'PUNTA DE DIAMANTES',
-					'carboxytherapy': 	'carboxytherapy',
-					'diamond_tip':		'diamond_tip',					
-					'laser_triactive_carboxytherapy':		'laser_triactive_carboxytherapy',					
-
-
-
-					'promotion':		'promotion',
-					'echography':		'echography',
-					'gynecology':		'gynecology',
-
-
-					'commercial':		'commercial',
-					'chavarri':			'chavarri',
-
-					'other':			'other',
-					'commission':		'commission',
-
-
-
-					# 2018
-					#'laser_ipl': 		'laser_ipl',
-					#'laser_ndyag':		'laser_ndyag',
-
-					#'carboxytherapy': 	'carboxytherapy',
-					#'botulinum_toxin':	'botulinum_toxin',
-					#'diamond_tip':		'diamond_tip',					
-					#'criosurgery':		'criosurgery',
-					#'intravenous_vitamin':		'intravenous_vitamin',
-
-					#'x':		'x',
-
-					#'diamond_tip':		'diamond_tip',
-
-		}
-
-
-		# 2019
-		if self.pl_price_list in ['2019']:
-
-			#if self.pl_subfamily in ['medical', 'cosmetology']:
-			if self.pl_subfamily in ['medical']:
-				#subsubfamily = _dic[self.pl_subfamily]
-				subsubfamily = _dic[self.pl_treatment]
-
-			else:
-				subsubfamily = _dic[self.pl_subfamily]
-
-
-
-		# Other
-		else:
-			subsubfamily = self.x_treatment
-
-
-
-		return subsubfamily
 
 
 

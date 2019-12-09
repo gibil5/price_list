@@ -159,7 +159,9 @@ class DoctorDaily(models.Model):
 										'doctor_daily_id': self.id,
 
 									})
-		line.update_fields()
+
+
+		#line.update_fields()  # Dep !
 
 
 										# Id Doc

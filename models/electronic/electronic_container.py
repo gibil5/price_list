@@ -3,7 +3,7 @@
 	Container
 
 	Created: 				30 Sep 2018
-	Last mod: 				 9 Aug 2019
+	Last mod: 				 9 Dec 2019
 """
 from __future__ import print_function
 import base64
@@ -23,29 +23,9 @@ from openerp.exceptions import Warning as UserError
 
 class ElectronicContainer(models.Model):
 	"""
-	high level support for doing this and that.
+	Account - Create TXT - Sunat compatible
 	"""
 	_inherit = 'openhealth.container'
-
-
-
-
-# ----------------------------------------------------------- Download --------------------------
-
-	@api.multi
-	def export_file( self ):
-	    return {
-		        'type' : 'ir.actions.act_url',
-		        
-		        #'url':   '/web/binary/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.excel_file.id ),
-		        #'url':   '/web/binary/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),
-		        #'url':   ' /Users/gibil/mssoft/ventas/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),
-			    #"url": "http://odoo.com/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),",
-			    "url": "http://localhost:8069/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),",
-
-		        'target': 'self',
-	        }
-
 
 
 
@@ -70,10 +50,12 @@ class ElectronicContainer(models.Model):
 		# Clean
 		self.electronic_order_ids.unlink()
 
+
 		# Init Dates
 		date_format = "%Y-%m-%d"
 		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + datetime.timedelta(hours=+5, minutes=0)
 		self.export_date = date_dt.strftime(date_format).replace('-', '_')
+
 
 		# Init
 		self.state_arr = 'sale,cancel,credit_note'
@@ -186,15 +168,20 @@ class ElectronicContainer(models.Model):
 		# Clean
 		self.electronic_order_ids.unlink()
 
+
 		# Init
 		if not self.several_dates:
 			self.export_date_end = self.export_date_begin
 
 
+
 		# Get Orders
+		print(self.state_arr)
+		print(self.type_arr)
 		orders, count = mgt_funcs.get_orders_filter(self, self.export_date_begin, self.export_date_end, self.state_arr, self.type_arr)
-		#print(orders)
-		#print(count)
+		print(orders)
+		print(count)
+
 
 
 		# Init
@@ -425,3 +412,22 @@ class ElectronicContainer(models.Model):
 	vspace = fields.Char(
 			' ',
 		)
+
+
+
+# ----------------------------------------------------------- Download --------------------------
+
+	@api.multi
+	def export_file( self ):
+	    return {
+		        'type' : 'ir.actions.act_url',
+		        
+		        #'url':   '/web/binary/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.excel_file.id ),
+		        #'url':   '/web/binary/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),
+		        #'url':   ' /Users/gibil/mssoft/ventas/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),
+			    #"url": "http://odoo.com/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),",
+			    "url": "http://localhost:8069/saveas?model=ir.attachment&field=datas&filename_field=self.file_name&id=%s' % ( self.txt_pack_name ),",
+
+		        'target': 'self',
+	        }
+

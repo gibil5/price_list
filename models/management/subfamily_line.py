@@ -9,7 +9,8 @@ from __future__ import print_function
 from openerp import models, fields, api
 
 #from . import mgt_vars
-from openerp.addons.openhealth.models.management import mgt_vars
+#from openerp.addons.openhealth.models.management import mgt_vars
+from lib import pl_mgt_vars
 
 
 class SubFamilyLine(models.Model):	
@@ -24,17 +25,28 @@ class SubFamilyLine(models.Model):
 
 
 
+
+
+
+
+
+
 # ----------------------------------------------------------- Update ------------------------------
 
 	def update(self):  
-		print()
-		print('X - Update - Sub Family')
+		#print()
+		#print('X - Update - Sub Family')
 
 		# Name Sp 
-		if self.name in mgt_vars._h_name: 
-			self.name_sp = mgt_vars._h_name[self.name]
-		else: 
-			self.name_sp = self.name
+		#if self.name in mgt_vars._h_name: 
+		#if self.name in pl_mgt_vars._h_name: 
+
+			#self.name_sp = mgt_vars._h_name[self.name]
+		#	self.name_sp = pl_mgt_vars._h_name[self.name]
+
+		#else: 
+		#	self.name_sp = self.name
+
 
 
 		# Idx 

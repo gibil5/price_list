@@ -12,10 +12,10 @@
 from __future__ import print_function
 import numpy as np
 from openerp import models, fields, api
+
 from openerp.addons.openhealth.models.order import ord_vars
 
 from openerp.addons.openhealth.models.libs import lib
-
 
 #from . import mgt_funcs
 from openerp.addons.price_list.models.management.lib import mgt_funcs
@@ -33,122 +33,6 @@ class ProductivityDay(models.Model):
 
 
 	_order = 'date asc'
-
-
-# ----------------------------------------------------------- Dep ? --------------------------
-	#state = fields.Selection(
-	#		selection=[
-	#						('today', 'Hoy'),
-							#('holiday', 'Feriado'),
-	#		],
-	#		string='Estado',
-	#	)
-
-
-	#holiday = fields.Boolean(
-	#		'Feriado',
-	#		default=False,
-			#readonly=True,
-	#	)
-
-
-
-# ----------------------------------------------------------- Relational --------------------------
-
-	management_id = fields.Many2one(
-			'openhealth.management',
-
-			ondelete='cascade',  	# When the management is deleted, the productivity_day is also deleted
-
-			required=True,
-		)
-
-	configurator_emr_id = fields.Many2one(
-
-			'openhealth.configurator.emr',
-
-			#required=True,
-		)
-
-
-
-# ----------------------------------------------------------- Required - At creation --------------------------
-	name = fields.Char(
-			'Name',
-			required=True,
-		)
-
-	date = fields.Date(
-			'Fecha',
-			required=True,
-		)
-
-	weekday = fields.Selection(
-			selection=ord_vars._weekday_list,
-			string='Dia de semana',
-			required=True,
-		)
-
-	duration = fields.Float(
-			'Duracion',
-			required=True,
-		)
-
-
-
-
-# ----------------------------------------------------------- Computes --------------------------
-	today = fields.Boolean(
-			'Hoy',
-			default=False,
-			compute='_compute_today',
-		)
-
-	@api.multi
-	def _compute_today(self):
-		for record in self:
-			if lib.is_today_date(record.date):
-				record.today = True
-
-
-
-
-# ----------------------------------------------------------- Primitives - After creation --------------------------
-
-	amount = fields.Float(
-			'Venta por dia',
-			digits=(16, 1),
-		)
-
-
-
-	# Cumulative
-	cumulative = fields.Float(
-			'Acumulado',
-			#digits=(16, 1),
-		)
-
-	nr_days = fields.Float(
-			'Nr dias',
-		)
-
-	nr_days_total = fields.Float(
-			'Total dias',
-		)
-
-
-
-
-	# Average
-	avg_amount = fields.Float(
-			'Promedio diario',
-			#digits=(16, 1),
-		)
-
-	projection = fields.Float(
-			'Proyección a final del mes',
-		)
-
 
 
 
@@ -194,11 +78,12 @@ class ProductivityDay(models.Model):
 	@api.multi
 	def update_avg(self):
 		"""
-		high level support for doing this and that.
+		Update Average
 		"""
 		#print()
 		#print('Update - Average')
 		self.avg_amount = self.cumulative / self.nr_days
+
 
 
 
@@ -207,10 +92,12 @@ class ProductivityDay(models.Model):
 	@api.multi
 	def update_projection(self):
 		"""
-		high level support for doing this and that.
+		Update Projection
 		"""
 		#print()
 		#print('Update - Projection')
 		self.projection = self.avg_amount * self.nr_days_total
+
+
 
 
