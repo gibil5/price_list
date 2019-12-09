@@ -52,7 +52,7 @@ class Marketing(models.Model):
 		Update Patients
 		"""
 		#print()
-		print('Pl - Update Patients')
+		print('X - Update Patients')
 
 
 		# Handle Exceptions
@@ -138,7 +138,7 @@ class Marketing(models.Model):
 		Pl - Update Sales
 		"""
 		print()
-		print('Pl - Update Sales')
+		print('X - Update Sales')
 
 
 		# Handle Exceptions
@@ -180,7 +180,7 @@ class Marketing(models.Model):
 		Create Sale Lines
 		"""
 		print()
-		print('Create Sale Lines')
+		print('X - Create Sale Lines')
 
 		# Handle Exceptions
 		exc_mkt.handle_exceptions(self)
@@ -272,7 +272,7 @@ class Marketing(models.Model):
 		Reset
 		"""
 		print()
-		print('Reset')
+		print('X - Reset')
 
 
 		# Handle Exceptions
@@ -506,7 +506,7 @@ class Marketing(models.Model):
 		Analyse patient Lines
 		"""
 		print()
-		print('Pl - Analysis patient Lines')
+		print('X - Analysis patient Lines')
 
 		# Benchmark
 		t0 = timer()
@@ -571,7 +571,7 @@ class Marketing(models.Model):
 		Update Sale Lines
 		"""
 		print()
-		print('Analysis Sale Lines')
+		print('X - Analysis Sale Lines')
 
 		# Benchmark
 		t0 = timer()
@@ -649,7 +649,7 @@ class Marketing(models.Model):
 		Update Stats
 		"""
 		print()
-		print('Pl - Update Stats')
+		print('X - Update Stats')
 
 
 		# Init
@@ -1030,6 +1030,85 @@ class Marketing(models.Model):
 
 
 
+# ----------------------------------------------------------- Update Vip Sales --------------------
+	@api.multi
+	def update_vip_sales(self):  
+		print()
+		print('X - Vip Sales')
+
+		# Patient Lines 
+		for pl in self.patient_line: 
+
+			if pl.vip: 
+				
+				# Clean 
+				pl.order_line.unlink()
+				pl.order_line_vip.unlink()
+
+				# Orders 
+				orders = self.env['sale.order'].search([
+															('state', '=', 'sale'),
+															('patient', '=', pl.patient.name),
+													],
+														order='date_order asc',
+														#limit=1,
+												)
+
+				# Find Vip Date - First Method 
+				for order in orders: 
+					for ol in order.order_line: 
+						if ol.product_id.default_code == '495': 		# Vip Card 
+							pl.vip_date = order.date_order
+
+
+				# Find Vip Date - Second Method - Legacy 
+				if pl.vip_date == False:
+					card = self.env['openhealth.card'].search([
+																	('patient_name', '=', pl.patient.name),
+														],
+															#order='x_serial_nr asc',
+															limit=1,
+													)
+					pl.vip_date = card.create_date
+
+
+				# Order Lines - Create Order Line 
+				for order in orders: 
+
+					# Create Vip 
+					for ol in order.order_line:
+						pl_ol = pl.order_line.create({
+														'name': ol.name, 
+														'product_id': ol.product_id.id, 
+														'x_date_created': order.date_order, 
+														'product_uom_qty': ol.product_uom_qty, 
+														'price_unit': ol.price_unit, 
+														'patient_line_id': pl.id, 
+							})
+						#print pl_ol
+
+
+
+						# Create - Vip sale 
+						if pl.vip_date != False: 
+							if order.date_order >= pl.vip_date and ol.product_id.type in ['service']: 
+
+								pl_ol_vip = pl.order_line_vip.create({
+																		'name': ol.name, 
+																		'product_id': ol.product_id.id, 
+																		'x_date_created': order.date_order, 
+																		'product_uom_qty': ol.product_uom_qty, 
+																		'price_unit': ol.price_unit, 
+																		'patient_line_id_vip': pl.id, 
+									})
+								#print pl_ol
+
+				pl.update_fields_vip()
+
+	# update_vip_sales
+
+
+
 # ----------------------------------------------------------- Clean ------------------------------
 
 	# Clean
@@ -1038,7 +1117,7 @@ class Marketing(models.Model):
 		"""
 		Clean
 		"""
-		print('Pl - Clean')
+		print('X - Clean')
 		print('Begin')
 
 		# If Test Obj

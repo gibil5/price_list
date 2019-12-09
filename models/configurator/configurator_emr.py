@@ -3,7 +3,8 @@
 	Configurator - EMR
 
 	Only functions. Not the data model. 
-
+	Respect the LOD
+	
 	Created: 			25 Jan 2019
 	Last updated: 		 9 Dec 2019
 """
@@ -14,8 +15,7 @@ from openerp import models, fields, api
 
 class ConfiguratorEmr(models.Model):
 	"""
-	Extends the Business Rules
-	Should not contain Data Model.
+	Extends the Business Rules. Should not contain Data Model.
 	"""
 	_inherit = 'openhealth.configurator.emr'
 
@@ -25,8 +25,8 @@ class ConfiguratorEmr(models.Model):
 # ----------------------------------------------------------- Get Inactive Days -------------------------------
 	def get_inactive_days(self):
 		"""
-		Gets Inactive Days. From Configurator.
 		LOD friendly.
+		Gets Inactive Days. From Configurator. 
 		"""
 		#print()
 		#print('Configurator - Get Inactive Days')
@@ -37,3 +37,6 @@ class ConfiguratorEmr(models.Model):
 				if day.holiday:
 					days_inactive.append(day.date)
 		return days_inactive
+
+
+
