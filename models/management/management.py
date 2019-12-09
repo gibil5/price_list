@@ -14,14 +14,25 @@ import collections
 import datetime
 from openerp import models, fields, api
 
+
 # Lib
-from . import pl_mgt_vars
-from . import pl_ord_vars
-from . import mgt_funcs
-from . import mgt_line_funcs
-from . import stats
-from . import exc_mgt
-from . import prod_funcs
+#from . import pl_mgt_vars
+#from . import pl_ord_vars
+#from . import mgt_funcs
+#from . import mgt_line_funcs
+#from . import prod_funcs
+#from . import exc_mgt
+#from . import stats
+
+#from lib import *
+
+from lib import pl_mgt_vars
+from lib import pl_ord_vars
+from lib import mgt_funcs
+from lib import mgt_line_funcs
+from lib import prod_funcs
+from lib import exc_mgt
+from lib import stats
 
 
 

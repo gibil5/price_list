@@ -5,6 +5,7 @@ mv services/*.pyc ./pyc/.
 
 
 mv management/*.pyc ./pyc/.
+mv management/lib/*.pyc ./pyc/.
 mv management/productivity/*.pyc ./pyc/.
 mv management/doctor_daily/*.pyc ./pyc/.
 mv management/doctor/*.pyc ./pyc/.

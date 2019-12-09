@@ -16,8 +16,9 @@ from openerp.addons.openhealth.models.order import ord_vars
 
 from openerp.addons.openhealth.models.libs import lib
 
+
 #from . import mgt_funcs
-from openerp.addons.price_list.models.management import mgt_funcs
+from openerp.addons.price_list.models.management.lib import mgt_funcs
 
 
 class ProductivityDay(models.Model):

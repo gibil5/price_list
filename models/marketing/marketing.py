@@ -25,7 +25,9 @@ from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.marketing import lib_marketing
 from . import mkt_funcs
 from . import mkt_vars
-from openerp.addons.price_list.models.management import mgt_funcs
+
+#from openerp.addons.price_list.models.management import mgt_funcs
+from openerp.addons.price_list.models.management.lib import mgt_funcs
 
 from . import exc_mkt
 

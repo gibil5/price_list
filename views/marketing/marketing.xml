@@ -276,6 +276,8 @@
 								<field name="date_end"/>
 
 								<field name="mode"/>
+
+								<field name="state"/>
 							</group>
 
 							<group>

@@ -13,7 +13,8 @@ from openerp.addons.openhealth.models.patient import pat_vars
 
 
 #from . import pl_mgt_funcs
-from openerp.addons.price_list.models.management import pl_mgt_funcs
+#from openerp.addons.price_list.models.management import pl_mgt_funcs
+from openerp.addons.price_list.models.management.lib import pl_mgt_funcs
 
 
 class PatientLine(models.Model):

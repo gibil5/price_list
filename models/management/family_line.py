@@ -8,8 +8,11 @@
 from __future__ import print_function
 
 from openerp import models, fields, api
+
 #from . import mgt_vars
-from . import pl_mgt_vars
+#from . import pl_mgt_vars
+from openerp.addons.price_list.models.management.lib import pl_mgt_vars
+
 
 class FamilyLine(models.Model):
 
