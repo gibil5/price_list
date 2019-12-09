@@ -65,6 +65,7 @@ class Management(models.Model):
 	def update_productivity(self):
 		"""
 		Update productivity
+		Used also by Django
 		"""
 		print()
 		print('X - Update Productivity')
@@ -83,6 +84,9 @@ class Management(models.Model):
 		prod_funcs.pl_update_day_avg(self)
 
 		print()
+
+
+		return 1	# For Django
 	# update_productivity
 
 
@@ -117,6 +121,7 @@ class Management(models.Model):
 	def update_daily(self):
 		"""
 		Update daily sales for each doctor
+		Used also by Django
 
 		self.doctor_line
 			'openhealth.management.doctor.line',
@@ -139,6 +144,8 @@ class Management(models.Model):
 
 		print()
 
+
+		return 1	# For Django
 	# update_daily
 
 
@@ -155,14 +162,13 @@ class Management(models.Model):
 	def update_fast(self):
 		"""
 		Update Macros
+		Used also by Django
 		"""
 		print()
 		print('X - Update Fast')
 
-
 		# Handle Exceptions
 		exc_mgt.handle_exceptions(self)
-
 
 		# Go
 		t0 = timer()
@@ -174,6 +180,9 @@ class Management(models.Model):
 		#print
 
 		print()
+
+
+		return 1 	# For Django
 	# update_fast
 
 
@@ -245,6 +254,9 @@ class Management(models.Model):
 
 
 		print()
+
+
+		return 1	# For Django
 	# update_patients
 
 
@@ -282,6 +294,9 @@ class Management(models.Model):
 
 
 		print()
+
+
+		return 1	# For Django
 	# update_doctors
 
 
@@ -290,6 +305,19 @@ class Management(models.Model):
 
 
 # ----------------------------------------------------- Django Interface --------------------------
+
+
+	@api.multi
+	def set_state(self, state):
+		"""
+		Django interface
+		so_model.set_state(state)
+		"""
+		print()
+		print('Set State')
+		self.state = state
+
+
 
 	@api.multi
 	def get_name(self):
