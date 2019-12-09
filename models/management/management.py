@@ -572,11 +572,16 @@ class Management(models.Model):
 		exc_mgt.handle_exceptions(self)
 
 
-		# Go
-		self.pl_validate_internal()
+		# Internal
+		out = self.pl_validate_internal()
 
-		self.pl_validate_external()  	# Dep !
 
+		# External
+		#self.pl_validate_external()  	# Dep !
+
+
+		# Django
+		return out
 	# validate
 
 
@@ -607,6 +612,10 @@ class Management(models.Model):
 		print(self.per_amo_subfamilies)
 
 
+		return self.per_amo_families, self.per_amo_subfamilies
+
+
+
 
 # ----------------------------------------------------------- Validate external -------------------------
 	# Validate
@@ -614,6 +623,8 @@ class Management(models.Model):
 	def pl_validate_external(self):
 		"""
 		Validates Data Coherency - External. 
+		Builds a Report Sale Product for the month. 
+		Compares it to Products stats.
 		"""
 		print()
 		print('X - Validate External')
@@ -622,11 +633,11 @@ class Management(models.Model):
 
 			date_begin = self.date_begin
 
-			#rsp = self.report_sale_product.create({
+
 			self.report_sale_product = self.env['openhealth.report.sale.product'].create({
 																							'name': date_begin,
 																							'management_id': self.id,
-				})
+																						})
 
 		rsp = self.report_sale_product
 		print(rsp)
@@ -1061,8 +1072,6 @@ class Management(models.Model):
 
 						# Families
 						family = line.product_id.get_family()
-
-						#sub_family = line.product_id.get_subfamily()
 						sub_family = line.product_id.get_subsubfamily()
 
 
@@ -1101,6 +1110,7 @@ class Management(models.Model):
 																# Price
 																'price_unit': 			price_unit,
 
+																# Families
 																'family': family, 
 																'sub_family': sub_family, 
 															})
@@ -1110,6 +1120,7 @@ class Management(models.Model):
 						#print(line.product_id.name)
 
 
+						# Deprecated !
 						# Update Families
 						#if line.product_id.pl_price_list in ['2019']:
 						#	order_line.pl_update_fields()
@@ -1134,6 +1145,11 @@ class Management(models.Model):
 
 					# Order Lines
 					for line in order.order_line:
+
+						# Families
+						family = line.product_id.get_family()
+						sub_family = line.product_id.get_subsubfamily()
+
 
 						# Price
 						price_unit = order.x_amount_flow
@@ -1170,6 +1186,11 @@ class Management(models.Model):
 
 																# Price
 																'price_unit': 			price_unit,
+
+
+																# Families
+																'family': family, 
+																'sub_family': sub_family, 
 															})
 
 
@@ -1177,11 +1198,16 @@ class Management(models.Model):
 						#print(line.product_id)
 						#print(line.product_id.name)
 
-						if line.product_id.pl_price_list in ['2019']:
-							order_line.pl_update_fields()
 
-						elif line.product_id.pl_price_list in ['2018']:
-							order_line.update_fields()
+
+						# Deprecated !
+						#if line.product_id.pl_price_list in ['2019']:
+						#	order_line.pl_update_fields()
+
+						#elif line.product_id.pl_price_list in ['2018']:
+						#	order_line.update_fields()
+
+
 
 					# Line Analysis Credit Note - End
 
