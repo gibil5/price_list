@@ -97,15 +97,16 @@ def update_stats(self):
 	counter_family = collections.Counter(family_arr)
 
 
-	# Create
-	for key in counter_family:
-		print(key)
 
-		count = counter_family[key]
-		amount = _h_amount[key]
+	# Create
+	for name in counter_family:
+		print(name)
+
+		count = counter_family[name]
+		amount = _h_amount[name]
 
 		family = self.family_line.create({
-												'name': key,
+												'name': name,
 
 												'x_count': count,
 												'amount': amount,
@@ -113,9 +114,11 @@ def update_stats(self):
 											})
 		family.update()
 
+
 		# Percentage
 		if self.total_amount != 0:
 			family.per_amo = family.amount / self.total_amount
+
 
 
 
@@ -124,24 +127,17 @@ def update_stats(self):
 	# Count
 	counter_sub_family = collections.Counter(sub_family_arr)
 
+
 	# Create
-	#for key in counter_sub_family:
 	for name in counter_sub_family:
 
-		#count = counter_sub_family[key]
 		count = counter_sub_family[name]
 
-		#amount = _h_sub[key]
 		amount = _h_sub[name]
-
-
 
 		name_sp = get_name_sp(name)
 
-
-
 		sub_family = self.sub_family_line.create({
-													#'name': key,
 													'name': name,
 													'name_sp': name_sp,
 
@@ -149,7 +145,8 @@ def update_stats(self):
 													'amount': amount,
 													'management_id': self.id,
 											})
-		sub_family.update()
+		#sub_family.update()
+
 
 
 		# Percentage

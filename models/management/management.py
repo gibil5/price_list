@@ -586,6 +586,7 @@ class Management(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Validate Internal -------------------------
 	# Validate
 	@api.multi
@@ -597,10 +598,10 @@ class Management(models.Model):
 		print('X - Validate Internal')
 
 
+
 		# Families
 		self.per_amo_families = self.per_amo_products + self.per_amo_consultations + self.per_amo_procedures + self.per_amo_other + self.per_amo_credit_notes
 		print(self.per_amo_families)
-
 
 		# Sub Families
 		self.per_amo_subfamilies = self.per_amo_sub_con_med + self.per_amo_sub_con_gyn + self.per_amo_sub_con_cha + \
@@ -612,7 +613,10 @@ class Management(models.Model):
 		print(self.per_amo_subfamilies)
 
 
+
 		return self.per_amo_families, self.per_amo_subfamilies
+
+
 
 
 

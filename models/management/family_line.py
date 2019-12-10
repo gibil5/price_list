@@ -23,8 +23,8 @@ class FamilyLine(models.Model):
 
 # ----------------------------------------------------------- Update ------------------------------
 	def update(self):
-		#print()
-		#print('X - Update - Family')
+		print()
+		print('X - Update - Family')
 
 
 		# Idx 
