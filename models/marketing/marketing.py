@@ -40,6 +40,48 @@ class Marketing(models.Model):
 	_inherit = 'openhealth.marketing'
 
 
+# ----------------------------------------------------- Django Interface --------------------------
+
+	@api.multi
+	def set_state(self, state):
+		"""
+		Django interface
+		so_model.set_state(state)
+		"""
+		print()
+		print('Set State')
+		self.state = state
+
+
+
+
+
+# ----------------------------------------------------------- Update ---------------------------------------------
+	@api.multi
+	def update(self):
+		"""
+		Update
+		Used also by Django
+		"""
+		print()
+		print('X - Update')
+
+		self.update_patients()
+
+		self.pl_update_sales()
+
+		print()
+
+
+		# For Django
+		self.date_test = datetime.datetime.now() 
+
+		return 1 	# For Django
+	# update_fast
+
+
+
+
 
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 

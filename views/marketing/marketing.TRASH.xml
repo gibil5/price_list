@@ -1,3 +1,22 @@
+                        <!-- Vip not used -->
+<!--                        
+                        <button 
+                                class="oe_highlight"
+                                type="action"
+                                name="%(openhealth.patient_line_vip_not_used_form_action)d"
+                                context="{                                          
+                                            'search_default_marketing_id': active_id,   
+                                        }"
+                                string="Vip No Util."   
+                        />
+-->
+
+
+
+
+
+
+
                         <group>
                             <group>
                             </group>

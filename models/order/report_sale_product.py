@@ -9,22 +9,124 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-
 from openerp.addons.openhealth.models.management import mgt_funcs
+
+import datetime
 
 class ReportSaleProduct(models.Model):
 	"""
+	Report Sale Product
 	"""	
 	_inherit = 'openhealth.report.sale.product'
 	
+
+
+
+# ----------------------------------------------------- Django Interface --------------------------
+
+	@api.multi
+	def set_state(self, state):
+		"""
+		Django interface
+		so_model.set_state(state)
+		"""
+		print()
+		print('Set State')
+		self.state = state
+
+
+
+	@api.multi
+	def get_name(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get name')
+		return self.title
+
+
+
+	@api.multi
+	def get_date_begin(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_begin
+
+
+	@api.multi
+	def get_date_end(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_end
+
+
+	@api.multi
+	def get_date_test(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_test
+
+
+
+
+	@api.multi
+	def get_total(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get total')
+		if self.total not in [False]:
+			return self.total
+		else:
+			return 0
+
+
+
+	@api.multi
+	def get_count(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get count')
+		if self.total_qty not in [False]:
+			return self.total_qty
+		else:
+			return 0
+
+
+
+	@api.multi
+	def get_state(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get state')
+		return self.state
+
+
+
+
 
 
 # ----------------------------------------------------------- Create Lines - 2019 -----------------
 
 	# Create Lines 
 	def create_lines(self, orders):  
-		print()
-		print('X - Create Lines')
+		#print()
+		#print('X - Create Lines')
 
 		# Loop
 		for order in orders: 
@@ -33,9 +135,8 @@ class ReportSaleProduct(models.Model):
 
 				#if line.product_id.pl_family in ['topical', 'card', 'kit']:   		# This is a Trainwreck !
 				if line.product_id.is_product():
-					
 
-					print('Create !')
+					#print('Create !')
 
 					# Create Order Line 
 					ret = self.order_line_ids.create({
@@ -149,4 +250,8 @@ class ReportSaleProduct(models.Model):
 		self.total = total
 		#print 
 
+
+		# For Django
+		self.date_test = datetime.datetime.now() 
+		return 1
 	# update

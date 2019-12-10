@@ -4,6 +4,13 @@
 
 
 
+
+
+
+
+
+
+
 <!-- FORM -->
 		<record model="ir.ui.view" id="openhealth.marketing_form_view">
 			<field name="name">marketing.form</field>           
@@ -14,6 +21,19 @@
 
 <!-- Header -->
 					<header>
+
+
+						<!-- Update -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="update"
+
+                                string="Actualizar"                             
+                        />
+
+
 
 						<!-- Update Patients -->
 						<button 
@@ -89,7 +109,7 @@
 											'search_default_marketing_id': active_id,   
 										}"
 
-								name="%(openhealth.patient_line_proc_form_action)d"
+								name="%(patient_line_proc_form_action)d"
 
 								string="Ver Pacientes"  
 						/>
@@ -99,6 +119,8 @@
 						<!-- Create Sale Lines -->
 						<!-- Analyse Sale Lines -->
 						<!-- Analyse patient Lines -->
+
+<!--
 						<button 
 								class="oe_highlight"
 								type="object" 
@@ -108,7 +130,7 @@
 
 								groups="openhealth.roots"
 						/>
-
+-->
 <!--
 						<button 
 								class="oe_highlight"
@@ -146,7 +168,7 @@
 								context="{                                          
 											'search_default_marketing_id': active_id,   
 										}"                                          
-								name="%(openhealth.patient_line_vip_form_action)d"
+								name="%(patient_line_vip_form_action)d"
 								string="Vip"    
 						/>
 
@@ -154,25 +176,13 @@
 						<button 
 								class="oe_highlight"
 								type="action"
-								name="%(openhealth.patient_line_vip_no_form_action)d" 
+								name="%(patient_line_vip_no_form_action)d" 
 								context="{                                          
 											'search_default_marketing_id': active_id,   
 										}"
 								string="No Vip" 
 						/>
 
-						<!-- Vip not used -->
-<!--						
-						<button 
-								class="oe_highlight"
-								type="action"
-								name="%(openhealth.patient_line_vip_not_used_form_action)d"
-								context="{                                          
-											'search_default_marketing_id': active_id,   
-										}"
-								string="Vip No Util."   
-						/>
--->
 
 
 
@@ -218,7 +228,7 @@
 						<button 
 								class="oe_highlight oe_right"
 								type="action"
-								name="%(openhealth.city_line_form_action)d"
+								name="%(city_line_form_action)d"
 								context="{
 											'search_default_marketing_id': active_id,   
 										}"
@@ -230,7 +240,7 @@
 						<button 
 								class="oe_highlight oe_right"
 								type="action"
-								name="%(openhealth.district_line_form_action)d"
+								name="%(district_line_form_action)d"
 								context="{
 											'search_default_marketing_id': active_id,   
 										}"
@@ -241,7 +251,7 @@
 						<button 
 								class="oe_highlight oe_right"
 								type="action"                               
-								name="%(openhealth.media_line_form_action)d" 
+								name="%(media_line_form_action)d" 
 								context="{
 											'search_default_marketing_id': active_id,   
 										}"
@@ -252,7 +262,7 @@
 						<button 
 								class="oe_highlight oe_right"                               
 								type="action" 
-								name="%(openhealth.histo_line_form_action)d" 
+								name="%(histo_line_form_action)d" 
 								context="{
 											'search_default_marketing_id': active_id,   
 										}"
@@ -629,6 +639,11 @@
 
 
 					<field name="name"/>
+
+					<field name="state"/>
+					<field name="date_test"/>
+
+
 
 					<field name="write_date"        string="Actualizado"	groups="openhealth.roots"/>
 

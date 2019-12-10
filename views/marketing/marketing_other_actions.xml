@@ -1,0 +1,186 @@
+<openerp>
+	<data>
+
+
+<!-- Tree 2 - For Marketing --> 
+
+		<!-- Tree - Patient line -->
+        <record model="ir.ui.view" id="patient_line_mkt_view_tree">
+            <field name="name">openhealth.patient.line.tree</field>
+            <field name="model">openhealth.patient.line</field>
+            <field name="arch" type="xml">
+
+                <tree string="Patient Line Tree"
+                        colors="
+                        red:nr_proc==0
+                        ">
+
+                    <field name="emr"/>
+                    <field name="patient"/>
+                    <field name="date_record"/>
+
+
+                    <!-- Medical -->
+                    <field name="doctor"/>
+                    <field name="nr_reco"/>                     
+                    <field name="nr_sale"/>
+                    <field name="nr_consu"/>                        
+                    <field name="nr_products"/>
+                    <field name="nr_proc"   string="Nr Proc"/>                     
+
+                    <field name="treatment"/>
+                    <field name="procedure_line"/>
+
+                    <field name="chief_complaint"/>
+                    <field name="diagnosis"/>
+
+                    <!-- Budget -->
+                    <field name="budget_prod"/>
+                    <field name="budget_amount"/>
+                    <field name="budget_flag"/>
+                    <field name="nr_budget"/>
+
+
+                    <!-- Demographics -->
+                    <field name="sex"/>
+                    <field name="age_years"/>
+                    <field name="phone_1"/>
+                    <field name="phone_2"/>
+                    <field name="email"/>
+                    <field name="education"/>
+                    <field name="function"/>
+                    <field name="city"/>
+                    <field name="district"/>
+
+                </tree>
+            </field>
+        </record>
+<!--
+-->
+
+
+
+
+<!-- ACTIONS --> 
+
+
+        <!-- Histo -->
+        <record model="ir.actions.act_window" id="histo_line_form_action">
+            <field name="name">Histograma</field>
+            <field name="res_model">openhealth.histo.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+            <field name="limit">1000</field>
+        </record>
+
+
+
+
+        <!-- media -->
+        <record model="ir.actions.act_window" id="media_line_form_action">
+            <field name="name">mediagrama</field>
+            <field name="res_model">openhealth.media.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+
+            <field name="limit">1000</field>
+        </record>
+
+
+
+
+        <!--  City -->
+        <record model="ir.actions.act_window" id="city_line_form_action">
+            <field name="name">Ciudad</field>
+            <field name="res_model">openhealth.city.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,pivot</field>
+            <field name="domain">[
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+            <field name="limit">1000</field>
+        </record>
+
+
+
+        <!-- District -->
+        <record model="ir.actions.act_window" id="district_line_form_action">
+            <field name="name">Distrito</field>
+            <field name="res_model">openhealth.district.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,pivot</field>
+            <field name="domain">[
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+            <field name="context">{}
+            </field>
+            <field name="limit">1000</field>
+        </record>
+
+
+
+
+        <!-- Vip -->
+        <record model="ir.actions.act_window" id="patient_line_vip_form_action">
+            <field name="name">Pacientes</field>
+            <field name="res_model">openhealth.patient.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="domain">[
+                                    ('vip', '=', True),
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+        </record>
+
+
+        <!-- No Vip -->
+        <record model="ir.actions.act_window" id="patient_line_vip_no_form_action">
+            <field name="name">Pacientes</field>
+            <field name="res_model">openhealth.patient.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="domain">[
+                                    ('vip', '=', False),
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+        </record>
+
+
+
+        <!-- Patient Line -->
+        <record model="ir.actions.act_window" id="patient_line_proc_form_action">
+
+            <field name="name">Pacientes</field>
+            <field name="res_model">openhealth.patient.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+
+            <field name="view_id" ref="patient_line_mkt_view_tree"/> 
+
+            <field name="domain">[
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+        </record>
+
+	</data>
+</openerp>
+

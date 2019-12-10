@@ -1,0 +1,213 @@
+<!--
+10 Dec 2019
+-->
+
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- Pacientes Nuevos Mensual -->
+<menuitem   id="openhealth.marketing_menu"
+
+					name="Pacientes Nuevos Mensual"
+			
+					parent="openhealth.main_marketing_menu"
+
+					sequence="1"
+			/>
+
+
+		<!-- Marketing Patients 2019 -->
+		<menuitem   id="marketing_patient_2019_menu"
+		
+					parent="openhealth.marketing_menu"
+					
+					sequence="-5"
+					
+					action="marketing_patient_2019_list_action"
+			/>
+
+
+		<!-- Marketing Patients 2018 -->
+		<menuitem   id="marketing_patient_2018_menu"
+
+					name="Mensual 2018" 
+		
+					parent="openhealth.marketing_menu"
+					
+					sequence="-3"
+					
+					action="marketing_patient_2018_list_action"
+			/>
+
+
+		<!-- Marketing Patients 2018 -->
+		<menuitem   id="marketing_patient_all_month_menu"
+
+					name="Mensual Todos" 
+		
+					parent="openhealth.marketing_menu"
+					
+					sequence="-3"
+					
+					action="marketing_patient_all_month_list_action"
+			/>
+
+
+
+
+
+
+<!-- Pacientes Nuevos Anual -->
+<menuitem   id="openhealth.marketing_year_menu"
+					name="Pacientes Nuevos Anual"
+					parent="openhealth.main_marketing_menu"
+					sequence="3"
+			/>
+
+
+		<!-- Marketing Patients 2019 -->
+		<menuitem   id="marketing_patient_2019_year_menu"
+					name="Anual 2019" 
+					parent="openhealth.marketing_year_menu"
+					sequence="-2"
+					action="marketing_patient_2019_year_list_action"
+			/>
+
+
+		<!-- Marketing Patients 2018 -->
+		<menuitem   id="marketing_patient_2018_year_menu"
+					name="Anual 2018" 
+					parent="openhealth.marketing_year_menu"
+					sequence="-1"
+					action="marketing_patient_2018_year_list_action"
+			/>
+
+
+
+		<!-- Marketing Patients 2019 -->
+		<menuitem   id="marketing_patient_2019_week_menu"
+					name="Semanal 2019" 
+					parent="openhealth.marketing_year_menu"
+					sequence="0"
+					action="marketing_patient_2019_week_list_action"
+			/>
+
+
+
+        <!-- Marketing Patients -->
+        <menuitem   id="openhealth.marketing_patient_menu" 
+                    name="Todos" 
+                    parent="openhealth.marketing_menu"
+                    sequence="1"
+                    action="marketing_patient_list_action"/>
+
+
+
+
+
+<!-- Marketing - Test -->
+<menuitem   id="mkt_patients_test_menu"
+					name="Test"
+					parent="openhealth.main_marketing_menu"
+					
+					sequence="11"
+
+					groups="openhealth.roots"
+				/>
+
+		<menuitem   id="mkt_patients_test"
+					name="Test" 
+					parent="mkt_patients_test_menu"
+					sequence="1"
+					action="marketing_patient_test_list_action"
+			/>
+
+
+
+
+
+<!-- Marketing - First Contact -->
+<menuitem   id="first_contact_menu"
+					name="Primer Contacto"
+					parent="openhealth.main_marketing_menu"
+
+					sequence="23"					
+				/>
+
+		<menuitem   id="first_contact_2019_menu"
+
+					name="Medios - 2019 - %" 
+		
+					parent="first_contact_menu"
+					
+					sequence="1"
+					
+					action="marketing_patient_2019_first_contact_list_action"
+			/>
+
+
+		<menuitem   id="first_contact_2019_nr_menu"
+
+					name="Medios - 2019 - NR" 
+		
+					parent="first_contact_menu"
+					
+					sequence="3"
+					
+					action="marketing_patient_2019_first_contact_nr_list_action"
+			/>
+
+
+
+
+
+<!-- Marketing - Sex -->
+<menuitem   id="sex_menu"
+					name="Sexo"
+					parent="openhealth.main_marketing_menu"
+					sequence="23"					
+				/>
+
+		<menuitem   id="sex_2019_menu"
+					name="Sexo - 2019 - %" 
+					parent="sex_menu"
+					sequence="1"
+					
+					action="marketing_patient_2019_sex_list_action"
+			/>
+
+		<menuitem   id="sex_2019_nr_menu"
+					name="Sexo - 2019 - NR" 
+					parent="sex_menu"
+					sequence="3"
+					
+					action="marketing_patient_2019_sex_nr_list_action"
+			/>
+
+
+
+
+
+<!-- Pacientes Contacto -->
+<menuitem   id="patients_all_short_menu"
+					name="Pacientes Contacto"
+					parent="openhealth.main_marketing_menu"
+					
+					sequence="31"
+				/>
+
+
+		<menuitem   id="patients_all_short"
+					name="Pacientes Con Nr de Historia" 
+					parent="patients_all_short_menu"
+					sequence="1"
+					
+					action="patient_short_list_action"
+			/>
+
+
+	</data>
+</openerp>
