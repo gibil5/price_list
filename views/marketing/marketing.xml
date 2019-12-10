@@ -61,7 +61,7 @@
 								class="oe_highlight"
 								type="object"
 
-								name="pl_update_sales"
+								name="update_sales"
 
 								string="Act Ventas" 
 						/>
