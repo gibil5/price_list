@@ -8,8 +8,8 @@
 	Last updated: 		 9 Dec 2019
 """
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.order import ord_vars
-from openerp.addons.openhealth.models.emr import prodvars
+#from openerp.addons.openhealth.models.order import ord_vars
+#from openerp.addons.openhealth.models.emr import prodvars
 
 class management_order_line(models.Model):
 	
