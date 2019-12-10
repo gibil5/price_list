@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-*** Product Template
+	*** Product Template - 2019
 
-Created: 			  8 Apr 2019
-Last up: 	 		 23 Aug 2019
+	Only functions. Not the data model. 
+
+	Created: 			  8 Apr 2019
+	Last up: 	 		 10 Dec 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -14,7 +16,7 @@ from . import exc_prod
 
 class ProductTemplate(models.Model):
 	"""
-	high level support for doing this and that.
+	Product Template - 2019
 	"""
 	_inherit = 'product.template'
 
@@ -24,151 +26,7 @@ class ProductTemplate(models.Model):
 
 
 
-
-
-# ----------------------------------------------------------- Getters -------------------------
-
-	# Get Treatment
-	#@api.multi
-	def get_treatment(self):
-		"""
-		Get Product Treatment
-		Used by: Session, Control.
-		"""
-
-		# Init
-		_dic = {
-					'LASER CO2 FRACCIONAL': 	'laser_co2',
-
-					'QUICKLASER': 				'laser_quick',
-
-					'LASER EXCILITE':			'laser_excilite',
-
-					'LASER M22 IPL':			'laser_ipl',
-
-					'LASER M22 ND YAG':			'laser_ndyag',
-		}
-
-		treatment = False
-
-
-		print(self.pl_treatment)
-
-
-		if self.pl_price_list in ['2019']:
-
-			if self.pl_treatment in _dic:
-
-				treatment = _dic[self.pl_treatment]
-
-			else:
-				print('Error: 1')
-
-
-		elif self.pl_price_list in ['2018']:
-			treatment = self.x_treatment
-
-		
-		else:
-			print('Error: 2')
-
-
-		return treatment
-
-
-
-
-# ----------------------------------------------------------- Fields ------------------------
-
-	pl_price_list = fields.Selection(
-
-			#selection=px_vars._price_list_list,
-
-			[
-				('2019', '2019'),
-				('2018', '2018'),
-			],
-		
-			string='Lista de Precios',
-			required=True,
-		)
-
-
-
-
-
-# ----------------------------------------------------------- Fix - Button -----------
-	@api.multi
-	def fix(self):
-		"""
-		Fix Product
-		"""
-		print()
-		print('Product Fix')
-
-		# Handle Exceptions
-		#exc_prod.handle_exceptions(self)
-		exc_prod.fix_exceptions(self)
-
-
-
-
-# ----------------------------------------------------------- Validate - Button -----------
-	@api.multi
-	def validate(self):
-		"""
-		Validate Product
-		"""
-		print()
-		print('Product Validate')
-
-		# Handle Exceptions
-		exc_prod.handle_exceptions(self)
-
-
-	@api.multi
-	def validate_all(self):
-		"""
-		Validate Product
-		"""
-		print()
-		print('Product Validate All')
-
-
-		# Search
-		products = self.env['product.template'].search([
-																	('pl_price_list', 'in', ['2019']),
-															],
-															#order='pl_prefix,pl_idx_int asc',
-															#order='pl_idx_int,pl_prefix asc',
-															order='pl_prefix asc',
-															#limit=10,
-															#limit=100,
-															limit=600,
-														)
-		# Loop
-		idx = 0
-		for product in products:
-			print()
-			print(product.name)
-	
-			idx = idx + 1
-
-			# Handle Exceptions
-			exc_prod.handle_exceptions(product)
-
-		print(idx)
-
-
-
 # ----------------------------------------------------------- Configurator ------------------------
-	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Configuracion",
-		)
-
-
 	def init_configurator(self):
 		"""
 		Initializes the Configurator
@@ -182,10 +40,37 @@ class ProductTemplate(models.Model):
 															#order='date_begin,name asc',
 															limit=1,
 														)
+	# Configurator - Used by Product Template Tree
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+		)
 
 
 
 
+
+# ---------------------------------------- Constraints Python - Name -------------------------
+
+	# Check Name
+	@api.constrains('name')
+	def check_name(self):
+		"""
+		Check Name
+		"""
+		chk_product.check_name(self)
+
+
+# ----------------------------------------------------------- Fields ------------------------
+
+	pl_price_list = fields.Selection(
+			[
+				('2019', '2019'),
+				('2018', '2018'),
+			],
+			string='Lista de Precios',
+			required=True,
+		)
 
 
 
@@ -201,95 +86,10 @@ class ProductTemplate(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Correct ----------------------------------------------------
-
-	corr_medical = fields.Boolean(
-		)
-
-	corr_cosmetology = fields.Boolean(
-		)
-
-
-
-# ----------------------------------------------------------- Correct ----------------------------------------------------
-	@api.multi
-	def correct_subfamilies(self):
-		"""
-		Update
-		"""
-		print()
-		print('Correct Subfamilies')
-
-
-		model = 'product.template'
-
-		family = ''
-
-
-		if self.corr_medical:
-			family = 'medical'
-
-		if self.corr_cosmetology:
-			family = 'cosmetology'
-
-
-
-		# Search
-		products = self.env[model].search([
-														#('name', '=', name),
-														('pl_price_list', 'in', ['2019']),
-				
-														('pl_family', 'in', [family]),
-											],
-												#order='date_order desc',
-												#limit=1,
-									)
-		print(products)
-
-
-
-		_dic_med = {
-					'VICTAMINA C ENDOVENOSA': 	'vitamin_c_intravenous',
-
-					'INFILTRACIONES': 		'infiltrations',
-					'CRIOCIRUGIA': 			'cryosurgery',
-					'ESCLEROTERAPIA': 		'sclerotherapy',
-					'PLASMA': 				'plasma',
-
-					'BOTOX': 				'botox',
-					'REDUX': 				'redux',
-					'ACIDO HIALURONICO': 	'hyaluronic_acid',
-					'MESOTERAPIA NCTF': 	'mesotherapy',
-		}
-
-		_dic_cos = {
-
-					'CARBOXITERAPIA': 					'carboxytherapy',
-					'PUNTA DE DIAMANTES': 				'diamond_tip',
-					'LASER TRIACTIVE + CARBOXITERAPIA': 'laser_triactive_carboxytherapy',
-		}
-
-
-		for product in products:
-			print(product.name)
-			print(product.pl_family)
-			print(product.pl_treatment)
-			print(product.pl_subfamily)
-			print()
-
-			if product.pl_family in ['medical']:
-				product.pl_subfamily = _dic_med[product.pl_treatment]
-
-			elif product.pl_family in ['cosmetology']:
-				product.pl_subfamily = _dic_cos[product.pl_treatment]
-
-
 
 
 # ---------------------------------------------- Fields - Categorized -----------------------------
-	
 	# Required
-
 	pl_family = fields.Selection(
 
 			selection=px_vars._family_list,
@@ -307,9 +107,6 @@ class ProductTemplate(models.Model):
 		)
 
 
-
-
-
 	# Not Required
 	pl_manufacturer = fields.Selection(
 			selection=px_vars._manufacturer_list,
@@ -320,10 +117,6 @@ class ProductTemplate(models.Model):
 			selection=px_vars._brand_list,
 			string='Marca',
 		)
-
-
-
-
 
 
 	pl_treatment = fields.Selection(
@@ -362,8 +155,6 @@ class ProductTemplate(models.Model):
 			#required=True,
 		)
 
-
-
 # ---------------------------------------------- Fields - Floats ----------------------------------
 
 	pl_price = fields.Float(
@@ -389,34 +180,6 @@ class ProductTemplate(models.Model):
 	pl_price_max = fields.Float(
 			'Price max',
 		)
-
-
-
-# ---------------------------------------- Constraints Python - Name -------------------------
-
-	# Check Name
-	@api.constrains('name')
-	def check_name(self):
-		"""
-		Check Name
-		"""
-		chk_product.check_name(self)
-
-
-# ----------------------------------------------------------- Update ----------------------------------------------------
-	#@api.multi
-	#def update(self):
-	#	"""
-	#	Update
-	#	"""
-		#print()
-		#print('Product Template - Update')
-	#	self.pl_idx_int = int(self.pl_idx)
-	#	self.purchase_ok = False
-
-
-
-
 
 # ---------------------------------------------- Fields - Chars -----------------------------------
 
@@ -454,4 +217,5 @@ class ProductTemplate(models.Model):
 	pl_time_stamp = fields.Char(
 			required=False,
 		)
+
 
