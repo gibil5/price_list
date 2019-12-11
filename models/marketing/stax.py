@@ -78,43 +78,34 @@ def update_stats(self):
 
 
 	# Education
-	self.edu_fir_per = mkt_funcs.get_per(self, self.edu_fir, self.total_count)
-	self.edu_sec_per = mkt_funcs.get_per(self, self.edu_sec, self.total_count)
-	self.edu_tec_per = mkt_funcs.get_per(self, self.edu_tec, self.total_count)
-
-
-	#self.edu_uni_per = mkt_funcs.get_per(self, self.edu_uni, self.total_count)
-	self.edu_uni_per = mkt_funcs.get_per_nex(self.edu_uni, self.total_count)
-
-
-	self.edu_mas_per = mkt_funcs.get_per(self, self.edu_mas, self.total_count)
-	self.edu_u_per = mkt_funcs.get_per(self, self.edu_u, self.total_count)
-
-
-
+	self.edu_fir_per = mkt_funcs.get_per(self.edu_fir, self.total_count)
+	self.edu_sec_per = mkt_funcs.get_per(self.edu_sec, self.total_count)
+	self.edu_tec_per = mkt_funcs.get_per(self.edu_tec, self.total_count)
+	self.edu_uni_per = mkt_funcs.get_per(self.edu_uni, self.total_count)
+	self.edu_mas_per = mkt_funcs.get_per(self.edu_mas, self.total_count)
+	self.edu_u_per = mkt_funcs.get_per(self.edu_u, self.total_count)
 
 
 	# First Contact
-	self.how_none_per = mkt_funcs.get_per(self, self.how_none, self.total_count)
-	self.how_reco_per = mkt_funcs.get_per(self, self.how_reco, self.total_count)
-	self.how_tv_per = mkt_funcs.get_per(self, self.how_tv, self.total_count)
-	self.how_radio_per = mkt_funcs.get_per(self, self.how_radio, self.total_count)
-	self.how_inter_per = mkt_funcs.get_per(self, self.how_inter, self.total_count)
-	self.how_web_per = mkt_funcs.get_per(self, self.how_web, self.total_count)
-	self.how_mail_per = mkt_funcs.get_per(self, self.how_mail, self.total_count)
-	self.how_u_per = mkt_funcs.get_per(self, self.how_u, self.total_count)
-
-	self.how_facebook_per = mkt_funcs.get_per(self, self.how_facebook, self.total_count)
-	self.how_instagram_per = mkt_funcs.get_per(self, self.how_instagram, self.total_count)
-	self.how_callcenter_per = mkt_funcs.get_per(self, self.how_callcenter, self.total_count)
-	self.how_old_patient_per = mkt_funcs.get_per(self, self.how_old_patient, self.total_count)
+	self.how_none_per = mkt_funcs.get_per(self.how_none, self.total_count)
+	self.how_reco_per = mkt_funcs.get_per(self.how_reco, self.total_count)
+	self.how_tv_per = mkt_funcs.get_per(self.how_tv, self.total_count)
+	self.how_radio_per = mkt_funcs.get_per(self.how_radio, self.total_count)
+	self.how_inter_per = mkt_funcs.get_per(self.how_inter, self.total_count)
+	self.how_web_per = mkt_funcs.get_per(self.how_web, self.total_count)
+	self.how_mail_per = mkt_funcs.get_per(self.how_mail, self.total_count)
+	self.how_u_per = mkt_funcs.get_per(self.how_u, self.total_count)
+	self.how_facebook_per = mkt_funcs.get_per(self.how_facebook, self.total_count)
+	self.how_instagram_per = mkt_funcs.get_per(self.how_instagram, self.total_count)
+	self.how_callcenter_per = mkt_funcs.get_per(self.how_callcenter, self.total_count)
+	self.how_old_patient_per = mkt_funcs.get_per(self.how_old_patient, self.total_count)
 
 
 
 
 	# Vip
-	#self.vip_true_per = mkt_funcs.get_per(self, self.vip_true, self.total_count)
-	#self.vip_false_per = mkt_funcs.get_per(self, self.vip_false, self.total_count)
+	#self.vip_true_per = mkt_funcs.get_per(self.vip_true, self.total_count)
+	#self.vip_false_per = mkt_funcs.get_per(self.vip_false, self.total_count)
 
 
 

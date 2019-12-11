@@ -1,5 +1,24 @@
 # 11 Dec 2019
 
+# ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
+
+# Provides Percentage
+@api.multi
+def get_per_dep(self, value, total):
+	#print()
+	#print('Pl - Get Per')
+	#per = 0 
+	per = 0.
+	if total != 0: 
+		#per = ( float(value) / float(total) ) * 100
+		per = float(value) / float(total)
+	return per
+# get_per
+
+
+
+
+
 # Highly Deprecated !
 
 

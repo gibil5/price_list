@@ -2,19 +2,10 @@
 """
  	Price List - Marketing Report
 
+	Only functions. Not the data model. 
+
  	Created: 				19 May 2018
  	Last up: 	 			11 Dec 2019
-
-	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
-	  without having to know its Implementation. 
-
-	- Respect the Law of Demeter. Avoid Train Wrecks.
-
-	- Treat the Active Record as a data structure and create separate objects that contain the business rules 
-	  and that hide their internal data. These Objects are just instances of the Active Record.	
-
-	- Handle Exceptions.
-
 """
 from __future__ import print_function
 import datetime
@@ -22,7 +13,9 @@ from timeit import default_timer as timer
 import collections
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
+
 from openerp.addons.openhealth.models.marketing import lib_marketing
+
 from openerp.addons.price_list.models.management.lib import mgt_funcs
 from openerp.addons.price_list.models.lib import test_funcs
 
@@ -46,16 +39,12 @@ class Marketing(models.Model):
 
 
 
-
-
-
-
 # ----------------------------------------------------------- Update ---------------------------------------------
 	@api.multi
 	def update(self):
 		"""
-		Update
-		Used also by Django
+		Update Patient + Sales
+		Used by Django
 		"""
 		print()
 		print('X - Update')
@@ -65,7 +54,6 @@ class Marketing(models.Model):
 		self.update_sales()
 
 		print()
-
 
 		# For Django
 		self.date_test = datetime.datetime.now() 
@@ -80,33 +68,33 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 
 
-# ----------------------------------------------------------- Update Patients - Button ---------------------
+# ----------------------------------------------------------- Update Patients - Step 1 - Button ---------------------
 	# Update Patients
 	@api.multi
 	def update_patients(self):
 		"""
 		Update Patients
+		To see the Stats Macro 
 		"""
 		#print()
 		print('X - Update Patients')
 
 
-		# Handle Exceptions
-		exc_mkt.handle_exceptions(self)
+		# Handle Exceptions - Dep
+		#exc_mkt.handle_exceptions(self)
 
 
-		# Go
 		# QC
 		t0 = timer()
 		now_0 = datetime.datetime.now()
 
+
 		# Clear
 		self.reset()
 
-		# Get Patients
-		mode = self.mode
 
-		#patients, count = pat_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
+		# Get Patients - For Mkt
+		mode = self.mode
 		patients, count = pat_funcs.get_patients_filter_for_mkt(self, self.date_begin, self.date_end, mode)
 
 		self.total_count = count
@@ -115,58 +103,127 @@ class Marketing(models.Model):
 		# Loop
 		for patient in patients:
 
+
+			# Patient Getters
+
+			# Places
+			city = patient.get_city()
+			district = patient.get_district()
+			age_years = patient.get_age_years()
+
+
+			# Sex
+			mea_m, mea_f, mea_u = patient.get_sex_measure()
+
+			# Vip
+			mea_vip, mea_vip_no = patient.get_vip_measure()
+
+			# Education
+			mea_first, mea_second, mea_technical, mea_university, mea_masterphd, mea_edu_u = patient.get_education_measure()
+
+			# First contact
+			mea_recommendation, mea_tv, mea_radio, mea_internet, mea_website, mea_mail_campaign, mea_how_none, mea_how_u = patient.get_first_contact_mea()
+
+
+
+			# EMR
+			treatment = patient.get_last_treatment()
+			consultation = patient.get_last_consultation()
+			chief_complaint = patient.get_chief_complaint()
+			diagnosis = patient.get_diagnosis()
+
+
 			# Create
 			pat_line = self.patient_line.create({
 														'patient': patient.id,
+														'emr': 		patient.x_id_code,  # Serial nr
+														
+														# Dates
 														'date_create': patient.create_date,
 														'date_record': patient.x_date_record,
+														
+
+														# Sex
 														'sex': patient.sex,
+														'mea_m': mea_m,
+														'mea_f': mea_f,
+														'mea_u': mea_u,
+
+
+														# Personal
 														'dob': patient.dob,
 														'age': patient.age,
-														'first_contact': patient.x_first_contact,
-														'education': patient.x_education_level,
-														'vip': patient.x_vip,
-														'country': patient.country_id.name,
-														'city': patient.city,
-														'district': patient.street2,
+														'age_years': age_years,
 														'function': patient.function,
-														'emr': 		patient.x_id_code,
 														'phone_1': 	patient.mobile,
 														'phone_2': 	patient.phone,
 														'email': 	patient.email,
+														
 
+# Stats
+														# Vip
+														'vip': patient.x_vip,
+
+
+														# First contact
+														'first_contact': patient.x_first_contact,
+														
+
+														# Education
+														'education': patient.x_education_level,
+														
+
+
+														# Places
+														'country': patient.country_id.name,
+														#'district': patient.street2,
+														#'city': patient.city,
+														'city': city,
+														'district': district,
+
+
+
+														# EMR
+														'treatment': treatment.id,
+														'consultation': consultation.id,
+														'chief_complaint': chief_complaint,
+														'diagnosis': diagnosis, 
+
+
+														# Handle
 														'marketing_id': self.id,
 													})
-			# Old
-			ret = pat_line.update_fields()
 
-			# New
-			pat_line.update_emr()
+			# Old - Dep !!!
+			#ret = pat_line.update_fields()
+
+			# New - Dep ?
+			#pat_line.update_emr()
+
+
 
 
 		# Set Stats
-		#self.update_stats()
 		stax.update_stats(self)
 
 
-		# Update Vip Sales
-		#self.update_vip_sales()
-		stax.update_vip_sales(self)
 
+
+		# Update Vip Sales
+		stax.update_vip_sales(self)
 
 		# Build Histo
 		lib_marketing.build_histogram(self)
 
-
 		# Build Media - Dep ?
 		lib_marketing.build_media(self)
-
 
 		# Build Places
 		lib_marketing.build_districts(self)
 		lib_marketing.build_cities(self)
 
 
+		# QC
 		t1 = timer()
 		now_1 = datetime.datetime.now()
 		self.delta_patients = t1 - t0
@@ -176,19 +233,21 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Sales - Button ------------------------
+
+# ----------------------------------------------------------- Update Sales - Step 2 - Button ------------------------
 	# Update Sales
 	@api.multi
 	def update_sales(self):
 		"""
 		Update Sales
+		To see the detail 
 		"""
 		print()
 		print('X - Update Sales')
 
 
 		# Handle Exceptions
-		exc_mkt.handle_exceptions(self)
+		#exc_mkt.handle_exceptions(self)
 
 
 		# Go
@@ -202,10 +261,8 @@ class Marketing(models.Model):
 		self.delta_analyse_patient_lines = 0
 
 
-		# Analyze
-		#self.create_sale_lines()
-		#self.analyse_sale_lines()
-		#self.analyse_patient_lines()
+
+		# Analyse
 		stax.create_sale_lines(self)
 		stax.analyse_sale_lines(self)
 		stax.analyse_patient_lines(self)
@@ -675,7 +732,7 @@ class Marketing(models.Model):
 
 
 		# Handle Exceptions
-		exc_mkt.handle_exceptions(self)
+		#exc_mkt.handle_exceptions(self)
 
 
 		# Go
@@ -709,7 +766,6 @@ class Marketing(models.Model):
 		self.district_line.unlink()
 		self.country_line.unlink()
 		self.city_line.unlink()
-
 
 		# First Contact
 		self.how_facebook = 0

@@ -7,47 +7,12 @@
 	pl_family_analysis_2018
 
 
+	Created: 	       2019
 	Updated: 	11 Dec 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
 import datetime
-
-
-
-# ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
-# Provides Percentage
-#@api.multi
-def get_per_nex(value, total):
-	print()
-	print('Pl - Get Per Nex')
-	print(value)
-	print(total)
-
-	per = 0.
-	if total != 0: 
-		per = float(value) / float(total)
-	return per
-# get_per_nex
-
-
-
-# ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
-
-# Provides Percentage
-@api.multi
-def get_per(self, value, total):
-	#print()
-	#print('Pl - Get Per')
-	#per = 0 
-	per = 0.
-	if total != 0: 
-		#per = ( float(value) / float(total) ) * 100
-		per = float(value) / float(total)
-	return per
-# get_per
-
-
 
 
 
@@ -83,9 +48,7 @@ def pl_family_analysis_2018(self, line):
 
 		else:
 			family = 'procedure'
-
 			subfamily = line.product_id.x_family
-			
 			subsubfamily = line.product_id.x_treatment
 
 	return family, subfamily, subsubfamily
@@ -129,7 +92,6 @@ def pl_family_analysis(self, line):
 
 
 # ----------------------------------------------------------- Line Analysis - PL -----------------------
-#def pl_line_analysis(self, line):
 def pl_patient_line_analysis(self, line):
 	"""
 	New - 2019
@@ -277,3 +239,21 @@ def is_new_patient(self, patient, date_bx, date_ex):
 	return is_new
 
 # is_new_patient
+
+
+# ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
+def get_per(value, total):
+	"""
+	Provides Percentage - New
+	Does not use Self
+	"""
+	#print()
+	#print('Pl - Get Per')
+	#print(value)
+	#print(total)
+
+	per = 0.
+	if total != 0: 
+		per = float(value) / float(total)
+	return per
+# get_per_nex

@@ -20,6 +20,104 @@ class ProductProduct(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Introspecters ----------------------------------------------
+
+
+# ----------------------------------------------------------- Is Vip Card -------------------------
+	def is_vip_card(self):					
+		"""
+		Introspection compliant
+		2019 and 2018 compliant
+		"""
+		print()
+		print('Is Vip Card')
+
+
+		is_vip_card = False
+
+		# 2019
+		if self.pl_price_list in ['2019']:
+			if self.pl_family in ['card',]:   		# LOD compliant !
+				is_vip_card = True
+
+		# 2018
+		elif self.pl_price_list in ['2018']:
+			if self.x_name_short in ['vip_card']:
+				is_vip_card = True
+
+
+		return is_vip_card
+
+
+
+# ----------------------------------------------------------- Is Product -------------------------
+	def is_product(self):
+		"""
+		Introspection compliant
+
+		Only 2019 is covered 
+
+		Test if it is a Product
+		Used by: 
+			Report Sale Product (Reporte de Ventas)
+		"""
+
+		is_product = False
+
+
+		# Only 2019 is covered 
+		if self.pl_price_list in ['2019']:
+			if self.pl_family in ['topical', 'card', 'kit']:   		# LOD compliant !
+				is_product = True
+			else:				
+				is_product = False
+
+		else:
+			print('Error: This should not happen !')
+
+
+		return is_product
+
+
+
+# ----------------------------------------------------------- IS procedure -------------------------
+
+	def is_procedure(self):
+		"""
+		Introspection compliant
+
+		Only 2019 is covered 
+
+		Test if it is a procedure
+		Used by: 
+			PL - Treatment
+		"""
+
+		is_procedure = False
+
+
+		# 2019
+		if self.pl_price_list in ['2019']:
+			if self.pl_family in  ['laser', 'medical', 'cosmetology', 'echography', 'gynecology', 'promotion']:
+				is_procedure = True
+			else:				
+				is_procedure = False
+
+		else:
+			print('Error: This should not happen !')
+
+		return is_procedure
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Getters ----------------------------------------------
+
+
 # ----------------------------------------------------------- Get Family -------------------------
 
 	#@api.multi
@@ -36,15 +134,11 @@ class ProductProduct(models.Model):
 
 		# 2019
 		if self.pl_price_list in ['2019']:
-
 			family = self.pl_family
-
 
 		# 2018
 		elif self.pl_price_list in ['2018']:
-
 			family = self.x_family
-
 
 		# No price list
 		else:
@@ -162,62 +256,6 @@ class ProductProduct(models.Model):
 
 
 
-# ----------------------------------------------------------- IS Funcs -------------------------
-	def is_product(self):
-		"""
-		Test if it is a Product
-		Used by: PL - Report Sale Product (Reporte de Ventas)
-		"""
-
-		is_product = False
-
-
-		# Only 2019 is covered 
-		if self.pl_price_list in ['2019']:
-
-
-			if self.pl_family in ['topical', 'card', 'kit']:   		# LOD compliant !
-
-				is_product = True
-
-			else:				
-				is_product = False
-
-		else:
-			print('Error: This should not happen !')
-
-
-		return is_product
-
-
-
-# ----------------------------------------------------------- IS Funcs -------------------------
-
-	def is_procedure(self):
-		"""
-		Test if it is a procedure
-		Used by: PL - Treatment
-		"""
-
-		is_procedure = False
-
-
-		# 2019
-		if self.pl_price_list in ['2019']:
-
-			if self.pl_family in  ['laser', 'medical', 'cosmetology', 'echography', 'gynecology', 'promotion']:
-
-				is_procedure = True
-
-			else:				
-				is_procedure = False
-
-		else:
-			print('Error: This should not happen !')
-
-
-		return is_procedure
-
 
 # ----------------------------------------------------------- Getters -------------------------
 
@@ -271,6 +309,9 @@ class ProductProduct(models.Model):
 # ----------------------------------------------------------- Is Current Price List -------------------------------
 
 	def is_current_price_list(self):
+		"""
+		Introspection compliant
+		"""
 		#print()
 		#print('Product - Is Current Price List')
 

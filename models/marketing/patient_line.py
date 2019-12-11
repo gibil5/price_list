@@ -1,25 +1,68 @@
 # -*- coding: utf-8 -*-
-#
-# 	Patient Line
-# 
-# 	Created: 				16 May 2018
-#
+"""
+	Patient Line
+
+	Only functions. Not the data model. 
+
+	Created: 				16 May 2018
+	Last up: 				11 Dec 2019
+"""
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
-
 from openerp.addons.openhealth.models.product import prodvars
-
 from openerp.addons.openhealth.models.patient import pat_vars
-
 from . import pat_line_funcs
 
-
 class PatientLine(models.Model):
-
+	"""
+	Used by Marketing - Update Patients
+	"""
 	_inherit = 'openhealth.patient.line'
 
 	_order = 'date_create asc'
+
+
+
+
+
+# ----------------------------------------------------------- Update Fields Vip ------------------------------------------------------
+	# Update fields Vip
+	@api.multi
+	def update_fields_vip(self):  
+		print()
+		print('X - Update fields - Vip')
+
+
+		# Nr Lines Vip 
+		count = self.env['openhealth.marketing.order.line'].search_count([
+																				('patient_line_id_vip','=', self.id),
+																			]) 
+		self.nr_lines_vip = count
+
+	# update_fields_vip
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+	# Marketing Id 
+	marketing_id = fields.Many2one(
+			'openhealth.marketing',
+			ondelete='cascade', 
+		)
+
+	# Sales
+	pl_sale_line = fields.One2many(
+			'price_list.marketing.order_line',
+			'patient_line_id',
+		)
 
 
 
@@ -32,7 +75,6 @@ class PatientLine(models.Model):
 			required=True,
 		)
 
-
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient', 
@@ -40,14 +82,11 @@ class PatientLine(models.Model):
 			required=True,
 		)
 
-
 	# Doctor 
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
 			string = "Médico", 	
 		)
-
-
 
 
 	# Contact
@@ -139,36 +178,12 @@ class PatientLine(models.Model):
 
 
 
-
-
-# ----------------------------------------------------------- Relational ------------------------------------------------------
-
-	# Marketing Id 
-	marketing_id = fields.Many2one(
-			'openhealth.marketing',
-			ondelete='cascade', 
-		)
-
-
-	# Sales
-	pl_sale_line = fields.One2many(
-			'price_list.marketing.order_line',
-			'patient_line_id',
-		)
-
-
-	# Sales - Dep !
-	sale_line = fields.One2many(
-			'openhealth.marketing.order.line',
-			'patient_line_sale_id',
-		)
-
-
-
 # ----------------------------------------------------------- Analysis ------------------------------------------------------
 
 	def analysis(self, line):
-
+		"""
+		Used by Stax
+		"""
 		pat_line_funcs.macro_line_analysis(self, line)		# LIB
 
 		# Update sale line
@@ -176,17 +191,60 @@ class PatientLine(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Setters ------------------------------------------------------
+	def set_vip(self, value):
+		self.vip = value
+		# Parent
+		self.marketing_id.vip_true = self.marketing_id.vip_true + 1
 
-	#def add_procedure_treatment(self, treatment):
+
+# ----------------------------------------------------------- Incs ------------------------------------------------------
+	def inc_nr_sale(self, qty):
+		"""
+		Used by Pat Line Funcs - Macro line analysis
+		"""
+		self.nr_sale = self.nr_sale + qty
+
+
+	def inc_nr_draft(self, qty):
+		"""
+		Used by Pat Line Funcs - Macro line analysis
+		"""
+		self.nr_budget = self.nr_budget + qty
+
+
+	def inc_nr_consultation(self, qty):
+		"""
+		Used by Pat Line Funcs - Macro line analysis
+		"""
+		self.nr_consu = self.nr_consu + qty
+
+
+	def inc_nr_procedure(self, qty):
+		"""
+		Used by Pat Line Funcs - Macro line analysis
+		"""
+		self.nr_proc = self.nr_proc + qty
+
+
+	def inc_nr_product(self, qty):
+		"""
+		Used by Pat Line Funcs - Macro line analysis
+		"""
+		self.nr_products = self.nr_products + qty
+
+
+
+
+# ----------------------------------------------------------- Adds ------------------------------------------------------
+
+	# Add procedure treatment
 	def add_procedure_treatment(self, product):
-
-		# All Price Lists
-		#if product.pl_price_list in ['2019']:
-		#	treatment = product.pl_treatment
-		#else:
-		#	treatment = product.x_treatment
-
+		"""
+		Used by Pat Line Funcs - Macro line analysis
+		"""
 
 		# All PL
 		treatment = product.get_treatment()
@@ -200,15 +258,11 @@ class PatientLine(models.Model):
 
 
 
-	#def add_procedure_pathology(self, pathology):
+	# Add procedure patho
 	def add_procedure_pathology(self, product):
-
-		# All Price Lists
-		#if product.pl_price_list in ['2019']:
-		#	pathology = product.pl_pathology
-		#else:
-		#	pathology = product.x_pathology
-
+		"""
+		Used by Pat Line Funcs - Macro line analysis
+		"""
 
 		# All PL
 		pathology = product.get_pathology()
@@ -220,15 +274,12 @@ class PatientLine(models.Model):
 				self.proc_pathology = self.proc_pathology + ', ' + pathology
 
 
-	#def add_procedure_zone(self, zone):
+
+	# Add procedure zone
 	def add_procedure_zone(self, product):
-
-		# All Price Lists
-		#if product.pl_price_list in ['2019']:
-		#	zone = product.pl_zone
-		#else:
-		#	zone = product.x_zone
-
+		"""
+		Used by Pat Line Funcs - Macro line analysis
+		"""
 
 		# All PL
 		zone = product.get_zone()
@@ -238,48 +289,6 @@ class PatientLine(models.Model):
 				self.proc_zone = zone
 			else:
 				self.proc_zone = self.proc_zone + ', ' + zone
-
-
-
-
-
-	def set_vip(self, value):
-		self.vip = value
-		# Parent
-		self.marketing_id.vip_true = self.marketing_id.vip_true + 1
-
-
-# ----------------------------------------------------------- Incs ------------------------------------------------------
-
-	def inc_nr_sale(self, qty):
-		#self.sl_nr_sale = self.sl_nr_sale + qty
-		self.nr_sale = self.nr_sale + qty
-
-
-	def inc_nr_draft(self, qty):
-		#self.sl_nr_budget = self.sl_nr_budget + qty
-		self.nr_budget = self.nr_budget + qty
-
-
-
-
-	def inc_nr_consultation(self, qty):
-		#self.sl_nr_consu = self.sl_nr_consu + qty
-		self.nr_consu = self.nr_consu + qty
-
-
-	def inc_nr_procedure(self, qty):
-		#self.sl_nr_proc = self.sl_nr_proc + qty
-		self.nr_proc = self.nr_proc + qty
-
-
-	def inc_nr_product(self, qty):
-		#self.sl_nr_products = self.sl_nr_products + qty
-		self.nr_products = self.nr_products + qty
-
-
-
-
 
 
 
@@ -513,25 +522,8 @@ class PatientLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Update ------------------------------------------------------
 
-	def update_emr(self):
-		#print()
-		#print('Update EMR')
 
-		self.treatment = self.env['openhealth.treatment'].search([
-																	('patient','=', self.patient.name),
-														],
-														order='start_date desc',
-														limit=1,)
 
-		self.consultation = self.env['openhealth.consultation'].search([
-																		('treatment','=', self.treatment.id),
-														],
-														order='evaluation_start_date desc',
-														limit=1,)
 
-		self.chief_complaint = self.treatment.chief_complaint
-
-		self.diagnosis = self.consultation.x_diagnosis
 
