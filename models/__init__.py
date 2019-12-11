@@ -3,6 +3,14 @@
 #from . import models
 
 
+
+# Django interface
+from django import *
+
+
+
+
+
 # Appointment - Dep
 #from appointment import *
 

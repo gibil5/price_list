@@ -20,22 +20,7 @@ class ReportSaleProduct(models.Model):
 	_inherit = 'openhealth.report.sale.product'
 	
 
-
-
 # ----------------------------------------------------- Django Interface --------------------------
-
-	@api.multi
-	def set_state(self, state):
-		"""
-		Django interface
-		so_model.set_state(state)
-		"""
-		print()
-		print('Set State')
-		self.state = state
-
-
-
 	@api.multi
 	def get_name(self):
 		"""
@@ -48,49 +33,18 @@ class ReportSaleProduct(models.Model):
 
 
 	@api.multi
-	def get_date_begin(self):
-		"""
-		Django interface
-		"""
-		print()
-		print('Get date')
-		return self.date_begin
-
-
-	@api.multi
-	def get_date_end(self):
-		"""
-		Django interface
-		"""
-		print()
-		print('Get date')
-		return self.date_end
-
-
-	@api.multi
-	def get_date_test(self):
-		"""
-		Django interface
-		"""
-		print()
-		print('Get date')
-		return self.date_test
-
-
-
-
-	@api.multi
 	def get_total(self):
 		"""
 		Django interface
 		"""
 		print()
 		print('Get total')
+
 		if self.total not in [False]:
 			return self.total
+
 		else:
 			return 0
-
 
 
 	@api.multi
@@ -107,22 +61,8 @@ class ReportSaleProduct(models.Model):
 
 
 
-	@api.multi
-	def get_state(self):
-		"""
-		Django interface
-		"""
-		print()
-		print('Get state')
-		return self.state
-
-
-
-
-
 
 # ----------------------------------------------------------- Create Lines - 2019 -----------------
-
 	# Create Lines 
 	def create_lines(self, orders):  
 		#print()

@@ -3,7 +3,7 @@
  	Price List - Marketing Report
 
  	Created: 				19 May 2018
- 	Last up: 	 			 3 Jul 2019
+ 	Last up: 	 			10 Dec 2019
 
 	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
 	  without having to know its Implementation. 
@@ -23,20 +23,14 @@ import collections
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.marketing import lib_marketing
+from openerp.addons.price_list.models.management.lib import mgt_funcs
+from openerp.addons.price_list.models.lib import test_funcs
 
 from . import mkt_funcs
-
 from . import mkt_vars
-
 from . import stax
-
-
-#from openerp.addons.price_list.models.management import mgt_funcs
-from openerp.addons.price_list.models.management.lib import mgt_funcs
-
 from . import exc_mkt
 
-from openerp.addons.price_list.models.lib import test_funcs
 
 class Marketing(models.Model):
 	"""
@@ -56,6 +50,91 @@ class Marketing(models.Model):
 		print()
 		print('Set State')
 		self.state = state
+
+
+
+	@api.multi
+	def get_name(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get name')
+		return self.name
+
+
+
+	@api.multi
+	def get_date_begin(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_begin
+
+
+	@api.multi
+	def get_date_end(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_end
+
+
+	@api.multi
+	def get_date_test(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_test
+
+
+
+
+	#@api.multi
+	#def get_total(self):
+	#	"""
+	#	Django interface
+	#	"""
+	#	print()
+	#	print('Get total')
+	#	if self.total not in [False]:
+	#		return self.total
+	#	else:
+	#		return 0
+
+
+
+	@api.multi
+	def get_count(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get count')
+		if self.total_count not in [False]:
+			return self.total_count
+		else:
+			return 0
+
+
+
+	@api.multi
+	def get_state(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get state')
+		return self.state
+
+
+
 
 
 
