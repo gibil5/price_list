@@ -4,13 +4,6 @@
 
 
 
-
-
-
-
-
-
-
 <!-- FORM -->
 		<record model="ir.ui.view" id="openhealth.marketing_form_view">
 			<field name="name">marketing.form</field>           
@@ -278,25 +271,20 @@
 <!-- Sheet -->
 					<sheet>
 
+						<!-- Total -->
 						<group  string="Total"  col="3">
-
 							<group>
 								<field name="name"/>
 								<field name="date_begin"/>
 								<field name="date_end"/>
-
 								<field name="mode"/>
-
 								<field name="state"/>
 							</group>
-
 							<group>
-
 								<field name="total_count"   string="Pacientes Nuevos"/>
 							</group>
 
 							<group>
-
 								<field name="sale_line_sale_count"/>
 								<field name="sale_line_consultation_count"/>
 								<field name="sale_line_procedure_count"/>
@@ -317,102 +305,52 @@
 
 
 
-
-						<!-- Notebook --> 
-						<notebook>  
-
-
-							<!-- Bench --> 
-							<page   string="Benchmark"	groups="openhealth.roots">
-
-								<group  groups="openhealth.roots">
-									<group>
-										<field name="delta_patients"/>
-										<field name="delta_sales"	string="Delta Ventas Dep"	groups="openhealth.roots"/>
-										<field name="delta_sales_pl"/>
-									</group>
-									<group>
-
-										<field name="delta_create_sale_lines"/>
-										<field name="delta_analyse_sale_lines"/>
-										<field name="delta_analyse_patient_lines"/>
-									</group>
-								</group>
-							</page>
-						</notebook>
-<!--
-										<field name="write_date"	string="Actualizado"/>
-
-										<field name="delta_recos"/>
-										<field name="vspace"/>
-										<field name="vspace"/>
--->
-
-
-
-
-
-
-
-
-
-
-
+						<!-- Vip -->
 						<group string="Vip">
 							<group>
 								<field name="vip_already_true"	string="Vip por venta anterior"/>
-
 								<field name="vip_true"	string="Vip por venta mes"/>
 								<field name="vip_false"	string="No Vip"/>
 							</group>
 							<group>                             
 								<field name="vip_already_true_per"	string="Vip por venta anterior %"	widget="percentage"/>
-
 								<field name="vip_true_per"	string="Vip por venta mes %"			widget="percentage"/>
 								<field name="vip_false_per"	string="No Vip %"		widget="percentage"/>
 							</group>
 						</group>
 
 
-								<!-- Sex -->
-								<group  col="2" 	string="Sexo">
-									<group>
-										<field name="sex_male"		string="Masculino"/>
-										<field name="sex_female"	string="Femenino"/>
-										<field name="sex_undefined"	string="Incompleto"/>
-									</group>
-									<group>
-										<field name="sex_male_per"		string="Masculino %"	widget="percentage"/>
-										<field name="sex_female_per"	string="Femenino %"		widget="percentage"/>
-										<field name="sex_undefined_per"	string="Incompleto %" 	widget="percentage"/>
-									</group>
-								</group>
-
-								<!-- Age -->
-								<group  string="Edad">
-									<group>
-										<field name="age_mean"	string="Promedio"	/>
-										<field name="age_min"	string="Minimo"/>
-										<field name="age_max"	string="Maximo"	/>
-									</group>
-									<group>
-										<field name="age_undefined"		string="Error"/>
-										<field name="age_undefined_per"	string="Error %"	widget="percentage"/>
-									</group>
-								</group>
-
-
-
-						<!-- Padding -->
-<!--
-						<group  string="">
-							<group></group>
-							<group></group>
+						<!-- Sex -->
+						<group  col="2" 	string="Sexo">
+							<group>
+								<field name="sex_male"		string="Masculino"/>
+								<field name="sex_female"	string="Femenino"/>
+								<field name="sex_undefined"	string="Incompleto"/>
+							</group>
+							<group>
+								<field name="sex_male_per"		string="Masculino %"	widget="percentage"/>
+								<field name="sex_female_per"	string="Femenino %"		widget="percentage"/>
+								<field name="sex_undefined_per"	string="Incompleto %" 	widget="percentage"/>
+							</group>
 						</group>
--->
 
 
-						<!-- Notebook --> 
+						<!-- Age -->
+						<group  string="Edad">
+							<group>
+								<field name="age_mean"	string="Promedio"	/>
+								<field name="age_min"	string="Minimo"/>
+								<field name="age_max"	string="Maximo"	/>
+							</group>
+							<group>
+								<field name="age_undefined"		string="Error"/>
+								<field name="age_undefined_per"	string="Error %"	widget="percentage"/>
+							</group>
+						</group>
+
+
+
+<!-- Notebook --> 
 						<notebook>  
 
 							<!-- Patients --> 
@@ -434,11 +372,8 @@
 							</page>
 
 
-
-
 							<!-- Stats --> 
 							<page   string="Estadistica">
-
 
 								<!-- First Contact -->
 								<group  string="Primer Contacto">

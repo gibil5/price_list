@@ -16,6 +16,23 @@ import datetime
 
 
 # ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
+# Provides Percentage
+#@api.multi
+def get_per_nex(value, total):
+	print()
+	print('Pl - Get Per Nex')
+	print(value)
+	print(total)
+
+	per = 0.
+	if total != 0: 
+		per = float(value) / float(total)
+	return per
+# get_per_nex
+
+
+
+# ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
 
 # Provides Percentage
 @api.multi
@@ -29,6 +46,8 @@ def get_per(self, value, total):
 		per = float(value) / float(total)
 	return per
 # get_per
+
+
 
 
 

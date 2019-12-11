@@ -1,3 +1,47 @@
+<!--
+11 Dec 2019
+-->
+                        <!-- Padding -->
+<!--
+                        <group  string="">
+                            <group></group>
+                            <group></group>
+                        </group>
+-->
+
+                        <!-- Notebook --> 
+                        <notebook>  
+                            <!-- Bench --> 
+                            <page   string="Benchmark"  groups="openhealth.roots">
+                                <group  groups="openhealth.roots">
+                                    <group>
+                                        <field name="delta_patients"/>
+                                        <field name="delta_sales"   string="Delta Ventas Dep"   groups="openhealth.roots"/>
+                                        <field name="delta_sales_pl"/>
+                                    </group>
+                                    <group>
+                                        <field name="delta_create_sale_lines"/>
+                                        <field name="delta_analyse_sale_lines"/>
+                                        <field name="delta_analyse_patient_lines"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+<!--
+                                        <field name="write_date"    string="Actualizado"/>
+                                        <field name="delta_recos"/>
+                                        <field name="vspace"/>
+                                        <field name="vspace"/>
+-->
+
+
+
+
+
+
+
+
+
                         <!-- Vip not used -->
 <!--                        
                         <button 

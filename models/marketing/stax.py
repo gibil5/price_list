@@ -69,11 +69,28 @@ def update_stats(self):
 		self.sex_female_per = (self.sex_female / float(self.total_count))
 		self.sex_undefined_per = (self.sex_undefined / float(self.total_count))
 
-
 	# Age
 	if self.total_count != 0:
 		self.age_mean = self.age_sum / float(self.total_count)
 		self.age_undefined_per = (self.age_undefined / float(self.total_count))
+
+
+
+
+	# Education
+	self.edu_fir_per = mkt_funcs.get_per(self, self.edu_fir, self.total_count)
+	self.edu_sec_per = mkt_funcs.get_per(self, self.edu_sec, self.total_count)
+	self.edu_tec_per = mkt_funcs.get_per(self, self.edu_tec, self.total_count)
+
+
+	#self.edu_uni_per = mkt_funcs.get_per(self, self.edu_uni, self.total_count)
+	self.edu_uni_per = mkt_funcs.get_per_nex(self.edu_uni, self.total_count)
+
+
+	self.edu_mas_per = mkt_funcs.get_per(self, self.edu_mas, self.total_count)
+	self.edu_u_per = mkt_funcs.get_per(self, self.edu_u, self.total_count)
+
+
 
 
 
@@ -87,20 +104,12 @@ def update_stats(self):
 	self.how_mail_per = mkt_funcs.get_per(self, self.how_mail, self.total_count)
 	self.how_u_per = mkt_funcs.get_per(self, self.how_u, self.total_count)
 
-	# New
 	self.how_facebook_per = mkt_funcs.get_per(self, self.how_facebook, self.total_count)
 	self.how_instagram_per = mkt_funcs.get_per(self, self.how_instagram, self.total_count)
 	self.how_callcenter_per = mkt_funcs.get_per(self, self.how_callcenter, self.total_count)
 	self.how_old_patient_per = mkt_funcs.get_per(self, self.how_old_patient, self.total_count)
 
 
-	# Education
-	self.edu_fir_per = mkt_funcs.get_per(self, self.edu_fir, self.total_count)
-	self.edu_sec_per = mkt_funcs.get_per(self, self.edu_sec, self.total_count)
-	self.edu_tec_per = mkt_funcs.get_per(self, self.edu_tec, self.total_count)
-	self.edu_uni_per = mkt_funcs.get_per(self, self.edu_uni, self.total_count)
-	self.edu_mas_per = mkt_funcs.get_per(self, self.edu_mas, self.total_count)
-	self.edu_u_per = mkt_funcs.get_per(self, self.edu_u, self.total_count)
 
 
 	# Vip
