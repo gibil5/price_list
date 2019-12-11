@@ -1,3 +1,104 @@
+# 11 Dec 2019
+
+# ----------------------------------------------------- Django Interface --------------------------
+
+	@api.multi
+	def set_state(self, state):
+		"""
+		Django interface
+		so_model.set_state(state)
+		"""
+		print()
+		print('Set State')
+		self.state = state
+
+
+
+	@api.multi
+	def get_name(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get name')
+		return self.name
+
+
+
+	@api.multi
+	def get_date_begin(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_begin
+
+
+	@api.multi
+	def get_date_end(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_end
+
+
+	@api.multi
+	def get_date_test(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_test
+
+
+
+
+	#@api.multi
+	#def get_total(self):
+	#	"""
+	#	Django interface
+	#	"""
+	#	print()
+	#	print('Get total')
+	#	if self.total not in [False]:
+	#		return self.total
+	#	else:
+	#		return 0
+
+
+
+	@api.multi
+	def get_count(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get count')
+		if self.total_count not in [False]:
+			return self.total_count
+		else:
+			return 0
+
+
+
+	@api.multi
+	def get_state(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get state')
+		return self.state
+
+
+
+
+
+
 
 
 

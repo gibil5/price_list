@@ -1,3 +1,104 @@
+# 11 Dec 2019
+# ----------------------------------------------------- Django Interface --------------------------
+
+	@api.multi
+	def get_date(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_begin
+
+
+
+	@api.multi
+	def get_date_update(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.write_date
+
+
+
+
+	@api.multi
+	def set_state(self, state):
+		"""
+		Django interface
+		so_model.set_state(state)
+		"""
+		print()
+		print('Set State')
+		self.state = state
+
+
+	@api.multi
+	def get_name(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get name')
+		return self.name
+
+
+	@api.multi
+	def get_date(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date')
+		return self.date_begin
+
+
+
+
+
+	@api.multi
+	def get_total(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get total')
+
+		if self.total_amount not in [False]:
+			return self.total_amount
+
+		else:
+			return 0
+
+
+	@api.multi
+	def get_state(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get state')
+		return self.state
+
+
+	@api.multi
+	def get_configurator(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get state')
+		return self.configurator.name
+
+
+
+
+
+
+
+
 # 7 Dec 2019
 
 

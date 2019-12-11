@@ -11,7 +11,9 @@ from openerp.addons.openhealth.models.libs import eval_vars
 from openerp.addons.openhealth.models.product import prodvars
 
 from openerp.addons.openhealth.models.patient import pat_vars
-from . import mkt_funcs
+
+from . import pat_line_funcs
+
 
 class PatientLine(models.Model):
 
@@ -167,7 +169,7 @@ class PatientLine(models.Model):
 
 	def analysis(self, line):
 
-		mkt_funcs.macro_line_analysis(self, line)		# LIB
+		pat_line_funcs.macro_line_analysis(self, line)		# LIB
 
 		# Update sale line
 		line.set_patient_line_id(self.id)

@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
 """
 	Stax Library
+	Used by
+		Marketing
+	Uses
+		mkt_funcs
+
+
+	- Update Stats
+	- Update Vip Sales
+	- Create Sale Lines
+	- Analyse patient Lines
+	- Analyse Sale Lines
 
  	Created: 				10 Dec 2019
  	Last up: 	 			10 Dec 2019
@@ -8,13 +19,10 @@
 
 from timeit import default_timer as timer
 import collections
-
 from openerp import models, fields, api
 from openerp.addons.price_list.models.management.lib import mgt_funcs
-
 from . import exc_mkt
 from . import mkt_funcs
-
 
 
 # ----------------------------------------------------------- Second Level ---------------------------------------------
@@ -39,8 +47,8 @@ def update_stats(self):
 	# Loop
 	for line in self.patient_line:
 
+
 		# Line Analysis
-		#mkt_funcs.pl_line_analysis(self, line)
 		mkt_funcs.pl_patient_line_analysis(self, line)
 
 
@@ -60,10 +68,6 @@ def update_stats(self):
 		self.sex_male_per = (self.sex_male / float(self.total_count))
 		self.sex_female_per = (self.sex_female / float(self.total_count))
 		self.sex_undefined_per = (self.sex_undefined / float(self.total_count))
-
-	#self.sex_male_per = mkt_funcs.get_per(self, self.sex_male, self.total_count)
-	#self.sex_female_per = mkt_funcs.get_per(self, self.sex_female, self.total_count)
-	#self.sex_undefined_per = mkt_funcs.get_per(self, self.sex_undefined, self.total_count)
 
 
 	# Age
@@ -129,6 +133,9 @@ def update_stats(self):
 # ----------------------------------------------------------- Update Vip Sales --------------------
 @api.multi
 def update_vip_sales(self):  
+	"""
+	Update Vip Sales
+	"""
 	print()
 	print('X - Vip Sales')
 
@@ -245,9 +252,11 @@ def create_sale_lines(self):
 		#	print(order.state)
 		#	print()
 
-		is_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)
 
+		# The patient has been created this month
+		is_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)
 		#print(is_new)
+
 
 		#if is_new:
 		if is_new or order.patient.x_test:
@@ -342,8 +351,6 @@ def analyse_patient_lines(self):
 		# Loop
 		for line in lines:
 			#print(line)
-			#mkt_funcs.macro_line_analysis(self, line, patient_line)
-
 			patient_line.analysis(line)  	# OO
 
 
@@ -372,7 +379,7 @@ def analyse_patient_lines(self):
 @api.multi
 def analyse_sale_lines(self):
 	"""
-	Update Sale Lines
+	Analyse Sale Lines
 	"""
 	print()
 	print('X - Analysis Sale Lines')

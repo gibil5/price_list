@@ -3,7 +3,7 @@
  	Price List - Marketing Report
 
  	Created: 				19 May 2018
- 	Last up: 	 			10 Dec 2019
+ 	Last up: 	 			11 Dec 2019
 
 	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, 
 	  without having to know its Implementation. 
@@ -26,7 +26,9 @@ from openerp.addons.openhealth.models.marketing import lib_marketing
 from openerp.addons.price_list.models.management.lib import mgt_funcs
 from openerp.addons.price_list.models.lib import test_funcs
 
-from . import mkt_funcs
+#from . import mkt_funcs
+from . import pat_funcs
+
 from . import mkt_vars
 from . import stax
 from . import exc_mkt
@@ -39,100 +41,8 @@ class Marketing(models.Model):
 	_inherit = 'openhealth.marketing'
 
 
+
 # ----------------------------------------------------- Django Interface --------------------------
-
-	@api.multi
-	def set_state(self, state):
-		"""
-		Django interface
-		so_model.set_state(state)
-		"""
-		print()
-		print('Set State')
-		self.state = state
-
-
-
-	@api.multi
-	def get_name(self):
-		"""
-		Django interface
-		"""
-		print()
-		print('Get name')
-		return self.name
-
-
-
-	@api.multi
-	def get_date_begin(self):
-		"""
-		Django interface
-		"""
-		print()
-		print('Get date')
-		return self.date_begin
-
-
-	@api.multi
-	def get_date_end(self):
-		"""
-		Django interface
-		"""
-		print()
-		print('Get date')
-		return self.date_end
-
-
-	@api.multi
-	def get_date_test(self):
-		"""
-		Django interface
-		"""
-		print()
-		print('Get date')
-		return self.date_test
-
-
-
-
-	#@api.multi
-	#def get_total(self):
-	#	"""
-	#	Django interface
-	#	"""
-	#	print()
-	#	print('Get total')
-	#	if self.total not in [False]:
-	#		return self.total
-	#	else:
-	#		return 0
-
-
-
-	@api.multi
-	def get_count(self):
-		"""
-		Django interface
-		"""
-		print()
-		print('Get count')
-		if self.total_count not in [False]:
-			return self.total_count
-		else:
-			return 0
-
-
-
-	@api.multi
-	def get_state(self):
-		"""
-		Django interface
-		"""
-		print()
-		print('Get state')
-		return self.state
-
 
 
 
@@ -195,7 +105,10 @@ class Marketing(models.Model):
 
 		# Get Patients
 		mode = self.mode
-		patients, count = mkt_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
+
+		#patients, count = pat_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
+		patients, count = pat_funcs.get_patients_filter_for_mkt(self, self.date_begin, self.date_end, mode)
+
 		self.total_count = count
 
 

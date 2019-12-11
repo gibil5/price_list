@@ -20,6 +20,7 @@ class ReportSaleProduct(models.Model):
 	_inherit = 'openhealth.report.sale.product'
 	
 
+
 # ----------------------------------------------------- Django Interface --------------------------
 	@api.multi
 	def get_name(self):
@@ -58,6 +59,7 @@ class ReportSaleProduct(models.Model):
 			return self.total_qty
 		else:
 			return 0
+
 
 
 
