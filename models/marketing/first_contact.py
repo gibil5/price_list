@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	First Contact
+	First Contact - Object Oriented
 	
 	For Marketing
 

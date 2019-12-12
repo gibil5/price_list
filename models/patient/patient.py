@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Patient
-	Inherits from Openhealth and OeHealth.
+	Patient - Object Oriented
 
 	Only functions. Not the data model. 
 

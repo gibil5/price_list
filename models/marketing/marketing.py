@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
- 	Price List - Marketing Report
+ 	Price List - Marketing Report - Object Oriented
 
 	Only functions. Not the data model. 
 

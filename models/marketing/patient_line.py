@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Patient Line
+	Patient Line - Object Oriented
 
 	Only functions. Not the data model. 
 

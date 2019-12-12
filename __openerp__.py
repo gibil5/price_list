@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Price List 2019 - ODOO 9 MODULE",
+	'name': "Price List 2019 - OBJECT ORIENTED - ODOO 9 MODULE",
 
 	'summary': 
 		"""
@@ -10,7 +10,7 @@
 	'description':
 		"""
 
-		10 Dec 2019
+		12 Dec 2019
 
 		(Since 22 April, in Prod)
 

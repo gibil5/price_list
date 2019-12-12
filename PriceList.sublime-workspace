@@ -523,7 +523,7 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 4961,
+				"buffer_size": 4979,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -547,13 +547,10 @@
 			}
 		},
 		{
-			"contents": "# -*- coding: utf-8 -*-\n\"\"\"\n\tStax Library\n\n\tUsed by\n\t\tMarketing\n\n\tUses\n\t\tmkt_funcs\n\n\n\t- Update Stats\n\t- Update Vip Sales\n\t- Create Sale Lines\n\t- Analyse patient Lines\n\t- Analyse Sale Lines\n\n \tCreated: \t\t\t\t10 Dec 2019\n \tLast up: \t \t\t\t10 Dec 2019\n\"\"\"\n\nfrom timeit import default_timer as timer\nimport collections\nfrom openerp import models, fields, api\nfrom openerp.addons.price_list.models.management.lib import mgt_funcs\nfrom . import exc_mkt\n\nfrom . import mkt_funcs\n\n\n# ----------------------------------------------------------- Second Level ---------------------------------------------\n\n# ----------------------------------------------------------- Update Stats ------------------------\n# Set Stats\n@api.multi\ndef update_stats(self):\n\t\"\"\"\n\tUpdate Macro Stats\n\t\"\"\"\n\tprint()\n\tprint('X - Update Stats')\n\n\n\t# Init\n\n\t# Collections\n\tcountry_arr = []\n\n\n\n\t# Macros - Counters - Init\n\tedu_fir, edu_sec, edu_tec, edu_uni, edu_mas, edu_u = 0, 0, 0, 0, 0, 0\n\n\n\n\t# Loop - For all Patients\n\tfor line in self.patient_line:\n\n\n\t\t# Education \n\t\tif line.education == 'first': \n\t\t\tedu_fir = edu_fir + 1\n\n\t\telif line.education == 'second': \n\t\t\tedu_sec = edu_sec + 1\n\n\t\telif line.education == 'technical': \n\t\t\tedu_tec = edu_tec + 1\n\n\t\telif line.education == 'university': \n\t\t\tedu_uni = edu_uni + 1\n\n\t\telif line.education == 'masterphd': \n\t\t\tedu_mas = edu_mas + 1\n\n\t\telse: \n\t\t\tedu_u = edu_u + 1\n\n\n\t\t# Line Analysis\n\t\tmkt_funcs.pl_patient_line_analysis(self, line)\n\n\n\t\t# Countries\n\t\tcountry_arr.append(line.country)\n\n\n\n\n# Macros - Counters\n\tprint(edu_fir, edu_sec, edu_tec, edu_uni, edu_mas, edu_u)\n\n\tself.edu_fir, self.edu_sec, self.edu_tec, self.edu_uni, self.edu_mas, self.edu_u = edu_fir, edu_sec, edu_tec, edu_uni, edu_mas, edu_u\n\n\t#education = self.education.create({\n\tself.education = self.education.create({\n\t\t\t\t\t\t\t\t\t\t'name': self.name,\n\n\t\t\t\t\t\t\t\t\t\t'first': edu_fir,\n\t\t\t\t\t\t\t\t\t\t'second': edu_sec,\n\t\t\t\t\t\t\t\t\t\t'technical': edu_tec,\n\n\t\t\t\t\t\t\t\t\t\t'university': edu_uni,\n\t\t\t\t\t\t\t\t\t\t'master_phd': edu_mas,\n\t\t\t\t\t\t\t\t\t\t'undefined': edu_u,\n\n\t\t\t\t\t\t\t\t\t\t#'marketing_id': self.id,\n\t\t\t\t\t\t\t\t\t})\n\tprint(education)\n\n\n\n\n# Update Macros - Percentages\n\n\t# Sex\n\tself.update_sex()\n\n\t# Age\n\tself.update_age()\n\n\t# Education\n\tself.update_education()\n\n\n\t# First Contact\n\tself.update_first_contact()\n\n\n\t# Vip\n\t#self.vip_true_per = mkt_funcs.get_per(self.vip_true, self.total_count)\n\t#self.vip_false_per = mkt_funcs.get_per(self.vip_false, self.total_count)\n\n\n\n\n\n\n\n# Update Macros - Countries\n\n\t# Using collections\n\tcounter_country = collections.Counter(country_arr)\n\n\t# Country\n\t#print 'Create Country Line '\n\tfor key in counter_country:\n\t\tcount = counter_country[key]\n\t\tcountry = self.country_line.create({\n\t\t\t\t\t\t\t\t\t\t\t\t'name': key,\n\t\t\t\t\t\t\t\t\t\t\t\t'count': count,\n\t\t\t\t\t\t\t\t\t\t\t\t'marketing_id': self.id,\n\t\t\t\t\t\t\t\t\t\t\t})\n\t\t#print country\n\n\t#print self.country_line\n\t#print\n\n\n# update_stats\n\n\n\n\n\n# ----------------------------------------------------------- Update Vip Sales --------------------\n@api.multi\ndef update_vip_sales(self):  \n\t\"\"\"\n\tUpdate Vip Sales\n\t\"\"\"\n\tprint()\n\tprint('X - Vip Sales')\n\n\t# Patient Lines \n\tfor pl in self.patient_line: \n\n\t\tif pl.vip: \n\t\t\t\n\t\t\t# Clean \n\t\t\tpl.order_line.unlink()\n\t\t\tpl.order_line_vip.unlink()\n\n\t\t\t# Orders \n\t\t\torders = self.env['sale.order'].search([\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t('state', '=', 'sale'),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t('patient', '=', pl.patient.name),\n\t\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\t\torder='date_order asc',\n\t\t\t\t\t\t\t\t\t\t\t\t\t#limit=1,\n\t\t\t\t\t\t\t\t\t\t\t)\n\n\t\t\t# Find Vip Date - First Method \n\t\t\tfor order in orders: \n\t\t\t\tfor ol in order.order_line: \n\t\t\t\t\tif ol.product_id.default_code == '495': \t\t# Vip Card \n\t\t\t\t\t\tpl.vip_date = order.date_order\n\n\n\t\t\t# Find Vip Date - Second Method - Legacy \n\t\t\tif pl.vip_date == False:\n\t\t\t\tcard = self.env['openhealth.card'].search([\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t('patient_name', '=', pl.patient.name),\n\t\t\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t#order='x_serial_nr asc',\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tlimit=1,\n\t\t\t\t\t\t\t\t\t\t\t\t)\n\t\t\t\tpl.vip_date = card.create_date\n\n\n\t\t\t# Order Lines - Create Order Line \n\t\t\tfor order in orders: \n\n\t\t\t\t# Create Vip \n\t\t\t\tfor ol in order.order_line:\n\t\t\t\t\tpl_ol = pl.order_line.create({\n\t\t\t\t\t\t\t\t\t\t\t\t\t'name': ol.name, \n\t\t\t\t\t\t\t\t\t\t\t\t\t'product_id': ol.product_id.id, \n\t\t\t\t\t\t\t\t\t\t\t\t\t'x_date_created': order.date_order, \n\t\t\t\t\t\t\t\t\t\t\t\t\t'product_uom_qty': ol.product_uom_qty, \n\t\t\t\t\t\t\t\t\t\t\t\t\t'price_unit': ol.price_unit, \n\t\t\t\t\t\t\t\t\t\t\t\t\t'patient_line_id': pl.id, \n\t\t\t\t\t\t})\n\t\t\t\t\t#print pl_ol\n\n\n\n\t\t\t\t\t# Create - Vip sale \n\t\t\t\t\tif pl.vip_date != False: \n\t\t\t\t\t\tif order.date_order >= pl.vip_date and ol.product_id.type in ['service']: \n\n\t\t\t\t\t\t\tpl_ol_vip = pl.order_line_vip.create({\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'name': ol.name, \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'product_id': ol.product_id.id, \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'x_date_created': order.date_order, \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'product_uom_qty': ol.product_uom_qty, \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'price_unit': ol.price_unit, \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'patient_line_id_vip': pl.id, \n\t\t\t\t\t\t\t\t})\n\t\t\t\t\t\t\t#print pl_ol\n\n\t\t\tpl.update_fields_vip()\n\n# update_vip_sales\n\n\n\n\n\n\n\n# ----------------------------------------------------------- Create Sale Lines - Button Hidden ------------------------\n# Create Sales\n@api.multi\ndef create_sale_lines(self):\n\t\"\"\"\n\tCreate Sale Lines\n\t\"\"\"\n\tprint()\n\tprint('X - Create Sale Lines')\n\n\t# Handle Exceptions\n\texc_mkt.handle_exceptions(self)\n\n\n\t# Go\n\t# Print Disable\n\t#test_funcs.disablePrint()\n\n\t# Benchmark\n\tt0 = timer()\n\n\t# Clean\n\tself.sale_line.unlink()\n\n\n\t# Get - Only Sales - Not CN\n\torders, count = mgt_funcs.get_orders_filter_fast_fast(self, self.date_begin, self.date_end)\n\t#print(orders)\n\t#print(count)\n\n\tfor order in orders:\n\t\t#if order.state in ['credit_note']:\n\t\t#\tprint('Gotcha !')\n\t\t#\tprint(order.state)\n\t\t#\tprint()\n\n\n\t\t# The patient has been created this month\n\t\tis_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)\n\t\t#print(is_new)\n\n\n\t\t#if is_new:\n\t\tif is_new or order.patient.x_test:\n\t\t\t#print('Gotcha')\n\t\t\t#print(order.patient.name)\n\n\t\t\t# Loop\n\t\t\tfor line in order.order_line:\n\t\t\t\tprice_net = line.price_unit * line.product_uom_qty\n\n\t\t\t\t# Family Analysis\n\t\t\t\tif line.pl_price_list in ['2019']:\n\t\t\t\t\tfamily, subfamily, subsubfamily = mkt_funcs.pl_family_analysis(self, line)\n\n\t\t\t\telif line.pl_price_list in ['2018']:\n\t\t\t\t\tfamily, subfamily, subsubfamily = mkt_funcs.pl_family_analysis_2018(self, line)\n\n\n\t\t\t\t# Using Getters - OO\n\t\t\t\tsubsubfamily = line.product_id.get_subsubfamily()\n\n\n\t\t\t\tsale_line = self.sale_line.create({\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'date': order.date_order,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'order': order.id,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'patient': order.patient.id,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'doctor': order.x_doctor.id,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'product_id': line.product_id.id,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'product_uom_qty': line.product_uom_qty,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'price_unit': line.price_unit,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'price_net': price_net,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'family': family,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'subfamily': subfamily,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'subsubfamily': subsubfamily,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'price_list': line.product_id.pl_price_list,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'state': order.state,\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t'marketing_id': self.id,\n\t\t\t\t\t})\n\t\t\t\t#print(sale_line)\n\n\tt1 = timer()\n\tself.delta_create_sale_lines = t1 - t0\n\n\t# Print Enable\n\t#test_funcs.enablePrint()\n\n# create_sale_lines\n\n\n\n\n# ----------------------------------------------------------- Analyse Patient Lines ------------------------\n# Analyse patients\n@api.multi\ndef analyse_patient_lines(self):\n\t\"\"\"\n\tAnalyse patient Lines\n\t\"\"\"\n\tprint()\n\tprint('X - Analysis patient Lines')\n\n\t# Benchmark\n\tt0 = timer()\n\n\n\t# Clean\n\tself.vip_true = 0\n\tself.vip_false = 0\n\n\n\t# Loop\n\tfor patient_line in self.patient_line:\n\n\t\t# Clean\n\t\tpatient_line.clean() \t\t# OO\n\n\n\t\t# Lines\n\t\tpatient = patient_line.patient\n\t\t#print(patient.name)\n\t\tmodel = 'price_list.marketing.order_line'\n\t\tlines = self.env[model].search([\n\t\t\t\t\t\t\t\t\t\t\t\t('state', 'in', ['sale', 'draft']),\n\t\t\t\t\t\t\t\t\t\t\t\t('patient', 'in', [patient.name]),\n\t\t\t\t\t\t\t\t\t\t\t\t('marketing_id', '=', self.id),\n\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t#order='x_serial_nr asc',\n\t\t\t\t\t\t\t\t\t\t\t#limit=1,\n\t\t\t\t\t\t\t\t\t\t)\n\n\t\t# Loop\n\t\tfor line in lines:\n\t\t\t#print(line)\n\t\t\tpatient_line.analysis(line)  \t# OO\n\n\n\n\t# Update Macros\n\tself.vip_false = self.total_count - (self.vip_true + self.vip_already_true)\n\n\tif self.total_count not in [0]:\n\t\t#self.vip_already_true_per = float(self.vip_already_true) / float(self.total_count)\n\t\tself.vip_true_per = float(self.vip_true) / float(self.total_count)\n\t\tself.vip_false_per = float(self.vip_false) / float(self.total_count)\n\n\n\n\tt1 = timer()\n\tself.delta_analyse_patient_lines = t1 - t0\n\n# analyse_patient_lines\n\n\n\n\n\n# ----------------------------------------------------------- Analyse Sale Lines ------------------------\n# Update Sales\n@api.multi\ndef analyse_sale_lines(self):\n\t\"\"\"\n\tAnalyse Sale Lines\n\t\"\"\"\n\tprint()\n\tprint('X - Analysis Sale Lines')\n\n\t# Benchmark\n\tt0 = timer()\n\n\n\tmodel = 'price_list.marketing.order_line'\n\n\n\t# Count\n\tstate = 'draft'\n\tcount = self.env[model].search_count([\n\t\t\t\t\t\t\t\t\t\t\t('marketing_id', 'in', [self.id]),\n\t\t\t\t\t\t\t\t\t\t\t('state', 'in', [state]),\n\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t#order='x_serial_nr asc',\n\t\t\t\t\t\t\t\t\t\t\t#limit=1,\n\t\t\t\t\t\t\t\t\t\t)\n\t#print(count)\n\tself.sale_line_budget_count = count\n\n\n\n\n\t# Count\n\tstate = 'sale'\n\tcount = self.env[model].search_count([\n\t\t\t\t\t\t\t\t\t\t\t('marketing_id', 'in', [self.id]),\n\t\t\t\t\t\t\t\t\t\t\t('state', 'in', [state]),\n\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t#order='x_serial_nr asc',\n\t\t\t\t\t\t\t\t\t\t\t#limit=1,\n\t\t\t\t\t\t\t\t\t\t)\n\t#print(count)\n\tself.sale_line_sale_count = count\n\n\n\n\t# By Family\n\tfamily_list = ['consultation', 'procedure', 'product']\n\tstate = 'sale'\n\n\tfor family in family_list:\n\n\t\tcount = self.env[model].search_count([\n\t\t\t\t\t\t\t\t\t\t\t\t('marketing_id', 'in', [self.id]),\n\t\t\t\t\t\t\t\t\t\t\t\t('family', 'in', [family]),\n\t\t\t\t\t\t\t\t\t\t\t\t('state', 'in', [state]),\n\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\t#order='x_serial_nr asc',\n\t\t\t\t\t\t\t\t\t\t\t\t#limit=1,\n\t\t\t\t\t\t\t\t\t\t\t)\n\t\t#print(count)\n\n\t\tif family in ['consultation']:\n\t\t\tself.sale_line_consultation_count = count\n\t\telif family in ['procedure']:\n\t\t\tself.sale_line_procedure_count = count\n\t\telif family in ['product']:\n\t\t\tself.sale_line_product_count = count\n\n\n\tt1 = timer()\n\tself.delta_analyse_sale_lines = t1 - t0\n\n# analyse_sale_lines\n\n\n",
 			"file": "models/marketing/stax.py",
-			"file_size": 9949,
-			"file_write_time": 132205823750000000,
 			"settings":
 			{
-				"buffer_size": 9992,
+				"buffer_size": 10069,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1148,7 +1145,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1157,15 +1154,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4961,
+						"buffer_size": 4979,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								132,
-								132
+								199,
+								199
 							]
 						],
 						"settings":
@@ -1178,7 +1175,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1206,7 +1203,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1235,7 +1232,7 @@
 						"translation.y": 340.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1244,15 +1241,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9992,
+						"buffer_size": 10069,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1761,
-								1761
+								2159,
+								2159
 							]
 						],
 						"settings":
@@ -1261,10 +1258,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1186.0,
+						"translation.y": 1578.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1293,7 +1290,7 @@
 						"translation.y": 83.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1322,7 +1319,7 @@
 						"translation.y": 1917.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1351,7 +1348,7 @@
 						"translation.y": 4954.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -1379,7 +1376,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1408,7 +1405,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -1437,7 +1434,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1466,7 +1463,7 @@
 						"translation.y": 1806.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -1495,7 +1492,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -1524,7 +1521,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1553,7 +1550,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -1582,7 +1579,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 14,
 					"type": "text"
 				}
 			]
@@ -1815,7 +1812,7 @@
 		[
 			[
 				"",
-				"~/cellar/github/openhealth/OpenHealth-MIN.sublime-project"
+				"~/Virtualenvs/odoo_tests/odoo_tests/OdooTests.sublime-project"
 			],
 			[
 				"\t",

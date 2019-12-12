@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Management Report
+	Management Report - Object Oriented
 
 	Only functions. Not the data model. 
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Education
+	Education - Object Oriented
 	
 	For Marketing
 
