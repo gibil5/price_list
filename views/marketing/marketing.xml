@@ -306,17 +306,18 @@
 
 
 <!-- Counters -->
-						<group  string="Stats"  col="2">
+						<group  string="Estadistica"  col="3">
 							<group>
-								<field name="sex"/>
-								<field name="age"/>
-								<field name="education"/>
-								<field name="first_contact"/>
-
-								<field name="vip"/>
+								<field name="sex"	nolabel="0"/>
+								<field name="vip"	nolabel="0"/>
+								<field name="age"	nolabel="0"/>
 							</group>
 							<group>
-								<field name="origin"/>
+								<field name="education"	nolabel="0"/>
+							</group>
+							<group>
+								<field name="origin"	nolabel="0"/>
+								<field name="first_contact"	nolabel="0"/>
 							</group>
 						</group>
 

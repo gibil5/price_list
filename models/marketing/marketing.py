@@ -48,26 +48,31 @@ class Marketing(models.Model):
 	# Sex
 	sex = fields.Many2one(
 			'openhealth.marketing.sex', 
+			string='Sexo',
 		)
 
 	# Age
 	age = fields.Many2one(
 			'openhealth.marketing.age', 
+			string='Edad',
 		)
 
 	# Origin
 	origin = fields.Many2one(
 			'openhealth.marketing.origin', 
+			string='Origen',
 		)
 
 	# Education
 	education = fields.Many2one(
 			'openhealth.marketing.education', 
+			string='Educación',
 		)
 
 	# First Contact
 	first_contact = fields.Many2one(
 			'openhealth.marketing.first_contact', 
+			string='Primer Contacto',
 		)
 
 
