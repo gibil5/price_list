@@ -59,19 +59,23 @@ class Vip(models.Model):
 
 	vip = fields.Integer(
 			default=0,
+			string='Vip por venta mes',
 		)
 
 	not_vip = fields.Integer(
 			default=0,
+			string='No Vip',
 		)
 
 
 	vip_already = fields.Integer(
 			default=0,
+			string='Vip por venta anterior',
 		)
 
 	not_vip_already = fields.Integer(
 			default=0,
+			#string='',
 		)
 
 

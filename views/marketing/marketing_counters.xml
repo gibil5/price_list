@@ -6,6 +6,99 @@
 
 <!-- FORM -->
 
+
+
+		<!-- age -->
+		<record model="ir.ui.view" id="marketing_age_form_view">
+			<field name="name">marketing.age.form</field>
+
+			<field name="model">openhealth.marketing.age</field>
+
+			<field name="arch" type="xml">
+				<form string="Marketing Form">
+
+					<!-- Header -->
+					<header></header>
+
+
+					<!-- Sheet -->
+					<sheet>
+
+						<!-- Age -->
+						<group  string="Edad"  col="3">
+							<group>
+								<field name="age_max"/>
+								<field name="age_min"/>
+							</group>
+
+							<group>
+								<field name="age_mean"/>
+								<field name="age_sum"/>
+							</group>
+
+							<group>
+								<field name="age_undefined"/>
+							</group>
+						</group>
+
+						<!-- Notebook -->
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- vip -->
+		<record model="ir.ui.view" id="marketing_vip_form_view">
+			<field name="name">marketing.vip.form</field>
+
+			<field name="model">openhealth.marketing.vip</field>
+
+			<field name="arch" type="xml">
+				<form string="Marketing Form">
+
+					<!-- Header -->
+					<header></header>
+
+
+					<!-- Sheet -->
+					<sheet>
+
+						<!-- vip -->
+						<group  string="Vip"  col="2">
+							<group>
+								<field name="vip"/>
+								<field name="vip_already"/>
+							</group>
+
+							<group>
+<!--
+								<field name="not_vip_already"/>
+-->
+								<field name="not_vip"/>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+						<!-- Notebook -->
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
 		<!-- sex -->
 		<record model="ir.ui.view" id="marketing_sex_form_view">
 			<field name="name">marketing.sex.form</field>

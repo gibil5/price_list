@@ -82,19 +82,29 @@ class Age(models.Model):
 
 # ----------------------------------------------------------- Fields ---------------------------------------------
 
+	age_mean = fields.Float(
+			default=0,
+			string='Promedio',
+		)
+
+
 	age_sum = fields.Integer(
 			default=0,
+			string='Acumulada',
 		)
 
 	age_max = fields.Integer(
 			default=0,
+			string='Máxima',
 		)
 
 	age_min = fields.Integer(
 			default=0,
+			string='Mínima',
 		)
 
 	age_undefined = fields.Integer(
 			default=0,
+			string='Indefinida',
 		)
 
