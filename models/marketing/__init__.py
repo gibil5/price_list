@@ -12,6 +12,7 @@ from . import origin
 from . import sex
 from . import age
 
+from . import vip
 
 
 

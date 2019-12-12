@@ -1,6 +1,18 @@
 # 12 Dec 2019
 
 
+# ----------------------------------------------------------- Line Analysis - Dep !!! -----------------------
+def pl_patient_line_analysis(self, line):
+	"""
+	New - 2019
+	Used by: Marketing
+	Patient Line Analysis to update counters
+	"""
+	print()
+	print('X - Patient Line Analysis')
+
+
+
 # ----------------------------------------------------------- Line Analysis - PL- Dep -----------------------
 def pl_patient_line_analysis(self, line):
 	"""
@@ -136,6 +148,15 @@ def pl_patient_line_analysis(self, line):
 
 
 
+
+	# Vip 
+	if line.vip: 
+		#self.vip_true = self.vip_true + 1
+		self.vip_already_true = self.vip_already_true + 1
+
+	else: 
+		#self.vip_false = self.vip_false + 1
+		self.vip_already_false = self.vip_already_false + 1
 
 
 

@@ -24,6 +24,23 @@ class Sex(models.Model):
 
 
 
+# ----------------------------------------------------------- Update Sex ---------------------------------------------
+	def update_per(self, mkt):
+		"""
+		Update Sex
+		Extract BL from Structure
+		"""
+		#print()
+		#print('X - Update Sex')
+
+		if mkt.total_count != 0:
+			mkt.sex_male_per = (mkt.sex_male / float(mkt.total_count))
+			mkt.sex_female_per = (mkt.sex_female / float(mkt.total_count))
+			mkt.sex_undefined_per = (mkt.sex_undefined / float(mkt.total_count))
+
+
+
+
 # ----------------------------------------------------------- Analyse -----------------------
 	def analyse(self, line):
 		"""

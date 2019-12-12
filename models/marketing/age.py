@@ -24,6 +24,23 @@ class Age(models.Model):
 
 
 
+# ----------------------------------------------------------- Update Stats ---------------------------------------------
+	def update_stats(self, mkt):
+		"""
+		Update Age
+		Extract BL from Structure
+		"""
+		#print()
+		#print('X - Update Age')
+
+		if mkt.total_count != 0:
+			mkt.age_mean = mkt.age_sum / float(mkt.total_count)
+			mkt.age_undefined_per = (mkt.age_undefined / float(mkt.total_count))
+
+
+
+
+
 # ----------------------------------------------------------- Analyse -----------------------
 	def analyse(self, line):
 		"""

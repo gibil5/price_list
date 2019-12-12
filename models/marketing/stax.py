@@ -74,15 +74,8 @@ def update_stats(self):
 		self.age.analyse(line)
 
 
-
 		# Line Analysis - Dep !
-		mkt_funcs.pl_patient_line_analysis(self, line)
-
-
-
-
-
-
+		#mkt_funcs.pl_patient_line_analysis(self, line)
 
 
 
@@ -91,19 +84,15 @@ def update_stats(self):
 
 	# Education
 	#self.update_education()
-	self.education.update_per()
-
 
 	# First Contact
-	self.update_first_contact()
-
+	#self.update_first_contact()
 
 	# Sex
-	self.update_sex()
+	#self.update_sex()
 
 	# Age
-	self.update_age()
-
+	#self.update_age()
 
 
 	# Vip

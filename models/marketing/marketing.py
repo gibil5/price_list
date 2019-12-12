@@ -43,113 +43,25 @@ class Marketing(models.Model):
 			'openhealth.marketing.sex', 
 		)
 
-
 	# Age
 	age = fields.Many2one(
 			'openhealth.marketing.age', 
 		)
-
-
 
 	# Origin
 	origin = fields.Many2one(
 			'openhealth.marketing.origin', 
 		)
 
-
-
-
 	# Education
 	education = fields.Many2one(
 			'openhealth.marketing.education', 
 		)
 
-
 	# First Contact
 	first_contact = fields.Many2one(
 			'openhealth.marketing.first_contact', 
 		)
-
-
-
-
-
-
-# ----------------------------------------------------- Macros - Percentages ------------------------------------------------------------------
-
-
-# ----------------------------------------------------------- Update Education ---------------------------------------------
-	def update_education(self):
-		"""
-		Update Education
-		Extract BL from Structure
-		"""
-		#print()
-		#print('X - Update Education')
-
-		self.edu_fir_per = mkt_funcs.get_per(self.edu_fir, self.total_count)
-		self.edu_sec_per = mkt_funcs.get_per(self.edu_sec, self.total_count)
-		self.edu_tec_per = mkt_funcs.get_per(self.edu_tec, self.total_count)
-		self.edu_uni_per = mkt_funcs.get_per(self.edu_uni, self.total_count)
-		self.edu_mas_per = mkt_funcs.get_per(self.edu_mas, self.total_count)
-		self.edu_u_per = mkt_funcs.get_per(self.edu_u, self.total_count)
-
-
-
-# ----------------------------------------------------------- Update First Contact ---------------------------------------------
-	def update_first_contact(self):
-		"""
-		Update First Contact
-		Extract BL from Structure
-		"""
-		#print()
-		#print('X - First Contact')
-
-		self.how_none_per = mkt_funcs.get_per(self.how_none, self.total_count)
-		self.how_reco_per = mkt_funcs.get_per(self.how_reco, self.total_count)
-		self.how_tv_per = mkt_funcs.get_per(self.how_tv, self.total_count)
-		self.how_radio_per = mkt_funcs.get_per(self.how_radio, self.total_count)
-		self.how_inter_per = mkt_funcs.get_per(self.how_inter, self.total_count)
-		self.how_web_per = mkt_funcs.get_per(self.how_web, self.total_count)
-		self.how_mail_per = mkt_funcs.get_per(self.how_mail, self.total_count)
-		self.how_u_per = mkt_funcs.get_per(self.how_u, self.total_count)
-		self.how_facebook_per = mkt_funcs.get_per(self.how_facebook, self.total_count)
-		self.how_instagram_per = mkt_funcs.get_per(self.how_instagram, self.total_count)
-		self.how_callcenter_per = mkt_funcs.get_per(self.how_callcenter, self.total_count)
-		self.how_old_patient_per = mkt_funcs.get_per(self.how_old_patient, self.total_count)
-
-
-
-# ----------------------------------------------------------- Update Sex ---------------------------------------------
-	def update_sex(self):
-		"""
-		Update Sex
-		Extract BL from Structure
-		"""
-		#print()
-		#print('X - Update Sex')
-	
-		if self.total_count != 0:
-			self.sex_male_per = (self.sex_male / float(self.total_count))
-			self.sex_female_per = (self.sex_female / float(self.total_count))
-			self.sex_undefined_per = (self.sex_undefined / float(self.total_count))
-
-
-
-# ----------------------------------------------------------- Update Age ---------------------------------------------
-	def update_age(self):
-		"""
-		Update Age
-		Extract BL from Structure
-		"""
-		#print()
-		#print('X - Update Age')
-	
-		if self.total_count != 0:
-			self.age_mean = self.age_sum / float(self.total_count)
-			self.age_undefined_per = (self.age_undefined / float(self.total_count))
-
-
 
 
 
@@ -395,21 +307,31 @@ class Marketing(models.Model):
 
 
 
-		# Update Macros - Counters
+# Update Macros - Counters
 
 		# Education
 		self.edu_fir, self.edu_sec, self.edu_tec, self.edu_uni, self.edu_mas, self.edu_u = self.education.get_counters()
+
+		self.education.update_per(self)
+
 
 		# First Contact
 		self.how_none, self.how_reco, self.how_tv, self.how_radio, self.how_inter, self.how_web, self.how_mail, self.how_facebook,\
 		self.how_instagram, self.how_callcenter, self.how_old_patient, self.how_u = self.first_contact.get_counters()
 
+		self.first_contact.update_per(self)
+
+
 		# Sex
 		self.sex_male, self.sex_female, self.sex_undefined = self.sex.get_counters()
+
+		self.sex.update_per(self)
 
 
 		# Age
 		self.age_max, self.age_min, self.age_sum, self.age_undefined = self.age.get_counters()
+
+		self.age.update_stats(self)
 
 
 	# update_patients
