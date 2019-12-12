@@ -1,6 +1,83 @@
 # 12 Dec 2019
 
 
+
+# ----------------------------------------------------------- Family Analysis - PL -----------------------
+def pl_family_analysis(self, line):
+	"""
+	New - 2019
+	Marketing
+	Analyses Line to update counters
+	"""
+	print()
+	print('X - Family Analysis')
+
+	# Family
+	if line.product_id.type in ['product']:
+		family = 'product'
+		subfamily = line.product_id.pl_family
+		subsubfamily = line.product_id.pl_subfamily
+
+	elif line.product_id.type in ['service']:
+
+		if line.product_id.pl_subfamily in ['consultation']:
+			#family = line.product_id.pl_subfamily
+			family = 'consultation'
+			subfamily = 'consultation'
+			subsubfamily = 'consultation'
+
+		else:
+			family = 'procedure'
+			subfamily = line.product_id.pl_family
+			subsubfamily = line.product_id.pl_subfamily
+
+	return family, subfamily, subsubfamily
+
+	# pl_family_analysis
+
+
+
+# ----------------------------------------------------------- Family Analysis - 2018 -----------------------
+def pl_family_analysis_2018(self, line):
+	"""
+	New - 2019
+	Marketing
+	Analyses Line to update counters
+	"""
+	print()
+	print('X - Family Analysis - 2018')
+
+	family = 'x'
+	subfamily = 'x'
+	subsubfamily = 'x'
+
+
+	# Family
+	if line.product_id.type in ['product']:
+		family = 'product'
+		subfamily = line.product_id.x_family
+		#subsubfamily = line.product_id.pl_subfamily
+
+	elif line.product_id.type in ['service']:
+
+		#if line.product_id.pl_subfamily in ['consultation']:
+		if line.product_id.x_family in ['consultation']:
+			#family = line.product_id.pl_subfamily
+			family = 'consultation'
+			subfamily = 'consultation'
+			subsubfamily = 'consultation'
+
+		else:
+			family = 'procedure'
+			subfamily = line.product_id.x_family
+			subsubfamily = line.product_id.x_treatment
+
+	return family, subfamily, subsubfamily
+
+
+
+
+
 # ----------------------------------------------------------- Line Analysis - Dep !!! -----------------------
 def pl_patient_line_analysis(self, line):
 	"""

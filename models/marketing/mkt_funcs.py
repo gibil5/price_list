@@ -20,6 +20,9 @@ def pl_family_analysis(self, line):
 	New - 2019
 	Marketing
 	Analyses Line to update counters
+
+	Used by
+		Stax - Create Sale Lines
 	"""
 	print()
 	print('X - Family Analysis')
@@ -55,9 +58,12 @@ def pl_family_analysis_2018(self, line):
 	New - 2019
 	Marketing
 	Analyses Line to update counters
+
+	Used by
+		Stax - Create Sale Lines
 	"""
 	print()
-	print('X - Family Analysis - 2018')
+	print('X - 2018 - Family Analysis')
 
 	family = 'x'
 	subfamily = 'x'
@@ -86,7 +92,7 @@ def pl_family_analysis_2018(self, line):
 
 	return family, subfamily, subsubfamily
 
-
+	# pl_family_analysis_2018
 
 
 

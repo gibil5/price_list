@@ -27,7 +27,6 @@ from . import mkt_vars
 from . import stax
 from . import exc_mkt
 
-
 class Marketing(models.Model):
 	"""
 	Marketing Report
@@ -112,13 +111,12 @@ class Marketing(models.Model):
 
 
 
-		# Macros - Counters - Init
+# Macros - Counters - Init
 
 
 		# Education
 		self.education.unlink()
 		name = 'Educación'	
-
 		self.education = self.env['openhealth.marketing.education'].create({
 																			'name': name,
 																		})
@@ -129,7 +127,6 @@ class Marketing(models.Model):
 		# First Contact
 		self.first_contact.unlink()
 		name = 'Primer Contacto'	
-
 		self.first_contact = self.env['openhealth.marketing.first_contact'].create({
 																					'name': name,
 																		})
@@ -140,18 +137,15 @@ class Marketing(models.Model):
 		# Sex
 		self.sex.unlink()
 		name = 'Sexo'	
-
 		self.sex = self.env['openhealth.marketing.sex'].create({
 																			'name': name,
 																		})
 		print(self.sex)
 
 
-
 		# Age
 		self.age.unlink()
-		name = 'Edad'	
-
+		name = 'Edad'
 		self.age = self.env['openhealth.marketing.age'].create({
 																			'name': name,
 																		})
@@ -311,26 +305,22 @@ class Marketing(models.Model):
 
 		# Education
 		self.edu_fir, self.edu_sec, self.edu_tec, self.edu_uni, self.edu_mas, self.edu_u = self.education.get_counters()
-
 		self.education.update_per(self)
 
 
 		# First Contact
 		self.how_none, self.how_reco, self.how_tv, self.how_radio, self.how_inter, self.how_web, self.how_mail, self.how_facebook,\
 		self.how_instagram, self.how_callcenter, self.how_old_patient, self.how_u = self.first_contact.get_counters()
-
 		self.first_contact.update_per(self)
 
 
 		# Sex
 		self.sex_male, self.sex_female, self.sex_undefined = self.sex.get_counters()
-
 		self.sex.update_per(self)
 
 
 		# Age
 		self.age_max, self.age_min, self.age_sum, self.age_undefined = self.age.get_counters()
-
 		self.age.update_stats(self)
 
 
@@ -368,7 +358,7 @@ class Marketing(models.Model):
 
 
 
-		# Analyse
+		# Analyse and Create
 		stax.create_sale_lines(self)
 		stax.analyse_sale_lines(self)
 		stax.analyse_patient_lines(self)
