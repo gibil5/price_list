@@ -16,81 +16,6 @@ import datetime
 
 
 
-# ----------------------------------------------------------- Family Analysis - PL -----------------------
-def pl_family_analysis_2018(self, line):
-	"""
-	New - 2019
-	Marketing
-	Analyses Line to update counters
-	"""
-	print()
-	print('X - Family Analysis - 2018')
-
-	family = 'x'
-	subfamily = 'x'
-	subsubfamily = 'x'
-
-
-	# Family
-	if line.product_id.type in ['product']:
-		family = 'product'
-		subfamily = line.product_id.x_family
-		#subsubfamily = line.product_id.pl_subfamily
-
-	elif line.product_id.type in ['service']:
-
-		#if line.product_id.pl_subfamily in ['consultation']:
-		if line.product_id.x_family in ['consultation']:
-			#family = line.product_id.pl_subfamily
-			family = 'consultation'
-			subfamily = 'consultation'
-			subsubfamily = 'consultation'
-
-		else:
-			family = 'procedure'
-			subfamily = line.product_id.x_family
-			subsubfamily = line.product_id.x_treatment
-
-	return family, subfamily, subsubfamily
-
-
-
-
-# ----------------------------------------------------------- Family Analysis - PL -----------------------
-def pl_family_analysis(self, line):
-	"""
-	New - 2019
-	Marketing
-	Analyses Line to update counters
-	"""
-	print()
-	print('X - Family Analysis')
-
-	# Family
-	if line.product_id.type in ['product']:
-		family = 'product'
-		subfamily = line.product_id.pl_family
-		subsubfamily = line.product_id.pl_subfamily
-
-	elif line.product_id.type in ['service']:
-
-		if line.product_id.pl_subfamily in ['consultation']:
-			#family = line.product_id.pl_subfamily
-			family = 'consultation'
-			subfamily = 'consultation'
-			subsubfamily = 'consultation'
-
-		else:
-			family = 'procedure'
-			subfamily = line.product_id.pl_family
-			subsubfamily = line.product_id.pl_subfamily
-
-	return family, subfamily, subsubfamily
-
-	# pl_family_analysis
-
-
-
 # ----------------------------------------------------------- Line Analysis - PL -----------------------
 def pl_patient_line_analysis(self, line):
 	"""
@@ -100,6 +25,31 @@ def pl_patient_line_analysis(self, line):
 	"""
 	print()
 	print('X - Patient Line Analysis')
+
+
+
+	if False:
+
+		# Education 
+		if line.education == 'first': 
+			self.edu_fir = self.edu_fir + 1
+
+		elif line.education == 'second': 
+			self.edu_sec = self.edu_sec + 1
+
+		elif line.education == 'technical': 
+			self.edu_tec = self.edu_tec + 1
+
+		elif line.education == 'university': 
+			self.edu_uni = self.edu_uni + 1
+
+		elif line.education == 'masterphd': 
+			self.edu_mas = self.edu_mas + 1
+
+		else: 
+			self.edu_u = self.edu_u + 1
+
+
 
 
 # Sex
@@ -181,24 +131,6 @@ def pl_patient_line_analysis(self, line):
 
 
 
-	# Education 
-	if line.education == 'first': 
-		self.edu_fir = self.edu_fir + 1
-
-	elif line.education == 'second': 
-		self.edu_sec = self.edu_sec + 1
-
-	elif line.education == 'technical': 
-		self.edu_tec = self.edu_tec + 1
-
-	elif line.education == 'university': 
-		self.edu_uni = self.edu_uni + 1
-
-	elif line.education == 'masterphd': 
-		self.edu_mas = self.edu_mas + 1
-
-	else: 
-		self.edu_u = self.edu_u + 1
 
 
 	# Vip 
@@ -257,3 +189,79 @@ def get_per(value, total):
 		per = float(value) / float(total)
 	return per
 # get_per_nex
+
+
+
+
+# ----------------------------------------------------------- Family Analysis - PL -----------------------
+def pl_family_analysis_2018(self, line):
+	"""
+	New - 2019
+	Marketing
+	Analyses Line to update counters
+	"""
+	print()
+	print('X - Family Analysis - 2018')
+
+	family = 'x'
+	subfamily = 'x'
+	subsubfamily = 'x'
+
+
+	# Family
+	if line.product_id.type in ['product']:
+		family = 'product'
+		subfamily = line.product_id.x_family
+		#subsubfamily = line.product_id.pl_subfamily
+
+	elif line.product_id.type in ['service']:
+
+		#if line.product_id.pl_subfamily in ['consultation']:
+		if line.product_id.x_family in ['consultation']:
+			#family = line.product_id.pl_subfamily
+			family = 'consultation'
+			subfamily = 'consultation'
+			subsubfamily = 'consultation'
+
+		else:
+			family = 'procedure'
+			subfamily = line.product_id.x_family
+			subsubfamily = line.product_id.x_treatment
+
+	return family, subfamily, subsubfamily
+
+
+
+
+# ----------------------------------------------------------- Family Analysis - PL -----------------------
+def pl_family_analysis(self, line):
+	"""
+	New - 2019
+	Marketing
+	Analyses Line to update counters
+	"""
+	print()
+	print('X - Family Analysis')
+
+	# Family
+	if line.product_id.type in ['product']:
+		family = 'product'
+		subfamily = line.product_id.pl_family
+		subsubfamily = line.product_id.pl_subfamily
+
+	elif line.product_id.type in ['service']:
+
+		if line.product_id.pl_subfamily in ['consultation']:
+			#family = line.product_id.pl_subfamily
+			family = 'consultation'
+			subfamily = 'consultation'
+			subsubfamily = 'consultation'
+
+		else:
+			family = 'procedure'
+			subfamily = line.product_id.pl_family
+			subsubfamily = line.product_id.pl_subfamily
+
+	return family, subfamily, subsubfamily
+
+	# pl_family_analysis

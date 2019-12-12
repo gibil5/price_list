@@ -19,7 +19,8 @@ from openerp.addons.openhealth.models.marketing import lib_marketing
 from openerp.addons.price_list.models.management.lib import mgt_funcs
 from openerp.addons.price_list.models.lib import test_funcs
 
-#from . import mkt_funcs
+from . import mkt_funcs
+
 from . import pat_funcs
 
 from . import mkt_vars
@@ -35,7 +36,102 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------- Django Interface --------------------------
+# ----------------------------------------------------- Stats ------------------------------------------------------------------
+
+	# Education
+	education = fields.Many2one(
+			'openhealth.marketing.education', 
+			#'marketing_id',
+		)
+
+
+	# First Contact
+	first_contact = fields.Many2one(
+			'openhealth.marketing.first_contact', 
+			#'marketing_id',
+		)
+
+
+
+
+
+
+# ----------------------------------------------------- Macros - Percentages ------------------------------------------------------------------
+
+
+# ----------------------------------------------------------- Update Education ---------------------------------------------
+	def update_education(self):
+		"""
+		Update Education
+		Extract BL from Structure
+		"""
+		#print()
+		#print('X - Update Education')
+
+		self.edu_fir_per = mkt_funcs.get_per(self.edu_fir, self.total_count)
+		self.edu_sec_per = mkt_funcs.get_per(self.edu_sec, self.total_count)
+		self.edu_tec_per = mkt_funcs.get_per(self.edu_tec, self.total_count)
+		self.edu_uni_per = mkt_funcs.get_per(self.edu_uni, self.total_count)
+		self.edu_mas_per = mkt_funcs.get_per(self.edu_mas, self.total_count)
+		self.edu_u_per = mkt_funcs.get_per(self.edu_u, self.total_count)
+
+
+
+# ----------------------------------------------------------- Update First Contact ---------------------------------------------
+	def update_first_contact(self):
+		"""
+		Update First Contact
+		Extract BL from Structure
+		"""
+		#print()
+		#print('X - First Contact')
+
+		self.how_none_per = mkt_funcs.get_per(self.how_none, self.total_count)
+		self.how_reco_per = mkt_funcs.get_per(self.how_reco, self.total_count)
+		self.how_tv_per = mkt_funcs.get_per(self.how_tv, self.total_count)
+		self.how_radio_per = mkt_funcs.get_per(self.how_radio, self.total_count)
+		self.how_inter_per = mkt_funcs.get_per(self.how_inter, self.total_count)
+		self.how_web_per = mkt_funcs.get_per(self.how_web, self.total_count)
+		self.how_mail_per = mkt_funcs.get_per(self.how_mail, self.total_count)
+		self.how_u_per = mkt_funcs.get_per(self.how_u, self.total_count)
+		self.how_facebook_per = mkt_funcs.get_per(self.how_facebook, self.total_count)
+		self.how_instagram_per = mkt_funcs.get_per(self.how_instagram, self.total_count)
+		self.how_callcenter_per = mkt_funcs.get_per(self.how_callcenter, self.total_count)
+		self.how_old_patient_per = mkt_funcs.get_per(self.how_old_patient, self.total_count)
+
+
+
+# ----------------------------------------------------------- Update Sex ---------------------------------------------
+	def update_sex(self):
+		"""
+		Update Sex
+		Extract BL from Structure
+		"""
+		#print()
+		#print('X - Update Sex')
+	
+		if self.total_count != 0:
+			self.sex_male_per = (self.sex_male / float(self.total_count))
+			self.sex_female_per = (self.sex_female / float(self.total_count))
+			self.sex_undefined_per = (self.sex_undefined / float(self.total_count))
+
+
+
+# ----------------------------------------------------------- Update Age ---------------------------------------------
+	def update_age(self):
+		"""
+		Update Age
+		Extract BL from Structure
+		"""
+		#print()
+		#print('X - Update Age')
+	
+		if self.total_count != 0:
+			self.age_mean = self.age_sum / float(self.total_count)
+			self.age_undefined_per = (self.age_undefined / float(self.total_count))
+
+
+
 
 
 
@@ -193,14 +289,7 @@ class Marketing(models.Model):
 														# Handle
 														'marketing_id': self.id,
 													})
-
-			# Old - Dep !!!
-			#ret = pat_line.update_fields()
-
-			# New - Dep ?
-			#pat_line.update_emr()
-
-
+		# End create
 
 
 		# Set Stats
@@ -208,19 +297,22 @@ class Marketing(models.Model):
 
 
 
-
 		# Update Vip Sales
 		stax.update_vip_sales(self)
+
 
 		# Build Histo
 		lib_marketing.build_histogram(self)
 
+
 		# Build Media - Dep ?
 		lib_marketing.build_media(self)
+
 
 		# Build Places
 		lib_marketing.build_districts(self)
 		lib_marketing.build_cities(self)
+
 
 
 		# QC

@@ -305,6 +305,19 @@
 
 
 
+						<!-- Stats -->
+						<group  string="Stats"  col="2">
+							<group>
+								<field name="education"/>
+								<field name="first_contact"/>
+							</group>
+							<group>
+							</group>
+						</group>
+
+
+
+
 						<!-- Vip -->
 						<group string="Vip">
 							<group>

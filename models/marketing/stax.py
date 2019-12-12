@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 	Stax Library
+
 	Used by
 		Marketing
+
 	Uses
 		mkt_funcs
 
@@ -22,6 +24,7 @@ import collections
 from openerp import models, fields, api
 from openerp.addons.price_list.models.management.lib import mgt_funcs
 from . import exc_mkt
+
 from . import mkt_funcs
 
 
@@ -32,7 +35,7 @@ from . import mkt_funcs
 @api.multi
 def update_stats(self):
 	"""
-	Update Stats
+	Update Macro Stats
 	"""
 	print()
 	print('X - Update Stats')
@@ -44,15 +47,39 @@ def update_stats(self):
 	country_arr = []
 
 
-	# Loop
+
+	# Macros - Counters - Init
+	edu_fir, edu_sec, edu_tec, edu_uni, edu_mas, edu_u = 0, 0, 0, 0, 0, 0
+
+
+
+	# Loop - For all Patients
 	for line in self.patient_line:
+
+
+		# Education 
+		if line.education == 'first': 
+			edu_fir = edu_fir + 1
+
+		elif line.education == 'second': 
+			edu_sec = edu_sec + 1
+
+		elif line.education == 'technical': 
+			edu_tec = edu_tec + 1
+
+		elif line.education == 'university': 
+			edu_uni = edu_uni + 1
+
+		elif line.education == 'masterphd': 
+			edu_mas = edu_mas + 1
+
+		else: 
+			edu_u = edu_u + 1
 
 
 		# Line Analysis
 		mkt_funcs.pl_patient_line_analysis(self, line)
 
-
-		# Address - Using collections
 
 		# Countries
 		country_arr.append(line.country)
@@ -60,47 +87,53 @@ def update_stats(self):
 
 
 
-# Percentages
+# Macros - Counters
+	print(edu_fir, edu_sec, edu_tec, edu_uni, edu_mas, edu_u)
 
-	# Sex
-	if self.total_count != 0:
-		#self.sex_male_per = (float(self.sex_male) / float(self.total_count))
-		self.sex_male_per = (self.sex_male / float(self.total_count))
-		self.sex_female_per = (self.sex_female / float(self.total_count))
-		self.sex_undefined_per = (self.sex_undefined / float(self.total_count))
-
-	# Age
-	if self.total_count != 0:
-		self.age_mean = self.age_sum / float(self.total_count)
-		self.age_undefined_per = (self.age_undefined / float(self.total_count))
-
-
+	self.edu_fir, self.edu_sec, self.edu_tec, self.edu_uni, self.edu_mas, self.edu_u = edu_fir, edu_sec, edu_tec, edu_uni, edu_mas, edu_u
 
 
 	# Education
-	self.edu_fir_per = mkt_funcs.get_per(self.edu_fir, self.total_count)
-	self.edu_sec_per = mkt_funcs.get_per(self.edu_sec, self.total_count)
-	self.edu_tec_per = mkt_funcs.get_per(self.edu_tec, self.total_count)
-	self.edu_uni_per = mkt_funcs.get_per(self.edu_uni, self.total_count)
-	self.edu_mas_per = mkt_funcs.get_per(self.edu_mas, self.total_count)
-	self.edu_u_per = mkt_funcs.get_per(self.edu_u, self.total_count)
+	name = 'Educación'	
+
+	self.education = self.env['openhealth.marketing.education'].create({
+
+										#'name': self.name,
+										'name': name,
+
+										'first': edu_fir,
+										'second': edu_sec,
+										'technical': edu_tec,
+
+										'university': edu_uni,
+										'master_phd': edu_mas,
+										'undefined': edu_u,
+
+										#'marketing_id': self.id,
+									})
+	print(self.education)
+
 
 
 	# First Contact
-	self.how_none_per = mkt_funcs.get_per(self.how_none, self.total_count)
-	self.how_reco_per = mkt_funcs.get_per(self.how_reco, self.total_count)
-	self.how_tv_per = mkt_funcs.get_per(self.how_tv, self.total_count)
-	self.how_radio_per = mkt_funcs.get_per(self.how_radio, self.total_count)
-	self.how_inter_per = mkt_funcs.get_per(self.how_inter, self.total_count)
-	self.how_web_per = mkt_funcs.get_per(self.how_web, self.total_count)
-	self.how_mail_per = mkt_funcs.get_per(self.how_mail, self.total_count)
-	self.how_u_per = mkt_funcs.get_per(self.how_u, self.total_count)
-	self.how_facebook_per = mkt_funcs.get_per(self.how_facebook, self.total_count)
-	self.how_instagram_per = mkt_funcs.get_per(self.how_instagram, self.total_count)
-	self.how_callcenter_per = mkt_funcs.get_per(self.how_callcenter, self.total_count)
-	self.how_old_patient_per = mkt_funcs.get_per(self.how_old_patient, self.total_count)
 
 
+
+
+# Update Macros - Percentages
+
+	# Sex
+	self.update_sex()
+
+	# Age
+	self.update_age()
+
+	# Education
+	self.update_education()
+
+
+	# First Contact
+	self.update_first_contact()
 
 
 	# Vip
@@ -109,8 +142,13 @@ def update_stats(self):
 
 
 
+
+
+
+
+# Update Macros - Countries
+
 	# Using collections
-	# Country
 	counter_country = collections.Counter(country_arr)
 
 	# Country
@@ -123,10 +161,14 @@ def update_stats(self):
 												'marketing_id': self.id,
 											})
 		#print country
+
 	#print self.country_line
 	#print
 
+
 # update_stats
+
+
 
 
 
