@@ -16,7 +16,7 @@
 	- Analyse Sale Lines
 
  	Created: 				10 Dec 2019
- 	Last up: 	 			10 Dec 2019
+ 	Last up: 	 			12 Dec 2019
 """
 
 from timeit import default_timer as timer
@@ -28,12 +28,10 @@ from . import exc_mkt
 from . import mkt_funcs
 
 
-# ----------------------------------------------------------- Second Level ---------------------------------------------
-
-# ----------------------------------------------------------- Update Stats ------------------------
+# ----------------------------------------------------------- Update Counters ------------------------
 # Set Stats
 @api.multi
-def update_stats(self):
+def update_counters(self):
 	"""
 	Create Macro Stats
 		Education
@@ -44,19 +42,13 @@ def update_stats(self):
 	print('X - Update Stats')
 
 
-	# Init
-
-
-	# Collections
-	country_arr = []
-
-
-
 	# Loop - For all Patients
 	for line in self.patient_line:
 
-		# Countries
-		country_arr.append(line.country)
+
+		# Origin
+		self.origin.analyse(line)
+
 
 
 		# Education
@@ -65,13 +57,15 @@ def update_stats(self):
 		# First Contact
 		self.first_contact.analyse(line)
 
-
 		# Sex
 		self.sex.analyse(line)
 
-
 		# Age
 		self.age.analyse(line)
+
+
+		# Vip
+		self.vip.analyse(line)
 
 
 		# Line Analysis - Dep !
@@ -80,52 +74,13 @@ def update_stats(self):
 
 
 
-# Update Macros - Percentages
-
-	# Education
-	#self.update_education()
-
-	# First Contact
-	#self.update_first_contact()
-
-	# Sex
-	#self.update_sex()
-
-	# Age
-	#self.update_age()
-
+	# Update Macros - Percentages
 
 	# Vip
 	#self.vip_true_per = mkt_funcs.get_per(self.vip_true, self.total_count)
 	#self.vip_false_per = mkt_funcs.get_per(self.vip_false, self.total_count)
 
-
-
-
-
-
-
-# Update Macros - Countries
-
-	# Using collections
-	counter_country = collections.Counter(country_arr)
-
-	# Country
-	#print 'Create Country Line '
-	for key in counter_country:
-		count = counter_country[key]
-		country = self.country_line.create({
-												'name': key,
-												'count': count,
-												'marketing_id': self.id,
-											})
-		#print country
-
-	#print self.country_line
-	#print
-
-
-# update_stats
+# update_counters
 
 
 

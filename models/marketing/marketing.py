@@ -13,16 +13,17 @@ from timeit import default_timer as timer
 import collections
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
-
-from openerp.addons.openhealth.models.marketing import lib_marketing
-
 from openerp.addons.price_list.models.management.lib import mgt_funcs
 from openerp.addons.price_list.models.lib import test_funcs
 
+
+
+#from openerp.addons.openhealth.models.marketing import lib_marketing
+from . import lib_marketing
+
+
 from . import mkt_funcs
-
 from . import pat_funcs
-
 from . import mkt_vars
 from . import stax
 from . import exc_mkt
@@ -36,6 +37,13 @@ class Marketing(models.Model):
 
 
 # ----------------------------------------------------- Stats ------------------------------------------------------------------
+
+	# Vip
+	vip = fields.Many2one(
+			'openhealth.marketing.vip', 
+		)
+
+
 
 	# Sex
 	sex = fields.Many2one(
@@ -114,13 +122,24 @@ class Marketing(models.Model):
 # Macros - Counters - Init
 
 
+		# Origin
+		self.origin.unlink()
+		name = 'Origen'	
+		self.origin = self.env['openhealth.marketing.origin'].create({
+																			'name': name,
+																		})
+		#print(self.origin)
+
+
+
+
 		# Education
 		self.education.unlink()
 		name = 'Educación'	
 		self.education = self.env['openhealth.marketing.education'].create({
 																			'name': name,
 																		})
-		print(self.education)
+		#print(self.education)
 
 
 
@@ -130,7 +149,7 @@ class Marketing(models.Model):
 		self.first_contact = self.env['openhealth.marketing.first_contact'].create({
 																					'name': name,
 																		})
-		print(self.first_contact)
+		#print(self.first_contact)
 
 
 
@@ -140,7 +159,7 @@ class Marketing(models.Model):
 		self.sex = self.env['openhealth.marketing.sex'].create({
 																			'name': name,
 																		})
-		print(self.sex)
+		#print(self.sex)
 
 
 		# Age
@@ -149,7 +168,17 @@ class Marketing(models.Model):
 		self.age = self.env['openhealth.marketing.age'].create({
 																			'name': name,
 																		})
-		print(self.age)
+		#print(self.age)
+
+
+
+		# Vip
+		self.vip.unlink()
+		name = 'Vip'	
+		self.vip = self.env['openhealth.marketing.vip'].create({
+																			'name': name,
+																		})
+		#print(self.vip)
 
 
 
@@ -177,6 +206,9 @@ class Marketing(models.Model):
 
 
 		# Patient Getters
+
+
+			origin = patient.get_origin()
 
 
 			# EMR
@@ -248,20 +280,22 @@ class Marketing(models.Model):
 														# Vip
 														'vip': patient.x_vip,														
 
-
 														# Places
-														#'country': patient.country_id.name,
 														'country': country,
 														'city': city,
 														'district': district,
 
-
+														# Education
+														'education': patient.x_education_level,
 
 														# First contact
 														'first_contact': patient.x_first_contact,														
 
-														# Education
-														'education': patient.x_education_level,
+
+
+														# Origin
+														'origin': origin,														
+
 
 
 														# Handle
@@ -270,8 +304,9 @@ class Marketing(models.Model):
 		# End create
 
 
-		# Set Stats
-		stax.update_stats(self)
+
+		# Update Counters
+		stax.update_counters(self)
 
 
 
@@ -279,17 +314,20 @@ class Marketing(models.Model):
 		stax.update_vip_sales(self)
 
 
+
+
 		# Build Histo
 		lib_marketing.build_histogram(self)
 
 
-		# Build Media - Dep ?
-		lib_marketing.build_media(self)
+		# Build Media - Dep !!
+		#lib_marketing.build_media(self)
 
 
-		# Build Places
+		# Build Places - Districts, Cities
 		lib_marketing.build_districts(self)
 		lib_marketing.build_cities(self)
+		lib_marketing.build_countries(self)
 
 
 
@@ -307,21 +345,22 @@ class Marketing(models.Model):
 		self.edu_fir, self.edu_sec, self.edu_tec, self.edu_uni, self.edu_mas, self.edu_u = self.education.get_counters()
 		self.education.update_per(self)
 
-
 		# First Contact
 		self.how_none, self.how_reco, self.how_tv, self.how_radio, self.how_inter, self.how_web, self.how_mail, self.how_facebook,\
 		self.how_instagram, self.how_callcenter, self.how_old_patient, self.how_u = self.first_contact.get_counters()
 		self.first_contact.update_per(self)
 
-
 		# Sex
 		self.sex_male, self.sex_female, self.sex_undefined = self.sex.get_counters()
 		self.sex.update_per(self)
 
-
 		# Age
 		self.age_max, self.age_min, self.age_sum, self.age_undefined = self.age.get_counters()
 		self.age.update_stats(self)
+
+		# Vip
+		self.vip_true, self.vip_false, self.vip_already_true, self.vip_already_false = self.vip.get_counters()
+		#self.vip.update_stats(self)
 
 
 	# update_patients

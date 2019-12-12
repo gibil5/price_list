@@ -34,10 +34,8 @@ class Education(models.Model):
 		"""
 		Patient Line Analysis to update counters
 		"""
-		print()
-		print('X - Education - Update Per')
-		print(self)
-		print(mkt)
+		#print()
+		#print('X - Education - Update Per')
 
 		mkt.edu_fir_per = mkt_funcs.get_per(mkt.edu_fir, mkt.total_count)
 		mkt.edu_sec_per = mkt_funcs.get_per(mkt.edu_sec, mkt.total_count)
@@ -53,8 +51,8 @@ class Education(models.Model):
 		"""
 		Patient Line Analysis to update counters
 		"""
-		print()
-		print('X - Education - analyse')
+		#print()
+		#print('X - Education - analyse')
 
 
 		# Education 
@@ -83,8 +81,8 @@ class Education(models.Model):
 		"""
 		Get Counters
 		"""
-		print()
-		print('X - Education - Get Counters')
+		#print()
+		#print('X - Education - Get Counters')
 
 		return self.first, self.second, self.technical, self.university, self.master_phd, self.undefined
 

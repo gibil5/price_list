@@ -1,0 +1,197 @@
+<openerp>
+	<data>
+
+
+
+
+<!-- FORM -->
+
+		<!-- sex -->
+		<record model="ir.ui.view" id="marketing_sex_form_view">
+			<field name="name">marketing.sex.form</field>
+
+			<field name="model">openhealth.marketing.sex</field>
+
+			<field name="arch" type="xml">
+				<form string="Marketing Form">
+
+					<!-- Header -->
+					<header></header>
+
+
+					<!-- Sheet -->
+					<sheet>
+
+						<!-- Sex -->
+						<group  string="Sexo"  col="3">
+							<group>
+								<field name="male"/>
+							</group>
+
+							<group>
+								<field name="female"/>
+							</group>
+
+							<group>
+								<field name="undefined"/>
+							</group>
+						</group>
+
+						<!-- Notebook -->
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+
+
+
+		<!-- first_contact -->
+		<record model="ir.ui.view" id="marketing_first_contact_form_view">
+			<field name="name">marketing.first_contact.form</field>
+
+			<field name="model">openhealth.marketing.first_contact</field>
+
+			<field name="arch" type="xml">
+				<form string="Marketing Form">
+
+					<!-- Header -->
+					<header></header>
+
+
+					<!-- Sheet -->
+					<sheet>
+
+						<!-- First Contact -->
+						<group  string="Primer Contacto"  col="3">
+							<group>
+
+								<field name="recommendation"/>
+								<field name="tv"/>
+								<field name="radio"/>
+								<field name="internet"/>
+							</group>
+
+							<group>
+								<field name="website"/>
+								<field name="mail_campaign"/>
+								<field name="facebook"/>
+								<field name="instagram"/>
+							</group>
+
+							<group>
+								<field name="callcenter"/>
+								<field name="old_patient"/>
+								<field name="none"/>
+								<field name="undefined"/>
+							</group>
+						</group>
+
+						<!-- Notebook -->
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+		<!-- Origin -->
+		<record model="ir.ui.view" id="marketing_origin_form_view">
+			<field name="name">marketing.origin.form</field>
+			<field name="model">openhealth.marketing.origin</field>
+			<field name="arch" type="xml">
+				<form string="Marketing Form">
+
+
+					<!-- Header -->
+					<header></header>
+
+
+					<!-- Sheet -->
+					<sheet>
+
+						<!-- TV -->
+						<group  string="TV"  col="2">
+							<group>
+							</group>
+							<group>
+								<field name="tv_two"/>
+								<field name="tv_four"/>
+								<field name="tv_nine"/>
+							</group>
+						</group>
+
+
+						<!-- Redes Sociales -->
+						<group  string="Redes Sociales"  col="2">
+							<group>
+							</group>
+							<group>
+								<field name="sn_facebook"/>
+								<field name="sn_instagram"/>
+								<field name="sn_youtube"/>
+								<field name="sn_twitter"/>
+							</group>
+						</group>
+
+
+						<!-- Other -->
+						<group  string="Otros"  col="2">
+							<group>
+							</group>
+							<group>
+								<field name="web_page"/>
+								<field name="recommendation"/>
+								<field name="other"/>
+							</group>
+						</group>
+
+
+						<!-- Notebook -->
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+	   
+<!-- TREE -->
+		<record model="ir.ui.view" id="openhealth.marketing_view_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing.origin</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+
+					<field name="name"/>
+
+					<field name="tv_two"/>
+					<field name="tv_four"/>
+					<field name="tv_nine"/>
+
+					<field name="sn_facebook"/>
+					<field name="sn_instagram"/>
+					<field name="sn_youtube"/>
+					<field name="sn_twitter"/>
+
+					<field name="web_page"/>
+					<field name="recommendation"/>
+					<field name="other"/>
+				</tree>
+			</field>
+		</record>
+
+
+	</data>
+</openerp>

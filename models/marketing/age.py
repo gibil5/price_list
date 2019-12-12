@@ -46,8 +46,8 @@ class Age(models.Model):
 		"""
 		Patient Line Analysis to update counters
 		"""
-		print()
-		print('X - Age - analyse')
+		#print()
+		#print('X - Age - analyse')
 
 
 		# Age Max and Min 
@@ -73,8 +73,8 @@ class Age(models.Model):
 		"""
 		Get Counters
 		"""
-		print()
-		print('X - Age - Get Counters')
+		#print()
+		#print('X - Age - Get Counters')
 
 		return self.age_max, self.age_min, self.age_sum, self.age_undefined
 

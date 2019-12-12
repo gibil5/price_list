@@ -11,7 +11,11 @@ from __future__ import print_function
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
 from openerp.addons.openhealth.models.product import prodvars
+
 from openerp.addons.openhealth.models.patient import pat_vars
+
+from . import pl_pat_vars
+
 from . import pat_line_funcs
 
 class PatientLine(models.Model):
@@ -22,6 +26,18 @@ class PatientLine(models.Model):
 
 	_order = 'date_create asc'
 
+
+
+# ----------------------------------------------------------- Origin ------------------------------------------------------
+
+	# Origin 
+	#origin = fields.Selection(
+	origin = fields.Char(
+
+			#selection = pl_pat_vars._origin_list, 
+		
+			string = 'Origen',
+		)
 
 
 

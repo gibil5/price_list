@@ -141,8 +141,12 @@
 		'views/marketing/patient_line_search.xml', 
 		'views/marketing/marketing_order_line.xml',
 		'views/marketing/marketing_actions.xml',
-
 		'views/marketing/marketing_other_actions.xml',
+
+		'views/marketing/place.xml',
+
+		'views/marketing/marketing_counters.xml',
+
 		'views/marketing/marketing.xml',
 
 

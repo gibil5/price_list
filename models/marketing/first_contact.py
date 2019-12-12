@@ -55,8 +55,8 @@ class FirstContact(models.Model):
 		"""
 		Patient Line Analysis to update counters
 		"""
-		print()
-		print('X - First Line - analyse')
+		#print()
+		#print('X - First Line - analyse')
 
 
 		# First Contact 
@@ -113,8 +113,8 @@ class FirstContact(models.Model):
 		"""
 		Get Counters
 		"""
-		print()
-		print('X - Education - Get Counters')
+		#print()
+		#print('X - Education - Get Counters')
 
 		return self.none, self.recommendation, self.tv, self.radio, self.internet, self.website, self.mail_campaign, self.facebook,\
 		self.instagram, self.callcenter, self.old_patient, self.undefined

@@ -46,8 +46,8 @@ class Sex(models.Model):
 		"""
 		Patient Line Analysis to update counters
 		"""
-		print()
-		print('X - Sex - analyse')
+		#print()
+		#print('X - Sex - analyse')
 
 		# Sex
 		if line.sex == 'Male': 
@@ -66,8 +66,8 @@ class Sex(models.Model):
 		"""
 		Get Counters
 		"""
-		print()
-		print('X - Sex - Get Counters')
+		#print()
+		#print('X - Sex - Get Counters')
 
 		return self.male, self.female, self.undefined
 
@@ -78,14 +78,17 @@ class Sex(models.Model):
 
 	male = fields.Integer(
 			default=0,
+			string='Masculino',
 		)
 
 	female = fields.Integer(
 			default=0,
+			string='Femenino',
 		)
 
 	undefined = fields.Integer(
 			default=0,
+			string='Indefinido',
 		)
 
 

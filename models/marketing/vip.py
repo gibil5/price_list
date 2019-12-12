@@ -28,8 +28,8 @@ class Vip(models.Model):
 		"""
 		Patient Line Analysis to update counters
 		"""
-		print()
-		print('X - Vip - analyse')
+		#print()
+		#print('X - Vip - analyse')
 
 		# Vip 
 		if line.vip: 
@@ -42,6 +42,17 @@ class Vip(models.Model):
 			#self.vip_already_false = self.vip_already_false + 1
 			self.not_vip_already = self.not_vip_already + 1
 
+
+
+# ----------------------------------------------------------- Get Counters -----------------------
+	def get_counters(self):
+		"""
+		Get Counters
+		"""
+		#print()
+		#print('X - Vip - Get Counters')
+
+		return self.vip, self.not_vip, self.vip_already, self.not_vip_already
 
 
 # ----------------------------------------------------------- Fields ---------------------------------------------

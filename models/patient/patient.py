@@ -25,6 +25,26 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- Getters - Mkt - EMR -----------
 	
+# Origin
+
+	# Origin
+	def get_origin(self):
+		"""
+		Used by Marketing - Patient Line
+		"""
+		print()
+		print('Get Origin')
+
+		#origin = self.origin.name
+		origin = self.origin.short_name
+
+		print(origin)
+		return origin
+
+
+
+
+
 # EMR
 
 	# Chief complaint

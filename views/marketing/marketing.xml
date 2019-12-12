@@ -305,13 +305,15 @@
 
 
 
-						<!-- Stats -->
+<!-- Counters -->
 						<group  string="Stats"  col="2">
 							<group>
 								<field name="sex"/>
 								<field name="age"/>
 								<field name="education"/>
 								<field name="first_contact"/>
+
+								<field name="vip"/>
 							</group>
 							<group>
 								<field name="origin"/>
@@ -506,7 +508,7 @@
 										
 										<field name="name"/>
 
-										<field name="count"/>
+										<field name="count"	string="Nr Pacientes"/>
 									</tree>
 								</field>
 							</page>
@@ -521,7 +523,7 @@
 										
 										<field name="name"/>
 
-										<field name="count"/>
+										<field name="count"	string="Nr Pacientes"/>
 									</tree>
 								</field>
 							</page>
@@ -534,7 +536,7 @@
 										
 										<field name="name"/>
 
-										<field name="count"/>
+										<field name="count"	string="Nr Pacientes"/>
 									</tree>
 								</field>
 							</page>
