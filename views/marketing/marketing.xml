@@ -308,10 +308,13 @@
 						<!-- Stats -->
 						<group  string="Stats"  col="2">
 							<group>
+								<field name="sex"/>
+								<field name="age"/>
 								<field name="education"/>
 								<field name="first_contact"/>
 							</group>
 							<group>
+								<field name="origin"/>
 							</group>
 						</group>
 

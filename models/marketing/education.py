@@ -14,6 +14,8 @@ class Education(models.Model):
 	"""
 	Used by Marketing
 	"""
+	_inherit = 'openhealth.marketing.counter_set'
+
 	_name = 'openhealth.marketing.education'
 
 	_description = 'Openhealth Marketing Education'
@@ -22,22 +24,87 @@ class Education(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Analyse -----------------------
+	def update_per(self, repo):
+		"""
+		Patient Line Analysis to update counters
+		"""
+		print()
+		print('X - Education - Update Per')
+
+
+
+
+# ----------------------------------------------------------- Analyse -----------------------
+	def analyse(self, line):
+		"""
+		Patient Line Analysis to update counters
+		"""
+		print()
+		print('X - Education - analyse')
+
+
+		# Education 
+		if line.education == 'first': 
+			self.first = self.first + 1
+
+		elif line.education == 'second': 
+			self.second = self.second + 1
+
+		elif line.education == 'technical': 
+			self.technical = self.technical + 1
+
+		elif line.education == 'university': 
+			self.university = self.university + 1
+
+		elif line.education == 'masterphd': 
+			self.master_phd = self.master_phd + 1
+
+		else: 
+			self.undefined = self.undefined + 1
+
+
+
+# ----------------------------------------------------------- Get Counters -----------------------
+	def get_counters(self):
+		"""
+		Get Counters
+		"""
+		print()
+		print('X - Education - Get Counters')
+
+		return self.first, self.second, self.technical, self.university, self.master_phd, self.undefined
+
+
+
+
+
+
 # ----------------------------------------------------------- Fields ---------------------------------------------
+	first = fields.Integer(
+			default=0,
+		)
 
-	name = fields.Char()
+	second = fields.Integer(
+			default=0,
+		)
 
+	technical = fields.Integer(
+			default=0,
+		)
 
-	first = fields.Integer()
+	university = fields.Integer(
+			default=0,
+		)
 
-	second = fields.Integer()
+	master_phd = fields.Integer(
+			default=0,
+		)
 
-	technical = fields.Integer()
-
-	university = fields.Integer()
-
-	master_phd = fields.Integer()
-
-	undefined = fields.Integer()
+	undefined = fields.Integer(
+			default=0,
+		)
 
 
 

@@ -38,17 +38,36 @@ class Marketing(models.Model):
 
 # ----------------------------------------------------- Stats ------------------------------------------------------------------
 
+	# Sex
+	sex = fields.Many2one(
+			'openhealth.marketing.sex', 
+		)
+
+
+	# Age
+	age = fields.Many2one(
+			'openhealth.marketing.age', 
+		)
+
+
+
+	# Origin
+	origin = fields.Many2one(
+			'openhealth.marketing.origin', 
+		)
+
+
+
+
 	# Education
 	education = fields.Many2one(
 			'openhealth.marketing.education', 
-			#'marketing_id',
 		)
 
 
 	# First Contact
 	first_contact = fields.Many2one(
 			'openhealth.marketing.first_contact', 
-			#'marketing_id',
 		)
 
 
@@ -175,9 +194,59 @@ class Marketing(models.Model):
 		#print()
 		print('X - Update Patients')
 
-
 		# Handle Exceptions - Dep
 		#exc_mkt.handle_exceptions(self)
+
+
+
+
+		# Macros - Counters - Init
+
+
+		# Education
+		self.education.unlink()
+		name = 'Educación'	
+
+		self.education = self.env['openhealth.marketing.education'].create({
+																			'name': name,
+																		})
+		print(self.education)
+
+
+
+		# First Contact
+		self.first_contact.unlink()
+		name = 'Primer Contacto'	
+
+		self.first_contact = self.env['openhealth.marketing.first_contact'].create({
+																					'name': name,
+																		})
+		print(self.first_contact)
+
+
+
+		# Sex
+		self.sex.unlink()
+		name = 'Sexo'	
+
+		self.sex = self.env['openhealth.marketing.sex'].create({
+																			'name': name,
+																		})
+		print(self.sex)
+
+
+
+		# Age
+		self.age.unlink()
+		name = 'Edad'	
+
+		self.age = self.env['openhealth.marketing.age'].create({
+																			'name': name,
+																		})
+		print(self.age)
+
+
+
 
 
 		# QC
@@ -200,11 +269,23 @@ class Marketing(models.Model):
 		for patient in patients:
 
 
-			# Patient Getters
+
+		# Patient Getters
+
+
+			# EMR
+			treatment = patient.get_last_treatment()
+			consultation = patient.get_last_consultation()
+			chief_complaint = patient.get_chief_complaint()
+			diagnosis = patient.get_diagnosis()
+
 
 			# Places
+			country = patient.get_country()
 			city = patient.get_city()
 			district = patient.get_district()
+
+			# Age
 			age_years = patient.get_age_years()
 
 
@@ -214,19 +295,16 @@ class Marketing(models.Model):
 			# Vip
 			mea_vip, mea_vip_no = patient.get_vip_measure()
 
+
+
+
+
 			# Education
 			mea_first, mea_second, mea_technical, mea_university, mea_masterphd, mea_edu_u = patient.get_education_measure()
 
 			# First contact
 			mea_recommendation, mea_tv, mea_radio, mea_internet, mea_website, mea_mail_campaign, mea_how_none, mea_how_u = patient.get_first_contact_mea()
 
-
-
-			# EMR
-			treatment = patient.get_last_treatment()
-			consultation = patient.get_last_consultation()
-			chief_complaint = patient.get_chief_complaint()
-			diagnosis = patient.get_diagnosis()
 
 
 			# Create
@@ -237,14 +315,18 @@ class Marketing(models.Model):
 														# Dates
 														'date_create': patient.create_date,
 														'date_record': patient.x_date_record,
-														
+
+														# EMR
+														'treatment': treatment.id,
+														'consultation': consultation.id,
+														'chief_complaint': chief_complaint,
+														'diagnosis': diagnosis, 
 
 														# Sex
 														'sex': patient.sex,
 														'mea_m': mea_m,
 														'mea_f': mea_f,
 														'mea_u': mea_u,
-
 
 														# Personal
 														'dob': patient.dob,
@@ -258,32 +340,22 @@ class Marketing(models.Model):
 
 # Stats
 														# Vip
-														'vip': patient.x_vip,
-
-
-														# First contact
-														'first_contact': patient.x_first_contact,
-														
-
-														# Education
-														'education': patient.x_education_level,
-														
+														'vip': patient.x_vip,														
 
 
 														# Places
-														'country': patient.country_id.name,
-														#'district': patient.street2,
-														#'city': patient.city,
+														#'country': patient.country_id.name,
+														'country': country,
 														'city': city,
 														'district': district,
 
 
 
-														# EMR
-														'treatment': treatment.id,
-														'consultation': consultation.id,
-														'chief_complaint': chief_complaint,
-														'diagnosis': diagnosis, 
+														# First contact
+														'first_contact': patient.x_first_contact,														
+
+														# Education
+														'education': patient.x_education_level,
 
 
 														# Handle
@@ -319,6 +391,26 @@ class Marketing(models.Model):
 		t1 = timer()
 		now_1 = datetime.datetime.now()
 		self.delta_patients = t1 - t0
+
+
+
+
+		# Update Macros - Counters
+
+		# Education
+		self.edu_fir, self.edu_sec, self.edu_tec, self.edu_uni, self.edu_mas, self.edu_u = self.education.get_counters()
+
+		# First Contact
+		self.how_none, self.how_reco, self.how_tv, self.how_radio, self.how_inter, self.how_web, self.how_mail, self.how_facebook,\
+		self.how_instagram, self.how_callcenter, self.how_old_patient, self.how_u = self.first_contact.get_counters()
+
+		# Sex
+		self.sex_male, self.sex_female, self.sex_undefined = self.sex.get_counters()
+
+
+		# Age
+		self.age_max, self.age_min, self.age_sum, self.age_undefined = self.age.get_counters()
+
 
 	# update_patients
 

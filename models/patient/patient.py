@@ -23,9 +23,8 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Getters - Mkt -----------
+# ----------------------------------------------------------- Getters - Mkt - EMR -----------
 	
-
 # EMR
 
 	# Chief complaint
@@ -33,11 +32,8 @@ class Patient(models.Model):
 		"""
 		Used by Marketing - Patient Line
 		"""
-
 		chief_complaint = self.get_last_treatment().chief_complaint
-
 		return chief_complaint
-
 
 
 	# Diagnosis
@@ -45,26 +41,16 @@ class Patient(models.Model):
 		"""
 		Used by Marketing - Patient Line
 		"""
-		
 		diagnosis = self.get_last_consultation().x_diagnosis
-
 		return diagnosis
-
-
-
-
 
 
 	# Treatment
 	def get_last_treatment(self):
 		"""
+		EMR - Treatment
 		Used by Marketing - Patient Line
 		"""
-
-		#treatment = False
-
-
-		# EMR - Treatment
 		treatment = self.env['openhealth.treatment'].search([
 																('patient','=', self.name),
 														],
@@ -73,45 +59,35 @@ class Patient(models.Model):
 		return treatment
 
 
-
-
 	# Consultation
 	def get_last_consultation(self):
 		"""
+		EMR - Consultation
 		Used by Marketing - Patient Line
 		"""
-
-		#consultation = False
-
-
-		# EMR - Consultation
 		consultation = self.env['openhealth.consultation'].search([
 																		#('treatment','=', self.treatment.id),
 																		('patient','=', self.name),
 														],
 														order='evaluation_start_date desc',
 														limit=1,)
-
 		return consultation
 
 
 
 
+# ----------------------------------------------------------- Getters - Mkt -----------
 
+# Places
 
-
-# Age
-	def get_age_years(self):
+	def get_country(self):
 		"""
 		Used by Marketing - Patient Line
 		"""
-		# Age 
-		if self.age.split()[0] != 'No': 
-			return self.age.split()[0]
+		if self.country_id.name != False: 
+			return self.country_id.name
 
 
-
-# Places
 	def get_city(self):
 		"""
 		Used by Marketing - Patient Line
@@ -129,6 +105,16 @@ class Patient(models.Model):
 
 
 
+
+
+# Age
+	def get_age_years(self):
+		"""
+		Used by Marketing - Patient Line
+		"""
+		# Age 
+		if self.age.split()[0] != 'No': 
+			return self.age.split()[0]
 
 
 # Measures
@@ -276,6 +262,7 @@ class Patient(models.Model):
 
 		# Handle Exceptions
 		exc_pat.handle_exceptions(self)
+
 
 # ----------------------------------------------------------- Validate For Invoice -----------
 	@api.multi

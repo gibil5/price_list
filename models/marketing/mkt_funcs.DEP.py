@@ -1,3 +1,148 @@
+# 12 Dec 2019
+
+
+# ----------------------------------------------------------- Line Analysis - PL- Dep -----------------------
+def pl_patient_line_analysis(self, line):
+	"""
+	New - 2019
+	Used by: Marketing
+	Patient Line Analysis to update counters
+	"""
+	print()
+	print('X - Patient Line Analysis')
+
+
+
+	if False:
+
+		# Education 
+		if line.education == 'first': 
+			self.edu_fir = self.edu_fir + 1
+
+		elif line.education == 'second': 
+			self.edu_sec = self.edu_sec + 1
+
+		elif line.education == 'technical': 
+			self.edu_tec = self.edu_tec + 1
+
+		elif line.education == 'university': 
+			self.edu_uni = self.edu_uni + 1
+
+		elif line.education == 'masterphd': 
+			self.edu_mas = self.edu_mas + 1
+
+		else: 
+			self.edu_u = self.edu_u + 1
+
+
+#none
+#recommendation
+#tv
+
+#radio
+#internet
+#website
+
+#mail_campaign
+#facebook
+#instagram
+
+#callcenter
+#old_patient
+#undefined
+
+
+# First Contact 
+	if False:
+		if line.first_contact == 'none': 
+			self.how_none = self.how_none + 1
+
+		elif line.first_contact == 'recommendation': 
+			self.how_reco = self.how_reco + 1
+
+		elif line.first_contact == 'tv': 
+			self.how_tv = self.how_tv + 1
+
+
+
+		elif line.first_contact == 'radio': 
+			self.how_radio = self.how_radio + 1
+
+		elif line.first_contact == 'internet': 
+			self.how_inter = self.how_inter + 1
+
+		elif line.first_contact == 'website':
+			self.how_web = self.how_web + 1
+
+
+
+		elif line.first_contact == 'mail_campaign':
+			self.how_mail = self.how_mail + 1
+
+		elif line.first_contact == 'facebook':
+			self.how_facebook = self.how_facebook + 1
+
+		elif line.first_contact == 'instagram':
+			self.how_instagram = self.how_instagram + 1
+
+
+
+		elif line.first_contact == 'callcenter':
+			self.how_callcenter = self.how_callcenter + 1
+
+		elif line.first_contact == 'old_patient':
+			self.how_old_patient = self.how_old_patient + 1
+
+		elif line.first_contact in [False, '']:
+			self.how_u = self.how_u + 1
+
+		else:
+			print('Eror: This should not happen !')
+
+
+
+
+
+
+
+# Sex
+	if line.sex == 'Male': 
+		self.sex_male = self.sex_male + 1
+	elif line.sex == 'Female': 
+		self.sex_female = self.sex_female + 1
+	else: 
+		self.sex_undefined = self.sex_undefined + 1
+
+
+
+# Age Max and Min 
+	#if line.age_years not in[ -1, 0]: 			# Not an Error 
+	if line.age_years >= 0:
+		#count_a = count_a + line.age_years 
+		self.age_sum = self.age_sum + line.age_years 
+
+		if line.age_years > self.age_max: 
+			self.age_max = line.age_years
+
+		if self.age_min in [0]:
+			self.age_min = line.age_years
+
+		else:			
+			if line.age_years < self.age_min: 
+				self.age_min = line.age_years
+	else: 										# Error 
+		self.age_undefined = self.age_undefined + 1
+
+
+
+
+
+
+
+
+
+
+
 # 11 Dec 2019
 
 # ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------

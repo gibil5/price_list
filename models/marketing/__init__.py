@@ -1,9 +1,17 @@
 # -*- coding: utf-8 -*-
 
 
-# Stats
+
+# Macro Counters
+from . import counter_set
+
 from . import education
 from . import first_contact
+from . import origin
+
+from . import sex
+from . import age
+
 
 
 

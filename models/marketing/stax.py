@@ -35,7 +35,10 @@ from . import mkt_funcs
 @api.multi
 def update_stats(self):
 	"""
-	Update Macro Stats
+	Create Macro Stats
+		Education
+		First Contact
+
 	"""
 	print()
 	print('X - Update Stats')
@@ -43,84 +46,57 @@ def update_stats(self):
 
 	# Init
 
+
 	# Collections
 	country_arr = []
-
-
-
-	# Macros - Counters - Init
-	edu_fir, edu_sec, edu_tec, edu_uni, edu_mas, edu_u = 0, 0, 0, 0, 0, 0
 
 
 
 	# Loop - For all Patients
 	for line in self.patient_line:
 
-
-		# Education 
-		if line.education == 'first': 
-			edu_fir = edu_fir + 1
-
-		elif line.education == 'second': 
-			edu_sec = edu_sec + 1
-
-		elif line.education == 'technical': 
-			edu_tec = edu_tec + 1
-
-		elif line.education == 'university': 
-			edu_uni = edu_uni + 1
-
-		elif line.education == 'masterphd': 
-			edu_mas = edu_mas + 1
-
-		else: 
-			edu_u = edu_u + 1
-
-
-		# Line Analysis
-		mkt_funcs.pl_patient_line_analysis(self, line)
-
-
 		# Countries
 		country_arr.append(line.country)
 
 
+		# Education
+		self.education.analyse(line)
+
+		# First Contact
+		self.first_contact.analyse(line)
 
 
-# Macros - Counters
-	print(edu_fir, edu_sec, edu_tec, edu_uni, edu_mas, edu_u)
-
-	self.edu_fir, self.edu_sec, self.edu_tec, self.edu_uni, self.edu_mas, self.edu_u = edu_fir, edu_sec, edu_tec, edu_uni, edu_mas, edu_u
+		# Sex
+		self.sex.analyse(line)
 
 
-	# Education
-	name = 'Educación'	
-
-	self.education = self.env['openhealth.marketing.education'].create({
-
-										#'name': self.name,
-										'name': name,
-
-										'first': edu_fir,
-										'second': edu_sec,
-										'technical': edu_tec,
-
-										'university': edu_uni,
-										'master_phd': edu_mas,
-										'undefined': edu_u,
-
-										#'marketing_id': self.id,
-									})
-	print(self.education)
+		# Age
+		self.age.analyse(line)
 
 
 
-	# First Contact
+		# Line Analysis - Dep !
+		mkt_funcs.pl_patient_line_analysis(self, line)
+
+
+
+
+
+
 
 
 
 
 # Update Macros - Percentages
+
+	# Education
+	#self.update_education()
+	self.education.update_per()
+
+
+	# First Contact
+	self.update_first_contact()
+
 
 	# Sex
 	self.update_sex()
@@ -128,12 +104,6 @@ def update_stats(self):
 	# Age
 	self.update_age()
 
-	# Education
-	self.update_education()
-
-
-	# First Contact
-	self.update_first_contact()
 
 
 	# Vip
