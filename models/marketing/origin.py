@@ -36,6 +36,8 @@ class Origin(models.Model):
 		#print(name)
 
 		_dic = {
+					False: '', 
+
 					'tv_two': 'TV-2',
 					'tv_four': 'TV-4',
 					'tv_nine': 'TV-9',
