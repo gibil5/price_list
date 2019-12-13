@@ -34,6 +34,7 @@ _month_order_list = [
 
 _h_sector_city =  {
 				False: 		'x',
+				'Puerto_Maldonado': 	'Sur Este', 		# Madre de Dios 
 				'Other': 		'Otros',
 
 				'Lima':			'Lima',
