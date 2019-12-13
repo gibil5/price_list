@@ -33,6 +33,8 @@ _month_order_list = [
 
 
 _h_sector_city =  {
+				'Other': 		'Otros',
+
 				'Lima':			'Lima',
 				'Callao': 		'Lima',
 				'Huacho': 		'Lima',
@@ -117,6 +119,7 @@ zip_dic =  {
 
 
 _h_sector =  {
+				'Other': 		'Otros',
 
 		# Tradicional
 		'Lima':			'Lima Tradicional',
