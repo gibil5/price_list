@@ -4,7 +4,6 @@
 
 
 
-
 <!-- FORM --> 
         <record model="ir.ui.view" id="openhealth.patient_line_form_view">
             <field name="name">openhealth.patient.line.form</field>

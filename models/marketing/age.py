@@ -10,6 +10,8 @@
 from __future__ import print_function
 from openerp import models, fields, api
 
+import numpy
+
 class Age(models.Model):
 	"""
 	Used by Marketing
@@ -24,6 +26,16 @@ class Age(models.Model):
 
 
 
+# ----------------------------------------------------------- Class Vars -----------------------
+
+	# Age Array
+	age_arr = []
+
+
+
+
+
+
 # ----------------------------------------------------------- Update Stats ---------------------------------------------
 	def update_stats(self, mkt):
 		"""
@@ -33,11 +45,24 @@ class Age(models.Model):
 		#print()
 		#print('X - Update Age')
 
+
+		# Marketing
 		if mkt.total_count != 0:
-			mkt.age_mean = mkt.age_sum / float(mkt.total_count)
+			#mkt.age_mean = mkt.age_sum / float(mkt.total_count)
 			mkt.age_undefined_per = (mkt.age_undefined / float(mkt.total_count))
 
 
+		# Using Numpy
+		self.age_mean = numpy.mean(self.age_arr)
+		mkt.age_mean = self.age_mean
+
+
+		# Max and Min
+		self.age_max = max(self.age_arr)
+		mkt.age_max = self.age_max
+
+		self.age_min = min(self.age_arr)
+		mkt.age_min = self.age_min
 
 
 
@@ -50,21 +75,9 @@ class Age(models.Model):
 		#print('X - Age - analyse')
 
 
-		# Age Max and Min 
-		if line.age_years >= 0:
-			self.age_sum = self.age_sum + line.age_years 
+		# Class Var
+		self.age_arr.append(line.age_years)
 
-			if line.age_years > self.age_max: 
-				self.age_max = line.age_years
-
-			if self.age_min in [0]:
-				self.age_min = line.age_years
-
-			else:			
-				if line.age_years < self.age_min: 
-					self.age_min = line.age_years
-		else: 										# Error 
-			self.age_undefined = self.age_undefined + 1
 
 
 

@@ -1,3 +1,65 @@
+# 13 Dec 2019
+
+#from openerp.addons.openhealth.models.order import ord_vars
+
+#from timeit import default_timer as timer
+#import collections
+#from openerp.addons.price_list.models.management.lib import mgt_funcs
+#from openerp.addons.price_list.models.lib import test_funcs
+
+
+
+	# Update Patients
+	@api.multi
+	def update_patients(self):
+
+		# Handle Exceptions - Dep
+		#exc_mkt.handle_exceptions(self)
+
+
+		# QC - Start
+		#t0 = timer()
+		#now_0 = datetime.datetime.now()
+
+		# QC - Stop
+		#t1 = timer()
+		#now_1 = datetime.datetime.now()
+		#self.delta_patients = t1 - t0
+
+
+
+
+	# Update Sales
+	@api.multi
+	def update_sales(self):
+
+		# Print Disable
+		#test_funcs.disablePrint()
+
+		# Init 
+		#self.delta_create_sale_lines = 0
+		#self.delta_analyse_sale_lines = 0
+		#self.delta_analyse_patient_lines = 0
+
+		# Handle Exceptions
+		#exc_mkt.handle_exceptions(self)
+
+
+
+		# Benchmark
+		#self.delta_sales_pl = self.delta_create_sale_lines + self.delta_analyse_sale_lines + self.delta_analyse_patient_lines
+
+
+		# Print Enable
+		#test_funcs.enablePrint()
+
+
+
+
+
+
+
+
 # 11 Dec 2019
 
 # ----------------------------------------------------- Django Interface --------------------------

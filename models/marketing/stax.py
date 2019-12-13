@@ -22,7 +22,9 @@
 from timeit import default_timer as timer
 import collections
 from openerp import models, fields, api
-from openerp.addons.price_list.models.management.lib import mgt_funcs
+
+#from openerp.addons.price_list.models.management.lib import mgt_funcs  # Dep
+
 from . import exc_mkt
 
 from . import mkt_funcs
@@ -39,7 +41,7 @@ def update_counters(self):
 
 	"""
 	print()
-	print('X - Update Stats')
+	print('X - Update Counters')
 
 
 	# Loop - For all Patients
@@ -168,10 +170,6 @@ def update_vip_sales(self):
 
 
 
-
-
-
-
 # ----------------------------------------------------------- Create Sale Lines - Button Hidden ------------------------
 # Create Sales
 @api.multi
@@ -182,42 +180,24 @@ def create_sale_lines(self):
 	print()
 	print('X - Create Sale Lines')
 
-	# Handle Exceptions
-	exc_mkt.handle_exceptions(self)
-
-
-	# Go
-	# Print Disable
-	#test_funcs.disablePrint()
-
-	# Benchmark
-	t0 = timer()
 
 	# Clean
 	self.sale_line.unlink()
 
 
 	# Get - Only Sales - Not CN
-	orders, count = mgt_funcs.get_orders_filter_fast_fast(self, self.date_begin, self.date_end)
-	#print(orders)
-	#print(count)
+	orders, count = mkt_funcs.get_orders_filter_no_cn(self, self.date_begin, self.date_end)
+	#print(orders, count)
+
 
 	for order in orders:
-		#if order.state in ['credit_note']:
-		#	print('Gotcha !')
-		#	print(order.state)
-		#	print()
-
 
 		# The patient has been created this month
 		is_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)
 		#print(is_new)
 
 
-		#if is_new:
 		if is_new or order.patient.x_test:
-			#print('Gotcha')
-			#print(order.patient.name)
 
 			# Loop
 			for line in order.order_line:
@@ -234,7 +214,7 @@ def create_sale_lines(self):
 				# Using Getters - OO
 				subsubfamily = line.product_id.get_subsubfamily()
 
-
+				# Create 
 				sale_line = self.sale_line.create({
 														'date': order.date_order,
 														'order': order.id,
@@ -253,13 +233,6 @@ def create_sale_lines(self):
 														'marketing_id': self.id,
 					})
 				#print(sale_line)
-
-	t1 = timer()
-	self.delta_create_sale_lines = t1 - t0
-
-	# Print Enable
-	#test_funcs.enablePrint()
-
 # create_sale_lines
 
 
@@ -279,9 +252,11 @@ def analyse_patient_lines(self):
 	t0 = timer()
 
 
+
 	# Clean
-	self.vip_true = 0
-	self.vip_false = 0
+	#self.vip_true = 0
+	#self.vip_false = 0
+
 
 
 	# Loop
@@ -306,18 +281,20 @@ def analyse_patient_lines(self):
 
 		# Loop
 		for line in lines:
+
 			#print(line)
 			patient_line.analysis(line)  	# OO
 
 
 
-	# Update Macros
-	self.vip_false = self.total_count - (self.vip_true + self.vip_already_true)
 
-	if self.total_count not in [0]:
-		#self.vip_already_true_per = float(self.vip_already_true) / float(self.total_count)
-		self.vip_true_per = float(self.vip_true) / float(self.total_count)
-		self.vip_false_per = float(self.vip_false) / float(self.total_count)
+
+	# Update Macros - Dep
+	#self.vip_false = self.total_count - (self.vip_true + self.vip_already_true)
+	#if self.total_count not in [0]:
+	#	self.vip_true_per = float(self.vip_true) / float(self.total_count)
+	#	self.vip_false_per = float(self.vip_false) / float(self.total_count)
+
 
 
 

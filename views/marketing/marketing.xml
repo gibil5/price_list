@@ -35,6 +35,8 @@
 								name="update_patients"
 
 								string="Act Pacientes"                               
+
+								groups='openhealth.roots'
 						/>
 
 						<!-- Update Sales -->
@@ -57,6 +59,8 @@
 								name="update_sales"
 
 								string="Act Ventas" 
+
+								groups='openhealth.roots'
 						/>
 
 
@@ -240,7 +244,10 @@
 								string="Distritos"  
 						/>
 
+
+
 						<!-- Media -->
+<!--
 						<button 
 								class="oe_highlight oe_right"
 								type="action"                               
@@ -250,12 +257,29 @@
 										}"
 								string="Medios" 
 						/>
+-->
+
+						<!-- origin -->
+						<button 
+								class="oe_highlight oe_right"
+								type="action"                               
+						
+								name="%(origin_line_form_action)d" 
+						
+								context="{
+											'search_default_marketing_id': active_id,   
+										}"
+								string="Origen" 
+						/>
+
 
 						<!-- Age Histogram -->
 						<button 
 								class="oe_highlight oe_right"                               
 								type="action" 
+
 								name="%(histo_line_form_action)d" 
+
 								context="{
 											'search_default_marketing_id': active_id,   
 										}"
@@ -327,12 +351,16 @@
 						<!-- Vip -->
 						<group string="Vip">
 							<group>
+<!--
 								<field name="vip_already_true"	string="Vip por venta anterior"/>
+-->
 								<field name="vip_true"	string="Vip por venta mes"/>
 								<field name="vip_false"	string="No Vip"/>
 							</group>
 							<group>                             
+<!--
 								<field name="vip_already_true_per"	string="Vip por venta anterior %"	widget="percentage"/>
+-->
 								<field name="vip_true_per"	string="Vip por venta mes %"			widget="percentage"/>
 								<field name="vip_false_per"	string="No Vip %"		widget="percentage"/>
 							</group>
@@ -362,10 +390,13 @@
 								<field name="age_max"	string="Maximo"	/>
 							</group>
 							<group>
+<!--
 								<field name="age_undefined"		string="Error"/>
 								<field name="age_undefined_per"	string="Error %"	widget="percentage"/>
+-->
 							</group>
 						</group>
+
 
 
 
@@ -391,54 +422,27 @@
 							</page>
 
 
-							<!-- Stats --> 
-							<page   string="Estadistica">
+							<!-- Origin Lines --> 
+							<page   string="Origen">
 
-								<!-- First Contact -->
-								<group  string="Primer Contacto">
-									<group>                             
-										<field name="how_none"  string="Ninguno"/>
-										<field name="how_reco"  string="Recomendación"/>
-										<field name="how_tv"    string="Tv"/>
-										<field name="how_radio" string="Radio"/>
-										<field name="how_inter" string="Internet"/>
-										<field name="how_web"   string="Web"/>
-										<field name="how_mail"  string="Mail"/>
+								<field name="origin_line">
 
-										<field name="how_u"     string="No Definido"	groups="openhealth.roots"		/>
+									<tree string="Origen">
 
-										<field name="vspace"/>
+										<field name="name"	groups='openhealth.roots'/>
 
-										<field name="how_facebook"/>
-										<field name="how_instagram"/>
-										<field name="how_callcenter"/>
-										<field name="how_old_patient"/>
-									</group>
+										<field name="name_sp"/>
 
-									<group>                                                             
-										<field name="how_none_per"		widget="percentage"/>
-										<field name="how_reco_per"		widget="percentage"/>
-										<field name="how_tv_per"		widget="percentage"/>
-										<field name="how_radio_per"		widget="percentage"/>
-
-
-										<field name="how_inter_per"		widget="percentage"/>
-										<field name="how_web_per"		widget="percentage"/>
-										<field name="how_mail_per"		widget="percentage"/>
-
-										<field name="how_u_per"			widget="percentage"	groups="openhealth.roots"/>
-
-										<field name="vspace"/>
-
-										<field name="how_facebook_per"	widget="percentage"/>
-										<field name="how_instagram_per"	widget="percentage"/>
-										<field name="how_callcenter_per"	widget="percentage"/>
-										<field name="how_old_patient_per"	widget="percentage"/>
-									</group>
-								</group>
+										<field name="count"/>
+									</tree>
+								</field>
+							</page>
 
 
 
+
+							<!-- Education --> 
+							<page   string="Educación">
 
 
 								<!-- Education -->

@@ -1,4 +1,58 @@
 <!--
+13 Dec 2019
+-->
+
+
+                                <!-- First Contact -->
+                                <group  string="Primer Contacto">
+                                    <group>                             
+                                        <field name="how_none"  string="Ninguno"/>
+                                        <field name="how_reco"  string="Recomendación"/>
+                                        <field name="how_tv"    string="Tv"/>
+                                        <field name="how_radio" string="Radio"/>
+                                        <field name="how_inter" string="Internet"/>
+                                        <field name="how_web"   string="Web"/>
+                                        <field name="how_mail"  string="Mail"/>
+
+                                        <field name="how_u"     string="No Definido"    groups="openhealth.roots"       />
+
+                                        <field name="vspace"/>
+
+                                        <field name="how_facebook"/>
+                                        <field name="how_instagram"/>
+                                        <field name="how_callcenter"/>
+                                        <field name="how_old_patient"/>
+                                    </group>
+
+                                    <group>                                                             
+                                        <field name="how_none_per"      widget="percentage"/>
+                                        <field name="how_reco_per"      widget="percentage"/>
+                                        <field name="how_tv_per"        widget="percentage"/>
+                                        <field name="how_radio_per"     widget="percentage"/>
+
+
+                                        <field name="how_inter_per"     widget="percentage"/>
+                                        <field name="how_web_per"       widget="percentage"/>
+                                        <field name="how_mail_per"      widget="percentage"/>
+
+                                        <field name="how_u_per"         widget="percentage" groups="openhealth.roots"/>
+
+                                        <field name="vspace"/>
+
+                                        <field name="how_facebook_per"  widget="percentage"/>
+                                        <field name="how_instagram_per" widget="percentage"/>
+                                        <field name="how_callcenter_per"    widget="percentage"/>
+                                        <field name="how_old_patient_per"   widget="percentage"/>
+                                    </group>
+                                </group>
+
+
+
+
+
+
+
+<!--
 11 Dec 2019
 -->
                         <!-- Padding -->

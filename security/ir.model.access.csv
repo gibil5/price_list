@@ -2,6 +2,22 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_marketing_origin_line,openhealth.marketing.origin.line,model_openhealth_marketing_origin_line,,1,1,1,1
+
+access_openhealth_marketing_origin,openhealth.marketing.origin.,model_openhealth_marketing_origin,,1,1,1,1
+
+access_openhealth_marketing_education,openhealth.marketing.education.,model_openhealth_marketing_education,,1,1,1,1
+
+access_openhealth_marketing_sex,openhealth.marketing.sex.,model_openhealth_marketing_sex,,1,1,1,1
+
+access_openhealth_marketing_vip,openhealth.marketing.vip.,model_openhealth_marketing_vip,,1,1,1,1
+
+access_openhealth_marketing_age,openhealth.marketing.age.,model_openhealth_marketing_age,,1,1,1,1
+
+access_openhealth_marketing_first_contact,openhealth.marketing.first_contact.,model_openhealth_marketing_first_contact,,1,1,1,1
+
+
+
 
 
 access_openhealth_management_patient_line,openhealth.management.patient.line,model_openhealth_management_patient_line,,1,1,1,1

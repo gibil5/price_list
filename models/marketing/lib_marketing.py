@@ -3,24 +3,62 @@
  	Price List 2019 - lib_marketing.py
 
  	Created: 			12 Dec 2019
- 	Last up: 	 		12 Dec 2019
+ 	Last up: 	 		13 Dec 2019
 """
 import collections
 try:
 	import numpy as np
 except (ImportError, IOError) as err:
 	_logger.debug(err)
-
 from . import mkt_vars
-
 from openerp.addons.openhealth.models.patient import pat_vars
 
+from origin import Origin
 
 
 # ----------------------------------------------------------- Origin -------------------------------
 def build_origin(self):  
 	print()
 	print('X - Build Origin')
+
+	# Clean
+	self.origin_line.unlink()
+
+
+	# Create Collection from Patient Lines
+	origin_arr = []
+	for line in self.patient_line: 
+		origin_arr.append(line.origin)
+	#print(origin_arr)
+
+
+	# Using collections
+	counter_origin = collections.Counter(origin_arr)
+
+
+	# origin
+	#print('Create origin Line ')
+	for key in counter_origin:
+		count = counter_origin[key]
+
+
+		# Using Static method
+		name_sp = Origin.get_sp_name(key)
+
+		print(key, name_sp)
+
+		origin = self.origin_line.create({
+												'name': key,
+
+												'name_sp': name_sp,
+
+												'count': count,
+
+												'marketing_id': self.id,
+											})
+		#print origin
+
+
 
 
 

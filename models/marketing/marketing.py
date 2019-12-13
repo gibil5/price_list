@@ -5,23 +5,14 @@
 	Only functions. Not the data model. 
 
  	Created: 				19 May 2018
- 	Last up: 	 			11 Dec 2019
+ 	Last up: 	 			13 Dec 2019
 """
 from __future__ import print_function
 import datetime
-from timeit import default_timer as timer
-import collections
+
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.order import ord_vars
-from openerp.addons.price_list.models.management.lib import mgt_funcs
-from openerp.addons.price_list.models.lib import test_funcs
 
-
-
-#from openerp.addons.openhealth.models.marketing import lib_marketing
 from . import lib_marketing
-
-
 from . import mkt_funcs
 from . import pat_funcs
 from . import mkt_vars
@@ -36,14 +27,52 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------- Stats ------------------------------------------------------------------
+# ----------------------------------------------------- Relational - Lines ------------------------------------------------------------------
+
+	# Media Lines 
+	origin_line = fields.One2many(
+			'openhealth.marketing.origin.line', 
+
+			'marketing_id', 
+		)
+
+
+
+# ----------------------------------------------------------- Class Methods -----------------------
+
+	@classmethod
+	def set_origin_name(cls, name):
+		cls.origin_name = name
+
+
+
+
+# ----------------------------------------------------------- Static Methods -----------------------
+
+	@staticmethod
+	def isworkday(day):
+		if day.weekday() in [5, 6]:
+			return False
+		return True
+
+
+
+
+# ----------------------------------------------------------- Class Vars -----------------------
+
+	# Counter Names
+	origin_name = 'Origen'
+	education_name = 'Educación'
+
+
+
+
+# ----------------------------------------------------- Relational - Counters ------------------------------------------------------------------
 
 	# Vip
 	vip = fields.Many2one(
 			'openhealth.marketing.vip', 
 		)
-
-
 
 	# Sex
 	sex = fields.Many2one(
@@ -78,7 +107,7 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Update ---------------------------------------------
+# ----------------------------------------------------------- Update All ---------------------------------------------
 	@api.multi
 	def update(self):
 		"""
@@ -88,11 +117,15 @@ class Marketing(models.Model):
 		print()
 		print('X - Update')
 
+
+		# Patients
 		self.update_patients()
 
+
+		# Sales
 		self.update_sales()
 
-		print()
+
 
 		# For Django
 		self.date_test = datetime.datetime.now() 
@@ -112,24 +145,24 @@ class Marketing(models.Model):
 	@api.multi
 	def update_patients(self):
 		"""
-		Update Patients
-		To see the Stats Macro 
+		Update Patients - Macros
 		"""
-		#print()
+		print()
 		print('X - Update Patients')
 
-		# Handle Exceptions - Dep
-		#exc_mkt.handle_exceptions(self)
+
+		# Clean
+		self.reset()
 
 
 
+# Counters - Init
 
-# Macros - Counters - Init
-
-
-		# Origin
+		# Origin - Using Class Var
 		self.origin.unlink()
-		name = 'Origen'	
+
+		name = 'Origen'
+		name = self.origin_name
 		self.origin = self.env['openhealth.marketing.origin'].create({
 																			'name': name,
 																		})
@@ -138,9 +171,12 @@ class Marketing(models.Model):
 
 
 
-		# Education
+		# Education - Using Class Var
 		self.education.unlink()
-		name = 'Educación'	
+
+		#name = 'Educación'	
+		name = self.education_name
+
 		self.education = self.env['openhealth.marketing.education'].create({
 																			'name': name,
 																		})
@@ -176,7 +212,6 @@ class Marketing(models.Model):
 		#print(self.age)
 
 
-
 		# Vip
 		self.vip.unlink()
 		name = 'Vip'	
@@ -189,19 +224,11 @@ class Marketing(models.Model):
 
 
 
-		# QC
-		t0 = timer()
-		now_0 = datetime.datetime.now()
-
-
-		# Clear
-		self.reset()
 
 
 		# Get Patients - For Mkt
 		mode = self.mode
 		patients, count = pat_funcs.get_patients_filter_for_mkt(self, self.date_begin, self.date_end, mode)
-
 		self.total_count = count
 
 
@@ -209,10 +236,9 @@ class Marketing(models.Model):
 		for patient in patients:
 
 
+			# Using Patient Getters
 
-		# Patient Getters
-
-
+			# Origin 
 			origin = patient.get_origin()
 
 
@@ -239,9 +265,6 @@ class Marketing(models.Model):
 			mea_vip, mea_vip_no = patient.get_vip_measure()
 
 
-
-
-
 			# Education
 			mea_first, mea_second, mea_technical, mea_university, mea_masterphd, mea_edu_u = patient.get_education_measure()
 
@@ -265,23 +288,26 @@ class Marketing(models.Model):
 														'chief_complaint': chief_complaint,
 														'diagnosis': diagnosis, 
 
-														# Sex
-														'sex': patient.sex,
-														'mea_m': mea_m,
-														'mea_f': mea_f,
-														'mea_u': mea_u,
 
 														# Personal
 														'dob': patient.dob,
-														'age': patient.age,
-														'age_years': age_years,
 														'function': patient.function,
 														'phone_1': 	patient.mobile,
 														'phone_2': 	patient.phone,
 														'email': 	patient.email,
 														
 
-# Stats
+# Counters
+														# Age
+														'age': patient.age,
+														'age_years': age_years,
+
+														# Sex
+														'sex': patient.sex,
+														'mea_m': mea_m,
+														'mea_f': mea_f,
+														'mea_u': mea_u,
+
 														# Vip
 														'vip': patient.x_vip,														
 
@@ -296,17 +322,14 @@ class Marketing(models.Model):
 														# First contact
 														'first_contact': patient.x_first_contact,														
 
-
-
 														# Origin
 														'origin': origin,														
-
 
 
 														# Handle
 														'marketing_id': self.id,
 													})
-		# End create
+		# End create patient line
 
 
 
@@ -321,12 +344,12 @@ class Marketing(models.Model):
 
 
 
+		# Build Media - Dep !
+		#lib_marketing.build_media(self)
+
+
 		# Build Histo
 		lib_marketing.build_histogram(self)
-
-
-		# Build Media - Dep !!
-		#lib_marketing.build_media(self)
 
 
 		# Build Places - Districts, Cities
@@ -336,37 +359,48 @@ class Marketing(models.Model):
 
 
 
-		# QC
-		t1 = timer()
-		now_1 = datetime.datetime.now()
-		self.delta_patients = t1 - t0
+
+		# Build Origin
+		lib_marketing.build_origin(self)
 
 
 
-
-# Update Macros - Counters
+# Counters - Get and update
 
 		# Education
 		self.edu_fir, self.edu_sec, self.edu_tec, self.edu_uni, self.edu_mas, self.edu_u = self.education.get_counters()
 		self.education.update_per(self)
+
 
 		# First Contact
 		self.how_none, self.how_reco, self.how_tv, self.how_radio, self.how_inter, self.how_web, self.how_mail, self.how_facebook,\
 		self.how_instagram, self.how_callcenter, self.how_old_patient, self.how_u = self.first_contact.get_counters()
 		self.first_contact.update_per(self)
 
+
 		# Sex
 		self.sex_male, self.sex_female, self.sex_undefined = self.sex.get_counters()
 		self.sex.update_per(self)
 
+
+
+
+		# Origin
+		#print('Origin')
+		#print(self.origin.__dict__)
+
+
+
+
 		# Age
 		self.age_max, self.age_min, self.age_sum, self.age_undefined = self.age.get_counters()
 		self.age.update_stats(self)
+		#print(self.age.age_arr)
+
 
 		# Vip
 		self.vip_true, self.vip_false, self.vip_already_true, self.vip_already_false = self.vip.get_counters()
-		#self.vip.update_stats(self)
-
+		self.vip.update_stats(self)
 
 	# update_patients
 
@@ -379,47 +413,20 @@ class Marketing(models.Model):
 	@api.multi
 	def update_sales(self):
 		"""
-		Update Sales
-		To see the detail 
+		Update Sales - Micros
 		"""
 		print()
 		print('X - Update Sales')
 
 
-		# Handle Exceptions
-		#exc_mkt.handle_exceptions(self)
-
-
-		# Go
-
-		# Print Disable
-		test_funcs.disablePrint()
-
-		# Init 
-		self.delta_create_sale_lines = 0
-		self.delta_analyse_sale_lines = 0
-		self.delta_analyse_patient_lines = 0
-
-
-
 		# Analyse and Create
 		stax.create_sale_lines(self)
+
 		stax.analyse_sale_lines(self)
+
 		stax.analyse_patient_lines(self)
 
-
-
-		# Benchmark
-		self.delta_sales_pl = self.delta_create_sale_lines + self.delta_analyse_sale_lines + self.delta_analyse_patient_lines
-
-
-		# Print Enable
-		test_funcs.enablePrint()
-
-	# pl_update_sales
-
-
-
+	# update_sales
 
 
 
@@ -534,7 +541,9 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Natives ----------------------
 
 	year = fields.Selection(
-			selection=ord_vars._year_order_list,
+
+			selection=mkt_vars._year_order_list,
+
 			string='Año',
 			required=True,
 
@@ -542,7 +551,9 @@ class Marketing(models.Model):
 		)
 
 	month = fields.Selection(
-			selection=ord_vars._month_order_list,
+
+			selection=mkt_vars._month_order_list,
+
 			string='Mes',
 			#required=True,
 		)
@@ -875,6 +886,28 @@ class Marketing(models.Model):
 		#exc_mkt.handle_exceptions(self)
 
 
+		# Unlinks
+		self.sale_line.unlink()
+		self.patient_line.unlink()
+		self.histo_line.unlink()
+		self.media_line.unlink()
+		self.district_line.unlink()
+		self.country_line.unlink()
+		self.city_line.unlink()
+
+		self.origin_line.unlink()
+
+
+		# Counters
+		self.sex.unlink()
+		self.origin.unlink()
+		self.first_contact.unlink()
+		self.vip.unlink()
+		self.age.unlink()
+		self.education.unlink()
+
+
+
 		# Go
 		self.delta_patients = 0
 		self.delta_sales_pl = 0
@@ -898,14 +931,8 @@ class Marketing(models.Model):
 		self.total_count = 0
 		self.patient_reco_count = 0
 
-		# Unlinks
-		self.sale_line.unlink()
-		self.patient_line.unlink()
-		self.histo_line.unlink()
-		self.media_line.unlink()
-		self.district_line.unlink()
-		self.country_line.unlink()
-		self.city_line.unlink()
+
+
 
 		# First Contact
 		self.how_facebook = 0

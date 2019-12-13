@@ -1,3 +1,35 @@
+# 13 Dec 2019
+
+# Create Sales
+@api.multi
+def create_sale_lines(self):
+
+	# Handle Exceptions
+	#exc_mkt.handle_exceptions(self)
+
+	# Go
+	# Print Disable
+	#test_funcs.disablePrint()
+
+
+	# Benchmark
+	t0 = timer()
+
+
+
+
+	t1 = timer()
+	self.delta_create_sale_lines = t1 - t0
+
+	# Print Enable
+	#test_funcs.enablePrint()
+
+
+
+
+
+
+
 # 12 Dec 2019
 
 

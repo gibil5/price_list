@@ -1,0 +1,31 @@
+<openerp>
+	<data>
+
+
+
+
+<!-- TREE - For Marketing --> 
+		<record model="ir.ui.view" id="origin_line_view_tree">
+			<field name="name">openhealth.marketing.origin.line.tree</field>
+
+			<field name="model">openhealth.marketing.origin.line</field>
+
+			<field name="arch" type="xml">
+
+				<tree string="Origin Line Tree">
+
+					<field name="name_sp"/>
+
+					<field name="count"/>
+
+					<field name="marketing_id"  groups='openhealth.roots'/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+	</data>
+</openerp>

@@ -124,53 +124,67 @@ class FirstContact(models.Model):
 
 
 # ----------------------------------------------------------- Fields ---------------------------------------------
-	none = fields.Char()
+	none = fields.Char(
+			default=0,
+			string='Ninguno',
+		)
 
 
 	recommendation = fields.Integer(
 			default=0,
+			string='Recomendación',
 		)
 
 	old_patient = fields.Integer(
 			default=0,
+			string='Paciente Antiguo',
 		)
 
 
 
 	tv = fields.Integer(
 			default=0,
+			string='TV',
 		)
 
 	radio = fields.Integer(
 			default=0,
+			string='Radio',
 		)
 
 	internet = fields.Integer(
 			default=0,
+			string='Internet',
 		)
 
 
 	website = fields.Integer(
 			default=0,
+			string='Sitio Web',
 		)
 
 	mail_campaign = fields.Integer(
 			default=0,
+			string='Campaña Mail',
 		)
 
 	facebook = fields.Integer(
 			default=0,
+			string='Facebook',
 		)
 
 	instagram = fields.Integer(
 			default=0,
+			string='Instagram',
 		)
 
 	callcenter = fields.Integer(
 			default=0,
+			string='Call Center',
 		)
 
 	undefined = fields.Integer(
 			default=0,
+			string='Indefinido',
 		)
 

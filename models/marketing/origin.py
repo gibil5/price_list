@@ -5,7 +5,7 @@
 	For Marketing
 
 	Created: 				12 Dec 2019
-	Last up: 				12 Dec 2019
+	Last up: 				13 Dec 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -24,28 +24,73 @@ class Origin(models.Model):
 
 
 
+# ----------------------------------------------------------- Static Methods -----------------------
+
+	@staticmethod
+	def get_sp_name(name):
+		"""
+		Used by Lib Marketing
+		"""
+		#print()
+		#print('Get Sp Name')
+		#print(name)
+
+		_dic = {
+					'tv_two': 'TV-2',
+					'tv_four': 'TV-4',
+					'tv_nine': 'TV-9',
+
+					'sn_facebook': 'Facebook',
+					'sn_instagram': 'Instagram',
+					'sn_youtube': 'Youtube',
+					'sn_twitter': 'Twitter',
+
+					'web_page': 'Página web',
+
+					'other': 'Otros',
+					'recommendation': 'Recomendación',
+
+		}
+
+		#print(_dic[name]
+
+		return _dic[name]
+
+
+
+
+
+# ----------------------------------------------------------- Class Vars -----------------------
+	tv_two_str = 'tv_two'
+	tv_four_str = 'tv_four'
+	tv_nine_str = 'tv_nine'
+
 # ----------------------------------------------------------- Line Analysis -----------------------
 	def analyse(self, line):
 		"""
 		Patient Line Analysis to update counters
 		"""
-		print()
-		print('X - Origin - analyse')
+		#print()
+		#print('X - Origin - analyse')
 
 
-		print(line.origin)
+		#print(line.origin)
 
 
 		# Origin
 
-		if line.origin == 'tv_two': 
+		#if line.origin == 'tv_two': 
+		if line.origin == self.tv_two_str: 
 			self.tv_two = self.tv_two + 1
 
-		elif line.origin == 'tv_four': 
+		#elif line.origin == 'tv_four': 
+		elif line.origin == self.tv_four_str: 
 			self.tv_four = self.tv_four + 1
 
-		elif line.origin == 'tv_nine': 
+		#elif line.origin == 'tv_nine': 
+		elif line.origin == self.tv_nine_str: 
 			self.tv_nine = self.tv_nine + 1
+
 
 
 		elif line.origin == 'sn_facebook': 

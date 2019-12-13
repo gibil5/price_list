@@ -94,26 +94,33 @@ class Education(models.Model):
 # ----------------------------------------------------------- Fields ---------------------------------------------
 	first = fields.Integer(
 			default=0,
+			string='Primaria',
 		)
 
 	second = fields.Integer(
 			default=0,
+			string='Secundaria',
 		)
 
 	technical = fields.Integer(
 			default=0,
+			string='Técnica',
 		)
+
 
 	university = fields.Integer(
 			default=0,
+			string='Universidad',
 		)
 
 	master_phd = fields.Integer(
 			default=0,
+			string='Master PhD',
 		)
 
 	undefined = fields.Integer(
 			default=0,
+			string='Indefinido',
 		)
 
 

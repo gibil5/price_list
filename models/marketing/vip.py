@@ -10,6 +10,8 @@
 from __future__ import print_function
 from openerp import models, fields, api
 
+import mkt_funcs
+
 class Vip(models.Model):
 	"""
 	Used by Marketing
@@ -23,6 +25,25 @@ class Vip(models.Model):
 	#_order = 'date_create asc'
 
 
+# ----------------------------------------------------------- Class Vars -----------------------
+
+	# Vip Arrays
+	#vip_arr = []
+	#not_vip_arr = []
+
+
+
+# ----------------------------------------------------------- Update Stats ---------------------------------------------
+	def update_stats(self, mkt):
+		"""
+		Update Vip
+		"""
+
+		mkt.vip_true_per = 	mkt_funcs.get_per(mkt.vip_true, mkt.total_count)
+		mkt.vip_false_per = mkt_funcs.get_per(mkt.vip_false, mkt.total_count)
+
+
+
 # ----------------------------------------------------------- Analyse -----------------------
 	def analyse(self, line):
 		"""
@@ -33,14 +54,10 @@ class Vip(models.Model):
 
 		# Vip 
 		if line.vip: 
-			#self.vip_true = self.vip_true + 1
-			#self.vip_already_true = self.vip_already_true + 1
-			self.vip_already = self.vip_already + 1
+			self.vip += 1
 
 		else: 
-			#self.vip_false = self.vip_false + 1
-			#self.vip_already_false = self.vip_already_false + 1
-			self.not_vip_already = self.not_vip_already + 1
+			self.not_vip += 1
 
 
 
@@ -59,7 +76,8 @@ class Vip(models.Model):
 
 	vip = fields.Integer(
 			default=0,
-			string='Vip por venta mes',
+			#string='Vip por venta mes',
+			string='Vip',
 		)
 
 	not_vip = fields.Integer(

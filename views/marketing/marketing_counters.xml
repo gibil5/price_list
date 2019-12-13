@@ -8,6 +8,54 @@
 
 
 
+		<!-- education -->
+		<record model="ir.ui.view" id="marketing_education_form_view">
+			<field name="name">marketing.education.form</field>
+
+			<field name="model">openhealth.marketing.education</field>
+
+			<field name="arch" type="xml">
+				<form string="Marketing Form">
+
+					<!-- Header -->
+					<header></header>
+
+
+					<!-- Sheet -->
+					<sheet>
+
+						<!-- education -->
+						<group  string="Educación"  col="3">
+
+							<group>
+								<field name="first"/>
+								<field name="second"/>
+								<field name="technical"/>
+							</group>
+
+							<group>
+								<field name="university"/>
+								<field name="master_phd"/>
+							</group>
+
+							<group>
+								<field name="undefined"/>
+							</group>
+
+						</group>
+
+						<!-- Notebook -->
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+
 		<!-- age -->
 		<record model="ir.ui.view" id="marketing_age_form_view">
 			<field name="name">marketing.age.form</field>
@@ -74,11 +122,11 @@
 						<group  string="Vip"  col="2">
 							<group>
 								<field name="vip"/>
-								<field name="vip_already"/>
 							</group>
 
 							<group>
 <!--
+								<field name="vip_already"/>
 								<field name="not_vip_already"/>
 -->
 								<field name="not_vip"/>

@@ -67,7 +67,9 @@
         <!-- Histo -->
         <record model="ir.actions.act_window" id="histo_line_form_action">
             <field name="name">Histograma</field>
+
             <field name="res_model">openhealth.histo.line</field>
+
             <field name="view_type">form</field>
             <field name="view_mode">tree</field>
             <field name="domain">[
@@ -76,6 +78,25 @@
             </field>
             <field name="limit">1000</field>
         </record>
+
+
+        <!-- origin -->
+        <record model="ir.actions.act_window" id="origin_line_form_action">
+            <field name="name">Origen</field>
+
+            <field name="res_model">openhealth.marketing.origin.line</field>
+
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+
+            <field name="domain">[
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+
+            <field name="limit">1000</field>
+        </record>
+
 
 
 
@@ -180,6 +201,8 @@
             <field name="context">{}</field>
             <field name="limit">1000</field>
         </record>
+
+
 
 	</data>
 </openerp>

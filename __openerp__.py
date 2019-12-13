@@ -143,9 +143,12 @@
 		'views/marketing/marketing_actions.xml',
 		'views/marketing/marketing_other_actions.xml',
 
-		'views/marketing/place.xml',
 
+		'views/marketing/histo.xml',
+		'views/marketing/place.xml',
 		'views/marketing/marketing_counters.xml',
+		'views/marketing/origin_line.xml',
+
 
 		'views/marketing/marketing.xml',
 
@@ -190,11 +193,9 @@
 
 		# Menus
 		'views/menus/menus.xml',
-
 		'views/menus/menus_marketing.xml',
 
 		#'views/menus/menus_management.xml',		# Dep
-
 		#'views/menus/menus_dev.xml',               # Dep
 		#'views/menus/menus_rsp.xml',               # Dep
 		#'views/menus/menus_products_2018.xml',     # Dep

@@ -14,7 +14,6 @@ import datetime
 
 # ----------------------------------------------------------- Get Patients ------------------------------------------------------
 @api.multi
-#def get_patients_filter(self, date_bx, date_ex, mode):
 def get_patients_filter_for_mkt(self, date_bx, date_ex, mode):
 	"""
 	Provides Patients between begin date and end date. 
@@ -66,40 +65,33 @@ def get_patients_filter_for_mkt(self, date_bx, date_ex, mode):
 													#limit=500,
 												)
 		# Count 
-		count = self.env['oeh.medical.patient'].search_count([																												
+		count = self.env['oeh.medical.patient'].search_count([
 																('x_date_record', '>=', date_begin),
 																('x_date_record', '<', date_end),
 												],
 													#order='x_serial_nr asc',
 													#limit=1,
 												)
-
+	# Test
 	elif mode == 'test': 
 
 		# Patients 
 		patients = self.env['oeh.medical.patient'].search([
-															#('x_date_record', '>=', date_begin),												
-															#('x_date_record', '<', date_end),
-
 															('x_test', '=', True),
 
 												],
 													order='create_date asc',
 													#limit=1,
-													#limit=500,
 												)
 		# Count 
-		count = self.env['oeh.medical.patient'].search_count([																												
-																#('x_date_record', '>=', date_begin),
-																#('x_date_record', '<', date_end),
-
+		count = self.env['oeh.medical.patient'].search_count([
 																('x_test', '=', True),
 												],
 													#order='x_serial_nr asc',
 													#limit=1,
 												)
 
-
+	# Else
 	else:
 		print('Error: This should not happen !')
 
@@ -107,5 +99,3 @@ def get_patients_filter_for_mkt(self, date_bx, date_ex, mode):
 	return patients, count
 
 # get_patients_filter
-
-

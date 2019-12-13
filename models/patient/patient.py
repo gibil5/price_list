@@ -32,14 +32,11 @@ class Patient(models.Model):
 		"""
 		Used by Marketing - Patient Line
 		"""
-		print()
-		print('Get Origin')
+		#print()
+		#print('Get Origin')
 
-		#origin = self.origin.name
-		origin = self.origin.short_name
+		return self.origin.short_name
 
-		print(origin)
-		return origin
 
 
 
