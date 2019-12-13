@@ -56,8 +56,10 @@ def update_counters(self):
 		# Education
 		self.education.analyse(line)
 
+
 		# First Contact
-		self.first_contact.analyse(line)
+		#self.first_contact.analyse(line)
+
 
 		# Sex
 		self.sex.analyse(line)

@@ -529,10 +529,36 @@
 			}
 		},
 		{
+			"file": "readme.txt",
+			"settings":
+			{
+				"buffer_size": 63,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "models/marketing/marketing.py",
 			"settings":
 			{
 				"buffer_size": 18395,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/marketing/lib_marketing.py",
+			"settings":
+			{
+				"buffer_size": 5217,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/marketing/mkt_vars.py",
+			"settings":
+			{
+				"buffer_size": 7070,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1118,7 +1144,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1134,8 +1160,8 @@
 						"selection":
 						[
 							[
-								3800,
-								3800
+								199,
+								199
 							]
 						],
 						"settings":
@@ -1148,11 +1174,39 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "readme.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 63,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								63,
+								63
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "models/marketing/marketing.py",
 					"semi_transient": false,
 					"settings":
@@ -1174,14 +1228,72 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6832.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
+					"file": "models/marketing/lib_marketing.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5217,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3347,
+								3347
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2769.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/marketing/mkt_vars.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7070,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2331,
+								2331
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 171.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "models/marketing/age.py",
 					"semi_transient": false,
 					"settings":
@@ -1206,11 +1318,11 @@
 						"translation.y": 673.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 6,
 					"file": "models/marketing/stax.py",
 					"semi_transient": false,
 					"settings":
@@ -1235,11 +1347,11 @@
 						"translation.y": 4550.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 7,
 					"file": "models/marketing/patient_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1264,11 +1376,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 8,
 					"file": "models/marketing/pat_line_funcs.py",
 					"semi_transient": false,
 					"settings":
@@ -1293,11 +1405,11 @@
 						"translation.y": 576.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 9,
 					"file": "models/marketing/pat_line_funcs.DEP.py",
 					"semi_transient": false,
 					"settings":
@@ -1315,17 +1427,18 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 10,
 					"file": "models/marketing/pricelist_marketing_order_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1350,11 +1463,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 11,
 					"file": "models/marketing/mkt_funcs.py",
 					"semi_transient": false,
 					"settings":
@@ -1379,11 +1492,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 12,
 					"file": "models/marketing/vip.py",
 					"semi_transient": false,
 					"settings":
@@ -1408,11 +1521,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 13,
 					"file": "models/marketing/education.py",
 					"semi_transient": false,
 					"settings":
@@ -1437,11 +1550,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 14,
 					"file": "models/marketing/origin.py",
 					"semi_transient": false,
 					"settings":
@@ -1466,7 +1579,7 @@
 						"translation.y": 338.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
