@@ -37,19 +37,22 @@ class OriginLine(models.Model):
 
 	name = fields.Char(
 			#string='Origen',
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 	name_sp = fields.Char(
 			string='Origen',
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 
 	count = fields.Integer(
 			default=0,
 			string='Nr Pacientes',
-			required=True,
+			#required=True,
+			required=False,
 		)
 
 
