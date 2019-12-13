@@ -33,6 +33,7 @@ _month_order_list = [
 
 
 _h_sector_city =  {
+				False: 		'x',
 				'Other': 		'Otros',
 
 				'Lima':			'Lima',
@@ -70,6 +71,7 @@ _h_sector_city =  {
 
 
 zip_dic =  {
+				False: 		0,
 		'Santiago De Surco':	33,
 		
 		'Lima':			1,
@@ -120,6 +122,8 @@ zip_dic =  {
 
 
 _h_sector =  {
+				False: 		'x',
+
 				'Santiago De Surco':	'Lima Tradicional',
 				'Other': 		'Otros',
 
