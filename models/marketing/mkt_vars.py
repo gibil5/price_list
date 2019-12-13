@@ -70,6 +70,7 @@ _h_sector_city =  {
 
 
 zip_dic =  {
+		'Santiago De Surco':	33,
 		
 		'Lima':			1,
 		'Ancón':		2,
