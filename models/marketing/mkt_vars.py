@@ -119,6 +119,7 @@ zip_dic =  {
 
 
 _h_sector =  {
+				'Santiago De Surco':	'Lima Tradicional',
 				'Other': 		'Otros',
 
 		# Tradicional
