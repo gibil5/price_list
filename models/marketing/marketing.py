@@ -5,19 +5,18 @@
 	Only functions. Not the data model. 
 
  	Created: 				19 May 2018
- 	Last up: 	 			13 Dec 2019
+ 	Last up: 	 			14 Dec 2019
 """
 from __future__ import print_function
 import datetime
-
 from openerp import models, fields, api
-
 from . import lib_marketing
 from . import mkt_funcs
 from . import pat_funcs
-from . import mkt_vars
 from . import stax
 from . import exc_mkt
+
+from . import mkt_vars 	# Dep ?
 
 class Marketing(models.Model):
 	"""
@@ -27,14 +26,12 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------- Relational - Lines ------------------------------------------------------------------
+# ----------------------------------------------------------- Class Vars -----------------------
 
-	# Media Lines 
-	origin_line = fields.One2many(
-			'openhealth.marketing.origin.line', 
+	# Counter Names
+	origin_name = 'Origen'
+	education_name = 'Educación'
 
-			'marketing_id', 
-		)
 
 
 
@@ -58,13 +55,16 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Class Vars -----------------------
-
-	# Counter Names
-	origin_name = 'Origen'
-	education_name = 'Educación'
 
 
+
+# ----------------------------------------------------- Relational - Origin Lines ------------------------------------------------------------------
+	# Origin Lines
+	origin_line = fields.One2many(
+			'openhealth.marketing.origin.line', 
+
+			'marketing_id', 
+		)
 
 
 # ----------------------------------------------------- Relational - Counters ------------------------------------------------------------------

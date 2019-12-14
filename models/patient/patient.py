@@ -111,6 +111,7 @@ class Patient(models.Model):
 		"""
 		if self.city != False: 
 			return self.city.title()
+			#return self.city
 
 
 	def get_district(self):
@@ -118,7 +119,8 @@ class Patient(models.Model):
 		Used by Marketing - Patient Line
 		"""
 		if self.street2 != False: 
-			return self.street2.title()
+			#return self.street2.title()
+			return self.street2
 
 
 
