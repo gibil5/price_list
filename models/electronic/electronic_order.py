@@ -3,22 +3,52 @@
  	Electronic Order - Sunat compatible
 
  	Created: 			15 Apr 2019
-	Last updated: 		 9 Aug 2019
+	Last updated: 		13 Dec 2019
 """
 from __future__ import print_function  # Only needed for Python 2
 import io
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.containers import lib_exp
-#from . import lib_coeffs
 from . import pl_lib_exp
 
 
 class electronic_order(models.Model):
 	"""
-	high level support for doing this and that.
+	Electronic Line
+	Used by 
+		Electronic Container
 	"""
-
 	_inherit = 'openhealth.electronic.order'
+
+
+
+# ----------------------------------------------------------- Electronic - Create File ----------------------------
+
+	def pl_create_file(self):
+		"""
+		Used by Txt Generation
+		From pl_export
+		"""
+		print()
+		print('X - Create File')
+
+
+		# Create File
+		fname = self.path + '/' + self.file_name + '.txt'
+
+		f = io.open(fname, mode="w", encoding="utf-8")
+
+		print(self.content, file=f)
+		
+		f.close()
+
+
+		# Create Txt Line
+		self.container_id.txt_ids.create({
+											'name': 			self.file_name,
+											'content': 			self.content,
+											'container_id': 	self.container_id.id,
+			})
 
 
 
@@ -31,40 +61,17 @@ class electronic_order(models.Model):
 			- Firm
 		Used by Txt Generation
 		"""
-		print()
-		print('EO - Update Constants')
-
-
+		#print()
+		#print('EO - Update Constants')
 
 		# Firm
 		self.firm = self.configurator.company_name
-
 		self.ruc = self.configurator.company_ruc
-
 		self.address = self.configurator.company_address
-
 		self.ubigeo = self.configurator.company_ubigeo
-
 		self.country = self.configurator.company_country
 
 
-
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Configurator ------------------------
-	# Configurator
-	#configurator = fields.Many2one(
-	#		'openhealth.configurator.emr',
-			#string="Configuracion",
-			#required=False,
-	#	)
 
 
 
@@ -116,33 +123,6 @@ class electronic_order(models.Model):
 		#print(self.content)
 
 
-# ----------------------------------------------------------- Electronic - Create File ----------------------------
-
-	def pl_create_file(self):
-		"""
-		Used by Txt Generation
-		From pl_export
-		"""
-		#print()
-		#print('Pl - Create File')
-
-		# Create File
-		fname = self.path + '/' + self.file_name + '.txt'
-
-		f = io.open(fname, mode="w", encoding="utf-8")
-
-		print(self.content, file=f)
-		
-		f.close()
-
-		# Create Txt Ids
-		#print(self.container_id)
-		self.container_id.txt_ids.create({
-											'name': 			self.file_name,
-											'content': 			self.content,
-											'container_id': 	self.container_id.id,
-			})
-
 
 
 # ----------------------------------------------------------- Required ----------------------------
@@ -181,15 +161,4 @@ class electronic_order(models.Model):
 			required=True,
 		)
 
-# ----------------------------------------------------------- Electronic -------------------------------
-
-	#def get_coeff(self):
-	#	"""
-	#	Used by Txt Generation
-	#	From containers.lib_exp
-	#	"""
-	#	print()
-	#	print('Pl - Get Coeff')
-	#	coeff = lib_coeffs.get_coeff(self.state)
-	#	return coeff
 

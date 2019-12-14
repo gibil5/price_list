@@ -2,8 +2,10 @@
 """
 	Container
 
+	Separate Structure and Business Logic
+
 	Created: 				30 Sep 2018
-	Last mod: 				 9 Dec 2019
+	Last mod: 				13 Dec 2019
 """
 from __future__ import print_function
 import base64
@@ -17,30 +19,189 @@ from openerp.addons.openhealth.models.management import mgt_funcs
 
 from openerp.addons.openhealth.models.management import mgt_vars
 from openerp.addons.openhealth.models.containers import export
-from . import pl_export
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
+from . import pl_export
+
+
+
 class ElectronicContainer(models.Model):
 	"""
-	Account - Create TXT - Sunat compatible
+	Electronic Container
+	Uses
+		Electronic Orders
+		TXT Lines
+	Migrated to PL
 	"""
+
 	_inherit = 'openhealth.container'
 
+	_description = 'Electronic Container'
+
+
+
+# ----------------------------------------------------------- Relational - New --------------------------
+
+	# Txt Line - New
+	txt_line = fields.One2many(
+
+			'openhealth.account.txt.line',
+
+			'container_id',
+		)
+
+
+
+
+# ----------------------------------------------------------- Relational --------------------------
+
+	# Electronic Line
+	electronic_order_ids = fields.One2many(
+			'openhealth.electronic.order',
+
+			'container_id',
+		)
+
+
+
+	# Txt Line
+	txt_ids = fields.One2many(
+			'openhealth.texto',
+
+			'container_id',
+		)
+
+
+
+
+
+# ----------------------------------------------------------- Fields --------------------------
+
+	export_date = fields.Char(
+			'Export Date',
+			readonly=True,
+		)
+
+
+
+
+	# Txt File Name
+	txt_pack_name = fields.Char(
+			#'Paquete TXT - Name',
+			'Nombre Archivo TXT',
+		)
+
+
+	# Download
+	txt_pack = fields.Binary(
+			'Descargar TXT',
+		)
+
+
+
+	# Total
+	amount_total = fields.Float(
+			'Total',
+			digits=(16, 2),
+		)
+
+
+
+	# Receipt count
+	receipt_count = fields.Integer(
+			'Recibos Nr',
+		)
+
+
+	# Invoice count
+	invoice_count = fields.Integer(
+			'Facturas Nr',
+		)
+
+
+
+
+
+
+# ----------------------------------------------------------- Relational ---------------------------------------------
 
 
 
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 
-# ----------------------------------------------------------- Create Electronic - Button --------------------------
+# ----------------------------------------------------------- Export TXT - Button - Step 2 ---------------------------
+
+	@api.multi
+	def create_txt_line(self):
+		"""
+		Create TXT Line - Button
+		"""
+		print()
+		print('X - Create - Txt Line')
+
+
+		# Clean 
+		self.txt_line.unlink()
+
+
+		# Path
+		path = self.configurator.path_account_txt + self.export_date
+		#print(path)
+
+
+
+		# Loop - For all Electronic Lines
+		for order in self.electronic_order_ids:
+
+
+			# Instantiate Txt Line
+			#txt_line = TxtLine()
+
+			name = order.name			
+
+			txt_line = self.txt_line.create({
+												'name': name,
+
+												'path': path,
+
+												'order': order.id,
+
+												'container_id': self.id,
+											})
+
+
+			# Get File Name
+			txt_line.get_file_name()
+
+
+
+			# Init Electronic
+			txt_line.complete_order()
+
+
+			# Create Content 
+			txt_line.generate_content()
+
+
+
+			# Create File
+			txt_line.create_file()
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Electronic - Button - Step 1 ----------------------
 	# Create Electronic
 	@api.multi
-	def pl_create_electronic(self):
+	def create_electronic(self):
 		"""
 		Create Electronic Orders - Button
 		"""
 		print()
-		print('Pl - Create - Electronic - Button')
+		print('X - Create - Electronic - Button')
 
 
 		# Init Configurator
@@ -69,40 +230,41 @@ class ElectronicContainer(models.Model):
 
 
 
-# ----------------------------------------------------------- Export TXT - Button ------------------------------
+# ----------------------------------------------------------- Export TXT - Button - Step 2 ---------------------------
 	@api.multi
-	#def export_txt(self):
-	def pl_export_txt(self):
+	#def pl_export_txt(self):
+	def create_txt(self):
 		"""
-		Export TXT - Button
+		Create TXT - Button
 		"""
 		print()
-		print('Pl - Export - Txt')
+		print('X - Create - Txt')
+
 
 		# Clean
 		self.txt_ids.unlink()
 
 
-
-		# Export - Here !
-		#fname = pl_export.pl_export_txt(self, self.electronic_order_ids, self.export_date)
-
-
 		# Init
-		#base_dir = os.environ['HOME']
-		#path = base_dir + "/mssoft/ventas/" + self.export_date
-
 		path = self.configurator.path_account_txt + self.export_date
-		print(path)
+		#print(path)
 
-		# Remove and Create
+
+
+		# Remove and Create Dir
+
+		# Remove dir if it already exists
 		if os.path.isdir(path) and not os.path.islink(path):
-			shutil.rmtree(path)		# Remove if exists
-		os.mkdir(path)  			# Create
+			shutil.rmtree(path)		
+		
+		# Create
+		os.mkdir(path)  			
 
 
-		# Export to a file
-		fname = pl_export.pl_export_txt(self, self.electronic_order_ids, path)
+
+		# Create and Write into a file
+		fname = pl_export.create_txt_for_all_electronic_orders(self, self.electronic_order_ids, path)
+
 
 
 
@@ -348,12 +510,6 @@ class ElectronicContainer(models.Model):
 # ----------------------------------------------------------- Third Level - Fields ---------------------------------------------
 
 
-# ----------------------------------------------------------- Relational ----------------
-	# Electronic Order
-	electronic_order_ids = fields.One2many(
-			'openhealth.electronic.order',
-			'container_id',
-		)
 
 
 # ----------------------------------------------------------- Configurator --------------

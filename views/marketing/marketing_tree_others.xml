@@ -1,0 +1,119 @@
+<openerp>
+	<data>
+
+
+<!-- Dep ? -->
+
+
+
+<!-- TREE - First Contact --> 
+		<record model="ir.ui.view" id="view_marketing_first_contact_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+					<field name="name"/>
+
+					<field name="how_facebook_per"	widget="percentage"/>
+					<field name="how_instagram_per"	widget="percentage"/>
+					<field name="how_callcenter_per"	widget="percentage"/>
+					<field name="how_old_patient_per"	widget="percentage"/>
+
+					<field name="how_inter_per"		widget="percentage"/>
+					<field name="how_web_per"		widget="percentage"/>
+					<field name="how_mail_per"		widget="percentage"/>
+					<field name="how_reco_per"		widget="percentage"/>
+					<field name="how_tv_per"		widget="percentage"/>
+					<field name="how_radio_per"		widget="percentage"/>
+					<field name="how_none_per"		widget="percentage"/>
+					<field name="how_u_per"			widget="percentage"/>
+				</tree>
+			</field>
+		</record>
+
+<!-- TREE - First Contact Nr --> 
+		<record model="ir.ui.view" id="view_marketing_first_contact_nr_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+					<field name="name"/>
+
+					<field name="how_facebook"		sum="Total Facebook"/>
+					<field name="how_instagram"		sum="Total Instagram"/>
+					<field name="how_callcenter"	sum="Total Call Center"/>
+					<field name="how_old_patient"	sum="Total Paciente Antiguo"/>
+
+					<field name="how_inter"		sum="Total Internet"/>
+					<field name="how_web"		sum="Total Web"/>
+					<field name="how_mail"		sum="Total Mail"/>
+					<field name="how_reco"		sum="Total Recomendación"/>
+					<field name="how_tv"		sum="Total TV"/>
+					<field name="how_radio"		sum="Total Radio"/>
+					<field name="how_none"		sum="Total Ninguno"/>
+					<field name="how_u"			sum="Total Error"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+
+<!-- TREE Education Level --> 
+		<record model="ir.ui.view" id="view_marketing_education_level_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+					<field name="name"/>
+					<field name="edu_fir_per"/>
+					<field name="edu_sec_per"/>
+					<field name="edu_tec_per"/>
+					<field name="edu_uni_per"/>
+					<field name="edu_mas_per"/>
+					<field name="edu_u_per"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+<!-- TREE - Sex --> 
+		<record model="ir.ui.view" id="view_marketing_sex_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+					<field name="name"/>
+					<field name="sex_female_per"	widget="percentage"/>
+					<field name="sex_male_per"		widget="percentage"/>
+					<field name="sex_undefined_per"	widget="percentage"/>
+				</tree>
+			</field>
+		</record>
+
+
+<!-- TREE - Sex --> 
+		<record model="ir.ui.view" id="view_marketing_sex_nr_tree">
+			<field name="name">openhealth.marketing.tree</field>
+			<field name="model">openhealth.marketing</field>
+			<field name="arch" type="xml">
+				<tree string="Marketing Tree">
+					<field name="name"/>
+					<field name="sex_female"	sum="Total Femenino"/>
+					<field name="sex_male"		sum="Total Masculino"/>
+					<field name="sex_undefined"	sum="Total No Definido"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+	</data>
+</openerp>

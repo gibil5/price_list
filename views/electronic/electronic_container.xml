@@ -43,24 +43,47 @@
 -->
 
 
-						<!-- Pl - Create Electronic --> 
+						<!-- Create Electronic --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-							name="pl_create_electronic" 
+
+							name="create_electronic" 
 							
 							string="Facturación"
 						/>
 
 
-						<!-- Pl - Export Txt --> 
+<!--
+							name="pl_export_txt" 
+-->						
+
+						<!-- Create Txt --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-							name="pl_export_txt" 
-							
+
+							name="create_txt" 
+
 							string="Crear TXT"                              
 						/>
+
+
+
+						<!-- Create Txt Line --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="create_txt_line" 
+
+							string="Crear TXT Line"                              
+						/>
+
+
+
+
+
 
 <!--
 						<button 
@@ -166,6 +189,13 @@
 							<page string="TXT">
 								<field name="txt_ids"/> 
 							</page>
+
+
+							<page string="TXT Line">
+								<field name="txt_line"/> 
+							</page>
+
+
 <!--
 							<page string="MSSOFT">
 								<field name="txt_ref_ids"/>

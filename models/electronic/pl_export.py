@@ -14,62 +14,59 @@ from . import pl_lib_exp
 
 
 # -------------------------------------------------------------------------------------------------
-#def pl_export_txt(self, electronic_order, export_date):
-def pl_export_txt(self, electronic_order, path):
+
+def create_txt_for_all_electronic_orders(self, electronic_order, path):
 	"""
-	high level support for doing this and that.
+	Create TXT 
+	For all Electronic Orders
 	"""
-	#print()
-	#print('pl - Export Text')
+	print()
+	print('X - Create Txt for all EOs')
+	
 	#print(os.environ['HOME'])
 
 
-# Prepare
-	# Init
-	#base_dir = os.environ['HOME']
-	#path = base_dir + "/mssoft/ventas/" + export_date
+# Clean
 
-
-	# Make Dirs if necessary
-#	target = base_dir + "/mssoft/"
-#	if not os.path.isdir(target):
-#		os.mkdir(target)
-
-#	target = base_dir + "/mssoft/ventas/"
-#	if not os.path.isdir(target):
-#		os.mkdir(target)
-
-
-	# Remove
+	# Remove dir
 	if os.path.isdir(path) and not os.path.islink(path):
 		shutil.rmtree(path)		# If dir
 	
-	#elif os.path.exists(path):
-	#	os.remove(path)			# If file
-
-	# Create
+	# Create dir
 	os.mkdir(path)
 
 
 
-# Loop
+
+# Loop - For all Electronic Lines
 	for order in electronic_order:
+
+		
+		# Instantiate Txt Line
+		#txt_line = TxtLine()
+
+
 
 		# Get File Name
 		file_name, id_serial_nr = pl_lib_exp.pl_get_file_name(order)		
 
+
 		# Init Electronic
 		order.pl_init(id_serial_nr, path, file_name)
 
+
 		# Create Content 
 		order.pl_create_txt()			# Object Oriented
+
 
 		# Create File
 		order.pl_create_file()			# Object Oriented
 
 
 
+
 # Shut down and Clean
+
 	# Compress and Remove
 	source = path
 	tarred = path + '.tar'
@@ -78,7 +75,7 @@ def pl_export_txt(self, electronic_order, path):
 	os.system("tar cf " + tarred + " " + source)
 	os.system("gzip " + tarred)
 
-	return ziped
 
+	return ziped
 # export_txt
 

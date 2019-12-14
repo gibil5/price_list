@@ -1,3 +1,30 @@
+# 13 Dec 2019
+
+	@api.multi
+	def pl_export_txt(self):
+		# Export - Here !
+		#fname = pl_export.pl_export_txt(self, self.electronic_order_ids, self.export_date)
+
+
+		# Init
+		#base_dir = os.environ['HOME']
+		#path = base_dir + "/mssoft/ventas/" + self.export_date
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			#print(error)
 			#print(msg)
 			#if error in [1]:
