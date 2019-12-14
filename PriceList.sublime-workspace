@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"city",
+				"city_line"
+			],
+			[
 				"se",
 				"serial_number"
 			],
@@ -510,10 +514,6 @@
 			[
 				"sco",
 				"scotiabank_tot"
-			],
-			[
-				"bb",
-				"bbva_tot"
 			]
 		]
 	},
@@ -532,16 +532,7 @@
 			"file": "models/marketing/marketing.py",
 			"settings":
 			{
-				"buffer_size": 21064,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/marketing/lib_marketing.py",
-			"settings":
-			{
-				"buffer_size": 5321,
+				"buffer_size": 18402,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -550,112 +541,43 @@
 			"file": "models/marketing/mkt_vars.py",
 			"settings":
 			{
-				"buffer_size": 4724,
+				"buffer_size": 655,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/marketing/mkt_vars.DEP.py",
+			"file": "models/marketing/order_line.py",
 			"settings":
 			{
-				"buffer_size": 2620,
+				"buffer_size": 5305,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/product/product_product.py",
+			"file": "models/marketing/city_line.py",
 			"settings":
 			{
-				"buffer_size": 7258,
+				"buffer_size": 1450,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/patient/patient.py",
+			"file": "models/marketing/district_line.py",
 			"settings":
 			{
-				"buffer_size": 5310,
+				"buffer_size": 3121,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/management/productivity/productivity_day.py",
+			"file": "models/marketing/origin_line.py",
 			"settings":
 			{
-				"buffer_size": 1802,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/electronic/electronic_container.xml",
-			"settings":
-			{
-				"buffer_size": 4407,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/electronic/pl_lib_exp.py",
-			"settings":
-			{
-				"buffer_size": 9501,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/electronic/electronic_container.py",
-			"settings":
-			{
-				"buffer_size": 12793,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/electronic/txt_line.py",
-			"settings":
-			{
-				"buffer_size": 2529,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/electronic/pl_export.py",
-			"settings":
-			{
-				"buffer_size": 1400,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/electronic/electronic_order.py",
-			"settings":
-			{
-				"buffer_size": 3187,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/electronic/txt_line.xml",
-			"settings":
-			{
-				"buffer_size": 979,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/electronic/texto.xml",
-			"settings":
-			{
-				"buffer_size": 555,
+				"buffer_size": 1100,
 				"line_ending": "Unix"
 			}
 		}
@@ -733,14 +655,26 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/models/marketing/lib_marketing.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/__init__.py",
+		"/Users/gibil/cellar/github/price_list/models/product/product_product.py",
+		"/Users/gibil/cellar/github/price_list/models/patient/patient.py",
+		"/Users/gibil/cellar/github/price_list/views/electronic/txt_line.xml",
+		"/Users/gibil/cellar/github/price_list/views/electronic/texto.xml",
+		"/Users/gibil/cellar/github/price_list/models/electronic/electronic_order.py",
+		"/Users/gibil/cellar/github/price_list/models/electronic/pl_export.py",
+		"/Users/gibil/cellar/github/price_list/models/electronic/txt_line.py",
+		"/Users/gibil/cellar/github/price_list/models/electronic/electronic_container.py",
+		"/Users/gibil/cellar/github/price_list/models/electronic/pl_lib_exp.py",
+		"/Users/gibil/cellar/github/price_list/views/electronic/electronic_container.xml",
+		"/Users/gibil/cellar/github/price_list/models/management/productivity/productivity_day.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/mkt_vars.DEP.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/pricelist_marketing_order_line.py",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.csv",
 		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/models/electronic/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/marketing.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/lib_marketing.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/origin_line.py",
-		"/Users/gibil/cellar/github/price_list/views/electronic/texto.xml",
-		"/Users/gibil/cellar/github/price_list/models/electronic/electronic_order.py",
 		"/Users/gibil/cellar/github/price_list/models/electronic/texto.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/mkt_vars.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/stax.py",
@@ -763,7 +697,6 @@
 		"/Users/gibil/cellar/github/price_list/models/marketing/mkt_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/education.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/vip.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/pricelist_marketing_order_line.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/pat_line_funcs.DEP.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/sex.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/age.DEP.py",
@@ -777,10 +710,8 @@
 		"/Users/gibil/cellar/github/price_list/views/marketing/place.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/histo.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing_actions.xml",
-		"/Users/gibil/cellar/github/price_list/models/marketing/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/management/lib/mgt_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/stax.DEP.py",
-		"/Users/gibil/cellar/github/price_list/models/patient/patient.py",
 		"/Users/gibil/cellar/github/price_list/models/management/lib/mgt_funcs.DEP.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/pat_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/lib_marketing.DEP.py",
@@ -792,7 +723,6 @@
 		"/Users/gibil/cellar/github/price_list/models/management/management.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/exc_mkt.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/patient_line.DEP.py",
-		"/Users/gibil/cellar/github/price_list/models/product/product_product.py",
 		"/Users/gibil/cellar/github/price_list/models/patient/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/marketing.tx",
@@ -805,7 +735,6 @@
 		"/Users/gibil/cellar/github/price_list/views/menus/menus_marketing.xml",
 		"/Users/gibil/cellar/github/price_list/models/management/subfamily.py",
 		"/Users/gibil/cellar/github/price_list/models/electronic/account_contasis.py",
-		"/Users/gibil/cellar/github/price_list/models/electronic/electronic_container.py",
 		"/Users/gibil/cellar/github/price_list/models/management/family_line.py",
 		"/Users/gibil/cellar/github/price_list/models/management/stax.py",
 		"/Users/gibil/cellar/github/price_list/models/management/management_order_line.py",
@@ -815,7 +744,6 @@
 		"/Users/gibil/cellar/github/price_list/views/menus/menus_marketing.DEP.xml",
 		"/Users/gibil/cellar/github/price_list/views/report_sale_product.xml",
 		"/Users/gibil/cellar/github/price_list/models/management/doctor_daily/doctor_daily.py",
-		"/Users/gibil/cellar/github/price_list/models/management/productivity/productivity_day.py",
 		"/Users/gibil/cellar/github/price_list/models/management/productivity/productivity_day.DEP.py",
 		"/Users/gibil/cellar/github/price_list/models/management/management_order_line.DEP.py",
 		"/Users/gibil/cellar/github/price_list/models/management/lib/pl_mgt_vars.py",
@@ -854,13 +782,7 @@
 		"/Users/gibil/cellar/github/price_list/models/management/prod_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/management/management_doctor_line.pyc",
 		"/Users/gibil/cellar/github/price_list/__init__.py",
-		"/Users/gibil/cellar/github/price_list/models/management/mgt_patient_line.py",
-		"/Users/gibil/cellar/github/price_list/models/management/day_doctor_line.DEP.py",
-		"/Users/gibil/cellar/github/price_list/models/configurator_emr.py",
-		"/Users/gibil/cellar/github/price_list/models/management/mgt_line_funcs.py",
-		"/Users/gibil/cellar/github/price_list/views/management/management.DEP.xml",
-		"/Users/gibil/cellar/github/price_list/models/order/order.py",
-		"/Users/gibil/cellar/github/price_list/views/management/management.xml"
+		"/Users/gibil/cellar/github/price_list/models/management/mgt_patient_line.py"
 	],
 	"find":
 	{
@@ -875,9 +797,20 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"report",
+			"pat_vars",
+			"vars",
+			"family_list",
+			"mode_list",
+			"zip_dic",
+			"District",
+			"_h_",
+			"city",
+			"City",
+			"_h_",
 			"city_line",
 			"_h",
 			"_h_sector",
@@ -994,18 +927,7 @@
 			"delta",
 			"django",
 			"configur",
-			"report",
-			"product",
-			"validate",
-			"key",
-			"validat",
-			"update_sales_by",
-			"update_doctor",
-			"update_sales",
-			"update_doc",
-			"collections",
-			"update_stats",
-			"pl_update_stats"
+			"report"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1013,6 +935,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"district",
+			"District",
 			"daily",
 			"doctor",
 			"txt",
@@ -1138,9 +1062,7 @@
 			"patient",
 			"bcp",
 			"scotiabank",
-			"interbank",
-			"bbva",
-			"total"
+			"interbank"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1151,7 +1073,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1167,14 +1089,43 @@
 						"selection":
 						[
 							[
-								199,
-								199
+								4234,
+								4240
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 9.0,
+						"translation.y": 2633.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "models/marketing/marketing.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								176,
+								176
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -1185,78 +1136,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "models/marketing/marketing.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 21064,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								18899,
-								18908
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": "models/marketing/lib_marketing.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5321,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3445,
-								3445
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2536.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "models/marketing/mkt_vars.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4724,
+						"buffer_size": 655,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								143,
-								143
+								156,
+								156
 							]
 						],
 						"settings":
@@ -1268,24 +1161,53 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "models/marketing/mkt_vars.DEP.py",
+					"buffer": 3,
+					"file": "models/marketing/order_line.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2620,
+						"buffer_size": 5305,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								966,
-								966
+								216,
+								216
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/marketing/city_line.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1450,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								366,
+								463
 							]
 						],
 						"settings":
@@ -1302,19 +1224,19 @@
 				},
 				{
 					"buffer": 5,
-					"file": "models/product/product_product.py",
+					"file": "models/marketing/district_line.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7258,
+						"buffer_size": 3121,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4691,
-								4691
+								3115,
+								3115
 							]
 						],
 						"settings":
@@ -1323,56 +1245,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3660.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "models/patient/patient.py",
+					"file": "models/marketing/origin_line.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5310,
+						"buffer_size": 1100,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2187,
-								2187
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1618.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "models/management/productivity/productivity_day.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1802,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								248,
+								248
 							]
 						],
 						"settings":
@@ -1384,241 +1277,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "views/electronic/electronic_container.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4407,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1624,
-								1624
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1004.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "models/electronic/pl_lib_exp.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9501,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9060,
-								9060
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 125.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "models/electronic/electronic_container.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12793,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2994,
-								2994
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2622.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "models/electronic/txt_line.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2529,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								198,
-								198
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "models/electronic/pl_export.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1400,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1072,
-								1072
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 693.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "models/electronic/electronic_order.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3187,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								192,
-								202
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "views/electronic/txt_line.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 979,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								846,
-								846
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "views/electronic/texto.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 555,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								555
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1851,7 +1510,7 @@
 		[
 			[
 				"",
-				"~/cellar/github/openhealth/OpenHealth-MIN.sublime-project"
+				"~/Virtualenvs/odoo_tests/odoo_tests/OdooTests.sublime-project"
 			],
 			[
 				"\t",
