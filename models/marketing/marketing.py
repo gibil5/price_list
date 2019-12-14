@@ -16,7 +16,7 @@ from . import pat_funcs
 from . import stax
 from . import exc_mkt
 
-from . import mkt_vars 	# Dep ?
+from . import mkt_vars
 
 class Marketing(models.Model):
 	"""

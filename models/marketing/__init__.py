@@ -19,9 +19,10 @@ from . import vip
 
 # Lines
 from . import origin_line
-
 from . import patient_line
-from . import pricelist_marketing_order_line
+
+#from . import pricelist_marketing_order_line  # Dep name
+from . import order_line
 
 
 # Root

@@ -10,17 +10,10 @@ try:
 	import numpy as np
 except (ImportError, IOError) as err:
 	_logger.debug(err)
-from . import mkt_vars
-from openerp.addons.openhealth.models.patient import pat_vars
 
 from origin import Origin
-
-#from . import Marketing
-
 from city_line import CityLine
-
 from district_line import DistrictLine
-
 
 
 # ----------------------------------------------------------- Origin -------------------------------
@@ -133,14 +126,7 @@ def build_districts(self):
 
 		# Init
 		count = counter_district[key]
-
-
-		#sector = mkt_vars._h_sector[key]
-		#sector = self.district_sector[key]
 		sector = DistrictLine.district_sector[key]
-
-
-		#code = mkt_vars.zip_dic[key]
 		code = DistrictLine.zip_dic[key]
 
 		# Create
@@ -186,12 +172,7 @@ def build_cities(self):
 
 		# Init
 		count = counter_cities[key]
-
-
-		#sector = mkt_vars._h_sector_city[key]
-		#sector = self.sector_city[key]
 		sector = CityLine.city_sector[key]
-
 
 		# Create 
 		city = self.city_line.create({
