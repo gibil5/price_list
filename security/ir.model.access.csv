@@ -2,6 +2,14 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_doctor_daily,doctor.daily,model_doctor_daily,,1,1,1,1
+access_productivity_day,productivity.day,model_productivity_day,,1,1,1,1
+
+
+
+
+
+
 access_openhealth_account_txt_line,openhealth.account.txt.line,model_openhealth_account_txt_line,,1,1,1,1
 
 
