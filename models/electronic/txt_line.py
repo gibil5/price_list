@@ -2,7 +2,7 @@
 """
 	Txt Line - Object Oriented
 	
-	For Account
+	For Account - Creates a File for each Txt Line
 
 	Separate Structure and Business Logic
 
@@ -14,6 +14,7 @@ from openerp import models, fields, api
 
 import pl_lib_exp
 
+import io
 
 class TxtLine(models.Model):
 	"""
@@ -44,14 +45,16 @@ class TxtLine(models.Model):
 
 
 
+
 	def complete_order(self):
+		"""
+		Complete Order - Dep ?
+		"""
 		print()
 		print('Complete Order')
 
 		# Init Electronic
 		self.order.pl_init(self.serial_number, self.path, self.file_name)
-
-
 
 
 
@@ -71,14 +74,44 @@ class TxtLine(models.Model):
 
 
 
+
+
 	def create_file(self):
 		"""
 		Create File
 		"""
 
 		# Create File
-		self.order.pl_create_file()			# Object Oriented
+		#self.order.pl_create_file()			# Object Oriented
+		self.create_actual_file()						# Object Oriented
 
+
+
+	def create_actual_file(self):
+		"""
+		Create Acutal File
+		"""
+		print()
+		print('X - Create Actual File')
+
+
+		# Create File
+		fname = self.path + '/' + self.file_name + '.txt'
+
+		f = io.open(fname, mode="w", encoding="utf-8")
+
+		print(self.content, file=f)
+		
+		f.close()
+
+
+
+		# Create Txt Line
+		#self.container_id.txt_ids.create({
+		#									'name': 			self.file_name,
+		#									'content': 			self.content,
+		#									'container_id': 	self.container_id.id,
+		#	})
 
 
 

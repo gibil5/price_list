@@ -15,23 +15,22 @@
 
                 <tree string="Texto Tree"  default_order='name asc'>
 
-                    <field name="name"/>
-                    
-                    <field name="order"/>
 
+                    <field name="name"  groups='openhealth.roots'/>
 
-                    <field name="path"/>
+                    <field name="order" groups='openhealth.roots'/>
 
+                    <field name="path"  groups='openhealth.roots'/>
 
-                    <field name="file_name"/>
+                    <field name="file_name" groups='openhealth.roots'/>
 
-                    <field name="serial_number"/>
+                    <field name="serial_number" groups='openhealth.roots'/>
 
+                    <field name="container_id"  groups='openhealth.roots'/>
 
 
                     <field name="content"/>
 
-                    <field name="container_id"/>
                 </tree>
             </field>
         </record>

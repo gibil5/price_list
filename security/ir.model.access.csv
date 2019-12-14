@@ -2,6 +2,10 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_account_txt_line,openhealth.account.txt.line,model_openhealth_account_txt_line,,1,1,1,1
+
+
+
 access_openhealth_marketing_origin_line,openhealth.marketing.origin.line,model_openhealth_marketing_origin_line,,1,1,1,1
 
 access_openhealth_marketing_origin,openhealth.marketing.origin.,model_openhealth_marketing_origin,,1,1,1,1

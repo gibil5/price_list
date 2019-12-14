@@ -184,7 +184,6 @@ class ElectronicContainer(models.Model):
 			txt_line.generate_content()
 
 
-
 			# Create File
 			txt_line.create_file()
 
