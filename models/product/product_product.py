@@ -20,6 +20,82 @@ class ProductProduct(models.Model):
 
 
 
+# ----------------------------------------------------------- Get Families - For Marketing -------------------------
+
+	#@api.multi
+	def get_families_for_mkt(self):
+		"""
+		Get Product Families
+		Used by: 
+			Marketing
+		"""
+		print()
+		print('Product - Get for Mkt')
+
+
+		# Init
+		family, subfamily, subsubfamily = 'x', 'x', 'x'
+
+
+		# 2019
+		if self.pl_price_list in ['2019']:
+
+			# Family
+			if self.type in ['product']:
+				family = 'product'
+				subfamily = self.pl_family
+				subsubfamily = self.pl_subfamily
+
+
+			elif self.type in ['service']:
+
+				if self.pl_subfamily in ['consultation']:
+					family = 'consultation'
+					subfamily = 'consultation'
+					subsubfamily = 'consultation'
+
+				else:
+					family = 'procedure'
+					subfamily = self.pl_family
+					subsubfamily = self.pl_subfamily
+
+
+		# 2018
+		elif self.pl_price_list in ['2018']:
+
+			# Family
+			if self.type in ['product']:
+				family = 'product'
+				subfamily = self.x_family
+
+
+			elif self.type in ['service']:
+
+				if self.x_family in ['consultation']:
+					family = 'consultation'
+					subfamily = 'consultation'
+					subsubfamily = 'consultation'
+
+				else:
+					family = 'procedure'
+					subfamily = self.x_family
+					subsubfamily = self.x_treatment
+
+
+		# Else - Error
+		else:
+			print('This should not happen !')
+
+
+
+		return family, subfamily, subsubfamily
+
+	# pl_family_analysis
+
+
+
+
+
 
 # ----------------------------------------------------------- Introspecters ----------------------------------------------
 

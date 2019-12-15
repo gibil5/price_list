@@ -10,7 +10,8 @@
 
 from __future__ import print_function
 from openerp import models, fields, api
-from openerp.addons.price_list.models.management.lib import pl_mgt_vars
+
+from management import Management
 
 class FamilyLine(models.Model):
 	"""
@@ -59,11 +60,15 @@ class FamilyLine(models.Model):
 
 
 
-		# Name Spanish
-		#if self.name in mgt_vars._h_name: 
-		#	self.name_sp = mgt_vars._h_name[self.name]
-		if self.name in pl_mgt_vars._h_name: 
-			self.name_sp = pl_mgt_vars._h_name[self.name]
+
+		# Get Name Spanish
+		#if self.name in pl_mgt_vars._h_name: 
+		if self.name in Management._h_name: 
+
+			#self.name_sp = pl_mgt_vars._h_name[self.name]
+			self.name_sp = Management._h_name[self.name]
+
+
 		else: 
 			self.name_sp = self.name
 

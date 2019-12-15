@@ -14,7 +14,7 @@ import datetime
 
 from openerp import models, fields, api
 
-from . import pl_ord_vars
+#from . import pl_ord_vars
 
 
 # ----------------------------------------------------------- Create Days -------------------------
@@ -59,7 +59,10 @@ def create_days(self):
 
 		date_dt = date_begin_dt + datetime.timedelta(i)
 		weekday = date_dt.weekday()
-		weekday_str = pl_ord_vars._dic_weekday[weekday]			
+
+		#weekday_str = pl_ord_vars._dic_weekday[weekday]			
+		weekday_str = self._dic_weekday[weekday]			
+
 		#print(date_dt, weekday)
 
 

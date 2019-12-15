@@ -10,8 +10,6 @@
 from __future__ import print_function
 from openerp import models, fields, api
 
-import mkt_funcs
-
 class FirstContact(models.Model):
 	"""
 	Used by Marketing
@@ -35,18 +33,18 @@ class FirstContact(models.Model):
 		#print()
 		#print('X - First Contact')
 
-		mkt.how_none_per = mkt_funcs.get_per(mkt.how_none, mkt.total_count)
-		mkt.how_reco_per = mkt_funcs.get_per(mkt.how_reco, mkt.total_count)
-		mkt.how_tv_per = mkt_funcs.get_per(mkt.how_tv, mkt.total_count)
-		mkt.how_radio_per = mkt_funcs.get_per(mkt.how_radio, mkt.total_count)
-		mkt.how_inter_per = mkt_funcs.get_per(mkt.how_inter, mkt.total_count)
-		mkt.how_web_per = mkt_funcs.get_per(mkt.how_web, mkt.total_count)
-		mkt.how_mail_per = mkt_funcs.get_per(mkt.how_mail, mkt.total_count)
-		mkt.how_u_per = mkt_funcs.get_per(mkt.how_u, mkt.total_count)
-		mkt.how_facebook_per = mkt_funcs.get_per(mkt.how_facebook, mkt.total_count)
-		mkt.how_instagram_per = mkt_funcs.get_per(mkt.how_instagram, mkt.total_count)
-		mkt.how_callcenter_per = mkt_funcs.get_per(mkt.how_callcenter, mkt.total_count)
-		mkt.how_old_patient_per = mkt_funcs.get_per(mkt.how_old_patient, mkt.total_count)
+		mkt.how_none_per = mkt.get_per(mkt.how_none, mkt.total_count)
+		mkt.how_reco_per = mkt.get_per(mkt.how_reco, mkt.total_count)
+		mkt.how_tv_per = mkt.get_per(mkt.how_tv, mkt.total_count)
+		mkt.how_radio_per = mkt.get_per(mkt.how_radio, mkt.total_count)
+		mkt.how_inter_per = mkt.get_per(mkt.how_inter, mkt.total_count)
+		mkt.how_web_per = mkt.get_per(mkt.how_web, mkt.total_count)
+		mkt.how_mail_per = mkt.get_per(mkt.how_mail, mkt.total_count)
+		mkt.how_u_per = mkt.get_per(mkt.how_u, mkt.total_count)
+		mkt.how_facebook_per = mkt.get_per(mkt.how_facebook, mkt.total_count)
+		mkt.how_instagram_per = mkt.get_per(mkt.how_instagram, mkt.total_count)
+		mkt.how_callcenter_per = mkt.get_per(mkt.how_callcenter, mkt.total_count)
+		mkt.how_old_patient_per = mkt.get_per(mkt.how_old_patient, mkt.total_count)
 
 
 

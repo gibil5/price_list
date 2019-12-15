@@ -9,14 +9,23 @@
 """
 from __future__ import print_function
 import datetime
+
 from openerp import models, fields, api
+
+from openerp.addons.price_list.models.patient.patient import Patient  	# Use static method
+
 from . import lib_marketing
 from . import mkt_funcs
-from . import pat_funcs
+
+#from . import pat_funcs
+
 from . import stax
 from . import exc_mkt
 
 from . import mkt_vars
+
+from . import lib
+
 
 class Marketing(models.Model):
 	"""
@@ -44,6 +53,7 @@ class Marketing(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Static Methods -----------------------
 
 	@staticmethod
@@ -51,6 +61,23 @@ class Marketing(models.Model):
 		if day.weekday() in [5, 6]:
 			return False
 		return True
+
+
+	@staticmethod
+	def get_per(value, total):
+		"""
+		Calculate Percentages
+		"""
+		#print()
+		#print('Pl - Get Per')
+		#print(value)
+		#print(total)
+
+		per = 0.
+		if total != 0: 
+			per = float(value) / float(total)
+		return per
+	# get_per_nex
 
 
 
@@ -158,83 +185,57 @@ class Marketing(models.Model):
 
 # Counters - Init
 
-		# Origin - Using Class Var
+		# Origin
 		self.origin.unlink()
+		self.origin = lib.create_model(self, 'origin')
+		print(self.origin)
 
-		name = 'Origen'
-		name = self.origin_name
-		self.origin = self.env['openhealth.marketing.origin'].create({
-																			'name': name,
-																		})
-		#print(self.origin)
-
-
-
-
-		# Education - Using Class Var
+		# Education
 		self.education.unlink()
-
-		#name = 'Educación'	
-		name = self.education_name
-
-		self.education = self.env['openhealth.marketing.education'].create({
-																			'name': name,
-																		})
+		self.education = lib.create_model(self, 'education')
 		#print(self.education)
-
 
 
 		# First Contact
 		self.first_contact.unlink()
-		name = 'Primer Contacto'	
-		self.first_contact = self.env['openhealth.marketing.first_contact'].create({
-																					'name': name,
-																		})
+		self.first_contact = lib.create_model(self, 'first_contact')
 		#print(self.first_contact)
-
 
 
 		# Sex
 		self.sex.unlink()
-		name = 'Sexo'	
-		self.sex = self.env['openhealth.marketing.sex'].create({
-																			'name': name,
-																		})
+		self.sex = lib.create_model(self, 'sex')
 		#print(self.sex)
 
 
 		# Age
 		self.age.unlink()
-		name = 'Edad'
-		self.age = self.env['openhealth.marketing.age'].create({
-																			'name': name,
-																		})
+		self.age = lib.create_model(self, 'age')
 		#print(self.age)
 
 
 		# Vip
 		self.vip.unlink()
-		name = 'Vip'	
-		self.vip = self.env['openhealth.marketing.vip'].create({
-																			'name': name,
-																		})
+		self.vip = lib.create_model(self, 'vip')
 		#print(self.vip)
-
-
-
-
 
 
 
 		# Get Patients - For Mkt
 		mode = self.mode
-		patients, count = pat_funcs.get_patients_filter_for_mkt(self, self.date_begin, self.date_end, mode)
+
+		#patients, count = pat_funcs.get_patients_filter_for_mkt(self, self.date_begin, self.date_end, mode)  	# Dep
+		patients, count = Patient.get_patients_mkt(self, self.date_begin, self.date_end, mode)  	# Use static method
+
+		print(patients, count)
+
+
 		self.total_count = count
+
 
 
 		# Loop
 		for patient in patients:
-
 
 			# Using Patient Getters
 
@@ -336,16 +337,9 @@ class Marketing(models.Model):
 		# Update Counters
 		stax.update_counters(self)
 
-
-
 		# Update Vip Sales
 		stax.update_vip_sales(self)
 
-
-
-
-		# Build Media - Dep !
-		#lib_marketing.build_media(self)
 
 
 		# Build Histo
@@ -358,6 +352,8 @@ class Marketing(models.Model):
 		lib_marketing.build_countries(self)
 
 
+		# Build Media - Dep !
+		#lib_marketing.build_media(self)
 
 
 		# Build Origin
@@ -383,15 +379,6 @@ class Marketing(models.Model):
 		self.sex.update_per(self)
 
 
-
-
-		# Origin
-		#print('Origin')
-		#print(self.origin.__dict__)
-
-
-
-
 		# Age
 		self.age_max, self.age_min, self.age_sum, self.age_undefined = self.age.get_counters()
 		self.age.update_stats(self)
@@ -401,6 +388,11 @@ class Marketing(models.Model):
 		# Vip
 		self.vip_true, self.vip_false, self.vip_already_true, self.vip_already_false = self.vip.get_counters()
 		self.vip.update_stats(self)
+
+
+		# Origin
+		#print('Origin')
+		#print(self.origin.__dict__)
 
 	# update_patients
 
@@ -822,52 +814,6 @@ class Marketing(models.Model):
 			digits=(12, 3),
 		)
 
-
-# ----------------------------------------------------------- Clean ------------------------------
-
-	# Clean
-	@api.multi
-	def clean(self):
-		"""
-		Clean
-		"""
-		print('X - Clean')
-		print('Begin')
-
-		# If Test Obj
-		if self.test_obj:
-
-			# Clear
-			self.patient_line.unlink()
-
-			# Clear
-			model = 'openhealth.marketing.order.line'
-
-			objs = self.env[model].search([
-												('marketing_id', 'in', [False]),
-											],
-											#order='date_begin asc',
-											#limit=1,
-				)
-
-			# Unlink
-			limit = 1000
-			count = 0
-			for obj in objs:
-				if count < limit:
-					obj.unlink()
-					count = count + 1
-
-			# Count
-			count = self.env[model].search_count([
-													('marketing_id', 'in', [False]),
-												],
-													#order='x_serial_nr asc',
-													#limit=1,
-												)
-			print(count)
-			print('End')
-	# clean
 
 
 

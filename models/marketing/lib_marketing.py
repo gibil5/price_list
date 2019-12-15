@@ -18,6 +18,9 @@ from district_line import DistrictLine
 
 # ----------------------------------------------------------- Origin -------------------------------
 def build_origin(self):  
+	"""
+	Build Origin - For Marketing
+	"""
 	print()
 	print('X - Build Origin')
 
@@ -41,19 +44,14 @@ def build_origin(self):
 	for key in counter_origin:
 		count = counter_origin[key]
 
-
 		# Using Static method
 		name_sp = Origin.get_sp_name(key)
-
-		print(key, name_sp)
+		#print(key, name_sp)
 
 		origin = self.origin_line.create({
 												'name': key,
-
 												'name_sp': name_sp,
-
 												'count': count,
-
 												'marketing_id': self.id,
 											})
 		#print origin
@@ -64,6 +62,9 @@ def build_origin(self):
 
 # ----------------------------------------------------------- Countries ------------------------------
 def build_countries(self):
+	"""
+	Build Countries - For Marketing
+	"""
 	#print() 
 	#print('X - Build Countries')
 
@@ -99,6 +100,7 @@ def build_countries(self):
 # ----------------------------------------------------------- Districts ---------------------------
 def build_districts(self):  
 	"""
+	Build Districts - For Marketing
 	Using Collections to count faster
 	"""
 	#print()
@@ -149,6 +151,9 @@ def build_districts(self):
 
 # ----------------------------------------------------------- Cities ------------------------------
 def build_cities(self):
+	"""
+	Build Cities - For Marketing
+	"""
 	#print() 
 	#print('X - Build Cities')
 
@@ -197,6 +202,9 @@ def build_cities(self):
 
 # ----------------------------------------------------------- Histogram ---------------------------
 def build_histogram(self):  
+	"""
+	Build Histogram - For Marketing
+	"""
 	#print()
 	#print('X - Build Histogram')
 

@@ -24,8 +24,13 @@ class Origin(models.Model):
 
 
 
-# ----------------------------------------------------------- Static Methods -----------------------
+# ----------------------------------------------------------- Class Vars -----------------------
+	tv_two_str = 'tv_two'
+	tv_four_str = 'tv_four'
+	tv_nine_str = 'tv_nine'
 
+
+# ----------------------------------------------------------- Static Methods -----------------------
 	@staticmethod
 	def get_sp_name(name):
 		"""
@@ -60,12 +65,6 @@ class Origin(models.Model):
 
 
 
-
-
-# ----------------------------------------------------------- Class Vars -----------------------
-	tv_two_str = 'tv_two'
-	tv_four_str = 'tv_four'
-	tv_nine_str = 'tv_nine'
 
 # ----------------------------------------------------------- Line Analysis -----------------------
 	def analyse(self, line):
@@ -108,13 +107,12 @@ class Origin(models.Model):
 			self.sn_twitter = self.sn_twitter + 1
 
 
-		#elif line.origin == 'Página web/Buscador': 
+
 		elif line.origin == 'web_page': 
 			self.web_page = self.web_page + 1
 
 
 		# Recomm
-		#elif line.origin == 'Recomendación': 
 		elif line.origin == 'recommendation': 
 			self.recommendation = self.recommendation + 1
 
@@ -204,23 +202,5 @@ class Origin(models.Model):
 			default=0,
 			string='Otros',
 		)
-
-
-
-
-
-# ----------------------------------------------------------- Get Counters -----------------------
-	def get_counters(self):
-		"""
-		Get Counters
-		"""
-		print()
-		print('X - Origin - Get Counters')
-
-
-
-
-
-
 
 

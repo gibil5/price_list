@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"pat",
+				"patient"
+			],
+			[
+				"Pat",
+				"Patient"
+			],
+			[
+				"pa",
+				"patients"
+			],
+			[
+				"Pa",
+				"Patient"
+			],
+			[
+				"pri",
+				"price_list"
+			],
+			[
+				"dat",
+				"date_bx"
+			],
+			[
+				"di",
+				"_dic_name"
+			],
+			[
+				"I",
+				"Init"
+			],
+			[
+				"Ori",
+				"Origin"
+			],
+			[
+				"ori",
+				"origin"
+			],
+			[
+				"M",
+				"Management"
+			],
+			[
 				"city",
 				"city_line"
 			],
@@ -44,10 +88,6 @@
 				"string"
 			],
 			[
-				"Ori",
-				"Origen"
-			],
-			[
 				"nam",
 				"name_sp"
 			],
@@ -84,10 +124,6 @@
 				"origin_name"
 			],
 			[
-				"ori",
-				"origin_name"
-			],
-			[
 				"Educa",
 				"Educación"
 			],
@@ -110,10 +146,6 @@
 			[
 				"tv",
 				"tv_nine"
-			],
-			[
-				"di",
-				"district"
 			],
 			[
 				"li",
@@ -158,10 +190,6 @@
 			[
 				"mea",
 				"mea_f"
-			],
-			[
-				"pa",
-				"patient"
 			],
 			[
 				"pl",
@@ -392,10 +420,6 @@
 				"patient_line_id"
 			],
 			[
-				"dat",
-				"date"
-			],
-			[
 				"mar",
 				"marketing_id"
 			],
@@ -428,10 +452,6 @@
 				"model"
 			],
 			[
-				"pri",
-				"price_list_2019_count"
-			],
-			[
 				"prod",
 				"product_id"
 			],
@@ -454,10 +474,6 @@
 			[
 				"grou",
 				"groups"
-			],
-			[
-				"pat",
-				"pat_line"
 			],
 			[
 				"Ve",
@@ -498,22 +514,6 @@
 			[
 				"patie",
 				"patient_id"
-			],
-			[
-				"pati",
-				"patient"
-			],
-			[
-				"P",
-				"Patients"
-			],
-			[
-				"b",
-				"bcp_tot"
-			],
-			[
-				"sco",
-				"scotiabank_tot"
 			]
 		]
 	},
@@ -532,52 +532,97 @@
 			"file": "models/marketing/marketing.py",
 			"settings":
 			{
-				"buffer_size": 18402,
+				"buffer_size": 17411,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/marketing/mkt_vars.py",
+			"file": "models/marketing/vip.py",
 			"settings":
 			{
-				"buffer_size": 655,
+				"buffer_size": 1984,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/marketing/order_line.py",
+			"file": "models/marketing/age.py",
 			"settings":
 			{
-				"buffer_size": 5305,
+				"buffer_size": 2225,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/marketing/city_line.py",
+			"file": "models/marketing/education.py",
 			"settings":
 			{
-				"buffer_size": 1450,
+				"buffer_size": 2590,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/marketing/district_line.py",
+			"file": "models/marketing/first_contact.py",
 			"settings":
 			{
-				"buffer_size": 3121,
+				"buffer_size": 4172,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/marketing/origin_line.py",
+			"file": "models/marketing/sex.py",
 			"settings":
 			{
-				"buffer_size": 1100,
+				"buffer_size": 1857,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/marketing/stax.py",
+			"settings":
+			{
+				"buffer_size": 8217,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/marketing/mkt_funcs.py",
+			"settings":
+			{
+				"buffer_size": 1505,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/product/product_product.py",
+			"settings":
+			{
+				"buffer_size": 8620,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/marketing/mkt_funcs.DEP.py",
+			"settings":
+			{
+				"buffer_size": 10465,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/patient/patient.py",
+			"settings":
+			{
+				"buffer_size": 8806,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -655,7 +700,30 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/models/marketing/origin.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/patient_line.DEP.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/order_line.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/patient_line.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/mkt_vars.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/lib_marketing.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/lib.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/marketing.TRASH.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/counter_set.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/origin_line.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/district_line.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/city_line.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/pat_funcs.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/pat_line_funcs.py",
+		"/Users/gibil/cellar/github/price_list/models/management/lib/zat/pl_mgt_vars.py",
+		"/Users/gibil/cellar/github/price_list/models/management/lib/zat/pl_ord_vars.py",
+		"/Users/gibil/cellar/github/price_list/models/management/lib/prod_funcs.py",
+		"/Users/gibil/cellar/github/price_list/models/management/subfamily_line.py",
+		"/Users/gibil/cellar/github/price_list/models/management/family_line.py",
+		"/Users/gibil/cellar/github/price_list/models/management/lib/mgt_funcs.py",
+		"/Users/gibil/cellar/github/price_list/models/management/management.py",
+		"/Users/gibil/cellar/github/price_list/models/management/lib/pl_ord_vars.py",
+		"/Users/gibil/cellar/github/price_list/models/management/lib/pl_mgt_vars.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/pl_pat_vars.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/product/product_product.py",
 		"/Users/gibil/cellar/github/price_list/models/patient/patient.py",
@@ -674,11 +742,8 @@
 		"/Users/gibil/cellar/github/price_list/readme.txt",
 		"/Users/gibil/cellar/github/price_list/models/electronic/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/marketing.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/origin_line.py",
 		"/Users/gibil/cellar/github/price_list/models/electronic/texto.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/mkt_vars.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/stax.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/origin.py",
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing_tree_others.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing.xml",
 		"/Users/gibil/cellar/github/price_list/models/electronic/electronic_container.TRASH.py",
@@ -692,8 +757,6 @@
 		"/Users/gibil/cellar/github/price_list/views/menus/menus_account.DEP.xml",
 		"/Users/gibil/cellar/github/price_list/models/marketing/first_contact.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/age.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/patient_line.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/pat_line_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/mkt_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/education.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/vip.py",
@@ -704,25 +767,18 @@
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing_counters.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing_other_actions.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/patient_line.xml",
-		"/Users/gibil/cellar/github/price_list/models/marketing/marketing.TRASH.py",
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing.TRASH.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/origin_line.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/place.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/histo.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing_actions.xml",
-		"/Users/gibil/cellar/github/price_list/models/management/lib/mgt_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/stax.DEP.py",
 		"/Users/gibil/cellar/github/price_list/models/management/lib/mgt_funcs.DEP.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/pat_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/lib_marketing.DEP.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/pl_pat_vars.py",
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing_origin.xml",
 		"/Users/gibil/cellar/github/price_list/models/marketing/pat_vars.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/mkt_funcs.DEP.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/counter_set.py",
-		"/Users/gibil/cellar/github/price_list/models/management/management.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/exc_mkt.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/patient_line.DEP.py",
 		"/Users/gibil/cellar/github/price_list/models/patient/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/marketing.tx",
@@ -735,7 +791,6 @@
 		"/Users/gibil/cellar/github/price_list/views/menus/menus_marketing.xml",
 		"/Users/gibil/cellar/github/price_list/models/management/subfamily.py",
 		"/Users/gibil/cellar/github/price_list/models/electronic/account_contasis.py",
-		"/Users/gibil/cellar/github/price_list/models/management/family_line.py",
 		"/Users/gibil/cellar/github/price_list/models/management/stax.py",
 		"/Users/gibil/cellar/github/price_list/models/management/management_order_line.py",
 		"/Users/gibil/cellar/github/price_list/models/product/product_template.DEP.py",
@@ -746,8 +801,6 @@
 		"/Users/gibil/cellar/github/price_list/models/management/doctor_daily/doctor_daily.py",
 		"/Users/gibil/cellar/github/price_list/models/management/productivity/productivity_day.DEP.py",
 		"/Users/gibil/cellar/github/price_list/models/management/management_order_line.DEP.py",
-		"/Users/gibil/cellar/github/price_list/models/management/lib/pl_mgt_vars.py",
-		"/Users/gibil/cellar/github/price_list/models/management/subfamily_line.py",
 		"/Users/gibil/cellar/github/price_list/models/product/product_selector.py",
 		"/Users/gibil/cellar/github/price_list/models/management/family.py",
 		"/Users/gibil/cellar/github/price_list/models/management/__init__.py",
@@ -767,8 +820,6 @@
 		"/Users/gibil/cellar/github/price_list/models/management/patient/mgt_patient_line.py",
 		"/Users/gibil/cellar/github/price_list/models/management/lib/mgt_line_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/management/lib/pl_mgt_funcs.py",
-		"/Users/gibil/cellar/github/price_list/models/management/lib/pl_ord_vars.py",
-		"/Users/gibil/cellar/github/price_list/models/management/lib/prod_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/management/lib/stats.py",
 		"/Users/gibil/cellar/github/price_list/models/management/lib/exc_mgt.py",
 		"/Users/gibil/cellar/github/price_list/models/management/doctor/__init__.py",
@@ -776,13 +827,7 @@
 		"/Users/gibil/cellar/github/price_list/models/management/productivity/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/management/management_doctor_line.py",
 		"/Users/gibil/cellar/github/price_list/models/management/day_doctor_line.py",
-		"/Users/gibil/cellar/github/price_list/models/management/doctor_daily/__init__.py",
-		"/Users/gibil/cellar/github/price_list/models/management/doctor_daily.py",
-		"/Users/gibil/cellar/github/price_list/models/management/productivity_day.py",
-		"/Users/gibil/cellar/github/price_list/models/management/prod_funcs.py",
-		"/Users/gibil/cellar/github/price_list/models/management/management_doctor_line.pyc",
-		"/Users/gibil/cellar/github/price_list/__init__.py",
-		"/Users/gibil/cellar/github/price_list/models/management/mgt_patient_line.py"
+		"/Users/gibil/cellar/github/price_list/models/management/doctor_daily/__init__.py"
 	],
 	"find":
 	{
@@ -800,6 +845,33 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"mkt_funcs",
+			"line.product_id",
+			"self.pl_price_list",
+			"price",
+			"family_ana",
+			"is_new_pat",
+			"exc_pat",
+			"pat_vars",
+			"stax.",
+			"pat_line_funcs",
+			"update_vip_sales",
+			"pat_funcs",
+			"pat_line",
+			"env",
+			"clean",
+			"env",
+			"lib.",
+			"lib",
+			"recommendation",
+			"family",
+			"family_line",
+			"h_name",
+			"_h_idx",
+			"vars",
+			"ord_vars",
+			"pl_mgt_vars",
+			"pl_pat_vars",
 			"report",
 			"pat_vars",
 			"vars",
@@ -900,34 +972,7 @@
 			"get_patients_filter",
 			"mkt_funcs",
 			"stax",
-			"mkt_funcs",
-			"line_ana",
-			"macro_line_ana",
-			"update_vip",
-			"update_stats",
-			"create_sale_lines",
-			"marketing",
-			"openhealth.",
-			"histo_line",
-			"media_line_form_action",
-			"media_line",
-			"city_line_form_action",
-			"patient_line_vip_not_used_form_action",
-			"patient_line_vip",
-			"patient_line_mkt_view_tree",
-			"patient_line_proc_form_action",
-			"create_sale_lines",
-			"update_stats",
-			"analyse_patient_lines",
-			"analyse_patient_",
-			"analy",
-			"create_sale_lines",
-			"update_",
-			"update(",
-			"delta",
-			"django",
-			"configur",
-			"report"
+			"mkt_funcs"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -935,6 +980,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"mkt",
+			"self",
 			"district",
 			"District",
 			"daily",
@@ -1060,9 +1107,7 @@
 			"company_name",
 			"email",
 			"patient",
-			"bcp",
-			"scotiabank",
-			"interbank"
+			"bcp"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1073,7 +1118,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1099,11 +1144,11 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 9.0,
-						"translation.y": 2633.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1112,15 +1157,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18402,
+						"buffer_size": 17411,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								176,
-								176
+								1251,
+								1251
 							]
 						],
 						"settings":
@@ -1132,111 +1177,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "models/marketing/mkt_vars.py",
+					"file": "models/marketing/vip.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 655,
+						"buffer_size": 1984,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								156,
-								156
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "models/marketing/order_line.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5305,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								216,
-								216
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "models/marketing/city_line.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1450,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								366,
-								463
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "models/marketing/district_line.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3121,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3115,
-								3115
+								203,
+								203
 							]
 						],
 						"settings":
@@ -1252,20 +1210,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "models/marketing/origin_line.py",
+					"buffer": 3,
+					"file": "models/marketing/age.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1100,
+						"buffer_size": 2225,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								248,
-								248
+								203,
+								203
 							]
 						],
 						"settings":
@@ -1278,6 +1236,238 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/marketing/education.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2590,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								237,
+								237
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "models/marketing/first_contact.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4172,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								213,
+								213
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "models/marketing/sex.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1857,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								658,
+								658
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "models/marketing/stax.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8217,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4045,
+								4045
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3304.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "models/marketing/mkt_funcs.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1505,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								98,
+								98
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "models/product/product_product.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								889,
+								889
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "models/marketing/mkt_funcs.DEP.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10465,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "models/patient/patient.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8806,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1153,
+								1153
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 557.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -1510,7 +1700,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/odoo_tests/odoo_tests/OdooTests.sublime-project"
+				"~/cellar/github/openhealth/OpenHealth-MIN.sublime-project"
 			],
 			[
 				"\t",

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-	Patient Line Funcs 
+	Patient Line Funcs - Dep !
+
+	Done by Patient Line
 
 	Created: 	11 Dec 2019
 	Updated: 	13 Dec 2019
@@ -11,8 +13,9 @@ import datetime
 
 
 
-# ----------------------------------------------------------- Line Analysis - PL -----------------------
-def macro_line_analysis(self, line):
+# ----------------------------------------------------------- Line Analysis - Dep -----------------------
+#def macro_line_analysis(self, line):
+def macro_line_analysis_dep(self, line):
 	"""
 	New - 2019
 	Marketing

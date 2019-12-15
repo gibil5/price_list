@@ -10,6 +10,7 @@
 	Last up: 		11 Dec 2019
 """
 from __future__ import print_function
+import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import count_funcs
 from . import exc_pat
@@ -20,6 +21,154 @@ class Patient(models.Model):
 	Encapsulates Business Rules. Should not extend the Data Model.
 	"""
 	_inherit = 'oeh.medical.patient'
+
+
+
+
+# ----------------------------------------------------------- Class Vars -----------------------
+
+	_sex_type_list = [
+						('Male', 'Masculino'),
+						('Female', 'Femenino'),
+	]
+
+
+	_education_level_type = [
+				('first', 'Primaria'),
+				('second', 'Secundaria'),
+				('technical', 'Instituto'),
+				('university', 'Universidad'),
+				('masterphd', 'Posgrado'),
+	]
+
+
+
+# ----------------------------------------------------------- Static Methods -----------------------
+
+	@staticmethod
+	def is_new_patient(self, patient, date_bx, date_ex):
+		"""
+		Is New Patient ?
+		The patient has been created inside this date delta 
+		Used by Marketing
+		"""
+		#print()
+		#print('Is New Patient')
+		#print(patient)
+
+		# Dates	
+		DATETIME_FORMAT = "%Y-%m-%d"
+		date_begin = date_bx + ' 05:00:00'
+		date_end_dt  = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5,minutes=0)
+		date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+		# Must Correct !
+		if (patient.x_date_record >= date_begin) and (patient.x_date_record < date_end):
+			is_new = True
+		else:
+			is_new = False
+
+		return is_new
+
+	# is_new_patient
+
+
+
+
+
+
+
+
+	@staticmethod
+	def get_patients_mkt(self, date_bx, date_ex, mode):
+		"""
+		Provides Patients between begin date and end date. 
+		Corrected for Legacy Patients
+		"""		
+		print()
+		print('Patient - Get Patients Mkt')
+
+		print(self)
+		print(date_bx)
+		print(date_ex)
+		print(mode)
+
+		# Dates	
+		DATETIME_FORMAT = "%Y-%m-%d"
+		date_begin = date_bx + ' 05:00:00'
+		date_end_dt  = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5,minutes=0)
+		date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+
+		# Legacy 
+		if mode == 'legacy': 
+
+			# Patients 
+			patients = self.env['oeh.medical.patient'].search([
+																('create_date', '>=', date_begin),													
+																('create_date', '<', date_end),
+													],
+														order='create_date asc',
+														#limit=1,
+													)
+			# Count 
+			count = self.env['oeh.medical.patient'].search_count([													
+																	('create_date', '>=', date_begin),
+																	('create_date', '<', date_end),															
+													],
+														#order='x_serial_nr asc',
+														#limit=1,
+													)
+
+		# Normal 
+		elif mode == 'normal': 
+
+			# Patients 
+			patients = self.env['oeh.medical.patient'].search([
+																('x_date_record', '>=', date_begin),													
+																('x_date_record', '<', date_end),
+													],
+														order='create_date asc',
+														#limit=1,
+													)
+			# Count 
+			count = self.env['oeh.medical.patient'].search_count([
+																	('x_date_record', '>=', date_begin),
+																	('x_date_record', '<', date_end),
+													],
+														#order='x_serial_nr asc',
+														#limit=1,
+													)
+		# Test
+		elif mode == 'test': 
+
+			# Patients 
+			patients = self.env['oeh.medical.patient'].search([
+																('x_test', '=', True),
+
+													],
+														order='create_date asc',
+														#limit=1,
+													)
+			# Count 
+			count = self.env['oeh.medical.patient'].search_count([
+																	('x_test', '=', True),
+													],
+														#order='x_serial_nr asc',
+														#limit=1,
+													)
+
+		# Else
+		else:
+			print('Error: This should not happen !')
+
+
+		return patients, count
+
+	# get_patients_filter
+
+
+
 
 
 

@@ -10,7 +10,7 @@
 from __future__ import print_function
 from openerp import models, fields, api
 
-import mkt_funcs
+from openerp.addons.price_list.models.marketing.marketing import Marketing  	# Use static method
 
 class Vip(models.Model):
 	"""
@@ -39,8 +39,8 @@ class Vip(models.Model):
 		Update Vip
 		"""
 
-		mkt.vip_true_per = 	mkt_funcs.get_per(mkt.vip_true, mkt.total_count)
-		mkt.vip_false_per = mkt_funcs.get_per(mkt.vip_false, mkt.total_count)
+		mkt.vip_true_per = 	Marketing.get_per(mkt.vip_true, mkt.total_count)
+		mkt.vip_false_per = Marketing.get_per(mkt.vip_false, mkt.total_count)
 
 
 

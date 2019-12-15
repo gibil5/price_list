@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Pat Funcs - For Marketing
+	Pat Funcs - For Marketing - Dep
 
 	Created: 	11 Dec 2019
 	Updated: 	11 Dec 2019

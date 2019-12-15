@@ -5,18 +5,15 @@
 	Only functions. Not the data model. 
 
 	Created: 				16 May 2018
-	Last up: 				11 Dec 2019
+	Last up: 				14 Dec 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
 from openerp.addons.openhealth.models.product import prodvars
 
-from openerp.addons.openhealth.models.patient import pat_vars
+from openerp.addons.price_list.models.patient.patient import Patient
 
-from . import pl_pat_vars
-
-from . import pat_line_funcs
 
 class PatientLine(models.Model):
 	"""
@@ -28,16 +25,73 @@ class PatientLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Origin ------------------------------------------------------
+# ----------------------------------------------------------- Counter Update ------------------------------------------------------
 
-	# Origin 
-	#origin = fields.Selection(
-	origin = fields.Char(
+	def counters_update(self, line):
+		"""
+		New - 2019
+		This is just counter update
+		Analyses Line to update counters
+		"""
+		#print()
+		#print('X - Macro Line Analysis')
 
-			#selection = pl_pat_vars._origin_list, 
-		
-			string = 'Origen',
-		)
+
+		# Patient Line Macros	
+
+		# Init
+		qty = line.product_uom_qty
+
+
+		# Doctor
+		if self.doctor.name in [False]:
+			self.doctor = line.doctor
+
+
+
+	# Family Analysis
+
+
+		# Increase Sales
+		if line.state in ['sale']:
+
+			# Consultation
+			if line.family in ['consultation']:
+				self.inc_nr_consultation(qty)
+
+			# Procedure
+			elif line.family in ['procedure']:
+				self.inc_nr_procedure(qty)
+				
+				# All
+				self.add_procedure_treatment(line.product_id)
+				self.add_procedure_pathology(line.product_id)
+				self.add_procedure_zone(line.product_id)
+
+			# Product
+			elif line.family in ['product']:
+				self.inc_nr_product(qty)
+
+			# Increase Sales
+			self.inc_nr_sale(qty)
+
+
+
+		# Increase Drafts
+		elif line.state in ['draft']:
+			self.inc_nr_draft(qty)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -81,6 +135,13 @@ class PatientLine(models.Model):
 		)
 
 
+
+
+# ----------------------------------------------------------- Origin ------------------------------------------------------
+	# Origin 
+	origin = fields.Char(
+			string = 'Origen',
+		)
 
 
 # ----------------------------------------------------------- Natives - Required ------------------------------------------------------
@@ -154,9 +215,10 @@ class PatientLine(models.Model):
 
 	# Sex 
 	sex = fields.Selection(
-			selection = pat_vars._sex_type_list,
+
+			selection = Patient._sex_type_list,
+
 			string="Sexo",
-			#required=True,
 			required=False,
 		)
 
@@ -164,9 +226,10 @@ class PatientLine(models.Model):
 
 	# Education 
 	education = fields.Selection(
-			selection = pat_vars._education_level_type,
+
+			selection = Patient._education_level_type,
+
 			string = 'Grado de instrucción',
-			#required=True,
 			required=False,
 		)
 
@@ -194,16 +257,6 @@ class PatientLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Analysis ------------------------------------------------------
-
-	def analysis(self, line):
-		"""
-		Used by Stax
-		"""
-		pat_line_funcs.macro_line_analysis(self, line)		# LIB
-
-		# Update sale line
-		line.set_patient_line_id(self.id)
 
 
 
@@ -389,21 +442,13 @@ class PatientLine(models.Model):
 			'Nr Procedimientos',
 		)
 
-
 	# Nr Budgets
 	nr_budget = fields.Integer(
 			'Nr Presupuestos pendientes',
 		)
 
 
-
-
-
-
-
-
-# ----------------------------------------------------------- Natives ------------------------------------------------------
-
+	# Procs
 	proc_treatment = fields.Char(
 			'Proc Tratamiento',
 		)
@@ -415,131 +460,5 @@ class PatientLine(models.Model):
 	proc_zone = fields.Char(
 			'Proc Zona',
 		)
-
-
-	#proc_zone = fields.Char(
-	#		'Proc Zona',
-	#	)
-
-
-
-
-# ----------------------------------------------------------- Update Fields Proc - Deprecated ! ------------------------------------------------------
-
-	# Update fields Proc
-	@api.multi
-	def update_nrs(self):  
-		#print()
-		#print('Pl - Update Nrs')
-		#print 
-
-
-		# Sales 
-		for line in self.sale_line: 
-			# Doctor 
-			if self.doctor.name == False: 
-				self.doctor = line.doctor.id 
-
-
-
-		# Budgets
-		self.budget_amount = ''
-		self.budget_prod = ''
-		for line in self.budget_line: 
-
-
-			# Doctor 
-			if self.doctor.name == False: 
-				self.doctor = line.doctor.id 
-
-
-
-		
-			# Budget Amount 
-			self.budget_amount = self.budget_amount + str(line.price_total) + ', '
-
-			# Budget Flag 
-			if line.price_total >= 1500: 
-				self.budget_flag = True
-
-
-
-			# Budget Prod
-			if line.product_id.x_treatment != False: 
-				if line.product_id.x_treatment in prodvars._h_subfamily: 
-					self.budget_prod = self.budget_prod + prodvars._h_subfamily[line.product_id.x_treatment] + ', '
-				else: 
-					self.budget_prod = self.budget_prod + line.product_id.x_treatment + ', '
-
-
-
-
-		# Amount and Prod 
-		self.budget_amount = self.budget_amount[:-2]
-		self.budget_prod = self.budget_prod[:-2]
-
-
-
-
-		# Nr Budgets
-		count = self.env['openhealth.marketing.order.line'].search_count([
-																				('patient_line_budget_id','=', self.id),
-																			]) 
-		self.nr_budget = count
-
-
-
-
-		# Nr Sale
-		count = self.env['openhealth.marketing.order.line'].search_count([
-																				('patient_line_sale_id','=', self.id),
-																			]) 
-		self.nr_sale = count
-
-
-
-
-		# Nr Consultations
-		count = self.env['openhealth.marketing.order.line'].search_count([
-																				('patient_line_consu_id','=', self.id),
-																			]) 
-		self.nr_consu = count
-
-
-
-
-		# Nr Product - Dep
-		#count = self.env['openhealth.marketing.order.line'].search_count([
-		#																		('patient_line_product_id','=', self.id),
-		#																	]) 
-		#self.nr_products = count
-
-
-
-
-
-		# Nr Proc 
-		count = self.env['openhealth.marketing.order.line'].search_count([
-																				('patient_line_proc_id','=', self.id),
-																			]) 
-		self.nr_proc = count
-
-
-
-
-
-		# Nr Reco 
-		count = self.env['openhealth.marketing.recom.line'].search_count([
-																				('patient_line_id','=', self.id),
-																			]) 
-		self.nr_reco = count
-
-	# update_nrs
-
-
-
-
-
-
 
 

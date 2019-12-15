@@ -1,3 +1,41 @@
+# 14 Dec
+
+		#name = 'Vip'	
+		#self.vip = self.env['openhealth.marketing.vip'].create({
+		#																	'name': name,
+		#																})
+
+		#name = 'Sexo'	
+		#self.sex = self.env['openhealth.marketing.sex'].create({
+		#																	'name': name,
+		#																})
+
+		#name = 'Edad'
+		#self.age = self.env['openhealth.marketing.age'].create({
+		#																	'name': name,
+		#																})
+
+
+		#name = 'Primer Contacto'	
+		#self.first_contact = self.env['openhealth.marketing.first_contact'].create({
+		#																			'name': name,
+		#																})
+
+
+		#name = 'Origen'
+		#self.origin = self.env['openhealth.marketing.origin'].create({
+		#																	'name': name,
+		#																})
+
+		#name = 'Educación'	
+		name = self.education_name
+		self.education = self.env['openhealth.marketing.education'].create({
+																			'name': name,
+																		})
+
+
+
+
 # 13 Dec 2019
 
 #from openerp.addons.openhealth.models.order import ord_vars

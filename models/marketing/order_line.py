@@ -231,4 +231,7 @@ class MarketingOrderLine(models.Model):
 # ----------------------------------------------------------- Setters - Dep ? ------------------------------------------------------
 
 	def set_patient_line_id(self, patient_line_id):
+
 		self.patient_line_id = patient_line_id
+
+

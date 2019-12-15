@@ -2,12 +2,13 @@
 """
 	Stax Library
 
+	Separate BL from Structure
+
 	Used by
 		Marketing
 
 	Uses
 		mkt_funcs
-
 
 	- Update Stats
 	- Update Vip Sales
@@ -24,6 +25,9 @@ import collections
 from openerp import models, fields, api
 
 #from openerp.addons.price_list.models.management.lib import mgt_funcs  # Dep
+
+
+from openerp.addons.price_list.models.patient.patient import Patient
 
 from . import exc_mkt
 
@@ -47,22 +51,21 @@ def update_counters(self):
 	# Loop - For all Patients
 	for line in self.patient_line:
 
+		# First Contact
+		#self.first_contact.analyse(line)
+
 
 		# Origin
 		self.origin.analyse(line)
-
 
 
 		# Education
 		self.education.analyse(line)
 
 
-		# First Contact
-		#self.first_contact.analyse(line)
-
-
 		# Sex
 		self.sex.analyse(line)
+
 
 		# Age
 		self.age.analyse(line)
@@ -74,15 +77,6 @@ def update_counters(self):
 
 		# Line Analysis - Dep !
 		#mkt_funcs.pl_patient_line_analysis(self, line)
-
-
-
-
-	# Update Macros - Percentages
-
-	# Vip
-	#self.vip_true_per = mkt_funcs.get_per(self.vip_true, self.total_count)
-	#self.vip_false_per = mkt_funcs.get_per(self.vip_false, self.total_count)
 
 # update_counters
 
@@ -195,7 +189,10 @@ def create_sale_lines(self):
 	for order in orders:
 
 		# The patient has been created this month
-		is_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)
+		
+		#is_new = mkt_funcs.is_new_patient(self, order.patient, self.date_begin, self.date_end)
+		is_new = Patient.is_new_patient(self, order.patient, self.date_begin, self.date_end)
+		
 		#print(is_new)
 
 
@@ -205,24 +202,35 @@ def create_sale_lines(self):
 			for line in order.order_line:
 				price_net = line.price_unit * line.product_uom_qty
 
-				# Family Analysis
-				if line.pl_price_list in ['2019']:
-					family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis(self, line)
-
-				elif line.pl_price_list in ['2018']:
-					family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis_2018(self, line)
 
 
-				# Using Getters - OO
+				# Family Analysis - Dep
+				#if line.pl_price_list in ['2019']:
+				#	family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis(self, line)
+				#elif line.pl_price_list in ['2018']:
+				#	family, subfamily, subsubfamily = mkt_funcs.pl_family_analysis_2018(self, line)
+
+
+
+				# Uses Product method
+				family, subfamily, subsubfamily = line.product_id.get_families_for_mkt()
+
+
+				# Using Getters - OO - Redundance ?
 				subsubfamily = line.product_id.get_subsubfamily()
 
-				# Create 
+
+
+				# Create Sale Line
 				sale_line = self.sale_line.create({
+														'product_id': line.product_id.id,
+
 														'date': order.date_order,
 														'order': order.id,
 														'patient': order.patient.id,
 														'doctor': order.x_doctor.id,
-														'product_id': line.product_id.id,
+
+
 														'product_uom_qty': line.product_uom_qty,
 														'price_unit': line.price_unit,
 														'price_net': price_net,
@@ -271,7 +279,9 @@ def analyse_patient_lines(self):
 		# Lines
 		patient = patient_line.patient
 		#print(patient.name)
+
 		model = 'price_list.marketing.order_line'
+
 		lines = self.env[model].search([
 												('state', 'in', ['sale', 'draft']),
 												('patient', 'in', [patient.name]),
@@ -281,11 +291,15 @@ def analyse_patient_lines(self):
 											#limit=1,
 										)
 
+
 		# Loop
 		for line in lines:
 
 			#print(line)
-			patient_line.analysis(line)  	# OO
+			#patient_line.analysis(line)  	# OO
+			patient_line.counters_update(line)  	# OO
+
+
 
 
 

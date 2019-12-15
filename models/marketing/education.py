@@ -12,8 +12,6 @@
 from __future__ import print_function
 from openerp import models, fields, api
 
-import mkt_funcs
-
 class Education(models.Model):
 	"""
 	Used by Marketing
@@ -37,12 +35,12 @@ class Education(models.Model):
 		#print()
 		#print('X - Education - Update Per')
 
-		mkt.edu_fir_per = mkt_funcs.get_per(mkt.edu_fir, mkt.total_count)
-		mkt.edu_sec_per = mkt_funcs.get_per(mkt.edu_sec, mkt.total_count)
-		mkt.edu_tec_per = mkt_funcs.get_per(mkt.edu_tec, mkt.total_count)
-		mkt.edu_uni_per = mkt_funcs.get_per(mkt.edu_uni, mkt.total_count)
-		mkt.edu_mas_per = mkt_funcs.get_per(mkt.edu_mas, mkt.total_count)
-		mkt.edu_u_per = mkt_funcs.get_per(mkt.edu_u, mkt.total_count)
+		mkt.edu_fir_per = mkt.get_per(mkt.edu_fir, mkt.total_count)
+		mkt.edu_sec_per = mkt.get_per(mkt.edu_sec, mkt.total_count)
+		mkt.edu_tec_per = mkt.get_per(mkt.edu_tec, mkt.total_count)
+		mkt.edu_uni_per = mkt.get_per(mkt.edu_uni, mkt.total_count)
+		mkt.edu_mas_per = mkt.get_per(mkt.edu_mas, mkt.total_count)
+		mkt.edu_u_per = mkt.get_per(mkt.edu_u, mkt.total_count)
 
 
 

@@ -8,11 +8,6 @@
 from __future__ import print_function
 from openerp import models, fields, api
 
-#from . import mgt_vars
-#from openerp.addons.openhealth.models.management import mgt_vars
-from lib import pl_mgt_vars
-
-
 class SubFamilyLine(models.Model):	
 	"""
 	Sub Family Line
