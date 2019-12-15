@@ -2,6 +2,10 @@
 """
  	Price List - Marketing Report - Object Oriented
 
+	
+	*** Important: Write Unit Tests for all important libraries. 
+
+
 	Only functions. Not the data model. 
 
  	Created: 				19 May 2018
