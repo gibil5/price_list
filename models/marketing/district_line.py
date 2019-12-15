@@ -31,9 +31,9 @@ class DistrictLine(models.Model):
 		Get District Sector
 		Used by Lib Marketing
 		"""
-		print()
-		print('Get District Sector')
-		print(name)
+		#print()
+		#print('Get District Sector')
+		#print(name)
 
 		#unaccented_string = unidecode.unidecode(accented_string)		
 		name = unidecode.unidecode(name)
@@ -47,9 +47,9 @@ class DistrictLine(models.Model):
 		Get Zip Code
 		Used by Lib Marketing
 		"""
-		print()
-		print('Get Zip')
-		print(name)
+		#print()
+		#print('Get Zip')
+		#print(name)
 
 		name = unidecode.unidecode(name)
 		
