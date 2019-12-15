@@ -128,8 +128,12 @@ def build_districts(self):
 
 		# Init
 		count = counter_district[key]
-		sector = DistrictLine.district_sector[key]
-		code = DistrictLine.zip_dic[key]
+
+		#sector = DistrictLine.district_sector[key]
+		sector = DistrictLine.get_district_sector(key)
+
+		#code = DistrictLine.zip_dic[key]
+		code = DistrictLine.get_zip_code(key)
 
 		# Create
 		district = self.district_line.create({
