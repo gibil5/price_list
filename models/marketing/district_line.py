@@ -35,8 +35,9 @@ class DistrictLine(models.Model):
 		#print('Get District Sector')
 		#print(name)
 
-		#unaccented_string = unidecode.unidecode(accented_string)		
-		name = unidecode.unidecode(name)
+		if name not in [False]:
+			#unaccented_string = unidecode.unidecode(accented_string)		
+			name = unidecode.unidecode(name)
 		
 		return cls.district_sector[name]
 
@@ -51,7 +52,8 @@ class DistrictLine(models.Model):
 		#print('Get Zip')
 		#print(name)
 
-		name = unidecode.unidecode(name)
+		if name not in [False]:
+			name = unidecode.unidecode(name)
 		
 		return cls.zip_dic[name]
 
