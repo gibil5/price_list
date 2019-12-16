@@ -34,7 +34,7 @@
 								class="oe_highlight"
 								name="update_patients"
 
-								string="Act Pacientes"                               
+								string="AP"                               
 
 								groups='openhealth.roots'
 						/>
@@ -58,7 +58,7 @@
 
 								name="update_sales"
 
-								string="Act Ventas" 
+								string="AV" 
 
 								groups='openhealth.roots'
 						/>
@@ -184,6 +184,19 @@
 
 
 <!-- RIGHT -->
+						<!-- Test -->
+						<button 
+								class="oe_highlight oe_right"
+								type="object" 
+
+								name="test"
+
+								string="T"    
+
+								groups='openhealth.roots'
+						/>
+
+
 						<!-- Reset -->
 						<button 
 								class="oe_highlight oe_right"

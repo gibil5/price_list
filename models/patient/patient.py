@@ -254,6 +254,7 @@ class Patient(models.Model):
 			return self.country_id.name
 
 
+
 	def get_city(self):
 		"""
 		Used by Marketing - Patient Line
@@ -263,13 +264,14 @@ class Patient(models.Model):
 			#return self.city
 
 
+
 	def get_district(self):
 		"""
 		Used by Marketing - Patient Line
 		"""
 		if self.street2 != False: 
-			#return self.street2.title()
-			return self.street2
+			name = self.street2
+			return name
 
 
 

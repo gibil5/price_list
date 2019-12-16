@@ -5,13 +5,15 @@
 	Only functions. Not the data model. 
 
 	Created: 			  8 Apr 2019
-	Last up: 	 		 10 Dec 2019
+	Last up: 	 		 16 Dec 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
 from . import px_vars
 from . import chk_product
+
 from . import pl_prod_vars
+
 from . import exc_prod
 
 class ProductTemplate(models.Model):
@@ -23,6 +25,72 @@ class ProductTemplate(models.Model):
 	_order = 'pl_idx_int'
 
 	_description = 'Product Template'
+
+
+
+# ----------------------------------------------------------- Computes - Laser ------------------------
+
+	# Laser
+	#laser = fields.Selection(
+	#		selection=prodvars._laser_type_list,
+	#		string="Láser",
+
+	#		compute='_compute_laser',
+	#	)
+
+	#@api.multi
+	#@api.depends('product')
+	#def _compute_laser(self):
+	#	for record in self:
+	#		record.laser = record.get_treatment()  			# RLOD
+
+
+
+# ----------------------------------------------------------- Getters - Importan ! -------------------------
+
+	# Get Treatment
+	#@api.multi
+	#def get_treatment(self):
+	def get_treatment(self):
+		"""
+		Get Product Treatment
+		Used by: Session, Control.
+		"""
+
+		# Init
+		_dic = {
+					'LASER CO2 FRACCIONAL': 	'laser_co2',
+					'QUICKLASER': 				'laser_quick',
+					'LASER EXCILITE':			'laser_excilite',
+					'LASER M22 IPL':			'laser_ipl',
+					'LASER M22 ND YAG':			'laser_ndyag',
+		}
+
+		treatment = False
+
+
+		print(self.pl_treatment)
+
+		# 2019
+		if self.pl_price_list in ['2019']:
+
+			if self.pl_treatment in _dic:
+				treatment = _dic[self.pl_treatment]
+
+			else:
+				print('Error: 1')
+
+
+		# 2018
+		elif self.pl_price_list in ['2018']:
+			treatment = self.x_treatment
+
+
+		# Error
+		else:
+			print('Error: 2')
+
+		return treatment
 
 
 

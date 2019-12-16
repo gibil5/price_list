@@ -30,6 +30,7 @@ from . import mkt_vars
 
 from . import lib
 
+from district_line import DistrictLine
 
 class Marketing(models.Model):
 	"""
@@ -86,6 +87,15 @@ class Marketing(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Test ---------------------------------------------
+	@api.multi
+	def test(self):
+		print()
+		print('Test')
+
+		out = DistrictLine.test()
 
 
 

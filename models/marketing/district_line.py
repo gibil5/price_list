@@ -4,6 +4,8 @@
 	
 	For Marketing
 
+	*** Important: Write Unit Tests for all important libraries. 
+
 	Created: 				13 Dec 2019
 	Last up: 				13 Dec 2019
 """
@@ -26,6 +28,27 @@ class DistrictLine(models.Model):
 # ----------------------------------------------------------- Class Methods -----------------------
 
 	@classmethod
+	def test(cls):
+		print()
+		print('Test DistrictLine')
+
+
+		for key in cls.district_sector:
+			name = cls.get_district_sector(key)
+			print(key, name)
+			print()
+
+		print()
+		for key in cls.zip_dic:
+			name = cls.get_zip_code(key)
+			print(key, name)
+			print()
+
+
+
+# ----------------------------------------------------------- Class Methods -----------------------
+
+	@classmethod
 	def get_district_sector(cls, name):
 		"""
 		Get District Sector
@@ -35,7 +58,15 @@ class DistrictLine(models.Model):
 		#print('Get District Sector')
 		#print(name)
 
+
 		if name not in [False]:
+
+			import sys
+			reload(sys)
+			sys.setdefaultencoding('utf-8')
+
+			name = name.replace("ñ", "nh")
+
 			#unaccented_string = unidecode.unidecode(accented_string)		
 			name = unidecode.unidecode(name)
 		
@@ -53,6 +84,7 @@ class DistrictLine(models.Model):
 		#print(name)
 
 		if name not in [False]:
+			name = name.replace("ñ", "nh")
 			name = unidecode.unidecode(name)
 		
 		return cls.zip_dic[name]
@@ -74,7 +106,9 @@ class DistrictLine(models.Model):
 		# Tradicional
 		'Lima':			'Lima Tradicional',
 		'Barranco':		'Lima Tradicional',
-		'Breña':		'Lima Tradicional',
+
+		'Brenha':		'Lima Tradicional',
+
 		'Jesus Maria':	'Lima Tradicional',
 		'La Molina':	'Lima Tradicional',
 		'La Victoria':	'Lima Tradicional',
@@ -136,7 +170,9 @@ class DistrictLine(models.Model):
 		'Ancon':		2,
 		'Ate':			3,
 		'Barranco':		4,
-		'Breña':		5,
+		
+		'Brenha':		5,
+		
 		'Carabayllo':	6,
 		'Comas':		7,
 		'Chaclacayo':	8,
