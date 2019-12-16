@@ -11,7 +11,6 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-
 import unidecode
 
 class DistrictLine(models.Model):	
@@ -25,6 +24,12 @@ class DistrictLine(models.Model):
 	#_order = 'idx asc'
 
 
+# ----------------------------------------------------------- Class Vars -----------------------
+	#_debug = True
+	_debug = False
+
+
+
 # ----------------------------------------------------------- Class Methods -----------------------
 
 	@classmethod
@@ -32,17 +37,31 @@ class DistrictLine(models.Model):
 		print()
 		print('Test DistrictLine')
 
+		#print(help(DistrictLine))
+
+		print(issubclass(DistrictLine, models.Model))
+
+		print(issubclass(cls, models.Model))
+
+		print(isinstance(cls, DistrictLine))
+
+		print(isinstance(cls, models.Model))
+
+
+		print()
 
 		for key in cls.district_sector:
 			name = cls.get_district_sector(key)
-			print(key, name)
-			print()
+			if cls._debug:
+				print(key, name)
+				print()
 
 		print()
 		for key in cls.zip_dic:
 			name = cls.get_zip_code(key)
-			print(key, name)
-			print()
+			if cls._debug:
+				print(key, name)
+				print()
 
 
 
