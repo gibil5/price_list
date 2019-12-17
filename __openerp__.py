@@ -161,13 +161,19 @@
 
 
 		# Management
-		#'views/management/management.xml',   	# Dep
+
+		#'views/management/mgt_patient_line.xml',
 
 		'views/management/management_order_line.xml',
+		'views/management/management_doctor_line.xml',
+		
+		'views/management/management_productivity_day.xml',
+		'views/management/management_doctor_daily.xml',	
 
+		'views/management/management_trees.xml',
 		'views/management/management_actions.xml',
+		'views/management/management.xml',
 
-		'views/management/mgt_patient_line.xml',
 
 
 
@@ -200,14 +206,14 @@
 
 
 
-		# Menus
+
+		# Menus - BL
 		'views/menus/menus.xml',
 		'views/menus/menus_marketing.xml',
-
 		'views/menus/menus_account.xml',
+		'views/menus/menus_management.xml',
 
 
-		#'views/menus/menus_management.xml',		# Dep
 		#'views/menus/menus_dev.xml',               # Dep
 		#'views/menus/menus_rsp.xml',               # Dep
 		#'views/menus/menus_products_2018.xml',     # Dep

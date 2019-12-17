@@ -1492,8 +1492,25 @@ class Management(models.Model):
 		print('X - Reset Micros')
 		
 
+
 		# Productivity Days
 		self.productivity_day.unlink()
+
+
+
+		# Productivity days 
+		#productivity_days = self.env['productivity.day'].search([
+		#															('management_id', '=', self.id),
+		#													],
+															#order='date_begin,name asc',
+															#limit=1,
+		#											)
+		#print(productivity_days)
+		#print(doctors_inactive)
+
+
+
+
 
 
 		# Order Lines
