@@ -11,6 +11,7 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
+
 import unidecode
 
 class DistrictLine(models.Model):	

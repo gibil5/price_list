@@ -162,7 +162,7 @@
 
 		# Management
 
-		#'views/management/mgt_patient_line.xml',
+		'views/management/mgt_patient_line.xml',
 
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
