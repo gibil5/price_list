@@ -193,7 +193,7 @@
 							</page>
 
 
-							<page string="TXT Line">
+							<page string="TXT Line" groups='openhealth.roots'>
 								<field name="txt_line"/> 
 							</page>
 
