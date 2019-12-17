@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-from openerp.addons.openhealth.models.containers import lib_account_codes as acc
+
+#from openerp.addons.openhealth.models.containers import lib_account_codes as acc
+from . import lib_account_codes as acc
+
 
 #------------------------------------------------ Const -------------------------------------------
 _DIC_PREFIX = {
@@ -185,6 +188,7 @@ def get_file_content(order):
 	#table_2 =  str(order.amount_total_tax)     + sep + \
 	#table_2 =  "%.2f"%order.amount_total_tax   + sep + \
 	#table_2 = acc.fmt(order.amount_total_tax)     + sep + \
+
 	table_2 = acc.fmt(amount_total_tax)     + sep + \
 				tax_id                          + sep + \
 				tax_name                        + sep + \

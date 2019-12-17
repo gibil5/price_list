@@ -6,7 +6,6 @@
 
 <!-- FORM --> 
 		<record model="ir.ui.view" id="openhealth.container_form_view">
-			
 			<field name="name">container.form</field>
 
 			<field name="model">openhealth.container</field>
@@ -14,33 +13,10 @@
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 				<form string="container Form">
+
+
+					<!-- Header -->  
 					<header>
-
-<!--
-							string="Crear Electrónico"                              
--->
-						<!-- Create Electronic --> 
-						<!-- Export Txt --> 
-<!--
-						<button 
-							type="object"
-							class="oe_highlight"
-							name="create_electronic"  
-							string="Facturación"                                
-						/>
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="export_txt"                         
-							string="Crear TXT"                              
-						/>
-
-							groups="openhealth.roots"
-							groups="openhealth.roots"
-
-							string="Pl - Facturación"
-							string="Pl - Crear TXT"                              
--->
 
 
 						<!-- Create Electronic --> 
@@ -54,9 +30,6 @@
 						/>
 
 
-<!--
-							name="pl_export_txt" 
--->						
 
 						<!-- Create Txt --> 
 						<button 
@@ -83,23 +56,6 @@
 						/>
 
 
-
-
-
-
-<!--
-						<button 
-								type="object" 
-								icon="gtk-ok" 
-								class="oe_highlight" 
-
-								name="export_file" 
-								
-								string="Download" 
-							/>
--->
-
-
 						<!-- Clear --> 
 						<button 
 							type="object" 
@@ -110,18 +66,6 @@
 
 							groups="openhealth.roots"
 						/>
-
-
-						<!-- Correct - DEP --> 
-<!--
-						<button 
-							type="object" 
-							class="oe_highlight oe_right"
-							name="correct"
-							string="Correct"
-							groups="openhealth.roots"
-						/>
--->
 					</header>
 
 
@@ -181,6 +125,8 @@
 							<group></group>
 						</group>
 
+
+
 						<!-- Notebook --> 
 						<notebook>
 
@@ -213,19 +159,37 @@
 
 
 
-
 <!-- TREE --> 
 		<record model="ir.ui.view" id="container_tree_view">
 			<field name="name">container.tree</field>
 			<field name="model">openhealth.container</field>
 			<field name="arch" type="xml">
 				<tree string="Container Tree">
+
 					<field name="name"/>
+					<field name="several_dates"/>
+
+
+					<field name="date_test"/>
+
+					<field name="state"  	groups='openhealth.roots'/>
+
+
 
 					<field name="export_date_begin"/>
+
 					<field name="export_date_end"/>
 
+
+
+					<field name="receipt_count"/>
+					<field name="invoice_count"/>
+
+					<field name="total_count"/>
+					<field name="amount_total"/>
+<!--
 					<field name="txt_pack"/>
+-->
 				</tree>
 			</field>
 		</record>

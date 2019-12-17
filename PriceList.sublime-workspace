@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"e",
+				"export_date"
+			],
+			[
+				"invoi",
+				"invoice_count"
+			],
+			[
+				"rece",
+				"receipt_count"
+			],
+			[
+				"tot",
+				"total_count"
+			],
+			[
 				"pro",
 				"productivity_days"
 			],
@@ -178,10 +194,6 @@
 			[
 				"Aa",
 				"analyse"
-			],
-			[
-				"e",
-				"education"
 			],
 			[
 				"con",
@@ -502,18 +514,6 @@
 			[
 				"coun",
 				"count_total"
-			],
-			[
-				"amou",
-				"amount_total"
-			],
-			[
-				"am",
-				"amount_total"
-			],
-			[
-				"patie",
-				"patient_id"
 			]
 		]
 	},
@@ -524,6 +524,87 @@
 			"settings":
 			{
 				"buffer_size": 5514,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/electronic/electronic_container.py",
+			"settings":
+			{
+				"buffer_size": 13855,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/electronic/electronic_container.xml",
+			"settings":
+			{
+				"buffer_size": 3651,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/electronic/pl_export.py",
+			"settings":
+			{
+				"buffer_size": 1403,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/electronic/electronic_order.py",
+			"settings":
+			{
+				"buffer_size": 3190,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/electronic/pl_lib_exp.py",
+			"settings":
+			{
+				"buffer_size": 9544,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/electronic/lib_account_codes.py",
+			"settings":
+			{
+				"buffer_size": 1008,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/menus/menus_account.xml",
+			"settings":
+			{
+				"buffer_size": 1999,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/electronic/electronic_actions.xml",
+			"settings":
+			{
+				"buffer_size": 1392,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/electronic/electronic_container.DEP.xml",
+			"settings":
+			{
+				"buffer_size": 1038,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -543,6 +624,14 @@
 			{
 				"buffer_size": 14166,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/marketing/marketing_actions.xml",
+			"settings":
+			{
+				"buffer_size": 6933,
 				"line_ending": "Unix"
 			}
 		},
@@ -851,6 +940,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"total_count",
+			"lib_exp",
+			"export",
+			"export.",
+			"lib_exp",
+			"acc.",
 			"update fields",
 			"roots",
 			"date_test",
@@ -972,13 +1067,7 @@
 			"Age",
 			"age",
 			"self",
-			"Sex",
-			"sex",
-			"education",
-			"city",
-			"education",
-			"education =",
-			"many"
+			"Sex"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1118,13 +1207,13 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1150,15 +1239,277 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": false
 						},
+						"translation.x": 5.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "models/electronic/electronic_container.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13855,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1159,
+								1159
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
 						"translation.x": 0.0,
-						"translation.y": 1564.0,
+						"translation.y": 648.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
+					"file": "views/electronic/electronic_container.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3507,
+								3507
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2616.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/electronic/pl_export.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								520,
+								520
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/electronic/electronic_order.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3190,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								244,
+								244
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "models/electronic/pl_lib_exp.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9544,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								24
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "models/electronic/lib_account_codes.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1008,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "views/menus/menus_account.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1999,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1865,
+								1865
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1017.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "views/electronic/electronic_actions.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1392,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								729,
+								729
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "views/electronic/electronic_container.DEP.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1038,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								201,
+								201
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
 					"file": "models/marketing/marketing.py",
 					"semi_transient": false,
 					"settings":
@@ -1183,11 +1534,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 11,
 					"file": "views/marketing/marketing.xml",
 					"semi_transient": false,
 					"settings":
@@ -1212,11 +1563,40 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 12,
+					"file": "views/marketing/marketing_actions.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6933,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								456,
+								606
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
 					"file": "views/marketing/marketing_counters.xml",
 					"semi_transient": false,
 					"settings":
@@ -1241,11 +1621,11 @@
 						"translation.y": 4724.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 14,
 					"file": "views/marketing/origin_line.xml",
 					"semi_transient": false,
 					"settings":
@@ -1270,11 +1650,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 15,
 					"file": "models/marketing/origin.py",
 					"semi_transient": false,
 					"settings":
@@ -1299,11 +1679,11 @@
 						"translation.y": 1927.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 16,
 					"file": "models/marketing/patient_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1328,11 +1708,11 @@
 						"translation.y": 1378.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 17,
 					"file": "models/marketing/stax.py",
 					"semi_transient": false,
 					"settings":
@@ -1357,11 +1737,11 @@
 						"translation.y": 6135.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 18,
 					"file": "models/marketing/mkt_funcs.py",
 					"semi_transient": false,
 					"settings":
@@ -1386,11 +1766,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 19,
 					"file": "models/marketing/lib_marketing.py",
 					"semi_transient": false,
 					"settings":
@@ -1415,11 +1795,11 @@
 						"translation.y": 808.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 20,
 					"file": "models/marketing/vip.py",
 					"semi_transient": false,
 					"settings":
@@ -1444,11 +1824,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 21,
 					"file": "models/product/product.py",
 					"semi_transient": false,
 					"settings":
@@ -1473,11 +1853,11 @@
 						"translation.y": 260.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 22,
 					"file": "models/product/product_product.py",
 					"semi_transient": false,
 					"settings":
@@ -1502,7 +1882,7 @@
 						"translation.y": 1252.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 15,
 					"type": "text"
 				}
 			]
@@ -1510,7 +1890,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 36.0
 	},
 	"input":
 	{
@@ -1735,7 +2115,7 @@
 		[
 			[
 				"",
-				"~/cellar/github/openhealth/OpenHealth-MIN.sublime-project"
+				"~/Virtualenvs/odoo_tests/odoo_tests/OdooTests.sublime-project"
 			],
 			[
 				"\t",

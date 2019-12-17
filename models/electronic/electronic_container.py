@@ -18,7 +18,9 @@ from openerp import models, fields, api
 from openerp.addons.openhealth.models.management import mgt_funcs
 
 from openerp.addons.openhealth.models.management import mgt_vars
-from openerp.addons.openhealth.models.containers import export
+
+#from openerp.addons.openhealth.models.containers import export
+
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
@@ -38,6 +40,62 @@ class ElectronicContainer(models.Model):
 	_inherit = 'openhealth.container'
 
 	_description = 'Electronic Container'
+
+
+
+
+# ----------------------------------------------------- Django Interface --------------------------
+
+	@api.multi
+	def get_date_begin(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date begin')
+		return self.export_date_begin
+
+
+	@api.multi
+	def get_date_end(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get date end')
+		return self.export_date_end
+
+
+
+
+
+	@api.multi
+	def get_total(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get total')
+		if self.amount_total not in [False]:
+			return self.amount_total
+		else:
+			return 0
+
+
+
+	@api.multi
+	def get_count(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get count')
+
+		if self.total_count not in [False]:
+			return self.total_count
+
+		else:
+			return 0
 
 
 
@@ -78,6 +136,25 @@ class ElectronicContainer(models.Model):
 
 # ----------------------------------------------------------- Fields --------------------------
 
+	# Total count
+	total_count = fields.Integer(
+			'Total Nr',
+		)
+
+
+	# Receipt count
+	receipt_count = fields.Integer(
+			'Recibos Nr',
+		)
+
+
+	# Invoice count
+	invoice_count = fields.Integer(
+			'Facturas Nr',
+		)
+
+
+
 	export_date = fields.Char(
 			'Export Date',
 			readonly=True,
@@ -108,16 +185,6 @@ class ElectronicContainer(models.Model):
 
 
 
-	# Receipt count
-	receipt_count = fields.Integer(
-			'Recibos Nr',
-		)
-
-
-	# Invoice count
-	invoice_count = fields.Integer(
-			'Facturas Nr',
-		)
 
 
 
@@ -191,7 +258,10 @@ class ElectronicContainer(models.Model):
 
 
 		# For Django
-		#self.date_test = datetime.datetime.now() 
+		self.total_count = self.receipt_count + self.invoice_count
+
+		self.state = 'stable'
+		self.date_test = datetime.datetime.now() 
 		return 1
 
 	# create_txt_line

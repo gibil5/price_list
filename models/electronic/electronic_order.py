@@ -8,7 +8,9 @@
 from __future__ import print_function  # Only needed for Python 2
 import io
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.containers import lib_exp
+
+#from openerp.addons.openhealth.models.containers import lib_exp
+
 from . import pl_lib_exp
 
 

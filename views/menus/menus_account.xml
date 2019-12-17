@@ -54,8 +54,8 @@
 
 <!-- Electronic -->
 
-        <!-- Electronic -->
 
+        <!-- Electronic -->
         <menuitem   id="account_electronic_menu"
                     parent="pl_main_account_menu"
                     
@@ -76,6 +76,23 @@
                     
                     action="electronic_container_list_action"
             />
+
+
+
+        <!-- TXT --> 
+        <menuitem   id="account_containter_month_menu"
+
+                    name="Generar TXT - Mensual"
+
+                    parent="account_electronic_menu"
+                    
+                    sequence="3"
+                    
+                    action="electronic_container_month_list_action"
+            />
+
+
+
 
 
 
