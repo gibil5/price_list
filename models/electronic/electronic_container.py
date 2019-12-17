@@ -5,7 +5,7 @@
 	Separate Structure and Business Logic
 
 	Created: 				30 Sep 2018
-	Last mod: 				13 Dec 2019
+	Last mod: 				16 Dec 2019
 """
 from __future__ import print_function
 import base64
@@ -158,10 +158,11 @@ class ElectronicContainer(models.Model):
 			# Instantiate Txt Line
 			#txt_line = TxtLine()
 
-			name = order.name			
+			#name = order.name			
 
 			txt_line = self.txt_line.create({
-												'name': name,
+												#'name': name,
+												'name': self.name,
 
 												'path': path,
 
@@ -187,6 +188,13 @@ class ElectronicContainer(models.Model):
 			# Create File
 			txt_line.create_file()
 
+
+
+		# For Django
+		#self.date_test = datetime.datetime.now() 
+		return 1
+
+	# create_txt_line
 
 
 
@@ -224,6 +232,10 @@ class ElectronicContainer(models.Model):
 
 		# Create Electronic
 		self.amount_total, self.receipt_count, self.invoice_count = self.update_electronic()
+
+
+
+		return 1	# For Django
 
 	# create_electronic
 
