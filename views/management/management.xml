@@ -34,7 +34,6 @@
 								type="object" 
 								class="oe_highlight"
 								name="update_patients"
-								groups="openhealth.roots"
 								
 								string="Analisis Paciente"
 						/>
