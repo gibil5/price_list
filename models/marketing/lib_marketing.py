@@ -21,8 +21,8 @@ def build_origin(self):
 	"""
 	Build Origin - For Marketing
 	"""
-	print()
-	print('X - Build Origin')
+	#print()
+	#print('X - Build Origin')
 
 	# Clean
 	self.origin_line.unlink()

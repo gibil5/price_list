@@ -100,8 +100,8 @@ class PatientLine(models.Model):
 	# Update fields Vip
 	@api.multi
 	def update_fields_vip(self):  
-		print()
-		print('X - Update fields - Vip')
+		#print()
+		#print('X - Update fields - Vip')
 
 
 		# Nr Lines Vip 

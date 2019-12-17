@@ -90,8 +90,8 @@ def update_vip_sales(self):
 	"""
 	Update Vip Sales
 	"""
-	print()
-	print('X - Vip Sales')
+	#print()
+	#print('X - Vip Sales')
 
 	# Patient Lines 
 	for pl in self.patient_line: 
@@ -173,8 +173,8 @@ def create_sale_lines(self):
 	"""
 	Create Sale Lines
 	"""
-	print()
-	print('X - Create Sale Lines')
+	#print()
+	#print('X - Create Sale Lines')
 
 
 	# Clean
@@ -255,8 +255,8 @@ def analyse_patient_lines(self):
 	"""
 	Analyse patient Lines
 	"""
-	print()
-	print('X - Analysis patient Lines')
+	#print()
+	#print('X - Analysis patient Lines')
 
 	# Benchmark
 	t0 = timer()
@@ -330,8 +330,8 @@ def analyse_sale_lines(self):
 	"""
 	Analyse Sale Lines
 	"""
-	print()
-	print('X - Analysis Sale Lines')
+	#print()
+	#print('X - Analysis Sale Lines')
 
 	# Benchmark
 	t0 = timer()

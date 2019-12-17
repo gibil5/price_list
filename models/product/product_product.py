@@ -29,8 +29,8 @@ class ProductProduct(models.Model):
 		Used by: 
 			Marketing
 		"""
-		print()
-		print('Product - Get for Mkt')
+		#print()
+		#print('Product - Get for Mkt')
 
 
 		# Init

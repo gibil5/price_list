@@ -57,6 +57,9 @@ class Origin(models.Model):
 					'other': 'Otros',
 					'recommendation': 'Recomendación',
 
+
+					'press': 'Prensa escrita',
+					'radio': 'Radio',
 		}
 
 		#print(_dic[name]
@@ -80,6 +83,8 @@ class Origin(models.Model):
 
 		# Origin
 
+		
+		# Tv
 		#if line.origin == 'tv_two': 
 		if line.origin == self.tv_two_str: 
 			self.tv_two = self.tv_two + 1
@@ -94,6 +99,7 @@ class Origin(models.Model):
 
 
 
+		# Social networks
 		elif line.origin == 'sn_facebook': 
 			self.sn_facebook = self.sn_facebook + 1
 
@@ -107,7 +113,7 @@ class Origin(models.Model):
 			self.sn_twitter = self.sn_twitter + 1
 
 
-
+		# Web page
 		elif line.origin == 'web_page': 
 			self.web_page = self.web_page + 1
 
@@ -120,6 +126,17 @@ class Origin(models.Model):
 		# Other
 		elif line.origin == 'other': 
 			self.other = self.other + 1
+
+
+
+		# Press
+		elif line.origin == 'press': 
+			self.press = self.press + 1
+
+		# Other
+		elif line.origin == 'radio': 
+			self.radio = self.radio + 1
+
 
 		else:
 			print('This Should not happen !')
@@ -202,5 +219,22 @@ class Origin(models.Model):
 			default=0,
 			string='Otros',
 		)
+
+
+
+
+# Tacna
+	press = fields.Integer(
+			default=0,
+			string='Prensa escrita',
+		)
+
+	radio = fields.Integer(
+			default=0,
+			string='Radio',
+		)
+
+
+
 
 

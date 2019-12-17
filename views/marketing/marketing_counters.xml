@@ -296,6 +296,17 @@
 						</group>
 
 
+						<!-- Tacna -->
+						<group  string="Tacna"  col="2">
+							<group>
+							</group>
+							<group>
+								<field name="press"/>
+								<field name="radio"/>
+							</group>
+						</group>
+
+
 						<!-- Notebook -->
 						<notebook></notebook>
 					</sheet>
