@@ -74,7 +74,7 @@ class Closing(models.Model):
 
 
 		# Proof Totals
-		#jx clos_funcs.set_proof_totals(self)
+		clos_funcs.set_proof_totals(self)
 
 
 
@@ -99,7 +99,7 @@ class Closing(models.Model):
 
 
 # All Totals
-		#jx clos_funcs.set_totals(self)
+		clos_funcs.set_totals(self)
 
 
 

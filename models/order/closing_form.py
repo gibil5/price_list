@@ -20,10 +20,10 @@ class ClosingForm(models.Model):
 
 
 
-# ----------------------------------------------------------- Set Form Total ----------------------------
+# ----------------------------------------------------------- Analyse ----------------------------
 	def analyse(self):
 		"""
-		Analyses - Forms of payment
+		Analyse - Forms of payment - Build Totals
 		"""
 		print()
 		print('CF - Analyse')
