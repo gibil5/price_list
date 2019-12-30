@@ -20,6 +20,11 @@
 			<field name="arch" type="xml">
 
 
+				<xpath expr="//field[@name='year']" position="after">
+					<field name="closing_form"	groups='openhealth.roots'/>
+				</xpath>
+
+
 				<xpath expr="//field[@name='total_cards']" position="after">
 					<field name="total_banks"/>
 				</xpath>
@@ -32,14 +37,8 @@
 					<field name="bcp_tot"/>
 				</xpath>
 
-
-
 			</field>
 		</record>
-
-
-
-
 
 	</data>
 </openerp>

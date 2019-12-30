@@ -7,32 +7,35 @@
 """
 from __future__ import print_function
 import datetime
-from openerp.addons.openhealth.models.order import clos_funcs
+
+#from openerp.addons.openhealth.models.order import clos_funcs
+#from . import clos_funcs
+
+from . import lib
 
 
 
 # ----------------------------------------------------------- Set Form Total ----------------------------
-
 def pl_set_form_totals(self):
 	"""
-	Object oriented. 
-	User of services.
+	Get Form Totals - Formas de Pago
 	"""
 	print()
-	print('Pl - Set By Form')
+	print('2019 - Get Form Totals')
+
 
 	# Get Orders
 	x_type = 'all'
 
 	#orders, count = clos_funcs.get_orders(self, self.date, x_type)
 
+
 	state = 'credit_note'
 	#orders, count = clos_funcs.get_orders_by_state(self, self.date, state)
-	orders, count = clos_funcs.get_orders_by_state_all(self, self.date)  		# Only used by Closings
+	orders, count = lib.get_orders_by_state_all(self, self.date)  		# Only used by Closings
+	#print(orders)
+	#print(count)
 
-
-	print(orders)
-	print(count)
 
 
 	# Init
@@ -53,7 +56,7 @@ def pl_set_form_totals(self):
 	# Loop
 	for order in orders:
 
-		print(order.state)
+		#print(order.state)
 
 
 		if order.state == 'credit_note':
@@ -68,8 +71,8 @@ def pl_set_form_totals(self):
 		#for pm_line in order.x_payment_method.pm_line_ids:
 		for pm_line in payment_method.pm_line_ids:
 
-			print('mark')
-			print(pm_line.method)
+			#print('mark')
+			#print(pm_line.method)
 
 
 			subtotal = pm_line.subtotal * coeff
@@ -127,20 +130,21 @@ def pl_set_form_totals(self):
 
 	# Form
 	self.cash_tot = cash_tot
-
-	#self.cash_tot = cash_tot - self.crn_tot
-
 	self.ame_tot = ame_tot
 	self.din_tot = din_tot
+
 	self.mac_tot = mac_tot
 	self.mad_tot = mad_tot
 	self.vic_tot = vic_tot
-	self.vid_tot = vid_tot
 
+	self.vid_tot = vid_tot
 	self.bbva_tot = bbva_tot
 	self.interbank_tot = interbank_tot
+
 	self.scotiabank_tot = scotiabank_tot
 	self.bcp_tot = bcp_tot
 
-# set_form_totals
+	#return cash_tot, ame_tot, din_tot, 	mac_tot, mad_tot, vic_tot, 		vid_tot, bbva_tot, interbank_tot
+
+# get_form_totals
 
