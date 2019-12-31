@@ -38,6 +38,19 @@
 
 
 						<!-- Name -->
+						<group  string='Totales' col="2">
+							<group>
+								<field name="total"/>
+							</group>
+							<group>
+								<field name="total_cash"/>
+								<field name="total_cards"/>
+								<field name="total_banks"/>
+							</group>
+						</group>
+
+
+						<!-- Name -->
 						<group  string='Efectivo' col="2">
 							<group>
 								<field name="cash"/>

@@ -31,6 +31,7 @@ class Closing(models.Model):
 	# Closing Form
 	closing_form = fields.Many2one(
 			'openhealth.closing.form', 
+			string='Forma de Pago',
 		)
 
 
@@ -89,7 +90,7 @@ class Closing(models.Model):
 
 		# Create Closing Form
 		self.closing_form = self.env["openhealth.closing.form"].create({
-																			'name': 'Closing Form',
+																			'name': 'Forma de Pago',
 																			'date': self.date,
 																	})
 		# Analise

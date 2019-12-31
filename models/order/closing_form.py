@@ -178,7 +178,9 @@ class ClosingForm(models.Model):
 # ----------------------------------------------------------- Fields -----------------------
 
 
-	name = fields.Char()
+	name = fields.Char(
+			'Nombre',
+		)
 
 
 	date = fields.Date(
@@ -192,9 +194,15 @@ class ClosingForm(models.Model):
 
 	# Totals
 	total = fields.Float()
-	total_cash = fields.Float()
-	total_cards = fields.Float()
-	total_banks = fields.Float()
+	total_cash = fields.Float(
+			'Total Cash',
+		)
+	total_cards = fields.Float(
+			'Total Tarjetas',
+		)
+	total_banks = fields.Float(
+			'Total Bancos',
+		)
 
 
 
@@ -207,13 +215,21 @@ class ClosingForm(models.Model):
 
 	diners = fields.Float()
 
-	master_credit = fields.Float()
+	master_credit = fields.Float(
+			'Master Credito',
+		)
 
-	master_debit = fields.Float()
+	master_debit = fields.Float(
+			'Master Debito',
+		)
 	
-	visa_credit = fields.Float()
+	visa_credit = fields.Float(
+			'Visa Credito',
+		)
 	
-	visa_debit = fields.Float()
+	visa_debit = fields.Float(
+			'Visa Debito',
+		)
 	
 
 
