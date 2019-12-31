@@ -1,5 +1,76 @@
 # 30 Dec 2019
 
+
+
+	# Closing Proof
+	#closing_proof = fields.Many2one(
+	#		'openhealth.closing.proof', 
+	#	)
+
+
+
+# ----------------------------------------------------------- Set Totals ---------------------------
+
+	def set_sub_totals(self):
+		"""
+		Set Sub Totals
+		"""
+		print()
+		print('2019 - Set Sub totals')
+
+		
+		# Totals - Form
+		self.total_form = self.cash_tot + self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot + \
+							self.bbva_tot + self.interbank_tot + self.scotiabank_tot + self.bcp_tot
+
+		self.total_form_wblack = self.total_proof_wblack
+		self.cash_tot_wblack = self.cash_tot - (self.total_form - self.total_form_wblack)
+
+
+
+		# Subtotals
+		self.total_cash = self.cash_tot
+
+		self.total_cards = self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot
+
+		self.total_banks = self.bbva_tot + self.interbank_tot + self.scotiabank_tot + self.bcp_tot
+
+	# set_sub_totals
+
+
+
+
+
+
+
+		#if True:
+		if False:
+
+			# Create Closing Proof
+			self.closing_proof = self.env["openhealth.closing.proof"].create({
+																				'name': 'Closing Proof',
+																				'date': self.date,
+																		})
+			# Analise
+			self.closing_proof.analyse()
+
+
+
+			# Get Totals
+			self.rec_tot, self.serial_nr_first_rec, self.serial_nr_last__rec, \
+				self.inv_tot, self.serial_nr_first_inv, self.serial_nr_last_inv, \
+				self.tkr_tot, self.serial_nr_first_tkr, self.serial_nr_last_tkr, \
+				self.tki_tot, self.serial_nr_first_tki, self.serial_nr_last_tki, \
+				self.adv_tot, self.serial_nr_first_adv, self.serial_nr_last_adv, \
+				self.san_tot, self.serial_nr_first_san, self.serial_nr_last_san, \
+				self.crn_tot, self.serial_nr_first_crn, self.serial_nr_last_crn = self.closing_proof.get_totals()
+
+			print('mark 4')
+			print(self.serial_nr_first_crn)
+			print(self.serial_nr_last_crn)
+
+
+
 	def update_totals(self):
 		#pl_clos_funcs.pl_set_form_totals(self)
 

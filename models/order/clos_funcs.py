@@ -18,35 +18,39 @@ def set_proof_totals(self):
 	"""
 	Set Proof Totals - Documentos de Pago
 	"""
-	print()
-	print('2019 - Set Proof Totals')
+	#print()
+	#print('2019 - Set Proof Totals')
 
 
 	# Receipt
-	self.x_type = 'receipt'
-	self.rec_tot, self.serial_nr_first_rec, self.serial_nr_last_rec = lib.get_gen_totals(self)
+	x_type = 'receipt'
+	#self.rec_tot, self.serial_nr_first_rec, self.serial_nr_last_rec = lib.get_gen_totals(self)
+	self.rec_tot, self.serial_nr_first_rec, self.serial_nr_last_rec = lib.get_gen_totals(self, self.date, x_type)
 
 	# Invoice
-	self.x_type = 'invoice'
-	self.inv_tot, self.serial_nr_first_inv, self.serial_nr_last_inv = lib.get_gen_totals(self)
+	x_type = 'invoice'
+	#self.inv_tot, self.serial_nr_first_inv, self.serial_nr_last_inv = lib.get_gen_totals(self)
+	self.inv_tot, self.serial_nr_first_inv, self.serial_nr_last_inv = lib.get_gen_totals(self, self.date, x_type)
 
 	# Ticket Receipt
-	self.x_type = 'ticket_receipt'
-	self.tkr_tot, self.serial_nr_first_tkr, self.serial_nr_last_tkr = lib.get_gen_totals(self)
+	x_type = 'ticket_receipt'
+	#self.tkr_tot, self.serial_nr_first_tkr, self.serial_nr_last_tkr = lib.get_gen_totals(self)
+	self.tkr_tot, self.serial_nr_first_tkr, self.serial_nr_last_tkr = lib.get_gen_totals(self, self.date, x_type)
 
 	# Ticket Invoices
-	self.x_type = 'ticket_invoice'
-	self.tki_tot, self.serial_nr_first_tki, self.serial_nr_last_tki = lib.get_gen_totals(self)
+	x_type = 'ticket_invoice'
+	#self.tki_tot, self.serial_nr_first_tki, self.serial_nr_last_tki = lib.get_gen_totals(self)
+	self.tki_tot, self.serial_nr_first_tki, self.serial_nr_last_tki = lib.get_gen_totals(self, self.date, x_type)
 
 	# Advertisement
-	self.x_type = 'advertisement'
-	self.adv_tot, self.serial_nr_first_adv, self.serial_nr_last_adv = lib.get_gen_totals(self)
+	x_type = 'advertisement'
+	#self.adv_tot, self.serial_nr_first_adv, self.serial_nr_last_adv = lib.get_gen_totals(self)
+	self.adv_tot, self.serial_nr_first_adv, self.serial_nr_last_adv = lib.get_gen_totals(self, self.date, x_type)
 
 	# Sale Notes
-	self.x_type = 'sale_note'
-	self.san_tot, self.serial_nr_first_san, self.serial_nr_last_san = lib.get_gen_totals(self)
-
-
+	x_type = 'sale_note'
+	#self.san_tot, self.serial_nr_first_san, self.serial_nr_last_san = lib.get_gen_totals(self)
+	self.san_tot, self.serial_nr_first_san, self.serial_nr_last_san = lib.get_gen_totals(self, self.date, x_type)
 
 
 	# Credit Notes
@@ -61,7 +65,6 @@ def set_proof_totals(self):
 
 	# Loop
 	for order in orders:
-		#total = total + order.x_amount_flow
 		total = total + order.x_credit_note_amount
 
 
@@ -83,33 +86,4 @@ def set_proof_totals(self):
 
 
 
-# ----------------------------------------------------------- Set Totals ---------------------------
-
-def set_totals(self):
-	"""
-	Set All Totals
-	"""
-	print()
-	print('2019 - Set All')
-
-
-	# Get Orders
-	x_type = 'all'
-	orders, count = lib.get_orders(self, self.date, x_type)
-
-	# Init
-	amount_untaxed = 0
-	count = 0
-
-	# Loop
-	for order in orders:
-		amount_untaxed = amount_untaxed + order.amount_untaxed
-		count = count + 1
-
-
-	# Total
-	#self.total = amount_untaxed
-	self.total = amount_untaxed - self.crn_tot
-
-# set_totals
 

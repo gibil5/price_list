@@ -166,17 +166,20 @@ def get_orders_by_state(self, date, state):
 
 
 # ----------------------------------------------------------- Get Gen Totals Proof ---------------------------
-def get_gen_totals(self):
+#def get_gen_totals(self):
+def get_gen_totals(self, date, x_type):
 	"""
-	Abstract, General purpose.
-	Gives service to other methods.
-	Provider of services.
+	For an order type. 
+	Returns total and serial numbers
 	"""
 	#print()
 	#print('Get Generic Totals')
 
+
 	# Get
-	orders, count = get_orders(self, self.date, self.x_type)
+	#orders, count = get_orders(self, self.date, self.x_type)
+	orders, count = get_orders(self, date, x_type)
+
 
 	# Init
 	total = 0

@@ -55,7 +55,7 @@ class ClosingForm(models.Model):
 		# Loop
 		for order in orders:
 
-			print(order.state)
+			#print(order.state)
 
 
 			# Conditional
@@ -121,23 +121,29 @@ class ClosingForm(models.Model):
 
 		# Form
 		self.cash = cash_tot
+
 		self.american = ame_tot
 		self.diners = din_tot
-
 		self.master_credit = mac_tot
 		self.master_debit = mad_tot
 		self.visa_credit = vic_tot
-
 		self.visa_debit = vid_tot
+
+
 		self.bbva = bbva_tot
 		self.interbank = interbank_tot
-
 		self.scotia = scotiabank_tot
 		self.bcp = bcp_tot
 
-		#return cash_tot, ame_tot, din_tot, 	mac_tot, mad_tot, vic_tot, 		vid_tot, bbva_tot, interbank_tot, 	scotia, bcp
 
-		#return cash, american, diners, 	master_credit, master_debit, visa_credit, 		visa_debit, bbva, interbank, 	scotia, bcp
+		# Totals
+		self.total_cash = self.cash
+
+		self.total_cards = self.american + self.diners + self.master_credit + self.master_debit + self.visa_credit + self.visa_debit 
+
+		self.total_banks = self.bbva + self.interbank + self.scotia + self.bcp 
+
+		self.total = self.total_cash + self.total_cards + self.total_banks
 
 	# analyse
 
@@ -149,14 +155,29 @@ class ClosingForm(models.Model):
 		"""
 		Get Totals
 		"""
-		print()
-		print('CF - Get Totals')
+		#print()
+		#print('CF - Get Totals')
+
+		return self.total, self.total_cash, self.total_cards, self.total_banks
+
+
+
+
+# ----------------------------------------------------------- Get Sub Totals -----------------------
+	def get_sub_totals(self):
+		"""
+		Get Totals
+		"""
+		#print()
+		#print('CF - Get Totals')
 
 		return self.cash, self.american, self.diners, self.master_credit, self.master_debit, self.visa_credit, self.visa_debit, self.bbva, self.interbank, 	self.scotia, self.bcp
 
 
 
 # ----------------------------------------------------------- Fields -----------------------
+
+
 	name = fields.Char()
 
 
@@ -170,7 +191,17 @@ class ClosingForm(models.Model):
 
 
 	# Totals
+	total = fields.Float()
+	total_cash = fields.Float()
+	total_cards = fields.Float()
+	total_banks = fields.Float()
+
+
+
+
+	# Sub Totals
 	cash = fields.Float()
+
 
 	american = fields.Float()
 
@@ -184,13 +215,15 @@ class ClosingForm(models.Model):
 	
 	visa_debit = fields.Float()
 	
+
+
 	bbva = fields.Float()
 	
 	interbank = fields.Float()
 	
 	scotia = fields.Float()
 
-	bcp_tot = fields.Float()
+	bcp = fields.Float()
 
 
 

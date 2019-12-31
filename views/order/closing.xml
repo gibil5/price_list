@@ -22,6 +22,9 @@
 
 				<xpath expr="//field[@name='year']" position="after">
 					<field name="closing_form"	groups='openhealth.roots'/>
+<!--
+					<field name="closing_proof"	groups='openhealth.roots'/>
+-->
 				</xpath>
 
 

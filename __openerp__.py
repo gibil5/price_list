@@ -85,6 +85,10 @@
 		'views/order/order_line.xml',                      # Min
 		'views/order/order_line_actions.xml',              # MIn
 		#'views/order/order.xml',                           # Min
+
+
+		'views/order/closing_form.xml',                         # Min
+
 		'views/order/closing.xml',                         # Min
 		'views/order/report_order_line.xml',               # Min
 
