@@ -51,7 +51,7 @@ class DistrictLine(models.Model):
 
 		print()
 
-		for key in cls.district_sector:
+		for key in cls.sector_dic:
 			name = cls.get_district_sector(key)
 			if cls._debug:
 				print(key, name)
@@ -90,7 +90,16 @@ class DistrictLine(models.Model):
 			#unaccented_string = unidecode.unidecode(accented_string)		
 			name = unidecode.unidecode(name)
 		
-		return cls.district_sector[name]
+
+		# District Sector
+		if name in cls.sector_dic:
+			district_sector = cls.sector_dic[name]
+		else:
+			district_sector = 'No aplica'
+
+		return district_sector
+
+
 
 
 	@classmethod
@@ -107,7 +116,15 @@ class DistrictLine(models.Model):
 			name = name.replace("ñ", "nh")
 			name = unidecode.unidecode(name)
 		
-		return cls.zip_dic[name]
+
+
+		# zip code
+		if name in cls.zip_dic:
+			zip_code = cls.zip_dic[name]
+		else:
+			zip_code = 'No aplica'
+
+		return zip_code
 
 
 
@@ -117,7 +134,8 @@ class DistrictLine(models.Model):
 # ----------------------------------------------------------- Class Vars -----------------------
 
 	#_h_sector =  {
-	district_sector =  {
+	#district_sector =  {
+	sector_dic =  {
 				False: 		'x',
 
 				'Santiago De Surco':	'Lima Tradicional',
