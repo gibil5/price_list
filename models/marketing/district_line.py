@@ -122,7 +122,7 @@ class DistrictLine(models.Model):
 		if name in cls.zip_dic:
 			zip_code = cls.zip_dic[name]
 		else:
-			zip_code = 'No aplica'
+			zip_code = 0
 
 		return zip_code
 
