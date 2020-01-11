@@ -5,6 +5,8 @@ Rutter
 Git
 -----
 
+git add .
+
 git commit -a -m 'Initialize new branch'  
 
 git commit -a -m 'Test'  
