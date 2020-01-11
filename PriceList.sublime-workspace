@@ -523,7 +523,7 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 5580,
+				"buffer_size": 5581,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -532,7 +532,7 @@
 			"file": "x_readme.txt",
 			"settings":
 			{
-				"buffer_size": 63,
+				"buffer_size": 68,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -558,7 +558,7 @@
 			"file": "models/marketing/district_line.py",
 			"settings":
 			{
-				"buffer_size": 5024,
+				"buffer_size": 5014,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -724,6 +724,7 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/x_readme.txt",
 		"/Users/gibil/cellar/github/price_list/models/order/closing.py",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.BUFF.csv",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.csv",
@@ -739,7 +740,6 @@
 		"/Users/gibil/cellar/github/price_list/models/order/closing_proof.py",
 		"/Users/gibil/cellar/github/price_list/models/order/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/order/lib.DEP.py",
-		"/Users/gibil/cellar/github/price_list/x_readme.txt",
 		"/Users/gibil/cellar/github/price_list/models/order/lib.py",
 		"/Users/gibil/cellar/github/price_list/models/order/form.py",
 		"/Users/gibil/cellar/github/price_list/models/order/order.py",
@@ -1151,15 +1151,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5580,
+						"buffer_size": 5581,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								198,
-								198
+								171,
+								171
 							]
 						],
 						"settings":
@@ -1181,15 +1181,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 63,
+						"buffer_size": 68,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								63,
-								63
+								68,
+								68
 							]
 						],
 						"settings":
@@ -1245,8 +1245,8 @@
 						"selection":
 						[
 							[
-								122,
-								122
+								2648,
+								2648
 							]
 						],
 						"settings":
@@ -1255,7 +1255,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1463.0,
+						"translation.y": 2042.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -1267,15 +1267,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5024,
+						"buffer_size": 5014,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								822,
-								822
+								2219,
+								2219
 							]
 						],
 						"settings":
@@ -1284,7 +1284,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1533.0,
+						"translation.y": 1737.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -1811,7 +1811,7 @@
 		[
 			[
 				"",
-				"~/rails/gob.pe/libroderec/issue_35/libro_de_reclamaciones/Libro_issue_35.sublime-project"
+				"~/cellar/github/openhealth/OpenHealth-MIN.sublime-project"
 			],
 			[
 				"\t",
