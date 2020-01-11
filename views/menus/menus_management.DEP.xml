@@ -2,6 +2,71 @@
 <openerp>
 	<data>
 
+
+<!-- Macros 2019 -->
+        <!-- Family -->
+        <!-- subfamily -->
+<!--
+        <menuitem   id="management_macros_2019_menu" 
+                    
+                    name="Macros 2019"
+                    
+                    parent="main_management_menu"
+
+                    sequence="3"
+                />
+        
+        <menuitem   id="management_family_2019_menu" 
+
+                    name="Familias" 
+            
+                    parent="management_macros_2019_menu"
+            
+                    sequence="1"
+            
+                    action="management_list_mgt_2019_families_action"
+                />
+
+
+        <menuitem   id="management_subfamily_2019_menu" 
+
+                    name="Sub Familias" 
+            
+                    parent="management_macros_2019_menu"
+            
+                    sequence="3"
+            
+                    action="management_list_mgt_2019_subfamilies_action"
+                />
+-->
+
+
+<!-- Macros 2018 -->
+        <!-- Month 2018 -->
+<!--
+        <menuitem   id="management_macros_2018_menu" 
+                    
+                    name="Macros 2018"
+                    
+                    parent="main_management_menu"
+
+                    sequence="5"
+                />
+        
+        <menuitem   id="management_family_2018_menu" 
+
+                    name="Familias" 
+            
+                    parent="management_macros_2018_menu"
+            
+                    sequence="1"
+            
+                    action="management_list_mgt_2018_families_action"
+                />
+-->
+
+
+
 <!--
                     action="openhealth.management_list_mgt_all_action"
 -->

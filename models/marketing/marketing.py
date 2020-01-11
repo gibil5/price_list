@@ -439,9 +439,7 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Natives -----------------------------
 	
 	mode = fields.Selection(
-
 			selection=mkt_vars._mode_list,
-
 			default='normal',
 			required=True,
 		)
@@ -462,26 +460,21 @@ class Marketing(models.Model):
 
 	# Alt
 	sale_line_sale_count = fields.Integer(
-			#'Nr Ventas Alt',
 			'Nr Ventas',
 		)
 	sale_line_consultation_count = fields.Integer(
-			#'Nr Consultas Alt',
 			'Nr Consultas',
 		)
 
 	sale_line_procedure_count = fields.Integer(
-			#'Nr Procedimientos Alt',
 			'Nr Procedimientos',
 		)
 
 	sale_line_product_count = fields.Integer(
-			#'Nr Productos Alt',
 			'Nr Productos',
 		)
 
 	sale_line_budget_count = fields.Integer(
-			#'Nr Presupuestos Alt',
 			'Nr Presupuestos',
 		)
 
@@ -535,9 +528,7 @@ class Marketing(models.Model):
 
 
 	# Sales
-	#sale_line_tkr = fields.One2many(
 	sale_line = fields.One2many(
-			#'openhealth.marketing.order.line',
 			'price_list.marketing.order_line',
 			'marketing_id',
 		)
@@ -547,21 +538,15 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Natives ----------------------
 
 	year = fields.Selection(
-
-			selection=mkt_vars._year_order_list,
-
+			selection=mkt_vars._year_list,
 			string='Año',
 			required=True,
-
-			default='2019',
+			default='2020',
 		)
 
 	month = fields.Selection(
-
 			selection=mkt_vars._month_order_list,
-
 			string='Mes',
-			#required=True,
 		)
 
 	owner = fields.Selection(
@@ -571,7 +556,6 @@ class Marketing(models.Model):
 				('year', 'Year'),
 			],
 			required=True,
-
 			default='month',
 		)
 
@@ -585,8 +569,6 @@ class Marketing(models.Model):
 		)
 
 	age_sum = fields.Float(
-			#'Edad Promedio',
-			#readonly=True,
 			digits=(12, 3),
 		)
 
@@ -595,39 +577,30 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Sex  ----------------------------------
 
 	# Sex
-	#sex_male = fields.Float(
 	sex_male = fields.Integer(
-			#'Sexo M',
 			'Masculino',
 			readonly=True,
 		)
 
-	#sex_female = fields.Float(
 	sex_female = fields.Integer(
-			#'Sexo F',
 			'Femenino',
 			readonly=True,
 		)
 
-	#sex_undefined = fields.Float(
 	sex_undefined = fields.Integer(
-			#'Sexo Error',
 			'Error',
 			readonly=True,
 		)
 
 
-
 	# Sex
 	sex_male_per = fields.Float(
-			#'M %',
 			'Masculino %',
 			readonly=True,
 			digits=(12, 3),
 		)
 
 	sex_female_per = fields.Float(
-			#'F %',
 			'Femenino %',
 			readonly=True,
 			digits=(12, 3),
@@ -725,25 +698,21 @@ class Marketing(models.Model):
 	how_facebook = fields.Integer(
 			'Facebook',
 			readonly=True,
-			#digits=(12, 3),
 		)
 
 	how_instagram = fields.Integer(
 			'Instagram',
 			readonly=True,
-			#digits=(12, 3),
 		)
 
 	how_callcenter = fields.Integer(
 			'Call center',
 			readonly=True,
-			#digits=(12, 3),
 		)
 
 	how_old_patient = fields.Integer(
 			'Paciente Antiguo',
 			readonly=True,
-			#digits=(12, 3),
 		)
 
 
@@ -770,7 +739,6 @@ class Marketing(models.Model):
 		)
 
 	how_old_patient_per = fields.Float(
-			#'Old_patient %',
 			'Paciente Antiguo %',
 			readonly=True,
 			digits=(12, 3),

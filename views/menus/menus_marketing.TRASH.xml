@@ -1,4 +1,73 @@
 
+        <!-- Marketing Patients 2019 -->
+        <menuitem   id="marketing_patient_2019_week_menu"
+                    name="Semanal 2019" 
+                    parent="marketing_year_menu"
+                    sequence="0"
+                    action="marketing_patient_2019_week_list_action"
+            />
+
+
+
+        <!-- Patients All -->
+        <menuitem   id="marketing_patient_all_month_menu"
+                    name="Mensual Todos" 
+                    parent="marketing_menu"
+
+                    sequence="11"
+
+                    action="marketing_patient_all_month_list_action"
+            />
+
+
+
+
+
+        <!-- Marketing -->
+        <!-- Marketing Patients -->
+<!--
+        <menuitem   id="marketing_menu" 
+                    name="Marketing"
+                    parent="main_marketing_menu"/>
+
+
+        <menuitem   id="marketing_patient_menu" 
+                    
+                    name="Pacientes Nuevos" 
+                    
+                    parent="marketing_menu"
+                    sequence="1"
+                    action="marketing_patient_list_action"/>
+-->
+
+
+
+
+
+        <!-- Marketing Order Lines -->
+        <!-- Marketing recom Lines -->
+<!--
+        <menuitem   id="marketing_order_lines_menu"
+                    name="Marketing Order Lines" 
+                    parent="marketing_menu"
+                    sequence="2"
+                    action="marketing_order_line_form_action"
+                    />
+
+        <menuitem   id="marketing_recom_lines_menu" 
+                    name="Marketing Reco Lines" 
+                    parent="marketing_menu"
+                    sequence="3"
+                    action="marketing_recom_line_form_action"
+                    />
+-->
+
+
+
+
+
+
+
 <!-- Marketing -->
 		<!--
 		<menuitem id="main_marketing_menu" 

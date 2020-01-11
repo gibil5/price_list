@@ -529,10 +529,37 @@
 			}
 		},
 		{
-			"file": "x_readme.txt",
+			"file": "views/menus/menus_marketing.xml",
 			"settings":
 			{
-				"buffer_size": 68,
+				"buffer_size": 2578,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/marketing/marketing_actions.xml",
+			"settings":
+			{
+				"buffer_size": 4146,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/marketing/marketing_actions.DEP.xml",
+			"settings":
+			{
+				"buffer_size": 4729,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/menus/menus_marketing.TRASH.xml",
+			"settings":
+			{
+				"buffer_size": 2615,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -541,111 +568,43 @@
 			"file": "models/marketing/marketing.py",
 			"settings":
 			{
-				"buffer_size": 17716,
+				"buffer_size": 17186,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/marketing/lib_marketing.py",
+			"file": "models/marketing/mkt_vars.py",
 			"settings":
 			{
-				"buffer_size": 5503,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/marketing/district_line.py",
-			"settings":
-			{
-				"buffer_size": 5014,
+				"buffer_size": 674,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/order/closing_form.py",
+			"file": "models/management/management.py",
 			"settings":
 			{
-				"buffer_size": 4380,
+				"buffer_size": 31485,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/order/closing_form.xml",
+			"file": "views/menus/menus_management.xml",
 			"settings":
 			{
-				"buffer_size": 1982,
+				"buffer_size": 2056,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/order/closing.xml",
+			"file": "views/management/management_actions.xml",
 			"settings":
 			{
-				"buffer_size": 1003,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/marketing/marketing_counters.xml",
-			"settings":
-			{
-				"buffer_size": 6262,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/marketing/place.xml",
-			"settings":
-			{
-				"buffer_size": 2498,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order/test_closing.py",
-			"settings":
-			{
-				"buffer_size": 2573,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order/order.py",
-			"settings":
-			{
-				"buffer_size": 8005,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/treatment/pl_creates.py",
-			"settings":
-			{
-				"buffer_size": 4388,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order/lib.py",
-			"settings":
-			{
-				"buffer_size": 4810,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order/test_closing.DEP.py",
-			"settings":
-			{
-				"buffer_size": 539,
+				"buffer_size": 5408,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -725,6 +684,21 @@
 	"file_history":
 	[
 		"/Users/gibil/cellar/github/price_list/x_readme.txt",
+		"/Users/gibil/cellar/github/price_list/models/marketing/lib_marketing.py",
+		"/Users/gibil/cellar/github/price_list/views/order/closing.xml",
+		"/Users/gibil/cellar/github/price_list/models/order/test_closing.DEP.py",
+		"/Users/gibil/cellar/github/price_list/models/order/lib.py",
+		"/Users/gibil/cellar/github/price_list/models/treatment/pl_creates.py",
+		"/Users/gibil/cellar/github/price_list/models/order/order.py",
+		"/Users/gibil/cellar/github/price_list/models/order/test_closing.py",
+		"/Users/gibil/cellar/github/price_list/views/marketing/place.xml",
+		"/Users/gibil/cellar/github/price_list/views/marketing/marketing_counters.xml",
+		"/Users/gibil/cellar/github/price_list/views/order/closing_form.xml",
+		"/Users/gibil/cellar/github/price_list/models/order/closing_form.py",
+		"/Users/gibil/cellar/github/price_list/models/marketing/district_line.py",
+		"/Users/gibil/cellar/github/price_list/models/management/management_order_line.DEP.py",
+		"/Users/gibil/cellar/github/price_list/views/menus/menus_management.DEP.xml",
+		"/Users/gibil/cellar/github/price_list/rutter.txt",
 		"/Users/gibil/cellar/github/price_list/models/order/closing.py",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.BUFF.csv",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.csv",
@@ -735,15 +709,11 @@
 		"/Users/gibil/cellar/github/price_list/models/treatment/treatment.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/marketing.py",
 		"/Users/gibil/cellar/github/price_list/models/order/pl_clos_funcs.py",
-		"/Users/gibil/cellar/github/price_list/views/order/closing.xml",
 		"/Users/gibil/cellar/github/price_list/models/treatment/test_treatment.py",
 		"/Users/gibil/cellar/github/price_list/models/order/closing_proof.py",
 		"/Users/gibil/cellar/github/price_list/models/order/__init__.py",
 		"/Users/gibil/cellar/github/price_list/models/order/lib.DEP.py",
-		"/Users/gibil/cellar/github/price_list/models/order/lib.py",
 		"/Users/gibil/cellar/github/price_list/models/order/form.py",
-		"/Users/gibil/cellar/github/price_list/models/order/order.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/district_line.py",
 		"/Users/gibil/cellar/github/price_list/models/electronic/electronic_container.py",
 		"/Users/gibil/cellar/github/price_list/models/electronic/lib_account_codes.py",
 		"/Users/gibil/cellar/github/price_list/models/electronic/pl_lib_exp.py",
@@ -753,12 +723,10 @@
 		"/Users/gibil/cellar/github/price_list/models/product/product_product.py",
 		"/Users/gibil/cellar/github/price_list/models/product/product.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/vip.py",
-		"/Users/gibil/cellar/github/price_list/models/marketing/lib_marketing.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/mkt_funcs.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/stax.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/patient_line.py",
 		"/Users/gibil/cellar/github/price_list/views/marketing/origin_line.xml",
-		"/Users/gibil/cellar/github/price_list/views/marketing/marketing_counters.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing_actions.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing.xml",
 		"/Users/gibil/cellar/github/price_list/views/electronic/electronic_container.DEP.xml",
@@ -784,7 +752,6 @@
 		"/Users/gibil/cellar/github/price_list/models/management/management.TRASH.py",
 		"/Users/gibil/cellar/github/price_list/views/management/mgt_patient_line.xml",
 		"/Users/gibil/cellar/github/price_list/readme.txt",
-		"/Users/gibil/cellar/github/price_list/views/menus/menus_management.DEP.xml",
 		"/Users/gibil/cellar/github/price_list/views/management/management_order_line.DEP.xml",
 		"/Users/gibil/cellar/github/price_list/views/management/management_doctor_line.xml",
 		"/Users/gibil/cellar/github/price_list/views/management/management_doctor_daily.xml",
@@ -830,7 +797,6 @@
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing_other_actions.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/patient_line.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/marketing.TRASH.xml",
-		"/Users/gibil/cellar/github/price_list/views/marketing/place.xml",
 		"/Users/gibil/cellar/github/price_list/views/marketing/histo.xml",
 		"/Users/gibil/cellar/github/price_list/models/marketing/stax.DEP.py",
 		"/Users/gibil/cellar/github/price_list/models/management/lib/mgt_funcs.DEP.py",
@@ -844,18 +810,11 @@
 		"/Users/gibil/cellar/github/price_list/models/patient/patient.doc",
 		"/Users/gibil/cellar/github/price_list/models/order/report_sale_product.py",
 		"/Users/gibil/cellar/github/price_list/models/django/__init__.py",
-		"/Users/gibil/cellar/github/price_list/models/django/interface.py",
-		"/Users/gibil/cellar/github/price_list/models/order/report_sale_product.DEP.py",
-		"/Users/gibil/cellar/github/price_list/views/menus/menus_marketing.xml",
-		"/Users/gibil/cellar/github/price_list/models/management/subfamily.py",
-		"/Users/gibil/cellar/github/price_list/models/electronic/account_contasis.py",
-		"/Users/gibil/cellar/github/price_list/models/management/stax.py",
-		"/Users/gibil/cellar/github/price_list/models/management/management_order_line.py",
-		"/Users/gibil/cellar/github/price_list/views/product/product_template_tree.xml"
+		"/Users/gibil/cellar/github/price_list/models/django/interface.py"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
@@ -869,6 +828,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"19",
+			"Patients ",
+			"Patients",
+			"19",
+			"week",
+			"todos",
+			"19",
+			"test",
+			"19",
+			"year",
+			"19",
 			"cls.district_sector",
 			"district_sector",
 			"\n\t\t",
@@ -985,25 +955,17 @@
 			"h_sector",
 			"day",
 			"productivity",
-			"origin",
-			"marketing",
-			"content",
-			"container_ref_id",
-			"container_id",
-			"contai",
-			"main_",
-			"delta",
-			"\"\n",
-			"accoun",
-			"electro",
-			"container"
+			"origin"
 		],
 		"highlight": false,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"20",
+			"",
+			"20",
 			"form",
 			"closing",
 			"order",
@@ -1128,10 +1090,7 @@
 			"",
 			"zone",
 			"pathology",
-			"zone",
-			"pathology",
-			"draft",
-			"sale"
+			"zone"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1177,163 +1136,49 @@
 				},
 				{
 					"buffer": 1,
-					"file": "x_readme.txt",
+					"file": "views/menus/menus_marketing.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 68,
+						"buffer_size": 2578,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								68,
-								68
+								942,
+								942
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "models/marketing/marketing.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17716,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "models/marketing/lib_marketing.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5503,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2648,
-								2648
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2042.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "models/marketing/district_line.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5014,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2219,
-								2219
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1737.0,
+						"translation.y": 308.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "models/order/closing_form.py",
+					"buffer": 2,
+					"file": "views/marketing/marketing_actions.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4380,
+						"buffer_size": 4146,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3837,
-								3837
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3346.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "views/order/closing_form.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1982,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								845,
-								845
+								2031,
+								2031
 							]
 						],
 						"settings":
@@ -1342,27 +1187,56 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 396.0,
+						"translation.y": 950.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "views/order/closing.xml",
+					"buffer": 3,
+					"file": "views/marketing/marketing_actions.DEP.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1003,
+						"buffer_size": 4729,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								172,
-								172
+								1085,
+								1607
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 417.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "views/menus/menus_marketing.TRASH.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2615,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								309,
+								309
 							]
 						],
 						"settings":
@@ -1374,29 +1248,58 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "views/marketing/marketing_counters.xml",
+					"buffer": 5,
+					"file": "models/marketing/marketing.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6262,
+						"buffer_size": 17186,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								6262
+								13786,
+								13786
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 13308.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "models/marketing/mkt_vars.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 674,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								242,
+								242
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -1407,20 +1310,49 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "views/marketing/place.xml",
+					"buffer": 7,
+					"file": "models/management/management.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2498,
+						"buffer_size": 31485,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								61,
-								61
+								25919,
+								25923
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "views/menus/menus_management.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2056,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								705,
+								705
 							]
 						],
 						"settings":
@@ -1433,152 +1365,36 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "models/order/test_closing.py",
+					"buffer": 9,
+					"file": "views/management/management_actions.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2573,
+						"buffer_size": 5408,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1036,
-								1036
+								530,
+								530
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
+							"syntax": "Packages/XML/XML.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1250.0,
+						"translation.y": 31.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "models/order/order.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8005,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								166,
-								166
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2163.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "models/treatment/pl_creates.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4388,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3694,
-								3694
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2682.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "models/order/lib.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4810,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								234,
-								234
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "models/order/test_closing.DEP.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 539,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								539,
-								539
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1635,7 +1451,7 @@
 	"project": "PriceList.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 66.0
 	},
 	"save_all_on_build": true,
 	"select_file":
