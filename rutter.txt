@@ -5,6 +5,18 @@ Rutter
 Git
 -----
 
+
+gitignore
+----------
+git rm -rf --cached .
+
+git add .
+
+
+
+
+Branches
+----------
 git add .
 
 git commit -a -m 'Initialize new branch'  
