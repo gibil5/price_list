@@ -5,15 +5,15 @@
 
 
 <!-- Management -->
-        <menuitem id="main_management_menu" 
+<menuitem id="main_management_menu" 
             sequence="1"
             name="Gerencia"            
-            groups="openhealth.roots,openhealth.managers,openhealth.directors"/>
-
+            groups="openhealth.roots,openhealth.managers,openhealth.directors"
+            />
 
 
 <!-- Ventas -->
-        <menuitem   id="management_menu" 
+    <menuitem   id="management_menu" 
                     name="Ventas"
                     parent="main_management_menu"
                     sequence="1"/>

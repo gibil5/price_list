@@ -9,19 +9,13 @@
 	Last up: 14 Dec 2019
 """
 
-_mode_list = [
-		('normal',	'normal'),
-		('legacy',	'legacy'),
-		('test',	'test'),
-]
-
 _year_list = [
 					('2020', 		'2020'),
 					('2019', 		'2019'),
 					('2018', 		'2018'),
 					('2017', 		'2017'),
 					('2016', 		'2016'),
-]
+			]
 
 _month_order_list = [
 					('01', 		'ENE'),
@@ -36,4 +30,10 @@ _month_order_list = [
 					('10', 		'OCT'),
 					('11', 		'NOV'),
 					('12', 		'DIC'),
-]
+			]
+
+_mode_list = [
+					('normal',	'normal'),
+					('legacy',	'legacy'),
+					('test',	'test'),
+			]

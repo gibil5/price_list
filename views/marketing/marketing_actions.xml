@@ -4,15 +4,10 @@
 
 
 
-
-
 <!-- ACTIONS --> 
 
 
-
-
 <!-- Month -->
-
 
 		<!-- 2020 Month -->
 		<record model="ir.actions.act_window" id="marketing_patient_2020_list_action">
@@ -46,8 +41,6 @@
 		</record>
 
 
-
-
 		<!-- 2018 Month -->
 		<record model="ir.actions.act_window" id="marketing_patient_2018_list_action">
 			<field name="name">Mensual 2018</field>
@@ -62,8 +55,6 @@
 
 			<field name="context">{}</field>
 		</record>
-
-
 
 
 
@@ -127,13 +118,10 @@
 		</record>
 
 
-
 <!-- Week -->
 	   <!-- 2019 Week -->
-		<record model="ir.actions.act_window" id="marketing_patient_2019_week_list_action">  
-
+		<record model="ir.actions.act_window" id="marketing_patient_2019_week_list_action">
 			<field name="name">Semanal 2019</field>
-		
 			<field name="res_model">openhealth.marketing</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
@@ -145,8 +133,6 @@
 
 			<field name="context">{}</field>
 		</record>
-
-
 
 	</data>
 </openerp>

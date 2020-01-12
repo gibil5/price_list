@@ -5,23 +5,19 @@
 
 
 <!-- Marketing -->
-        <menuitem id="main_marketing_menu" 
+<menuitem id="main_marketing_menu" 
             sequence="1"
             name="Marketing"
             groups="openhealth.roots,openhealth.managers,openhealth.directors"
             />
 
 
-
-
-
 <!-- Month -->
-<menuitem   id="marketing_menu"
+    <menuitem   id="marketing_menu"
                     name="Pacientes Nuevos Mensual"
                     parent="main_marketing_menu"
                     sequence="1"
             />
-
 
         <!-- 2020 -->
         <menuitem   id="marketing_patient_2020_menu"        
@@ -31,14 +27,12 @@
                     action="marketing_patient_2020_list_action"
             />
 
-
         <!-- 2019 -->
         <menuitem   id="marketing_patient_2019_menu"        
                     parent="marketing_menu"
                     sequence="7"
                     action="marketing_patient_2019_list_action"
             />
-
 
         <!-- 2018 -->
         <menuitem   id="marketing_patient_2018_menu"
@@ -49,14 +43,12 @@
             />
 
 
-
 <!-- Year -->
 <menuitem   id="marketing_year_menu"
                     name="Pacientes Nuevos Anual"
                     parent="main_marketing_menu"
                     sequence="3"
             />
-
 
         <!-- 2020 -->
         <menuitem   id="marketing_patient_2020_year_menu"
@@ -66,7 +58,6 @@
                     action="marketing_patient_2020_year_list_action"
             />
 
-
         <!-- 2019 -->
         <menuitem   id="marketing_patient_2019_year_menu"
                     name="Anual 2019" 
@@ -74,7 +65,6 @@
                     sequence="7"
                     action="marketing_patient_2019_year_list_action"
             />
-
 
         <!-- 2018 -->
         <menuitem   id="marketing_patient_2018_year_menu"
@@ -85,8 +75,6 @@
             />
 
 
-
-
 <!-- All -->
 
         <!-- Marketing Patients -->
@@ -94,8 +82,7 @@
                     name="Todos" 
                     parent="marketing_menu"
                     sequence="11"
-                    action="marketing_patient_list_action"/>
-
-
+                    action="marketing_patient_list_action"
+            />
     </data>
 </openerp>
