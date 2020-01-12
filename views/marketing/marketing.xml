@@ -15,56 +15,31 @@
 <!-- Header -->
 					<header>
 
-
 						<!-- Update -->
                         <button 
                                 type="object" 
                                 class="oe_highlight"
-
                                 name="update"
-
                                 string="Actualizar"                             
                         />
-
-
 
 						<!-- Update Patients -->
 						<button 
 								type="object" 
 								class="oe_highlight"
 								name="update_patients"
-
-								string="AP"                               
-
+								string="AP"
 								groups='openhealth.roots'
 						/>
 
 						<!-- Update Sales -->
-<!--						
 						<button 
 								class="oe_highlight"
 								type="object"
-
 								name="update_sales"
-
-								string="Act Ventas" 
-						/>
--->
-
-						<!-- Update Sales -->
-						<button 
-								class="oe_highlight"
-								type="object"
-
-								name="update_sales"
-
 								string="AV" 
-
 								groups='openhealth.roots'
 						/>
-
-
-
 
 						<!-- See Sales -->
 						<button 
@@ -76,7 +51,6 @@
 										}"
 										
 								name="%(sale_line_form_action)d"
-
 								string="Ver Ventas"
 						/>
 
@@ -85,16 +59,15 @@
 						<button 
 								class="oe_highlight"
 								type="action"
-
 								context="{
 											'search_default_marketing_id': active_id,   
 											'state': 'draft',   
 										}"
-										
 								name="%(sale_line_draft_form_action)d"
-
 								string="Ver Presupuestos"
 						/>
+
+
 
 
 
@@ -110,49 +83,6 @@
 
 								string="Ver Pacientes"  
 						/>
-
-
-
-						<!-- Create Sale Lines -->
-						<!-- Analyse Sale Lines -->
-						<!-- Analyse patient Lines -->
-
-<!--
-						<button 
-								class="oe_highlight"
-								type="object" 
-								name="create_sale_lines"
-
-								string="Create SL" 
-
-								groups="openhealth.roots"
-						/>
--->
-<!--
-						<button 
-								class="oe_highlight"
-								type="object" 
-
-								name="analyse_sale_lines"
-
-								string="Analyse SL" 
-
-								groups="openhealth.roots"
-						/>
-
-
-						<button 
-								class="oe_highlight"
-								type="object" 
-
-								name="analyse_patient_lines"
-
-								string="Analyse Pat Lines" 
-
-								groups="openhealth.roots"
-						/>
--->
-
 
 
 
@@ -183,16 +113,14 @@
 
 
 
+
 <!-- RIGHT -->
 						<!-- Test -->
 						<button 
 								class="oe_highlight oe_right"
 								type="object" 
-
 								name="test"
-
 								string="T"    
-
 								groups='openhealth.roots'
 						/>
 
@@ -201,38 +129,9 @@
 						<button 
 								class="oe_highlight oe_right"
 								type="object" 
-
 								name="reset"
-
 								string="Reset"    
 						/>
-
-						<!-- Clean -->
-<!--						
-						<button 
-								class="oe_highlight oe_right"
-								type="object" 
-
-								name="clean"
-
-								string="CLEAN !"    
-						/>
--->
-
-
-
-						<!-- Update Recos -->
-<!--
-						<button 
-								class="oe_highlight oe_right"
-								type="object" 
-								name="update_recos"
-
-								string="Actualizar Recomendaciones"    
-						/>
--->
-
-
 
 						<!-- City -->
 						<button 
@@ -257,49 +156,27 @@
 								string="Distritos"  
 						/>
 
-
-
-						<!-- Media -->
-<!--
-						<button 
-								class="oe_highlight oe_right"
-								type="action"                               
-								name="%(media_line_form_action)d" 
-								context="{
-											'search_default_marketing_id': active_id,   
-										}"
-								string="Medios" 
-						/>
--->
-
 						<!-- origin -->
 						<button 
 								class="oe_highlight oe_right"
-								type="action"                               
-						
+								type="action"
 								name="%(origin_line_form_action)d" 
-						
 								context="{
 											'search_default_marketing_id': active_id,   
 										}"
 								string="Origen" 
 						/>
 
-
-						<!-- Age Histogram -->
+						<!-- Age -->
 						<button 
 								class="oe_highlight oe_right"                               
 								type="action" 
-
 								name="%(histo_line_form_action)d" 
-
 								context="{
 											'search_default_marketing_id': active_id,   
 										}"
 								string="Edades" 
 						/>
-
-
 					</header>
 
 

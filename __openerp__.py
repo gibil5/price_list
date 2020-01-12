@@ -141,7 +141,9 @@
 		# Marketing
 		'views/marketing/media_line.xml',
 		'views/marketing/patient_line_actions.xml',     # Dep - Already in Openhealth
+
 		'views/marketing/patient_line.xml', 
+
 		'views/marketing/patient_line_search.xml', 
 		'views/marketing/marketing_order_line.xml',
 

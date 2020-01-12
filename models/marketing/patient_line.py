@@ -25,6 +25,20 @@ class PatientLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Fields ------------------------------------------------------
+	chief_complaint = fields.Selection(
+			string = 'Motivo de consulta',
+			selection = eval_vars._chief_complaint_list, 
+			#required=True,
+		)
+
+	amount = fields.Float(
+			string = 'Monto total',
+			default=0,
+		)
+
+
+
 # ----------------------------------------------------------- Counter Update ------------------------------------------------------
 
 	def counters_update(self, line):
@@ -187,11 +201,6 @@ class PatientLine(models.Model):
 
 
 	# EMR
-	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta', 						
-			selection = eval_vars._chief_complaint_list, 
-			#required=True,
-		)
 
 	diagnosis = fields.Char(
 			'Diagnóstico', 

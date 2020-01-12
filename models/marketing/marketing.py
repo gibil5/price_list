@@ -7,28 +7,20 @@
 	Only functions. Not the data model. 
 
  	Created: 				19 May 2018
- 	Last up: 	 			14 Dec 2019
+ 	Last up: 	 			12 Jan 2020
 """
 from __future__ import print_function
 import datetime
-
 from openerp import models, fields, api
-
 from openerp.addons.price_list.models.patient.patient import Patient  	# Use static method
-
 from . import lib_marketing
 from . import mkt_funcs
-
-#from . import pat_funcs
-
 from . import stax
 from . import exc_mkt
-
 from . import mkt_vars
-
 from . import lib
-
 from district_line import DistrictLine
+
 
 class Marketing(models.Model):
 	"""

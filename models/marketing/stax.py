@@ -34,6 +34,81 @@ from . import exc_mkt
 from . import mkt_funcs
 
 
+# ----------------------------------------------------------- Analyse Patient Lines ------------------------
+# Analyse patients
+@api.multi
+def analyse_patient_lines(self):
+	"""
+	Analyse patient Lines
+	"""
+	#print()
+	#print('X - Analysis patient Lines')
+
+	# Benchmark
+	t0 = timer()
+
+
+
+	# Clean
+	#self.vip_true = 0
+	#self.vip_false = 0
+
+
+
+	# Loop
+	for patient_line in self.patient_line:
+
+		# Clean
+		patient_line.clean() 		# OO
+
+
+		# Lines
+		patient = patient_line.patient
+		#print(patient.name)
+
+		model = 'price_list.marketing.order_line'
+
+		lines = self.env[model].search([
+												('state', 'in', ['sale', 'draft']),
+												('patient', 'in', [patient.name]),
+												('marketing_id', '=', self.id),
+										],
+											#order='x_serial_nr asc',
+											#limit=1,
+										)
+
+
+		# Loop
+		for line in lines:
+
+			#print(line)
+			#patient_line.analysis(line)  	# OO
+			patient_line.counters_update(line)  	# OO
+
+
+
+
+
+
+
+	# Update Macros - Dep
+	#self.vip_false = self.total_count - (self.vip_true + self.vip_already_true)
+	#if self.total_count not in [0]:
+	#	self.vip_true_per = float(self.vip_true) / float(self.total_count)
+	#	self.vip_false_per = float(self.vip_false) / float(self.total_count)
+
+
+
+
+	t1 = timer()
+	self.delta_analyse_patient_lines = t1 - t0
+
+# analyse_patient_lines
+
+
+
+
+
 # ----------------------------------------------------------- Update Counters ------------------------
 # Set Stats
 @api.multi
@@ -244,82 +319,6 @@ def create_sale_lines(self):
 					})
 				#print(sale_line)
 # create_sale_lines
-
-
-
-
-# ----------------------------------------------------------- Analyse Patient Lines ------------------------
-# Analyse patients
-@api.multi
-def analyse_patient_lines(self):
-	"""
-	Analyse patient Lines
-	"""
-	#print()
-	#print('X - Analysis patient Lines')
-
-	# Benchmark
-	t0 = timer()
-
-
-
-	# Clean
-	#self.vip_true = 0
-	#self.vip_false = 0
-
-
-
-	# Loop
-	for patient_line in self.patient_line:
-
-		# Clean
-		patient_line.clean() 		# OO
-
-
-		# Lines
-		patient = patient_line.patient
-		#print(patient.name)
-
-		model = 'price_list.marketing.order_line'
-
-		lines = self.env[model].search([
-												('state', 'in', ['sale', 'draft']),
-												('patient', 'in', [patient.name]),
-												('marketing_id', '=', self.id),
-										],
-											#order='x_serial_nr asc',
-											#limit=1,
-										)
-
-
-		# Loop
-		for line in lines:
-
-			#print(line)
-			#patient_line.analysis(line)  	# OO
-			patient_line.counters_update(line)  	# OO
-
-
-
-
-
-
-
-	# Update Macros - Dep
-	#self.vip_false = self.total_count - (self.vip_true + self.vip_already_true)
-	#if self.total_count not in [0]:
-	#	self.vip_true_per = float(self.vip_true) / float(self.total_count)
-	#	self.vip_false_per = float(self.vip_false) / float(self.total_count)
-
-
-
-
-	t1 = timer()
-	self.delta_analyse_patient_lines = t1 - t0
-
-# analyse_patient_lines
-
-
 
 
 
