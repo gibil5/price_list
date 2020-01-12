@@ -43,19 +43,11 @@ class PatientLine(models.Model):
 
 	def counters_update(self, line):
 		"""
-		New - 2019
-		This is just counter update
-		Analyses Line to update counters
+		Analyses Line to update counters: nr consul, nr proc, nr_sales, nr_drafts
 		"""
-		#print()
-		#print('X - Macro Line Analysis')
-
-
-		# Patient Line Macros	
 
 		# Init
 		qty = line.product_uom_qty
-
 
 		# Doctor
 		if self.doctor.name in [False]:
@@ -63,11 +55,15 @@ class PatientLine(models.Model):
 
 
 
+
 	# Family Analysis
 
-
-		# Increase Sales
+		# Sale
 		if line.state in ['sale']:
+
+
+			self.amount += line.price_net
+
 
 			# Consultation
 			if line.family in ['consultation']:
@@ -90,8 +86,7 @@ class PatientLine(models.Model):
 			self.inc_nr_sale(qty)
 
 
-
-		# Increase Drafts
+		# Draft
 		elif line.state in ['draft']:
 			self.inc_nr_draft(qty)
 

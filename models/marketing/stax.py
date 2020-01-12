@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-	Stax Library
+	Stax Library - Separate BL from Structure
 
-	Separate BL from Structure
+	Used by: Marketing
 
-	Used by
-		Marketing
-
-	Uses
-		mkt_funcs
+	Uses: mkt_funcs
 
 	- Update Stats
 	- Update Vip Sales
@@ -17,25 +13,18 @@
 	- Analyse Sale Lines
 
  	Created: 				10 Dec 2019
- 	Last up: 	 			12 Dec 2019
+ 	Last up: 	 			12 Jan 2020
 """
-
 from timeit import default_timer as timer
 import collections
 from openerp import models, fields, api
-
-#from openerp.addons.price_list.models.management.lib import mgt_funcs  # Dep
-
-
 from openerp.addons.price_list.models.patient.patient import Patient
-
 from . import exc_mkt
-
 from . import mkt_funcs
 
 
+
 # ----------------------------------------------------------- Analyse Patient Lines ------------------------
-# Analyse patients
 @api.multi
 def analyse_patient_lines(self):
 	"""
@@ -49,12 +38,6 @@ def analyse_patient_lines(self):
 
 
 
-	# Clean
-	#self.vip_true = 0
-	#self.vip_false = 0
-
-
-
 	# Loop
 	for patient_line in self.patient_line:
 
@@ -64,7 +47,6 @@ def analyse_patient_lines(self):
 
 		# Lines
 		patient = patient_line.patient
-		#print(patient.name)
 
 		model = 'price_list.marketing.order_line'
 
@@ -80,24 +62,9 @@ def analyse_patient_lines(self):
 
 		# Loop
 		for line in lines:
-
 			#print(line)
 			#patient_line.analysis(line)  	# OO
 			patient_line.counters_update(line)  	# OO
-
-
-
-
-
-
-
-	# Update Macros - Dep
-	#self.vip_false = self.total_count - (self.vip_true + self.vip_already_true)
-	#if self.total_count not in [0]:
-	#	self.vip_true_per = float(self.vip_true) / float(self.total_count)
-	#	self.vip_false_per = float(self.vip_false) / float(self.total_count)
-
-
 
 
 	t1 = timer()

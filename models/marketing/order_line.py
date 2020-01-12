@@ -14,7 +14,9 @@ class MarketingOrderLine(models.Model):
 	Used by Marketing
 	To report on the new patient sales
 	"""
+
 	_name = 'price_list.marketing.order_line'
+
 	_description = "PriceList Marketing Order Line"
 	_order = 'date desc'
 
