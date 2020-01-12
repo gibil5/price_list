@@ -1,3 +1,5 @@
 /zat/
 *.pyc 
+*.TRASH.*
+*.DEP.*
 
