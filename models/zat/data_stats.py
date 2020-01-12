@@ -1,1 +1,0 @@
-/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/osinergmin/models/data_stats.py

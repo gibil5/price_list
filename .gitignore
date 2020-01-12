@@ -1,4 +1,5 @@
 /zat/
+/models/zat/
 *.pyc 
 *.TRASH.*
 *.DEP.*
