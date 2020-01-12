@@ -25,6 +25,25 @@ class Patient(models.Model):
 
 
 
+# ----------------------------------------------------------- Alta -----------------------
+	@api.multi
+	def discharge_myself(self):
+		"""
+		Discharge Patient
+		"""
+		self.discharged = True
+
+
+	@api.multi
+	def recall_myself(self):
+		"""
+		Recall Patient
+		"""
+		self.discharged = False
+
+
+
+
 # ----------------------------------------------------------- Class Vars -----------------------
 
 	_sex_type_list = [
