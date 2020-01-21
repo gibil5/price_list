@@ -4,16 +4,12 @@
  	Uses Closing Form and Closing Proof. 
 
 	Created: 			18 Oct 2017
-	Last up: 	 		30 Dec 2019
+	Last up: 	 		20 Jan 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
-
 from . import clos_funcs
-#from . import pl_clos_funcs
-
 from . import lib
-
 from . import test_closing
 
 class Closing(models.Model):
@@ -26,6 +22,58 @@ class Closing(models.Model):
 
 
 
+# ----------------------------------------------------------- Getters - Ticket -----------------------
+
+	def get_cash(self):
+		return self.cash_tot
+		#return self.cash_tot_wblack
+
+
+	def get_american(self):
+		return self.ame_tot
+
+
+	def get_diners(self):
+		return self.din_tot
+
+
+	def get_master_credit(self):
+		return self.mac_tot
+
+
+	def get_master_debit(self):
+		return self.mad_tot
+
+
+	def get_visa_credit(self):
+		return self.vic_tot
+
+
+	def get_visa_debit(self):
+		return self.vid_tot
+
+
+	def get_total(self):
+		return self.total_form
+		#return self.total_form_wblack
+
+
+
+	def get_bbva(self):
+		return self.bbva_tot
+
+	def get_inter(self):
+		return self.interbank_tot
+
+	def get_scotia(self):
+		return self.scotiabank_tot
+
+	def get_bcp(self):
+		return self.bcp_tot
+
+
+
+
 # ----------------------------------------------------- Relational - Counters ------------------------------------------------------------------
 
 	# Closing Form
@@ -33,11 +81,6 @@ class Closing(models.Model):
 			'openhealth.closing.form', 
 			string='Forma de Pago',
 		)
-
-
-
-
-
 
 # ----------------------------------------------------------- Natives -----------------------
 	total_banks = fields.Float(
