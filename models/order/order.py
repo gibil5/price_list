@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-		*** Order
-
-		order.py
+		Order - Pricelist
 
 		Created: 			26 Aug 2016
 		Last updated: 		17 Dec 2019
@@ -21,8 +19,6 @@ class sale_order(models.Model):
 	Encapsulates Business Rules. Should not extend the Data Model.
 	"""
 	_inherit = 'sale.order'
-
-
 
 # ----------------------------------------------------- Test --------------------------
 	@api.multi
@@ -64,7 +60,7 @@ class sale_order(models.Model):
 
 		action = self.test_raw_lines(x_type, state)
 
-		return action 
+		return action
 
 
 
@@ -82,7 +78,7 @@ class sale_order(models.Model):
 
 		action = self.test_raw_lines(x_type, state)
 
-		return action 
+		return action
 
 
 
@@ -100,7 +96,7 @@ class sale_order(models.Model):
 
 		action = self.test_raw_lines(x_type, state)
 
-		return action 
+		return action
 
 
 	# Test Raw Line
@@ -128,7 +124,7 @@ class sale_order(models.Model):
 		# Orders
 		for order in orders:
 			action = order.print_ticket_electronic()
-			return action 
+			return action
 
 
 
@@ -333,7 +329,7 @@ class sale_order(models.Model):
 	def validate_patient_for_invoice(self):
 		"""
 		Validate Patient
-		Used by Electronic Container (Txt Generation). 
+		Used by Electronic Container (Txt Generation).
 		"""
 		print()
 		print('Order Validate Patient For Invoice')
@@ -346,7 +342,7 @@ class sale_order(models.Model):
 	def validate_electronic(self):
 		"""
 		Validate Electronic
-		Used by Electronic Container (Txt Generation). 
+		Used by Electronic Container (Txt Generation).
 		"""
 		#print()
 		#print('Order Validate Electronic')
