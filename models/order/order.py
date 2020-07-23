@@ -3,7 +3,7 @@
 		Order - Pricelist
 
 		Created: 			26 Aug 2016
-		Last updated: 		17 Dec 2019
+		Last mod: 			23 Jul 2020
 """
 from __future__ import print_function
 import datetime

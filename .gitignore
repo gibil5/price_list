@@ -1,7 +1,13 @@
+
+z_TRASH/
+a_TRASH/
+
+
 /zat/
+
 /models/zat/
-*.pyc 
+
+*.pyc
 *.TRASH.*
 *.DEP.*
 *.BUFF.*
-
