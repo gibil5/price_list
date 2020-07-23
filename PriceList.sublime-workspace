@@ -529,15 +529,6 @@
 			}
 		},
 		{
-			"file": "models/order/closing.py",
-			"settings":
-			{
-				"buffer_size": 7605,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "models/order/order.py",
 			"settings":
 			{
@@ -619,6 +610,7 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/price_list/models/order/closing.py",
 		"/Users/gibil/cellar/github/price_list/x_readme.txt",
 		"/Users/gibil/cellar/github/price_list/models/marketing/stax.py",
 		"/Users/gibil/cellar/github/price_list/models/marketing/order_line.py",
@@ -658,7 +650,6 @@
 		"/Users/gibil/cellar/github/price_list/models/marketing/district_line.py",
 		"/Users/gibil/cellar/github/price_list/models/management/management_order_line.DEP.py",
 		"/Users/gibil/cellar/github/price_list/views/menus/menus_management.DEP.xml",
-		"/Users/gibil/cellar/github/price_list/models/order/closing.py",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.BUFF.csv",
 		"/Users/gibil/cellar/github/price_list/security/ir.model.access.csv",
 		"/Users/gibil/cellar/github/price_list/models/order/closing_form.DEP.py",
@@ -764,6 +755,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"serial",
 			"free",
 			"pl_transf",
 			"month",
@@ -890,8 +882,7 @@
 			"lib.",
 			"lib",
 			"recommendation",
-			"family",
-			"family_line"
+			"family"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1037,7 +1028,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1067,40 +1058,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "models/order/closing.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7605,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1910,
-								1923
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "models/order/order.py",
 					"semi_transient": false,
 					"settings":
@@ -1112,8 +1074,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								2481,
+								2487
 							]
 						],
 						"settings":
@@ -1122,7 +1084,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2254.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

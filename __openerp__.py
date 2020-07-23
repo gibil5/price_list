@@ -2,7 +2,7 @@
 {
 	'name': "Price List 2019 - OBJECT ORIENTED - ODOO 9 MODULE",
 
-	'summary': 
+	'summary':
 		"""
 		Business Logic Encapsulator for the Openhealth System
 		""",
@@ -10,22 +10,22 @@
 	'description':
 		"""
 
-		21 Jan 2020
+		22 Jul 2020
 
 		(Since 22 April, in Prod)
 
-		For Open Health. Service oriented way of adding BUSINESS LOGIC. 
+		For Open Health. Service oriented way of adding BUSINESS LOGIC.
 
 		Remember Robert C. Martin:
-			- In software, 80 percent of what we do is called "Maintenance": the act of Repair. 
-			- A Class exposes an abstract interface that allows users to manipulate the Essence of the data, without having to know its Implementation. 
+			- In software, 80 percent of what we do is called "Maintenance": the act of Repair.
+			- A Class exposes an abstract interface that allows users to manipulate the Essence of the data, without having to know its Implementation.
 			- Respect the Law of Demeter. Avoid Train Wreckages.
 			- Handle Exceptions.
 
 
 		Remember OO Concepts:
-			- Confine change to interfaces, that capture all business logic. The Getters. 
-			- Do not access class variables directly. 
+			- Confine change to interfaces, that capture all business logic. The Getters.
+			- Do not access class variables directly.
 
 		Remember Instrumentation:
 			- Real Data is like White Noise. That will capture your system's actual Transfer Function. Coverage.
@@ -33,17 +33,17 @@
 		Remember, Hunter and Westerman:
 			- Step 1: New Thinking: Avoid the 7 Value Traps.
 
-		Remember John Keegan: 
-			- Two forces always: one slow and the other fast. 
+		Remember John Keegan:
+			- Two forces always: one slow and the other fast.
 		""",
 
 
 	'author': "DataMetrics",
-	
+
 	'website': "http://jrevilla.com/",
-	
+
 	'category': 'Object Oriented',
-	
+
 	'version': '0.1',
 
 
@@ -79,7 +79,7 @@
 
 
 		# Order
-		'views/order/product_selector.xml',               
+		'views/order/product_selector.xml',
 
 		'views/order/payment_method_line.xml',             # Min
 		'views/order/order_line.xml',                      # Min
@@ -132,7 +132,7 @@
 
 
 		# Patient
-		'views/patient/patient.xml',                   
+		'views/patient/patient.xml',
 		#'views/patient/patient_personal.xml',          # Dep
 
 
@@ -142,9 +142,9 @@
 		'views/marketing/media_line.xml',
 		'views/marketing/patient_line_actions.xml',     # Dep - Already in Openhealth
 
-		'views/marketing/patient_line.xml', 
+		'views/marketing/patient_line.xml',
 
-		'views/marketing/patient_line_search.xml', 
+		'views/marketing/patient_line_search.xml',
 		'views/marketing/marketing_order_line.xml',
 
 		'views/marketing/marketing_tree_others.xml',
@@ -172,9 +172,9 @@
 
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
-		
+
 		'views/management/management_productivity_day.xml',
-		'views/management/management_doctor_daily.xml',	
+		'views/management/management_doctor_daily.xml',
 
 		'views/management/management_trees.xml',
 		'views/management/management_actions.xml',
@@ -196,17 +196,17 @@
 		'views/electronic/electronic_order.xml',           # Min
 
 
-		'views/electronic/texto.xml', 
-		'views/electronic/electronic_actions.xml', 
+		'views/electronic/texto.xml',
+		'views/electronic/electronic_actions.xml',
 
-		'views/electronic/txt_line.xml', 
+		'views/electronic/txt_line.xml',
 
 		'views/electronic/electronic_container.xml',       # Min
 
 
 
 		# Appointment
-		#'views/appointment/wizard.xml',            # Dep 
+		#'views/appointment/wizard.xml',            # Dep
 		#'views/appointment/matrix.xml',            # Dep
 		#'views/appointment/appointment.xml',       # Dep
 

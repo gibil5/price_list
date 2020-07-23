@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 		*** Treatment
-
 		Created: 			26 Aug 2016
-		Last up: 	 		27 Sep 2019
+		Last up: 	 		22 Jul 2020
 
-	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, without having to know its Implementation. 
+	- A Class exposes abstract interfaces that allow its users to manipulate the Essence of the data, without having to know its Implementation.
 	- Respect the Law of Demeter. Avoid Train Wrecks.
-	- Treat the Active Record as a data structure and create separate objects that contain the business rules and that hide their internal data. These Objects are just instances of the Active Record.	
+	- Treat the Active Record as a data structure and create separate objects that contain the business rules and that hide their internal data. These Objects are just instances of the Active Record.
 	- Handle Exceptions.
 """
 from __future__ import print_function
@@ -16,12 +15,9 @@ from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
 from . import reco_funcs
-
 from . import pl_creates
-
 from . import test_treatment
 from . import exc_tre
-
 from . import pl_user
 from . import time_funcs
 
@@ -36,10 +32,7 @@ class Treatment(models.Model):
 	_inherit = 'openhealth.treatment'
 
 
-
-
 # ----------------------------------------------------- Create Procedures ---------------------------------------------
-
 
 # ----------------------------------------------------------- Create Procedure  -------------------
 	# Create Procedure
@@ -201,14 +194,13 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
-	#def create_order_con_med(self):
 	def create_order_con(self):
 		"""
 		Create Order Consultation Standard - Medical
 		One mode
 		"""
 		print()
-		print('PL - Create Order Con Med')
+		print('PL - treatment - create_order_con')
 
 		# Init
 		price_list = '2019'
@@ -241,10 +233,6 @@ class Treatment(models.Model):
 						},
 				'context': {}
 			}
-
-
-
-
 
 # ----------------------------------------------------- Create Consultations ---------------------------------------------
 
@@ -787,37 +775,6 @@ class Treatment(models.Model):
 			#self.test_libs()
 
 
-# ----------------------------------------------------------- Test Integration --------------------
-	@api.multi
-	def test_integration(self):
-		"""
-		Integration Test
-		"""
-		print()
-		print('PL - Test Integration Button')
-		if self.patient.x_test:
-			# Reset
-			#test_treatment.reset_treatment(self)
-			# Test Integration
-			test_treatment.test_integration_treatment(self)
-		print()
-		print()
-		print('SUCCESS !')
-
-
-# ----------------------------------------------------------- Test Reset --------------------------
-	@api.multi
-	def test_reset(self):
-		"""
-		Reset Test
-		"""
-		print()
-		print('Test Reset Button')
-		if self.patient.x_test:
-			test_treatment.test_reset_treatment(self)
-		print()
-		print()
-		print('SUCCESS !')
 
 # ----------------------------------------------------------- Test Report MGT -----------------------------------------
 	@api.multi
@@ -885,3 +842,33 @@ class Treatment(models.Model):
 		print('SUCCESS !')
 
 
+# ----------------------------------------------------------- Test Integration --------------------
+	@api.multi
+	def test_integration(self):
+		"""
+		Integration Test
+		"""
+		print()
+		print('PL - treatment.py - test_integration')
+		if self.patient.x_test:
+			# Reset
+			#test_treatment.reset_treatment(self)
+			# Test Integration
+			test_treatment.test_integration_treatment(self)
+		print()
+		print()
+		print('SUCCESS !')
+
+# ----------------------------------------------------------- Test Reset --------------------------
+	@api.multi
+	def test_reset(self):
+		"""
+		Reset Test
+		"""
+		print()
+		print('Test Reset Button')
+		if self.patient.x_test:
+			test_treatment.test_reset_treatment(self)
+		print()
+		print()
+		print('SUCCESS !')
