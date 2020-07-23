@@ -15,8 +15,10 @@ from openerp.addons.openhealth.models.order import ord_funcs
 
 class sale_order(models.Model):
 	"""
-	Inherits Sale Classe from Openhealth
-	Encapsulates Business Rules. Should not extend the Data Model.
+	# Dep - Encapsulates Business Rules. Should not extend the Data Model.
+	This should disappear. Order must be in Openhealth, not in Pricelist.
+	Testing must be into TestOrder.
+	Tools must into ToolsOrder.
 	"""
 	_inherit = 'sale.order'
 
@@ -29,151 +31,21 @@ class sale_order(models.Model):
 		print()
 		print('Test Order')
 
-		action0 = self.test_raw_receipt()
+		tester = TestOrder(self)
+
+		tester.test_raw_receipt(self)
+		tester.test_raw_invoice(self)
+		tester.test_raw_credit_note(self)
+		tester.test_serial_number(self)
+
+		#action0 = self.test_raw_receipt()
 		#return action0
-
-		action1 = self.test_raw_invoice()
+		#action1 = self.test_raw_invoice()
 		#return action1
-
-		action2 = self.test_raw_credit_note()
+		#action2 = self.test_raw_credit_note()
 		#return action2
-
 		#self.test_serial_number()
-
 		#return action0, action1, action2
-
-
-
-# ----------------------------------------------------------- Test - Ticket Raw Lines ----------------
-
-	# Test Raw Receipt
-	@api.multi
-	def test_raw_receipt(self):
-		"""
-		Test Ticket Printing - Receipt
-		"""
-		print()
-		print('Test Raw Receipt')
-
-		x_type = 'ticket_receipt'
-		state = 'sale'
-
-		action = self.test_raw_lines(x_type, state)
-
-		return action
-
-
-
-	# Test Raw Invoice
-	@api.multi
-	def test_raw_invoice(self):
-		"""
-		Test Ticket Printing - Invoice
-		"""
-		print()
-		print('Test Raw Invoice')
-
-		x_type = 'ticket_invoice'
-		state = 'sale'
-
-		action = self.test_raw_lines(x_type, state)
-
-		return action
-
-
-
-	# Test Raw Receipt - Credit Note
-	@api.multi
-	def test_raw_credit_note(self):
-		"""
-		Test Ticket Printing - Credit Note
-		"""
-		print()
-		print('Test Raw Credit Note')
-
-		x_type = 'ticket_receipt'
-		state = 'credit_note'
-
-		action = self.test_raw_lines(x_type, state)
-
-		return action
-
-
-	# Test Raw Line
-	@api.multi
-	def test_raw_lines(self, x_type, state):
-		"""
-		Test Ticket Printing
-		Used by All
-		"""
-		#print()
-		#print('Test Raw Lines')
-
-		# Orders
-		orders = self.env['sale.order'].search([
-													('x_type', 'in', [x_type]),
-
-													('patient', '=', self.patient.id),
-													('state', 'in', [state]),
-											],
-												order='date_order desc',
-												limit=1,
-											)
-		#print(orders)
-
-		# Orders
-		for order in orders:
-			action = order.print_ticket_electronic()
-			return action
-
-
-
-# ----------------------------------------------------------- Test - Serial Number ----------------
-#jx
-	# Test Raw Receipt
-	@api.multi
-	def test_serial_number(self):
-		"""
-		Unit Testing
-		Cover all possible Test Cases !
-		"""
-		print()
-		print('Test Serial Number')
-
-		tc_arr = [
-				('ticket_receipt', 'sale'),
-				('ticket_receipt', 'cancel'),
-				('ticket_receipt', 'credit_note'),
-				('ticket_invoice', 'sale'),
-				('ticket_invoice', 'cancel'),
-				('ticket_invoice', 'credit_note'),
-				# Not electronic
-				#('receipt', 'sale'),
-				#('invoice', 'sale'),
-				#('advertisement', 'sale'),
-				#('sale_note', 'sale'),
-		]
-
-
-		for tc in tc_arr:
-			print()
-			print(tc)
-
-			x_type = tc[0]
-			state = tc[1]
-			#print(x_type, state)
-
-			# Get Next Counter
-			counter = ord_funcs.get_next_counter_value(self, x_type, state)
-
-			# Make Serial Number
-			serial_number = ord_funcs.get_serial_nr(x_type, counter, state)
-
-			print(counter)
-			print(serial_number)
-			print()
-
-
 
 
 # ----------------------------------------------------- Django Interface --------------------------
@@ -242,8 +114,6 @@ class sale_order(models.Model):
 		return self.x_serial_nr
 
 
-
-
 # ----------------------------------------------------- Admin --------------------------
 	@api.multi
 	def correct_serial_number(self):
@@ -256,9 +126,6 @@ class sale_order(models.Model):
 		self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)
 
 
-
-
-
 # ----------------------------------------------------- Fixers --------------------------
 
 	@api.multi
@@ -268,7 +135,6 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Fix Treatment')
-
 
 		# Treatment
 		self.treatment = self.env['openhealth.treatment'].search([
@@ -281,8 +147,6 @@ class sale_order(models.Model):
 		#print(self.treatment.name)
 
 
-
-
 	@api.multi
 	def fix_treatment_month(self):
 		"""
@@ -292,7 +156,6 @@ class sale_order(models.Model):
 		print('Fix Treatment Month')
 
 
-
 	@api.multi
 	def fix_treatment_all(self):
 		"""
@@ -300,10 +163,6 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Fix Treatment All')
-
-
-
-
 
 
 # ----------------------------------------------------------- Setters ----------------------------
