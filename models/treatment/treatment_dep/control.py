@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Session
+Control - Dep - 11 Aug 2020
 
 Created: 			19 Sep 2019
 Last updated: 	 	19 Sep 2019
 """
 from openerp import models, fields, api
 
-class Session(models.Model):
+class Control(models.Model):
 	"""
-	Class Session
+	Class Control
 	Extends the Business Rules. Should not extend the Data Model.
 	"""	
-	_inherit = 'openhealth.session.med'
+	_inherit = 'openhealth.control'
 
-	_description = 'Session'
+	_description = 'Control'
 

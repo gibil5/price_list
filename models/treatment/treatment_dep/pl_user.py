@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-		user.py
+		user.py - DEP - 11 aug 2020
 
  		Created: 			13 Aug 2018
- 		Last up: 	 		 7 Feb 2019
+ 		Last up: 	 		27 Jul 2020
 """
 
 #------------------------------------------------ Get Actual Doctor -------------------------------

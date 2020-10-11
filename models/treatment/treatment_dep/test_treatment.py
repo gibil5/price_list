@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-	*** Test Treatment
+	*** Test Treatment - PL - Dep - 11 Aug 2020
+
 		Created: 			14 Aug 2018
 		Last up: 	 		22 Jul 2020
-		Used by:			treatment.py
 """
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs
@@ -14,31 +14,31 @@ from . import exc_tre
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 
 # ----------------------------------------------- Test Integration --------------------------------
-def test_integration_treatment(self):
-	"""
- 	Integration Tests for the Treatment Class.
-	"""
-	print()
+#def test_integration_treatment(self):
+#	"""
+# 	Integration Tests for the Treatment Class.
+#	"""
+#	print()
 	#print('Test Integration Function')
-	print('PL - test_treatment.py - test_integration_treatment')
+#	print('PL - test_treatment.py - test_integration_treatment')
 
 	# Handle Exceptions
 	#exc_tre.handle_exceptions(self)
 
 	# Create Consultation
-	create_consultation(self)
+#	create_consultation(self)
 
 	# Create Credit Note
-	if self.x_test_scenario in ['credit_note']:
-		create_credit_note(self)
+#	if self.x_test_scenario in ['credit_note']:
+#		create_credit_note(self)
 
 	# Create Block Flow
-	elif self.x_test_scenario in ['block_flow']:
-		create_block_flow(self)
+#	elif self.x_test_scenario in ['block_flow']:
+#		create_block_flow(self)
 
 	# Recommendations and Sale
-	else:
-		create_recommentations_and_procedure_sale(self)
+#	else:
+#		create_recommentations_and_procedure_sale(self)
 
 # test_integration_treatment
 
@@ -46,120 +46,147 @@ def test_integration_treatment(self):
 # ----------------------------------------------- 2nd level --------------------------------
 
 # ----------------------------------------------- Consultation ------------------------------------
-def create_consultation(self):
-	"""
-	Create Consultation
-	"""
-	msg = 'PL - test_treatment - create_consultation'
-	print()
-	print(msg)
+#def create_consultation(self):
+#	"""
+#	Create Consultation
+#	"""
+#	msg = 'PL - test_treatment - create_consultation'
+#	print()
+#	print(msg)
 
 	#test_funcs.disablePrint()
 
 	# Create Consultation Sale
-	self.create_order_con()			# Actual Button
-	for order in self.order_ids:
-		if order.state in ['draft']:
-			order.pay_myself()
+#	self.create_order_con()			# Actual Button
+#	for order in self.order_ids:
+#		if order.state in ['draft']:
+#			order.pay_myself()
 
 	# Create and Fill Consultation
-	self.create_consultation()
-	for consultation in self.consultation_ids:
-		consultation.autofill()
+#	self.create_consultation()
+#	for consultation in self.consultation_ids:
+#		consultation.autofill()
 
 	#test_funcs.enablePrint()
 
 
-def create_credit_note(self):
-	"""
-	Create Credit Note
-	"""
-	msg = 'Create Credit Note'
-	print()
-	print(msg)
-	for order in self.order_ids:
-		if order.state in ['sale']:
-			order.create_credit_note()
-			order.cancel_order()
+#def create_credit_note(self):
+#	"""
+#	Create Credit Note
+#	"""
+#	msg = 'Create Credit Note'
+#	print()
+#	print(msg)
+#	for order in self.order_ids:
+#		if order.state in ['sale']:
+#			order.create_credit_note()
+#			order.cancel_order()
 
-def create_block_flow(self):
-	"""
-	Create Block Flow
-	"""
-	msg = 'Create Block Flow'
-	print()
-	print(msg)
-	print('Create Block Flow')
-	for order in self.order_ids:
-		if order.state in ['sale']:
-			order.block_flow()
+#def create_block_flow(self):
+#	"""
+#	Create Block Flow
+#	"""
+#	msg = 'Create Block Flow'
+#	print()
+#	print(msg)
+#	print('Create Block Flow')
+#	for order in self.order_ids:
+#		if order.state in ['sale']:
+#			order.block_flow()
 
-def create_recommentations_and_procedure_sale(self):
-	"""
-	Create Recommendations and Procedure Sale
-	"""
-	msg = 'Create Recommendations and Procedure Sale'
-	print()
-	print(msg)
+#def create_recommentations_and_procedure_sale(self):
+#	"""
+#	Create Recommendations and Procedure Sale
+#	"""
+#	msg = 'Create Recommendations and Procedure Sale'
+#	print()
+#	print(msg)
 
 	# 2019
-	if self.test_pricelist_2019:
-		create_recommendations_2019(self)
-		self.create_order_pro()				# Actual Button - 2019
+#	if self.test_pricelist_2019:
+#		create_recommendations_2019(self)
+#		self.create_order_pro()				# Actual Button - 2019
 
 	# 2018
-	if self.test_pricelist_2018:
-		create_recommendations_2018(self)
+#	if self.test_pricelist_2018:
+#		create_recommendations_2018(self)
 		#test_funcs.disablePrint()
-		print()
-		print()
-		self.create_order_pro_2018()		# Actual Button - 2018
+#		print()
+#		print()
+#		self.create_order_pro_2018()		# Actual Button - 2018
 		#test_funcs.enablePrint()
 
 	# Pay Order Procedure
-	test_funcs.disablePrint()
+#	test_funcs.disablePrint()
 
 	#print()
 	#print('Create Order - Procedure')
-	for order in self.order_ids:
-		if order.state in ['draft']:
+#	for order in self.order_ids:
+#		if order.state in ['draft']:
 			#print('mark 10')
-			try:
-				order.pay_myself()
-			except:
-				print("An exception occurred")
+#			try:
+#				order.pay_myself()
+#			except:
+#				print("An exception occurred")
 			#print('mark 11')
-	test_funcs.enablePrint()
+#	test_funcs.enablePrint()
+
+
+# ----------------------------------------------- Sessions -------------------------------------
+#def create_sessions(self):
+#	"""
+#	Create Sessions
+#	"""
+	#print('Create Sessions')
+#	for procedure in self.procedure_ids:
+		#for _ in range(2):
+#		for _ in range(1):
+#			procedure.create_sessions()
+
+
+# ----------------------------------------------- Controls -------------------------------------
+#def create_controls(self):
+#	"""
+#	Create Controls
+#	"""
+	#print('Create Controls')
+#	for procedure in self.procedure_ids:
+		#for _ in range(1):
+#		for _ in range(6):
+#			procedure.create_controls()
+
+
+
 
 # ----------------------------------------------- 3nd level --------------------------------
 
-
-# ----------------------------------------------- Test Cycle --------------------------------
-def test_create_budget_consultation(self):
-	"""
-	Test
-	"""
-	print()
-	print('Test Create Budget Consultation')
+# ----------------------------------------------- Test Cycle -------------------
+#def test_create_budget_consultation(self):
+#	"""
+#	Test
+#	"""
+#	print()
+#	print('Test Create Budget Consultation')
 
 	# Create Budget Consultation
-	self.create_order_con()			# Actual Button
+#	self.create_order_con()			# Actual Button
 
-def test_create_sale_consultation(self):
-	"""
-	Test
-	"""
-	print()
-	print('Test Create Sale Consultation')
+#def test_create_sale_consultation(self):
+#	"""
+#	Test
+#	"""
+#	print()
+#	print('Test Create Sale Consultation')
 
 	# Pay Budget Consultation
-	for order in self.order_ids:
-		if order.state in ['draft']:
-			order.pay_myself()
+#	for order in self.order_ids:
+#		if order.state in ['draft']:
+#			order.pay_myself()
 
-def test_create_recommendations(self):
+#def test_create_recommendations(self):
+def test_create_recommendations_dep(self):
 	"""
-	Test
+	Test - Deprecated
 	"""
 	print()
 	print('Test Create Recommendations')
@@ -235,122 +262,85 @@ def test_create_recommendations(self):
 # test_create_recommendations
 
 
-def test_create_budget_procedure(self):
-	"""
-	Test
-	"""
-	print()
-	print('Test Create Budget Procedure')
+#def test_create_budget_procedure(self):
+#	"""
+#	Test
+#	"""
+#	print()
+#	print('Test Create Budget Procedure')
 
 	# Pay Budget Procedures
-	self.create_order_pro()				# Actual Button - 2019
+#	self.create_order_pro()				# Actual Button - 2019
 
 
-def test_create_sale_procedure(self):
-	"""
-	Test
-	"""
-	print()
-	print('Test Create Sale Procedure')
+#def test_create_sale_procedure(self):
+#	"""
+#	Test
+#	"""
+#	print()
+#	print('Test Create Sale Procedure')
 
 	# Pay Budget Procedures
-	for order in self.order_ids:
-		if order.state in ['draft']:
-			try:
-				order.pay_myself()
-			except:
-				print("An exception occurred")
+#	for order in self.order_ids:
+#		if order.state in ['draft']:
+#			try:
+#				order.pay_myself()
+#			except:
+#				print("An exception occurred")
 
 
-def test_create_procedure(self):
-	"""
-	Test
-	"""
-	print()
-	print('Test Create Procedure')
+
+#def test_create_procedure(self):
+#	"""
+#	Test
+#	"""
+#	print()
+#	print('Test Create Procedure')
 
 	# Create Procedure
-	self.create_procedure_man()
+#	self.create_procedure_man()
 
 
 
-def test_create_sessions(self):
-	"""
-	Test
-	"""
-	print()
-	print('Test Create Sessions')
+#def test_create_sessions(self):
+#	"""
+#	Test
+#	"""
+#	print()
+#	print('Test Create Sessions')
 
 	# Create Sessions
-	for procedure in self.procedure_ids:
-		print(procedure)
+#	for procedure in self.procedure_ids:
+#		print(procedure)
 		#for _ in range(2):
-		for _ in range(1):
-			print('create sesion')
-			procedure.create_sessions_manual()
+#		for _ in range(1):
+#			print('create sesion')
+#			procedure.create_sessions_manual()
 
 
 
-def test_create_controls(self):
-	"""
-	Test
-	"""
-	print()
-	print('Test Create Controls')
+#def test_create_controls(self):
+#	"""
+#	Test
+#	"""
+#	print()
+#	print('Test Create Controls')
 
 	# Create Controls
-	for procedure in self.procedure_ids:
-		print(procedure)
+#	for procedure in self.procedure_ids:
+#		print(procedure)
 		#for _ in range(1):
-		for _ in range(6):
-			print('create control')
-			procedure.create_controls_manual()
-
-
-
-
-
+#		for _ in range(6):
+#			print('create control')
+#			procedure.create_controls_manual()
 
 
 
 # ----------------------------------------------------------- Second Level ---------------------------------------------
 
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------- Sessions -------------------------------------
-def create_sessions(self):
-	"""
-	Create Sessions
-	"""
-	#print('Create Sessions')
-	for procedure in self.procedure_ids:
-		#for _ in range(2):
-		for _ in range(1):
-			procedure.create_sessions()
-
-
-# ----------------------------------------------- Controls -------------------------------------
-def create_controls(self):
-	"""
-	Create Controls
-	"""
-	#print('Create Controls')
-	for procedure in self.procedure_ids:
-		#for _ in range(1):
-		for _ in range(6):
-			procedure.create_controls()
-
-
-
 # ----------------------------------------------------------- Create Recommendations - 2019 --------------
-def create_recommendations_2019(self):
+#def create_recommendations_2019(self):
+def create_recommendations_2019_dep(self):
 	"""
 	Create Recommendations 2019
 	Test Cases
@@ -654,7 +644,8 @@ def create_recommendations_2019(self):
 
 # ----------------------------------------------------------- Reset Treatment ---------------------
 
-def test_reset_treatment(self):
+#def test_reset_treatment(self):
+def test_reset_treatment_dep(self):
 	"""
 	Test Reset - For Treatment
 	"""

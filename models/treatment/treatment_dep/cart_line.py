@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-	Pricelist - Price Line
+	Pricelist - Price Line - Dep - 11 Aug 2020
 
 	Created: 			 1 Apr 2019
-	Last mod: 			 8 Apr 2019
+	Last mod: 			28 Jul 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api

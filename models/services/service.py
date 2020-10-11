@@ -2,12 +2,10 @@
 """
 		Service - 2019
 		Created: 				20 Sep 2016
-		Last updated: 	 		15 Apr 2019
+	    Last mod: 			28 Jul 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
-
-#from . import px_vars
 from openerp.addons.price_list.models.product import px_vars
 
 class Service(models.Model):
@@ -16,29 +14,15 @@ class Service(models.Model):
 	"""
 	_name = 'price_list.service'
 
-
-
 # ----------------------------------------------------------- Select ------------------------------
-	
 	# Zone
 	sel_zone = fields.Selection(
-
 			selection=px_vars._zone_list,
-
 			string='Seleccionar Zona',
 			#required=True,
 		)
 
-
-
-
-
 # ----------------------------------------------------------- Natives ------------------------------
-
-
-
-
-
 
 # ----------------------------------------------------------- Relationals -------------------------
 	# Treatement
@@ -49,44 +33,24 @@ class Service(models.Model):
 			required = True,
 		)
 
-
-
-
 	# Price Manual
 	price_manual = fields.Float(
-			string="Precio Manual",
-			
-			#default=-1,
-
-			#required=True,
+			string="Precio Manual",			
 		)
-
 
 	# Price Applied
 	price_applied = fields.Float(
-			#string='Precio Aplicado',
-			#default=-1,
 			required=True,
 		)
 
-
-
-
 # ----------------------------------------------------------- Natives ------------------------------
-
 	# Physician
 	physician = fields.Many2one(
-	
 			'oeh.medical.physician',
-	
 			string="Médico",
-	
 			index=True,
-			
 			#readonly=False,
 		)
-	
-
 
 # ----------------------------------------------------------- On changes --------------------------
 
@@ -201,11 +165,6 @@ class Service(models.Model):
 				}
 		}
 	# open_line_current
-	
-
-
-
-
 
 # ----------------------------------------------------------- Fields ------------------------------
 	price_list = fields.Selection(
@@ -236,10 +195,7 @@ class Service(models.Model):
 			string='brand',
 		)
 
-
-
 # ---------------------------------------------- Fields - Floats -----------------------
-
 	price = fields.Float(
 			'Price',
 		)
@@ -264,8 +220,6 @@ class Service(models.Model):
 			'Price max',
 		)
 
-
-	
 # ----------------------------------------------------------- Fields ------------------------------
 	family = fields.Selection(
 			selection=px_vars._family_list,
@@ -293,15 +247,12 @@ class Service(models.Model):
 			required=False,
 		)
 
-
-
 	pathology = fields.Selection(
 			selection=px_vars._pathology_list,
 			string='Pathology',
 			#required=True,
 			required=False,
 		)
-
 
 	level = fields.Selection(
 			selection=px_vars._level_list,
@@ -323,5 +274,3 @@ class Service(models.Model):
 			#required=True,
 			required=False,
 		)
-
-

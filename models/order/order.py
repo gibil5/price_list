@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-		Order - Pricelist
-
+		Order - Pricelist - DEP !
 		Created: 			26 Aug 2016
-		Last mod: 			23 Jul 2020
+		Last mod: 			27 Jul 2020
 """
 from __future__ import print_function
 import datetime
@@ -21,32 +20,6 @@ class sale_order(models.Model):
 	Tools must into ToolsOrder.
 	"""
 	_inherit = 'sale.order'
-
-# ----------------------------------------------------- Test --------------------------
-	@api.multi
-	def test(self):
-		"""
-		Unit Testing - All
-		"""
-		print()
-		print('Test Order')
-
-		tester = TestOrder(self)
-
-		tester.test_raw_receipt(self)
-		tester.test_raw_invoice(self)
-		tester.test_raw_credit_note(self)
-		tester.test_serial_number(self)
-
-		#action0 = self.test_raw_receipt()
-		#return action0
-		#action1 = self.test_raw_invoice()
-		#return action1
-		#action2 = self.test_raw_credit_note()
-		#return action2
-		#self.test_serial_number()
-		#return action0, action1, action2
-
 
 # ----------------------------------------------------- Django Interface --------------------------
 
@@ -112,75 +85,6 @@ class sale_order(models.Model):
 		print()
 		print('Get serial_number')
 		return self.x_serial_nr
-
-
-# ----------------------------------------------------- Admin --------------------------
-	@api.multi
-	def correct_serial_number(self):
-		"""
-		Correct Serial Number
-		"""
-		print()
-		print('Correct Serial Number')
-
-		self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)
-
-
-# ----------------------------------------------------- Fixers --------------------------
-
-	@api.multi
-	def fix_treatment(self):
-		"""
-		Fix Treatment
-		"""
-		print()
-		print('Fix Treatment')
-
-		# Treatment
-		self.treatment = self.env['openhealth.treatment'].search([
-																	('patient', '=', self.patient.id),
-																	('physician', '=', self.x_doctor.id),
-											],
-												order='start_date desc',
-												limit=1,
-											)
-		#print(self.treatment.name)
-
-
-	@api.multi
-	def fix_treatment_month(self):
-		"""
-		Fix Treatment Month
-		"""
-		print()
-		print('Fix Treatment Month')
-
-
-	@api.multi
-	def fix_treatment_all(self):
-		"""
-		Fix Treatment All
-		"""
-		print()
-		print('Fix Treatment All')
-
-
-# ----------------------------------------------------------- Setters ----------------------------
-
-	def set_procedure_created(self, value):
-		"""
-		Set Procedure Created
-		Used by: Treatment and Order
-		"""
-		self.x_procedure_created = value
-
-
-	def is_procedure_created(self):
-		"""
-		Used by: Treatment
-		"""
-		return self.x_procedure_created
-
 
 
 # ----------------------------------------------------------- Validate Patient ----------------------------
@@ -262,7 +166,6 @@ class sale_order(models.Model):
 					}}
 
 	# pl_open_product_selector
-
 
 # ----------------------------------------------------------- Clean ----------------------------
 	@api.multi

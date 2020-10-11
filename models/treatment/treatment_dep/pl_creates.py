@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Encapsulates actual Creation on Database.
+	Encapsulates actual Creation on Database - DEP - 11 aug 2020
 	Created: 			16 Apr 2019
  	Last up: 	 		26 Sep 2019
 

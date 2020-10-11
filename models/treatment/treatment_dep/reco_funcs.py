@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-	*** Reco Funcs 
+	*** Reco Funcs - dep - 11 aug 2020
 
 	Created: 				 15 Apr 2019
 	Last up: 				 17 Apr 2019
 """
 from openerp import models, fields, api
 
-
 # ---------------------------------------------- Create Service -----------------------------
-
 #def create_service(treatment_id, family=False, subfamily=False):
 def create_service(treatment_id, family, subfamily, physician_id):
 	"""

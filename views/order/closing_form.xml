@@ -2,12 +2,7 @@
 	<data>
 
 
-
-
 <!-- FORM -->
-
-
-		<!-- form -->
 		<record model="ir.ui.view" id="closing_form_form_view">
 			
 			<field name="name">openhealth.closing.form.form</field>

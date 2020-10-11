@@ -10,15 +10,10 @@
 
 from __future__ import print_function
 from timeit import default_timer as timer
-#import collections
 import datetime
 from openerp import models, fields, api
 
 # Lib
-
-#from lib import pl_mgt_vars
-#from lib import pl_ord_vars
-
 from lib import mgt_funcs
 from lib import mgt_line_funcs
 from lib import prod_funcs
@@ -31,18 +26,13 @@ class Management(models.Model):
 	"""
 	Contains only functions. Not the data model. 
 
-	Management Report. 
-	Analyzes Sales and calculates several indicators like: Doctor performance,  Productivity, Daily Sales, by Doctor. 
-	Extends Business Rules. Should NOT contain Data Model
+	Management Report
+		Analyzes Sales and calculates several indicators like: Doctor performance,  Productivity, Daily Sales, by Doctor. 
+		Extends Business Rules. Should NOT contain Data Model
 	"""
 	_inherit = 'openhealth.management'
 
-
-
-
-# ----------------------------------------------------------- Class Vars -----------------------
-
-
+# ----------------------------------------------------------- Class Vars -------
 	_dic_weekday = {
 					0: 	'monday',
 					1: 	'tuesday',
@@ -61,14 +51,12 @@ class Management(models.Model):
 
 				# 13 Jul 2018 
 				'other': 		'Otro',
-
 				'product': 		'Producto',
 				'consultation': 'Consulta', 		
 				'consultation_gyn': 'Consulta Ginecológica', 		
 				'consultation_100': 'Consulta 100', 		
 				'consultation_0': 'Consulta Gratuita', 		
 
-				#'procedure': 	'Procedimiento', 		
 				'procedure': 	'Procedimiento Laser', 		
 				'laser': 		'Laser', 		
 
@@ -78,9 +66,6 @@ class Management(models.Model):
 				'card': 		'Tarjeta Vip', 	
 				'kit': 			'Kits', 	
 				'topical': 		'Cremas', 	
-
-
-
 
 				# Subfamilies
 				'laser_co2' : 		'Laser Co2', 		
@@ -96,46 +81,20 @@ class Management(models.Model):
 
 				'mesotherapy_nctf': 		'Mesoterapia NCTF', 
 				'infiltration_scar': 		'Infiltración Cicatriz', 
-				'infiltration_keloid': 		'Infiltración Queloide', 
-
-
-				#False: False, 	
+				'infiltration_keloid': 		'Infiltración Queloide',
 	}
 
 
+# ---------------------------------------------------------------------------------------
+# 									Productivity
+# ---------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-# ----------------------------------------------------- Django Interface --------------------------
-
-# ---------------------------------------------------------------------------------------------------------------------
-# 																Productivity                       
-# ---------------------------------------------------------------------------------------------------------------------
-
-# ----------------------------------------------------------- Update Prod -------------------------
-
-	# 	# For Update Productivity
-	#day_line = fields.One2many(
-	#		'openhealth.management.day.line',
-	#		'management_id',
-	#	)
-
-
-
+# ----------------------------------------------------------- Update Prod ------
 	# For Update Productivity
 	productivity_day = fields.One2many(
-
 			'productivity.day',
-
 			'management_id',
 		)
-
-
 
 	# Update Productivity
 	@api.multi
@@ -147,14 +106,11 @@ class Management(models.Model):
 		print()
 		print('X - Update Productivity')
 		
-
 		# Handle Exceptions - Dep !
 		#exc_mgt.handle_exceptions(self)
 
-
 		# Go
 		prod_funcs.create_days(self)
-
 		
 		# Update cumulative and average
 		prod_funcs.pl_update_day_cumulative(self)
@@ -162,17 +118,12 @@ class Management(models.Model):
 
 		print()
 
-
 		return 1	# For Django
 	# update_productivity
-
-
-
 
 # ---------------------------------------------------------------------------------------------------------------------
 # 																Daily                       
 # ---------------------------------------------------------------------------------------------------------------------
-
 
 # ----------------------------------------------------------- Update Daily -------------------------
 
@@ -228,16 +179,9 @@ class Management(models.Model):
 		return 1	
 	# update_daily
 
+# ------------------------------------------ First Level - Update Buttons ---------------
 
-
-
-
-
-
-# ----------------------------------------------------------- First Level - Update Buttons ---------------------------------------------
-
-
-# ----------------------------------------------------------- Update Fast ---------------------------------------------
+# ----------------------------------------------------------- Update Fast ------
 	@api.multi
 	def update_fast(self):
 		"""
@@ -261,18 +205,13 @@ class Management(models.Model):
 
 		print()
 
-
 		return 1 	# For Django
 	# update_fast
-
-
-
 
 
 # ---------------------------------------------------------------------------------------------------------------------
 # 																Patients                       
 # ---------------------------------------------------------------------------------------------------------------------
-
 
 # ----------------------------------------------------------- Update Patients -------------------------
 	# Update Patients
@@ -1278,7 +1217,6 @@ class Management(models.Model):
 		print()
 		print('X - Update Year All')
 
-
 		# Mgts
 		mgts = self.env['openhealth.management'].search([
 															('owner', 'in', ['month']),
@@ -1298,13 +1236,9 @@ class Management(models.Model):
 		print(mgts)
 		print(count)
 
-
 		for mgt in mgts:
 			print(mgt.name)
 			mgt.update_year()
-
-
-
 
 
 # ----------------------------------------------------------- Reset -------------------------------
@@ -1322,34 +1256,26 @@ class Management(models.Model):
 
 		# Go
 		self.reset_macro()
-
-		#self.reset_micro()
 		self.reset_relationals()
 	# reset
-
-
-
 
 # ----------------------------------------------------------- Reset -------------------------
 	# Reset Macros
 	def reset_macro(self):
 		"""
 		Reset Macro
-		All self fields
+			All self fields
 		"""
 		print()
 		print('X - Reset Macros')
-
 
 		# Deltas
 		self.delta_fast = 0
 		self.delta_doctor = 0
 
-
 		# Relational
 		if self.patient_line not in [False]:
 			self.patient_line.unlink()
-
 
 		#self.report_sale_product = False
 		self.report_sale_product.unlink()
@@ -1360,11 +1286,9 @@ class Management(models.Model):
 
 		# Clear
 		self.total_amount_year = 0
-
 		self.total_amount = 0
 		self.total_count = 0
 		self.total_tickets = 0
-
 
 		# Nr - 1st level
 		self.nr_products = 0
@@ -1392,7 +1316,6 @@ class Management(models.Model):
 		self.nr_sub_con_gyn = 0
 		self.nr_sub_con_cha = 0
 
-
 		# Amo - 1st Level
 		self.amo_products = 0
 		self.amo_services = 0
@@ -1418,8 +1341,6 @@ class Management(models.Model):
 		self.amo_sub_con_med = 0
 		self.amo_sub_con_gyn = 0
 		self.amo_sub_con_cha = 0
-
-
 
 		# Per Amo
 		self.per_amo_total = 0
@@ -1476,56 +1397,26 @@ class Management(models.Model):
 		self.ratio_pro_con = 0
 	# reset_macro
 
-
-
-
-
 	# Reset Relationals
 	def reset_relationals(self):
 		"""
 		Reset Micro
-
-		All Relational
-			Doctors, Families, Sub-families
+			All Relational
+				Doctors, Families, Sub-families
 		"""
 		print()
 		print('X - Reset Micros')
-		
-
 
 		# Productivity Days
 		self.productivity_day.unlink()
 
-
-
-		# Productivity days 
-		#productivity_days = self.env['productivity.day'].search([
-		#															('management_id', '=', self.id),
-		#													],
-															#order='date_begin,name asc',
-															#limit=1,
-		#											)
-		#print(productivity_days)
-		#print(doctors_inactive)
-
-
-
-
-
-
 		# Order Lines
 		self.order_line.unlink()
-
 
 		# Doctor lines
 		self.doctor_line.unlink()
 
-
 		# Family lines
 		self.family_line.unlink()
 		self.sub_family_line.unlink()
-
 	# reset_micro
-
-
-

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	*** Procedure Session Funcs 
+	Procedure Session Funcs - Dep - 10 Aug 2020
 
 	Created: 				 1 Nov 2016
 	Last updated: 	 	 	25 Apr 2019
@@ -26,32 +26,23 @@ def create_sessions(self, nr_sessions, nr_ses_created):
 	evaluation_type = 'Session'
 	product_id = self.product.id
 	treatment_id = self.treatment.id
-	
-
 	laser = self.laser
 
-	
 	# Actual Doctor 
 	doctor_id = user.get_actual_doctor_pro(self)
 
 	# Appointment 
 	duration = 0.5
 
-	#machine = self.machine  	# Dep !
-
 	x_type = 'session'
 	subtype = self.product.x_treatment 
 
-
 	doctor_name = self.doctor.name 
-
 	
 	# Date 		
 	GMT = time_funcs.Zone(0,False,'GMT')
 	evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 	app_date = datetime.now(GMT).strftime("%Y-%m-%d ")
-
-
 
 	# Loop 
 	# Date dictionary - Number of days for controls 
@@ -82,41 +73,28 @@ def create_sessions(self, nr_sessions, nr_ses_created):
 
 	# Loop
 	for k in range(0, nr_sessions):
-		#print k 
-
-
 		# Init 
-		#delta = 0 
-		#nr_days = k_dic[k] + delta 
 		nr_days = nr_ses_created
-
-
-
 
 		# Session date 
 		session_date = lib.get_next_date(self, evaluation_start_date, nr_days)
-
 		session_date_str = session_date.strftime("%Y-%m-%d")		
 
-
-		# Appointment
-		appointment_id = False
-
-
 		# Create Session 
+		appointment_id = False
 		session = self.env['openhealth.session.med'].create({
 																'patient': patient_id,
 																'doctor': doctor_id,													
-
 																'evaluation_start_date':session_date,																
-																'evaluation_type':evaluation_type,
 
+																'evaluation_type':evaluation_type,
 																'product': product_id,
 																'laser': laser,
-																'chief_complaint': chief_complaint,
-																
+
+																'chief_complaint': chief_complaint,																
 																'appointment': appointment_id,																
 																'procedure': procedure_id,				
+
 																'treatment': treatment_id,	
 											})
 		#session_id = session.id 

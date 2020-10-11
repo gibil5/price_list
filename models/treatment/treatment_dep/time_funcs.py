@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    TimeFuncs   
+    TimeFuncs - Dep - 11 Aug 2020
 
     Created:                 1 Nov 2016
     Last updated:           25 Apr 2019

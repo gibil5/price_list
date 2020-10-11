@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Price List 2019 - OBJECT ORIENTED - ODOO 9 MODULE",
+	'name': "Price List 2019 - OBJECT ORIENTED - ODOO 9 MODULE - Reporting - Management, Marketing",
 
 	'summary':
 		"""
@@ -10,7 +10,7 @@
 	'description':
 		"""
 
-		22 Jul 2020
+ 		11 oct 2020
 
 		(Since 22 April, in Prod)
 
@@ -95,28 +95,28 @@
 
 
 		# Service
-		'views/service/service.xml',
-		'views/service/service_co2.xml',
-		'views/service/service_exc.xml',
-		'views/service/service_ipl.xml',
-		'views/service/service_ndyag.xml',
-		'views/service/service_quick.xml',
-		'views/service/service_medical.xml',
-		'views/service/service_cosmetology.xml',
-		'views/service/service_gyn.xml',
-		'views/service/service_echo.xml',
-		'views/service/service_promo.xml',
-		'views/service/service_product.xml',
-
-		'views/service/service_actions.xml',
+		#'views/service/service.xml',
+		#'views/service/service_co2.xml',
+		#'views/service/service_exc.xml',
+		#'views/service/service_ipl.xml',
+		#'views/service/service_ndyag.xml',
+		#'views/service/service_quick.xml',
+		#'views/service/service_medical.xml',
+		#'views/service/service_cosmetology.xml',
+		#'views/service/service_gyn.xml',
+		#'views/service/service_echo.xml',
+		#'views/service/service_promo.xml',
+		#'views/service/service_product.xml',
+		#'views/service/service_actions.xml',
 
 
 
 		# Treatment
-		'views/treatment/cart_line.xml',
-		'views/treatment/treatment_cart.xml',          	# Min
-		'views/treatment/treatment_services.xml',      	# Min
+		#'views/treatment/cart_line.xml',
+		#'views/treatment/treatment_cart.xml',          	# Min
+		#'views/treatment/treatment_services.xml',      	# Min
 		'views/treatment/treatment.xml',               	# Min
+
 
 		#'views/treatment/procedure_actions.xml',  		# Dep
 		#'views/treatment/procedure.xml',               # Dep

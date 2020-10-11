@@ -2,38 +2,17 @@
 
 #from . import models
 
-
-
 # Django interface
 from django import *
-
-
-
-
-
-# Appointment - Dep
-#from appointment import *
-
-
-
 
 # Services
 from services import *
 
-
 # Management
 from management import *
 
-
-
 # Marketing
 from marketing import *
-
-
-
-
-
-
 
 # Order
 from order import *

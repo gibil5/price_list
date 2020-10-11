@@ -135,11 +135,6 @@ class SaleOrderLine(models.Model):
 
 
 
-
-
-
-
-
 # ----------------------------------------------------------- Product ----------
 	product_id = fields.Many2one(
 		'product.product',

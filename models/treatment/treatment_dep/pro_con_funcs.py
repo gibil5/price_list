@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	*** Procedure Control Funcs
+	*** Procedure Control Funcs - Dep - 10 Aug 2020
 
 	Created: 				 1 Nov 2016
 	Last updated: 	 	 	25 Apr 2019
@@ -9,13 +9,13 @@ from openerp.addons.openhealth.models.libs import user, lib
 
 #------------------------------------------------ Create Controls ---------------------------------
 # Create Controls
-def create_controls(self, nr_controls, nr_ctl_created):
+#def create_controls(self, nr_controls, nr_ctl_created):
+def create_controls_dep(self, nr_controls, nr_ctl_created):
 	"""
 	Creates Controls for the Procedure Class.
 	"""
 	print()
 	print('Pl - Create Controls')
-
 
 	# Init
 	patient_id = self.patient.id
@@ -25,7 +25,6 @@ def create_controls(self, nr_controls, nr_ctl_created):
 	procedure_id = self.id
 	treatment_id = self.treatment.id
 	subtype = self.product.x_treatment
-
 
 	# Start date
 	if self.session_date != False:
@@ -56,13 +55,10 @@ def create_controls(self, nr_controls, nr_ctl_created):
 		delta = 0
 		nr_days = k_dic[k] + delta
 
-
 		# Control date
 		control_date = lib.get_next_date(self, evaluation_start_date, nr_days)
-
 		control_date_str = control_date.strftime("%Y-%m-%d")
 		control_date_str = control_date_str + ' 14:00:00'			# 09:00:00
-
 
 		# Appointment
 		appointment_id = False
@@ -71,7 +67,6 @@ def create_controls(self, nr_controls, nr_ctl_created):
 		# Create Control
 		control = self.control_ids.create({
 											'control_date':control_date,
-
 											'patient':patient_id,
 											'doctor':doctor_id,
 
