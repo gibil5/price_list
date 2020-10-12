@@ -6,11 +6,11 @@
  	Last up: 	 		14 Dec 2019
 """
 import collections
-try:
-	import numpy as np
-except (ImportError, IOError) as err:
-	_logger.debug(err)
-
+import numpy as np
+#try:
+#	import numpy as np
+#except (ImportError, IOError) as err:
+#	_logger.debug(err)
 from origin import Origin
 from city_line import CityLine
 from district_line import DistrictLine
