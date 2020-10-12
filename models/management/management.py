@@ -11,14 +11,10 @@ from __future__ import print_function
 from timeit import default_timer as timer
 import datetime
 import collections
-
 from openerp import models, fields, api
-
-#from . import stax
 
 # Lib
 from lib import stats
-
 from lib import mgt_funcs
 from lib import mgt_exc
 from lib import mgt_line_funcs
